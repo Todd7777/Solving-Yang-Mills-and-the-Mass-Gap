@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# LaTeX build files (the PDF is kept)
+theory/*.aux
+theory/*.log
+theory/*.out
+theory/*.toc
+theory/*.fls
+theory/*.fdb_latexmk
+theory/*.synctex.gz
+
+# Large raw data (keep analyses and CSVs)
+results/*.npz
+results/logs/

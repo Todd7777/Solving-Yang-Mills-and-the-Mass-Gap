@@ -1,0 +1,171 @@
+# 3. Research program
+
+This is the plan of attack. It is deliberately conservative about what is proved and deliberately
+ambitious about what is attempted. It will be revised at the end of every session
+(`journal/`), and milestones move from "open" to "done" only when a complete proof is in `theory/`.
+
+## 3.1 Principles
+
+1. **Everything is labelled.** Every mathematical statement in this repository is one of
+   *Theorem* (complete proof in `theory/`), *Cited theorem* (published proof, reference given and verified),
+   *Conjecture* (precise statement, no proof), *Heuristic* (physical argument), or *Numerical* (data in
+   `results/` produced by code in `lattice/`). An unlabelled claim is a bug.
+2. **The $U(1)$ test.** Any proposed proof of the mass gap must visibly fail for $G=U(1)$ in four
+   dimensions and for the $O(2)$ model in two dimensions, where massless phases are theorems. If an argument
+   does not use a non-abelian feature at an essential step, it is wrong. We apply this test to every idea
+   before investing in it.
+3. **The strong-coupling test.** Any proposed argument, restricted to $\beta<\beta_0$, must reduce to
+   something equivalent to the cluster expansion, with the correct asymptotics $m(\beta)\sim 4\log(1/u(\beta))$.
+4. **Numerics as a compass, never as evidence.** Every conjecture is checked against the Monte Carlo code
+   before it is pursued. Numerical agreement is necessary, never sufficient.
+5. **Reduce before attacking.** The problem is split into independent lemmas with precise hypotheses,
+   so that partial progress is cumulative and so that we can measure how far any idea actually goes.
+
+## 3.2 The target in lattice form
+
+From `docs/01-problem-statement.md`, §1.4–1.6: fix $G=SU(N)$ and the Wilson action. Let
+$m_L(\beta)$ be the gap of the transfer-matrix Hamiltonian on the spatial lattice $(\mathbb{Z}/L)^3$ and
+$m(\beta)=\liminf_{L\to\infty}m_L(\beta)$.
+
+* **(G1)** $m(\beta)>0$ for all $\beta$.
+* **(G2)** $\liminf_{\beta\to\infty}m(\beta)/a\Lambda_L(\beta)>0$ with $a\Lambda_L$ the two-loop asymptotic-scaling function.
+* **(UV)** Hypothesis (L1): convergence of renormalised gauge-invariant Schwinger functions as $a\to0$.
+
+(G2)+(UV) give the Clay statement via the reduction theorem (monograph §5). (G1) is the "confinement at all
+couplings" statement and is logically independent, but any method that proves (G2) will almost certainly
+prove (G1).
+
+## 3.3 Milestones
+
+### Tier 0 — Foundations (this session; monograph `theory/lattice-foundations.tex`)
+
+| ID | Statement | Status |
+|---|---|---|
+| T0.1 | Wilson measure, gauge invariance, Elitzur-type remark | Theorem (§2) |
+| T0.2 | Reflection positivity for site reflections | Theorem (§3) |
+| T0.3 | Transfer matrix: self-adjoint, trace class, strictly positive on the gauge-invariant space, positivity-improving; unique vacuum; $Z=\operatorname{Tr}\hat T^{\,T}$ | Theorem (§4) |
+| T0.4 | $m_L(\beta)>0$ for every finite $L$; gap $\Leftrightarrow$ exponential clustering in time; the ground-state Markov chain reformulation $m_L=-\log(1-\mathrm{gap}(P_L))$ | Theorem (§4) |
+| T0.5 | Reduction theorem: (L1)+(L2)+(L3) $\Rightarrow$ OS axioms + mass gap | Theorem (§5) |
+| T0.6 | Strong coupling: for $\beta<\beta_D(d)$ exponential clustering uniform in volume, hence $\inf_L m_L(\beta)>0$ (Dobrushin uniqueness, fully self-contained proof) | Theorem (§6) |
+| T0.7 | Polymer (closed-surface) representation of the Wilson measure; convergence of the cluster expansion for $\beta<\beta_0$ via Kotecký–Preiss; analyticity; area law | Theorem modulo cited KP theorem (§7) |
+
+### Tier 1 — Consolidation (next 2–4 sessions)
+
+| ID | Statement | Why |
+|---|---|---|
+| T1.1 | Infinite-volume limit at strong coupling: existence, uniqueness, translation invariance, OS axioms of the lattice theory for $\beta<\beta_0$ | completes the strong-coupling picture; sets the template for (L1) |
+| T1.2 | Hamiltonian lattice gauge theory: anisotropic transfer matrix, $a_t\to0$ limit, Kogut–Susskind Hamiltonian as a self-adjoint operator; uniform gap at strong coupling in the Hamiltonian picture | makes the Dirichlet-form reformulation (§3.5) rigorous in continuous time |
+| T1.3 | Numerical: $a\,m_{0^{++}}(\beta)$ and $a\sqrt\sigma(\beta)$ for $SU(2)$, $\beta\in[2.2,2.6]$, several volumes; test of (G2) in the form $m/(a\Lambda_L)\to$ const; finite-volume behaviour of $m_L$ | gives the quantitative shape of what must be proved and checks the toolkit against published data |
+| T1.4 | Numerical: the ground-state Markov chain spectral gap on small spatial lattices ($2^3$, $3^3$) by direct diagonalisation in a truncated character basis, as a function of $\beta$ | first look at the reformulation of §3.5 in a computable setting |
+| T1.5 | Re-read and summarise Balaban's program: the exact theorems, the norm on the space of effective actions, and the precise point at which the argument stops | required before any UV work |
+
+### Tier 2 — Model problems (where the crossover must be crossed in a simpler setting)
+
+| ID | Problem | Relation to Yang–Mills |
+|---|---|---|
+| T2.1 | $O(3)$ non-linear sigma model in $d=2$: mass gap for all $\beta$ (Polyakov's conjecture) | same structure: asymptotic freedom, dimensional transmutation, abelian counterpart ($O(2)$) massless by a theorem. Any method that works here is a candidate for $SU(N)_4$ |
+| T2.2 | $SU(2)$ Yang–Mills in $d=3$: existence of the continuum measure in finite volume | super-renormalisable UV; stochastic quantisation and Balaban's 3-d results give partial control |
+| T2.3 | $SU(2)$ Yang–Mills in $d=3$: mass gap | Polyakov's monopole mechanism is rigorous for $U(1)_3$ (Göpfert–Mack); the non-abelian version is open |
+| T2.4 | 4-d $SU(N)$ lattice theory: existence of the thermodynamic limit (full convergence as $L\to\infty$) for all $\beta$ | strictly weaker than (G1); would already be new |
+
+### Tier 3 — The two hard problems
+
+| ID | Problem |
+|---|---|
+| T3.1 | (UV) Convergence of renormalised gauge-invariant correlation functions as $a\to0$ in finite volume (upgrade of Balaban/MRS from bounds to limits), with restoration of Euclidean invariance |
+| T3.2 | (G2) A non-perturbative lower bound $m(\beta)\ge c\,a\Lambda_L(\beta)$ for large $\beta$ |
+
+## 3.4 The crossover, stated as a mathematical problem
+
+Write the Wilson measure at coupling $\beta$ on lattice spacing $a$ as $\mu_{\beta}$. A block-spin
+renormalisation map $\mathcal{R}$ (Balaban's, or any other) sends $\mu_\beta$ to an effective measure
+$\mathcal{R}\mu_\beta$ on the lattice of spacing $2a$ for gauge-invariant block observables. Along the
+asymptotic-freedom trajectory the effective coupling grows under iteration:
+$g^2_{k}\approx g^2/(1-2b_0g^2k\log2)$. After $k_\star\approx1/(2b_0g^2\log2)$ steps the effective coupling is
+$O(1)$, and the block lattice has spacing $2^{k_\star}a\approx1/\Lambda$.
+
+* For $k\ll k_\star$ the effective action is controlled by the weak-coupling (small-field) expansion plus a
+  large-field estimate (Balaban).
+* If, for $k\ge k_\star+k_1$, the effective action were in the convergence region of a strong-coupling
+  expansion with uniform constants, (G1) and (G2) would follow (the strong-coupling gap in block units is
+  $O(1)$, i.e. $O(\Lambda)$ in physical units).
+
+**The crossover problem.** Find a space of effective actions $\mathcal{A}$ with a norm $\|\cdot\|$ and a
+renormalisation map $\mathcal{R}$ such that (i) the weak-coupling expansion controls $\mathcal{R}^k\mu_\beta$ in
+$\mathcal{A}$ for $k\le k_\star-k_0$, (ii) a strong-coupling expansion converges uniformly for all actions in a
+ball $B\subset\mathcal{A}$, and (iii) finitely many steps of $\mathcal{R}$ map the weak-coupling region into $B$.
+Step (iii) is the whole difficulty: at the crossover there is no small parameter, and (iii) is a statement
+about finitely many iterations of a non-linear map on an infinite-dimensional space, with no expansion
+available. It is exactly the step that the $U(1)$ test says must fail for abelian groups: for $U(1)_4$ the
+flow at large $\beta$ goes to the Gaussian (Coulomb) fixed point instead.
+
+Known partial substitutes for (iii):
+
+* **Migdal–Kadanoff bounds** give rigorous one-sided inequalities for free energies under approximate
+  decimations, and the approximate flow does go to strong coupling for non-abelian groups in $d=4$ (and for
+  $U(1)$ it does not — the approximation respects the $U(1)$ test). The inequalities do not control correlation
+  functions; Tomboulis' 2007 attempt to upgrade them is incomplete.
+* **Tomboulis–Yaffe inequalities** bound Wilson loops by electric-flux free energies, moving the problem to a
+  statement about twisted partition functions (center vortex free energies). The required 't Hooft area law for
+  the vortex free energy is open.
+* **Large $N$**: at $N=\infty$ the crossover of the Wilson action becomes a bulk first-order transition and both
+  sides confine; the loop equations are exact but their solution at weak coupling is not controlled.
+
+## 3.5 An exact reformulation: the gap as a Markov-chain spectral gap
+
+Let $\hat T$ be the transfer matrix on the spatial lattice, $\lambda_0>\lambda_1\ge\dots$ its eigenvalues on the
+gauge-invariant space, $\Omega>0$ the vacuum. Define the Markov kernel
+$$P(U,U')=\frac{\hat T(U,U')\,\Omega(U')}{\lambda_0\,\Omega(U)} .$$
+Then $P$ is a reversible Markov chain on $G^{\text{spatial links}}$ with stationary measure
+$\nu=\Omega^2\,dU$ (the vacuum measure), and (monograph, Theorem 4.4)
+$$m_L(\beta)=-\log\bigl(1-\operatorname{gap}(P_L)\bigr),\qquad
+\operatorname{gap}(P)=\inf_\varphi\frac{\langle\varphi,(1-P)\varphi\rangle_\nu}{\operatorname{Var}_\nu(\varphi)} .$$
+The mass gap problem is therefore *exactly* the question whether a reversible, local, gauge-averaged
+"parallel update" chain whose stationary measure is the Yang–Mills vacuum measure on a 3-dimensional lattice
+has a spectral gap uniform in the volume. In continuous time (Kogut–Susskind Hamiltonian, milestone T1.2) the
+same statement reads: the gap equals the Poincaré constant of the Dirichlet form
+$\mathcal{E}(\varphi)=\tfrac{g^2}{2}\sum_l\int|\nabla_l\varphi|^2\,d\nu$.
+
+Why this is worth recording:
+
+* For statistical-mechanics spin systems, uniform spectral gaps of Glauber-type dynamics are *equivalent* to
+  strong spatial mixing of the stationary measure (Stroock–Zegarlinski, Martinelli–Olivieri). Transplanted
+  here, the 4-d mass gap becomes a mixing property of a 3-d measure (the vacuum measure).
+* Physically this is the "dimensional reduction" picture of the Yang–Mills vacuum (Greensite; Karabali–Kim–Nair
+  in $2+1$): at long distances $\nu\approx$ a 3-d Yang–Mills Gibbs measure. If that picture could be made rigorous
+  with uniform constants, it would reduce the 4-d gap to a 3-d statement, i.e. to an induction on dimension.
+* It gives a well-posed finite problem (T1.4): compute $\operatorname{gap}(P_L)$ numerically on tiny lattices.
+
+This reformulation passes the $U(1)$ test only trivially (it is an identity); it is a tool, not a mechanism.
+
+## 3.6 Candidate mechanisms, triaged
+
+| Mechanism | Rigorous status | $U(1)$ test | Assessment |
+|---|---|---|---|
+| Strong-coupling expansion continued into the weak-coupling region | converges only for $\beta<\beta_0$ | fails (good) | cannot be extended as is; serves as the endpoint of an RG flow |
+| Monopole plasma / Debye screening (Polyakov; Göpfert–Mack) | theorem in $U(1)_3$ | passes trivially in $d=3$ (abelian theory is gapped there) | the right template for $d=3$; no non-abelian duality in $d=4$ |
+| Center vortices (Mack–Petkova; Tomboulis–Yaffe) | rigorous inequalities only | passes (needs centre) | the best-developed rigorous *structure*; the dynamical statement (vortex condensation) is open |
+| Dimensional reduction of the vacuum measure (§3.5) | exact reformulation | identity | promising as an organising principle; requires a 3-d gap result as input |
+| Large-$N$ loop equations | strong coupling only | $U(N)$ vs $SU(N)$ differ by a $U(1)$ factor only at $N=\infty$ | not a route to finite $N$ |
+| Gribov–Zwanziger horizon, Coulomb-gauge confinement, AdS/CFT | heuristic | — | not rigorous; not pursued |
+
+## 3.7 Anti-patterns (arguments that cannot work)
+
+* "The transfer matrix is positivity improving, hence the vacuum is unique, hence there is a gap." True on every
+  finite lattice; says nothing uniform in $L$. ($U(1)$ test fails.)
+* "Every lattice theory is gapped; take the limit." The gap may close as $a\to0$ or $L\to\infty$; it does for $U(1)_4$.
+* "Use a convergent expansion in $\beta$." No expansion in $\beta$ alone can reach $\beta\to\infty$.
+* "Prove the gap in a small box and extrapolate." In a small box the gap is $O(1/L)$ and perturbative (femto-universe); the non-perturbative gap is a large-volume phenomenon.
+* "Variational upper bounds." They bound energies from above; the gap needs a lower bound on $E_1-E_0$.
+* "Numerical evidence plus a finite-size criterion." No finite-size criterion is known for non-frustration-free transfer matrices; proving one would itself be a major result.
+
+## 3.8 Next-session plan
+
+1. Finish and compile the monograph; check every proof line by line against the numerics where possible
+   (strong-coupling formulas, reflection positivity as positivity of correlators).
+2. T1.3: production runs for $SU(2)$ glueball masses at $\beta=2.3,2.4,2.5$ on $L^3\times 2L$, $L=8,10,12$;
+   compare $a\,m_{0^{++}}$ with the two-loop scaling function; record the ratio.
+3. T1.4: build the truncated-character-basis transfer matrix for a $2^3$ spatial lattice and compute the
+   ground-state chain's spectral gap exactly as a function of $\beta$.
+4. T1.5: Balaban summary.
+5. Begin T2.1 (the $O(3)$ model): write the analogous foundations document and the analogous reformulation.

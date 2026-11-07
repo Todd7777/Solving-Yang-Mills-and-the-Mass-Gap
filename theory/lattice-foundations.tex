@@ -1,0 +1,1222 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{citedtheorem}[theorem]{Cited Theorem}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{convention}[theorem]{Convention}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\osc}{osc}
+\DeclareMathOperator{\gap}{gap}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\hT}{\hat{T}}
+\newcommand{\hA}{\hat{A}}
+\newcommand{\hB}{\hat{B}}
+\newcommand{\dU}{\,dU}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+\newcommand{\TV}{\mathrm{TV}}
+
+\title{Lattice Yang--Mills theory: foundations for the mass gap problem\\
+\large Part I of the project ``Solving Yang--Mills and the Mass Gap''}
+\author{}
+\date{Session 1 (5 November 2026); living document}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We set up, with complete proofs, the finite-lattice theory on which every later part of this project
+rests: Wilson's measure for a compact gauge group, its gauge invariance, reflection positivity, the
+transfer matrix and Hamiltonian, the equivalence of the mass gap with exponential clustering in
+Euclidean time, an exact reformulation of the gap as the spectral gap of a reversible Markov chain on
+the time-slice configuration space (the ground-state chain), the reduction of the continuum problem to
+lattice hypotheses, and the existence of a mass gap uniform in the volume at strong coupling. The
+strong-coupling result is proved by a self-contained coupling argument (Dobrushin uniqueness) and,
+separately, the polymer (closed-surface) representation of the measure is derived and its cluster
+expansion is shown to converge for small~$\beta$ via the Kotecký--Preiss criterion. None of the results
+is new; the point is to have them in one consistent framework, with the hypotheses that the open
+problem requires made explicit (Section~\ref{sec:reduction}). The last section lists what remains open.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction and conventions}
+
+The Clay problem asks for the construction of a quantum Yang--Mills theory on $\R^4$ with a mass gap.
+The only framework in which a non-abelian gauge theory can presently be defined non-perturbatively with
+all the relevant structure (positivity, Hamiltonian, gauge invariance) is Wilson's lattice regularisation.
+This document develops that framework from scratch, in the generality we need (any compact group $G$ with
+a faithful unitary representation, any dimension $d\ge2$, any finite periodic lattice), and isolates the
+two statements that are missing: convergence of the continuum limit and uniformity of the gap.
+
+\begin{convention}[Labels]
+Every statement is labelled \emph{Theorem/Lemma/Proposition} (complete proof here), \emph{Cited Theorem}
+(proof in the literature, reference given), \emph{Conjecture} (no proof), or \emph{Remark} (heuristic
+or commentary). Constants are explicit unless stated otherwise; they are not optimised.
+\end{convention}
+
+\begin{convention}[Group]
+$G$ is a compact Hausdorff topological group (in applications a compact Lie group, e.g.\ $SU(N)$) with
+normalised Haar measure $dU$. We fix a faithful continuous unitary representation $\rho:G\to U(N)$ and
+write $\Tr U:=\Tr\rho(U)$. For $G=SU(N)$, $\rho$ is the defining representation. Irreducible unitary
+representations are denoted $r$, with dimension $d_r$, matrix coefficients $D^r_{ab}$ and character
+$\chi_r=\sum_a D^r_{aa}$; $r=0$ is the trivial representation.
+\end{convention}
+
+\begin{convention}[Lattice]
+Let $d\ge2$ and $L_0,\dots,L_{d-1}\ge 2$ be integers. The lattice is the torus
+$\Lambda=\prod_{\mu=0}^{d-1}\Z/L_\mu\Z$ with unit vectors $e_\mu$. Direction $0$ is Euclidean time.
+An (oriented) link is a pair $\ell=(x,\mu)$ with $x\in\Lambda$, $0\le\mu<d$, standing for the segment from
+$x$ to $x+e_\mu$; $E(\Lambda)$ denotes the set of links, $|E(\Lambda)|=d|\Lambda|$. A plaquette is a pair
+$p=(x,\mu\nu)$ with $\mu<\nu$, standing for the unit square with corners $x,x+e_\mu,x+e_\mu+e_\nu,x+e_\nu$;
+$\cP(\Lambda)$ is the set of plaquettes, $|\cP(\Lambda)|=\binom d2|\Lambda|$. The four links of $p$ are
+$(x,\mu),(x+e_\mu,\nu),(x+e_\nu,\mu),(x,\nu)$; we write $\ell\in p$ or $p\ni\ell$.
+\end{convention}
+
+\begin{convention}[Configurations]
+A configuration is a map $U:E(\Lambda)\to G$, $\ell\mapsto U_\ell$; we write $U_\mu(x):=U_{(x,\mu)}$ and
+$U_{-\mu}(x+e_\mu):=U_\mu(x)^{-1}$ for the reversed link. The configuration space is
+$\Omega_\Lambda:=G^{E(\Lambda)}$ with the product Haar measure $dU:=\prod_\ell dU_\ell$. The plaquette variable is
+\begin{equation}\label{eq:plaquette}
+U_p:=U_\mu(x)\,U_\nu(x+e_\mu)\,U_\mu(x+e_\nu)^{-1}\,U_\nu(x)^{-1},\qquad p=(x,\mu\nu).
+\end{equation}
+\end{convention}
+
+\section{Compact groups and the Wilson measure}\label{sec:measure}
+
+\subsection{Facts about compact groups}
+
+We use the following standard facts (see e.g.\ Bröcker--tom Dieck, \emph{Representations of Compact Lie
+Groups}, Chapters II--III, or Folland, \emph{A Course in Abstract Harmonic Analysis}, Chapter~5).
+
+\begin{citedtheorem}[Haar measure, Peter--Weyl]\label{thm:pw}
+\begin{enumerate}[label=(\roman*)]
+\item There is a unique regular Borel probability measure $dU$ on $G$ invariant under left and right
+translations; it is also invariant under inversion $U\mapsto U^{-1}$.
+\item (Schur orthogonality) For irreducible $r,r'$:
+$\int \overline{D^r_{ab}(U)}\,D^{r'}_{a'b'}(U)\dU=\delta_{rr'}\delta_{aa'}\delta_{bb'}/d_r$.
+\item The functions $\sqrt{d_r}\,D^r_{ab}$ form an orthonormal basis of $L^2(G,dU)$; the span of all matrix
+coefficients is dense in $C(G)$ (uniform norm).
+\item For irreducible $r,r'$ and $A,B\in G$:
+$\int\chi_r(AU)\,\chi_{r'}(U^{-1}B)\dU=\delta_{rr'}\,\chi_r(AB)/d_r$.
+\item For irreducible $r$ and $X,Y\in G$: $\int\chi_r(XUYU^{-1})\dU=\chi_r(X)\chi_r(Y)/d_r$
+(from (ii), $\int D^r_{ab}(U)D^r_{cd}(U^{-1})\dU=\int D^r_{ab}(U)\overline{D^r_{dc}(U)}\dU=\delta_{ad}\delta_{bc}/d_r$).
+\item Every continuous class function $\phi$ (i.e.\ $\phi(gUg^{-1})=\phi(U)$) has an expansion
+$\phi=\sum_r c_r\chi_r$ with $c_r=\int\overline{\chi_r}\,\phi\dU$, converging in $L^2$; if $\phi$ is a
+finite linear combination of characters, or more generally if $\sum_r|c_r|d_r<\infty$, it converges uniformly.
+\end{enumerate}
+\end{citedtheorem}
+
+\subsection{The plaquette weight and its character expansion}
+
+\begin{definition}[Plaquette weight]
+For $\beta\ge0$ let $w_\beta:G\to(0,\infty)$,
+\begin{equation}\label{eq:w}
+w_\beta(U):=\exp\Bigl(\frac{\beta}{N}\,\mathrm{Re}\Tr U\Bigr),\qquad
+e^{-\beta}\le w_\beta(U)\le e^{\beta}.
+\end{equation}
+$w_\beta$ is a continuous class function, invariant under $U\mapsto U^{-1}$ (since $\Tr U^{-1}=\overline{\Tr U}$).
+Its character coefficients are $c_r(\beta):=\int\overline{\chi_r(U)}\,w_\beta(U)\dU$ and
+$c_0(\beta)=\int w_\beta\dU$.
+\end{definition}
+
+\begin{lemma}[Positivity of the character coefficients]\label{lem:cr}
+For every $\beta>0$ and every irreducible $r$, $c_r(\beta)>0$.
+\end{lemma}
+
+\begin{proof}
+Write $t=\beta/(2N)$ and $w_\beta(U)=e^{t\Tr U}e^{t\overline{\Tr U}}$. Expanding both exponentials
+(absolutely convergent, uniformly on $G$),
+\[
+w_\beta(U)=\sum_{n,m\ge0}\frac{t^{n+m}}{n!\,m!}\,(\Tr U)^n\,\overline{(\Tr U)^m}
+=\sum_{n,m\ge0}\frac{t^{n+m}}{n!\,m!}\,\chi_{\rho^{\otimes n}\otimes\bar\rho^{\otimes m}}(U),
+\]
+where $\bar\rho$ is the complex-conjugate representation and we used $\chi_{\rho^{\otimes n}}=(\Tr\rho)^n$,
+$\chi_{\bar\rho}=\overline{\chi_\rho}$ and multiplicativity of characters under tensor products. Decomposing
+$\rho^{\otimes n}\otimes\bar\rho^{\otimes m}=\bigoplus_r m_r(n,m)\,r$ with multiplicities $m_r(n,m)\in\N$
+and integrating against $\overline{\chi_r}$ term by term (uniform convergence),
+\[
+c_r(\beta)=\sum_{n,m\ge0}\frac{t^{n+m}}{n!\,m!}\,m_r(n,m)\ \ge 0 .
+\]
+For strict positivity it suffices that $m_r(n,m)>0$ for some $(n,m)$. Suppose not: then for all $n,m$,
+$\int\overline{D^r_{ab}}\,(\Tr U)^n\overline{(\Tr U)^m}\dU=0$ for all $a,b$ (the matrix coefficients of $r$ are
+orthogonal to all matrix coefficients of $\rho^{\otimes n}\otimes\bar\rho^{\otimes m}$, and $(\Tr U)^n\overline{(\Tr U)^m}$
+is a sum of such). The algebra $\mathcal{B}$ generated by the functions $\rho(U)_{ij}$, $\overline{\rho(U)_{ij}}$ and $1$
+is a $*$-subalgebra of $C(G)$ which separates points because $\rho$ is faithful; by Stone--Weierstrass it is
+dense in $C(G)$. Each element of $\mathcal{B}$ is a linear combination of matrix coefficients of the
+representations $\rho^{\otimes n}\otimes\bar\rho^{\otimes m}$, hence orthogonal to $D^r_{ab}$; by density,
+$D^r_{ab}\perp C(G)$, so $D^r_{ab}=0$, a contradiction.
+\end{proof}
+
+\begin{lemma}[The one-link operator]\label{lem:kop}
+Let $\beta>0$ and let $k_\beta$ be the integral operator on $L^2(G,dU)$ with kernel $k_\beta(U,V)=w_\beta(UV^{-1})$. Then
+\begin{equation}\label{eq:kop}
+k_\beta=\sum_r\frac{c_r(\beta)}{d_r}\,\Pi_r ,
+\end{equation}
+where $\Pi_r$ is the orthogonal projection onto the $d_r^2$-dimensional span of $\{D^r_{ab}\}_{a,b}$ and the
+sum converges in Hilbert--Schmidt norm. Consequently $k_\beta$ is self-adjoint, positive and injective, and it is
+trace class with
+\begin{equation}\label{eq:trace}
+\Tr k_\beta=\sum_r c_r(\beta)\,d_r=w_\beta(1)=e^{\beta}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+For a unitary representation $D^r(V^{-1})=D^r(V)^*$, so
+$\chi_r(UV^{-1})=\sum_{a,b}D^r_{ab}(U)\overline{D^r_{ab}(V)}=\frac1{d_r}\sum_{a,b}e^r_{ab}(U)\overline{e^r_{ab}(V)}$
+with the orthonormal functions $e^r_{ab}:=\sqrt{d_r}D^r_{ab}$ of Theorem~\ref{thm:pw}(iii). The class function
+$w_\beta$ has the $L^2(G)$-convergent expansion $\sum_rc_r\chi_r$ with $\sum_r|c_r|^2=\norm{w_\beta}_2^2<\infty$
+(Parseval), hence $k_\beta(U,V)=\sum_r\frac{c_r}{d_r}\sum_{ab}e^r_{ab}(U)\overline{e^r_{ab}(V)}$ converges in
+$L^2(G\times G)$: the terms are orthogonal in $L^2(G\times G)$ and their squared norms sum to
+$\sum_r(c_r/d_r)^2d_r^2=\sum_rc_r^2$. This is~\eqref{eq:kop}. Since $c_r>0$ (Lemma~\ref{lem:cr}), $k_\beta$
+is positive and injective. The kernel is continuous and the operator is positive, so Mercer's theorem gives
+that $k_\beta$ is trace class with $\Tr k_\beta=\int k_\beta(U,U)\dU=w_\beta(1)=e^\beta$; computing the trace from
+\eqref{eq:kop} gives $\sum_r(c_r/d_r)\,d_r^2=\sum_rc_rd_r$.
+\end{proof}
+
+\begin{corollary}\label{cor:uniform}
+The character expansion $w_\beta=\sum_rc_r(\beta)\chi_r$ converges absolutely and uniformly on $G$, and
+$1\le c_0(\beta)\le e^\beta$.
+\end{corollary}
+
+\begin{proof}
+$|c_r\chi_r(U)|\le c_rd_r$ and $\sum_rc_rd_r=e^\beta$ by~\eqref{eq:trace}, so the series converges absolutely
+and uniformly to a continuous function which agrees with $w_\beta$ in $L^2$, hence everywhere. Jensen's inequality
+and $\int\Tr U\dU=0$ (orthogonality of $\chi_\rho$ to $\chi_0$) give $c_0=\int w_\beta\ge\exp(\frac\beta N\int\mathrm{Re}\Tr U)=1$;
+$c_0\le e^\beta$ by~\eqref{eq:w}.
+\end{proof}
+
+\begin{remark}
+For $G=SU(2)$, $c_j(\beta)=\frac{2(2j+1)}{\beta}I_{2j+1}(\beta)$ ($I_\nu$ = modified Bessel function), so
+$c_0=2I_1(\beta)/\beta$ and the fundamental ratio is $u(\beta):=c_{1/2}/(2c_0)=I_2(\beta)/I_1(\beta)=\beta/4+O(\beta^3)$.
+These formulas are implemented and tested in \texttt{lattice/ymlattice/exact.py}.
+\end{remark}
+
+\subsection{The Wilson measure}
+
+\begin{definition}[Wilson measure]\label{def:wilson}
+For $\beta\ge0$ the Wilson weight and partition function are
+\[
+W_\beta(U):=\prod_{p\in\cP(\Lambda)}w_\beta(U_p),\qquad
+Z_\Lambda(\beta):=\int_{\Omega_\Lambda}W_\beta(U)\dU,
+\]
+and the Wilson measure is the probability measure $d\mu_{\Lambda,\beta}:=Z_\Lambda^{-1}W_\beta\dU$ on $\Omega_\Lambda$.
+Expectations are written $\langle F\rangle=\langle F\rangle_{\Lambda,\beta}$. Equivalently
+$W_\beta=\exp(-S_\beta)$ with the Wilson action $S_\beta(U)=\beta\sum_p\bigl(1-\frac1N\mathrm{Re}\Tr U_p\bigr)$ up to the
+constant $e^{-\beta|\cP|}$, which cancels in $\mu$. With $\beta=2N/g^2$ and $U_\mu(x)=\exp(aA_\mu(x))$ the
+action is formally $\frac1{2g^2}\int\Tr F_{\mu\nu}^2\,d^dx+O(a^2)$.
+\end{definition}
+
+\begin{theorem}[Basic properties]\label{thm:basic}
+\begin{enumerate}[label=(\roman*)]
+\item $\mu_{\Lambda,\beta}$ is a well-defined Borel probability measure with continuous density
+$W_\beta/Z_\Lambda\in[e^{-2\beta|\cP|},e^{2\beta|\cP|}]$ with respect to $dU$. Thus $\mu_{\Lambda,\beta}$ and $dU$ are mutually
+absolutely continuous and every bounded measurable function is integrable.
+\item (Gauge invariance) For $g:\Lambda\to G$ define $(g\cdot U)_\mu(x):=g(x)U_\mu(x)g(x+e_\mu)^{-1}$. Then
+$(g\cdot U)_p=g(x)U_pg(x)^{-1}$ for $p=(x,\mu\nu)$, hence $W_\beta(g\cdot U)=W_\beta(U)$, and $\mu_{\Lambda,\beta}$ is
+invariant under $U\mapsto g\cdot U$.
+\item (Elitzur-type vanishing) If $F$ is a bounded measurable function and $g$ a gauge transformation with
+$\int_{G^\Lambda}F(g\cdot U)\,dg=0$ for all $U$ (e.g.\ $F=D^r_{ab}(U_\ell)$ for a single link and $r\neq0$),
+then $\langle F\rangle=0$. More generally, $\langle F\rangle=\langle\bar F\rangle$ where
+$\bar F(U):=\int F(g\cdot U)\,dg$ is the gauge average, so expectations are determined by gauge-invariant
+functions.
+\item (Lattice symmetries) $\mu_{\Lambda,\beta}$ is invariant under translations of $\Lambda$ and under the
+hypercubic group acting on $\Lambda$ and on link orientations (with $U_{-\mu}(x+e_\mu)=U_\mu(x)^{-1}$), and
+under the reflections of Section~\ref{sec:rp}.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) $W_\beta$ is continuous and bounded between $e^{-\beta|\cP|}$ and $e^{\beta|\cP|}$ by~\eqref{eq:w}, so
+$Z_\Lambda\in[e^{-\beta|\cP|},e^{\beta|\cP|}]$ and the density is as stated.
+(ii) Direct computation from~\eqref{eq:plaquette}: the factors $g(x+e_\mu)^{-1}g(x+e_\mu)$, etc., cancel
+around the square, leaving $g(x)U_pg(x)^{-1}$; $\mathrm{Re}\Tr$ is conjugation invariant. The map $U\mapsto g\cdot U$
+is a product of left and right translations on each factor of $G^{E}$, hence preserves $dU$, and it preserves
+$W_\beta$; therefore it preserves $\mu$.
+(iii) By (ii), $\langle F\rangle=\langle F\circ g\rangle$ for every $g$; integrating over $g\in G^\Lambda$ with
+respect to Haar measure (Fubini) gives $\langle F\rangle=\langle\bar F\rangle$. For $F=D^r_{ab}(U_\ell)$ with
+$\ell=(x,\mu)$: $\int D^r_{ab}(g(x)U_\ell g(x+e_\mu)^{-1})\,dg(x)=0$ by Theorem~\ref{thm:pw}(ii) with $r'=0$.
+(iv) Both the measure $dU$ and the set of plaquettes are invariant under these maps; under orientation
+reversal of a plaquette $U_p\mapsto U_p^{-1}$ (up to conjugation), and $w_\beta(U^{-1})=w_\beta(U)$.
+\end{proof}
+
+\begin{remark}[What is and is not an observable]
+Statement (iii) is the lattice form of Elitzur's theorem: no gauge-variant local quantity can acquire an
+expectation value, at any $\beta$ and in any volume. All physics is in gauge-invariant functions: products
+of plaquette variables, Wilson loops $\Tr\prod_{\ell\in\gamma}U_\ell$ along closed paths $\gamma$, and
+functions of them. In particular the ``mass gap'' is a property of the gauge-invariant sector only, which is
+exactly the sector reconstructed from gauge-invariant correlation functions.
+\end{remark}
+
+\section{Reflection positivity}\label{sec:rp}
+
+Throughout this section $L_0=2T$ is even. Let $\theta:\Lambda\to\Lambda$, $\theta(x_0,\vec x)=(-x_0,\vec x)$
+(time reflection through the slice $x_0=0$; it also fixes the slice $x_0=T$ pointwise). Put
+\[
+\Lambda_+:=\{x:0\le x_0\le T\},\qquad \Lambda_-:=\theta\Lambda_+=\{x:T\le x_0\le 2T\},
+\]
+and $\Lambda_0:=\Lambda_+\cap\Lambda_-=\{x:x_0\in\{0,T\}\}$.
+Let $E_\pm$ be the links with both endpoints in $\Lambda_\pm$, $E_0=E_+\cap E_-$ (the spatial links in the two
+fixed slices), and similarly $\cP_\pm$ the plaquettes with all corners in $\Lambda_\pm$ and $\cP_0=\cP_+\cap\cP_-$
+(the spatial plaquettes in the fixed slices). Every link lies in $E_+\cup E_-$ and every plaquette in
+$\cP_+\cup\cP_-$ (a plaquette spans at most one unit of time).
+
+\begin{definition}[Reflection of configurations and functions]
+Define the involution $\theta^*:\Omega_\Lambda\to\Omega_\Lambda$ by
+\[
+(\theta^*U)_{(x,i)}:=U_{(\theta x,i)}\quad(1\le i<d),\qquad
+(\theta^*U)_{(x,0)}:=U_{(\theta x-e_0,\,0)}^{-1}.
+\]
+(The temporal link from $x$ to $x+e_0$ is reflected to the segment from $\theta x$ to $\theta x-e_0$, which is the
+reversed link $(\theta x-e_0,0)$.) For a function $F$ on $\Omega_\Lambda$ put $(\Theta F)(U):=\overline{F(\theta^*U)}$.
+$\Theta$ is antilinear, involutive and multiplicative. Let $\cA_+$ be the algebra of bounded measurable functions
+depending only on $(U_\ell)_{\ell\in E_+}$; then $\Theta\cA_+$ consists of functions of $(U_\ell)_{\ell\in E_-}$.
+\end{definition}
+
+\begin{lemma}\label{lem:reflsym}
+$\theta^*$ preserves $dU$, and $W_\beta\circ\theta^*=W_\beta$. More precisely, $\theta$ induces a bijection
+$p\mapsto\theta p$ of $\cP(\Lambda)$ exchanging $\cP_+$ and $\cP_-$ and fixing $\cP_0$ pointwise, with
+$w_\beta((\theta^*U)_p)=w_\beta(U_{\theta p})$ for every $p$.
+\end{lemma}
+
+\begin{proof}
+$\theta^*$ permutes the link variables and inverts some of them; both operations preserve the product Haar measure
+(Theorem~\ref{thm:pw}(i)). For a spatial plaquette $p=(x,ij)$, $(\theta^*U)_p=U_{(\theta x,ij)}$ directly. For a
+temporal plaquette $p=(x,0i)$ put $y=\theta x-e_0$, so that $\theta x=y+e_0$ and $\theta(x+e_i)-e_0=y+e_i$; then by
+\eqref{eq:plaquette}
+\[
+(\theta^*U)_p=U_0(y)^{-1}\,U_i(y)\,U_0(y+e_i)\,U_i(y+e_0)^{-1}
+=U_0(y)^{-1}\,\bigl(U_{p'}\bigr)^{-1}\,U_0(y),\qquad p'=(y,0i),
+\]
+since $U_{p'}^{-1}=U_i(y)U_0(y+e_i)U_i(y+e_0)^{-1}U_0(y)^{-1}$. As $w_\beta$ is a class function invariant under
+inversion, $w_\beta((\theta^*U)_p)=w_\beta(U_{p'})$. The map $p\mapsto\theta p:=p'$ (resp.\ $(\theta x,ij)$) is a
+bijection with the stated properties, so $W_\beta(\theta^*U)=\prod_pw_\beta(U_{\theta p})=W_\beta(U)$.
+\end{proof}
+
+\begin{theorem}[Reflection positivity]\label{thm:rp}
+For all $F,G\in\cA_+$, the form $(F,G)\mapsto\langle\Theta(F)\,G\rangle_{\Lambda,\beta}$ is sesquilinear and
+positive semidefinite; in particular $\langle\Theta(F)F\rangle_{\Lambda,\beta}\ge0$.
+\end{theorem}
+
+\begin{proof}
+Write $U=(U_0,U_+,U_-)$ with $U_0=(U_\ell)_{\ell\in E_0}$, $U_\pm=(U_\ell)_{\ell\in E_\pm\setminus E_0}$. Then
+$W_\beta=W_+W_-/W_0$ with $W_\pm:=\prod_{p\in\cP_\pm}w_\beta(U_p)$, a function of $(U_0,U_\pm)$ only, and
+$W_0:=\prod_{p\in\cP_0}w_\beta(U_p)>0$, a function of $U_0$ only. Since $\theta$ is the identity on the fixed
+slices, $(\theta^*U)_\ell=U_\ell$ for $\ell\in E_0$, while $\ell\mapsto\theta\ell$ is a bijection
+$E_+\setminus E_0\to E_-\setminus E_0$; thus for fixed $U_0$ the map $\Phi_{U_0}:U_-\mapsto\tilde U_+:=((\theta^*U)_\ell)_{\ell\in E_+\setminus E_0}$
+is a measure-preserving bijection and $G(\theta^*U)=G(U_0,\Phi_{U_0}(U_-))$ for $G\in\cA_+$. By
+Lemma~\ref{lem:reflsym}, $W_-(U_0,U_-)=\prod_{p\in\cP_-}w_\beta(U_p)=\prod_{p\in\cP_+}w_\beta((\theta^*U)_p)=W_+(U_0,\Phi_{U_0}(U_-))$.
+Hence, by Fubini and the change of variables $\tilde U_+=\Phi_{U_0}(U_-)$,
+\begin{align*}
+Z_\Lambda\langle\Theta(F)G\rangle
+&=\int dU_0\,W_0(U_0)^{-1}\Bigl[\int dU_+\,G(U_0,U_+)W_+(U_0,U_+)\Bigr]\\
+&\qquad\qquad\times\Bigl[\int dU_-\,\overline{F(U_0,\Phi_{U_0}(U_-))}\,W_+(U_0,\Phi_{U_0}(U_-))\Bigr]\\
+&=\int dU_0\,W_0(U_0)^{-1}\,\overline{\Psi_F(U_0)}\,\Psi_G(U_0),\qquad
+\Psi_F(U_0):=\int dU_+\,F(U_0,U_+)\,W_+(U_0,U_+).
+\end{align*}
+The right-hand side is manifestly a positive semidefinite sesquilinear form in $(F,G)$.
+\end{proof}
+
+\begin{remark}[Other reflections]
+(i) By the hypercubic symmetry of Theorem~\ref{thm:basic}(iv), the same statement holds for the reflection
+through a plane of sites orthogonal to any axis. In particular, for any real $F\in\cA_+$ that is a function of
+links in a slab, $\langle\Theta(F)F\rangle-\langle F\rangle\langle\Theta F\rangle\ge0$ follows from applying
+Theorem~\ref{thm:rp} to $F-\langle F\rangle$ (note $\langle\Theta F\rangle=\overline{\langle F\rangle}$ by
+Lemma~\ref{lem:reflsym}). This is the lattice statement that ``reflection-symmetric'' two-point functions are
+non-negative, used in the numerical checks. (ii) Reflection positivity also holds for reflections through planes
+bisecting links (Osterwalder--Seiler); it is not needed here, because the transfer matrix of
+Section~\ref{sec:transfer} lives on slices of sites.
+\end{remark}
+
+\section{Transfer matrix, Hamiltonian, mass gap}\label{sec:transfer}
+
+\subsection{The time-slice Hilbert space}
+
+Let $\Lambda_s:=\prod_{i=1}^{d-1}\Z/L_i\Z$ be the spatial lattice, $E_s$ its (spatial) links, $\cP_s$ its
+plaquettes, $\Omega_s:=G^{E_s}$ with product Haar measure $dU$, and
+\[
+\cH:=L^2(\Omega_s,dU).
+\]
+The spatial gauge group $\cG_s:=G^{\Lambda_s}$ acts on $\Omega_s$ by $(g\cdot U)_{(x,i)}=g(x)U_{(x,i)}g(x+e_i)^{-1}$
+and on $\cH$ by the unitary operators $(R_g\psi)(U):=\psi(g^{-1}\cdot U)$; $g\mapsto R_g$ is a strongly continuous
+unitary representation. The \emph{physical} (gauge-invariant) subspace is
+\[
+\cH_{\rm phys}:=\{\psi\in\cH:\ R_g\psi=\psi\ \ \forall g\in\cG_s\},\qquad
+P:=\int_{\cG_s}R_g\,dg ,
+\]
+where the integral (over normalised Haar measure of the compact group $\cG_s$) converges strongly. $P$ is the
+orthogonal projection onto $\cH_{\rm phys}$: $P^2=P$ by invariance of Haar measure, $P^*=P$ by inversion invariance,
+and $R_hP=P$ for all $h$ gives $\mathrm{ran}\,P=\cH_{\rm phys}$.
+
+\subsection{Definition of the transfer matrix}
+
+\begin{definition}\label{def:T}
+Let $\beta>0$. Define the following operators on $\cH$.
+\begin{enumerate}[label=(\roman*)]
+\item $V$: multiplication by $V(U):=\prod_{p\in\cP_s}w_\beta(U_p)^{1/2}$ (a continuous function with values in
+$[e^{-\beta|\cP_s|/2},e^{\beta|\cP_s|/2}]$). $V$ is bounded, self-adjoint, strictly positive and commutes with every $R_g$.
+\item $K_1:=\bigotimes_{\ell\in E_s}k_\beta$, the integral operator with kernel
+$K_1(U,U')=\prod_{\ell\in E_s}w_\beta(U_\ell U_\ell'^{-1})$.
+\item $K:=K_1P$.
+\item The \emph{transfer matrix} $\hT:=VKV$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}\label{lem:K}
+\begin{enumerate}[label=(\roman*)]
+\item $K_1$ is self-adjoint, positive, injective and trace class with $\Tr K_1=e^{\beta|E_s|}$; it commutes with every $R_g$.
+\item $K=K_1P=PK_1=PK_1P$, and $K$ is the integral operator with the continuous kernel
+\begin{equation}\label{eq:Kkernel}
+K(U,U')=\int_{\cG_s}dg\,K_1(U,g\cdot U')=\int\prod_{x\in\Lambda_s}dV_x\prod_{(x,i)\in E_s}
+w_\beta\bigl(U_{(x,i)}\,V_{x+e_i}\,U'^{-1}_{(x,i)}\,V_x^{-1}\bigr)\ \ge e^{-\beta|E_s|}.
+\end{equation}
+\item $\hT=P\,(VK_1V)\,P$ is self-adjoint, positive and trace class, $\hT=P\hT P$, and $\hT$ is injective on
+$\cH_{\rm phys}$. Its kernel $T(U,U'):=V(U)K(U,U')V(U')$ is continuous and strictly positive on $\Omega_s\times\Omega_s$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) $K_1$ is a tensor product of copies of $k_\beta$ (Lemma~\ref{lem:kop}); tensor products of positive injective
+trace class operators are positive, injective and trace class, with $\Tr K_1=(\Tr k_\beta)^{|E_s|}=e^{\beta|E_s|}$.
+Gauge covariance of the kernel: $(g\cdot U)_\ell(g\cdot U')_\ell^{-1}=g(x)U_\ell U_\ell'^{-1}g(x)^{-1}$ for
+$\ell=(x,i)$, and $w_\beta$ is a class function; hence $K_1(g\cdot U,g\cdot U')=K_1(U,U')$, i.e.\ $R_gK_1R_g^{-1}=K_1$.
+(ii) By (i), $K_1$ commutes with $P$, so $K_1P=PK_1=PK_1P$. For the kernel: for $\psi\in\cH$,
+$(K_1P\psi)(U)=\int dU'K_1(U,U')\int dg\,\psi(g^{-1}\cdot U')=\int dg\int dU''K_1(U,g\cdot U'')\psi(U'')$ by the
+substitution $U'=g\cdot U''$ (measure preserving), which is \eqref{eq:Kkernel} with $V_x=g(x)$ after writing out
+$(g\cdot U')^{-1}_{(x,i)}=g(x+e_i)U'^{-1}_{(x,i)}g(x)^{-1}$; the integrand is continuous and bounded below by $e^{-\beta|E_s|}$,
+and so is the integral. Continuity of $K$ follows by dominated convergence.
+(iii) $V$ commutes with $P$ (spatial plaquettes are gauge invariant), hence $\hT=VPK_1PV=P(VK_1V)P$. $VK_1V$ is
+self-adjoint, positive and trace class (two-sided ideal), hence so is $\hT$, and $\hT=P\hT P$. If $\psi\in\cH_{\rm phys}$
+then $\ip\psi{\hT\psi}=\ip{V\psi}{K_1V\psi}>0$ unless $V\psi=0$, i.e.\ $\psi=0$; so $\hT$ is injective on
+$\cH_{\rm phys}$. The kernel statement is immediate from (ii).
+\end{proof}
+
+\subsection{Partition function and correlation functions as traces}
+
+For a bounded measurable $A:\Omega_s\to\C$ let $\hA$ denote multiplication by $A$ on $\cH$, and for $0\le t<L_0$
+let $A(t)$ denote the function on $\Omega_\Lambda$ obtained by evaluating $A$ on the spatial links of the time slice
+$x_0=t$.
+
+\begin{theorem}[Transfer matrix formalism]\label{thm:tm}
+Let $L_0\ge2$. Then $Z_\Lambda(\beta)=\Tr\hT^{L_0}$, and for bounded measurable $A_1,\dots,A_n$ on $\Omega_s$ and
+$0\le t_1<t_2<\dots<t_n\le L_0-1$,
+\begin{equation}\label{eq:traces}
+\Bigl\langle\prod_{k=1}^nA_k(t_k)\Bigr\rangle_{\Lambda,\beta}
+=\frac{\Tr\bigl(\hT^{\,L_0-t_n}\hA_n\hT^{\,t_n-t_{n-1}}\hA_{n-1}\cdots\hA_2\hT^{\,t_2-t_1}\hA_1\hT^{\,t_1}\bigr)}{\Tr\hT^{L_0}} .
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Label the spatial links of slice $t$ by $U^{(t)}\in\Omega_s$ and the temporal links from slice $t$ to $t+1$ by
+$V^{(t)}\in G^{\Lambda_s}$; then $\Omega_\Lambda=\prod_t(\Omega_s\times G^{\Lambda_s})$ and $dU$ is the product measure.
+The Wilson weight factorises as
+\[
+W_\beta(U)=\prod_{t}\Bigl[\prod_{p\in\cP_s}w_\beta(U^{(t)}_p)\Bigr]\prod_t\Bigl[\prod_{(x,i)\in E_s}
+w_\beta\bigl(U^{(t)}_{(x,i)}V^{(t)}_{x+e_i}(U^{(t+1)}_{(x,i)})^{-1}(V^{(t)}_x)^{-1}\bigr)\Bigr],
+\]
+where the first bracket is $V(U^{(t)})^2$ and the second is the weight of the temporal plaquettes between slices $t$
+and $t+1$ (the plaquette $(x,0i)$ at time $t$ has $U_p=V_xU'_{(x,i)}V_{x+e_i}^{-1}U_{(x,i)}^{-1}$, whose inverse is
+conjugate to the argument written, and $w_\beta$ is a class function invariant under inversion). Integrating over all
+$V^{(t)}$ produces $\prod_tK(U^{(t)},U^{(t+1)})$ by \eqref{eq:Kkernel}, so
+\[
+\int\prod_kA_k(U^{(t_k)})\,W_\beta\dU
+=\int\prod_{t}dU^{(t)}\ \prod_kA_k(U^{(t_k)})\ \prod_{t=0}^{L_0-1}T(U^{(t)},U^{(t+1)}),
+\]
+with $U^{(L_0)}\equiv U^{(0)}$.
+For Hilbert--Schmidt operators $X,Y$ with kernels $X(U,U'),Y(U,U')$ one has $\Tr(XY)=\iint X(U,U')Y(U',U)\dU\dU'$, and the
+kernel of a product of integral operators is the composition of kernels. Since $L_0\ge2$, the operator inside the trace
+in \eqref{eq:traces} can be written as a product $XY$ of two factors each containing at least one factor $\hT$ (which
+is Hilbert--Schmidt, being trace class) and bounded multiplication operators (with kernels $A(U)\delta(U-U')$, which act
+on kernels by pointwise multiplication). Applying the trace formula and expanding the compositions yields exactly the
+integral above. With no insertions this gives $Z_\Lambda=\Tr\hT^{L_0}$.
+\end{proof}
+
+\subsection{Perron--Frobenius, the vacuum, and the Hamiltonian}
+
+\begin{theorem}[Vacuum]\label{thm:vacuum}
+Let $\beta>0$. The operator norm $\lambda_0:=\norm{\hT}$ is a simple eigenvalue of $\hT$, and its eigenvector can be
+chosen as a continuous function $\Omega$ with $\Omega(U)>0$ for all $U\in\Omega_s$ and $\norm\Omega=1$. Moreover
+$\Omega\in\cH_{\rm phys}$, and every other eigenvalue of $\hT$ is strictly smaller than $\lambda_0$.
+\end{theorem}
+
+\begin{proof}
+$\hT$ is compact, self-adjoint and positive, so $\lambda_0=\norm{\hT}=\max\spec\hT$ is an eigenvalue, and
+$\ip\varphi{\hT\varphi}=\lambda_0\norm\varphi^2$ holds iff $\hT\varphi=\lambda_0\varphi$ (because $\lambda_0-\hT\ge0$
+and $\ip\varphi{(\lambda_0-\hT)\varphi}=0$ forces $(\lambda_0-\hT)^{1/2}\varphi=0$).
+
+\emph{Positivity improving.} By Lemma~\ref{lem:K}(iii), $T(U,U')\ge c>0$ for all $U,U'$. Hence if $\psi\ge0$ and $\psi\neq0$
+in $\cH$, then $(\hT\psi)(U)=\int T(U,U')\psi(U')\dU'\ge c\int\psi>0$ for every $U$.
+
+\emph{Eigenvectors are positive up to a phase.} Let $\hT\psi=\lambda_0\psi$, $\psi\neq0$. Since $T>0$,
+\begin{align*}
+\lambda_0\norm\psi^2=\ip\psi{\hT\psi}&=\mathrm{Re}\iint\overline{\psi(U)}T(U,U')\psi(U')
+\le\iint|\psi(U)|T(U,U')|\psi(U')|\\
+&=\ip{|\psi|}{\hT|\psi|}\le\lambda_0\norm{|\psi|}^2=\lambda_0\norm\psi^2 ,
+\end{align*}
+so all inequalities are equalities. The last one gives $\hT|\psi|=\lambda_0|\psi|$, hence $|\psi|=\lambda_0^{-1}\hT|\psi|>0$
+everywhere by positivity improving. The first one gives $\iint T(U,U')\bigl[|\psi(U)||\psi(U')|-\mathrm{Re}(\overline{\psi(U)}\psi(U'))\bigr]=0$
+with non-negative integrand, so $\overline{\psi(U)}\psi(U')=|\psi(U)||\psi(U')|$ for a.e.\ $(U,U')$, i.e.\ the phase of
+$\psi$ is a.e.\ constant: $\psi=e^{i\alpha}|\psi|$.
+
+\emph{Simplicity.} If $\psi_1,\psi_2$ are eigenvectors for $\lambda_0$, we may take both strictly positive. Then
+$\psi_1-c\psi_2$ with $c=\ip{\psi_2}{\psi_1}/\norm{\psi_2}^2$ is an eigenvector orthogonal to $\psi_2$; if it were non-zero
+it would be a phase times a strictly positive function, which cannot be orthogonal to $\psi_2>0$. So $\psi_1=c\psi_2$.
+
+\emph{Continuity and gauge invariance.} $\Omega=\lambda_0^{-1}\hT\Omega$ and $T$ is continuous on the compact space
+$\Omega_s\times\Omega_s$, so $\Omega$ is continuous by dominated convergence. Since $\hT=P\hT P$,
+$\Omega=\lambda_0^{-1}P\hT P\Omega\in\mathrm{ran}\,P=\cH_{\rm phys}$. Finally the eigenvalue $\lambda_0$ of the
+self-adjoint compact operator $\hT$ is isolated and simple, so all other eigenvalues are strictly smaller.
+\end{proof}
+
+\begin{definition}[Hamiltonian and mass gap]\label{def:H}
+Let $\lambda_0>\lambda_1\ge\lambda_2\ge\cdots>0$ be the eigenvalues of $\hT|_{\cH_{\rm phys}}$ (counted with
+multiplicity; they are positive by Lemma~\ref{lem:K}(iii) and accumulate only at $0$ by compactness). The
+\emph{Hamiltonian} is the self-adjoint operator
+\[
+H:=-\log\bigl(\hT/\lambda_0\bigr)\quad\text{on }\cH_{\rm phys},\qquad \spec H=\{E_n:=\log(\lambda_0/\lambda_n)\},
+\]
+so that $0=E_0<E_1\le E_2\le\cdots$, $E_n\to\infty$, $H\Omega=0$, and $e^{-tH}=(\hT/\lambda_0)^t$ for $t\in\N$. The
+\emph{mass gap} of the finite lattice $\Lambda_s$ at coupling $\beta$ is
+\[
+m_{\Lambda_s}(\beta):=E_1=\log\frac{\lambda_0}{\lambda_1}>0 .
+\]
+(In physical units, with lattice spacing $a$, the Hamiltonian is $H/a$ and the gap $m/a$.)
+\end{definition}
+
+\begin{remark}
+The strict positivity $m_{\Lambda_s}(\beta)>0$ is a statement about one finite lattice. It carries no information
+about $\inf_{\Lambda_s}m_{\Lambda_s}(\beta)$, which is what the mass gap problem is about; see
+Section~\ref{sec:strong} for the one regime where uniformity is known.
+\end{remark}
+
+\subsection{Infinite temporal extent}
+
+\begin{theorem}[Ground-state expectations]\label{thm:gs}
+Let $A,B$ be bounded measurable gauge-invariant functions on $\Omega_s$ and $t\in\N$. Then, keeping $\Lambda_s$ and
+$\beta$ fixed and letting $L_0\to\infty$ (with $t<L_0$),
+\[
+\lim_{L_0\to\infty}\langle A(t)B(0)\rangle_{\Lambda,\beta}=\ip\Omega{\hA e^{-tH}\hB\Omega},\qquad
+\lim_{L_0\to\infty}\langle A(0)\rangle_{\Lambda,\beta}=\ip\Omega{\hA\Omega}=\int A\,\Omega^2\dU .
+\]
+\end{theorem}
+
+\begin{proof}
+Gauge invariance of $A$ gives $R_g\hA R_g^{-1}=\hA$, hence $\hA$ commutes with $P$ and maps $\cH_{\rm phys}$ into
+itself; so $\hB\Omega\in\cH_{\rm phys}$ and $e^{-tH}\hB\Omega=(\hT/\lambda_0)^t\hB\Omega$ is well defined. By
+Theorem~\ref{thm:tm},
+$\langle A(t)B(0)\rangle=\Tr\bigl((\hT/\lambda_0)^{L_0-t}\hA(\hT/\lambda_0)^t\hB\bigr)/\Tr(\hT/\lambda_0)^{L_0}$.
+Write $(\hT/\lambda_0)^n=|\Omega\rangle\langle\Omega|+R_n$ on $\cH$ (spectral theorem, Theorem~\ref{thm:vacuum});
+$R_n$ is trace class with $\norm{R_n}_1=\sum_{k\ge1}(\lambda_k/\lambda_0)^n\to0$ as $n\to\infty$ by dominated
+convergence (the terms are dominated by $\lambda_k/\lambda_0$, which are summable since $\hT$ is trace class).
+Using $|\Tr(RX)|\le\norm R_1\norm X$ for bounded $X$, the numerator converges to
+$\Tr(|\Omega\rangle\langle\Omega|\hA(\hT/\lambda_0)^t\hB)=\ip\Omega{\hA(\hT/\lambda_0)^t\hB\Omega}$ and the
+denominator to $1$.
+\end{proof}
+
+\subsection{Mass gap and exponential clustering}
+
+Write $\nu(dU):=\Omega(U)^2\dU$ (a probability measure on $\Omega_s$, the \emph{vacuum measure}), $\langle A\rangle_\nu:=\int A\,d\nu$.
+
+\begin{theorem}[Gap $\Leftrightarrow$ clustering in time]\label{thm:gapclust}
+Fix $\Lambda_s$ and $\beta>0$.
+\begin{enumerate}[label=(\roman*)]
+\item For all bounded measurable gauge-invariant $A,B$ and all $t\in\N$,
+\[
+\bigl|\ip\Omega{\hA e^{-tH}\hB\Omega}-\langle A\rangle_\nu\langle B\rangle_\nu\bigr|
+\le e^{-m_{\Lambda_s}(\beta)\,t}\,\Var_\nu(A)^{1/2}\Var_\nu(B)^{1/2}
+\le e^{-m_{\Lambda_s}(\beta)\,t}\,\norm A_\infty\norm B_\infty .
+\]
+\item Conversely, suppose $m>0$ and for every bounded measurable gauge-invariant $A$ there is $C_A<\infty$ with
+\[
+\bigl|\ip\Omega{\hA^*e^{-tH}\hA\Omega}-|\langle A\rangle_\nu|^2\bigr|\le C_A\,e^{-mt}\qquad\text{for all }t\in\N .
+\]
+Then $m_{\Lambda_s}(\beta)\ge m$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) Let $Q:=1-|\Omega\rangle\langle\Omega|$ on $\cH_{\rm phys}$. Then $e^{-tH}=|\Omega\rangle\langle\Omega|+e^{-tH}Q$
+and $\norm{e^{-tH}Q}=e^{-E_1t}$. Since $\ip\Omega{\hA e^{-tH}\hB\Omega}=\ip{\hA^*\Omega}{e^{-tH}\hB\Omega}$ and
+$\ip{\hA^*\Omega}{\Omega}\ip\Omega{\hB\Omega}=\langle A\rangle_\nu\langle B\rangle_\nu$, the connected expectation
+equals $\ip{Q\hA^*\Omega}{e^{-tH}Q\hB\Omega}$, bounded by $e^{-E_1t}\norm{Q\hA^*\Omega}\norm{Q\hB\Omega}$, and
+$\norm{Q\hB\Omega}^2=\int|B-\langle B\rangle_\nu|^2\,d\nu=\Var_\nu(B)\le\norm B_\infty^2$.
+
+(ii) Let $\psi:=Q\hA\Omega$ and let $\mu_\psi$ be the spectral measure of $H$ for $\psi$; it is supported in
+$[E_1,\infty)$, and $\ip\psi{e^{-tH}\psi}=\int e^{-tE}\,d\mu_\psi(E)$ is the connected expectation in the hypothesis.
+For $0<\epsilon<m$,
+\[
+\mu_\psi\bigl([0,m-\epsilon]\bigr)\,e^{-t(m-\epsilon)}\le\int e^{-tE}\,d\mu_\psi(E)\le C_Ae^{-mt},
+\]
+so $\mu_\psi([0,m-\epsilon])\le C_Ae^{-\epsilon t}\to0$: $\psi$ is orthogonal to the spectral subspace of $H$ for
+$[0,m-\epsilon]$. Suppose $E_1<m$ and pick $\epsilon$ with $E_1<m-\epsilon$; then every $\psi=Q\hA\Omega$ is orthogonal
+to the (non-zero) eigenspace $\cH_1$ of $E_1$. Now $\{\hA\Omega: A\text{ bounded, gauge invariant}\}$ is dense in
+$\cH_{\rm phys}$: bounded gauge-invariant functions are dense in $\cH_{\rm phys}$ (truncation $\psi\mapsto\psi\mathbf 1_{|\psi|\le M}$
+preserves gauge invariance), and for bounded gauge-invariant $\varphi$ the function $A:=\varphi/\Omega$ is bounded
+(as $\min\Omega>0$ by continuity and compactness) and gauge invariant with $\hA\Omega=\varphi$. Since $Q$ is continuous and
+surjective onto $\Omega^\perp\cap\cH_{\rm phys}\supseteq\cH_1$, the vectors $Q\hA\Omega$ are dense in $\Omega^\perp$,
+so $\cH_1\perp\Omega^\perp$, forcing $\cH_1=0$, a contradiction. Hence $E_1\ge m$.
+\end{proof}
+
+\begin{corollary}[Gap from Euclidean correlations]\label{cor:gapfromcorr}
+Suppose $m>0$ and $C<\infty$ are such that for all $L_0$, all $t$ with $0\le t\le L_0/2$ and all bounded gauge-invariant
+$A$ on $\Omega_s$,
+\[
+\bigl|\langle\overline{A}(t)A(0)\rangle_{\Lambda,\beta}-\langle\overline{A}(t)\rangle_{\Lambda,\beta}\langle A(0)\rangle_{\Lambda,\beta}\bigr|
+\le C_A\,e^{-mt}
+\]
+with $C_A$ independent of $L_0$. Then $m_{\Lambda_s}(\beta)\ge m$.
+\end{corollary}
+
+\begin{proof}
+Let $L_0\to\infty$ at fixed $t$ in Theorem~\ref{thm:gs} (applied to $\bar A$, $A$ and to $A$, $1$) and apply
+Theorem~\ref{thm:gapclust}(ii).
+\end{proof}
+
+\subsection{The ground-state Markov chain}\label{sec:chain}
+
+\begin{theorem}[Exact reformulation of the gap]\label{thm:chain}
+Define $P(U,U'):=\dfrac{T(U,U')\,\Omega(U')}{\lambda_0\,\Omega(U)}$ on $\Omega_s\times\Omega_s$. Then:
+\begin{enumerate}[label=(\roman*)]
+\item $P$ is a continuous, strictly positive Markov kernel: $\int P(U,U')\dU'=1$ for every $U$.
+\item $P$ is reversible with respect to the vacuum measure $\nu=\Omega^2dU$: $\Omega(U)^2P(U,U')=\Omega(U')^2P(U',U)$.
+\item The Markov operator $(P\varphi)(U)=\int P(U,U')\varphi(U')\dU'$ on $L^2(\nu)$ is unitarily equivalent to
+$\hT/\lambda_0$ on $L^2(dU)$ via $M:L^2(\nu)\to L^2(dU)$, $M\varphi=\Omega\varphi$. Consequently $P$ is self-adjoint on
+$L^2(\nu)$, $1$ is a simple eigenvalue with eigenfunction $\mathbf 1$, and with
+\[
+\gap(P):=1-\sup\Bigl\{\ip\varphi{P\varphi}_\nu:\ \norm\varphi_\nu=1,\ \int\varphi\,d\nu=0\Bigr\}
+=\inf_{\varphi\ne\text{const}}\frac{\ip\varphi{(1-P)\varphi}_\nu}{\Var_\nu(\varphi)}
+\]
+one has
+\begin{equation}\label{eq:gapchain}
+m_{\Lambda_s}(\beta)=-\log\bigl(1-\gap(P)\bigr),\qquad \gap(P)=1-\lambda_1/\lambda_0 .
+\end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) $\int P(U,U')\dU'=(\hT\Omega)(U)/(\lambda_0\Omega(U))=1$; continuity and positivity are inherited from $T$ and $\Omega$.
+(ii) Both sides equal $\Omega(U)T(U,U')\Omega(U')/\lambda_0$, which is symmetric since $T(U,U')=T(U',U)$ ($\hT$ is
+self-adjoint with a real continuous kernel). (iii) $M$ is unitary because $\norm{M\varphi}^2_{L^2(dU)}=\int\Omega^2|\varphi|^2=\norm\varphi_\nu^2$,
+and $(MPM^{-1}\psi)(U)=\Omega(U)\int P(U,U')\psi(U')/\Omega(U')\dU'=\lambda_0^{-1}\int T(U,U')\psi(U')\dU'$. Hence
+$\spec P=\spec(\hT)/\lambda_0=\{1,\lambda_1/\lambda_0,\dots\}\cup\{0\}$ with $1$ simple (Theorem~\ref{thm:vacuum}),
+$M^{-1}\Omega=\mathbf 1$, and the supremum in the definition of $\gap(P)$ is the second largest eigenvalue
+$\lambda_1/\lambda_0$ (the eigenvalue $0$ on $\cH_{\rm phys}^\perp$ being smaller). The variational formula and
+\eqref{eq:gapchain} follow from Definition~\ref{def:H}.
+\end{proof}
+
+\begin{remark}[Structure of the chain]\label{rem:chain}
+Unfolding the definitions,
+\[
+P(U,U')=\frac{1}{\lambda_0}\,\frac{\Omega(U')}{\Omega(U)}\prod_{p\in\cP_s}w_\beta(U_p)^{1/2}w_\beta(U'_p)^{1/2}
+\int\prod_xdV_x\prod_{(x,i)}w_\beta\bigl(U_{(x,i)}V_{x+e_i}U'^{-1}_{(x,i)}V_x^{-1}\bigr).
+\]
+Every factor except the ratio $\Omega(U')/\Omega(U)$ is a product of local terms: the chain is a gauge-averaged
+parallel update of all spatial links, reweighted by the vacuum wave functional. All the non-locality, and hence
+the whole difficulty of the uniform gap, sits in $\Omega$. For spin systems, uniform spectral gaps of such local
+reversible dynamics are equivalent to strong mixing properties of the stationary measure (Stroock--Zegarlinski;
+Martinelli--Olivieri). The mass gap problem is, in this exact sense, a question about the mixing properties of the
+$(d-1)$-dimensional vacuum measure $\nu=\Omega^2dU$, uniformly in the volume. This reformulation is used in
+\texttt{docs/03-research-program.md}, \S3.5.
+\end{remark}
+
+\section{From lattice hypotheses to the continuum theorem}\label{sec:reduction}
+
+This section makes precise the (folklore) statement that the Clay problem reduces to two properties of the
+lattice theory: convergence of correlation functions and uniform exponential clustering. Nothing here is hard;
+the value is in the explicit list of hypotheses.
+
+\subsection{Setting}
+
+Fix $d=4$ and a sequence of lattice spacings $a_n\downarrow0$, couplings $\beta_n>0$ and periodic lattices
+$\Lambda_n$ with $L^{(n)}_\mu a_n\to\infty$ for every $\mu$ (we also allow $L^{(n)}_\mu a_n=L$ fixed in a first step).
+Points of $a_n\Lambda_n$ are identified with points of the torus $\prod_\mu(\R/L^{(n)}_\mu a_n\Z)$ and, for
+compactly supported test functions, with points of $\R^4$ for $n$ large.
+
+A \emph{family of local observables} is a set of indices $\alpha\in I$ and, for each $n$, $\alpha$ and
+$x\in\Lambda_n$, a bounded measurable gauge-invariant function $\Phi^{(n)}_\alpha(x)$ on $\Omega_{\Lambda_n}$ depending only on
+links within a fixed lattice distance $R_\alpha$ of $x$, covariant under lattice translations, and such that
+$\Phi^{(n)}_\alpha(x)$ is real and \emph{reflection covariant}: $\Theta\Phi^{(n)}_\alpha(x)=\Phi^{(n)}_\alpha(\theta x)$ for
+the reflections $\Theta$ of Section~\ref{sec:rp} (for every fixed slice). Examples: suitably renormalised plaquette
+sums $\Phi^{(n)}(x)=Z_n\bigl(\sum_{p\ni x}(1-\tfrac1N\mathrm{Re}\Tr U_p)-\langle\cdot\rangle\bigr)/a_n^4$, which should
+converge to $\Tr F_{\mu\nu}F_{\mu\nu}(x)$, and Wilson loops of fixed shape in lattice units. The lattice Schwinger
+functions are
+\begin{gather*}
+S^{(n)}_{\alpha_1\cdots\alpha_k}(x_1,\dots,x_k):=\Bigl\langle\prod_{i=1}^k\Phi^{(n)}_{\alpha_i}(x_i)\Bigr\rangle_{\Lambda_n,\beta_n},\\
+S^{(n)}(f_1\otimes\cdots\otimes f_k):=\sum_{x_1,\dots,x_k\in a_n\Lambda_n}a_n^{4k}\prod_if_i(x_i)\,S^{(n)}(x_1,\dots,x_k)
+\end{gather*}
+for test functions $f_i\in\mathcal S(\R^4)$ (compactly supported, for $n$ large enough).
+
+\subsection{Hypotheses}
+
+\begin{hypothesis}[L1: convergence and Euclidean invariance]\label{hyp:L1}
+For every $k$ and $\alpha_1,\dots,\alpha_k$, and all $f_1,\dots,f_k\in C_c^\infty(\R^4)$, the limit
+$S_{\alpha_1\cdots\alpha_k}(f_1\otimes\cdots\otimes f_k):=\lim_nS^{(n)}_{\alpha_1\cdots\alpha_k}(f_1\otimes\cdots\otimes f_k)$
+exists, extends to a tempered distribution on $\R^{4k}$ satisfying the Osterwalder--Schrader regularity axiom (OS0)
+including the linear growth condition, and is invariant under the full Euclidean group $E(4)$ (OS1).
+\end{hypothesis}
+
+\begin{hypothesis}[L2: uniform exponential clustering]\label{hyp:L2}
+There exists $\Delta>0$ such that for all $k,l$, all indices, and all $f_i,g_j\in C_c^\infty(\R^4)$ there is a constant
+$C<\infty$ (depending on the $f_i,g_j$ but not on $n$) with
+\[
+\bigl|S^{(n)}(f_1\otimes\cdots\otimes f_k\otimes g_{1,t}\otimes\cdots\otimes g_{l,t})
+-S^{(n)}(f_1\otimes\cdots\otimes f_k)\,S^{(n)}(g_1\otimes\cdots\otimes g_l)\bigr|\le C\,e^{-\Delta t}
+\]
+for all $n$ and all $t\in a_n\N$ with $0\le t\le L^{(n)}_0a_n/2$, where $g_{j,t}(x):=g_j(x-te_0)$.
+\end{hypothesis}
+
+\begin{hypothesis}[L3: non-triviality]\label{hyp:L3}
+Some truncated (connected) four-point function of the limit $S$ is not identically zero.
+\end{hypothesis}
+
+\subsection{The reduction theorem}
+
+\begin{citedtheorem}[Osterwalder--Schrader reconstruction]\label{thm:OS}
+A family of Schwinger functions satisfying (OS0) with the linear growth condition, (OS1) Euclidean invariance,
+(OS2) reflection positivity, (OS3) symmetry and (OS4) clustering determines a Hilbert space $\cH$, a unique (up to
+phase) vacuum vector $\Omega$, a strongly continuous unitary positive-energy representation of the Poincaré group with
+generator of time translations $H\ge0$, $H\Omega=0$, $\Omega$ the unique invariant vector, and Wightman fields whose
+Wightman functions analytically continue to the given Schwinger functions. $\cH$ is the completion of the space of
+``positive-time'' functionals $F=\sum_ic_if_i$ (finite sums of tensor products of test functions supported in
+$\{x_0>0\}$) modulo null vectors, with
+$\ip{\Psi_F}{e^{-tH}\Psi_G}=S(\Theta F\otimes G_t)$, where $\Theta$ is time reflection combined with complex conjugation
+and $G_t$ is $G$ translated by $t$ in time. (Osterwalder--Schrader 1973, 1975; Glimm--Jaffe, Theorems 6.1.5 and 19.1.3.)
+\end{citedtheorem}
+
+\begin{theorem}[Reduction]\label{thm:reduction}
+Assume Hypotheses~\ref{hyp:L1}--\ref{hyp:L3}. Then the limiting Schwinger functions satisfy (OS0)--(OS4); the theory
+reconstructed by Cited Theorem~\ref{thm:OS} is non-trivial and its Hamiltonian satisfies
+\[
+\spec(H)\cap(0,\Delta)=\emptyset .
+\]
+\end{theorem}
+
+\begin{proof}
+(OS0), (OS1) are Hypothesis~\ref{hyp:L1}. (OS3): the lattice observables are commuting bounded functions, so every
+$S^{(n)}$ is symmetric in its arguments (with the index $\alpha_i$ attached to $x_i$), and symmetry passes to the limit.
+
+(OS2): Let $F=\sum_ic_if_i$ be a positive-time functional with each $f_i$ a tensor product of test functions supported
+in $\{x_0>0\}$. For $n$ large the supports lie in the positive region $\{0<x_0\le T\}$ of the reflection of
+Section~\ref{sec:rp} on $\Lambda_n$ (with $L^{(n)}_0$ even, which we may assume by passing to a subsequence of lattices
+or doubling $L_0$; the hypotheses are insensitive to this). By reflection covariance of the observables and
+antilinearity of $\Theta$, $S^{(n)}(\Theta F\otimes F)=\langle\Theta(\Phi_F)\Phi_F\rangle_{\Lambda_n,\beta_n}$ with
+$\Phi_F:=\sum_ic_i\Phi^{(n)}(f_i)\in\cA_+$ the corresponding lattice functional, which is $\ge0$ by Theorem~\ref{thm:rp}.
+Passing to the limit $n\to\infty$ (Hypothesis~\ref{hyp:L1}) gives $S(\Theta F\otimes F)\ge0$.
+
+(OS4): Hypothesis~\ref{hyp:L2} passes to the limit and gives $|S(f\otimes g_t)-S(f)S(g)|\le Ce^{-\Delta t}$ for
+translations in the time direction; by Euclidean invariance of the limit (OS1), the same bound holds for translations
+in any direction (rotate the direction to $e_0$, which transforms the test functions but not the constants' finiteness).
+In particular $S(f\otimes g_{\lambda a})\to S(f)S(g)$ as $\lambda\to\infty$.
+
+Non-triviality is Hypothesis~\ref{hyp:L3}: a generalised free field has vanishing truncated four-point functions.
+
+\emph{Mass gap.} In the reconstructed theory take a positive-time functional $F$ and
+$\psi:=\Psi_F-\ip\Omega{\Psi_F}\Omega$. Using the semigroup formula of Cited Theorem~\ref{thm:OS} and
+$\ip{\Psi_F}{\Omega}=S(\Theta F)$,
+\[
+\ip\psi{e^{-tH}\psi}=S(\Theta F\otimes F_t)-S(\Theta F)\,S(F)\qquad(t\ge0),
+\]
+and by the limiting form of Hypothesis~\ref{hyp:L2} (with $f=\Theta F$, $g=F$, both finite sums of tensor products of
+test functions) the right-hand side is bounded by $C_Fe^{-\Delta t}$. The spectral argument in the proof of
+Theorem~\ref{thm:gapclust}(ii) shows that the spectral measure of $H$ for $\psi$ gives no mass to $(0,\Delta)$
+(the vacuum component has been removed, so no mass to $[0,\Delta)$). Since the vectors $\Psi_F$ are dense in $\cH$ by
+construction and $\psi\mapsto\Psi_F$ is continuous, the vectors $\psi$ are dense in $\Omega^\perp$, and the spectral
+projection of $H$ onto $(0,\Delta)$ (whose range lies in $\Omega^\perp$) vanishes.
+\end{proof}
+
+\begin{remark}[What the theorem does and does not say]
+\begin{enumerate}[label=(\roman*)]
+\item The gauge-invariant Hilbert space is obtained directly; there are no unphysical states to remove.
+\item The hard content is entirely in Hypotheses~\ref{hyp:L1} and~\ref{hyp:L2}. Hypothesis~\ref{hyp:L1} is the
+ultraviolet problem (currently: Balaban's bounds, no convergence theorem). Hypothesis~\ref{hyp:L2} contains both the
+infinite-volume limit and the mass gap, uniformly along the trajectory $\beta_n\to\infty$.
+\item The lattice gap $m_{\Lambda_s}(\beta)$ of Definition~\ref{def:H} is related to $\Delta$ by
+$\Delta=\liminf m_{\Lambda_s^{(n)}}(\beta_n)/a_n$; Hypothesis~\ref{hyp:L2} is the statement that this is positive together
+with uniform constants for the correlation functions. This is conjecture (G2) of \texttt{docs/01-problem-statement.md}.
+\end{enumerate}
+\end{remark}
+
+\section{Strong coupling: a mass gap uniform in the volume}\label{sec:strong}
+
+We prove that for $\beta$ below an explicit threshold the exponential clustering of Theorem~\ref{thm:gapclust}
+holds with constants independent of the lattice, so that $\inf_{\Lambda_s}m_{\Lambda_s}(\beta)>0$. The argument is
+Dobrushin's uniqueness method in a self-contained coupling form; it uses nothing about the group beyond compactness
+and the bound $|{\log w_\beta}|\le\beta$, and therefore (as it must) it says nothing about large $\beta$ and does not
+distinguish abelian from non-abelian groups. The constants are far from optimal.
+
+\subsection{An abstract covariance bound}
+
+\begin{definition}[Finite spin system]\label{def:spin}
+Let $V$ be a finite set, $(S,\sigma)$ a compact metric space with a Borel probability measure, and
+$\rho:S^V\to(0,\infty)$ continuous. Put $\mu:=\rho\,\sigma^{\otimes V}/\int\rho\,d\sigma^{\otimes V}$. For $x\in V$,
+$\omega\in S^V$ and $s\in S$ write $\omega^{x\leftarrow s}$ for $\omega$ with the $x$-coordinate replaced by $s$, and let
+\[
+\mu_x(ds\,|\,\omega):=\frac{\rho(\omega^{x\leftarrow s})\,\sigma(ds)}{\int\rho(\omega^{x\leftarrow s'})\,\sigma(ds')}
+\]
+(the single-site conditional distribution; it depends on $\omega$ only through $\omega_{V\setminus\{x\}}$). For probability
+measures $\pi,\pi'$ on $S$ let $\norm{\pi-\pi'}_\TV:=\sup_B|\pi(B)-\pi'(B)|$. The \emph{Dobrushin matrix} is
+\[
+C_{xy}:=\sup\bigl\{\norm{\mu_x(\cdot|\omega)-\mu_x(\cdot|\omega')}_\TV:\ \omega,\omega'\text{ agree off }y\bigr\}\ (x\ne y),
+\]
+$C_{xx}:=0$, and $\alpha:=\max_{x}\sum_yC_{xy}$.
+For $f:S^V\to\C$ bounded measurable, $\delta_x(f):=\sup\{|f(\omega)-f(\omega')|:\omega,\omega'\text{ agree off }x\}$, and
+$f$ \emph{depends only on} $A\subseteq V$ if $f(\omega)=f(\omega')$ whenever $\omega,\omega'$ agree on $A$.
+\end{definition}
+
+Two elementary facts: if $\omega,\omega'$ differ exactly on $D\subseteq V$, then, interpolating one coordinate at a time,
+\begin{equation}\label{eq:interp}
+|f(\omega)-f(\omega')|\le\sum_{x\in D}\delta_x(f),\qquad
+\norm{\mu_x(\cdot|\omega)-\mu_x(\cdot|\omega')}_\TV\le\sum_{y\in D}C_{xy}.
+\end{equation}
+
+\begin{lemma}[Maximal coupling]\label{lem:coupling}
+For probability measures $\pi,\pi'$ on $S$ with continuous densities $p,p'$ with respect to $\sigma$, there is a probability
+measure $\gamma$ on $S\times S$ with marginals $\pi,\pi'$ and $\gamma(\{s\ne s'\})=\norm{\pi-\pi'}_\TV$; it can be chosen
+to depend measurably on $(p,p')$.
+\end{lemma}
+
+\begin{proof}
+Let $q:=\min(p,p')$, $\tau:=1-\int q\,d\sigma=\int(p-q)=\int(p'-q)=\norm{\pi-\pi'}_\TV$. If $\tau=0$ let $\gamma$ be the
+diagonal image of $\pi$. Otherwise let $\gamma:=\mathrm{diag}_*(q\sigma)+\tau^{-1}\,(p-q)\sigma\otimes(p'-q)\sigma$. The marginals are
+$q\sigma+(p-q)\sigma=\pi$ and $\pi'$; the off-diagonal mass is $\tau$ because $(p-q)(p'-q)=0$ pointwise, so the second term
+gives no mass to the diagonal. The construction is explicit and measurable in $(p,p')$.
+\end{proof}
+
+\begin{lemma}[Ergodicity of the Gibbs sampler]\label{lem:ergodic}
+Let $\emptyset\ne V'\subseteq V$ and $\eta\in S^{V\setminus V'}$, and let $\mu^\eta$ be the probability measure on $S^{V'}$ with
+density $\propto\rho(\cdot,\eta)$. Let $Q$ be the Markov kernel on $S^{V'}$ of the random-scan Gibbs sampler: choose $x\in V'$
+uniformly and replace $\omega_x$ by a sample from $\mu_x(\cdot|(\omega,\eta))$. Then $\mu^\eta$ is $Q$-invariant and
+$\sup_\omega\norm{Q^k(\omega,\cdot)-\mu^\eta}_\TV\to0$ as $k\to\infty$.
+\end{lemma}
+
+\begin{proof}
+Each single-site update is reversible with respect to $\mu^\eta$ (it resamples a coordinate from its conditional
+distribution), so $\mu^\eta$ is invariant. Let $n=|V'|$ and $\epsilon:=\min\rho/\max\rho>0$; every single-site conditional
+density is bounded below by $\epsilon$. With probability $n!/n^n>0$ the first $n$ site choices visit every site of $V'$;
+on that event the final configuration has, conditionally on the choices, a density $\ge\epsilon^n$ with respect to
+$\sigma^{\otimes V'}$ (the last update of each site produces its final value with conditional density $\ge\epsilon$ given
+everything before). Hence $Q^n(\omega,\cdot)\ge c\,\sigma^{\otimes V'}$ with $c=\epsilon^nn!/n^n$ for all $\omega$. By the
+standard Doeblin argument this minorisation gives $\norm{Q^{nk}(\omega,\cdot)-Q^{nk}(\omega',\cdot)}_\TV\le(1-c)^k$ uniformly in
+$\omega,\omega'$, hence uniform convergence to the unique invariant measure $\mu^\eta$.
+\end{proof}
+
+\begin{theorem}[Covariance bound under Dobrushin's condition]\label{thm:dobrushin}
+In the setting of Definition~\ref{def:spin} assume $\alpha<1$ and put $D:=\sum_{n\ge1}C^n$ (entrywise convergent, since
+$C\ge0$ has row sums $\le\alpha$). Let $A,B\subseteq V$ be disjoint, $f$ bounded measurable depending only on $A$ and $g$
+bounded measurable depending only on $B$. Then
+\[
+\bigl|\Cov_\mu(f,g)\bigr|\le\norm g_\infty\sum_{x\in A}\delta_x(f)\sum_{y\in B}D_{xy} .
+\]
+If moreover $C_{xy}=0$ unless $x\sim y$ for a graph structure on $V$ with graph distance $\varrho$, then
+$\sum_{y\in B}D_{xy}\le\alpha^{\varrho(x,B)}/(1-\alpha)$, so that
+\[
+\bigl|\Cov_\mu(f,g)\bigr|\le\frac{\norm g_\infty}{1-\alpha}\sum_{x\in A}\delta_x(f)\,\alpha^{\varrho(x,B)}
+\le\frac{\norm g_\infty\,\norm{\delta(f)}_1}{1-\alpha}\,\alpha^{\varrho(A,B)},\qquad \norm{\delta(f)}_1:=\sum_x\delta_x(f).
+\]
+\end{theorem}
+
+\begin{proof}
+\emph{Step 1 (conditional expectations differ little in the boundary condition).} Let $V':=V\setminus B$ and, for
+$\eta,\eta'\in S^B$, let $\mu^\eta,\mu^{\eta'}$ be as in Lemma~\ref{lem:ergodic}. Run two copies of the random-scan Gibbs
+sampler, $(\omega^k)$ with boundary $\eta$ and $(\omega'^k)$ with boundary $\eta'$, from a common initial configuration
+$\omega^0=\omega'^0$, with the same uniformly chosen sites $x_k$, and at each step coupling the two resampled values by the
+maximal coupling of Lemma~\ref{lem:coupling}. Let $n=|V'|$ and $r_k(x):=\mathbb P(\omega^k_x\ne\omega'^k_x)$ for $x\in V'$, and
+set $\tilde r_k(y):=r_k(y)$ for $y\in V'$, $\tilde r_k(y):=1$ for $y\in B$. At step $k+1$, if $x_{k+1}\ne x$ the status of $x$
+is unchanged; if $x_{k+1}=x$ the new values differ with conditional probability
+$\norm{\mu_x(\cdot|(\omega^k,\eta))-\mu_x(\cdot|(\omega'^k,\eta'))}_\TV\le\sum_{y}C_{xy}\mathbf 1[\text{disagreement at }y]$
+by~\eqref{eq:interp}. Taking expectations,
+\[
+r_{k+1}(x)\le\Bigl(1-\frac1n\Bigr)r_k(x)+\frac1n\sum_{y\in V}C_{xy}\,\tilde r_k(y)\qquad(x\in V').
+\]
+Let $r^*:=\sum_{m\ge0}(C_{V'V'})^mC_{V'B}\mathbf 1_B$ (convergent since $\norm{C_{V'V'}}_{\infty\to\infty}\le\alpha<1$); it
+satisfies $r^*=C_{V'V'}r^*+C_{V'B}\mathbf 1_B$. By induction $r_k\le r^*$ for all $k$: $r_0=0\le r^*$, and if $r_k\le r^*$ then
+$r_{k+1}\le(1-\frac1n)r^*+\frac1n(C_{V'V'}r^*+C_{V'B}\mathbf 1_B)=r^*$, using $C\ge0$. Moreover
+$r^*_x\le\sum_{y\in B}\sum_{m\ge0}(C^{m+1})_{xy}=\sum_{y\in B}D_{xy}$. By~\eqref{eq:interp},
+\[
+\bigl|\E f(\omega^k)-\E f(\omega'^k)\bigr|\le\E\sum_{x\in A}\delta_x(f)\mathbf 1[\omega^k_x\ne\omega'^k_x]
+=\sum_{x\in A}\delta_x(f)\,r_k(x)\le\sum_{x\in A}\delta_x(f)\sum_{y\in B}D_{xy}.
+\]
+By Lemma~\ref{lem:ergodic}, $\E f(\omega^k)\to\mu^\eta(f)$ and $\E f(\omega'^k)\to\mu^{\eta'}(f)$, so
+$|\mu^\eta(f)-\mu^{\eta'}(f)|\le\sum_{x\in A}\delta_x(f)\sum_{y\in B}D_{xy}$ for all $\eta,\eta'$.
+
+\emph{Step 2 (covariance).} The map $\eta\mapsto\mu^\eta(f)$ is a version of the conditional expectation $\mu(f\,|\,\omega_B)$,
+and $\mu(f)=\int\mu^{\omega'_B}(f)\,\mu(d\omega')$. Since $g$ depends only on $B$,
+\[
+\Cov_\mu(f,g)=\int g(\omega)\bigl[\mu^{\omega_B}(f)-\mu(f)\bigr]\mu(d\omega),\qquad
+\bigl|\mu^{\omega_B}(f)-\mu(f)\bigr|\le\sup_{\eta'}\bigl|\mu^{\omega_B}(f)-\mu^{\eta'}(f)\bigr|,
+\]
+and Step~1 gives the first bound.
+
+\emph{Step 3 (graph distance).} If $C_{xy}=0$ unless $x\sim y$, then $(C^n)_{xy}=0$ unless $\varrho(x,y)\le n$, while
+$\sum_y(C^n)_{xy}\le\alpha^n$ (row sums). Hence $\sum_{y\in B}D_{xy}\le\sum_{n\ge\max(1,\varrho(x,B))}\alpha^n\le\alpha^{\varrho(x,B)}/(1-\alpha)$,
+using $\varrho(x,B)\ge1$ for $x\notin B$.
+\end{proof}
+
+\subsection{Application to the Wilson measure}
+
+Let all $L_\mu\ge3$. Two distinct links $\ell\ne\ell'$ are \emph{adjacent}, $\ell\sim\ell'$, if some plaquette contains both;
+then that plaquette is unique (two distinct unit segments lie in at most one unit square when all $L_\mu\ge3$), and each
+link has exactly $K:=6(d-1)$ adjacent links (the $2(d-1)$ plaquettes through $\ell$ contribute three further links each, all
+distinct). Let $\varrho$ be the graph distance on $E(\Lambda)$.
+
+\begin{lemma}\label{lem:dobrushinbound}
+For the Wilson measure (Definition~\ref{def:wilson}) viewed as a finite spin system with $V=E(\Lambda)$, $S=G$, $\sigma=dU$,
+$\rho=W_\beta$: $C_{\ell\ell'}=0$ unless $\ell\sim\ell'$, and $C_{\ell\ell'}\le e^{4\beta}-1$ for $\ell\sim\ell'$. Hence
+\[
+\alpha\le\alpha(\beta):=6(d-1)\bigl(e^{4\beta}-1\bigr).
+\]
+\end{lemma}
+
+\begin{proof}
+$\mu_\ell(dU_\ell|\omega)\propto\prod_{p\ni\ell}w_\beta(U_p)\dU_\ell$ depends only on the links of the plaquettes through $\ell$, so
+$C_{\ell\ell'}=0$ unless $\ell\sim\ell'$. If $\ell\sim\ell'$ and $\omega,\omega'$ agree off $\ell'$, the two conditional densities are
+$e^{\phi}/Z$ and $e^{\phi'}/Z'$ with $\phi-\phi'=\log w_\beta(U_p)-\log w_\beta(U_p')$ for the unique common plaquette $p$, so
+$\sup|\phi-\phi'|\le2\beta=:\delta$ by~\eqref{eq:w}. Then $Z'/Z=\int e^{\phi'-\phi}\,e^\phi/Z\in[e^{-\delta},e^\delta]$, so the ratio of
+densities lies in $[e^{-2\delta},e^{2\delta}]$, and
+$\norm{\mu_\ell(\cdot|\omega)-\mu_\ell(\cdot|\omega')}_\TV=\int(e^{\phi'}/Z'-e^\phi/Z)_+\le(e^{2\delta}-1)\int e^\phi/Z=e^{4\beta}-1$.
+\end{proof}
+
+\begin{theorem}[Strong-coupling clustering and mass gap, uniform in the volume]\label{thm:strong}
+Let $d\ge2$, all $L_\mu\ge3$, and
+\[
+0<\beta<\beta_D(d):=\tfrac14\log\Bigl(1+\frac1{6(d-1)}\Bigr)\qquad(\beta_D(4)=\tfrac14\log\tfrac{19}{18}\approx0.0135),
+\]
+so that $\alpha(\beta)=6(d-1)(e^{4\beta}-1)<1$. Then:
+\begin{enumerate}[label=(\roman*)]
+\item (Clustering in every direction) For bounded measurable $f,g$ on $\Omega_\Lambda$ depending only on disjoint link sets $A,B$,
+\[
+\bigl|\langle fg\rangle_{\Lambda,\beta}-\langle f\rangle_{\Lambda,\beta}\langle g\rangle_{\Lambda,\beta}\bigr|
+\le\frac{\norm g_\infty\norm{\delta(f)}_1}{1-\alpha(\beta)}\,\alpha(\beta)^{\varrho(A,B)} .
+\]
+The constant does not depend on $\Lambda$.
+\item (Mass gap) For every spatial lattice $\Lambda_s$ with all $L_i\ge3$,
+\[
+m_{\Lambda_s}(\beta)\ \ge\ \log\frac1{\alpha(\beta)}\ >0 .
+\]
+In particular $\inf_{\Lambda_s}m_{\Lambda_s}(\beta)\ge\log(1/\alpha(\beta))\to\infty$ as $\beta\downarrow0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) is Theorem~\ref{thm:dobrushin} with Lemma~\ref{lem:dobrushinbound}. (ii) For a link $\ell=(x,\mu)$ let $t(\ell):=x_0$.
+The four links of a plaquette have $t$-values in $\{x_0,x_0+1\}$ for its base point $x$, so adjacent links satisfy
+$|t(\ell)-t(\ell')|\le1$ modulo $L_0$, and $\varrho(\ell,\ell')\ge\min(|t(\ell)-t(\ell')|,L_0-|t(\ell)-t(\ell')|)$. Let $A$ be a
+bounded gauge-invariant function on $\Omega_s$ and $0\le t\le L_0/2$. Then $\bar A(t)$ and $A(0)$ depend on the spatial links of the
+slices $t$ and $0$, at graph distance $\ge t$, so by (i)
+\[
+\bigl|\langle\bar A(t)A(0)\rangle-\langle\bar A(t)\rangle\langle A(0)\rangle\bigr|\le\frac{\norm A_\infty\norm{\delta(A)}_1}{1-\alpha}\,\alpha^{t}
+\qquad(0<t\le L_0/2),
+\]
+and trivially for $t=0$ with the same constant enlarged by $\norm A_\infty^2$. The constant is independent of $L_0$ and
+$\norm{\delta(A)}_1\le2|E_s|\norm A_\infty<\infty$. Corollary~\ref{cor:gapfromcorr} with $m=\log(1/\alpha)$ gives the claim.
+\end{proof}
+
+\begin{remark}[On the constants and on what this proves]
+\begin{enumerate}[label=(\roman*)]
+\item The true strong-coupling region extends to $\beta\approx2$ for $SU(2)$ (where the Monte Carlo data in \texttt{results/}
+leave the strong-coupling series), i.e.\ two orders of magnitude beyond $\beta_D$; the cluster expansion of
+Section~\ref{sec:polymer} has a better but still small radius, and the physical rate is $m\approx4\log(1/u(\beta))$ with
+$u(\beta)=c_\rho(\beta)/(Nc_0(\beta))\approx\beta/(2N)$, against $\log(1/\alpha)\approx\log(1/(24\beta))$ here.
+\item The proof uses only $|{\log w_\beta}|\le\beta$ and compactness. It applies verbatim to $U(1)$, where the conclusion fails
+at large $\beta$ (Guth; Fröhlich--Spencer). Thus no refinement of this argument can be the mechanism for the mass gap at
+large $\beta$; it establishes the strong-coupling endpoint of the problem and nothing more.
+\item Statement (i) also yields, with a little more work (comparison of different volumes through the same coupling
+argument, with the boundary playing the role of $B$), the existence of the infinite-volume limit of all local expectations
+for $\beta<\beta_D$; this is milestone T1.1 of the research program and is not carried out here.
+\end{enumerate}
+\end{remark}
+
+\section{The polymer representation and the cluster expansion}\label{sec:polymer}
+
+The Dobrushin argument of Section~\ref{sec:strong} is the shortest route to a uniform gap, but it hides the
+geometric structure of the strong-coupling regime. That structure---the Wilson measure as a gas of closed
+surfaces---is what the physical pictures of confinement (flux tubes, glueballs as closed tubes) are built on,
+and it is the natural endpoint for any renormalisation-group argument. We derive it and prove convergence of
+the associated cluster expansion for small $\beta$, using the Kotecký--Preiss criterion.
+
+\subsection{Polymers}
+
+\begin{definition}\label{def:polymer}
+Let $f_\beta:=w_\beta/c_0(\beta)-1$, so that $w_\beta=c_0(\beta)(1+f_\beta)$, $\int f_\beta\dU=0$, and, by
+\eqref{eq:w} and Corollary~\ref{cor:uniform} ($1\le c_0\le e^\beta$),
+\begin{equation}\label{eq:eps}
+\norm{f_\beta}_\infty\le\epsilon(\beta):=e^{2\beta}-1 .
+\end{equation}
+Two plaquettes are \emph{adjacent} if they share a link. A \emph{polymer} is a non-empty set $\gamma\subseteq\cP(\Lambda)$
+which is connected under adjacency; $|\gamma|$ is its number of plaquettes and $E(\gamma)$ the set of links of its
+plaquettes. Two polymers are \emph{compatible}, $\gamma\approx\gamma'$, if $E(\gamma)\cap E(\gamma')=\emptyset$; otherwise
+$\gamma\not\approx\gamma'$ (in particular $\gamma\not\approx\gamma$). The \emph{activity} of $\gamma$ is
+\[
+z(\gamma):=\int\prod_{p\in\gamma}f_\beta(U_p)\dU\qquad(\text{an integral over }G^{E(\gamma)}).
+\]
+\end{definition}
+
+\begin{proposition}[Polymer representation]\label{prop:polymer}
+\[
+Z_\Lambda(\beta)=c_0(\beta)^{|\cP(\Lambda)|}\,\Xi_\Lambda(\beta),\qquad
+\Xi_\Lambda(\beta):=\sum_{n\ge0}\frac1{n!}\sum_{\substack{\gamma_1,\dots,\gamma_n\\ \gamma_i\approx\gamma_j\ (i\ne j)}}\prod_{i=1}^nz(\gamma_i),
+\]
+the $n=0$ term being $1$ (the sum is over ordered $n$-tuples of pairwise compatible polymers).
+\end{proposition}
+
+\begin{proof}
+Expanding $\prod_p(1+f_\beta(U_p))$, $Z_\Lambda/c_0^{|\cP|}=\sum_{S\subseteq\cP}\int\prod_{p\in S}f_\beta(U_p)\dU$. Each $S$
+decomposes uniquely into its connected components $\gamma_1,\dots,\gamma_n$ (connected under adjacency), which are
+pairwise compatible (two components sharing a link would be adjacent, hence one component). Distinct components
+depend on disjoint sets of link variables, so the integral factorises into $\prod_iz(\gamma_i)$. Conversely, a family of
+pairwise compatible polymers is the set of components of its union. Counting ordered tuples introduces the factor $1/n!$.
+\end{proof}
+
+\begin{lemma}[Closed surfaces]\label{lem:closed}
+$z(\gamma)=0$ unless every link $\ell\in E(\gamma)$ belongs to at least two plaquettes of $\gamma$. For every polymer,
+$|z(\gamma)|\le\epsilon(\beta)^{|\gamma|}$.
+\end{lemma}
+
+\begin{proof}
+If $\ell$ lies in exactly one plaquette $p\in\gamma$, then $U_p=AU_\ell^{\pm1}B$ with $A,B$ independent of $U_\ell$, and by
+left, right and inversion invariance of Haar measure $\int f_\beta(AU_\ell^{\pm1}B)\dU_\ell=\int f_\beta\dU=0$; by Fubini,
+$z(\gamma)=0$. The bound is \eqref{eq:eps}.
+\end{proof}
+
+\begin{lemma}[Counting polymers]\label{lem:count}
+Let $K_\cP:=4(2d-3)$, the maximal number of plaquettes adjacent to a given plaquette. For every plaquette $p_0$ and
+$n\ge1$, the number of polymers $\gamma$ with $p_0\in\gamma$ and $|\gamma|=n$ is at most $(eK_\cP)^n$.
+\end{lemma}
+
+\begin{proof}
+A plaquette has four links, each contained in $2(d-1)$ plaquettes, so at most $4(2(d-1)-1)=K_\cP$ other plaquettes are
+adjacent to it. Fix, for every plaquette, an enumeration of its adjacent plaquettes by $\{1,\dots,K_\cP\}$. Given $\gamma\ni p_0$
+with $|\gamma|=n$, let $\tau$ be the spanning tree of $\gamma$ produced by depth-first search from $p_0$ that always proceeds
+to the unvisited adjacent plaquette of smallest index; $\tau$ is a rooted tree in which every vertex $p$ has at most $K_\cP$
+children, each child labelled by its index among the neighbours of $p$. Record $\tau$ by listing its vertices in depth-first
+order and, for each vertex, the $K_\cP$-bit string indicating which indices are occupied by children. The record determines
+$\tau$ and hence $\gamma$ (walk from $p_0$ following the indices), so the map $\gamma\mapsto$ record is injective. A record is a
+string of $K_\cP n$ bits with exactly $n-1$ ones, so the number of polymers is at most
+$\binom{K_\cP n}{n-1}\le\binom{K_\cP n}{n}\le(eK_\cP)^n$ (binomial coefficients $\binom mk$ increase in $k$ for
+$k\le(m+1)/2$, and $n\le(K_\cP n+1)/2$ since $K_\cP\ge2$; finally $\binom mk\le(em/k)^k$).
+\end{proof}
+
+\subsection{The Kotecký--Preiss criterion}
+
+\begin{citedtheorem}[Kotecký--Preiss 1986]\label{thm:KP}
+Let $\mathcal P$ be a finite set, $\not\approx$ a symmetric reflexive relation on it (``incompatibility''), $z:\mathcal P\to\C$,
+and $\Xi:=\sum_{n\ge0}\frac1{n!}\sum_{\gamma_1,\dots,\gamma_n\text{ pairwise compatible}}\prod_iz(\gamma_i)$. Suppose
+$a:\mathcal P\to[0,\infty)$ satisfies
+\begin{equation}\label{eq:KPcond}
+\sum_{\gamma'\not\approx\gamma}|z(\gamma')|\,e^{a(\gamma')}\le a(\gamma)\qquad\text{for all }\gamma\in\mathcal P .
+\end{equation}
+Then $\Xi\neq0$ and
+\[
+\log\Xi=\sum_{n\ge1}\frac1{n!}\sum_{\gamma_1,\dots,\gamma_n}\varphi^T(\gamma_1,\dots,\gamma_n)\prod_{i=1}^nz(\gamma_i),
+\]
+where $\varphi^T(\gamma_1,\dots,\gamma_n)=\sum_{H}(-1)^{|H|}$ is the Ursell function (sum over connected spanning subgraphs
+$H$ of the graph on $\{1,\dots,n\}$ with an edge $\{i,j\}$ whenever $\gamma_i\not\approx\gamma_j$; $\varphi^T=1$ for $n=1$), the
+series converges absolutely, and for every $\gamma\in\mathcal P$
+\[
+\sum_{n\ge1}\frac1{n!}\sum_{\substack{\gamma_1,\dots,\gamma_n\\ \exists i:\ \gamma_i\not\approx\gamma}}
+|\varphi^T(\gamma_1,\dots,\gamma_n)|\prod_i|z(\gamma_i)|\le a(\gamma).
+\]
+(Kotecký--Preiss, Commun.\ Math.\ Phys.\ 103 (1986); see also Friedli--Velenik, \emph{Statistical Mechanics of Lattice
+Systems}, Theorem~5.4, and Ueltschi, Moscow Math.\ J.\ 4 (2004).)
+\end{citedtheorem}
+
+\begin{theorem}[Convergence of the strong-coupling cluster expansion]\label{thm:conv}
+Let $d\ge2$ and
+\[
+0<\beta<\beta_0(d):=\tfrac12\log\Bigl(1+\frac1{e^2K_\cP(K_\cP+2)}\Bigr),\qquad K_\cP=4(2d-3).
+\]
+Then \eqref{eq:KPcond} holds for the polymer system of Definition~\ref{def:polymer} with $a(\gamma)=|\gamma|$, on every
+finite lattice $\Lambda$. Consequently $\log\Xi_\Lambda(\beta)$ is given by the absolutely convergent cluster series of
+Cited Theorem~\ref{thm:KP}, and for every plaquette $p_0$ the total weight of clusters touching $p_0$ is at most~$1$:
+\[
+\sum_{n\ge1}\frac1{n!}\sum_{\substack{\gamma_1,\dots,\gamma_n\\ \exists i:\ p_0\in\gamma_i\text{ or }p_0\text{ adjacent to }\gamma_i}}
+|\varphi^T(\gamma_1,\dots,\gamma_n)|\prod_i|z(\gamma_i)|\le1 .
+\]
+\end{theorem}
+
+\begin{proof}
+Let $x:=e^2K_\cP\,\epsilon(\beta)$; the hypothesis $\beta<\beta_0(d)$ is exactly $x<1/(K_\cP+2)$, so that
+$(K_\cP+1)\,x/(1-x)\le1$. Fix a polymer $\gamma_0$. A polymer $\gamma\not\approx\gamma_0$ shares a link with $\gamma_0$, hence contains
+a plaquette $p$ that is equal or adjacent to a plaquette of $\gamma_0$; the set $N(\gamma_0)$ of such $p$ has at most
+$(K_\cP+1)|\gamma_0|$ elements. By Lemmas~\ref{lem:closed} and~\ref{lem:count},
+\[
+\sum_{\gamma\not\approx\gamma_0}|z(\gamma)|e^{|\gamma|}
+\le\sum_{p\in N(\gamma_0)}\sum_{n\ge1}\sum_{\substack{\gamma\ni p\\ |\gamma|=n}}\epsilon^ne^n
+\le(K_\cP+1)|\gamma_0|\sum_{n\ge1}(eK_\cP)^n\epsilon^ne^n=(K_\cP+1)|\gamma_0|\frac{x}{1-x}\le|\gamma_0|=a(\gamma_0).
+\]
+The last statement is the final bound of Cited Theorem~\ref{thm:KP} applied to $\gamma=\{p_0\}$ (a set of one plaquette,
+which we may add to the polymer system with activity $0$ without affecting anything: the clusters incompatible with it are
+exactly those touching $p_0$, and $a(\{p_0\})=1$).
+\end{proof}
+
+\begin{corollary}[Free energy]\label{cor:free}
+For $0<\beta<\beta_0(d)$ the limit
+\[
+F(\beta):=\lim_{L_0,\dots,L_{d-1}\to\infty}\frac{1}{|\cP(\Lambda)|}\log Z_\Lambda(\beta)
+=\log c_0(\beta)+\sum_{n\ge1}\frac1{n!}\sum_{\substack{\gamma_1,\dots,\gamma_n\subset\cP(\Z^d)\\ p_0\in\gamma_1}}
+\frac{\varphi^T(\gamma_1,\dots,\gamma_n)}{|\gamma_1\cup\cdots\cup\gamma_n|}\prod_iz(\gamma_i)
+\]
+exists and is given by the absolutely convergent series on the right (independent of the plaquette $p_0$ of $\Z^d$).
+\end{corollary}
+
+\begin{proof}
+By Proposition~\ref{prop:polymer} and Theorem~\ref{thm:conv}, $\frac1{|\cP|}\log Z_\Lambda=\log c_0+\frac1{|\cP|}\sum_X\Psi(X)$,
+where $X$ runs over clusters (tuples) on $\Lambda$ and $\Psi(X)=\frac1{n!}\varphi^T(X)\prod z(\gamma_i)$. Writing
+$\frac1{|\cP|}\sum_X\Psi(X)=\frac1{|\cP|}\sum_{p\in\cP}\sum_{X\ni p}\Psi(X)/|\supp X|$ (where $\supp X=\bigcup\gamma_i$ and $X\ni p$
+means $p\in\supp X$) and using translation invariance, this equals $\sum_{X\ni p_0}\Psi(X)/|\supp X|$ on the torus. A cluster
+on the torus whose support has diameter less than $\min_\mu L_\mu$ corresponds to exactly one cluster in $\Z^d$ with the same
+activities (the activity depends only on the combinatorial structure of the polymers), and the clusters of diameter
+$\ge\min_\mu L_\mu$ have total weight at most $\sum_{m\ge\min L_\mu}(\text{weight of clusters touching }p_0\text{ of size }\ge m)$,
+which tends to $0$ as $L\to\infty$ by absolute convergence (the size of a cluster is at least its diameter). The series in $\Z^d$
+converges absolutely by the same bound as in Theorem~\ref{thm:conv}, which does not depend on the lattice size.
+\end{proof}
+
+\subsection{The first polymer, and a check against the simulations}
+
+\begin{proposition}[Cube activity]\label{prop:cube}
+Let $d\ge3$ and let $\gamma_{\rm cube}$ be the six faces of a unit cube in $\Lambda$ (with all $L_\mu\ge3$). Then
+\[
+z(\gamma_{\rm cube})=\sum_{r\neq0}\Bigl(\frac{c_r(\beta)}{d_r\,c_0(\beta)}\Bigr)^{6}d_r^{\,2}.
+\]
+For $G=SU(2)$ this is $4u(\beta)^6+9u_1(\beta)^6+\cdots$ with $u=I_2(\beta)/I_1(\beta)$, $u_1=I_3(\beta)/I_1(\beta)$;
+for $G=SU(3)$ it is $18u(\beta)^6+\cdots$ with $u=c_{\rm fund}/(3c_0)$ (fundamental and anti-fundamental contribute equally).
+\end{proposition}
+
+\begin{proof}
+Expand each $f_\beta(U_p)=\sum_{r\ne0}(c_r/c_0)\chi_r(U_p)$ (Corollary~\ref{cor:uniform}; the sums may be interchanged
+with the integral by uniform convergence) and orient the six faces as the boundary of the cube, so that each edge is
+traversed in opposite directions by the two faces containing it; $\chi_r(U_p)$ is unchanged by cyclic relabelling of the
+base point and $\chi_r(U_p^{-1})=\overline{\chi_r(U_p)}$ corresponds to the opposite orientation, so we may use the boundary
+orientation for every face. Call the faces $B$ (bottom), $T$ (top) and $S_1,\dots,S_4$ (sides, in cyclic order), and let
+$r_B,r_T,r_1,\dots,r_4$ be the representations attached to them. Integrate the vertical edges in the order
+$S_1|S_2$, $S_2|S_3$, $S_3|S_4$: by Theorem~\ref{thm:pw}(iv) each integration vanishes unless the two adjacent side
+representations agree and then merges the two characters into the character of the boundary loop of the union, with a
+factor $1/d_r$. After these three integrations we have $r_1=\dots=r_4=:r$ and the single character
+$\chi_r(XUYU^{-1})/d_r^3$, where $U$ is the remaining vertical edge $S_4|S_1$, traversed once in each direction, and $X,Y$ are the
+products of the four top edges and of the four bottom edges (in the appropriate orientations). By
+Theorem~\ref{thm:pw}(v) the integral over $U$ gives $\chi_r(X)\chi_r(Y)/d_r^4$. The top face contributes $\chi_{r_T}(X^{-1})$
+(opposite orientation), and $\int\chi_r(X)\chi_{r_T}(X^{-1})$ over the four top edges equals $\int\chi_r(X)\overline{\chi_{r_T}(X)}\,dX=\delta_{r r_T}$
+since $X$ is Haar distributed when any one of its four edges is; likewise the bottom face forces $r_B=r$ and contributes $1$.
+Altogether $\int\prod_{p}\chi_{r_p}(U_p)\dU=\delta_{\text{all }r_p=r}\,d_r^{-4}$, and multiplying by the six coefficients
+$c_r/c_0$ gives $z(\gamma_{\rm cube})=\sum_{r\ne0}(c_r/c_0)^6d_r^{-4}=\sum_{r\ne0}(c_r/(d_rc_0))^6d_r^{2}$.
+For $SU(2)$, $c_j/(d_jc_0)=I_{2j+1}(\beta)/I_1(\beta)$; for $SU(3)$ the fundamental and its conjugate both have
+$c_r/(3c_0)=u$ and $d_r^2=9$.
+\end{proof}
+
+\begin{remark}[Plaquette expectation; numerical check]\label{rem:plaq}
+Differentiating Corollary~\ref{cor:free} and keeping only the one-polymer clusters of size six (there are $\binom d3$
+cubes per site and $\binom d2$ plaquettes per site, i.e.\ $(d-2)/3$ cubes per plaquette),
+\[
+\langle P\rangle_\beta=\frac{d}{d\beta}F(\beta)=u(\beta)+\frac{d-2}{3}\,\frac{d}{d\beta}z(\gamma_{\rm cube})+\cdots
+= u+\frac{d-2}{3}\cdot6z_6\,u^5u'(\beta)+O(u^9),
+\]
+with $z_6=4$ for $SU(2)$ and $z_6=18$ for $SU(3)$, i.e.\ $\langle P\rangle=u+16u^5u'$ for $SU(2)$ and $u+72u^5u'$ for
+$SU(3)$ in four dimensions, where $u(\beta)=c_0'(\beta)/c_0(\beta)$ is the exact one-plaquette expectation. The Monte Carlo
+scans in \texttt{results/} reproduce these formulas: for $SU(2)$ at $\beta=1$ the simulation gives
+$\langle P\rangle=0.2434(2)$ against $u=0.2402$ and $u+16u^5u'=0.2430$; for $SU(3)$ at $\beta=2$ it gives $0.1288(1)$ against
+$u=0.1286$ and $u+72u^5u'=0.1288$ (see \texttt{results/plaquette\_su2\_8x4.csv}, \texttt{results/plaquette\_su3\_8x4.csv}).
+The expansion is formal beyond its radius of convergence, but the agreement at these couplings is the expected check of
+the polymer bookkeeping.
+\end{remark}
+
+\begin{remark}[Further consequences, not proved here]\label{rem:further}
+With the same machinery one obtains, for $\beta<\beta_0(d)$: exponential clustering of all local gauge-invariant
+observables with constants uniform in $\Lambda$ (an alternative to Theorem~\ref{thm:strong}, with the same structure
+of proof once the expectation of a local observable is written as a ratio of polymer partition functions); the existence
+and uniqueness of the infinite-volume limit; analyticity of $F$ in $\beta$ in a complex neighbourhood of $(0,\beta_0)$; and
+the area law for Wilson loops in representations with non-trivial $N$-ality (the surfaces carrying the character
+expansion must span the loop). These are Osterwalder--Seiler's results and are milestones T1.1 of the research program.
+\end{remark}
+
+\section{Summary, and what is open}\label{sec:open}
+
+\subsection{What has been established}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Statement & Where & Status\\
+\midrule
+Wilson measure, gauge invariance, Elitzur-type vanishing & Thm~\ref{thm:basic} & Theorem\\
+Positivity of all character coefficients & Lem~\ref{lem:cr} & Theorem\\
+Reflection positivity (site reflections, periodic time) & Thm~\ref{thm:rp} & Theorem\\
+Transfer matrix: positive, trace class, strictly positive on $\cH_{\rm phys}$ & Lem~\ref{lem:K} & Theorem\\
+$Z=\Tr\hT^{L_0}$; correlations as traces & Thm~\ref{thm:tm} & Theorem\\
+Unique positive vacuum (Perron--Frobenius) & Thm~\ref{thm:vacuum} & Theorem\\
+Hamiltonian, finite-lattice gap $m_{\Lambda_s}(\beta)>0$ & Def~\ref{def:H} & Theorem\\
+Ground-state expectations as $L_0\to\infty$ & Thm~\ref{thm:gs} & Theorem\\
+Gap $\Leftrightarrow$ exponential clustering in time & Thm~\ref{thm:gapclust} & Theorem\\
+Gap $=$ spectral gap of the ground-state chain & Thm~\ref{thm:chain} & Theorem\\
+Lattice hypotheses $\Rightarrow$ OS axioms $+$ mass gap & Thm~\ref{thm:reduction} & Theorem (modulo OS reconstruction)\\
+Uniform gap for $\beta<\beta_D(d)$ & Thm~\ref{thm:strong} & Theorem\\
+Polymer representation, closed surfaces & Prop~\ref{prop:polymer}, Lem~\ref{lem:closed} & Theorem\\
+Convergent cluster expansion for $\beta<\beta_0(d)$ & Thm~\ref{thm:conv} & Theorem (modulo Kotecký--Preiss)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{What is open}
+
+Fix $G=SU(N)$, $d=4$, all lattices with $L_\mu\ge3$.
+
+\begin{conjecture}[G1: gap at every coupling]
+For every $\beta\in(0,\infty)$, $\ \inf_{\Lambda_s}m_{\Lambda_s}(\beta)>0$.
+\end{conjecture}
+
+\begin{conjecture}[G2: the gap survives the continuum limit]
+With $a\Lambda_L(\beta)=(b_0g^2)^{-b_1/(2b_0^2)}e^{-1/(2b_0g^2)}$, $g^2=2N/\beta$, $b_0=11N/(48\pi^2)$,
+$b_1=34N^2/(3(16\pi^2)^2)$:
+\[
+\liminf_{\beta\to\infty}\ \frac{\inf_{\Lambda_s}m_{\Lambda_s}(\beta)}{a\Lambda_L(\beta)}>0 .
+\]
+\end{conjecture}
+
+\begin{conjecture}[UV: convergence]
+Hypothesis~\ref{hyp:L1} holds for the renormalised plaquette field and for Wilson loops along the trajectory
+$\beta=\beta(a)$ determined by asymptotic scaling.
+\end{conjecture}
+
+Theorem~\ref{thm:reduction} shows that (G2) (in the uniform form of Hypothesis~\ref{hyp:L2}) together with (UV) and
+non-triviality is the Clay statement. Theorem~\ref{thm:strong} proves (G1) for $\beta<\beta_D$ by a method that also
+applies to $U(1)$, for which (G1) is false at large $\beta$; the mechanism for large $\beta$ must therefore be of a
+different nature. Theorem~\ref{thm:chain} shows that (G1) is equivalent to a uniform spectral gap for a reversible,
+locally structured Markov chain whose stationary measure is the vacuum measure $\Omega^2dU$ on the three-dimensional
+spatial lattice. The research program (\texttt{docs/03-research-program.md}) is organised around these three statements.
+
+\end{document}

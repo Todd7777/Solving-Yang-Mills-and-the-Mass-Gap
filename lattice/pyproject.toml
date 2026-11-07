@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ymlattice"
+version = "0.1.0"
+description = "Tested SU(2)/SU(3) lattice Yang-Mills toolkit for the mass-gap project"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "scipy>=1.10"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+plot = ["matplotlib"]
+
+[tool.setuptools.packages.find]
+include = ["ymlattice*"]
