@@ -1,0 +1,1181 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{citedtheorem}[theorem]{Cited Theorem}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{convention}[theorem]{Convention}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\osc}{osc}
+\DeclareMathOperator{\gap}{gap}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cE}{\mathcal{E}}
+\newcommand{\cR}{\mathcal{R}}
+\newcommand{\hT}{\hat{T}}
+\newcommand{\hA}{\hat{A}}
+\newcommand{\hB}{\hat{B}}
+\newcommand{\dU}{\,dU}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+\newcommand{\TV}{\mathrm{TV}}
+
+% ---- Additional macros used only in this article (to be moved to the preamble of [F] on merging) ----
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\cQ}{\mathcal{Q}}
+\newcommand{\cS}{\mathcal{S}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\sC}{\mathsf{C}}
+\newcommand{\bA}{\mathbb{A}}
+\newcommand{\Fref}[3]{\cite[#1~`#2' (\texttt{#3})]{F}}
+\newcommand{\Flab}[2]{\cite[#1 \texttt{#2}]{F}}
+\newcommand{\Fname}[2]{\cite[#1~`#2']{F}}
+
+\title{Lattice Yang--Mills theory at strong coupling III: confinement (area law)\\
+\large A sequel to the foundations monograph of the project ``Solving Yang--Mills and the Mass Gap''}
+\author{}
+\date{7 November 2026; living document}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We prove Wilson's area law for lattice gauge theories at strong coupling, with complete proofs and explicit
+constants, in the framework of the foundations monograph [F] of this project. For $G=SU(N)$, every dimension
+$d\ge2$, every periodic lattice with all sides $L_\lambda\ge3$, every $0<\beta<\beta_0(d)$ (the radius of the
+cluster expansion of [F], independent of $N$), every rectangular $R\times T$ loop $C$ in a coordinate plane
+$(\mu,\nu)$ and every irreducible representation $r$ of non-zero $N$-ality,
+\[
+\bigl|\langle\chi_r(U_C)\rangle_{\Lambda,\beta}\bigr|\le d_r\exp\bigl(-\sigma(\beta)A+\kappa(\beta)|C|\bigr),
+\qquad A=\min(RT,\,L_\mu L_\nu-RT),
+\]
+with $\sigma(\beta)=\log\bigl(1/(e^2K_\cP(e^{2\beta}-1))\bigr)\to\infty$ as $\beta\downarrow0$, $K_\cP=4(2d-3)$, and
+an explicit $\kappa(\beta)\le 21/20$. Consequently the string tension of every infinite-volume limit point is at
+least $\sigma(\beta)$. The proof combines a centre (charge) selection rule, a projection chain map onto a coordinate
+$2$-torus together with the $\Z_N$-homology of the $2$-torus (which produces the torus area $A$), the polymer
+expansion of [F], and a self-contained inductive bound for ratios of polymer partition functions. Only a central
+element of finite order acting non-trivially in $r$ is used. The theorem therefore holds verbatim for $U(N)$ and for
+$U(1)$ (every non-trivial representation); for $U(1)$ the area law is known to fail at weak coupling in four
+dimensions, so strong-coupling confinement is not a non-abelian phenomenon. We also prove that in $d=2$ the area law holds for
+every non-trivial representation, that every non-trivial Wilson loop decays at least exponentially in its
+perimeter, and that loops winding around the torus with non-zero charge have vanishing expectation; and we compare
+with Osterwalder--Seiler (1978) and Seiler (1982), where the strong-coupling area law was first proved.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction and main result}\label{al:sec:intro}
+
+The foundations monograph \cite{F} develops lattice Yang--Mills theory on a periodic lattice: Wilson's measure, its
+gauge invariance, reflection positivity, the transfer matrix, the reduction of the continuum problem to lattice
+hypotheses, a volume-uniform mass gap for $\beta<\beta_D(d)$, and the polymer (closed-surface) representation of the
+measure with a convergent cluster expansion for $\beta<\beta_0(d)$. Among the consequences of the latter which are
+listed but not proved there (\Fref{Remark}{Further consequences, not proved here}{rem:further}) is Wilson's area law
+for Wilson loops in representations of non-trivial $N$-ality. This article supplies that proof, in the notation and
+with the conventions of \cite{F}, and with explicit constants.
+
+Wilson's criterion \cite{Wil74} says that static charges in a representation $r$ are confined if the Wilson loop
+expectation of large rectangular loops decays exponentially in the \emph{area} spanned by the loop, which (via the
+transfer matrix) means that the energy of a static charge--anticharge pair grows linearly with their distance. The
+area law at small $\beta$ was proved by Osterwalder and Seiler \cite{OS78} and, for general loops, by Seiler
+\cite{Sei82}; see Remark~\ref{al:rem:OS} for a comparison.
+
+\begin{theorem}[Main theorem: area law for $SU(N)$ at strong coupling]\label{al:thm:intro}
+Let $G=SU(N)$, $N\ge2$, with the Wilson measure $\langle\cdot\rangle_{\Lambda,\beta}$ of
+\Fref{Definition}{Wilson measure}{def:wilson} ($\rho$ the defining representation). Let $d\ge2$, let $\Lambda$ be a
+periodic lattice with all $L_\lambda\ge3$, and let
+\[
+0<\beta<\beta_0(d)=\tfrac12\log\Bigl(1+\frac1{e^2K_\cP(K_\cP+2)}\Bigr),\qquad K_\cP=4(2d-3).
+\]
+Let $C$ be a rectangular loop with sides $R$ and $T$ in a coordinate plane $(\mu,\nu)$ of $\Lambda$, where
+$1\le R\le L_\mu-1$ and $1\le T\le L_\nu-1$, let $|C|=2(R+T)$ be its length and $A:=\min(RT,\,L_\mu L_\nu-RT)$, and let
+$r$ be an irreducible representation of $SU(N)$ whose $N$-ality $n(r)$ is not divisible by $N$. Then
+\begin{equation}\label{al:eq:main}
+\bigl|\langle\chi_r(U_C)\rangle_{\Lambda,\beta}\bigr|\le d_r\exp\bigl(-\sigma(\beta)\,A+\kappa(\beta)\,|C|\bigr),
+\end{equation}
+where, with $x(\beta):=e^2K_\cP\,(e^{2\beta}-1)\in\bigl(0,\frac1{K_\cP+2}\bigr)$,
+\begin{equation}\label{al:eq:constants-intro}
+\sigma(\beta)=\log\frac1{x(\beta)},\qquad
+\kappa(\beta)=2(d-1)\Bigl[\log\Bigl(1+\frac1{K_\cP}\Bigr)+\frac{x(\beta)}{1-x(\beta)}\Bigr]+\frac14\log\frac1{1-x(\beta)} .
+\end{equation}
+Moreover $\sigma(\beta)>\log(K_\cP+2)$, $\sigma(\beta)=\log\frac1{2e^2K_\cP\beta}+O(\beta)\to\infty$ as
+$\beta\downarrow0$, and $\kappa(\beta)<\frac{d-1}{2d-3}+\frac1{4(K_\cP+1)}\le\frac{21}{20}$.
+\end{theorem}
+
+Theorem~\ref{al:thm:intro} is Corollary~\ref{al:cor:sun} below. The threshold $\beta_1(d,N):=\beta_0(d)$ is the
+radius of the cluster expansion of \Fref{Theorem}{Convergence of the strong-coupling cluster expansion}{thm:conv}; in
+the normalisation $w_\beta=\exp(\frac\beta N\mathrm{Re}\Tr U)$ of \cite{F} it does not depend on $N$. Numerically,
+$\beta_0(2)\approx2.81\cdot10^{-3}$, $\beta_0(3)\approx4.03\cdot10^{-4}$, $\beta_0(4)\approx1.54\cdot10^{-4}$. The
+constants are far from optimal (Remark~\ref{al:rem:constants}).
+
+\paragraph{Further results.} The proof gives more than Theorem~\ref{al:thm:intro}:
+\begin{enumerate}[label=(\roman*)]
+\item a general form (Theorem~\ref{al:thm:general}) for any compact group $G$ as in \cite{F} with a central element
+$z_0$ of finite order $M$ acting non-trivially in $r$, and any closed lattice path, the area being replaced by the
+minimal size of a $\Z_M$-valued $2$-chain with the prescribed boundary;
+\item the same area law for $U(1)$, for every non-trivial representation, and for $U(N)$
+(Corollary~\ref{al:cor:u1}); this is the precise sense in which strong-coupling confinement fails the
+``$U(1)$ test'' of the research program (Remark~\ref{al:rem:u1test});
+\item a lower bound $\sigma(\beta)$ on the string tension of every infinite-volume limit point
+(Corollary~\ref{al:cor:tension});
+\item a variant in which the perimeter coefficient tends to $0$ as $\beta\downarrow0$ (Corollary~\ref{al:cor:smallkappa});
+\item in $d=2$, the area law for \emph{every} non-trivial representation of any $G$ (Proposition~\ref{al:prop:2d});
+\item for every non-trivial representation in any $d$, decay at least exponential in the perimeter
+(Proposition~\ref{al:prop:perimeter}), and the vanishing of loops which wind around the torus with non-zero charge
+(Proposition~\ref{al:prop:winding}).
+\end{enumerate}
+
+\paragraph{Strategy.} Write $w_\beta=c_0(\beta)(1+f_\beta)$ and expand $\prod_p(1+f_\beta(U_p))$ as in \cite{F}.
+(1) Grouping the plaquettes connected to the loop $C$ into one ``loop polymer'' $X$, the numerator of
+$\langle\chi_r(U_C)\rangle$ becomes $\sum_X\Phi(X)\,\Xi(\text{plaquettes avoiding }X\cup C)$, where $\Phi(X)$ is the integral
+of $\chi_r(U_C)\prod_{p\in X}f_\beta(U_p)$ (Lemma~\ref{al:lem:loopexp}). (2) Decomposing $f_\beta$ according to the
+action of the centre, a single-link substitution $U_\ell\mapsto z_0U_\ell$ shows that $\Phi(X)$ is a sum of terms
+indexed by $\Z_M$-valued $2$-chains $\kappa$ supported in $X$, each of which vanishes unless
+$\partial\kappa=-m(r)\,[C]$ (Lemma~\ref{al:lem:selection}). (3) Projecting onto the coordinate $2$-torus of the loop by
+a chain map and using that the $2$-cycles of a $2$-torus are the multiples of its fundamental class, such a $\kappa$ has
+at least $A$ plaquettes (Proposition~\ref{al:prop:area}). (4) The ratio of polymer partition functions is at most
+$e^{\theta(|X|(K_\cP+1)+2(d-1)|C|)}$ by an inductive lemma of Kotecký--Preiss--Dobrushin type
+(Lemma~\ref{al:lem:ratio}) whose hypothesis is the estimate proved in \cite{F}. (5) Connected sets attached to $C$ are
+counted with a rooted tree encoding (Lemma~\ref{al:lem:rooted}), which produces the perimeter term.
+
+\paragraph{What is used from [F].} The definitions of \cite{F} and the following results, whose proofs we have
+re-checked: Cited Theorem~`Haar measure, Peter--Weyl' (\texttt{thm:pw}) (standard facts), the bounds
+\eqref{al:eq:facts} (from (\texttt{eq:w}), \texttt{cor:uniform} and (\texttt{eq:eps})), Proposition~`Polymer
+representation' (\texttt{prop:polymer}), Lemma~`Closed surfaces' (\texttt{lem:closed}), Lemma~`Counting polymers'
+(\texttt{lem:count}) and the estimate in the proof of Theorem~`Convergence of the strong-coupling cluster expansion'
+(\texttt{thm:conv}). For the bound $c_0(\beta)\ge1$ we give a slightly completed argument
+(Lemma~\ref{al:lem:facts}(b)). The cited Kotecký--Preiss theorem \Fref{Cited Theorem}{Kotecký--Preiss
+1986}{thm:KP} is \emph{not} used: Lemma~\ref{al:lem:ratio} gives what is needed with a complete proof. Labels follow
+\Fname{Convention}{Labels}: every Theorem, Proposition, Lemma and Corollary below has a complete proof.
+
+\section{Setting}\label{al:sec:setting}
+
+\subsection{Standing assumptions and facts from [F]}
+
+\begin{convention}[Standing assumptions]\label{al:conv:standing}
+$G$, $\rho:G\to U(N)$, $\Tr U:=\Tr\rho(U)$, $dU$ and $r,d_r,D^r,\chi_r$ are as in \Fname{Convention}{Group}. We fix
+$d\ge2$ and the periodic lattice $\Lambda=\prod_{\lambda=0}^{d-1}\Z/L_\lambda\Z$ with
+\[
+L_\lambda\ge3\qquad(0\le\lambda\le d-1),
+\]
+with links $\ell=(x,\lambda)$, plaquettes $p=(x,\lambda\lambda')$ ($\lambda<\lambda'$), the sets $E(\Lambda)$ and
+$\cP:=\cP(\Lambda)$, configurations $U\in\Omega_\Lambda=G^{E(\Lambda)}$ with product Haar measure $dU$, and plaquette
+variables $U_p$ as in \Fname{Convention}{Lattice}, \Fname{Convention}{Configurations} and \Flab{eq.}{eq:plaquette}. For
+a plaquette $p$, $E(p)$ is the set of its four links (they are distinct, since $L_\lambda\ge2$), and
+$E(X):=\bigcup_{p\in X}E(p)$ for $X\subseteq\cP$. Distinct plaquettes are \emph{adjacent} if they share a link;
+connectedness and connected components of sets of plaquettes refer to this adjacency. The Wilson measure, its
+expectation $\langle\cdot\rangle_{\Lambda,\beta}$ and its partition function $Z_\Lambda(\beta)$ are those of
+\Fref{Definition}{Wilson measure}{def:wilson}, with plaquette weight $w_\beta(U)=\exp(\frac\beta N\mathrm{Re}\Tr U)$ and
+character coefficients $c_r(\beta)=\int\overline{\chi_r}\,w_\beta\dU$ (\Fname{Definition}{Plaquette weight}). As in
+\Flab{Definition}{def:polymer} we put $f_\beta:=w_\beta/c_0(\beta)-1$ and $\epsilon(\beta):=e^{2\beta}-1$; a polymer is a
+non-empty connected set $\gamma\subseteq\cP$, polymers $\gamma,\gamma'$ are compatible ($\gamma\approx\gamma'$) iff
+$E(\gamma)\cap E(\gamma')=\emptyset$, and the activity of $\gamma$ is $z(\gamma)=\int\prod_{p\in\gamma}f_\beta(U_p)\dU$.
+We write $K:=K_\cP=4(2d-3)$.
+\end{convention}
+
+\begin{lemma}[Facts from {[F]}]\label{al:lem:facts}
+For every $\beta\ge0$:
+\begin{enumerate}[label=(\alph*)]
+\item $w_\beta$ is a continuous class function with $w_\beta(U^{-1})=w_\beta(U)$ and $e^{-\beta}\le w_\beta\le e^\beta$;
+\item $1\le c_0(\beta)\le e^\beta$; hence $f_\beta$ is real and continuous, $1+f_\beta=w_\beta/c_0(\beta)>0$,
+$\int f_\beta\dU=0$, and
+\begin{equation}\label{al:eq:facts}
+\norm{f_\beta}_\infty\le\epsilon(\beta)=e^{2\beta}-1;
+\end{equation}
+\item $\int f_\beta(AU^{\pm1}B)\dU=0$ for all $A,B\in G$;
+\item every link lies in exactly $2(d-1)$ plaquettes, and every plaquette is adjacent to at most $K$ plaquettes;
+\item $|z(\gamma)|\le\epsilon(\beta)^{|\gamma|}$ for every polymer $\gamma$;
+\item for every plaquette $p_0$ and $n\ge1$, the number of polymers $\gamma\ni p_0$ with $|\gamma|=n$ is at most $(eK)^n$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) is \Flab{eq.}{eq:w}: $\rho(U)$ is unitary, so $|\mathrm{Re}\Tr U|\le N$, and $\Tr\rho(gUg^{-1})=\Tr\rho(U)$,
+$\Tr\rho(U^{-1})=\overline{\Tr\rho(U)}$. (b) $c_0\le e^\beta$ by (a). By Jensen's inequality,
+$c_0=\int e^{\frac\beta N\mathrm{Re}\Tr\rho(U)}\dU\ge\exp\bigl(\frac\beta N\mathrm{Re}\int\Tr\rho(U)\dU\bigr)$. Decomposing
+$\rho$ into irreducible representations and using $\int D^{r'}_{aa}\dU=0$ for $r'\neq0$ (\Fref{Cited Theorem}{Haar
+measure, Peter--Weyl}{thm:pw}(ii) with the trivial representation), $\int\Tr\rho(U)\dU$ is the multiplicity of the
+trivial representation in $\rho$, a non-negative integer; hence $c_0\ge1$. (This is the argument of
+\Flab{Corollary}{cor:uniform}, where $\int\Tr U\dU=0$ is used; that holds if $\rho$ has no trivial summand, e.g.\ for
+$SU(N)$ and $U(1)$, and in general the integral is $\ge0$, which suffices.) Then $w_\beta/c_0\in[e^{-2\beta},e^\beta]$,
+so $f_\beta\in[e^{-2\beta}-1,e^\beta-1]$, which gives \eqref{al:eq:facts} because $1-e^{-2\beta}\le e^{2\beta}-1$; and
+$\int f_\beta=c_0/c_0-1=0$. (c) By left, right and inversion invariance of $dU$ (\Flab{Cited Theorem}{thm:pw}(i)),
+$\int f_\beta(AU^{\pm1}B)\dU=\int f_\beta\dU=0$. (d) The plaquettes containing $(x,\lambda)$ are, for each
+$\lambda'\neq\lambda$, the two plaquettes of the plane $\{\lambda,\lambda'\}$ based at $x$ and at $x-e_{\lambda'}$; these
+$2(d-1)$ plaquettes are distinct because $L_{\lambda'}\ge2$. A plaquette has four links, each lying in $2d-3$ further
+plaquettes, whence at most $4(2d-3)=K$ adjacent plaquettes. (e) is \eqref{al:eq:facts}. (f) is
+\Fref{Lemma}{Counting polymers}{lem:count}; it is also the special case $J=K$, root $o=p_0$, of
+Lemma~\ref{al:lem:rooted} below, which gives the bound $\binom{Kn}{n-1}\le K^{n-1}(1+\frac1K)^{Kn}\le(eK)^n$.
+\end{proof}
+
+\subsection{Closed paths, Wilson loops and the charge of a representation}
+
+\begin{definition}[Closed paths, Wilson loops, rectangles]\label{al:def:loops}
+An oriented link is a pair $\ell^{\epsilon}$, $\ell=(x,\lambda)\in E(\Lambda)$, $\epsilon\in\{\pm1\}$, running from $x$ to
+$x+e_\lambda$ if $\epsilon=1$ and from $x+e_\lambda$ to $x$ if $\epsilon=-1$. A \emph{closed path} is a finite sequence
+$C=(\ell_1^{\epsilon_1},\dots,\ell_n^{\epsilon_n})$, $n\ge1$, of oriented links, each ending where the next one starts,
+and the last ending where the first starts. Its length is $|C|:=n$, its set of links $E_C:=\{\ell_1,\dots,\ell_n\}$,
+and its holonomy $U_C:=U_{\ell_1}^{\epsilon_1}U_{\ell_2}^{\epsilon_2}\cdots U_{\ell_n}^{\epsilon_n}$. For irreducible $r$,
+$\chi_r(U_C)$ is a continuous function on $\Omega_\Lambda$ with $|\chi_r(U_C)|\le d_r$, unchanged under cyclic shifts of
+$C$; reversing $C$ replaces it by $\overline{\chi_r(U_C)}$.
+
+A \emph{rectangular loop} is specified by directions $\mu<\nu$, a base point $x^0\in\Lambda$ and integers
+$1\le R\le L_\mu-1$, $1\le T\le L_\nu-1$. With $x_{ij}:=x^0+ie_\mu+je_\nu$ it is the closed path $C$ which traverses
+$(x_{i0},\mu)$ forwards for $i=0,\dots,R-1$, then $(x_{Rj},\nu)$ forwards for $j=0,\dots,T-1$, then $(x_{iT},\mu)$
+backwards for $i=R-1,\dots,0$, then $(x_{0j},\nu)$ backwards for $j=T-1,\dots,0$. Because $R<L_\mu$ and $T<L_\nu$, its
+$2(R+T)$ links are distinct, so $|C|=|E_C|=2(R+T)$, and $C$ visits $2(R+T)$ distinct sites, each lying on exactly two
+links of $E_C$. We write
+\[
+D:=\{(x_{ij},\mu\nu):0\le i<R,\ 0\le j<T\},\qquad
+\Sigma:=\{(x,\mu\nu):x_\lambda=x^0_\lambda\ \text{for all }\lambda\notin\{\mu,\nu\}\},
+\]
+($|D|=RT$, $|\Sigma|=L_\mu L_\nu$, $D\subseteq\Sigma$), $\cP_{\mu\nu}:=\{(x,\mu\nu):x\in\Lambda\}$ for the plaquettes
+parallel to the plane of $C$, and
+\[
+A:=\min\bigl(RT,\ L_\mu L_\nu-RT\bigr)\ \ge1 .
+\]
+\end{definition}
+
+\begin{lemma}[Central elements act by scalars]\label{al:lem:central}
+Let $z_0\in G$ be central with $z_0^M=1$ for some $M\ge1$, and $\omega:=e^{2\pi i/M}$. For every irreducible
+representation $r$ there is a unique $m(r)\in\Z_M:=\Z/M\Z$ with $D^r(z_0)=\omega^{m(r)}\mathbb 1$. Consequently
+$\chi_r(z_0^jU)=\omega^{j\,m(r)}\chi_r(U)$ for all $j\in\Z$ and $U\in G$.
+\end{lemma}
+
+\begin{proof}
+$D^r(z_0)$ commutes with every $D^r(g)$. If $c$ is an eigenvalue of $D^r(z_0)$, the eigenspace $\ker(D^r(z_0)-c)$ is
+non-zero and invariant under $D^r(G)$, hence equal to the whole space by irreducibility, i.e.\ $D^r(z_0)=c\mathbb1$
+(Schur's lemma). Since $D^r(z_0)^M=D^r(z_0^M)=\mathbb 1$, $c^M=1$, i.e.\ $c=\omega^{m}$ for a unique $m\in\Z_M$. Finally
+$\chi_r(z_0^jU)=\Tr\bigl(D^r(z_0)^jD^r(U)\bigr)=\omega^{jm}\chi_r(U)$.
+\end{proof}
+
+\begin{definition}[Charge, $N$-ality]\label{al:def:charge}
+Given $z_0$ as in Lemma~\ref{al:lem:central}, $m(r)\in\Z_M$ is the \emph{$z_0$-charge} of $r$. For $G=SU(N)$ we take
+$z_0=e^{2\pi i/N}\mathbb 1_N$ (a generator of the centre $\Z_N$), $M=N$, and call $n(r):=m(r)\in\Z_N$ the
+\emph{$N$-ality} of $r$.
+\end{definition}
+
+\begin{remark}\label{al:rem:nality}
+If $r$ occurs in $\rho^{\otimes a}\otimes\bar\rho^{\otimes b}$ then $n(r)=a-b\bmod N$, since $\rho(z_0)=\omega\mathbb1$
+acts on this tensor product by $\omega^{a-b}$; every irreducible representation of $SU(N)$ occurs in such a product (see
+the proof of \Fref{Lemma}{Positivity of the character coefficients}{lem:cr}). For instance the fundamental, the
+antifundamental and the adjoint representation have $N$-ality $1$, $N-1$ and $0$; for highest weight $\lambda$,
+$n(r)$ is the number of boxes of the Young diagram modulo $N$. None of this is used below.
+\end{remark}
+
+\subsection{The constants}
+
+\begin{definition}[Constants]\label{al:def:constants}
+For $\beta\ge0$ with $x(\beta)<1$ put
+\[
+x(\beta):=e^2K\epsilon(\beta),\qquad \theta(\beta):=\frac{x(\beta)}{1-x(\beta)},\qquad \sigma(\beta):=\log\frac1{x(\beta)},
+\]
+\[
+\kappa_1(\beta):=2(d-1)\Bigl[\log\Bigl(1+\frac1K\Bigr)+\theta(\beta)\Bigr],\qquad
+\kappa(\beta):=\kappa_1(\beta)+\frac14\log\frac1{1-x(\beta)},
+\]
+and recall $\beta_0(d)=\frac12\log\bigl(1+\frac1{e^2K(K+2)}\bigr)$ from \Fref{Theorem}{Convergence of the
+strong-coupling cluster expansion}{thm:conv}.
+\end{definition}
+
+\begin{lemma}\label{al:lem:constants}
+Let $0<\beta<\beta_0(d)$. Then $0<x(\beta)<\frac1{K+2}$, $(K+1)\theta(\beta)<1$, $\sigma(\beta)>\log(K+2)$,
+$\kappa_1(\beta)<\frac{d-1}{2d-3}$ and $\kappa(\beta)<\frac{d-1}{2d-3}+\frac1{4(K+1)}\le\frac{21}{20}$. As
+$\beta\downarrow0$, $\sigma(\beta)=\log\frac1{2e^2K\beta}+O(\beta)$ and $\kappa(\beta)\to2(d-1)\log(1+\frac1K)$.
+\end{lemma}
+
+\begin{proof}
+$\beta<\beta_0(d)$ is equivalent to $\epsilon(\beta)<\frac1{e^2K(K+2)}$, i.e.\ to $x<\frac1{K+2}$; then
+$\theta<\frac{1/(K+2)}{(K+1)/(K+2)}=\frac1{K+1}$ and $\sigma>\log(K+2)$. Using $\log(1+\frac1K)<\frac1K$ and
+$\theta<\frac1{K+1}<\frac1K$, $\kappa_1<\frac{4(d-1)}K=\frac{d-1}{2d-3}$, and
+$\frac14\log\frac1{1-x}<\frac14\log\frac{K+2}{K+1}<\frac1{4(K+1)}$. Since $d\ge2$, $\frac{d-1}{2d-3}\le1$ and
+$K+1\ge5$. Finally $\epsilon(\beta)=2\beta(1+O(\beta))$ and $x,\theta\to0$.
+\end{proof}
+
+\section{Chains on the torus and the area of a loop}\label{al:sec:chains}
+
+\begin{definition}[Cellular chains]\label{al:def:chains}
+Let $\bA$ be an abelian group (we use $\bA=\Z$ and $\bA=\Z_M$). The chain groups $\sC_0(\Lambda;\bA)$,
+$\sC_1(\Lambda;\bA)$, $\sC_2(\Lambda;\bA)$ are the groups of formal sums $\sum_x a_x\,x$, $\sum_\ell a_\ell\,\ell$,
+$\sum_pa_p\,p$ with coefficients in $\bA$ over sites, links and plaquettes. The boundary maps are the homomorphisms with
+\[
+\partial(x,\lambda):=(x+e_\lambda)-(x),\qquad
+\partial(x,\lambda\lambda'):=(x,\lambda)+(x+e_\lambda,\lambda')-(x+e_{\lambda'},\lambda)-(x,\lambda').
+\]
+For $c=\sum a_\ell\ell$ we write $c_\ell:=a_\ell$, and $\supp c$ is the set of cells with non-zero coefficient. The
+\emph{incidence number} $[p:\ell]\in\{0,\pm1\}$ is the coefficient of $\ell$ in $\partial p$ (over $\Z$); it is non-zero
+iff $\ell\in E(p)$, the four links of $p$ being distinct. By \Flab{eq.}{eq:plaquette}, the plaquette variable is the
+product, in cyclic order, of the $U_\ell^{[p:\ell]}$, $\ell\in E(p)$. A set $S$ of plaquettes is identified with the
+chain $\sum_{p\in S}p$. For a closed path $C=(\ell_1^{\epsilon_1},\dots,\ell_n^{\epsilon_n})$ put
+$[C]:=\sum_i\epsilon_i\ell_i\in\sC_1(\Lambda;\Z)$ and $[C:\ell]:=[C]_\ell$. Reduction modulo $M$ maps
+$\sC_k(\Lambda;\Z)\to\sC_k(\Lambda;\Z_M)$ and commutes with $\partial$. The same definitions, with $d=2$, apply to any
+two-dimensional periodic lattice.
+\end{definition}
+
+\begin{lemma}[Boundaries]\label{al:lem:boundaries}
+(i) $\partial\circ\partial=0$ on $\sC_2(\Lambda;\bA)$. (ii) For a rectangular loop $C$, $\partial D=[C]$ and
+$\partial\Sigma=0$.
+\end{lemma}
+
+\begin{proof}
+(i) For $p=(x,\lambda\lambda')$,
+$\partial\partial p=[(x+e_\lambda)-(x)]+[(x+e_\lambda+e_{\lambda'})-(x+e_\lambda)]-[(x+e_{\lambda'}+e_\lambda)-(x+e_{\lambda'})]
+-[(x+e_{\lambda'})-(x)]=0$.
+(ii) Summing the definition of $\partial$ over $D$,
+\begin{align*}
+\partial D&=\sum_{i<R}\sum_{j<T}\bigl[(x_{ij},\mu)-(x_{i,j+1},\mu)\bigr]+\sum_{j<T}\sum_{i<R}\bigl[(x_{i+1,j},\nu)-(x_{ij},\nu)\bigr]\\
+&=\sum_{i<R}\bigl[(x_{i0},\mu)-(x_{iT},\mu)\bigr]+\sum_{j<T}\bigl[(x_{Rj},\nu)-(x_{0j},\nu)\bigr],
+\end{align*}
+by telescoping, and this is $[C]$ by Definition~\ref{al:def:loops}. For $\Sigma$: a link $(y,\mu)$ with $y$ in the slice
+$\{x:x_\lambda=x^0_\lambda\ \text{for}\ \lambda\notin\{\mu,\nu\}\}$ lies in exactly two plaquettes of $\Sigma$, namely $(y,\mu\nu)$ with incidence $+1$ and $(y-e_\nu,\mu\nu)$
+with incidence $-1$ (distinct since $L_\nu\ge2$); similarly $(y,\nu)$ lies in $(y,\mu\nu)$ with incidence $-1$ and in
+$(y-e_\mu,\mu\nu)$ with incidence $+1$; all other links lie in no plaquette of $\Sigma$. Hence $\partial\Sigma=0$.
+\end{proof}
+
+\begin{lemma}[Two-cycles of a two-dimensional torus]\label{al:lem:2cycles}
+Let $L_1,L_2\ge2$ and let $\Lambda_2=\Z/L_1\Z\times\Z/L_2\Z$, with unit vectors $e_1,e_2$, links $(y,1),(y,2)$ and
+plaquettes $(y,12)$. For every abelian group $\bA$, a chain $c=\sum_yc(y)\,(y,12)\in\sC_2(\Lambda_2;\bA)$ satisfies
+$\partial c=0$ if and only if $c(y)=a$ for all $y$, for some $a\in\bA$; i.e.\ the $2$-cycles are the multiples
+$a\mathbf 1$ of $\mathbf 1:=\sum_y(y,12)$.
+\end{lemma}
+
+\begin{proof}
+Since $\partial(y',12)=(y',1)+(y'+e_1,2)-(y'+e_2,1)-(y',2)$, the link $(y,1)$ occurs exactly in $\partial(y,12)$ (with
+coefficient $+1$) and in $\partial(y-e_2,12)$ (with coefficient $-1$), and these plaquettes are distinct because
+$L_2\ge2$. Hence $(\partial c)_{(y,1)}=c(y)-c(y-e_2)$. Likewise $(y,2)$ occurs exactly in $\partial(y,12)$ (coefficient
+$-1$) and in $\partial(y-e_1,12)$ (coefficient $+1$), so $(\partial c)_{(y,2)}=c(y-e_1)-c(y)$. Thus $\partial c=0$ iff
+$c$ is invariant under the translations by $e_1$ and $e_2$, which generate $\Lambda_2$, i.e.\ iff $c$ is constant.
+\end{proof}
+
+\begin{definition}[Projection onto a coordinate $2$-torus]\label{al:def:proj}
+Fix $\mu<\nu$ and let $\Lambda_{\mu\nu}:=\Z/L_\mu\Z\times\Z/L_\nu\Z$ be the two-dimensional periodic lattice of
+Lemma~\ref{al:lem:2cycles} (with $L_1=L_\mu$, $L_2=L_\nu$), $\pi:\Lambda\to\Lambda_{\mu\nu}$, $\pi(x)=(x_\mu,x_\nu)$. Define
+homomorphisms $\pi_\#:\sC_k(\Lambda;\bA)\to\sC_k(\Lambda_{\mu\nu};\bA)$, $k=1,2$, on basis elements by
+\[
+\pi_\#(x,\mu)=(\pi x,1),\quad \pi_\#(x,\nu)=(\pi x,2),\quad \pi_\#(x,\lambda)=0\ \ (\lambda\notin\{\mu,\nu\}),
+\]
+\[
+\pi_\#(x,\mu\nu)=(\pi x,12),\qquad \pi_\#(x,\lambda\lambda')=0\ \ (\{\lambda,\lambda'\}\neq\{\mu,\nu\}).
+\]
+\end{definition}
+
+\begin{lemma}[The projection is a chain map]\label{al:lem:chainmap}
+$\partial\circ\pi_\#=\pi_\#\circ\partial$ on $\sC_2(\Lambda;\bA)$.
+\end{lemma}
+
+\begin{proof}
+It suffices to check basis elements $p=(x,\lambda\lambda')$, $\lambda<\lambda'$. Note $\pi(x+e_\mu)=\pi x+e_1$,
+$\pi(x+e_\nu)=\pi x+e_2$ and $\pi(x+e_\tau)=\pi x$ for $\tau\notin\{\mu,\nu\}$.
+
+\emph{Case $\{\lambda,\lambda'\}=\{\mu,\nu\}$.} Then
+$\pi_\#\partial p=(\pi x,1)+(\pi x+e_1,2)-(\pi x+e_2,1)-(\pi x,2)=\partial(\pi x,12)=\partial\pi_\#p$.
+
+\emph{Case $\{\lambda,\lambda'\}\cap\{\mu,\nu\}=\emptyset$.} All four links of $p$ are mapped to $0$, and $\pi_\#p=0$.
+
+\emph{Case of exactly one common direction.} Let $\alpha\in\{\mu,\nu\}$ be the common direction and $\tau$ the other
+direction of $p$. Then $\pi_\#p=0$. By the definition of $\partial$, $\partial p$ consists of the two $\tau$-links of
+$p$, which are mapped to $0$, and of $\pm[(x,\alpha)-(x+e_\tau,\alpha)]$ (with sign $+$ if $\alpha=\lambda$ and $-$ if
+$\alpha=\lambda'$). Since $\pi(x+e_\tau)=\pi x$, the two $\alpha$-links have the same image and $\pi_\#\partial p=0$.
+\end{proof}
+
+\begin{definition}[$\Z_M$-area]\label{al:def:area}
+For a closed path $C$ and $m\in\Z_M$ let
+\[
+A_m(C):=\min\bigl\{|\supp\kappa|:\ \kappa\in\sC_2(\Lambda;\Z_M),\ \partial\kappa=-m[C]\bigr\}\in\{0,1,2,\dots\}\cup\{+\infty\},
+\]
+with $\min\emptyset:=+\infty$ (here $[C]$ is reduced modulo $M$). Clearly $A_0(C)=0$.
+\end{definition}
+
+\begin{proposition}[Area of a rectangle]\label{al:prop:area}
+Let $C$ be a rectangular loop in the plane $(\mu,\nu)$, $m\in\Z_M\setminus\{0\}$, and $\kappa\in\sC_2(\Lambda;\Z_M)$ with
+$\partial\kappa=-m[C]$. Then
+\[
+\bigl|\supp\kappa\cap\cP_{\mu\nu}\bigr|\ \ge\ A=\min\bigl(RT,\,L_\mu L_\nu-RT\bigr).
+\]
+Moreover $A_m(C)=A$.
+\end{proposition}
+
+\begin{proof}
+By Lemmas~\ref{al:lem:chainmap} and \ref{al:lem:boundaries}(ii),
+\[
+\partial(\pi_\#\kappa)=\pi_\#(\partial\kappa)=-m\,\pi_\#[C]=-m\,\pi_\#\partial D=-m\,\partial(\pi_\#D).
+\]
+Here
+$\pi_\#D=D'$ is the set of the $RT$ plaquettes $(\pi x_{ij},12)$ of $\Lambda_{\mu\nu}$, which are distinct since
+$R\le L_\mu$ and $T\le L_\nu$. Thus $\pi_\#\kappa+mD'$ is a $2$-cycle of $\Lambda_{\mu\nu}$ with coefficients in $\Z_M$,
+and by Lemma~\ref{al:lem:2cycles} there is $k\in\Z_M$ with $\pi_\#\kappa=k\mathbf 1-mD'$: the coefficient of $\pi_\#\kappa$
+is $k-m$ on the $RT$ plaquettes of $D'$ and $k$ on the other $L_\mu L_\nu-RT$ plaquettes. If $k=0$ it is non-zero on
+$D'$ (as $m\neq0$); if $k=m$ it is non-zero off $D'$; otherwise it is non-zero everywhere. In all cases the number of
+plaquettes $q$ of $\Lambda_{\mu\nu}$ with $(\pi_\#\kappa)_q\neq0$ is at least $A$. Now
+$(\pi_\#\kappa)_q=\sum_{p\in\pi^{-1}(q)}\kappa_p$, where $\pi^{-1}(q):=\{(x,\mu\nu):\pi x=q\}\subseteq\cP_{\mu\nu}$; so
+$(\pi_\#\kappa)_q\ne0$ implies $\supp\kappa\cap\pi^{-1}(q)\neq\emptyset$, and the sets $\pi^{-1}(q)$ are pairwise
+disjoint. Hence $|\supp\kappa\cap\cP_{\mu\nu}|\ge A$, and in particular $A_m(C)\ge A$. Conversely, by
+Lemma~\ref{al:lem:boundaries}(ii) the chains $-mD$ and $m(\Sigma-D)$ have boundary $-m[C]$ and supports $D$ and
+$\Sigma\setminus D$, of sizes $RT$ and $L_\mu L_\nu-RT$; so $A_m(C)\le A$.
+\end{proof}
+
+\section{The centre selection rule}\label{al:sec:selection}
+
+Throughout this section $z_0\in G$ is central of finite order $M\ge2$, $\omega=e^{2\pi i/M}$, and $m(r)$ is the
+$z_0$-charge (Definition~\ref{al:def:charge}).
+
+\begin{lemma}[Charge decomposition of $f_\beta$]\label{al:lem:fk}
+For $k\in\Z_M$ and $U\in G$ define
+\[
+f_k(U):=\frac1M\sum_{j=0}^{M-1}\omega^{-jk}f_\beta(z_0^jU).
+\]
+Then:
+\begin{enumerate}[label=(\roman*)]
+\item $f_k$ is continuous and $f_k(z_0^jU)=\omega^{jk}f_k(U)$ for all $j\in\Z$, $U\in G$;
+\item $\sum_{k\in\Z_M}f_k=f_\beta$;
+\item $\norm{f_k}_\infty\le\epsilon(\beta)$;
+\item $f_k=\sum_{r\neq0,\ m(r)=k}\frac{c_r(\beta)}{c_0(\beta)}\chi_r$, the series converging absolutely and uniformly.
+\end{enumerate}
+Only (i) and (ii) are used below.
+\end{lemma}
+
+\begin{proof}
+(i) Continuity is clear. Since $z_0^M=1$, $j\mapsto\omega^{-jk}f_\beta(z_0^jU)$ is $M$-periodic, so shifting the
+summation index, $f_k(z_0U)=\frac1M\sum_j\omega^{-jk}f_\beta(z_0^{j+1}U)=\omega^k f_k(U)$; iterating gives the claim for
+$j\ge0$, and for $j<0$ use $z_0^{-1}=z_0^{M-1}$. (ii) $\sum_kf_k(U)=\frac1M\sum_jf_\beta(z_0^jU)\sum_k\omega^{-jk}=f_\beta(U)$,
+because $\sum_{k\in\Z_M}\omega^{-jk}=M\delta_{j0}$ for $0\le j<M$. (iii) is the triangle inequality and
+\eqref{al:eq:facts}. (iv) By \Flab{Corollary}{cor:uniform}, $f_\beta=\sum_{r\neq0}(c_r/c_0)\chi_r$ absolutely and
+uniformly. Inserting this into the (finite) sum defining $f_k$ and using Lemma~\ref{al:lem:central},
+$f_k=\sum_{r\neq0}(c_r/c_0)\chi_r\cdot\frac1M\sum_j\omega^{j(m(r)-k)}=\sum_{r\neq0,\,m(r)=k}(c_r/c_0)\chi_r$.
+\end{proof}
+
+\begin{definition}[Loop integrals]\label{al:def:Phi}
+For a closed path $C$, an irreducible representation $r$, a set $X\subseteq\cP$ and a map $\kappa:X\to\Z_M$, put
+\[
+\Phi_{r,C}(X):=\int\chi_r(U_C)\prod_{p\in X}f_\beta(U_p)\dU,\qquad
+\Phi_{r,C}(X;\kappa):=\int\chi_r(U_C)\prod_{p\in X}f_{\kappa(p)}(U_p)\dU ,
+\]
+and identify $\kappa$ with the chain $\sum_{p\in X}\kappa(p)\,p\in\sC_2(\Lambda;\Z_M)$, whose support is contained in $X$.
+\end{definition}
+
+\begin{lemma}[Selection rule]\label{al:lem:selection}
+If $\Phi_{r,C}(X;\kappa)\neq0$, then $\partial\kappa=-m(r)\,[C]$ in $\sC_1(\Lambda;\Z_M)$.
+\end{lemma}
+
+\begin{proof}
+Fix a link $\ell$ and let $\tau_\ell:\Omega_\Lambda\to\Omega_\Lambda$ replace $U_\ell$ by $z_0U_\ell$ and leave the other
+coordinates unchanged. It preserves $dU$ (left invariance of Haar measure in the $\ell$-th factor). Since $z_0$ is central
+and $\ell$ occurs at most once among the links of a plaquette, $(\tau_\ell U)_p=z_0^{[p:\ell]}U_p$ for every plaquette $p$
+(Definition~\ref{al:def:chains}); and $(\tau_\ell U)_C=z_0^{[C:\ell]}U_C$, since every occurrence of $\ell$ in $C$
+contributes a factor $z_0^{\pm1}$ which can be moved to the front. Let $F(U):=\chi_r(U_C)\prod_{p\in X}f_{\kappa(p)}(U_p)$.
+By Lemma~\ref{al:lem:fk}(i) and Lemma~\ref{al:lem:central},
+\[
+F(\tau_\ell U)=\omega^{\sum_{p\in X}[p:\ell]\kappa(p)\,+\,m(r)[C:\ell]}\,F(U)=\omega^{(\partial\kappa+m(r)[C])_\ell}\,F(U),
+\]
+the exponent being computed in $\Z_M$. Integrating, $\Phi_{r,C}(X;\kappa)=\omega^{(\partial\kappa+m(r)[C])_\ell}\,\Phi_{r,C}(X;\kappa)$.
+If $\Phi_{r,C}(X;\kappa)\neq0$, then $\omega^{(\partial\kappa+m(r)[C])_\ell}=1$, i.e.\ $(\partial\kappa+m(r)[C])_\ell=0$
+in $\Z_M$, because $\omega$ is a primitive $M$-th root of unity. This holds for every $\ell$.
+\end{proof}
+
+\begin{proposition}[Vanishing of small loop polymers]\label{al:prop:vanish}
+Let $C$ be a closed path, $r$ irreducible and $X\subseteq\cP$. If $\Phi_{r,C}(X)\neq0$, then there is
+$\kappa\in\sC_2(\Lambda;\Z_M)$ with $\supp\kappa\subseteq X$ and $\partial\kappa=-m(r)[C]$; in particular
+$|X|\ge A_{m(r)}(C)$. If $C$ is a rectangular loop in the plane $(\mu,\nu)$ and $m(r)\neq0$, then $\Phi_{r,C}(X)\neq0$
+implies $|X\cap\cP_{\mu\nu}|\ge A$.
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{al:lem:fk}(ii), $\prod_{p\in X}f_\beta(U_p)=\sum_{\kappa\in\Z_M^X}\prod_{p\in X}f_{\kappa(p)}(U_p)$, so
+$\Phi_{r,C}(X)=\sum_\kappa\Phi_{r,C}(X;\kappa)$ (a finite sum). If $\Phi_{r,C}(X)\ne0$, some $\Phi_{r,C}(X;\kappa)\neq0$,
+and Lemma~\ref{al:lem:selection} applies to this $\kappa$. Then $|X|\ge|\supp\kappa|\ge A_{m(r)}(C)$, and for a
+rectangle Proposition~\ref{al:prop:area} gives $|X\cap\cP_{\mu\nu}|\ge|\supp\kappa\cap\cP_{\mu\nu}|\ge A$.
+\end{proof}
+
+\begin{proposition}[Loops winding around the torus]\label{al:prop:winding}
+Let $C$ be a closed path, $\lambda$ a direction, and $w_\lambda(C):=\sum_{x:\,x_\lambda=0}[C:(x,\lambda)]\in\Z$ the net
+number of times $C$ crosses from the slice $x_\lambda=0$ to the slice $x_\lambda=1$. If $m(r)\,w_\lambda(C)\neq0$ in
+$\Z_M$, then $A_{m(r)}(C)=+\infty$, and $\langle\chi_r(U_C)\rangle_{\Lambda,\beta}=0$ for every $\beta\ge0$.
+\end{proposition}
+
+\begin{proof}
+Let $\phi_\lambda:\sC_1(\Lambda;\Z_M)\to\Z_M$, $\phi_\lambda(c):=\sum_{x:\,x_\lambda=0}c_{(x,\lambda)}$. A plaquette not
+spanning direction $\lambda$ has no $\lambda$-links; a plaquette spanning $\lambda$ and $\lambda'$ has exactly two
+$\lambda$-links, $(y,\lambda)$ and $(y+e_{\lambda'},\lambda)$, with opposite incidence numbers and the same
+$\lambda$-coordinate. Hence $\phi_\lambda(\partial p)=0$ for every plaquette, so $\phi_\lambda\circ\partial=0$. If
+$\partial\kappa=-m(r)[C]$, then $0=\phi_\lambda(\partial\kappa)=-m(r)w_\lambda(C)$ in $\Z_M$, a contradiction; so
+$A_{m(r)}(C)=+\infty$. For the second claim let $\tau$ replace $U_\ell$ by $z_0U_\ell$ simultaneously for all links
+$\ell=(x,\lambda)$ with $x_\lambda=0$. It preserves $dU$. By the observation just made, a plaquette contains either
+no transformed link or exactly two, $\ell$ and $\ell'$, with $[p:\ell]+[p:\ell']=0$; as $z_0$ is central,
+$(\tau U)_p=z_0^{[p:\ell]+[p:\ell']}U_p=U_p$ in the second case, so $W_\beta\circ\tau=W_\beta$. Moreover
+$(\tau U)_C=z_0^{w_\lambda(C)}U_C$. Hence
+$\langle\chi_r(U_C)\rangle=\langle\chi_r(U_C)\circ\tau\rangle=\omega^{m(r)w_\lambda(C)}\langle\chi_r(U_C)\rangle$, and the
+expectation vanishes.
+\end{proof}
+
+\begin{remark}[Why the charge decomposition is used only inside $\Phi$]\label{al:rem:whyinside}
+One could decompose every factor $f_\beta(U_p)$ of $\prod_p(1+f_\beta(U_p))$ as $\sum_kf_k(U_p)$ from the start, i.e.\
+expand over assignments $\cP\to\{*\}\cup\Z_M$. The selection rule would then apply term by term, but bounding each term
+separately costs a factor $M^{|X|}$ (or requires the character coefficients). Proposition~\ref{al:prop:vanish} uses the
+decomposition only to show that $\Phi_{r,C}(X)$ \emph{vanishes}; the size of the non-vanishing $\Phi_{r,C}(X)$ is then
+estimated with the undecomposed $f_\beta$ by $d_r\epsilon(\beta)^{|X|}$. This is why no constant below depends on $M$ or
+$N$.
+\end{remark}
+
+\section{Expansion of a Wilson loop and the ratio of partition functions}\label{al:sec:expansion}
+
+\begin{definition}[Restricted partition functions, loop polymers]\label{al:def:Xi}
+For $\cQ\subseteq\cP$ let
+\[
+\Xi(\cQ):=\int\prod_{p\in\cQ}\bigl(1+f_\beta(U_p)\bigr)\dU=c_0(\beta)^{-|\cQ|}\int\prod_{p\in\cQ}w_\beta(U_p)\dU\ \in(0,\infty),
+\]
+and let $\Gamma(\cQ)$ be the set of polymers contained in $\cQ$. Thus $\Xi(\cP)=Z_\Lambda(\beta)/c_0(\beta)^{|\cP|}$
+is the polymer partition function $\Xi_\Lambda(\beta)$ of \Fref{Proposition}{Polymer representation}{prop:polymer}.
+For a closed path $C$ let $\cP_C:=\{p\in\cP:E(p)\cap E_C\neq\emptyset\}$; let $\cX_C$ be the family of sets
+$X\subseteq\cP$ every connected component of which contains a plaquette of $\cP_C$ (including $X=\emptyset$); and for
+$X\subseteq\cP$ let
+\[
+\overline X:=\{p\in\cP:\ E(p)\cap\bigl(E(X)\cup E_C\bigr)\neq\emptyset\}\ \supseteq\ X\cup\cP_C .
+\]
+By Lemma~\ref{al:lem:facts}(d), $|\cP_C|\le2(d-1)|E_C|$ and $|\overline X|\le(K+1)|X|+2(d-1)|E_C|$.
+\end{definition}
+
+For an abstract polymer system we use square brackets: if $\Gamma$ is a finite set with a symmetric and reflexive
+relation $\not\approx$ (incompatibility) and $z:\Gamma\to\C$, then for $\mathcal F\subseteq\Gamma$
+\begin{equation}\label{al:eq:abstractXi}
+\Xi[\mathcal F]:=\sum_{\substack{\cS\subseteq\mathcal F\\ \text{pairwise compatible}}}\ \prod_{\gamma\in\cS}z(\gamma),
+\end{equation}
+the empty family contributing $1$. Since $\gamma\not\approx\gamma$, pairwise compatible tuples have distinct entries, so
+this agrees with the sum over ordered tuples weighted by $1/n!$ used in \cite{F}.
+
+\begin{lemma}[Polymer representation of $\Xi(\cQ)$]\label{al:lem:Xipolymer}
+For every $\cQ\subseteq\cP$, $\Xi(\cQ)=\Xi[\Gamma(\cQ)]$, for the polymer system of
+\Flab{Definition}{def:polymer} restricted to $\Gamma(\cQ)$.
+\end{lemma}
+
+\begin{proof}
+Expanding the product, $\Xi(\cQ)=\sum_{Y\subseteq\cQ}\int\prod_{p\in Y}f_\beta(U_p)\dU$. The connected components
+$\gamma_1,\dots,\gamma_k$ of $Y$ are polymers in $\Gamma(\cQ)$, pairwise compatible (two components sharing a link
+would be adjacent), and the integral factorises into $\prod_iz(\gamma_i)$ because the $\gamma_i$ depend on disjoint sets
+of link variables and $dU$ is a product measure. Conversely, a pairwise compatible family in $\Gamma(\cQ)$ consists
+of disjoint polymers no two of which contain adjacent plaquettes, so it is the family of components of its union. Hence
+$Y\mapsto\{\gamma_1,\dots,\gamma_k\}$ is a bijection onto the compatible subfamilies of $\Gamma(\cQ)$ (this is the
+argument of \Flab{Proposition}{prop:polymer}). Positivity of $\Xi(\cQ)$ follows from $1+f_\beta=w_\beta/c_0>0$.
+\end{proof}
+
+\begin{lemma}[Loop expansion]\label{al:lem:loopexp}
+For every closed path $C$, irreducible $r$ and $\beta\ge0$,
+\[
+\langle\chi_r(U_C)\rangle_{\Lambda,\beta}=\sum_{X\in\cX_C}\Phi_{r,C}(X)\,\frac{\Xi(\cP\setminus\overline X)}{\Xi(\cP)} .
+\]
+\end{lemma}
+
+\begin{proof}
+Since $w_\beta=c_0(1+f_\beta)$,
+\[
+\frac{Z_\Lambda(\beta)}{c_0^{|\cP|}}\langle\chi_r(U_C)\rangle=\int\chi_r(U_C)\prod_{p\in\cP}(1+f_\beta(U_p))\dU
+=\sum_{S\subseteq\cP}\int\chi_r(U_C)\prod_{p\in S}f_\beta(U_p)\dU .
+\]
+For $S\subseteq\cP$ let $X(S)$ be the union of the components of $S$ that meet $\cP_C$, and $Y(S):=S\setminus X(S)$.
+
+\emph{Claim: $S\mapsto(X(S),Y(S))$ is a bijection from the subsets of $\cP$ onto the pairs $(X,Y)$ with $X\in\cX_C$ and
+$Y\subseteq\cP\setminus\overline X$, with inverse $(X,Y)\mapsto X\cup Y$.} Clearly $X(S)\in\cX_C$. Let $p\in Y(S)$. Its
+component in $S$ does not meet $\cP_C$, so $E(p)\cap E_C=\emptyset$; and $E(p)\cap E(X(S))=\emptyset$, since otherwise $p$
+would share a link with a plaquette of $X(S)$ and belong to one of the components forming $X(S)$. So
+$Y(S)\cap\overline{X(S)}=\emptyset$. Conversely let $X\in\cX_C$, $Y\subseteq\cP\setminus\overline X$ and $S=X\cup Y$
+(a disjoint union, as $X\subseteq\overline X$). No plaquette of $Y$ shares a link with a plaquette of $X$, so every
+component of $S$ is a component of $X$ or a component of $Y$; the former meet $\cP_C$, the latter do not (as
+$\cP_C\subseteq\overline X$). Hence $X(S)=X$ and $Y(S)=Y$, which proves the claim.
+
+For such a pair, the function $\chi_r(U_C)\prod_{p\in X}f_\beta(U_p)$ depends only on the links in
+$E_C\cup E(X)$, and $\prod_{p\in Y}f_\beta(U_p)$ only on the links in $E(Y)$, which is disjoint from
+$E_C\cup E(X)$ because $Y\cap\overline X=\emptyset$. As $dU$ is a product measure, the integral factorises, and
+\begin{align*}
+\sum_{S\subseteq\cP}\int\chi_r(U_C)\prod_{p\in S}f_\beta(U_p)\dU
+&=\sum_{X\in\cX_C}\Phi_{r,C}(X)\sum_{Y\subseteq\cP\setminus\overline X}\int\prod_{p\in Y}f_\beta(U_p)\dU\\
+&=\sum_{X\in\cX_C}\Phi_{r,C}(X)\,\Xi(\cP\setminus\overline X).
+\end{align*}
+Dividing by $Z_\Lambda/c_0^{|\cP|}=\Xi(\cP)$ gives the lemma.
+\end{proof}
+
+The following lemma is the inductive ``no-cluster-expansion'' form of the Kotecký--Preiss criterion
+\cite{KP86,Dob96}; see \cite[Section~2]{FP07} for its history and for the same bounds (their (2.10), (2.11), (2.14),
+(2.15)). We give the short proof.
+
+\begin{lemma}[Ratio bound for polymer systems]\label{al:lem:ratio}
+Let $\Gamma$ be a finite set with a symmetric reflexive relation $\not\approx$, let $z:\Gamma\to\C$, and suppose
+$a:\Gamma\to[0,\infty)$ satisfies
+\begin{equation}\label{al:eq:KP}
+\sum_{\gamma'\in\Gamma:\ \gamma'\not\approx\gamma}|z(\gamma')|\,e^{a(\gamma')}\le a(\gamma)\qquad\text{for all }\gamma\in\Gamma .
+\end{equation}
+Put $u(\gamma):=|z(\gamma)|e^{a(\gamma)}$. Then for every $\mathcal F\subseteq\Gamma$, $\Xi[\mathcal F]\neq0$, and for
+every $\gamma\in\mathcal F$
+\begin{equation}\label{al:eq:onestep}
+e^{-u(\gamma)}\le\Bigl|\frac{\Xi[\mathcal F]}{\Xi[\mathcal F\setminus\{\gamma\}]}\Bigr|\le e^{u(\gamma)} .
+\end{equation}
+Consequently, for $\mathcal F'\subseteq\mathcal F\subseteq\Gamma$,
+\[
+\exp\Bigl(-\sum_{\gamma\in\mathcal F\setminus\mathcal F'}u(\gamma)\Bigr)\le\Bigl|\frac{\Xi[\mathcal F']}{\Xi[\mathcal F]}\Bigr|
+\le\exp\Bigl(\sum_{\gamma\in\mathcal F\setminus\mathcal F'}u(\gamma)\Bigr).
+\]
+\end{lemma}
+
+\begin{proof}
+We prove by induction on $n\ge0$: \emph{for every $\mathcal F$ with $|\mathcal F|\le n$, $\Xi[\mathcal F]\neq0$ and
+\eqref{al:eq:onestep} holds for every $\gamma\in\mathcal F$.} For $n=0$, $\Xi[\emptyset]=1$. Let $|\mathcal F|=n+1$ and
+$\gamma\in\mathcal F$, and let $\mathcal N(\gamma):=\{\gamma':\gamma'\not\approx\gamma\}\ni\gamma$. A compatible family
+$\cS\subseteq\mathcal F$ either does not contain $\gamma$, or contains $\gamma$ and then $\cS\setminus\{\gamma\}$ is a
+compatible family in $\mathcal F\setminus\mathcal N(\gamma)$; conversely every such family together with $\gamma$ is
+compatible. Hence, with $\mathcal F_0:=\mathcal F\setminus\{\gamma\}$,
+\begin{equation}\label{al:eq:recursion}
+\Xi[\mathcal F]=\Xi[\mathcal F_0]+z(\gamma)\,\Xi[\mathcal F\setminus\mathcal N(\gamma)] .
+\end{equation}
+Let $\gamma_1,\dots,\gamma_k$ be the elements of $\mathcal F_0\cap\mathcal N(\gamma)$ and
+$\mathcal F_j:=\mathcal F_{j-1}\setminus\{\gamma_j\}$, so that $\mathcal F_k=\mathcal F\setminus\mathcal N(\gamma)$. Each
+$\mathcal F_{j-1}$ has at most $n$ elements and contains $\gamma_j$, so by the induction hypothesis $\Xi[\mathcal F_j]\neq0$
+for $0\le j\le k$ and $|\Xi[\mathcal F_j]|\le e^{u(\gamma_j)}|\Xi[\mathcal F_{j-1}]|$ (left inequality in
+\eqref{al:eq:onestep}). Therefore, using \eqref{al:eq:KP} at $\gamma$ (the sum there contains $\gamma$ itself and the
+distinct $\gamma_j$),
+\[
+\bigl|\Xi[\mathcal F\setminus\mathcal N(\gamma)]\bigr|\le e^{\sum_ju(\gamma_j)}\,|\Xi[\mathcal F_0]|\le e^{a(\gamma)-u(\gamma)}\,|\Xi[\mathcal F_0]| .
+\]
+By \eqref{al:eq:recursion}, $\Xi[\mathcal F]=\Xi[\mathcal F_0](1+w)$ with
+$|w|\le|z(\gamma)|e^{a(\gamma)-u(\gamma)}=u(\gamma)e^{-u(\gamma)}$. Writing $u=u(\gamma)$, the elementary inequality
+$e^u\ge1+u$ gives $1-ue^{-u}\ge e^{-u}$ and $1+ue^{-u}\le1+u\le e^u$, so $e^{-u}\le|1+w|\le e^u$. This is
+\eqref{al:eq:onestep}, and it shows $\Xi[\mathcal F]\neq0$. The last statement follows by removing the elements of
+$\mathcal F\setminus\mathcal F'$ one at a time and applying \eqref{al:eq:onestep} at each step.
+\end{proof}
+
+\begin{lemma}[The Kotecký--Preiss condition for plaquette polymers]\label{al:lem:KPsums}
+Let $0<\beta<\beta_0(d)$. For every set $S\subseteq\cP$,
+\[
+\sum_{\gamma\ \text{polymer}:\ \gamma\cap S\neq\emptyset}|z(\gamma)|\,e^{|\gamma|}\ \le\ \theta(\beta)\,|S| .
+\]
+In particular, for every polymer $\gamma_0$, $\sum_{\gamma\not\approx\gamma_0}|z(\gamma)|e^{|\gamma|}\le(K+1)\theta(\beta)|\gamma_0|\le|\gamma_0|$,
+i.e.\ \eqref{al:eq:KP} holds for the polymers of $\Lambda$ with $a(\gamma)=|\gamma|$.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{al:lem:facts}(e),(f),
+\[
+\sum_{\gamma\cap S\ne\emptyset}|z(\gamma)|e^{|\gamma|}\le\sum_{p\in S}\ \sum_{n\ge1}\ \sum_{\gamma\ni p,\,|\gamma|=n}(e\epsilon)^n
+\le|S|\sum_{n\ge1}(e^2K\epsilon)^n=|S|\,\theta .
+\]
+A polymer $\gamma\not\approx\gamma_0$ contains a plaquette sharing a link with
+a plaquette of $\gamma_0$, i.e.\ meets the set $S$ of plaquettes equal or adjacent to a plaquette of $\gamma_0$, and
+$|S|\le(K+1)|\gamma_0|$; finally $(K+1)\theta<1$ by Lemma~\ref{al:lem:constants}. (This is the computation in the proof of
+\Fref{Theorem}{Convergence of the strong-coupling cluster expansion}{thm:conv}.)
+\end{proof}
+
+\begin{proposition}[Removing plaquettes]\label{al:prop:remove}
+Let $0<\beta<\beta_0(d)$. For every $\cQ\subseteq\cP$,
+\[
+e^{-\theta(\beta)|\cP\setminus\cQ|}\ \le\ \frac{\Xi(\cQ)}{\Xi(\cP)}\ \le\ e^{\theta(\beta)|\cP\setminus\cQ|}.
+\]
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{al:lem:Xipolymer}, $\Xi(\cQ)=\Xi[\Gamma(\cQ)]$ and $\Xi(\cP)=\Xi[\Gamma(\cP)]$, and both are positive.
+By Lemma~\ref{al:lem:KPsums}, Lemma~\ref{al:lem:ratio} applies to $\Gamma(\cP)$ with $a(\gamma)=|\gamma|$. The
+polymers in $\Gamma(\cP)\setminus\Gamma(\cQ)$ are exactly those meeting $S:=\cP\setminus\cQ$, and for them
+$\sum u(\gamma)\le\theta|S|$ by Lemma~\ref{al:lem:KPsums}.
+\end{proof}
+
+\begin{remark}
+One can also obtain Proposition~\ref{al:prop:remove}, with $e^{\pm|\cP\setminus\cQ|}$ instead of
+$e^{\pm\theta|\cP\setminus\cQ|}$, from the cluster expansion: by \Fref{Cited Theorem}{Kotecký--Preiss 1986}{thm:KP}
+applied to $\Gamma(\cP)$ and to $\Gamma(\cQ)$, $\log\Xi(\cP)-\log\Xi(\cQ)$ is the sum of the cluster weights
+over the clusters containing a polymer which meets $\cP\setminus\cQ$, and by the last statement of
+\Flab{Theorem}{thm:conv} these weigh at most $1$ per plaquette of $\cP\setminus\cQ$. We have preferred the
+self-contained Lemma~\ref{al:lem:ratio}.
+\end{remark}
+
+\begin{lemma}[Rooted counting]\label{al:lem:rooted}
+Let $\mathcal G$ be a simple graph on a finite vertex set $V$, $o\in V$, and $J,K\ge1$ integers such that $o$ has at most
+$J$ neighbours and every $v\in V\setminus\{o\}$ has at most $K$ neighbours in $V\setminus\{o\}$. For $n\ge0$, the number of
+sets $X\subseteq V\setminus\{o\}$ with $|X|=n$ such that the subgraph induced on $X\cup\{o\}$ is connected is at most
+$\binom{J+Kn}{n}$, hence at most $(1+t)^J\bigl((1+t)^K/t\bigr)^n$ for every $t>0$.
+\end{lemma}
+
+\begin{proof}
+Label the neighbours of $o$ injectively by elements of $\{1,\dots,J\}$ and, for each $v\neq o$, the neighbours of $v$ in
+$V\setminus\{o\}$ injectively by elements of $\{1,\dots,K\}$. Given $X$, let $H$ be the subgraph induced on $X\cup\{o\}$
+and run depth-first search on $H$ from $o$: from the current vertex move to its unvisited $H$-neighbour of smallest
+label, and go back to the parent when there is none. As $H$ is connected, this visits all of $X\cup\{o\}$ and produces a
+spanning tree $\tau$ of $H$ rooted at $o$. The children of $o$ are neighbours of $o$; since $o$ is visited first, the
+children of $v\neq o$ are neighbours of $v$ in $V\setminus\{o\}$. The children of a vertex are visited in increasing order
+of labels (a child chosen later was unvisited, hence available, when an earlier child was chosen), and the subtree of a
+child is visited completely before the next child. List the vertices in the order of their first visit,
+$o=v_0,v_1,\dots,v_n$, and let $b_0\in\{0,1\}^J$ and $b_i\in\{0,1\}^K$ ($i\ge1$) be the words whose $j$-th letter is $1$
+iff the neighbour of $v_i$ with label $j$ is a child of $v_i$ in $\tau$. The word $b=b_0b_1\cdots b_n$ has length $J+Kn$
+and exactly $n$ letters $1$ (one per non-root vertex).
+
+The word $b$ determines $X$. Indeed, by induction on $i$, the blocks $b_0,\dots,b_i$ determine $v_0,\dots,v_i$ and their
+children: $v_0=o$, and $v_{i+1}$ is the not yet visited child of smallest label of the most recently visited vertex among
+$v_0,\dots,v_i$ that still has a not yet visited child (at every time, the vertices with unvisited children are ancestors
+of the current vertex, and depth-first search continues from the deepest of them); the children of $v_{i+1}$ are then
+read off from $b_{i+1}$ and the labelling at $v_{i+1}$. Hence $X=\{v_1,\dots,v_n\}$ is a function of $b$, and the number of
+sets $X$ is at most the number of such words, $\binom{J+Kn}n$. Finally $\binom mn t^n\le(1+t)^m$ by the binomial theorem.
+\end{proof}
+
+\begin{corollary}[Counting loop polymers]\label{al:cor:countloop}
+For every closed path $C$ and $n\ge0$, $\#\{X\in\cX_C:|X|=n\}\le\binom{J_C+Kn}{n}$ with $J_C:=2(d-1)|E_C|$.
+\end{corollary}
+
+\begin{proof}
+Let $\mathcal G$ be the graph on $\cP\cup\{o\}$ ($o$ a new vertex) whose edges are the pairs of adjacent plaquettes and the
+pairs $\{o,p\}$ with $p\in\cP_C$. Then $o$ has $|\cP_C|\le J_C$ neighbours and each plaquette at most $K$ neighbours in
+$\cP$ (Lemma~\ref{al:lem:facts}(d)). A set $X\subseteq\cP$ belongs to $\cX_C$ iff $X\cup\{o\}$ induces a connected
+subgraph: if every component of $X$ contains a plaquette of $\cP_C$, each component is joined to $o$; conversely, if
+$X\cup\{o\}$ is connected and $Y$ is a component of $X$, a shortest path from $o$ to $Y$ in $X\cup\{o\}$ leaves $o$ through
+some $p\in\cP_C\cap X$ and then stays in $X$, hence in the component of $p$, so $p\in Y$. Apply
+Lemma~\ref{al:lem:rooted} (the bound is increasing in $J$).
+\end{proof}
+
+\section{The area law}\label{al:sec:main}
+
+\begin{proposition}[Master estimate]\label{al:prop:master}
+Let $0<\beta<\beta_0(d)$, let $C$ be a closed path and $r$ an irreducible representation, and let $n_0\ge0$ be an integer
+such that $\Phi_{r,C}(X)=0$ for all $X\in\cX_C$ with $|X|<n_0$. Then for every $t>0$ with
+$q_t:=\frac{(1+t)^K}{t}\,e\,\epsilon(\beta)<1$,
+\[
+\bigl|\langle\chi_r(U_C)\rangle_{\Lambda,\beta}\bigr|\le\frac{d_r}{1-q_t}\;q_t^{\,n_0}\;
+\exp\Bigl(2(d-1)\bigl[\log(1+t)+\theta(\beta)\bigr]\,|E_C|\Bigr).
+\]
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{al:lem:loopexp} and the hypothesis,
+\[
+|\langle\chi_r(U_C)\rangle|\le\sum_{X\in\cX_C,\,|X|\ge n_0}|\Phi_{r,C}(X)|\,\frac{\Xi(\cP\setminus\overline X)}{\Xi(\cP)} .
+\]
+For each $X$, $|\Phi_{r,C}(X)|\le d_r\epsilon^{|X|}$ by $|\chi_r|\le d_r$ and \eqref{al:eq:facts}, and by
+Proposition~\ref{al:prop:remove} and Definition~\ref{al:def:Xi},
+$\Xi(\cP\setminus\overline X)/\Xi(\cP)\le e^{\theta|\overline X|}\le e^{\theta(K+1)|X|+\theta J_C}$, where
+$J_C:=2(d-1)|E_C|$. Since
+$(K+1)\theta<1$ (Lemma~\ref{al:lem:constants}), Corollary~\ref{al:cor:countloop} and Lemma~\ref{al:lem:rooted} give
+\[
+|\langle\chi_r(U_C)\rangle|\le d_re^{\theta J_C}\sum_{n\ge n_0}\binom{J_C+Kn}{n}(e\epsilon)^n
+\le d_re^{\theta J_C}(1+t)^{J_C}\sum_{n\ge n_0}q_t^{\,n}=\frac{d_r\,q_t^{\,n_0}}{1-q_t}\,(1+t)^{J_C}e^{\theta J_C}. \qedhere
+\]
+\end{proof}
+
+\begin{theorem}[Area law, general form]\label{al:thm:general}
+Let $G,\rho$ be as in \Fname{Convention}{Group}, let $d\ge2$, all $L_\lambda\ge3$, and $0<\beta<\beta_0(d)$. Let
+$z_0\in G$ be central of finite order $M\ge2$, $r$ an irreducible representation with $z_0$-charge $m=m(r)$, and $C$ a
+closed path. If $A_m(C)=+\infty$ then $\langle\chi_r(U_C)\rangle_{\Lambda,\beta}=0$; otherwise
+\[
+\bigl|\langle\chi_r(U_C)\rangle_{\Lambda,\beta}\bigr|\le\frac{d_r}{1-x(\beta)}\,x(\beta)^{A_m(C)}\,e^{\kappa_1(\beta)|E_C|}
+=\frac{d_r}{1-x(\beta)}\exp\bigl(-\sigma(\beta)A_m(C)+\kappa_1(\beta)|E_C|\bigr).
+\]
+\end{theorem}
+
+\begin{proof}
+If $A_m(C)=+\infty$, Proposition~\ref{al:prop:vanish} gives $\Phi_{r,C}(X)=0$ for all $X$, and the expectation vanishes by
+Lemma~\ref{al:lem:loopexp}. Otherwise Proposition~\ref{al:prop:vanish} shows that Proposition~\ref{al:prop:master} applies
+with $n_0=A_m(C)$. Take $t=1/K$: then $(1+t)^K\le e$, so $q_t\le e^2K\epsilon=x<1$, and the claim follows because
+$q_t\mapsto q_t^{n_0}/(1-q_t)$ is increasing on $[0,1)$ and $2(d-1)[\log(1+\frac1K)+\theta]=\kappa_1$.
+\end{proof}
+
+\begin{corollary}[Area law for rectangular loops]\label{al:cor:rect}
+In the setting of Theorem~\ref{al:thm:general}, let $C$ be a rectangular loop with sides $R,T$ in the plane $(\mu,\nu)$ and
+$m(r)\neq0$. Then, with $A=\min(RT,L_\mu L_\nu-RT)$ and $|C|=2(R+T)$,
+\[
+\bigl|\langle\chi_r(U_C)\rangle_{\Lambda,\beta}\bigr|\le d_r\exp\bigl(-\sigma(\beta)A+\kappa(\beta)|C|\bigr).
+\]
+\end{corollary}
+
+\begin{proof}
+$A_m(C)=A$ by Proposition~\ref{al:prop:area} and $|E_C|=|C|\ge4$, so
+$\frac1{1-x}\le\exp\bigl(\frac{|C|}4\log\frac1{1-x}\bigr)$; insert into Theorem~\ref{al:thm:general}.
+\end{proof}
+
+\begin{corollary}[$SU(N)$; Theorem~\ref{al:thm:intro}]\label{al:cor:sun}
+Theorem~\ref{al:thm:intro} holds.
+\end{corollary}
+
+\begin{proof}
+Apply Corollary~\ref{al:cor:rect} with $z_0=e^{2\pi i/N}\mathbb 1_N$, $M=N$, $m(r)=n(r)$, and Lemma~\ref{al:lem:constants}
+for the properties of $\sigma$ and $\kappa$.
+\end{proof}
+
+\begin{corollary}[$U(1)$ and $U(N)$]\label{al:cor:u1}
+Let $0<\beta<\beta_0(d)$ and let $C$ be a rectangular loop as in Definition~\ref{al:def:loops}.
+\begin{enumerate}[label=(\roman*)]
+\item $G=U(1)$, $\rho=\mathrm{id}$ (so $N=1$ and $w_\beta(e^{i\phi})=e^{\beta\cos\phi}$): for every $q\in\Z\setminus\{0\}$,
+$\bigl|\langle U_C^{\,q}\rangle_{\Lambda,\beta}\bigr|\le\exp\bigl(-\sigma(\beta)A+\kappa(\beta)|C|\bigr)$.
+\item $G=U(N)$, $\rho$ the defining representation: if $r$ is irreducible and $D^r(e^{i\phi}\mathbb 1)=e^{iq\phi}\mathbb 1$ with
+$q\neq0$, then $|\langle\chi_r(U_C)\rangle_{\Lambda,\beta}|\le d_r\exp(-\sigma(\beta)A+\kappa(\beta)|C|)$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(ii) Let $M:=|q|+1\ge2$ and $z_0:=e^{2\pi i/M}\mathbb 1$, a central element of order $M$. Then
+$D^r(z_0)=e^{2\pi iq/M}\mathbb 1$, so $m(r)=q\bmod M\neq0$ because $0<|q|<M$; apply Corollary~\ref{al:cor:rect}.
+(Every irreducible $r$ of $U(N)$ is of this form for some $q\in\Z$: by Schur's lemma, as in the proof of
+Lemma~\ref{al:lem:central}, $D^r$ restricted to the centre $\{e^{i\phi}\mathbb 1\}$ is a continuous homomorphism
+$U(1)\to U(1)$, i.e.\ $e^{i\phi}\mapsto e^{iq\phi}$.) (i) is the case $N=1$, $\chi_q(U)=U^q$, $d_r=1$.
+\end{proof}
+
+\begin{corollary}[Perimeter coefficient tending to zero]\label{al:cor:smallkappa}
+In the setting of Corollary~\ref{al:cor:rect}, put $q(\beta):=e^{1+K\sqrt{\epsilon(\beta)}}\sqrt{\epsilon(\beta)}$. Then
+$q(\beta)<\frac3{10}$ and
+\[
+\bigl|\langle\chi_r(U_C)\rangle_{\Lambda,\beta}\bigr|\le\frac{d_r}{1-q(\beta)}\,q(\beta)^A\,
+\exp\Bigl(2(d-1)\bigl[\sqrt{\epsilon(\beta)}+\theta(\beta)\bigr]|C|\Bigr).
+\]
+As $\beta\downarrow0$, the perimeter coefficient $2(d-1)[\sqrt{\epsilon}+\theta]$ tends to $0$, $\frac1{1-q(\beta)}\to1$, and
+$\log\frac1{q(\beta)}=\frac12\log\frac1{\epsilon(\beta)}-1-K\sqrt{\epsilon(\beta)}\to\infty$.
+\end{corollary}
+
+\begin{proof}
+Apply Proposition~\ref{al:prop:master} with $n_0=A$ (Propositions~\ref{al:prop:vanish}, \ref{al:prop:area}) and
+$t=\sqrt\epsilon$: $q_t=(1+\sqrt\epsilon)^Ke\sqrt\epsilon\le q(\beta)$ and $\log(1+t)\le\sqrt\epsilon$. Since
+$\epsilon<\frac1{e^2K(K+2)}$, $\sqrt\epsilon<\frac1{e\sqrt{K(K+2)}}<\frac1{eK}$, so $K\sqrt\epsilon<\frac1e$ and
+$q(\beta)<e^{1+1/e}\cdot\frac1{e\sqrt{K(K+2)}}=\frac{e^{1/e}}{\sqrt{K(K+2)}}\le\frac{e^{1/e}}{\sqrt{24}}<0.295$, using
+$K\ge4$.
+\end{proof}
+
+\section{Infinite volume and the string tension}\label{al:sec:infinite}
+
+\begin{definition}[Periodisation and infinite-volume limit points]\label{al:def:limitpoints}
+Let $\Omega_\infty:=G^{E(\Z^d)}$ with the product topology (a compact metrisable space when $G$ is a compact Lie group).
+For a periodic lattice $\Lambda$ let $\iota_\Lambda:\Omega_\Lambda\to\Omega_\infty$, $(\iota_\Lambda U)_{(x,\lambda)}:=U_{([x],\lambda)}$,
+where $[x]$ is the image of $x\in\Z^d$ in $\Lambda$, and let $\tilde\mu_{\Lambda,\beta}:=(\iota_\Lambda)_*\mu_{\Lambda,\beta}$. A
+Borel probability measure $\mu_\infty$ on $\Omega_\infty$ is an \emph{infinite-volume limit point} at coupling $\beta$ if
+there are periodic lattices $\Lambda_k$ with $\min_\lambda L^{(k)}_\lambda\to\infty$ such that
+$\int F\,d\tilde\mu_{\Lambda_k,\beta}\to\int F\,d\mu_\infty$ for every continuous $F:\Omega_\infty\to\C$. Closed paths,
+holonomies and rectangular loops (with arbitrary $R,T\ge1$) in $\Z^d$ are defined as in Definition~\ref{al:def:loops}.
+\end{definition}
+
+\begin{corollary}[String tension]\label{al:cor:tension}
+Let $0<\beta<\beta_0(d)$ and let $z_0,M,r$ be as in Theorem~\ref{al:thm:general} with $m(r)\neq0$ (e.g.\ $G=SU(N)$ and
+$n(r)\neq0$).
+\begin{enumerate}[label=(\roman*)]
+\item For every periodic lattice with all $L_\lambda\ge3$ and every rectangular loop $C$ with sides $R,T$ in a plane
+$(\mu,\nu)$ with $L_\mu L_\nu\ge2RT$: $\ |\langle\chi_r(U_C)\rangle_{\Lambda,\beta}|\le d_r\exp(-\sigma(\beta)RT+\kappa(\beta)|C|)$.
+\item For every infinite-volume limit point $\mu_\infty$ and every rectangular loop $C$ in $\Z^d$ with sides $R,T\ge1$:
+$\ \bigl|\int\chi_r(U_C)\,d\mu_\infty\bigr|\le d_r\exp(-\sigma(\beta)RT+\kappa(\beta)|C|)$.
+\item Consequently, with $C_{R,T}$ any rectangular loop with sides $R,T$,
+\begin{gather*}
+\liminf_{\min(R,T)\to\infty}\Bigl(-\frac1{RT}\log\sup_\Lambda\bigl|\langle\chi_r(U_{C_{R,T}})\rangle_{\Lambda,\beta}\bigr|\Bigr)\ \ge\ \sigma(\beta),\\
+\liminf_{\min(R,T)\to\infty}\Bigl(-\frac1{RT}\log\Bigl|\int\chi_r(U_{C_{R,T}})\,d\mu_\infty\Bigr|\Bigr)\ \ge\ \sigma(\beta),
+\end{gather*}
+where the supremum is over all periodic lattices with all $L_\lambda\ge3$, $L_\mu>R$, $L_\nu>T$ and $L_\mu L_\nu\ge2RT$
+(with $-\log0:=+\infty$). In words: the string tension in every representation of non-zero charge, defined by any of these
+limits, is at least $\sigma(\beta)$, uniformly in the volume.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(i) $L_\mu L_\nu\ge2RT$ gives $A=RT$ in Corollary~\ref{al:cor:rect}. (ii) Let $\Lambda_k$ be as in
+Definition~\ref{al:def:limitpoints}. For $k$ large, $L^{(k)}_\mu>R$, $L^{(k)}_\nu>T$, $L^{(k)}_\mu L^{(k)}_\nu\ge2RT$ and all
+$L^{(k)}_\lambda\ge3$; then the image of $C$ in $\Lambda_k$ is a rectangular loop $\bar C$ with the same sides, and
+$\chi_r((\iota_{\Lambda_k}U)_C)=\chi_r(U_{\bar C})$, so $\int\chi_r(U_C)\,d\tilde\mu_{\Lambda_k,\beta}=\langle\chi_r(U_{\bar C})\rangle_{\Lambda_k,\beta}$,
+which is bounded as in (i). Since $\tilde U\mapsto\chi_r(\tilde U_C)$ is continuous on $\Omega_\infty$, the bound passes to
+the limit. (iii) By (i) and (ii), both quantities in brackets are at least
+$\sigma(\beta)-\bigl(2\kappa(\beta)(R+T)+\log d_r\bigr)/(RT)$, which tends to $\sigma(\beta)$ as $\min(R,T)\to\infty$.
+\end{proof}
+
+\begin{remark}[On infinite-volume limits]\label{al:rem:limits}
+Infinite-volume limit points exist: for $G$ a compact Lie group, $\Omega_\infty$ is compact and metrisable, so every
+sequence of probability measures on it has a weakly convergent subsequence (Prokhorov's theorem; e.g.\
+\cite[Section~5]{Bil99}). They are invariant under translations of $\Z^d$, since each $\tilde\mu_{\Lambda,\beta}$ is
+(\Fref{Theorem}{Basic properties}{thm:basic}(iv)). We do not prove here that the limit point is unique (milestone T1.1
+of the research program; cf.\ \Fname{Remark}{On the constants and on what this proves}, item (iii), the remark
+following \texttt{thm:strong}); Corollary~\ref{al:cor:tension} holds for all of them.
+\end{remark}
+
+\section{Representations without central charge; two dimensions}\label{al:sec:other}
+
+\begin{lemma}[Single-link vanishing]\label{al:lem:singlelink}
+Let $C$ be a closed path, $r\neq0$ irreducible and $X\subseteq\cP$.
+\begin{enumerate}[label=(\alph*)]
+\item If a link $\ell$ occurs exactly once in $C$ and $\ell\notin E(X)$, then $\Phi_{r,C}(X)=0$.
+\item If a link $\ell\notin E_C$ lies in exactly one plaquette of $X$, then $\Phi_{r,C}(X)=0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) After a cyclic shift of $C$ (which does not change $\chi_r(U_C)$), $U_C=U_\ell^{\epsilon}B$ with $\epsilon=\pm1$ and $B$
+independent of $U_\ell$, and no factor $f_\beta(U_p)$, $p\in X$, depends on $U_\ell$. By Fubini it suffices that
+$\int\chi_r(U^\epsilon B)\dU=\Tr\bigl(\int D^r(U^{\epsilon})\dU\,D^r(B)\bigr)=0$, which holds because $\int D^r_{ab}(U)\dU=0$
+for $r\neq0$ (\Flab{Cited Theorem}{thm:pw}(ii) with the trivial representation) and $dU$ is inversion invariant.
+(b) Let $p$ be the plaquette of $X$ containing $\ell$. Then $U_p=A\,U_\ell^{\pm1}B$ with $A,B$ independent of $U_\ell$, and no
+other factor of the integrand depends on $U_\ell$; integrate $U_\ell$ first and use Lemma~\ref{al:lem:facts}(c) (this is
+\Fref{Lemma}{Closed surfaces}{lem:closed}).
+\end{proof}
+
+\begin{proposition}[Perimeter bound for every non-trivial representation]\label{al:prop:perimeter}
+Let $G,\rho$ be as in \Fname{Convention}{Group}, $0<\beta<\beta_0(d)$, $C$ a rectangular loop and $r\neq0$ irreducible (no
+assumption on the centre). Then
+\[
+\bigl|\langle\chi_r(U_C)\rangle_{\Lambda,\beta}\bigr|\le\frac{d_r}{1-x(\beta)}\exp\Bigl(-\Bigl[\frac{\sigma(\beta)}4-\kappa_1(\beta)\Bigr]|C|\Bigr).
+\]
+The exponent is negative for all $\beta<\beta_0(d)$ if $d\ge4$ (then $\frac\sigma4-\kappa_1>\frac14\log22-\frac35>0.17$),
+and for all sufficiently small $\beta$ in every $d$.
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{al:lem:singlelink}(a), $\Phi_{r,C}(X)\neq0$ forces $E_C\subseteq E(X)$, hence $|X|\ge|E(X)|/4\ge|C|/4$.
+Apply Proposition~\ref{al:prop:master} with $n_0=\lceil|C|/4\rceil$ and $t=1/K$ as in the proof of
+Theorem~\ref{al:thm:general}, and use $x^{\lceil|C|/4\rceil}\le e^{-\sigma|C|/4}$. For $d\ge4$, Lemma~\ref{al:lem:constants}
+gives $\frac\sigma4>\frac14\log(8d-10)\ge\frac14\log22>0.77$ and $\kappa_1<\frac{d-1}{2d-3}\le\frac35$. In general
+$\sigma(\beta)\to\infty$ while $\kappa_1(\beta)$ stays bounded.
+\end{proof}
+
+\begin{lemma}[Contributing loop polymers in two dimensions]\label{al:lem:2dsupport}
+Let $d=2$, let $C$ be a rectangular loop, $r\neq0$ irreducible, and $X\subseteq\cP$ with $\Phi_{r,C}(X)\neq0$. Then
+$X\in\{D,\ \cP\setminus D,\ \cP\}$; in particular $|X|\ge A$.
+\end{lemma}
+
+\begin{proof}
+For $d=2$ every link lies in exactly two plaquettes (Lemma~\ref{al:lem:facts}(d)). By Lemma~\ref{al:lem:singlelink}, every
+link of $E_C$ lies in at least one plaquette of $X$, and every link of $E(X)\setminus E_C$ lies in two plaquettes of $X$.
+Consider $\mathbf x:=\sum_{p\in X}p\in\sC_2(\Lambda;\Z_2)$. Since $[p:\ell]\equiv1\pmod 2$ for $\ell\in E(p)$, the coefficient
+of $\ell$ in $\partial\mathbf x$ is the number of plaquettes of $X$ containing $\ell$, modulo $2$; so
+$\supp\partial\mathbf x\subseteq E_C$. By Lemma~\ref{al:lem:boundaries}(i), $\partial\mathbf x$ is a $1$-cycle. A $1$-chain
+$c=\sum_{\ell\in E_C}a_\ell\ell$ with $\partial c=0$ (mod $2$) has $a_\ell=a_{\ell'}$ for any two consecutive links of $C$ (their
+common site lies on no other link of $E_C$), so $c\in\{0,[C]\}$. If $\partial\mathbf x=[C]=\partial D$ (mod $2$), then $\mathbf x-D$ is a
+$2$-cycle of the two-dimensional torus $\Lambda$, hence $0$ or $\mathbf 1$ (Lemma~\ref{al:lem:2cycles} with $\bA=\Z_2$ and
+the directions $0,1$ in place of $1,2$), i.e.\ $X=D$ or $X=\cP\setminus D$. If $\partial\mathbf x=0$, then $\mathbf x\in\{0,\mathbf 1\}$; and $X\neq\emptyset$ since $E_C\subseteq E(X)$.
+So $X=\cP$. In all cases $|X|\ge\min(RT,L_0L_1-RT)=A$.
+\end{proof}
+
+\begin{proposition}[Two dimensions: every non-trivial representation]\label{al:prop:2d}
+Let $d=2$, $G,\rho$ as in \Fname{Convention}{Group}, $0<\beta<\beta_0(2)$, $C$ a rectangular loop and $r\neq0$ irreducible.
+Then $|\langle\chi_r(U_C)\rangle_{\Lambda,\beta}|\le d_r\exp(-\sigma(\beta)A+\kappa(\beta)|C|)$. In particular this holds for
+the adjoint representation of $SU(N)$, and for every non-trivial representation of a group with trivial centre such as
+$SO(3)$.
+\end{proposition}
+
+\begin{proof}
+By Lemma~\ref{al:lem:2dsupport}, Proposition~\ref{al:prop:master} applies with $n_0=A$; conclude as in the proofs of
+Theorem~\ref{al:thm:general} and Corollary~\ref{al:cor:rect}.
+\end{proof}
+
+\begin{remark}[Perimeter law for representations of $N$-ality zero; expected, not proved here]\label{al:rem:perimeterlaw}
+Let $G=SU(N)$, $d\ge3$ and $r\neq0$ with $n(r)=0$ (e.g.\ the adjoint representation). Then the selection rule is void
+($A_0(C)=0$), and the only general constraint is Lemma~\ref{al:lem:singlelink}, which leads to the perimeter bound of
+Proposition~\ref{al:prop:perimeter}. The expected behaviour at small $\beta$ is the \emph{perimeter law}
+\[
+c_1(\beta)\,e^{-c_2(\beta)|C|}\ \le\ \langle\chi_r(U_C)\rangle_{\Lambda,\beta}\ \le\ d_r\,e^{-c_3(\beta)|C|},
+\qquad c_1,c_2,c_3>0,
+\]
+uniformly in rectangular loops, so that the string tension of $r$ vanishes (``screening of adjoint charges by gluons'').
+The reason is geometric. For $\lambda\notin\{\mu,\nu\}$, $L_\mu\ge R+2$ and $L_\nu\ge T+2$, let $F$ be the union of the $2(R+T)+4$ unit cubes spanned by
+$e_\mu,e_\nu,e_\lambda$ that lie in $\{x^0_\lambda\le x_\lambda\le x^0_\lambda+1\}$ and project onto the unit squares
+outside the rectangle sharing at least a vertex with its boundary. Then $F$ is a solid torus, its boundary $\partial F$ is
+a closed surface of $4|C|+16$ plaquettes, and each link of $C$ lies in exactly two plaquettes of $\partial F$. Assigning the
+fundamental representation to these plaquettes (oriented as the boundary of $F$), the representations meeting at every
+link contain the trivial representation in their tensor product ($\mathrm{adj}\otimes\rho\otimes\bar\rho$ on $C$,
+$\rho\otimes\bar\rho$ elsewhere), so terms of order $\beta^{4|C|+16}$ are not excluded by any selection rule, whereas a surface
+spanning $C$ has at least $A$ plaquettes, each carrying a factor $O(\beta)$. Proving the lower bound requires showing that such terms are not
+cancelled, which the absolute-value bounds of this article cannot do; we leave it open. In $d=2$ no such surfaces exist,
+and Proposition~\ref{al:prop:2d} shows that the area law holds for every $r\neq0$: the distinction between zero and
+non-zero $N$-ality is a phenomenon of $d\ge3$.
+\end{remark}
+
+\section{Discussion}\label{al:sec:discussion}
+
+\begin{remark}[The $U(1)$ test]\label{al:rem:u1test}
+The proof of Theorem~\ref{al:thm:general} uses only compactness, the bound $\norm{f_\beta}_\infty\le\epsilon(\beta)$ and a
+central element of finite order acting non-trivially in $r$; nothing non-abelian enters. Accordingly
+Corollary~\ref{al:cor:u1} proves the same area law for $G=U(1)$, for \emph{every} non-trivial representation (all of them
+have non-zero charge with respect to a suitable finite subgroup of the centre $U(1)$). On the other hand, for $G=U(1)$
+in $d=4$ the area law fails at large $\beta$ \cite{Gut80,FS82}, while in $d=3$ it holds at all $\beta$ \cite{GM82}
+(as summarised in \cite[Section~4]{Cha19b} and \cite[Section~1]{CNS25a}; the precise class of actions covered by these
+proofs is to be checked against the originals, which are marked ``verify''). Two conclusions follow.
+\begin{enumerate}[label=(\roman*)]
+\item Strong-coupling confinement is \emph{not} a non-abelian phenomenon: it is a property of the disordered
+(high-temperature) regime together with the centre symmetry, which forces every contributing surface to span the loop.
+\item In the terminology of \texttt{docs/03-research-program.md} (\S3.1, principle~2), the argument does not pass the
+$U(1)$ test: it applies verbatim to $U(1)_4$, where the large-$\beta$ conclusion is false. Hence no argument which uses
+only the ingredients listed above can give the area law at large $\beta$ in four dimensions; a proof of confinement at
+all $\beta$ for $SU(N)$ must use a genuinely non-abelian mechanism at an essential step. This is the same lesson as item (ii) of
+\Fname{Remark}{On the constants and on what this proves} (the remark following \texttt{thm:strong}) for the Dobrushin
+proof of the mass gap.
+\end{enumerate}
+\end{remark}
+
+\begin{remark}[Comparison with Osterwalder--Seiler and Seiler]\label{al:rem:OS}
+The area law at small $\beta$ was derived at leading order of the strong-coupling expansion by Wilson \cite{Wil74} and
+proved rigorously by Osterwalder and Seiler \cite{OS78} (Theorem~5.1 there, according to the citation in the proof of
+\cite[Theorem~1.2]{CNS25a}), for planar loops and gauge groups with non-trivial centre such as $SU(N)$ and $U(N)$, with
+the extension to general loops given in Seiler's monograph \cite{Sei82}; both statements are as summarised in
+\cite[Section~3]{Cha19a}. Their proofs rest on the convergent strong-coupling (high-temperature) cluster expansion,
+as described in \cite[Section~1]{SZZ23} and \cite[Remark~1.5]{CNS25a}. We have not been able to consult \cite{OS78,Sei82} directly
+(they are marked ``verify'' in the bibliography), so the following comparison is with these descriptions.
+\begin{enumerate}[label=(\roman*)]
+\item \emph{Mechanism.} As far as can be judged from these descriptions, the mechanism is the same: centre symmetry
+forces the strong-coupling surfaces attached to the loop to span it. Here the topological step is isolated as an exact statement about $\Z_M$-chains
+(Proposition~\ref{al:prop:area}), proved with the projection chain map and the homology of the $2$-torus; on a periodic
+lattice it produces the correct area $\min(RT,L_\mu L_\nu-RT)$, which includes the complementary surface wrapping the
+torus. The general form, Theorem~\ref{al:thm:general}, is the periodic-lattice analogue of the general-loop statement:
+the area is the minimal size of a $\Z_M$-valued $2$-chain with boundary $-m(r)[C]$.
+\item \emph{Ratio of partition functions.} Instead of the full cluster expansion we use the inductive
+Lemma~\ref{al:lem:ratio}, whose hypothesis is the Kotecký--Preiss estimate of \cite{F}; the article thus relies on no
+cited theorem beyond standard facts about compact groups.
+\item \emph{Constants and hypotheses.} All constants are explicit. In the normalisation of \cite{F} the threshold
+$\beta_0(d)$ is independent of $N$; this agrees with the description of the Osterwalder--Seiler regime as
+$\tilde\beta\ll_d1$ for the action written with the normalised trace in \cite[Figure~1]{CNS25a}. The hypothesis is a
+single central element of finite order acting non-trivially, which covers $SU(N)$, $U(N)$, $U(1)$ and finite groups
+with non-trivial centre uniformly.
+\item \emph{Beyond the strong-coupling regime of \cite{OS78}.} The area law has recently been extended, for large $N$,
+to $\beta\lesssim_dN$ for $U(N)$ \cite{CNS25a} and to the 't Hooft regime $\beta\lesssim_dN^2$ for $U(N)$ and $SU(N)$
+\cite{CNS25b} (in the normalisation of \cite{F}; these papers write the action with the unnormalised trace and with
+the 't Hooft scaling, respectively), using the master loop equation and, respectively, the Durhuus--Fröhlich
+criterion \cite{DF80} verified by Bakry--Émery methods \cite{SZZ23}. For fixed $N$ and large $\beta$ the problem is
+open (Remark~\ref{al:rem:u1test}).
+\end{enumerate}
+\end{remark}
+
+\begin{remark}[Constants, sharpness, improvements]\label{al:rem:constants}
+(i) For the fundamental representation $\rho$ of $SU(N)$ the leading term of Lemma~\ref{al:lem:loopexp} is $X=D$, and a
+standard computation with \Fref{Cited Theorem}{Haar measure, Peter--Weyl}{thm:pw}(iv) and the character expansion gives
+$\Phi_{\rho,C}(D)=d_\rho\,u_\rho(\beta)^{RT}$ with $u_\rho=c_\rho/(Nc_0)$, where $u_\rho(\beta)=\frac\beta4+O(\beta^3)$ for $N=2$
+and $u_\rho(\beta)=\frac\beta{2N^2}+O(\beta^2)$ for $N\ge3$. The string tension suggested by this term is therefore
+$-\log u_\rho(\beta)=\log\frac1\beta+O(1)$; our lower bound $\sigma(\beta)=\log\frac1\beta-\log(2e^2K)+o(1)$ has the same
+leading behaviour, so $\sigma(\beta)/(-\log u_\rho(\beta))\to1$ as $\beta\downarrow0$, but it is smaller by an additive
+constant, and it does not reflect the larger decay rates expected for representations $r$ with
+$c_r(\beta)=O(\beta^k)$, $k\ge2$. A matching upper bound on the string tension (a lower bound on the Wilson loop) is not
+proved here; a general lower bound of area type was given by Seiler using reflection positivity \cite{Sei78} (as
+described in \cite[Section~3]{Cha19a}).
+(ii) The threshold $\beta_0(d)$ comes from the crude count of Lemma~\ref{al:lem:facts}(f) in the Kotecký--Preiss
+condition. It can be improved by using that only polymers without free links contribute
+(\Fref{Lemma}{Closed surfaces}{lem:closed}), and the area rate $\sigma$ by counting only surfaces with boundary $C$
+(excess-area expansions), neither of which is pursued here.
+(iii) Corollary~\ref{al:cor:smallkappa} shows the trade-off between the area rate and the perimeter coefficient
+controlled by the parameter $t$ of Proposition~\ref{al:prop:master}.
+\end{remark}
+
+\begin{remark}[Status in the research program]
+Together with \Fref{Theorem}{Strong-coupling clustering and mass gap, uniform in the volume}{thm:strong}, the results of
+this article complete the strong-coupling endpoint of the program on the confinement side. The area law is listed under
+milestone T0.7 of \texttt{docs/03-research-program.md} (``Theorem modulo cited KP theorem''), although \cite{F} does not
+prove it (\Flab{Remark}{rem:further}); it now has a self-contained proof, uniform in the volume and valid for every
+infinite-volume limit point. The uniqueness of the
+infinite-volume limit (T1.1) is not addressed. By Remark~\ref{al:rem:u1test}, the large-$\beta$ problem is untouched by
+these methods.
+\end{remark}
+
+\subsection*{Summary of results}
+
+\begin{center}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Statement & Where & Status\\
+\midrule
+$\Z_M$-area of a rectangle on a torus is $\min(RT,L_\mu L_\nu-RT)$ & Prop.~\ref{al:prop:area} & Theorem\\
+Centre selection rule; vanishing of small loop polymers & Lem.~\ref{al:lem:selection}, Prop.~\ref{al:prop:vanish} & Theorem\\
+Loops winding with non-zero charge vanish (all $\beta$) & Prop.~\ref{al:prop:winding} & Theorem\\
+Loop expansion; ratio bound; counting & Lem.~\ref{al:lem:loopexp}, \ref{al:lem:ratio}, \ref{al:lem:rooted} & Theorem\\
+Area law, general groups and closed paths & Thm.~\ref{al:thm:general}, Cor.~\ref{al:cor:rect} & Theorem\\
+Area law for $SU(N)$, $n(r)\neq0$ & Thm.~\ref{al:thm:intro} $=$ Cor.~\ref{al:cor:sun} & Theorem\\
+Area law for $U(1)$ and $U(N)$ & Cor.~\ref{al:cor:u1} & Theorem\\
+String tension $\ge\sigma(\beta)$, uniformly and in infinite volume & Cor.~\ref{al:cor:tension} & Theorem\\
+Perimeter decay for all $r\neq0$; area law for all $r\neq0$ in $d=2$ & Prop.~\ref{al:prop:perimeter}, \ref{al:prop:2d} & Theorem\\
+Perimeter law for $N$-ality zero in $d\ge3$ & Rem.~\ref{al:rem:perimeterlaw} & open (expected)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{thebibliography}{CNS25b}
+
+\bibitem[F]{F}
+\emph{Lattice Yang--Mills theory: foundations for the mass gap problem}, Part~I of the project ``Solving Yang--Mills
+and the Mass Gap'', \texttt{theory/lattice-foundations.tex} (this repository), living document, version of
+5~November~2026.
+
+\bibitem[Bil99]{Bil99}
+P.~Billingsley, \emph{Convergence of Probability Measures}, 2nd ed., Wiley, New York, 1999.
+
+\bibitem[Cha19a]{Cha19a}
+S.~Chatterjee, Rigorous solution of strongly coupled $SO(N)$ lattice gauge theory in the large $N$ limit,
+Commun.\ Math.\ Phys.\ 366 (2019), 203--268; arXiv:1502.07719.
+
+\bibitem[Cha19b]{Cha19b}
+S.~Chatterjee, Yang--Mills for probabilists, in: \emph{Probability and Analysis in Interacting Physical Systems},
+Springer, 2019; arXiv:1803.01950.
+
+\bibitem[CNS25a]{CNS25a}
+S.~Cao, R.~Nissim, S.~Sheffield, Expanded regimes of area law for lattice Yang--Mills theories,
+arXiv:2505.16585 (2025).
+
+\bibitem[CNS25b]{CNS25b}
+S.~Cao, R.~Nissim, S.~Sheffield, Dynamical approach to area law for lattice Yang--Mills, arXiv:2509.04688 (2025).
+
+\bibitem[DF80]{DF80}
+B.~Durhuus, J.~Fröhlich, A connection between $\nu$-dimensional Yang--Mills theory and $(\nu-1)$-dimensional, non-linear
+$\sigma$-models, Commun.\ Math.\ Phys.\ 75 (1980), 103--151. (verify)
+
+\bibitem[Dob96]{Dob96}
+R.~L.~Dobrushin, Estimates of semi-invariants for the Ising model at low temperatures, in: \emph{Topics in Statistical
+and Theoretical Physics}, Amer.\ Math.\ Soc.\ Transl.\ (2) 177 (1996), 59--81. (verify)
+
+\bibitem[FP07]{FP07}
+R.~Fernández, A.~Procacci, Cluster expansion for abstract polymer models. New bounds from an old approach,
+Commun.\ Math.\ Phys.\ 274 (2007), 123--140; arXiv:math-ph/0605041.
+
+\bibitem[FS82]{FS82}
+J.~Fröhlich, T.~Spencer, Massless phases and symmetry restoration in abelian gauge theories and spin systems,
+Commun.\ Math.\ Phys.\ 83 (1982), 411--454. (verify)
+
+\bibitem[GM82]{GM82}
+M.~Göpfert, G.~Mack, Proof of confinement of static quarks in $3$-dimensional $U(1)$ lattice gauge theory for all values
+of the coupling constant, Commun.\ Math.\ Phys.\ 82 (1982), 545--606. (verify)
+
+\bibitem[Gut80]{Gut80}
+A.~H.~Guth, Existence proof of a nonconfining phase in four-dimensional $U(1)$ lattice gauge theory, Phys.\ Rev.\ D 21
+(1980), 2291--2307. (verify)
+
+\bibitem[KP86]{KP86}
+R.~Kotecký, D.~Preiss, Cluster expansion for abstract polymer models, Commun.\ Math.\ Phys.\ 103 (1986), 491--498.
+
+\bibitem[OS78]{OS78}
+K.~Osterwalder, E.~Seiler, Gauge field theories on a lattice, Ann.\ Phys.\ 110 (1978), 440--471. (verify)
+
+\bibitem[Sei78]{Sei78}
+E.~Seiler, Upper bound on the color-confining potential, Phys.\ Rev.\ D 18 (1978), 482--483. (verify)
+
+\bibitem[Sei82]{Sei82}
+E.~Seiler, \emph{Gauge Theories as a Problem of Constructive Quantum Field Theory and Statistical Mechanics},
+Lecture Notes in Physics 159, Springer, Berlin, 1982. (verify)
+
+\bibitem[SZZ23]{SZZ23}
+H.~Shen, R.~Zhu, X.~Zhu, A stochastic analysis approach to lattice Yang--Mills at strong coupling,
+Commun.\ Math.\ Phys.\ 400 (2023), 805--851; arXiv:2204.12737.
+
+\bibitem[Wil74]{Wil74}
+K.~G.~Wilson, Confinement of quarks, Phys.\ Rev.\ D 10 (1974), 2445--2459. (verify)
+
+\end{thebibliography}
+
+\end{document}
