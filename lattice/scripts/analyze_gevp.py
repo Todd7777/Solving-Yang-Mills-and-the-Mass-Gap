@@ -26,52 +26,13 @@ import argparse
 import sys
 
 import numpy as np
-from scipy.linalg import eigh
 
 from ymlattice import exact
 from ymlattice import observables as obs
 from ymlattice.stats import autocorrelation_time, binned_mean_err, jackknife
 
 
-def load(paths):
-    data = [np.load(p, allow_pickle=True) for p in paths]
-    d0 = data[0]
-    key = (float(d0["beta"]), tuple(int(x) for x in d0["shape"]), tuple(int(x) for x in d0["levels"]), str(d0["group"]))
-    for p, d in zip(paths, data):
-        k = (float(d["beta"]), tuple(int(x) for x in d["shape"]), tuple(int(x) for x in d["levels"]), str(d["group"]))
-        if k != key:
-            raise SystemExit(f"{p}: incompatible run {k} vs {key}")
-    O = np.concatenate([d["O"] for d in data])
-    plaq = np.concatenate([d["plaq"] for d in data])
-    poly = np.concatenate([d["poly"] for d in data])
-    maxloop = min(d["W"].shape[1] for d in data)
-    W = np.concatenate([d["W"][:, :maxloop, :maxloop] for d in data])
-    return key, O, plaq, poly, W, [len(d["plaq"]) for d in data]
-
-
-def corr_matrix(O):
-    """O[meas, level, t] -> C[tau, i, j] (connected, symmetrised, averaged over t)."""
-    n, nl, L0 = O.shape
-    mean = O.mean(axis=(0, 2))                      # <O_i>
-    C = np.empty((L0, nl, nl))
-    for tau in range(L0):
-        sh = np.roll(O, -tau, axis=2)
-        C[tau] = np.einsum("mit,mjt->ij", O, sh) / (n * L0)
-    C = 0.5 * (C + np.swapaxes(C, 1, 2))
-    return C - np.outer(mean, mean)[None]
-
-
-def gevp_lambda0(C, tau0):
-    """Largest generalised eigenvalue lambda_0(tau) of C(tau) v = lambda C(tau0) v for each tau."""
-    L0 = C.shape[0]
-    out = np.full(L0, np.nan)
-    try:
-        for tau in range(L0):
-            w = eigh(C[tau], C[tau0], eigvals_only=True)
-            out[tau] = w[-1]
-    except np.linalg.LinAlgError:
-        pass
-    return out
+from ymlattice.analysis import corr_matrix, gevp_lambda0, load_runs as load  # noqa: E402
 
 
 def meff_from(series, L0):
