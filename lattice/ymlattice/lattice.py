@@ -7,11 +7,22 @@ The configuration is stored as ``self.U`` with shape
 
 Periodic boundary conditions in every direction.  ``shift(f, mu, +1)[x] = f[x + mu]``.
 
-Updates are done with a checkerboard decomposition: for a fixed direction ``mu`` all links of
-even (then odd) site parity are updated simultaneously.  The staple of the link ``(x, mu)``
-contains ``mu``-links only at the sites ``x +- nu``, which have the opposite parity, and
-``nu``-links which are not being updated, so the simultaneous update is a valid
-heat-bath / overrelaxation step for the conditional distributions.
+Updates are done colour class by colour class: for a fixed direction ``mu`` all links ``(x, mu)``
+whose sites ``x`` carry the same colour are updated simultaneously.  Two ``mu``-links share a
+plaquette exactly when their sites differ by ``+-e_nu`` for some ``nu != mu`` (the staple of
+``(x, mu)`` contains ``mu``-links only at ``x +- e_nu`` and ``nu``-links, which are not being
+updated), so the update is a valid heat-bath / overrelaxation step for the conditional
+distributions as soon as the colouring is proper on the graph ``x ~ x +- e_nu`` (``nu != mu``).
+
+* If every transverse length ``L_nu`` (``nu != mu``) is even, the site parity ``sum_nu x_nu mod 2``
+  is a proper 2-colouring (this is the classic checkerboard).
+* If some transverse length is odd, parity is NOT proper (periodic wrap-around makes neighbours
+  equal parity), and a proper 3-colouring ``sum_{nu != mu} f_nu(x_nu) mod 3`` is used, where
+  ``f(i) = i mod 2`` for even ``L`` and, for odd ``L``, ``f(i) = i mod 2`` for ``i < L - 1`` and
+  ``f(L - 1) = 2``: adjacent values of each ``f_nu`` differ by 1 or 2, never by 0 mod 3.
+
+All lengths must be at least 2 (for ``L = 1`` a plaquette contains the same link twice and the
+action is no longer linear in a single link variable).
 """
 
 from __future__ import annotations
@@ -25,6 +36,23 @@ from .heatbath import sample_su2
 def _parity_mask(shape) -> np.ndarray:
     grids = np.meshgrid(*[np.arange(L) for L in shape], indexing="ij")
     return (sum(grids) % 2).astype(bool)  # True = odd
+
+
+def _colour_classes(shape, mu: int, even: np.ndarray, odd: np.ndarray) -> list:
+    """Proper colouring of sites for simultaneous updates of ``mu``-links (see module docstring)."""
+    transverse = [nu for nu in range(len(shape)) if nu != mu]
+    if all(shape[nu] % 2 == 0 for nu in transverse):
+        return [even, odd]
+    grids = np.meshgrid(*[np.arange(L) for L in shape], indexing="ij")
+    col = np.zeros(shape, dtype=int)
+    for nu in transverse:
+        L = shape[nu]
+        f = np.arange(L) % 2
+        if L % 2 == 1:
+            f[L - 1] = 2
+        col = col + f[grids[nu]]
+    col %= 3
+    return [col == c for c in range(3) if np.any(col == c)]
 
 
 def cabibbo_marinari(U: np.ndarray, A: np.ndarray, beta: float, rng: np.random.Generator,
@@ -60,6 +88,8 @@ class Lattice:
     def __init__(self, shape, beta: float, group: str = "su2", seed: int | None = None,
                  start: str = "cold"):
         self.shape = tuple(int(L) for L in shape)
+        if min(self.shape) < 2:
+            raise ValueError("all lattice lengths must be >= 2")
         self.d = len(self.shape)
         self.beta = float(beta)
         self.group = group.lower()
@@ -69,6 +99,7 @@ class Lattice:
         self.rng = np.random.default_rng(seed)
         self.odd = _parity_mask(self.shape)
         self.even = ~self.odd
+        self.colour_classes = [_colour_classes(self.shape, mu, self.even, self.odd) for mu in range(len(self.shape))]
         self.nsites = int(np.prod(self.shape))
         self.nplaq = self.nsites * self.d * (self.d - 1) // 2
         self.G = su2 if self.group == "su2" else su3
@@ -150,9 +181,9 @@ class Lattice:
         self.U[mu][mask] = cabibbo_marinari(self.U[mu][mask], A, self.beta, self.rng, kind, nhits)
 
     def sweep(self, kind: str = "heatbath", nhits: int = 1):
-        """One full sweep over all links (checkerboard order)."""
+        """One full sweep over all links (colour class by colour class; see module docstring)."""
         for mu in range(self.d):
-            for mask in (self.even, self.odd):
+            for mask in self.colour_classes[mu]:
                 if self.group == "su2":
                     self._update_links_su2(mu, mask, kind)
                 else:

@@ -48,3 +48,19 @@ def test_strong_coupling_nlo_reduces_to_leading():
     for N in (2, 3):
         assert np.isclose(exact.plaquette_strong_nlo(0.05, N), exact.plaquette_strong_leading(0.05, N), atol=1e-9)
         assert exact.plaquette_strong_nlo(1.0, N) > exact.plaquette_strong_leading(1.0, N)
+
+
+@pytest.mark.parametrize("shape", [(5, 3), (7, 4)])
+def test_su2_two_dimensional_odd_torus(shape):
+    """Odd periodic lengths need the 3-colouring update (plain checkerboard is invalid there)."""
+    beta = 2.5
+    lat = Lattice(shape, beta=beta, group="su2", seed=sum(shape), start="hot")
+    lat.thermalize(200, n_overrelax=1)
+    vals = []
+    for _ in range(4000):
+        lat.update(1, 1)
+        vals.append(lat.plaquette())
+    mean, err = binned_mean_err(np.array(vals), 25)
+    naive = np.std(vals, ddof=1) / np.sqrt(len(vals))
+    ex = exact.su2_plaquette_2d(beta, V=shape[0] * shape[1])
+    assert abs(mean - ex) < 4 * max(err, naive), (shape, mean, err, ex)
