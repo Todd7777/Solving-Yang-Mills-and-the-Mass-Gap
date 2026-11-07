@@ -1,0 +1,16 @@
+# T1.3 production: SU(2) Wilson action, 0++ glueball + Wilson loops, asymptotic-scaling test.
+# One line per array task. Columns:
+# group beta L0 L nmeas n_overrelax smearing_levels(comma) seed maxloop wloop_every
+# Spatial sizes keep L*sqrt(sigma) >~ 3 (a*sqrt(sigma) ~ 0.37, 0.26, 0.185, 0.136 at beta = 2.3, 2.4, 2.5, 2.6).
+su2 2.3 16 8  10000 3 0,2,4,8   101 4 2
+su2 2.3 16 8  10000 3 0,2,4,8   102 4 2
+su2 2.3 16 8  10000 3 0,2,4,8   103 4 2
+su2 2.4 24 12  8000 4 0,4,8,12  201 6 4
+su2 2.4 24 12  8000 4 0,4,8,12  202 6 4
+su2 2.4 24 12  8000 4 0,4,8,12  203 6 4
+su2 2.5 32 16  5000 4 0,4,8,16  301 6 4
+su2 2.5 32 16  5000 4 0,4,8,16  302 6 4
+su2 2.5 32 16  5000 4 0,4,8,16  303 6 4
+su2 2.6 40 20  4000 5 0,8,16,24 401 8 4
+su2 2.6 40 20  4000 5 0,8,16,24 402 8 4
+su2 2.6 40 20  4000 5 0,8,16,24 403 8 4
