@@ -35,6 +35,17 @@ $m(\beta)=\liminf_{L\to\infty}m_L(\beta)$.
 couplings" statement and is logically independent, but any method that proves (G2) will almost certainly
 prove (G1).
 
+**Infinite-volume form.** Part II (`theory/infinite-volume-strong-coupling.tex`) shows that for every $\beta$
+every infinite-volume limit point $\mu$ of the periodic Wilson measures (with even time extents) is a
+reflection-positive, translation-invariant Gibbs measure whose Osterwalder–Schrader reconstruction has a
+transfer operator $\hat T_\mu$, so the mass gap $m(\mu)=-\log\lVert\hat T_\mu|_{\Omega^\perp}\rVert$ is defined at
+every coupling. The statement that matters for a quantum field theory is
+
+* **(G1$_\infty$)** for $G=SU(N)$, $d=4$ and every $\beta>0$, every such limit point has $m(\mu)>0$.
+
+Its relation to (G1) (spatial volume to infinity at infinite time extent) is not settled; at strong coupling
+both hold.
+
 ## 3.3 Milestones
 
 ### Tier 0 — Foundations (this session; monograph `theory/lattice-foundations.tex`)
@@ -46,14 +57,14 @@ prove (G1).
 | T0.3 | Transfer matrix: self-adjoint, trace class, strictly positive on the gauge-invariant space, positivity-improving; unique vacuum; $Z=\operatorname{Tr}\hat T^{\,T}$ | Theorem (§4) |
 | T0.4 | $m_L(\beta)>0$ for every finite $L$; gap $\Leftrightarrow$ exponential clustering in time; the ground-state Markov chain reformulation $m_L=-\log(1-\mathrm{gap}(P_L))$ | Theorem (§4) |
 | T0.5 | Reduction theorem: (L1)+(L2)+(L3) $\Rightarrow$ OS axioms + mass gap | Theorem (§5) |
-| T0.6 | Strong coupling: for $\beta<\beta_D(d)$ exponential clustering uniform in volume, hence $\inf_L m_L(\beta)>0$ (Dobrushin uniqueness, fully self-contained proof) | Theorem (§6) |
-| T0.7 | Polymer (closed-surface) representation of the Wilson measure; convergence of the cluster expansion for $\beta<\beta_0$ via Kotecký–Preiss; analyticity; area law | Theorem modulo cited KP theorem (§7) |
+| T0.6 | Strong coupling: for $\beta<\beta_D(d)$ exponential clustering uniform in volume, hence $\inf_L m_L(\beta)>0$ (Dobrushin uniqueness, fully self-contained proof) | Theorem (§6); threshold improved to $\beta_*(d)=\operatorname{artanh}\frac1{6(d-1)}$ ($\beta_*(4)\approx0.0556$, about $4\times\beta_D$) in Part II, Cor. `iv:cor:finitevol` |
+| T0.7 | Polymer (closed-surface) representation of the Wilson measure; convergence of the cluster expansion for $\beta<\beta_0$ via Kotecký–Preiss; analyticity; area law | Theorem modulo cited KP theorem (§7); area law for every representation of non-zero $N$-ality: Theorem (Part III, `theory/area-law-strong-coupling.tex`, checked by two referees 2026-11-09); analyticity not done |
 
 ### Tier 1 — Consolidation (next 2–4 sessions)
 
 | ID | Statement | Why |
 |---|---|---|
-| T1.1 | Infinite-volume limit at strong coupling: existence, uniqueness, translation invariance, OS axioms of the lattice theory for $\beta<\beta_0$ | completes the strong-coupling picture; sets the template for (L1) |
+| T1.1 | Infinite-volume limit at strong coupling: existence, uniqueness, translation invariance, OS axioms of the lattice theory for $\beta<\beta_0$ | completes the strong-coupling picture; sets the template for (L1). **Done** for $\beta<\beta_*(d)\supset(0,\beta_0)$ in Part II (`theory/infinite-volume-strong-coupling.tex`, 2026-11-09): uniqueness, convergence with rate, all symmetries, clustering, global Markov property, OS reconstruction, unique vacuum, infinite-volume gap $\ge\log(1/(6(d-1)\tanh\beta))$; referee check in progress (see `journal/`) |
 | T1.2 | Hamiltonian lattice gauge theory: anisotropic transfer matrix, $a_t\to0$ limit, Kogut–Susskind Hamiltonian as a self-adjoint operator; uniform gap at strong coupling in the Hamiltonian picture | makes the Dirichlet-form reformulation (§3.5) rigorous in continuous time |
 | T1.3 | Numerical: $a\,m_{0^{++}}(\beta)$ and $a\sqrt\sigma(\beta)$ for $SU(2)$, $\beta\in[2.2,2.6]$, several volumes; test of (G2) in the form $m/(a\Lambda_L)\to$ const; finite-volume behaviour of $m_L$ | gives the quantitative shape of what must be proved and checks the toolkit against published data |
 | T1.4 | Numerical: the ground-state Markov chain spectral gap on small spatial lattices ($2^3$, $3^3$) by direct diagonalisation in a truncated character basis, as a function of $\beta$ | first look at the reformulation of §3.5 in a computable setting |
@@ -138,6 +149,13 @@ Why this is worth recording:
 
 This reformulation passes the $U(1)$ test only trivially (it is an identity); it is a tool, not a mechanism.
 
+**In infinite volume (Part II).** For $\beta<\beta_*(d)$ the unique infinite-volume Gibbs measure has the global
+Markov property with respect to time slices, the spatial configurations of successive slices form a stationary
+reversible Markov chain with stationary law $\nu$ (the infinite-volume vacuum measure), its transition operator
+$P$ is unitarily equivalent to the OS transfer operator, $0\le P\le 1$, and $m(\mu_\beta)=-\log(1-\operatorname{gap}P)$
+exactly. So the reformulation is not an artefact of finite volume. Whether the Markov property (and hence the
+Markov-chain picture) holds at every $\beta$ is open.
+
 ## 3.6 Candidate mechanisms, triaged
 
 | Mechanism | Rigorous status | $U(1)$ test | Assessment |
@@ -159,13 +177,17 @@ This reformulation passes the $U(1)$ test only trivially (it is an identity); it
 * "Variational upper bounds." They bound energies from above; the gap needs a lower bound on $E_1-E_0$.
 * "Numerical evidence plus a finite-size criterion." No finite-size criterion is known for non-frustration-free transfer matrices; proving one would itself be a major result.
 
-## 3.8 Next-session plan
+## 3.8 Next-session plan (revised 2026-11-09)
 
-1. Finish and compile the monograph; check every proof line by line against the numerics where possible
-   (strong-coupling formulas, reflection positivity as positivity of correlators).
-2. T1.3: production runs for $SU(2)$ glueball masses at $\beta=2.3,2.4,2.5$ on $L^3\times 2L$, $L=8,10,12$;
-   compare $a\,m_{0^{++}}$ with the two-loop scaling function; record the ratio.
-3. T1.4: build the truncated-character-basis transfer matrix for a $2^3$ spatial lattice and compute the
-   ground-state chain's spectral gap exactly as a function of $\beta$.
-4. T1.5: Balaban summary.
-5. Begin T2.1 (the $O(3)$ model): write the analogous foundations document and the analogous reformulation.
+1. Finish the referee check of Part II and revise; then decide whether to merge Parts II and III into the
+   monograph or keep them as sequels.
+2. T1.3: production runs for $SU(2)$ glueball masses at $\beta=2.3,2.4,2.5$ on $L^3\times2L$, $L=8,10,12$ (the
+   container is too slow for the larger lattices; use `lattice/slurm/` on a cluster); compare $a\,m_{0^{++}}$ with
+   the two-loop scaling function.
+3. T1.2: the Hamiltonian (Kogut–Susskind) version, where the gap is the Poincaré constant of a Dirichlet form on
+   the vacuum measure; prove the volume-uniform gap at strong coupling in that setting.
+4. T1.4: truncated-character-basis transfer matrix on a $2^3$ spatial lattice; compute $\operatorname{gap}(P)$.
+5. T1.5: Balaban summary. T2.1: the $O(3)$ model foundations.
+6. Open question raised by Part II: does the global Markov property for time slices hold for every
+   infinite-volume limit point at every $\beta$? (It holds at strong coupling, where it follows from uniqueness
+   with a rate.) A positive answer would make the Markov-chain reformulation of §3.5 available at all couplings.

@@ -23,24 +23,28 @@ not solve it.
 
 ```bash
 pip install -e "lattice[test,plot]"
-cd lattice && pytest -q      # 2026-11-08: 37 pass, 4 slow tests skipped (add --runslow to run them)
+cd lattice && pytest -q      # 2026-11-09: 41 pass, 4 slow tests skipped (add --runslow to run them)
 ```
 
-To build the monographs, first install the TeX packages listed in `.github/workflows/ci.yml` if `latexmk`
-is missing, then:
+To build the monographs, first install the TeX packages listed in `.github/workflows/ci.yml` (including
+`lmodern`, which the cloud container lacked on 2026-11-09) if `latexmk` or `lmodern.sty` is missing, then:
 
 ```bash
-cd theory && latexmk -pdf -interaction=nonstopmode lattice-foundations.tex
+cd theory && for f in lattice-foundations infinite-volume-strong-coupling area-law-strong-coupling; do latexmk -pdf -interaction=nonstopmode $f.tex; done
 ```
 
 The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.tex` source changes.
 
-## State on 2026-11-08
+## State on 2026-11-09
 
-- `theory/area-law-strong-coupling.tex` (Part III of the strong-coupling series) is a draft under review by
-  two independent referees. Revisions are pending.
-- The last commit (2026-11-07) was made while agents were still running. Nothing later was pushed.
-- The newest journal entry is `journal/2026-11-05.md`.
+- `theory/` holds three monographs: the foundations [F] (`lattice-foundations.tex`, errata 2026-11-09), Part II
+  (`infinite-volume-strong-coupling.tex`, the infinite-volume theory, milestone T1.1, new on 2026-11-09) and Part III
+  (`area-law-strong-coupling.tex`, the area law; checked by two independent referees and revised on 2026-11-09).
+- Part II's own referee check: see the newest journal entry for its status.
+- Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
+  the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
+  arguments.
+- The newest journal entry is `journal/2026-11-09.md`.
 
 ## Where the next steps are
 

@@ -28,12 +28,14 @@ jobs:
       - name: Install TeX Live
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-science texlive-fonts-recommended latexmk
-      - name: Build theory/lattice-foundations.pdf
+          sudo apt-get install -y --no-install-recommends texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-science texlive-fonts-recommended lmodern latexmk
+      - name: Build the monographs (foundations, Part II, Part III)
         run: |
           cd theory
-          latexmk -pdf -interaction=nonstopmode lattice-foundations.tex
+          for f in lattice-foundations infinite-volume-strong-coupling area-law-strong-coupling; do
+            latexmk -pdf -interaction=nonstopmode -halt-on-error $f.tex
+          done
       - uses: actions/upload-artifact@v4
         with:
-          name: lattice-foundations
-          path: theory/lattice-foundations.pdf
+          name: monographs
+          path: theory/*.pdf
