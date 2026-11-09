@@ -1,0 +1,1130 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{citedtheorem}[theorem]{Cited Theorem}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{convention}[theorem]{Convention}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\osc}{osc}
+\DeclareMathOperator{\gap}{gap}
+\DeclareMathOperator{\artanh}{artanh}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\cH}{\mathcal{H}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cB}{\mathcal{B}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\cN}{\mathcal{N}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\hT}{\hat{T}}
+\newcommand{\dU}{\,dU}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+\newcommand{\TV}{\mathrm{TV}}
+\newcommand{\Fref}[3]{\cite[#1~`#2' (\texttt{#3})]{F}}
+\newcommand{\Flab}[2]{\cite[#1 \texttt{#2}]{F}}
+\newcommand{\Fname}[2]{\cite[#1~`#2']{F}}
+\newcommand{\IIIref}[3]{\cite[#1~`#2' (\texttt{#3})]{III}}
+\newcommand{\aS}{\alpha_*}
+\newcommand{\bS}{\beta_*}
+
+\title{Lattice Yang--Mills theory at strong coupling II:\\ the infinite-volume theory, its transfer operator and its mass gap\\
+\large A sequel to the foundations monograph of the project ``Solving Yang--Mills and the Mass Gap''}
+\author{}
+\date{9 November 2026; living document}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We construct the infinite-volume lattice Yang--Mills theory on $\Z^d$ at strong coupling and prove that it has a unique
+vacuum and a mass gap, with complete proofs and explicit constants, in the framework of the foundations monograph [F]
+of this project. For every $\beta\ge0$, every infinite-volume limit point of the periodic Wilson measures is a
+translation-invariant, reflection-positive Gibbs measure; its Osterwalder--Schrader reconstruction gives a Hilbert space and
+a self-adjoint contraction $\hT$ (the transfer operator), so that the mass gap $m(\mu)$ of an infinite-volume lattice
+theory is defined at every coupling. For $0<\beta<\bS(d):=\artanh\frac1{6(d-1)}$ ($\bS(4)\approx0.0556$) we prove: the
+Gibbs measure $\mu_\beta$ is unique; periodic, free and fixed-boundary finite-volume measures all converge to it at an
+explicit exponential rate; $\mu_\beta$ is invariant under translations, the hypercubic group and \emph{all} gauge
+transformations; it clusters exponentially; and it has the global Markov property with respect to time slices. Consequently
+the spatial link configurations of successive time slices form a stationary reversible Markov chain whose transition
+operator $P$ on $L^2(\nu)$, $\nu$ the time-zero marginal (the infinite-volume vacuum measure), is unitarily equivalent to
+$\hT$, satisfies $0\le P\le1$, and has spectrum in $[0,\aS(\beta)]\cup\{1\}$ with $1$ a simple eigenvalue, where
+$\aS(\beta)=6(d-1)\tanh\beta$. Hence $m(\mu_\beta)=-\log(1-\gap P)\ge\log(1/\aS(\beta))$: the exact reformulation of the gap
+as a Markov-chain spectral gap holds in infinite volume. The threshold improves the Dobrushin threshold of [F] by a factor
+of about four through a sharp total-variation estimate, which also improves the volume-uniform finite-volume gap of [F].
+This completes milestone T1.1 of the research program. Nothing here uses the non-abelian structure of $G$: every statement
+holds verbatim for $G=U(1)$, so these results describe the strong-coupling endpoint only.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction and main results}\label{iv:sec:intro}
+
+The foundations monograph \cite{F} develops lattice Yang--Mills theory on a finite periodic lattice: Wilson's measure,
+reflection positivity, the transfer matrix and its unique vacuum, the reduction of the continuum problem to lattice
+hypotheses, a mass gap uniform in the volume for $\beta<\beta_D(d)$, and the polymer representation; the sequel
+\cite{III} proves the area law at strong coupling, for every infinite-volume limit point. A quantum field theory, however,
+lives in infinite volume, and the research program (\texttt{docs/03-research-program.md}, milestone T1.1) asks for the
+infinite-volume lattice theory at strong coupling: existence and uniqueness of the infinite-volume limit, translation
+invariance, and the Osterwalder--Schrader (OS) axioms of the lattice theory. This article supplies these, and goes
+further in one respect that matters for the program: it identifies the transfer operator of the infinite-volume theory
+with the transition operator of an explicit reversible Markov chain (the ground-state chain of
+\Fref{Theorem}{Exact reformulation of the gap}{thm:chain}, now in infinite volume) and proves that this chain has a
+spectral gap.
+
+\begin{convention}[Labels]
+As in \Fname{Convention}{Labels}: every Theorem, Proposition, Lemma and Corollary below has a complete proof here or in
+\cite{F}; Cited Theorems are standard facts from the literature with a reference; Remarks are commentary. Constants are
+explicit and not optimised.
+\end{convention}
+
+Throughout, $G$, $\rho$, $N$, $\Tr$, $dU$ and the plaquette weight $w_\beta(U)=\exp(\frac\beta N\mathrm{Re}\Tr U)$ are as in
+\cite{F} (\Fname{Convention}{Group}, \Flab{eq.}{eq:w}), with the additional assumption that $G$ is metrisable (true for
+every compact Lie group, e.g.\ $SU(N)$, $U(N)$, $U(1)$). We use the constants
+\begin{equation}\label{iv:eq:constants}
+\aS(\beta):=6(d-1)\tanh\beta,\qquad \bS(d):=\artanh\frac1{6(d-1)},\qquad\text{so that }\ \aS(\beta)<1\iff\beta<\bS(d).
+\end{equation}
+Numerically $\bS(2)\approx0.1682$, $\bS(3)\approx0.0835$, $\bS(4)\approx0.0556$, against
+$\beta_D(d)=\frac14\log(1+\frac1{6(d-1)})$ of \Fref{Theorem}{Strong-coupling clustering and mass gap, uniform in the
+volume}{thm:strong}: $\beta_D(4)\approx0.0135$. The objects in the next two theorems are defined in
+Sections~\ref{iv:sec:setting}--\ref{iv:sec:transfer}.
+
+\begin{theorem}[Infinite-volume limit points, every $\beta$]\label{iv:thm:allbeta}
+Let $d\ge2$, $\beta\ge0$, and let $\Lambda_k$ be periodic lattices whose sides all tend to infinity and whose time
+extents $L_0^{(k)}$ are even. Then the periodised Wilson measures $\tilde\mu_{\Lambda_k,\beta}$ on $G^{E(\Z^d)}$ have weak
+limit points, and every limit point $\mu$ is a Gibbs measure for the Wilson specification, invariant under all
+translations of $\Z^d$ and under the time reflection, and reflection positive. Its OS reconstruction yields a Hilbert space
+$\cH_\mu$, a unit vector $\Omega_\mu$ and a self-adjoint operator $\hT_\mu$ with $\norm{\hT_\mu}\le1$ and
+$\hT_\mu\Omega_\mu=\Omega_\mu$; the \emph{mass gap}
+$m(\mu):=-\log\norm{\hT_\mu(1-|\Omega_\mu\rangle\langle\Omega_\mu|)}\in[0,\infty]$ is therefore defined.
+\end{theorem}
+
+\begin{theorem}[The infinite-volume theory at strong coupling]\label{iv:thm:main}
+Let $d\ge2$, $0<\beta<\bS(d)$ and $\alpha:=\aS(\beta)<1$.
+\begin{enumerate}[label=(\roman*)]
+\item \emph{(Uniqueness, convergence)} There is exactly one Gibbs measure $\mu_\beta$. If $F$ is bounded, measurable and
+depends only on links with both endpoints in the box $\{|x|_\infty\le r\}$, and $n\ge r$, then
+\[
+\bigl|\langle F\rangle-\mu_\beta(F)\bigr|\le\frac{\norm{\delta(F)}_1}{1-\alpha}\,\alpha^{\,n+1-r}
+\]
+for the periodised Wilson measure of every periodic lattice with all sides $\ge2n+3$, for the free-boundary measure in
+$\{|x|_\infty\le n'\}$ with $n'\ge n+1$, and for the measure with arbitrary fixed boundary condition outside the links of
+$\{|x|_\infty\le n'\}$, $n'\ge n$. In particular every sequence of periodic measures with all sides tending to infinity
+converges to $\mu_\beta$ on every bounded measurable local function.
+\item \emph{(Symmetry)} $\mu_\beta$ is invariant under translations, the hypercubic group, and every gauge
+transformation $g\in G^{\Z^d}$; the link variables of any finite forest are independent and Haar distributed.
+\item \emph{(Clustering)} For bounded measurable $f,g$ depending on disjoint finite link sets $A,B$,
+$\abs{\Cov_{\mu_\beta}(f,g)}\le\norm g_\infty\norm{\delta(f)}_1\,\alpha^{\varrho(A,B)}/(1-\alpha)$.
+\item \emph{(Markov property, ground-state chain)} The time slices $U^{(t)}$ ($t\in\Z$) of spatial links form a stationary
+reversible Markov chain with stationary law $\nu$ (the time-zero marginal of $\mu_\beta$). Its transition operator $P$ on
+$L^2(\nu)$ is unitarily equivalent to the transfer operator $\hT_{\mu_\beta}$ and satisfies $0\le P\le1$.
+\item \emph{(Mass gap)} $\spec P\subseteq[0,\alpha]\cup\{1\}$, the eigenvalue $1$ is simple (unique vacuum), and
+\[
+m(\mu_\beta)=-\log\bigl(1-\gap P\bigr)\ \ge\ \log\frac1{\aS(\beta)}\ \ \longrightarrow\ \infty\quad(\beta\downarrow0).
+\]
+For all $A,B\in L^2(\nu)$ and $t\in\N$,
+$\bigl|\mu_\beta\bigl(\overline{B(U^{(0)})}A(U^{(t)})\bigr)-\overline{\nu(B)}\nu(A)\bigr|\le\aS(\beta)^t
+\norm{B-\nu(B)}_{L^2(\nu)}\norm{A-\nu(A)}_{L^2(\nu)}$.
+\item \emph{(Finite volume)} For every periodic lattice with all sides $\ge3$, the finite-volume gap of \cite{F} satisfies
+$m_{\Lambda_s}(\beta)\ge\log(1/\aS(\beta))$.
+\end{enumerate}
+\end{theorem}
+
+Theorem~\ref{iv:thm:allbeta} collects Proposition~\ref{iv:prop:limitpoints}, Proposition~\ref{iv:prop:rp}(a) and
+Theorem~\ref{iv:thm:OS}. Theorem~\ref{iv:thm:main} collects Theorem~\ref{iv:thm:unique}, Theorem~\ref{iv:thm:symm},
+Proposition~\ref{iv:prop:forest}, Theorem~\ref{iv:thm:cluster}, Theorem~\ref{iv:thm:markov}, Corollary~\ref{iv:cor:chain},
+Theorem~\ref{iv:thm:gap} and Corollary~\ref{iv:cor:finitevol}. Statement (v) is the infinite-volume form of the exact
+reformulation \Fref{Theorem}{Exact reformulation of the gap}{thm:chain} (\texttt{docs/03-research-program.md}, \S3.5):
+the mass gap of the infinite-volume lattice theory equals $-\log(1-\gap P)$ for the reversible Markov chain of time
+slices of the vacuum.
+
+\paragraph{Strategy.} The single-link conditional distributions of the Wilson specification depend on a neighbouring link
+only through one plaquette, so two such distributions have a density ratio in an interval $[ce^{-2\beta},ce^{2\beta}]$; a
+sharp elementary inequality (Lemma~\ref{iv:lem:tvratio}) turns this into a total-variation bound $\tanh\beta$, hence a
+Dobrushin constant $\aS(\beta)$. The coupling argument of \Fref{Theorem}{Covariance bound under Dobrushin's
+condition}{thm:dobrushin}, in a form that tracks which boundary links differ (Lemma~\ref{iv:lem:boundary}), shows that
+conditional expectations in a box forget the boundary condition exponentially fast. Since every finite-volume measure
+(periodic, free, fixed) satisfies the DLR equation in boxes well inside its volume, this gives uniqueness, convergence with
+a rate, clustering, and---applied to half-boxes---the global Markov property with respect to a time slice. Reflection
+positivity passes to the limit; the Markov property identifies the OS Hilbert space with $L^2(\nu)$ and the OS transfer
+operator with the transition operator $P$ of the slice chain; positivity of $P$ comes from positivity of the
+finite-volume transfer matrices of \cite{F}; and the spectral gap of $P$ follows from clustering.
+
+\paragraph{What is used from [F] and [III].} From \cite{F}: the conventions, \Flab{eq.}{eq:w} and
+\Flab{eq.}{eq:plaquette}; Theorem~`Basic properties' (\texttt{thm:basic}); Lemma~`Reflection of configurations and
+functions' and Theorem~`Reflection positivity' (\texttt{lem:reflsym}, \texttt{thm:rp}); Lemma \texttt{lem:K} and
+Theorem~`Transfer matrix formalism' (\texttt{thm:tm}); Definition~`Finite spin system' (\texttt{def:spin}), the
+interpolation inequalities (\texttt{eq:interp}), Lemma~`Maximal coupling' (\texttt{lem:coupling}), Lemma~`Ergodicity of the
+Gibbs sampler' (\texttt{lem:ergodic}) and Theorem~\texttt{thm:dobrushin}; and, for Corollary~\ref{iv:cor:finitevol}, the
+proof of Theorem~\texttt{thm:strong}. From \cite{III} only Corollary~\ref{iv:cor:arealaw}, a restatement of
+\IIIref{Corollary}{String tension}{al:cor:tension} for the unique infinite-volume measure, is used.
+
+\section{The infinite lattice and the Wilson specification}\label{iv:sec:setting}
+
+\subsection{Lattice, configurations, local functions}
+
+\begin{convention}[The infinite lattice]\label{iv:conv:lattice}
+Sites are $x\in\Z^d$, $d\ge2$, with unit vectors $e_0,\dots,e_{d-1}$; direction $0$ is Euclidean time and $x_0$ the time
+coordinate. Links $\ell=(x,\mu)$ and plaquettes $p=(x,\mu\nu)$, $\mu<\nu$, their sets $E:=E(\Z^d)$ and $\cP:=\cP(\Z^d)$,
+the four links $E(p)$ of a plaquette and the plaquette variable $U_p$ are as in \Fname{Convention}{Lattice} and
+\Flab{eq.}{eq:plaquette}, with $\Z^d$ in place of the torus; $E(X):=\bigcup_{p\in X}E(p)$. For nearest neighbours $y,z$ we
+write $U(y,z):=U_{(y,\mu)}$ if $z=y+e_\mu$ and $U(y,z):=U_{(z,\mu)}^{-1}$ if $y=z+e_\mu$ (parallel transport along the
+oriented edge), so that $U_p=U(x,x+e_\mu)\,U(x+e_\mu,x+e_\mu+e_\nu)\,U(x+e_\mu+e_\nu,x+e_\nu)\,U(x+e_\nu,x)$ for
+$p=(x,\mu\nu)$.
+\end{convention}
+
+\begin{lemma}[Geometry of links]\label{iv:lem:geometry}
+\begin{enumerate}[label=(\alph*)]
+\item Every link lies in exactly $2(d-1)$ plaquettes, two distinct links lie in at most one common plaquette, and two
+distinct plaquettes have at most one common link. Call distinct links \emph{adjacent}, $\ell\sim\ell'$, if they lie in a
+common plaquette; every link has exactly $6(d-1)$ adjacent links. Let $\varrho$ be the graph distance on $E$ for $\sim$ and
+$\varrho(A,B):=\min\{\varrho(a,b):a\in A,b\in B\}$.
+\item For a link $\ell$ let $\norm\ell:=\max\{|y|_\infty,|z|_\infty\}$ for its endpoints $y,z$, and $t_\pm(\ell)$ the
+largest/smallest time coordinate of its endpoints. If $\ell\sim\ell'$ then every endpoint of $\ell'$ is at
+$|\cdot|_\infty$-distance at most $1$ from every endpoint of $\ell$. Consequently, for all links $\ell,\ell'$,
+\[
+\varrho(\ell,\ell')\ \ge\ \norm{\ell'}-\norm\ell\qquad\text{and}\qquad\varrho(\ell,\ell')\ \ge\ t_-(\ell')-t_+(\ell).
+\]
+\item Let $B_n:=\{x:|x|_\infty\le n\}$ and $E_n$ the set of links with both endpoints in $B_n$. Every plaquette containing
+a link of $E_n$ has its four corners in $B_{n+1}$, and every link outside $E_n$ has $\norm\ell\ge n+1$. Hence for
+$A\subseteq E_r$ and $n\ge r$, $\varrho(A,E\setminus E_n)\ge n+1-r$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) The plaquettes containing $\ell=(x,\mu)$ are, for each $\nu\neq\mu$, the unit squares spanned by $e_\mu,e_\nu$ with an
+edge on $\ell$, one on each side of $\ell$ in direction $\nu$: $2(d-1)$ squares. A unit square is determined by any two of
+its edges (two parallel edges span it; two edges meeting at a corner determine its plane and position), so two distinct
+links lie in at most one common plaquette, and two distinct plaquettes share at most one edge. The $2(d-1)$ plaquettes
+through $\ell$ therefore contribute $3$ further links each, all distinct: $6(d-1)$ adjacent links.
+(b) All four corners of a plaquette are pairwise at $|\cdot|_\infty$-distance $\le1$, and the endpoints of $\ell,\ell'$
+are corners of their common plaquette. Along a path $\ell=\ell_0\sim\ell_1\sim\dots\sim\ell_k=\ell'$ this gives
+$\norm{\ell_{j+1}}\le\norm{\ell_j}+1$ and $t_+(\ell_{j+1})\le t_+(\ell_j)+1$, hence $\norm{\ell'}\le\norm\ell+k$ and
+$t_-(\ell')\le t_+(\ell')\le t_+(\ell)+k$.
+(c) The corners of a plaquette containing a link of $E_n$ are within distance $1$ of an endpoint of that link. A link not
+in $E_n$ has an endpoint $z\notin B_n$, i.e.\ $|z|_\infty\ge n+1$. The last claim follows from (b), as $\norm a\le r$ for
+$a\in A$.
+\end{proof}
+
+\begin{convention}[Configurations and local functions]\label{iv:conv:config}
+$\Omega:=G^E$ with the product topology, a compact metrisable space; its Borel $\sigma$-algebra $\cF$ is the product
+$\sigma$-algebra ($E$ is countable and $G$ is second countable). For $A\subseteq E$, $\cF_A:=\sigma(U_\ell:\ell\in A)$. A
+function $F:\Omega\to\C$ \emph{depends only on} $A$ if $F(U)=F(U')$ whenever $U,U'$ agree on $A$; for measurable $F$ this
+holds iff $F$ is $\cF_A$-measurable. $F$ is \emph{local} if it is bounded, measurable and depends only on a finite set of
+links; $\cB_{\rm loc}$ is the space of local functions and $C_{\rm loc}$ that of continuous local functions. For bounded
+$F$ and $\ell\in E$, $\delta_\ell(F):=\sup\{|F(U)-F(U')|:U,U'\text{ agree off }\ell\}$ and
+$\norm{\delta(F)}_1:=\sum_\ell\delta_\ell(F)$; if $F$ depends only on a finite $A$, then $\delta_\ell(F)=0$ for
+$\ell\notin A$, $\norm{\delta(F)}_1\le2|A|\norm F_\infty$, and $|F(U)-F(U')|\le\norm{\delta(F)}_1$ for all $U,U'$ (change
+the coordinates in $A$ one at a time, as in \Flab{eq.}{eq:interp}). For a finite $\Delta\subseteq E$, $V\in G^\Delta$ and
+$\eta\in\Omega$, $V\vee\eta\in\Omega$ denotes the configuration equal to $V$ on $\Delta$ and to $\eta$ on $E\setminus\Delta$.
+\end{convention}
+
+\begin{lemma}[Measures on $\Omega$]\label{iv:lem:measures}
+\begin{enumerate}[label=(\roman*)]
+\item $C_{\rm loc}$ is dense in $C(\Omega)$ for the uniform norm.
+\item Two Borel probability measures on $\Omega$ which agree on $C_{\rm loc}$ (or on $\cB_{\rm loc}$) are equal.
+\item Every sequence of Borel probability measures on $\Omega$ has a weakly convergent subsequence.
+\item For every Borel probability measure $\mu$ on $\Omega$ and every $A\subseteq E$, the bounded $\cF_A$-measurable functions
+that depend only on finitely many links of $A$ are dense in $L^2(\Omega,\cF_A,\mu)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) $C_{\rm loc}$ is a subalgebra of $C(\Omega)$ containing the constants and closed under complex conjugation; it
+separates points, since configurations $U\neq U'$ differ at some link $\ell$ and a continuous function $h$ on the compact
+Hausdorff space $G$ with $h(U_\ell)\ne h(U'_\ell)$ exists (Urysohn). The Stone--Weierstrass theorem applies on the compact
+Hausdorff space $\Omega$. (ii) By (i) the two measures agree on $C(\Omega)$, hence are equal by the uniqueness part of the
+Riesz representation theorem. (iii) is Prokhorov's theorem on the compact metrisable space $\Omega$ \cite[Section~5]{Bil99}.
+(iv) The union $\cA_A$ of the $\sigma$-algebras $\cF_{A'}$, $A'\subseteq A$ finite, is an algebra of sets generating
+$\cF_A$. Let $\mathcal S$ be the class of $S\in\cF_A$ such that for every $\epsilon>0$ there is $S'\in\cA_A$ with
+$\mu(S\triangle S')<\epsilon$. It contains $\cA_A$, is closed under complements ($S^c\triangle S'^c=S\triangle S'$) and under
+countable unions (given $S_1,S_2,\ldots\in\mathcal S$, choose $k$ with $\mu(\bigcup_iS_i\setminus\bigcup_{i\le k}S_i)<\epsilon/2$
+and $S_i'\in\cA_A$ with $\mu(S_i\triangle S_i')<\epsilon/(2k)$ for $i\le k$; then $\bigcup_{i\le k}S'_i\in\cA_A$ approximates
+$\bigcup_iS_i$ within $\epsilon$). So $\mathcal S=\cF_A$. Hence indicators of sets in $\cF_A$, and therefore simple functions
+and all of $L^2(\cF_A,\mu)$, are $L^2$-limits of linear combinations of indicators of sets in $\cA_A$, which are of the
+stated type.
+\end{proof}
+
+\subsection{The Wilson specification and Gibbs measures}
+
+\begin{definition}[Wilson specification]\label{iv:def:spec}
+Let $\beta\ge0$. For a finite $\Delta\subseteq E$ let $\cP_\Delta:=\{p\in\cP:E(p)\cap\Delta\neq\emptyset\}$ (a finite set)
+and $\partial\Delta:=E(\cP_\Delta)\setminus\Delta$. For $\eta\in\Omega$ and $V\in G^\Delta$ put
+\[
+\rho_\Delta(V,\eta):=\prod_{p\in\cP_\Delta}w_\beta\bigl((V\vee\eta)_p\bigr),\qquad
+Z_\Delta(\eta):=\int_{G^\Delta}\rho_\Delta(V,\eta)\,dV,
+\]
+and for bounded measurable $F:\Omega\to\C$
+\[
+\gamma_\Delta(F\,|\,\eta):=\frac1{Z_\Delta(\eta)}\int_{G^\Delta}F(V\vee\eta)\,\rho_\Delta(V,\eta)\,dV .
+\]
+$\gamma_\Delta(\cdot\,|\,\eta)$ is the probability measure on $\Omega$ which resamples the links of $\Delta$ from the Wilson
+weight of the plaquettes touching $\Delta$, the other links being fixed to $\eta$.
+\end{definition}
+
+\begin{lemma}[Properties of the specification]\label{iv:lem:spec}
+Let $\Delta\subseteq E$ be finite and $F$ bounded measurable.
+\begin{enumerate}[label=(\alph*)]
+\item $e^{-\beta|\cP_\Delta|}\le Z_\Delta\le e^{\beta|\cP_\Delta|}$; $\eta\mapsto\gamma_\Delta(F|\eta)$ is measurable,
+$|\gamma_\Delta(F|\eta)|\le\norm F_\infty$, and if $F$ depends only on $A$ then $\gamma_\Delta(F|\cdot)$ depends only on
+$\partial\Delta\cup(A\setminus\Delta)$. In particular $\gamma_\Delta(F|\cdot)$ is $\cF_{E\setminus\Delta}$-measurable, and
+local if $F$ is.
+\item \emph{(Properness)} If $H$ is bounded and $\cF_{E\setminus\Delta}$-measurable, $\gamma_\Delta(HF|\eta)=H(\eta)\gamma_\Delta(F|\eta)$.
+\item \emph{(Feller property)} If $F$ is continuous, so is $\gamma_\Delta(F|\cdot)$.
+\item \emph{(A criterion for the DLR equation)} Let $\kappa$ be a probability measure on $G^{E\setminus\Delta}$ and $R'\ge0$
+a measurable function on $G^{E\setminus\Delta}$, and suppose that $m(dU):=\rho_\Delta(U_\Delta,U)\,R'(U_{E\setminus\Delta})
+\,dU_\Delta\otimes\kappa(dU_{E\setminus\Delta})$ is a probability measure on $\Omega=G^\Delta\times G^{E\setminus\Delta}$.
+Then $\int\gamma_\Delta(F|\eta)\,m(d\eta)=\int F\,dm$ for every bounded measurable $F$.
+\item \emph{(Covariance)} For every gauge transformation $g\in G^{\Z^d}$, acting by
+$(g\cdot U)_{(x,\mu)}=g(x)U_{(x,\mu)}g(x+e_\mu)^{-1}$, one has $\gamma_\Delta(F\circ g\,|\,\eta)=\gamma_\Delta(F\,|\,g\cdot\eta)$,
+where $(F\circ g)(U):=F(g\cdot U)$. For every lattice symmetry $s$ (Definition~\ref{iv:def:symm}),
+$\gamma_{s\Delta}(F\,|\,s\cdot\eta)=\gamma_\Delta(F\circ s\,|\,\eta)$, where $(F\circ s)(U):=F(s\cdot U)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{definition}[Lattice symmetries]\label{iv:def:symm}
+A \emph{lattice symmetry} is a map $s(x)=Rx+a$ of $\Z^d$ with $R$ a signed permutation matrix and $a\in\Z^d$. It permutes
+links and plaquettes (as unoriented edges and squares) and acts on $\Omega$ by $(s\cdot U)(y,z):=U(s^{-1}y,s^{-1}z)$ for
+nearest neighbours $y,z$ (Convention~\ref{iv:conv:lattice}); i.e.\ $(s\cdot U)_\ell=U_{s^{-1}\ell}^{\pm1}$ with the sign
+$-1$ iff $s^{-1}$ reverses the orientation of $\ell$. Translations $\tau_a(x):=x-a$ act by $(\tau_a\cdot U)_{(x,\mu)}=U_{(x+a,\mu)}$.
+The time reflection is $\theta(x_0,\vec x):=(-x_0,\vec x)$; then $(\theta\cdot U)_{(x,i)}=U_{(\theta x,i)}$ for $i\ge1$ and
+$(\theta\cdot U)_{(x,0)}=U_{(\theta x-e_0,0)}^{-1}$, which is the map $\theta^*$ of \Fname{Section}{Reflection positivity}
+transplanted to $\Z^d$.
+\end{definition}
+
+\begin{proof}[Proof of Lemma~\ref{iv:lem:spec}]
+(a) The bounds on $Z_\Delta$ follow from $e^{-\beta}\le w_\beta\le e^\beta$ \Flab{eq.}{eq:w}. Measurability follows from
+Fubini's theorem, since $(V,\eta)\mapsto F(V\vee\eta)\rho_\Delta(V,\eta)$ is jointly measurable. The links of the plaquettes
+in $\cP_\Delta$ lie in $\Delta\cup\partial\Delta$, so $\rho_\Delta(V,\eta)$ depends on $\eta$ only through $\partial\Delta$,
+and $F(V\vee\eta)$ depends on $\eta$ only through $A\setminus\Delta$. (b) $H(V\vee\eta)=H(\eta)$, since $V\vee\eta$ and
+$\eta$ agree off $\Delta$. (c) $(V,\eta)\mapsto V\vee\eta$ is continuous $G^\Delta\times\Omega\to\Omega$, and so is
+$U\mapsto U_p$; hence the integrands of $Z_\Delta(\eta)$ and of the numerator are continuous and bounded on
+$G^\Delta\times\Omega$, and the integrals are continuous in $\eta$ by dominated convergence (sequences suffice, $\Omega$
+being metrisable); and $Z_\Delta>0$. (d) Write $\eta$ for the variable in $G^{E\setminus\Delta}$ and $V$ for the variable in
+$G^\Delta$. By (a), $\gamma_\Delta(F|V\vee\eta)=\gamma_\Delta(F|\eta)$ does not depend on $V$, and
+$\int\rho_\Delta(V,\eta)dV=Z_\Delta(\eta)$. By Fubini,
+\begin{align*}
+\int\gamma_\Delta(F|\cdot)\,dm&=\int\kappa(d\eta)\,R'(\eta)\,\gamma_\Delta(F|\eta)\int\rho_\Delta(V,\eta)\,dV\\
+&=\int\kappa(d\eta)\,R'(\eta)\int F(V\vee\eta)\,\rho_\Delta(V,\eta)\,dV=\int F\,dm .
+\end{align*}
+(e) Gauge: $g\cdot(V\vee\eta)=(g\cdot V)\vee(g\cdot\eta)$, where $(g\cdot V)_\ell=g(x)V_\ell g(x+e_\mu)^{-1}$ for
+$\ell=(x,\mu)\in\Delta$, and $(g\cdot U)_p=g(x)U_pg(x)^{-1}$ for $p=(x,\mu\nu)$ \Flab{Theorem}{thm:basic}(ii), so
+$\rho_\Delta(V,\eta)=\rho_\Delta(g\cdot V,g\cdot\eta)$ because $w_\beta$ is a class function. The map $V\mapsto g\cdot V$
+is a product of left and right translations, hence preserves $dV$. Substituting $V'=g\cdot V$ in the integrals defining
+$\gamma_\Delta(F\circ g|\eta)$ gives $\gamma_\Delta(F|g\cdot\eta)$ (the same substitution shows $Z_\Delta(\eta)=Z_\Delta(g\cdot\eta)$).
+Lattice symmetries: $s\cdot(V\vee\eta)=V'\vee(s\cdot\eta)$ with $V'\in G^{s\Delta}$, $V'_{s\ell}=V_\ell^{\pm1}$, a
+measure-preserving bijection $G^\Delta\to G^{s\Delta}$ (Haar measure is inversion invariant). By
+Convention~\ref{iv:conv:lattice}, $(s\cdot U)_q$ is the holonomy of $U$ around the boundary of the square $s^{-1}q$, from
+one of its corners and in one of its two orientations; holonomies of a closed path from different base points are conjugate,
+and reversal inverts them. As $w_\beta$ is a class function invariant under inversion, $w_\beta((s\cdot U)_q)=w_\beta(U_{s^{-1}q})$.
+Since $q\in\cP_{s\Delta}$ iff $s^{-1}q\in\cP_\Delta$, $\rho_{s\Delta}(V',s\cdot\eta)=\rho_\Delta(V,\eta)$; substituting gives
+the claim.
+\end{proof}
+
+\begin{definition}[Gibbs measures]\label{iv:def:gibbs}
+A \emph{Gibbs measure} (for the Wilson specification at coupling $\beta$) is a Borel probability measure $\mu$ on $\Omega$
+such that $\int\gamma_\Delta(F|\eta)\,\mu(d\eta)=\mu(F)$ for every finite $\Delta\subseteq E$ and every bounded measurable $F$
+(the DLR equations).
+\end{definition}
+
+\begin{lemma}[DLR and conditional expectations]\label{iv:lem:condexp}
+If $\mu$ is a Gibbs measure, then for every finite $\Delta$ and bounded measurable $F$, $\gamma_\Delta(F|\cdot)$ is a version
+of $\E_\mu[F\,|\,\cF_{E\setminus\Delta}]$. Every Gibbs measure is invariant under gauge transformations $g$ with $g(x)=1$
+for all but finitely many $x$.
+\end{lemma}
+
+\begin{proof}
+$\gamma_\Delta(F|\cdot)$ is $\cF_{E\setminus\Delta}$-measurable (Lemma~\ref{iv:lem:spec}(a)), and for $S\in\cF_{E\setminus\Delta}$,
+by the DLR equation and properness, $\mu(\mathbf 1_SF)=\mu(\gamma_\Delta(\mathbf 1_SF|\cdot))=\mu(\mathbf 1_S\gamma_\Delta(F|\cdot))$.
+For the second claim let $g(x)=1$ off a finite set $X$ and let $\Delta$ be the (finite) set of links with an endpoint in $X$.
+Then $g\cdot\eta=\eta$ off $\Delta$, so $\gamma_\Delta(F|g\cdot\eta)=\gamma_\Delta(F|\eta)$ by Lemma~\ref{iv:lem:spec}(a), and
+by the DLR equation and Lemma~\ref{iv:lem:spec}(e),
+$\mu(F\circ g)=\int\gamma_\Delta(F\circ g|\eta)\,\mu(d\eta)=\int\gamma_\Delta(F|g\cdot\eta)\,\mu(d\eta)=\int\gamma_\Delta(F|\eta)\,\mu(d\eta)=\mu(F)$.
+\end{proof}
+
+\section{Dobrushin estimates for the Wilson specification}\label{iv:sec:dobrushin}
+
+\subsection{A sharp total-variation bound}
+
+\begin{lemma}[Total variation under a bounded density ratio]\label{iv:lem:tvratio}
+Let $\pi,\pi'$ be probability measures on a measurable space with $\pi'=h\,\pi$, and suppose $c\,e^{-\delta}\le h\le c\,e^{\delta}$
+for some $c>0$, $\delta\ge0$. Then
+\[
+\norm{\pi-\pi'}_\TV:=\sup_S|\pi(S)-\pi'(S)|\ \le\ \tanh\frac\delta2 .
+\]
+\end{lemma}
+
+\begin{proof}
+Let $m:=\operatorname{ess\,inf}h$ and $M:=\operatorname{ess\,sup}h$ (with respect to $\pi$). Since $\int h\,d\pi=1$, $m\le1\le M$,
+and $ce^{-\delta}\le m$, $M\le ce^\delta$. If $M=m$ then $h=1$ a.e.\ and $\pi=\pi'$. Otherwise fix $S$ and put $x:=\pi(S)$,
+$y:=\pi'(S)=\int_Sh\,d\pi$. Then $y\le Mx$ and $1-y=\int_{S^c}h\,d\pi\ge m(1-x)$, so
+$y-x\le\min\{(M-1)x,(1-m)(1-x)\}\le\frac{(M-1)(1-m)}{M-m}$, the value at the point $x=\frac{1-m}{M-m}$ where the increasing and
+the decreasing linear function coincide. Exchanging $\pi,\pi'$ replaces $h$ by $1/h$ and $(m,M)$ by $(1/M,1/m)$, which gives the
+same bound for $x-y$. The function $f(m,M):=\frac{(M-1)(1-m)}{M-m}$ is non-decreasing in $M$ and non-increasing in $m$ on
+$\{m\le1\le M,\ m<M\}$ (its partial derivatives are $\frac{(1-m)^2}{(M-m)^2}$ and $-\frac{(M-1)^2}{(M-m)^2}$), so with
+$c e^{-\delta}\le m\le1\le M\le ce^\delta$,
+\[
+f(m,M)\le f(ce^{-\delta},ce^{\delta})=\frac{2\cosh\delta-c-c^{-1}}{2\sinh\delta}\le\frac{2\cosh\delta-2}{2\sinh\delta}=\tanh\frac\delta2,
+\]
+using $c+c^{-1}\ge2$ (if $\delta=0$ then $m=M$ and there is nothing to prove).
+\end{proof}
+
+\begin{remark}
+The bound is sharp: on a two-point space with $\pi=(\frac1{1+e^\delta},\frac{e^\delta}{1+e^\delta})$ and $h=(e^{\delta},e^{-\delta})$
+(so that $\int h\,d\pi=1$ and $c=1$) one has $\pi'=(\frac{e^\delta}{1+e^\delta},\frac1{1+e^\delta})$ and
+$\norm{\pi-\pi'}_\TV=\frac{e^\delta-1}{e^\delta+1}=\tanh\frac\delta2$. In \Flab{Lemma}{lem:dobrushinbound} the same density ratio
+is bounded by $e^{\pm4\beta}$ (the normalisations being estimated separately) and the total variation by $e^{4\beta}-1\approx4\beta$;
+Lemma~\ref{iv:lem:coeff} below gives $\tanh\beta\approx\beta$. This is the source of the factor $\approx4$ between $\beta_D(d)$ and
+$\bS(d)$.
+\end{remark}
+
+\subsection{Dobrushin coefficients}
+
+We use the notions of \Fref{Definition}{Finite spin system}{def:spin}: a finite set $V$, the compact metric space $S=G$ with
+Haar measure, a continuous positive density $\rho$ on $G^V$, the resulting measure $\mu$, the single-site conditional
+distributions $\mu_x(\cdot|\omega)$, the Dobrushin matrix $C=(C_{xy})_{x,y\in V}$ and its maximal row sum $\alpha$.
+
+\begin{lemma}[Dobrushin coefficients of plaquette systems]\label{iv:lem:coeff}
+Let $V\subseteq E$ be finite, $\Phi\subseteq\cP$ finite, $\xi\in\Omega$, and $\rho(U):=\prod_{p\in\Phi}w_\beta((U\vee\xi)_p)$
+for $U\in G^V$. Then the Dobrushin matrix of $(V,G,dU,\rho)$ satisfies, for $x\neq y$ in $V$: $C_{xy}=0$ unless $x$ and $y$ lie in
+a common plaquette of $\Phi$, and $C_{xy}\le\tanh\beta$ always. Hence its row sums are at most $\aS(\beta)=6(d-1)\tanh\beta$, and
+$C_{xy}=0$ unless $x\sim y$. The same holds for the Wilson measure of a periodic lattice with all $L_\mu\ge3$ ($V=E(\Lambda)$,
+$\Phi=\cP(\Lambda)$).
+\end{lemma}
+
+\begin{proof}
+The single-site conditional distribution at $x$ has density proportional to
+\[
+s\ \longmapsto\prod_{p\in\Phi,\,p\ni x}w_\beta\bigl(((\omega^{x\leftarrow s})\vee\xi)_p\bigr)
+\]
+with respect to Haar measure. Let $\omega,\omega'$ agree off $y\neq x$. Factors of plaquettes not containing $y$ coincide, and by
+Lemma~\ref{iv:lem:geometry}(a) at most one plaquette $p$ contains both $x$ and $y$; if there is none, $C_{xy}=0$. Otherwise the
+two densities are $e^{\varphi(s)}/Z$ and $e^{\varphi'(s)}/Z'$ with
+$\varphi(s)-\varphi'(s)=\log w_\beta(\cdot)-\log w_\beta(\cdot)$ evaluated on the two versions of $U_p$, a difference of two numbers
+in $[-\beta,\beta]$ \Flab{eq.}{eq:w}. Their ratio is $(Z/Z')e^{\varphi'(s)-\varphi(s)}\in[ce^{-2\beta},ce^{2\beta}]$ with
+$c=Z/Z'$, and Lemma~\ref{iv:lem:tvratio} with $\delta=2\beta$ gives $\norm{\mu_x(\cdot|\omega)-\mu_x(\cdot|\omega')}_\TV\le\tanh\beta$.
+A link has $6(d-1)$ adjacent links (Lemma~\ref{iv:lem:geometry}(a)), whence the row sums. On a periodic lattice with all
+$L_\mu\ge3$, two distinct links lie in at most one common plaquette and each link has $6(d-1)$ adjacent links
+(\Fname{Section}{Application to the Wilson measure}), and the same argument applies.
+\end{proof}
+
+\begin{corollary}[Improved strong-coupling gap in finite volume]\label{iv:cor:finitevol}
+Let $d\ge2$ and $0<\beta<\bS(d)$. Then \Fref{Theorem}{Strong-coupling clustering and mass gap, uniform in the
+volume}{thm:strong} holds with $\alpha(\beta)$ replaced by $\aS(\beta)$. In particular
+$m_{\Lambda_s}(\beta)\ge\log(1/\aS(\beta))$ for every spatial lattice $\Lambda_s$ with all $L_i\ge3$.
+\end{corollary}
+
+\begin{proof}
+The proof of \Flab{Theorem}{thm:strong} uses \Flab{Lemma}{lem:dobrushinbound} only through its two conclusions: $C_{\ell\ell'}=0$
+unless $\ell\sim\ell'$, and the row sums are at most $\alpha(\beta)<1$. By Lemma~\ref{iv:lem:coeff} (periodic case) both hold
+with $\aS(\beta)<1$ in place of $\alpha(\beta)$; \Flab{Theorem}{thm:dobrushin} and the rest of that proof (via
+\Flab{Corollary}{cor:gapfromcorr}) then apply word for word.
+\end{proof}
+
+\subsection{Influence of the boundary}
+
+\begin{lemma}[Boundary influence]\label{iv:lem:boundary}
+Let $(V,S,\sigma,\rho)$ be a finite spin system as in \Flab{Definition}{def:spin} with Dobrushin matrix $C$, maximal row sum
+$\alpha<1$, and $D:=\sum_{n\ge1}C^n$. Let $V=V'\sqcup B$ with $V'\neq\emptyset$, and for $\eta\in S^B$ let $\mu^\eta$ be the
+probability measure on $S^{V'}$ with density proportional to $\rho(\cdot,\eta)$. Let $\eta,\eta'\in S^B$ and
+$B_1:=\{y\in B:\eta_y\neq\eta'_y\}$. If $f:S^{V'}\to\C$ is bounded, measurable and depends only on $A\subseteq V'$, then
+\[
+\bigl|\mu^\eta(f)-\mu^{\eta'}(f)\bigr|\le\sum_{x\in A}\delta_x(f)\sum_{y\in B_1}D_{xy}.
+\]
+If moreover $C_{xy}=0$ unless $x\sim y$ for a graph structure on $V$ with graph distance $\varrho_V$, the right-hand side is at most
+$\norm{\delta(f)}_1\,\alpha^{\varrho_V(A,B_1)}/(1-\alpha)$ (and it is $0$ if $B_1=\emptyset$).
+\end{lemma}
+
+\begin{proof}
+This is Step~1 of the proof of \Flab{Theorem}{thm:dobrushin}, keeping track of which boundary sites disagree. Let $n:=|V'|$.
+On a common probability space construct a Markov chain $(\omega^k,\omega'^k)_{k\ge0}$ on $S^{V'}\times S^{V'}$: $\omega^0=\omega'^0$
+is a fixed configuration; at step $k+1$ a site $x_{k+1}\in V'$ is chosen uniformly and independently of the past, all other
+coordinates are kept, and the pair of new values at $x:=x_{k+1}$ is drawn from the maximal coupling
+(\Flab{Lemma}{lem:coupling}) of $\mu_x(\cdot|(\omega^k,\eta))$ and $\mu_x(\cdot|(\omega'^k,\eta'))$ (these have continuous densities
+with respect to $\sigma$). Marginally, $(\omega^k)$ and $(\omega'^k)$ are the random-scan Gibbs samplers for $\mu^\eta$ and
+$\mu^{\eta'}$. Let $r_k(x):=\mathbb P(\omega^k_x\neq\omega'^k_x)$ for $x\in V'$, and $\tilde r_k(y):=r_k(y)$ for $y\in V'$,
+$\tilde r_k(y):=\mathbf 1_{B_1}(y)$ for $y\in B$. The configurations $(\omega^k,\eta)$ and $(\omega'^k,\eta')$ differ exactly on
+$\{y\in V':\omega^k_y\neq\omega'^k_y\}\cup B_1$, so by \Flab{eq.}{eq:interp} the conditional probability that the new values at
+$x$ differ is at most $\sum_yC_{xy}\mathbf 1[\text{disagreement at }y]$; taking expectations,
+\[
+r_{k+1}(x)\le\Bigl(1-\frac1n\Bigr)r_k(x)+\frac1n\sum_{y\in V}C_{xy}\,\tilde r_k(y)\qquad(x\in V').
+\]
+Let $C'$ be the restriction of $C$ to $V'\times V'$ and $C''$ the restriction to $V'\times B_1$, and put
+$r^*:=\sum_{m\ge0}(C')^mC''\mathbf 1_{B_1}\in[0,\infty)^{V'}$ (convergent, since the row sums of $C'$ are $\le\alpha<1$). Then
+$r^*=C'r^*+C''\mathbf 1_{B_1}$, and by induction $r_k\le r^*$ componentwise: $r_0=0$, and if $r_k\le r^*$ then, as $C\ge0$,
+$r_{k+1}\le(1-\frac1n)r^*+\frac1n(C'r^*+C''\mathbf 1_{B_1})=r^*$. Since $((C')^mC'')_{xy}$ is the sum of the products of the
+entries of $C$ along the paths $x\to\dots\to y$ of length $m+1$ whose intermediate vertices lie in $V'$, it is at most
+$(C^{m+1})_{xy}$; hence $r^*_x\le\sum_{y\in B_1}D_{xy}$. By \Flab{eq.}{eq:interp},
+$|\E f(\omega^k)-\E f(\omega'^k)|\le\sum_{x\in A}\delta_x(f)r_k(x)\le\sum_{x\in A}\delta_x(f)\sum_{y\in B_1}D_{xy}$, and by
+\Flab{Lemma}{lem:ergodic} the left side converges to $|\mu^\eta(f)-\mu^{\eta'}(f)|$ as $k\to\infty$. For the last claim,
+$(C^m)_{xy}=0$ unless $\varrho_V(x,y)\le m$, and $\sum_y(C^m)_{xy}\le\alpha^m$; so for $x\in A$,
+$\sum_{y\in B_1}D_{xy}\le\sum_{m\ge\varrho_V(x,B_1)}\alpha^m\le\alpha^{\varrho_V(A,B_1)}/(1-\alpha)$, using $\varrho_V(x,B_1)\ge1$.
+\end{proof}
+
+\begin{lemma}[Boundary influence for the Wilson specification]\label{iv:lem:boundaryWilson}
+Let $0<\beta<\bS(d)$ and $\alpha=\aS(\beta)$. Let $\Delta\subseteq E$ be finite, $F$ bounded measurable depending only on a finite
+$A\subseteq E$, and $\eta,\eta'\in\Omega$ such that $\eta=\eta'$ on $A\setminus\Delta$. With
+$B_1:=\{\ell\in\partial\Delta:\eta_\ell\ne\eta'_\ell\}$,
+\[
+\bigl|\gamma_\Delta(F|\eta)-\gamma_\Delta(F|\eta')\bigr|\le\frac{\norm{\delta(F)}_1}{1-\alpha}\,\alpha^{\varrho(A\cap\Delta,B_1)} .
+\]
+In particular, if $A\subseteq E_r$ and $n\ge r$, then
+$\sup_{\eta,\eta'\in\Omega}|\gamma_{E_n}(F|\eta)-\gamma_{E_n}(F|\eta')|\le\norm{\delta(F)}_1\alpha^{n+1-r}/(1-\alpha)$.
+\end{lemma}
+
+\begin{proof}
+Consider the finite spin system with $V:=\Delta\cup\partial\Delta$, $\rho(U):=\prod_{p\in\cP_\Delta}w_\beta(U_p)$ (all links of
+these plaquettes lie in $V$), $V':=\Delta$ and $B:=\partial\Delta$. For $\zeta\in\Omega$, $\gamma_\Delta(\cdot|\zeta)$ restricted to
+the links of $\Delta$ is $\mu^{\zeta|_{\partial\Delta}}$. Put $f(V):=F(V\vee\eta)=F(V\vee\eta')$ for $V\in G^\Delta$ (equal, since $F$
+depends only on $A$ and $\eta=\eta'$ on $A\setminus\Delta$); $f$ depends only on $A\cap\Delta$ and $\delta_x(f)\le\delta_x(F)$.
+Then $\gamma_\Delta(F|\eta)=\mu^{\eta|_{\partial\Delta}}(f)$ and $\gamma_\Delta(F|\eta')=\mu^{\eta'|_{\partial\Delta}}(f)$. By
+Lemma~\ref{iv:lem:coeff} (with $\Phi=\cP_\Delta$) this system has $C_{xy}=0$ unless $x\sim y$ and row sums $\le\alpha$, and the
+graph distance $\varrho_V$ of the subgraph induced on $V$ is at least $\varrho$. Lemma~\ref{iv:lem:boundary} gives the first
+claim. For the second, $A\setminus E_n=\emptyset$, and $\partial E_n\subseteq E\setminus E_n$, so
+$\varrho(A,\partial E_n)\ge n+1-r$ by Lemma~\ref{iv:lem:geometry}(c).
+\end{proof}
+
+\section{The infinite-volume Gibbs measure}\label{iv:sec:gibbs}
+
+\subsection{Finite-volume measures satisfy the DLR equation in boxes}
+
+\begin{definition}[Finite-volume measures and limit points]\label{iv:def:finitevol}
+Let $\beta\ge0$.
+\begin{enumerate}[label=(\alph*)]
+\item \emph{Periodic.} For a periodic lattice $\Lambda=\prod_\mu\Z/L_\mu\Z$ (all $L_\mu\ge2$) let $\pi:\Z^d\to\Lambda$ be the
+reduction map, also applied to links, $\pi(x,\mu):=(\pi x,\mu)$, and plaquettes. Let $\iota_\Lambda:\Omega_\Lambda\to\Omega$,
+$(\iota_\Lambda U)_\ell:=U_{\pi\ell}$, and $\tilde\mu_{\Lambda,\beta}:=(\iota_\Lambda)_*\mu_{\Lambda,\beta}$, where $\mu_{\Lambda,\beta}$
+is the Wilson measure of \Fref{Definition}{Wilson measure}{def:wilson}.
+\item \emph{Free boundary.} For $n'\ge1$ and $\xi\in\Omega$, $\mu^{\rm free}_{n',\xi}$ is the probability measure with density
+proportional to $\prod_{p\in\cP(B_{n'})}w_\beta(U_p)$ with respect to $dU_{E_{n'}}\otimes\delta_{\xi|_{E\setminus E_{n'}}}$, where
+$\cP(B_{n'})$ is the set of plaquettes with all four corners in $B_{n'}$.
+\item \emph{Fixed boundary.} For $n'\ge0$ and $\eta\in\Omega$, the measure $\gamma_{E_{n'}}(\cdot\,|\,\eta)$.
+\end{enumerate}
+A Borel probability measure $\mu$ on $\Omega$ is an \emph{infinite-volume limit point} (at coupling $\beta$) if
+$\tilde\mu_{\Lambda_k,\beta}\to\mu$ weakly along some sequence of periodic lattices $\Lambda_k$ with
+$\min_\mu L^{(k)}_\mu\to\infty$ (this is the notion of \IIIref{Definition}{Periodisation and infinite-volume limit
+points}{al:def:limitpoints}).
+\end{definition}
+
+\begin{lemma}[DLR equation in boxes]\label{iv:lem:boxDLR}
+Let $n\ge0$, $\Delta\subseteq E_n$, and let $F$ be bounded, measurable and dependent only on $E_n$. Then
+$\int\gamma_\Delta(F|\eta)\,m(d\eta)=\int F\,dm$ for each of the following measures $m$:
+\begin{enumerate}[label=(\alph*)]
+\item $m=\tilde\mu_{\Lambda,\beta}$, for every periodic lattice $\Lambda$ with all $L_\mu\ge2n+3$;
+\item $m=\mu^{\rm free}_{n',\xi}$, for every $n'\ge n+1$ and $\xi\in\Omega$;
+\item $m=\gamma_{E_{n'}}(\cdot|\eta)$, for every $n'\ge n$ and $\eta\in\Omega$.
+\end{enumerate}
+In cases (b) and (c) the identity holds for every bounded measurable $F$.
+\end{lemma}
+
+\begin{proof}
+(c) Put $\Delta':=E_{n'}\supseteq\Delta$. The density of $m$ with respect to $dU_{\Delta'}\otimes\delta_{\eta|_{E\setminus\Delta'}}$
+is
+\[
+Z_{\Delta'}(\eta)^{-1}\prod_{p\in\cP_{\Delta'}}w_\beta\bigl((U_{\Delta'}\vee\eta)_p\bigr)
+=\rho_\Delta(U_\Delta,U)\,R'(U_{E\setminus\Delta})\qquad\text{on the support of }m,
+\]
+where $R'$ is the (measurable) product over $\cP_{\Delta'}\setminus\cP_\Delta$ divided by $Z_{\Delta'}(\eta)$; this uses
+$\cP_\Delta\subseteq\cP_{\Delta'}$ and that the plaquettes of $\cP_{\Delta'}\setminus\cP_\Delta$ contain no link of $\Delta$. So $m$ has
+the form of Lemma~\ref{iv:lem:spec}(d) with $\kappa:=dU_{\Delta'\setminus\Delta}\otimes\delta_{\eta|_{E\setminus\Delta'}}$.
+(b) By Lemma~\ref{iv:lem:geometry}(c) every plaquette of $\cP_\Delta$ has its corners in $B_{n+1}\subseteq B_{n'}$, so
+$\cP_\Delta\subseteq\cP(B_{n'})$ and the factors of $\cP(B_{n'})\setminus\cP_\Delta$ do not involve the links of $\Delta$; conclude
+as in (c) with $\kappa:=dU_{E_{n'}\setminus\Delta}\otimes\delta_{\xi|_{E\setminus E_{n'}}}$.
+(a) Two points of $B_{n+1}$ differ by a vector with entries of absolute value $\le2n+2<L_\mu$, so $\pi$ is injective on
+$B_{n+1}$, hence on $E_{n+1}$ and on the plaquettes with corners in $B_{n+1}$, among them those of $\cP_\Delta$. For
+$\ell=(x,\mu)\in\Delta$ the plaquettes of $\Lambda$ containing $\pi\ell$ are those based at $\pi x$ and at $\pi x-e_\nu$ in the planes
+$\{\mu,\nu\}$, $\nu\neq\mu$, i.e.\ the images of the plaquettes of $\Z^d$ containing $\ell$. Hence $\pi$ maps $\cP_\Delta$
+bijectively onto $\cP^\Lambda_{\pi\Delta}:=\{q\in\cP(\Lambda):E(q)\cap\pi\Delta\ne\emptyset\}$. Let $\gamma^\Lambda_{\pi\Delta}$ be the
+torus analogue of Definition~\ref{iv:def:spec}. The torus Wilson density factorises as
+$\prod_{q\in\cP^\Lambda_{\pi\Delta}}w_\beta(U_q)$ times a factor not involving $U_{\pi\Delta}$, so by the torus version of
+Lemma~\ref{iv:lem:spec}(d) (same proof), $\mu_{\Lambda,\beta}(\gamma^\Lambda_{\pi\Delta}(H|\cdot))=\mu_{\Lambda,\beta}(H)$ for all bounded
+measurable $H$ on $\Omega_\Lambda$. We claim that
+\[
+\gamma_\Delta(F\,|\,\iota_\Lambda U')=\gamma^\Lambda_{\pi\Delta}(F\circ\iota_\Lambda\,|\,U')\qquad(U'\in\Omega_\Lambda),
+\]
+which gives
+\[
+\tilde\mu_{\Lambda,\beta}(\gamma_\Delta(F|\cdot))=\mu_{\Lambda,\beta}\bigl(\gamma^\Lambda_{\pi\Delta}(F\circ\iota_\Lambda|\cdot)\bigr)
+=\mu_{\Lambda,\beta}(F\circ\iota_\Lambda)=\tilde\mu_{\Lambda,\beta}(F).
+\]
+To prove the claim identify $V\in G^\Delta$ with $V'\in G^{\pi\Delta}$,
+$V'_{\pi\ell}:=V_\ell$, a measure-preserving bijection. For $\ell\in E_{n+1}$ the configurations $V\vee\iota_\Lambda U'$ and
+$\iota_\Lambda(V'\vee U')$ agree at $\ell$: both equal $V_\ell$ if $\ell\in\Delta$, and if $\ell\notin\Delta$ then $\pi\ell\notin\pi\Delta$
+(injectivity on $E_{n+1}$) and both equal $U'_{\pi\ell}$. As $F$ depends only on $E_n$ and the links of the plaquettes of
+$\cP_\Delta$ lie in $E_{n+1}$, $F(V\vee\iota_\Lambda U')=F(\iota_\Lambda(V'\vee U'))$ and $(V\vee\iota_\Lambda U')_p=(V'\vee U')_{\pi p}$
+for $p\in\cP_\Delta$; so the integrands defining the two sides agree, and so do the normalisations.
+\end{proof}
+
+\subsection{Limit points at every coupling}
+
+\begin{proposition}[Limit points are Gibbs measures]\label{iv:prop:limitpoints}
+Let $\beta\ge0$ and let $\Lambda_k$ be periodic lattices with $\min_\mu L_\mu^{(k)}\to\infty$.
+\begin{enumerate}[label=(\alph*)]
+\item $(\tilde\mu_{\Lambda_k,\beta})_k$ has weakly convergent subsequences, and every limit point is a Gibbs measure. In
+particular Gibbs measures exist for every $\beta\ge0$.
+\item Every limit point is invariant under all translations $\tau_a$, $a\in\Z^d$. If all $L_0^{(k)}$ are even, it is also
+invariant under the time reflection $\theta$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) Limit points exist by Lemma~\ref{iv:lem:measures}(iii). Let $\tilde\mu_{\Lambda_{k_j},\beta}\to\mu$ weakly, let $\Delta$ be
+finite and $F\in C_{\rm loc}$, and choose $n$ such that $\Delta\subseteq E_n$ and $F$ depends only on $E_n$. By
+Lemma~\ref{iv:lem:spec}(c), $\gamma_\Delta(F|\cdot)$ is continuous, and by Lemma~\ref{iv:lem:boxDLR}(a),
+$\tilde\mu_{\Lambda_{k_j},\beta}(\gamma_\Delta(F|\cdot))=\tilde\mu_{\Lambda_{k_j},\beta}(F)$ for $j$ large. Letting $j\to\infty$,
+$\mu(\gamma_\Delta(F|\cdot))=\mu(F)$. Thus the probability measures $F\mapsto\mu(\gamma_\Delta(F|\cdot))$ and $\mu$ agree on
+$C_{\rm loc}$, hence are equal (Lemma~\ref{iv:lem:measures}(ii)): $\mu$ satisfies the DLR equation for $\Delta$.
+(b) For $a\in\Z^d$ let $t_{\pi a}$ be the translation of $\Omega_\Lambda$ with $(t_{\pi a}U')_{(y,\mu)}=U'_{(y+\pi a,\mu)}$. Then
+$\tau_a\cdot\iota_\Lambda U'=\iota_\Lambda(t_{\pi a}U')$, and $\mu_{\Lambda,\beta}$ is invariant under $t_{\pi a}$
+\Flab{Theorem}{thm:basic}(iv); so $\tilde\mu_{\Lambda,\beta}$ is $\tau_a$-invariant. If $L_0$ is even, the reflection $\theta^*_\Lambda$
+of \Fname{Section}{Reflection positivity} satisfies $\theta\cdot\iota_\Lambda U'=\iota_\Lambda(\theta^*_\Lambda U')$: for spatial links,
+$(\theta\cdot\iota_\Lambda U')_{(x,i)}=U'_{(\pi\theta x,i)}=U'_{(\theta_\Lambda\pi x,i)}$, and for temporal links
+$(\theta\cdot\iota_\Lambda U')_{(x,0)}=U'^{-1}_{(\pi(\theta x-e_0),0)}=U'^{-1}_{(\theta_\Lambda\pi x-e_0,0)}$, where $\theta_\Lambda$ is the
+time reflection of $\Lambda$; and $\mu_{\Lambda,\beta}$ is $\theta^*_\Lambda$-invariant \Flab{Lemma}{lem:reflsym}. So
+$\tilde\mu_{\Lambda,\beta}$ is $\theta$-invariant. Invariance under a homeomorphism $T$ of $\Omega$ passes to weak limits:
+$\mu(F\circ T)=\lim_j\tilde\mu_{\Lambda_{k_j},\beta}(F\circ T)=\lim_j\tilde\mu_{\Lambda_{k_j},\beta}(F)=\mu(F)$ for continuous $F$.
+\end{proof}
+
+\subsection{Uniqueness and convergence at strong coupling}
+
+\begin{theorem}[Uniqueness and convergence]\label{iv:thm:unique}
+Let $d\ge2$, $0<\beta<\bS(d)$ and $\alpha:=\aS(\beta)$.
+\begin{enumerate}[label=(\roman*)]
+\item There is exactly one Gibbs measure, denoted $\mu_\beta$.
+\item Let $F$ be bounded, measurable and dependent only on $E_r$, let $n\ge r$, and let $m$ be a probability measure on $\Omega$
+with $\int\gamma_{E_n}(F|\eta)\,m(d\eta)=\int F\,dm$. Then
+\[
+\bigl|m(F)-\mu_\beta(F)\bigr|\le\frac{\norm{\delta(F)}_1}{1-\alpha}\,\alpha^{\,n+1-r}.
+\]
+By Lemma~\ref{iv:lem:boxDLR} this applies to $\tilde\mu_{\Lambda,\beta}$ if all $L_\mu\ge2n+3$, to $\mu^{\rm free}_{n',\xi}$ if
+$n'\ge n+1$, and to $\gamma_{E_{n'}}(\cdot|\eta)$ if $n'\ge n$.
+\item If $\Lambda_k$ are periodic lattices with $\min_\mu L^{(k)}_\mu\to\infty$, then
+$\tilde\mu_{\Lambda_k,\beta}(F)\to\mu_\beta(F)$ for every $F\in\cB_{\rm loc}$; in particular $\tilde\mu_{\Lambda_k,\beta}\to\mu_\beta$
+weakly. The same holds for free and fixed boundary conditions as $n'\to\infty$, uniformly in $\xi$, resp.\ $\eta$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Let $m_1,m_2$ be probability measures satisfying the hypothesis of (ii) for the same $F$ and $n$. Then
+\[
+|m_1(F)-m_2(F)|=\Bigl|\iint\bigl[\gamma_{E_n}(F|\eta)-\gamma_{E_n}(F|\eta')\bigr]\,m_1(d\eta)\,m_2(d\eta')\Bigr|
+\le\frac{\norm{\delta(F)}_1}{1-\alpha}\,\alpha^{\,n+1-r}
+\]
+by Lemma~\ref{iv:lem:boundaryWilson}. (i) A Gibbs measure exists by Proposition~\ref{iv:prop:limitpoints}(a). If $\mu,\mu'$ are Gibbs
+measures, they satisfy the hypothesis of (ii) for every local $F$ and every $n\ge r$; letting $n\to\infty$ gives $\mu(F)=\mu'(F)$
+for all $F\in\cB_{\rm loc}$, so $\mu=\mu'$ (Lemma~\ref{iv:lem:measures}(ii)). (ii) is the displayed estimate with $m_1=m$,
+$m_2=\mu_\beta$. (iii) For $F$ depending only on $E_r$ and $k$ large, Lemma~\ref{iv:lem:boxDLR}(a) applies with
+$n_k:=\lfloor(\min_\mu L_\mu^{(k)}-3)/2\rfloor\ge r$, and (ii) gives
+$|\tilde\mu_{\Lambda_k,\beta}(F)-\mu_\beta(F)|\le\norm{\delta(F)}_1\alpha^{n_k+1-r}/(1-\alpha)\to0$. For $F\in C(\Omega)$ and
+$\epsilon>0$ pick $F'\in C_{\rm loc}$ with $\norm{F-F'}_\infty<\epsilon$ (Lemma~\ref{iv:lem:measures}(i)); then
+$\limsup_k|\tilde\mu_{\Lambda_k,\beta}(F)-\mu_\beta(F)|\le2\epsilon$. Free and fixed boundary conditions are handled in the same way
+with Lemma~\ref{iv:lem:boxDLR}(b),(c).
+\end{proof}
+
+\begin{remark}[Rate]
+For a periodic lattice with all sides $\ge L\ge3$ and $F$ depending only on $E_r$, (ii) gives
+$|\langle F\rangle_{\Lambda,\beta}-\mu_\beta(F)|\le\norm{\delta(F)}_1\,\alpha^{\lfloor(L-1)/2\rfloor-r}/(1-\alpha)$, where
+$\langle F\rangle_{\Lambda,\beta}:=\tilde\mu_{\Lambda,\beta}(F)$; the bound is trivially true (since
+$|\tilde\mu(F)-\mu(F)|\le\osc F\le\norm{\delta(F)}_1$) when the exponent is not positive. The finite-volume corrections to
+local expectations are thus exponentially small in the linear size, at rate at least $\frac12\log(1/\aS(\beta))$.
+\end{remark}
+
+\begin{theorem}[Symmetries]\label{iv:thm:symm}
+Let $0<\beta<\bS(d)$. The Gibbs measure $\mu_\beta$ is invariant under every lattice symmetry (Definition~\ref{iv:def:symm}) and
+under every gauge transformation $g\in G^{\Z^d}$, including those with infinite support.
+\end{theorem}
+
+\begin{proof}
+Let $T$ be either $U\mapsto s\cdot U$ or $U\mapsto g\cdot U$, and $\mu'(F):=\mu_\beta(F\circ T)$, where $(F\circ T)(U):=F(T(U))$.
+For the gauge transformation, Lemma~\ref{iv:lem:spec}(e) gives
+$\int\gamma_\Delta(F|\eta)\,\mu'(d\eta)=\int\gamma_\Delta(F|g\cdot\eta)\,\mu_\beta(d\eta)=\int\gamma_\Delta(F\circ g|\eta)\,\mu_\beta(d\eta)
+=\mu_\beta(F\circ g)=\mu'(F)$. For the lattice symmetry, Lemma~\ref{iv:lem:spec}(e) applied to $s^{-1}\Delta$ gives
+$\gamma_\Delta(F|s\cdot\eta)=\gamma_{s^{-1}\Delta}(F\circ s|\eta)$, and the same computation applies. So $\mu'$ is a Gibbs measure,
+and $\mu'=\mu_\beta$ by Theorem~\ref{iv:thm:unique}(i).
+\end{proof}
+
+\begin{proposition}[Gauge-variant variables: forests]\label{iv:prop:forest}
+Let $0<\beta<\bS(d)$ and let $A\subseteq E$ be a finite set of links containing no cycle (the graph on $\Z^d$ with edge set $A$ is a
+forest). Then under $\mu_\beta$ the variables $(U_\ell)_{\ell\in A}$ are independent and Haar distributed. In particular
+$\mu_\beta(D^r_{ab}(U_\ell))=0$ for every link $\ell$ and every irreducible $r\neq0$ (Elitzur's theorem in infinite volume).
+\end{proposition}
+
+\begin{proof}
+Let $X$ be the set of endpoints of the links of $A$, and $m$ the law of $U_A:=(U_\ell)_{\ell\in A}$. By
+Theorem~\ref{iv:thm:symm}, for every $g\in G^X$ (extended by $1$ off $X$) $m$ is invariant under $u\mapsto(g\cdot u)_A$, where
+$(g\cdot u)_{(x,\mu)}=g(x)u_{(x,\mu)}g(x+e_\mu)^{-1}$. Averaging over $g$ distributed according to the Haar measure $dg$ of
+$G^X$, $m(F)=\int m(du)\int F((g\cdot u)_A)\,dg$ for bounded measurable $F$ on $G^A$. It therefore suffices to show that for every
+fixed $u\in G^A$ the law of $(g\cdot u)_A$ under $dg$ is the Haar measure of $G^A$. We argue by induction on $|A|$, the case
+$A=\emptyset$ being trivial. A finite forest with an edge has a vertex $v\in X$ lying on exactly one link $\ell_v\in A$. The
+coordinates $(g\cdot u)_\ell$, $\ell\in A\setminus\{\ell_v\}$, do not involve $g(v)$, and by the induction hypothesis (applied to the
+forest $A\setminus\{\ell_v\}$, whose endpoints lie in $X\setminus\{v\}$) their law under $dg$ is the Haar measure of
+$G^{A\setminus\{\ell_v\}}$. Conditionally on $(g(x))_{x\neq v}$, $(g\cdot u)_{\ell_v}$ is $g(y)u_{\ell_v}g(v)^{-1}$ or
+$g(v)u_{\ell_v}g(y)^{-1}$ ($y$ the other endpoint) with $g(v)$ Haar distributed, hence Haar distributed by right or left
+invariance, whatever the conditioning. So the joint law is the product Haar measure. The last claim follows from
+\Fref{Cited Theorem}{Haar measure, Peter--Weyl}{thm:pw}(ii) with the trivial representation.
+\end{proof}
+
+\section{Clustering and the Markov property}\label{iv:sec:markov}
+
+\begin{theorem}[Exponential clustering]\label{iv:thm:cluster}
+Let $0<\beta<\bS(d)$ and $\alpha:=\aS(\beta)$. For bounded measurable $f,g$ depending only on disjoint finite sets of links
+$A,B$,
+\[
+\bigl|\Cov_{\mu_\beta}(f,g)\bigr|\le\frac{\norm g_\infty\norm{\delta(f)}_1}{1-\alpha}\,\alpha^{\varrho(A,B)} .
+\]
+\end{theorem}
+
+\begin{proof}
+Let $r$ be such that $A\cup B\subseteq E_r$, let $n\ge r$, $\Delta:=E_n$, and write $\gamma(\cdot):=\gamma_\Delta(\cdot|\eta)$
+for fixed $\eta$. By the DLR equation applied to $fg$, $f$ and $g$,
+\[
+\Cov_{\mu_\beta}(f,g)=\int\Cov_{\gamma_\Delta(\cdot|\eta)}(f,g)\,\mu_\beta(d\eta)+\Cov_{\mu_\beta}\bigl(\gamma_\Delta(f|\cdot),\gamma_\Delta(g|\cdot)\bigr).
+\]
+For fixed $\eta$, $\gamma_\Delta(\cdot|\eta)$ is the finite spin system on $V=\Delta$ with density $\rho_\Delta(\cdot,\eta)$, and
+$f(\cdot\vee\eta)$, $g(\cdot\vee\eta)$ depend only on $A$, $B$. By Lemma~\ref{iv:lem:coeff} (with $V=\Delta$, $\Phi=\cP_\Delta$,
+$\xi=\eta$) its Dobrushin matrix vanishes off adjacent pairs and has row sums $\le\alpha$, and the graph distance in $\Delta$ is
+at least $\varrho$; so \Flab{Theorem}{thm:dobrushin} bounds the first term by
+$\norm g_\infty\norm{\delta(f)}_1\alpha^{\varrho(A,B)}/(1-\alpha)$. For the second term, $|\Cov_\mu(F_1,F_2)|=|\mu((F_1-\mu F_1)F_2)|\le
+\norm{F_2}_\infty\osc F_1$ with $\osc F_1:=\sup_{\eta,\eta'}|F_1(\eta)-F_1(\eta')|$; with $F_1=\gamma_\Delta(f|\cdot)$ and
+$F_2=\gamma_\Delta(g|\cdot)$, Lemma~\ref{iv:lem:boundaryWilson} bounds it by
+$\norm g_\infty\norm{\delta(f)}_1\alpha^{n+1-r}/(1-\alpha)$, which tends to $0$ as $n\to\infty$.
+\end{proof}
+
+\begin{definition}[Half-spaces and time slices]\label{iv:def:halfspaces}
+Let $E_+$ ($E_-$) be the set of links with both endpoints in $\{x_0\ge0\}$ (in $\{x_0\le0\}$), and $E_0:=E_+\cap E_-$, the set
+of spatial links $(x,i)$, $1\le i\le d-1$, with $x_0=0$. More generally $\cF_{\le t}$ ($\cF_{\ge t}$) is the $\sigma$-algebra of
+the links with both endpoints in $\{x_0\le t\}$ (in $\{x_0\ge t\}$), so that $\cF_{\le0}=\cF_{E_-}$ and $\cF_{\ge0}=\cF_{E_+}$.
+Let $E_s$ be the set of links of $\Z^{d-1}$, $\Omega_s:=G^{E_s}$ (compact metrisable), and for $t\in\Z$ let
+$U^{(t)}\in\Omega_s$ be the configuration of the spatial links in the slice $x_0=t$:
+$U^{(t)}_{(\vec x,i)}:=U_{((t,\vec x),i)}$. Thus $\sigma(U^{(0)})=\cF_{E_0}$.
+\end{definition}
+
+\begin{theorem}[Global Markov property]\label{iv:thm:markov}
+Let $0<\beta<\bS(d)$. For every $F\in L^2(\Omega,\cF_{E_+},\mu_\beta)$,
+\[
+\E_{\mu_\beta}\bigl[F\,\big|\,\cF_{E_-}\bigr]=\E_{\mu_\beta}\bigl[F\,\big|\,\cF_{E_0}\bigr]\qquad\mu_\beta\text{-a.s.}
+\]
+\end{theorem}
+
+\begin{proof}
+Write $\E$ for $\E_{\mu_\beta}$ and $\alpha:=\aS(\beta)$. First let $F$ be bounded, measurable, and dependent only on a finite
+$A\subseteq E_+\cap E_r$. For $n\ge r$ let $\Delta_n:=(E_n\cap E_+)\setminus E_0$. We record three facts.
+\begin{enumerate}[label=(\arabic*)]
+\item \emph{Every plaquette touching $\Delta_n$ has all its corners in $\{x_0\ge0\}$.} A link of $\Delta_n$ is either spatial
+at a time $t\ge1$, and then the plaquettes containing it have corners at times in $\{t-1,t,t+1\}\subseteq\{x_0\ge0\}$, or
+temporal from time $s\ge0$ to $s+1$, and then the plaquettes containing it have corners at times $s,s+1$. Hence
+$\partial\Delta_n\subseteq E_+$.
+\item $\partial\Delta_n\setminus E_0\subseteq E\setminus E_n$, because $(E_+\setminus E_0)\cap E_n=\Delta_n$ is disjoint from
+$\partial\Delta_n$; and $\Delta_n\cap E_-=\emptyset$, because $E_+\cap E_-=E_0$.
+\item $A\setminus\Delta_n\subseteq E_0$, because $A\subseteq E_+\cap E_n$.
+\end{enumerate}
+Let $h_n:=\gamma_{\Delta_n}(F|\cdot)$, a version of $\E[F|\cF_{E\setminus\Delta_n}]$ (Lemma~\ref{iv:lem:condexp}). Fix $\xi\in\Omega$
+and let $\tilde h_n(\eta):=h_n(\eta^\xi)$, where $\eta^\xi$ equals $\eta$ on $E_0$ and $\xi$ off $E_0$; $\tilde h_n$ is
+$\cF_{E_0}$-measurable. For every $\eta$, the configurations $\eta$ and $\eta^\xi$ agree on $E_0\supseteq A\setminus\Delta_n$ (by
+(3)), and on $\partial\Delta_n$ they can differ only on $\partial\Delta_n\setminus E_0\subseteq E\setminus E_n$ (by (2)). By
+Lemma~\ref{iv:lem:boundaryWilson} and Lemma~\ref{iv:lem:geometry}(c),
+\[
+\norm{h_n-\tilde h_n}_\infty\le\epsilon_n:=\frac{\norm{\delta(F)}_1}{1-\alpha}\,\alpha^{\,n+1-r}.
+\]
+Since $\cF_{E_-}$ and $\cF_{E_0}$ are contained in $\cF_{E\setminus\Delta_n}$ (by (2)), the tower property gives
+$\E[F|\cF_{E_-}]=\E[h_n|\cF_{E_-}]$ and $\E[F|\cF_{E_0}]=\E[h_n|\cF_{E_0}]$; and as $\tilde h_n$ is $\cF_{E_0}$- and hence
+$\cF_{E_-}$-measurable, both conditional expectations differ from $\tilde h_n$ by at most $\epsilon_n$ almost surely. Hence
+$|\E[F|\cF_{E_-}]-\E[F|\cF_{E_0}]|\le2\epsilon_n$ a.s.\ for every $n\ge r$, and the two are equal. For general
+$F\in L^2(\cF_{E_+})$ use Lemma~\ref{iv:lem:measures}(iv) and the $L^2$-continuity of conditional expectations.
+\end{proof}
+
+\begin{corollary}[The time-slice chain]\label{iv:cor:chain}
+Let $0<\beta<\bS(d)$ and let $\nu$ be the law of $U^{(0)}$ under $\mu_\beta$, a Borel probability measure on $\Omega_s$.
+\begin{enumerate}[label=(\roman*)]
+\item Every $U^{(t)}$, $t\in\Z$, has law $\nu$.
+\item For $A\in L^2(\nu)$ there is a unique $PA\in L^2(\nu)$ with $\E[A(U^{(1)})\,|\,\cF_{\le0}]=(PA)(U^{(0)})$ a.s. The map $P$ is
+a linear contraction of $L^2(\nu)$ with $P\mathbf 1=\mathbf 1$ and $PA\ge0$ if $A\ge0$.
+\item $P$ is self-adjoint on $L^2(\nu)$.
+\item For $s\in\Z$, $t\in\N$ and $A,B\in L^2(\nu)$: $\E[A(U^{(s+t)})\,|\,\cF_{\le s}]=(P^tA)(U^{(s)})$ a.s., and
+$\mu_\beta\bigl(\overline{B(U^{(0)})}A(U^{(t)})\bigr)=\ip B{P^tA}_{L^2(\nu)}$.
+\end{enumerate}
+In words: $(U^{(t)})_{t\in\Z}$ is a stationary, reversible Markov chain on $\Omega_s$ with stationary law $\nu$ and transition
+operator $P$. We call $\nu$ the \emph{vacuum measure} and $P$ the \emph{ground-state chain} of the infinite-volume theory.
+\end{corollary}
+
+\begin{proof}
+For a lattice symmetry $s'$ with $s'\cdot$ preserving $\mu_\beta$ (Theorem~\ref{iv:thm:symm}) and a $\sigma$-algebra $\mathcal G$,
+one has $\E[H\circ s'\,|\,(s')^{-1}\mathcal G]=\E[H|\mathcal G]\circ s'$ (both sides are $(s')^{-1}\mathcal G$-measurable and have the
+same integrals over the sets $(s')^{-1}S$, $S\in\mathcal G$, by invariance); here $(H\circ s')(U):=H(s'\cdot U)$.
+(i) The translation $\tau_{te_0}$ maps $U^{(0)}$ to $U^{(t)}$: $(\tau_{te_0}\cdot U)^{(0)}=U^{(t)}$.
+(ii) $A(U^{(1)})\in L^2(\cF_{E_+})$, so by Theorem~\ref{iv:thm:markov} $\E[A(U^{(1)})|\cF_{\le0}]=\E[A(U^{(1)})|\sigma(U^{(0)})]$, which
+is of the form $h(U^{(0)})$ for a measurable $h$, unique $\nu$-a.e.\ (Doob--Dynkin). Put $PA:=h$. Then
+$\norm{PA}_{L^2(\nu)}\le\norm{A(U^{(1)})}_{L^2(\mu_\beta)}=\norm A_{L^2(\nu)}$ by (i), and linearity, $P\mathbf 1=\mathbf 1$ and positivity
+are those of conditional expectations.
+(iii) For $A,B\in L^2(\nu)$, $\ip B{PA}_\nu=\mu_\beta(\overline{B(U^{(0)})}A(U^{(1)}))$. Since $(\theta\cdot U)^{(t)}=U^{(-t)}$,
+$\theta$-invariance gives $\mu_\beta(\overline{B(U^{(0)})}A(U^{(1)}))=\mu_\beta(\overline{B(U^{(0)})}A(U^{(-1)}))$, and
+$\tau_{e_0}$-invariance turns this into $\mu_\beta(\overline{B(U^{(1)})}A(U^{(0)}))=\overline{\ip A{PB}_\nu}=\ip{PB}A_\nu$.
+(iv) Let $T:=\tau_{se_0}$. Then $T^{-1}\cF_{E_-}=\cF_{\le s}$, $T^{-1}\sigma(U^{(0)})=\sigma(U^{(s)})$, and $A(U^{(s+1)})=A(U^{(1)})\circ T$.
+By the first paragraph and (ii), $\E[A(U^{(s+1)})|\cF_{\le s}]=(PA)(U^{(s)})$. By induction on $t$ and the tower property
+($\cF_{\le s}\subseteq\cF_{\le s+t-1}$),
+$\E[A(U^{(s+t)})|\cF_{\le s}]=\E[(PA)(U^{(s+t-1)})|\cF_{\le s}]=(P^{t-1}PA)(U^{(s)})$. The last formula follows by taking $s=0$,
+multiplying by $\overline{B(U^{(0)})}$ and integrating.
+\end{proof}
+
+\begin{remark}[Relation to the finite-volume ground-state chain]
+On a periodic lattice, letting $L_0\to\infty$ at fixed spatial lattice, the time-zero marginal tends to $\Omega^2dU$ and the
+transition kernel of consecutive slices is the kernel $P(U,U')$ of \Fref{Theorem}{Exact reformulation of the gap}{thm:chain}
+(by \Flab{Theorem}{thm:gs}). Corollary~\ref{iv:cor:chain} is the infinite-volume statement: the slice process of the unique
+Gibbs measure is itself a reversible Markov chain, and its transition operator plays the role of the ground-state transformed
+transfer matrix. That $P$ is a Markov operator (and not merely a bounded operator) is a consequence of the global Markov
+property, which we have only at strong coupling.
+\end{remark}
+
+\section{Reflection positivity and the transfer operator}\label{iv:sec:OS}
+
+\begin{definition}[Reflection, shifts, half-space algebras]\label{iv:def:reflection}
+For $F:\Omega\to\C$ put $(\Theta F)(U):=\overline{F(\theta\cdot U)}$ and, for $t\in\Z$, $(S_tF)(U):=F(\tau_{te_0}\cdot U)$, so that
+$S_tF$ evaluates $F$ on the configuration translated by $t$ units of time. Let $\cA_\pm$ be the set of bounded measurable functions
+depending only on finitely many links of $E_\pm$.
+\end{definition}
+
+\begin{lemma}\label{iv:lem:reflection}
+$\Theta$ is antilinear, multiplicative and involutive, and maps $\cA_+$ onto $\cA_-$; $S_s S_t=S_{s+t}$; $S_t\cA_+\subseteq\cA_+$ for
+$t\ge0$; $\Theta S_t=S_{-t}\Theta$; and $\norm{\delta(\Theta F)}_1=\norm{\delta(F)}_1$.
+\end{lemma}
+
+\begin{proof}
+The action of lattice symmetries is a group action, $(ss')\cdot U=s\cdot(s'\cdot U)$ (from $(s\cdot U)(y,z)=U(s^{-1}y,s^{-1}z)$), and
+$\theta^2=\mathrm{id}$, so $\Theta^2=\mathrm{id}$; antilinearity and multiplicativity are clear. The map $\theta$ sends links with both
+endpoints in $\{x_0\ge0\}$ to links with both endpoints in $\{x_0\le0\}$; $\tau_{te_0}$ with $t\ge0$ moves the dependence of a function
+to later times, which preserves $\cA_+$. As maps of $\Z^d$, $\theta\circ\tau_{te_0}=\tau_{-te_0}\circ\theta$, whence
+$\Theta S_tF(U)=\overline{F(\tau_{te_0}\cdot\theta\cdot U)}=\overline{F(\theta\cdot\tau_{-te_0}\cdot U)}=S_{-t}\Theta F(U)$. Finally
+$\theta\cdot$ permutes the link variables and inverts some of them, so $\delta_{\ell}(\Theta F)=\delta_{\theta\ell}(F)$.
+\end{proof}
+
+\begin{definition}[OS measures]\label{iv:def:OSmeasure}
+A Borel probability measure $\mu$ on $\Omega$ is an \emph{OS measure} if it is invariant under $\tau_{e_0}$ and under $\theta$, and
+$\mu(\Theta F\cdot F)\ge0$ for every $F\in\cA_+$ (reflection positivity).
+\end{definition}
+
+\begin{proposition}[Reflection positivity in infinite volume]\label{iv:prop:rp}
+\begin{enumerate}[label=(\alph*)]
+\item Let $\beta\ge0$. Every infinite-volume limit point along periodic lattices with even $L^{(k)}_0$ is an OS measure.
+\item Let $0<\beta<\bS(d)$. Then $\mu_\beta$ is an OS measure, and $\mu_\beta\bigl(\overline{A(U^{(0)})}\,A(U^{(1)})\bigr)\ge0$ for
+every bounded measurable $A$ on $\Omega_s$ depending on finitely many links.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) Invariance is Proposition~\ref{iv:prop:limitpoints}(b). Let $F\in\cA_+\cap C_{\rm loc}$ depend only on links of $E_+\cap E_n$. Let
+$\Lambda$ be one of the periodic lattices of the sequence, with $L_0=2T$ and all sides $\ge2n+3$. By the proof of
+Proposition~\ref{iv:prop:limitpoints}(b), $\theta\cdot\iota_\Lambda U'=\iota_\Lambda(\theta^*_\Lambda U')$, hence
+$(\Theta F)\circ\iota_\Lambda=\Theta_\Lambda(F\circ\iota_\Lambda)$, where $\Theta_\Lambda$ is the reflection of
+\Fname{Section}{Reflection positivity}. The function $F\circ\iota_\Lambda$ depends only on the links $\pi\ell$, $\ell\in E_+\cap E_n$,
+which have both endpoints at times in $[0,n]\subseteq[0,T]$; so it belongs to the algebra $\cA_+$ of \cite{F}, and
+\Flab{Theorem}{thm:rp} gives $\tilde\mu_{\Lambda,\beta}(\Theta F\cdot F)=\langle\Theta_\Lambda(F\circ\iota_\Lambda)\,(F\circ\iota_\Lambda)\rangle_{\Lambda,\beta}\ge0$.
+As $\Theta F\cdot F$ is continuous, $\mu(\Theta F\cdot F)\ge0$ for the limit point $\mu$. For a general $F\in\cA_+$, depending only on a
+finite $A\subseteq E_+$, let $m_A$ be the law of $U_A$ under $\mu$; continuous functions are dense in $L^2(G^A,m_A)$, and composing
+them with the radial retraction of $\C$ onto the closed disc of radius $\norm F_\infty$ (which is $1$-Lipschitz and fixes the values
+of $F$) we obtain $F_j\in\cA_+\cap C_{\rm loc}$ with $\norm{F_j}_\infty\le\norm F_\infty$ and $\norm{F_j-F}_{L^2(\mu)}\to0$. By
+$\theta$-invariance $\norm{\Theta(F_j-F)}_{L^2(\mu)}=\norm{F_j-F}_{L^2(\mu)}$, so by the Cauchy--Schwarz inequality
+$\mu(\Theta F_j\cdot F_j)\to\mu(\Theta F\cdot F)$, which is therefore $\ge0$.
+
+(b) By Theorem~\ref{iv:thm:unique}(iii) $\mu_\beta$ is the limit point of every sequence of periodic lattices, in particular of one with
+even $L_0^{(k)}$, so (a) applies. For the second claim let $A$ depend only on finitely many links of $E_s$, and let $\Lambda$ be a
+periodic lattice with $L_0\ge2$ and spatial sides so large that $\pi$ is injective on the spatial links on which $A(U^{(0)})$ and
+$A(U^{(1)})$ depend. Let $A_\Lambda$ be the corresponding function on the spatial configurations $\Omega_{\Lambda_s}$ of the torus, so
+that $\overline{A(U^{(0)})}A(U^{(1)})\circ\iota_\Lambda=\overline{A_\Lambda}(0)\,A_\Lambda(1)$ in the notation of
+\Fref{Theorem}{Transfer matrix formalism}{thm:tm}. That theorem gives
+\[
+\tilde\mu_{\Lambda,\beta}\bigl(\overline{A(U^{(0)})}A(U^{(1)})\bigr)=\frac{\Tr\bigl(\hT^{L_0-1}\hat A\,\hT\,\hat A^*\bigr)}{\Tr\hT^{L_0}},
+\]
+with $\hat A$ the multiplication by $A_\Lambda$. The transfer matrix $\hT$ is positive and trace class \Flab{Lemma}{lem:K}(iii), so
+$X:=\hT^{1/2}\hat A^*\hT^{(L_0-1)/2}$ is Hilbert--Schmidt and, by cyclicity of the trace for products of two Hilbert--Schmidt
+operators, $\Tr(\hT^{L_0-1}\hat A\hT\hat A^*)=\Tr(X^*X)\ge0$; also $\Tr\hT^{L_0}>0$. By Theorem~\ref{iv:thm:unique}(iii) the left side
+converges to $\mu_\beta(\overline{A(U^{(0)})}A(U^{(1)}))$, which is therefore $\ge0$.
+\end{proof}
+
+\begin{theorem}[OS reconstruction of the lattice theory]\label{iv:thm:OS}
+Let $\mu$ be an OS measure.
+\begin{enumerate}[label=(\roman*)]
+\item $\ip FG:=\mu(\Theta F\cdot G)$ is a positive semidefinite Hermitian form on $\cA_+$. Let $\cN$ be its null space, $\cH_\mu$ the
+Hilbert space completion of $\cA_+/\cN$, $[F]$ the class of $F$, and $\Omega_\mu:=[1]$, a unit vector.
+\item For $t\in\N$ the map $[F]\mapsto[S_tF]$ is well defined on $\cA_+/\cN$ and extends to a bounded self-adjoint operator
+$\hT^{(t)}_\mu$ on $\cH_\mu$ with $\norm{\hT^{(t)}_\mu}\le1$; moreover $\hT^{(t)}_\mu=(\hT_\mu)^t$ with $\hT_\mu:=\hT^{(1)}_\mu$, and
+$\hT_\mu\Omega_\mu=\Omega_\mu$.
+\item \emph{(Gap from clustering)} Suppose that $m>0$ and that for every $F\in\cA_+$ there is $C_F<\infty$ with
+\[
+\bigl|\mu(\Theta F\cdot S_tF)-|\mu(F)|^2\bigr|\le C_Fe^{-mt}\qquad\text{for all }t\in\N .
+\]
+Then $\norm{\hT_\mu|_{\Omega_\mu^\perp}}\le e^{-m}$; in particular $\pm1$ are not eigenvalues of $\hT_\mu$ on $\Omega_\mu^\perp$.
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}[Mass gap of an infinite-volume lattice theory]\label{iv:def:gap}
+For an OS measure $\mu$, $m(\mu):=-\log\norm{\hT_\mu(1-|\Omega_\mu\rangle\langle\Omega_\mu|)}\in[0,\infty]$, with $-\log0:=\infty$.
+By Theorem~\ref{iv:thm:OS}(ii), $\hT_\mu$ leaves $\Omega_\mu^\perp$ invariant, so $e^{-m(\mu)}$ is the spectral radius of $\hT_\mu$ on
+$\Omega_\mu^\perp$; $m(\mu)>0$ means that the vacuum is the only time-translation-invariant state and that the other states are
+separated from it by a gap.
+\end{definition}
+
+\begin{proof}[Proof of Theorem~\ref{iv:thm:OS}]
+(i) Sesquilinearity: $\Theta$ is antilinear. Hermiticity: by $\theta$-invariance and $\theta^2=\mathrm{id}$,
+$\overline{\ip FG}=\mu(F\circ\theta\cdot\overline G)=\mu(F\cdot\overline{G}\circ\theta)=\mu(\Theta G\cdot F)=\ip GF$, where
+$(H\circ\theta)(U):=H(\theta\cdot U)$. Positivity is reflection positivity. $\norm{\Omega_\mu}^2=\mu(1)=1$.
+(ii) For $F,G\in\cA_+$ and $t\ge0$, by Lemma~\ref{iv:lem:reflection} and $\tau_{e_0}$-invariance,
+$\ip{S_tF}G=\mu(S_{-t}\Theta F\cdot G)=\mu(\Theta F\cdot S_tG)=\ip F{S_tG}$ (*). By the Cauchy--Schwarz inequality for the form and (*),
+$\norm{S_tF}^2=\ip F{S_{2t}F}\le\norm F\,\norm{S_{2t}F}$; so $F\in\cN$ implies $S_tF\in\cN$, and $[F]\mapsto[S_tF]$ is well defined. Iterating
+the same inequality with $t=1,2,4,\dots$ gives $\norm{S_1F}\le\norm F^{1-2^{-k}}\norm{S_{2^k}F}^{2^{-k}}$, and
+$\norm{S_{2^k}F}^2=\mu(\Theta S_{2^k}F\cdot S_{2^k}F)\le\norm F_\infty^2$; letting $k\to\infty$, $\norm{S_1F}\le\norm F$ (if $\norm F=0$ then
+$\norm{S_1F}=0$ directly). So $[F]\mapsto[S_1F]$ extends to a contraction $\hT_\mu$, self-adjoint by (*); and $S_t=S_1^t$ gives
+$\hT^{(t)}_\mu=\hT_\mu^t$. Finally $S_11=1$.
+(iii) Let $F\in\cA_+$, $c:=\ip{\Omega_\mu}{[F]}=\mu(F)$ and $\psi:=[F]-c\,\Omega_\mu\in\Omega_\mu^\perp$. As $\hT_\mu$ is self-adjoint
+and fixes $\Omega_\mu$, $\ip\psi{\hT^t_\mu\psi}=\ip{[F]}{\hT_\mu^t[F]}-|c|^2=\mu(\Theta F\cdot S_tF)-|\mu(F)|^2$. Let $\sigma_\psi$ be the
+spectral measure of $\hT_\mu$ for $\psi$, supported in $[-1,1]$. For $0<m'<m$ and even $t$,
+$\sigma_\psi(\{|\lambda|>e^{-m'}\})e^{-m't}\le\int\lambda^t\,d\sigma_\psi\le C_Fe^{-mt}$, so $\sigma_\psi(\{|\lambda|>e^{-m'}\})=0$, and
+hence $\sigma_\psi(\{|\lambda|>e^{-m}\})=0$. The vectors $\psi$ of this form are dense in $\Omega_\mu^\perp$ (the orthogonal projection
+onto $\Omega_\mu^\perp$ is continuous and $\cA_+/\cN$ is dense in $\cH_\mu$). The spectral projection $E(\{|\lambda|>e^{-m}\})$ of
+$\hT_\mu$ commutes with the projection onto $\Omega_\mu^\perp$ and vanishes on a dense subset of $\Omega_\mu^\perp$, hence on all of it,
+and $\norm{\hT_\mu|_{\Omega_\mu^\perp}}\le e^{-m}$.
+\end{proof}
+
+\begin{remark}[The mass gap conjecture in infinite volume]\label{iv:rem:G1}
+By Theorem~\ref{iv:thm:allbeta}, the following statement is meaningful at every coupling: \emph{for $G=SU(N)$, $d=4$ and every
+$\beta>0$, every infinite-volume limit point $\mu$ (along periodic lattices with even $L_0$) has $m(\mu)>0$.} This is the
+infinite-volume form of conjecture (G1) of the research program. Its relation to the finite-volume formulation
+$\inf_{\Lambda_s}m_{\Lambda_s}(\beta)>0$ of \cite{F} is not addressed here; the two differ in the order in which the time extent and
+the spatial extent are sent to infinity. At strong coupling both hold (Theorem~\ref{iv:thm:gap} and Corollary~\ref{iv:cor:finitevol}).
+For $G=U(1)$, $d=4$ and large $\beta$ the analogous statement is false \cite{Gut80,FS82}.
+\end{remark}
+
+\section{The mass gap of the infinite-volume theory at strong coupling}\label{iv:sec:transfer}
+
+\begin{theorem}[Transfer operator, ground-state chain and mass gap]\label{iv:thm:gap}
+Let $d\ge2$, $0<\beta<\bS(d)$, $\alpha:=\aS(\beta)$, $\mu:=\mu_\beta$, and let $\nu$ and $P$ be as in Corollary~\ref{iv:cor:chain}.
+\begin{enumerate}[label=(\roman*)]
+\item For $F\in\cA_+$ let $\hat F\in L^2(\nu)$ be defined by $\hat F(U^{(0)})=\E_\mu[F|\cF_{E_0}]$. Then $[F]\mapsto\hat F$ is well
+defined on $\cA_+/\cN$ and extends to a unitary operator $W:\cH_\mu\to L^2(\nu)$ with $W\Omega_\mu=\mathbf 1$ and
+$W\hT_\mu W^{-1}=P$.
+\item $0\le P\le1$; hence $\hT_\mu\ge0$.
+\item $\spec P\subseteq[0,\alpha]\cup\{1\}$, and $1$ is a simple eigenvalue with eigenvector $\mathbf 1$. Equivalently,
+$\gap P:=1-\sup\spec(P|_{\mathbf 1^\perp})\ge1-\alpha$ (with $\sup\emptyset:=0$), and
+\[
+m(\mu_\beta)=-\log\bigl(1-\gap P\bigr)\ \ge\ \log\frac1{\aS(\beta)} .
+\]
+\item For all $A,B\in L^2(\nu)$ and $t\in\N$,
+$\bigl|\mu\bigl(\overline{B(U^{(0)})}A(U^{(t)})\bigr)-\overline{\nu(B)}\nu(A)\bigr|\le\alpha^t\norm{B-\nu(B)}_{L^2(\nu)}\norm{A-\nu(A)}_{L^2(\nu)}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Write $\E:=\E_\mu$. We use the transport identity of the proof of Corollary~\ref{iv:cor:chain}: for a measure-preserving lattice
+symmetry $T$, $\E[H\circ T|T^{-1}\mathcal G]=\E[H|\mathcal G]\circ T$. With $T=\tau_{se_0}$ and Theorem~\ref{iv:thm:markov} it gives the
+Markov property at time $s$: $\E[H|\cF_{\le s}]=\E[H|\sigma(U^{(s)})]$ for $H\in L^2(\cF_{\ge s})$.
+
+(i) \emph{Reflection.} For $F\in\cA_+$, $\E[\Theta F|\cF_{E_0}]=\overline{\hat F(U^{(0)})}$: for bounded $\cF_{E_0}$-measurable $H$,
+$\theta$-invariance gives $\mu(H\cdot\Theta F)=\mu((H\circ\theta)\cdot\overline F)$, and $H\circ\theta=H$ because $\theta$ fixes every
+link of $E_0$; so $\mu(H\cdot\Theta F)=\mu(H\overline F)=\mu(H\overline{\hat F(U^{(0)})})$.
+\emph{Isometry.} For $F,G\in\cA_+$, $\Theta F$ is $\cF_{E_-}$-measurable, so by Theorem~\ref{iv:thm:markov}
+\[
+\ip FG=\mu\bigl(\Theta F\cdot\E[G|\cF_{E_-}]\bigr)=\mu\bigl(\Theta F\cdot\hat G(U^{(0)})\bigr)=\mu\bigl(\E[\Theta F|\cF_{E_0}]\,\hat G(U^{(0)})\bigr)
+=\ip{\hat F}{\hat G}_{L^2(\nu)} .
+\]
+Hence $[F]\mapsto\hat F$ is well defined and isometric, and extends to an isometry $W$ of $\cH_\mu$ into $L^2(\nu)$. Its range is
+closed and contains every bounded measurable function $A$ of finitely many links of $E_s$ (for which $A(U^{(0)})\in\cA_+$ and
+$\hat A=A$); these are dense in $L^2(\nu)$, by Lemma~\ref{iv:lem:measures}(iv) (for the link set $E_0$) and the unitary map
+$L^2(\nu)\to L^2(\Omega,\cF_{E_0},\mu)$, $B\mapsto B(U^{(0)})$. So $W$ is unitary, and
+$W\Omega_\mu=\hat1=\mathbf 1$.
+\emph{Intertwining.} Let $F\in\cA_+$. The function $S_1F=F\circ\tau_{e_0}$ is $\cF_{\ge1}$-measurable, so by the Markov property at
+time $1$ and the transport identity, $\E[S_1F|\cF_{\le1}]=\E[F\circ\tau_{e_0}|\sigma(U^{(1)})]=\hat F(U^{(1)})$. By the tower property
+($\cF_{E_0}\subseteq\cF_{\le0}\subseteq\cF_{\le1}$) and Corollary~\ref{iv:cor:chain}(ii),
+\[
+\E[S_1F|\cF_{E_0}]=\E\bigl[\E[\hat F(U^{(1)})|\cF_{\le0}]\,\big|\,\cF_{E_0}\bigr]=(P\hat F)(U^{(0)}),
+\]
+i.e.\ $W\hT_\mu[F]=PW[F]$. Both sides are bounded operators, and $\cA_+/\cN$ is dense, so $W\hT_\mu=PW$.
+
+(ii) $P$ is a self-adjoint contraction (Corollary~\ref{iv:cor:chain}). For bounded measurable $A$ depending on finitely many links of
+$E_s$, $\ip A{PA}_\nu=\mu(\overline{A(U^{(0)})}A(U^{(1)}))\ge0$ by Proposition~\ref{iv:prop:rp}(b); such $A$ are dense in $L^2(\nu)$ and
+$A\mapsto\ip A{PA}_\nu$ is continuous, so $P\ge0$. By (i), $\hT_\mu\ge0$.
+
+(iii) Let $F\in\cA_+$ depend only on a finite $A\subseteq E_+$. By $\theta$- and $\tau_{e_0}$-invariance, $\mu(\Theta F)=\overline{\mu(F)}$
+and $\mu(S_tF)=\mu(F)$, so $\mu(\Theta F\cdot S_tF)-|\mu(F)|^2=\Cov_\mu(\Theta F,S_tF)$. The function $\Theta F$ depends only on the links
+$\theta\ell$, $\ell\in A$, all of whose endpoints have time coordinate $\le0$; $S_tF$ depends only on the links $\ell+te_0$, $\ell\in A$,
+all of whose endpoints have time coordinate $\ge t$. For $t\ge1$ these sets are disjoint and at distance $\ge t$
+(Lemma~\ref{iv:lem:geometry}(b)), so Theorem~\ref{iv:thm:cluster} and Lemma~\ref{iv:lem:reflection} give
+$|\Cov_\mu(\Theta F,S_tF)|\le\norm F_\infty\norm{\delta(F)}_1\alpha^t/(1-\alpha)$; for $t=0$ the left side is at most $2\norm F_\infty^2$.
+Theorem~\ref{iv:thm:OS}(iii) with $m=\log(1/\alpha)$ gives $\norm{\hT_\mu|_{\Omega_\mu^\perp}}\le\alpha$, hence by (i)
+$\norm{P|_{\mathbf 1^\perp}}\le\alpha$, and by (ii) $\spec(P|_{\mathbf 1^\perp})\subseteq[0,\alpha]$. Since $P\mathbf 1=\mathbf 1$ and $P$ is
+self-adjoint, $\C\mathbf 1$ and $\mathbf 1^\perp$ reduce $P$; so $\spec P\subseteq[0,\alpha]\cup\{1\}$ and, as $\alpha<1$, the eigenspace of
+$1$ is $\C\mathbf 1$. For a positive operator the norm is the supremum of the spectrum, so
+$e^{-m(\mu)}=\norm{\hT_\mu|_{\Omega_\mu^\perp}}=\norm{P|_{\mathbf 1^\perp}}=1-\gap P$.
+
+(iv) Write $A=\nu(A)\mathbf 1+A_0$, $B=\nu(B)\mathbf 1+B_0$ with $A_0,B_0\perp\mathbf 1$. Then $P^tA=\nu(A)\mathbf 1+P^tA_0$ with
+$P^tA_0\perp\mathbf 1$, and by Corollary~\ref{iv:cor:chain}(iv)
+$\mu(\overline{B(U^{(0)})}A(U^{(t)}))=\ip B{P^tA}_\nu=\overline{\nu(B)}\nu(A)+\ip{B_0}{P^tA_0}_\nu$, with
+$|\ip{B_0}{P^tA_0}_\nu|\le\alpha^t\norm{B_0}\norm{A_0}$ by (iii).
+\end{proof}
+
+\begin{proposition}[Gauge invariance of the ground-state chain]\label{iv:prop:phys}
+Let $0<\beta<\bS(d)$. For $g\in G^{\Z^{d-1}}$ let $g$ act on $\Omega_s$ by $(g\cdot u)_{(\vec x,i)}=g(\vec x)u_{(\vec x,i)}g(\vec x+e_i)^{-1}$,
+and let $\cH_{\rm phys}\subseteq L^2(\nu)$ be the closed subspace of functions $A$ with $A(g\cdot u)=A(u)$ for $\nu$-a.e.\ $u$, for every
+$g$. Then $\nu$ is invariant under every such $g$, $P$ maps $L^2(\nu)$ into $\cH_{\rm phys}$, and $P$ vanishes on $\cH_{\rm phys}^\perp$. In
+particular the spectral statements of Theorem~\ref{iv:thm:gap} concern the physical (gauge-invariant) sector, and gauge-variant states
+lie in $\ker P$, as in finite volume (where $\hT=P\hT P$, \Flab{Lemma}{lem:K}(iii)).
+\end{proposition}
+
+\begin{proof}
+For $s\in\Z$ let $g^{[s]}\in G^{\Z^d}$ equal $g$ on the slice $x_0=s$ and $1$ elsewhere. Then $(g^{[s]}\cdot U)^{(s)}=g\cdot U^{(s)}$ and
+$(g^{[s]}\cdot U)^{(t)}=U^{(t)}$ for $t\neq s$ (only temporal links touching the slice, and its spatial links, are changed). By
+Theorem~\ref{iv:thm:symm}, $\mu_\beta$ is $g^{[s]}$-invariant; with $s=0$ this gives the invariance of $\nu$. For $A,B\in L^2(\nu)$,
+$g^{[1]}$-invariance gives $\ip B{P(A\circ g)}_\nu=\mu_\beta(\overline{B(U^{(0)})}A(g\cdot U^{(1)}))=\ip B{PA}_\nu$, so $P(A\circ g)=PA$, where
+$(A\circ g)(u):=A(g\cdot u)$; and $g^{[0]}$-invariance gives $\ip B{PA}_\nu=\ip{B\circ g}{PA}_\nu=\ip B{(PA)\circ g^{-1}}_\nu$ (using the
+invariance of $\nu$), so $PA=(PA)\circ g^{-1}$. Thus $PA\in\cH_{\rm phys}$. If $A\perp\cH_{\rm phys}$ then
+$\ip B{PA}_\nu=\ip{PB}A_\nu=0$ for all $B$, i.e.\ $PA=0$.
+\end{proof}
+
+\begin{remark}[The lattice OS axioms]\label{iv:rem:OSaxioms}
+For $0<\beta<\bS(d)$ the unique Gibbs measure $\mu_\beta$ satisfies the lattice versions of the Osterwalder--Schrader axioms for all
+bounded local observables: invariance under lattice translations and the hypercubic group (Theorem~\ref{iv:thm:symm}); reflection
+positivity for the time reflection through a hyperplane of sites (Proposition~\ref{iv:prop:rp}), hence by hypercubic invariance for
+the reflection through any coordinate hyperplane of sites; and exponential clustering (Theorem~\ref{iv:thm:cluster}). The
+reconstructed theory (Theorem~\ref{iv:thm:OS}) has a positive transfer operator, a unique vacuum, and a mass gap
+(Theorem~\ref{iv:thm:gap}). This is milestone T1.1 of the research program, for $\beta<\bS(d)$ (a larger range than the
+$\beta<\beta_0(d)$ of the milestone's statement).
+\end{remark}
+
+\begin{corollary}[Area law in infinite volume]\label{iv:cor:arealaw}
+Let $0<\beta<\beta_0(d)$, the radius of the cluster expansion of \Fref{Theorem}{Convergence of the strong-coupling cluster
+expansion}{thm:conv}. Then $\beta<\bS(d)$, and for every irreducible representation $r$ with non-zero $z_0$-charge (e.g.\ $G=SU(N)$
+and $N$-ality $n(r)\ne0$) and every rectangular loop $C$ in $\Z^d$ with sides $R,T\ge1$,
+\[
+\bigl|\mu_\beta\bigl(\chi_r(U_C)\bigr)\bigr|\le d_r\exp\bigl(-\sigma(\beta)RT+\kappa(\beta)|C|\bigr),
+\]
+with $\sigma(\beta),\kappa(\beta)$ as in \IIIref{Definition}{Constants}{al:def:constants}.
+\end{corollary}
+
+\begin{proof}
+$\beta_0(d)\le\frac1{2e^2K(K+2)}<\frac1{2e^2K^2}<\frac1{6(d-1)}\le\artanh\frac1{6(d-1)}=\bS(d)$, with $K=4(2d-3)\ge4$, since
+$\log(1+y)\le y$, $2e^2K^2\ge2e^2\cdot16(d-1)^2>6(d-1)$ and $\artanh y\ge y$. By Theorem~\ref{iv:thm:unique}(iii), $\mu_\beta$ is an
+infinite-volume limit point, and \IIIref{Corollary}{String tension}{al:cor:tension}(ii) applies to it.
+\end{proof}
+
+\section{Discussion}\label{iv:sec:discussion}
+
+\begin{remark}[The $U(1)$ test]\label{iv:rem:u1}
+The proofs use only: compactness and metrisability of $G$; the bound $|\log w_\beta|\le\beta$ and the facts that $w_\beta$ is a
+continuous class function invariant under inversion; and, for the positivity of $P$, the positivity of the finite-volume transfer
+matrix \Flab{Lemma}{lem:K}, which rests on $c_r(\beta)\ge0$. All of these hold for $G=U(1)$ with $\rho=\mathrm{id}$. Hence every
+statement of this article holds verbatim for $U(1)$ (and $U(N)$, and finite groups) for $\beta<\bS(d)$. For $U(1)$ in $d=4$ the
+mass gap is known to vanish at large $\beta$ (massless photon) \cite{Gut80,FS82}; so, exactly as for \Flab{Theorem}{thm:strong} and
+for the area law of \cite{III}, no refinement of these arguments can reach the large-$\beta$ regime, and the infinite-volume theory
+constructed here is the strong-coupling endpoint of the problem, not a step across the crossover
+(\texttt{docs/03-research-program.md}, \S3.4). What the article does provide for the large-$\beta$ problem is its formulation:
+by Theorem~\ref{iv:thm:allbeta} and Definition~\ref{iv:def:gap} the infinite-volume mass gap $m(\mu)$ is defined at every coupling
+(Remark~\ref{iv:rem:G1}), and at strong coupling it is exactly the spectral gap of a reversible Markov chain of time slices of the vacuum
+(Theorem~\ref{iv:thm:gap}), in line with \S3.5 of the research program.
+\end{remark}
+
+\begin{remark}[The thresholds]
+$\bS(4)=\artanh\frac1{18}\approx0.0556$ in the normalisation $w_\beta=\exp(\frac\beta N\mathrm{Re}\Tr U)$ of \cite{F}, independent of $N$.
+For $SU(2)$ the strong-coupling series describes the Monte Carlo data up to $\beta\approx1.5$--$2$ and the crossover is at
+$\beta\approx2.2$ (\texttt{results/}; \texttt{docs/02-state-of-the-art.md}); for $SU(3)$ at $\beta\approx5.6$. Any argument of
+Dobrushin type has a threshold of order $1/(6(d-1))$, because it compares single-link conditional distributions without using
+cancellations. Going further requires more structure: block criteria of Dobrushin--Shlosman type, or the Bakry--\'Emery
+approach of \cite{SZZ23}, which uses the positive Ricci curvature of $SU(N)$ (and so does not apply to $U(1)$ in the same form). We
+have not compared those thresholds with $\bS(d)$. (Heuristic:) no criterion that is checked one coupling scale at a time, without
+a renormalisation-group step, is expected to reach the crossover.
+\end{remark}
+
+\begin{remark}[Consequences for the numerics]\label{iv:rem:numerics}
+For $A\in L^2(\nu)\ominus\C\mathbf 1$ let $c_t:=\ip A{P^tA}_\nu=\int_{[0,1]}\lambda^t\,d\sigma_A(\lambda)$, with $\sigma_A$ the spectral measure
+of $P$. Since $P\ge0$, $c_t^2\le c_{t-1}c_{t+1}$ by the Cauchy--Schwarz inequality, so the effective masses
+$m_{\rm eff}(t):=\log(c_t/c_{t+1})$ (when $c_{t+1}>0$) are non-increasing in $t$ and converge to $-\log\sup\supp\sigma_A\ge m(\mu_\beta)$.
+Every effective mass is therefore an \emph{upper} bound for the mass gap. This is the infinite-volume, strong-coupling counterpart of
+the statement used in \texttt{lattice/scripts/analyze\_gevp.py} for the finite-volume transfer matrix; at the couplings of the
+glueball runs ($\beta\ge2.3$ for $SU(2)$) the finite-volume version is what applies.
+\end{remark}
+
+\begin{remark}[Next steps]
+(i) T1.2: the Hamiltonian (continuous-time) version, where the gap becomes the Poincar\'e constant of the Dirichlet form
+$\frac{g^2}2\sum_\ell\int|\nabla_\ell\varphi|^2d\nu$. (ii) Whether $m(\mu)$ for limit points and $\inf_{\Lambda_s}m_{\Lambda_s}$ can be
+compared in general (Remark~\ref{iv:rem:G1}). (iii) The global Markov property was derived from uniqueness with a rate; whether it holds
+for all limit points at every $\beta$ is open here, and it is what makes $P$ a Markov operator.
+\end{remark}
+
+\subsection*{Summary of results}
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.58\textwidth}p{0.2\textwidth}l@{}}
+\toprule
+Statement & Where & Status\\
+\midrule
+Total variation $\le\tanh(\delta/2)$ for density ratios in $[ce^{-\delta},ce^{\delta}]$ (sharp) & Lem.~\ref{iv:lem:tvratio} & Theorem\\
+Dobrushin constant $\aS(\beta)=6(d-1)\tanh\beta$; finite-volume gap $\ge\log(1/\aS)$ & Lem.~\ref{iv:lem:coeff}, Cor.~\ref{iv:cor:finitevol} & Theorem\\
+Boundary influence with disagreement sets & Lem.~\ref{iv:lem:boundary}, \ref{iv:lem:boundaryWilson} & Theorem\\
+Limit points are Gibbs, translation and reflection invariant, RP (all $\beta$) & Prop.~\ref{iv:prop:limitpoints}, \ref{iv:prop:rp}(a) & Theorem\\
+OS reconstruction; mass gap $m(\mu)$ defined (all $\beta$) & Thm.~\ref{iv:thm:OS}, Def.~\ref{iv:def:gap} & Theorem\\
+Uniqueness; convergence of periodic/free/fixed b.c.\ with rate ($\beta<\bS$) & Thm.~\ref{iv:thm:unique} & Theorem\\
+Invariance under lattice symmetries and all gauge transformations; forests & Thm.~\ref{iv:thm:symm}, Prop.~\ref{iv:prop:forest} & Theorem\\
+Exponential clustering in infinite volume & Thm.~\ref{iv:thm:cluster} & Theorem\\
+Global Markov property; time slices form a reversible Markov chain & Thm.~\ref{iv:thm:markov}, Cor.~\ref{iv:cor:chain} & Theorem\\
+$\cH\cong L^2(\nu)$, $\hT\cong P\ge0$; $\spec P\subseteq[0,\aS]\cup\{1\}$; $m(\mu_\beta)\ge\log(1/\aS)$ & Thm.~\ref{iv:thm:gap} & Theorem\\
+Gauge-variant states lie in $\ker P$ & Prop.~\ref{iv:prop:phys} & Theorem\\
+Area law for $\mu_\beta$ ($\beta<\beta_0$), using \cite{III} & Cor.~\ref{iv:cor:arealaw} & Theorem\\
+(G1) in infinite volume: $m(\mu)>0$ for all limit points and all $\beta$ & Rem.~\ref{iv:rem:G1} & open\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{thebibliography}{SZZ23}
+
+\bibitem[F]{F}
+\emph{Lattice Yang--Mills theory: foundations for the mass gap problem}, Part~I of the project ``Solving Yang--Mills
+and the Mass Gap'', \texttt{theory/lattice-foundations.tex} (this repository), living document, version of
+5~November~2026.
+
+\bibitem[III]{III}
+\emph{Lattice Yang--Mills theory at strong coupling III: confinement (area law)}, \texttt{theory/area-law-strong-coupling.tex}
+(this repository), living document, version of 7~November~2026.
+
+\bibitem[Bil99]{Bil99}
+P.~Billingsley, \emph{Convergence of Probability Measures}, 2nd ed., Wiley, New York, 1999.
+
+\bibitem[FS82]{FS82}
+J.~Fröhlich, T.~Spencer, Massless phases and symmetry restoration in abelian gauge theories and spin systems,
+Commun.\ Math.\ Phys.\ 83 (1982), 411--454. (verify)
+
+\bibitem[Gut80]{Gut80}
+A.~H.~Guth, Existence proof of a nonconfining phase in four-dimensional $U(1)$ lattice gauge theory, Phys.\ Rev.\ D 21
+(1980), 2291--2307. (verify)
+
+\bibitem[SZZ23]{SZZ23}
+H.~Shen, R.~Zhu, X.~Zhu, A stochastic analysis approach to lattice Yang--Mills at strong coupling,
+Commun.\ Math.\ Phys.\ 400 (2023), 805--851; arXiv:2204.12737. (verify)
+
+\end{thebibliography}
+
+\end{document}
