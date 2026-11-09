@@ -47,7 +47,7 @@ was established, what failed, and what is next.
 | Research program with milestones | done (`docs/03`) |
 | Foundations monograph (Tier 0 theorems) | see `theory/` and `journal/` for the current state of each section |
 | Part II: infinite-volume theory at strong coupling (T1.1) | done for $\beta<\beta_*(d)$ ($\beta_*(4)\approx0.056$); independent referee report addressed (2026-11-09) |
-| Part IV: strong-coupling gap with the correct asymptotics $4\log(1/\beta)$ | done for $d\ge3$, $\beta<\beta_0(d)$; referee check in progress |
+| Part IV: strong-coupling gap bound with the correct leading coefficient, $m\ge4\log(1/\beta)-O(1)$ | done for $d\ge3$, $\beta<\beta_0(d)$ (finite volume: spatial sides $\ge4$); independent referee report addressed (2026-11-09); matching upper bound open |
 | Part III: area law at strong coupling | done; two independent referee reports addressed (2026-11-09) |
 | Lattice toolkit, 41 fast tests + 4 slow tests | passing (`cd lattice && pytest` / `pytest --runslow`) |
 | Numerical validation against exact 2-d solution, strong/weak coupling, reference values | done (`results/`) |
