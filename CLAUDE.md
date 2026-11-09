@@ -40,12 +40,12 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
 - `theory/` holds four monographs: the foundations [F] (`lattice-foundations.tex`, errata 2026-11-09); Part II
   (`infinite-volume-strong-coupling.tex`, the infinite-volume theory, milestone T1.1; refereed and revised 2026-11-09);
   Part III (`area-law-strong-coupling.tex`, the area law; two referees, revised 2026-11-09); Part IV
-  (`mass-gap-strong-coupling.tex`, a strong-coupling gap bound with the correct leading coefficient,
-  $m\ge4\log(1/\beta)-O(1)$; new on 2026-11-09, refereed and revised the same day).
+  (`mass-gap-strong-coupling.tex`, the strong-coupling gap is $4\log(1/\beta)+O(1)$: lower bound for $\beta<\beta_0(d)$,
+  matching upper bound only for very small $\beta$; new on 2026-11-09, both halves refereed and revised the same day).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-09.md`.
+- The newest journal entry is `journal/2026-11-09b.md` (session 3); `journal/2026-11-09.md` is session 2.
 
 ## Where the next steps are
 
