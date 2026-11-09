@@ -55,7 +55,7 @@
 \title{Lattice Yang--Mills theory: foundations for the mass gap problem\\
 \large Part I of the project ``Solving Yang--Mills and the Mass Gap''}
 \author{}
-\date{Session 1 (5 November 2026); living document}
+\date{Session 1 (5 November 2026); errata 9 November 2026; living document}
 
 \begin{document}
 \maketitle
@@ -218,7 +218,8 @@ $1\le c_0(\beta)\le e^\beta$.
 \begin{proof}
 $|c_r\chi_r(U)|\le c_rd_r$ and $\sum_rc_rd_r=e^\beta$ by~\eqref{eq:trace}, so the series converges absolutely
 and uniformly to a continuous function which agrees with $w_\beta$ in $L^2$, hence everywhere. Jensen's inequality
-and $\int\Tr U\dU=0$ (orthogonality of $\chi_\rho$ to $\chi_0$) give $c_0=\int w_\beta\ge\exp(\frac\beta N\int\mathrm{Re}\Tr U)=1$;
+gives $c_0=\int w_\beta\ge\exp(\frac\beta N\mathrm{Re}\int\Tr U\dU)\ge1$, because $\int\Tr U\dU$ is the multiplicity of the
+trivial representation in $\rho$ (Theorem~\ref{thm:pw}(ii)), a non-negative integer (it is $0$ for $SU(N)$ and $U(1)$);
 $c_0\le e^\beta$ by~\eqref{eq:w}.
 \end{proof}
 
@@ -950,15 +951,20 @@ $\norm{\delta(A)}_1\le2|E_s|\norm A_\infty<\infty$. Corollary~\ref{cor:gapfromco
 \begin{remark}[On the constants and on what this proves]
 \begin{enumerate}[label=(\roman*)]
 \item The true strong-coupling region extends to $\beta\approx2$ for $SU(2)$ (where the Monte Carlo data in \texttt{results/}
-leave the strong-coupling series), i.e.\ two orders of magnitude beyond $\beta_D$; the cluster expansion of
-Section~\ref{sec:polymer} has a better but still small radius, and the physical rate is $m\approx4\log(1/u(\beta))$ with
-$u(\beta)=c_\rho(\beta)/(Nc_0(\beta))\approx\beta/(2N)$, against $\log(1/\alpha)\approx\log(1/(24\beta))$ here.
+leave the strong-coupling series), i.e.\ two orders of magnitude beyond $\beta_D$. (Part~II,
+\texttt{theory/infinite-volume-strong-coupling.tex}, improves $\beta_D(d)$ to $\beta_*(d)=\operatorname{artanh}\frac1{6(d-1)}$,
+about four times larger, by a sharp total-variation bound.) The cluster expansion of Section~\ref{sec:polymer} is proved to
+converge only for the still smaller $\beta<\beta_0(d)$. The physical rate is $m\approx4\log(1/u(\beta))$ with
+$u(\beta)=c_\rho(\beta)/(Nc_0(\beta))$, which is $\approx\beta/4$ for $N=2$ and $\approx\beta/(2N^2)$ for $N\ge3$, against
+$\log(1/\alpha)\approx\log(1/(24(d-1)\beta))$ here.
 \item The proof uses only $|{\log w_\beta}|\le\beta$ and compactness. It applies verbatim to $U(1)$, where the conclusion fails
 at large $\beta$ (Guth; Fröhlich--Spencer). Thus no refinement of this argument can be the mechanism for the mass gap at
 large $\beta$; it establishes the strong-coupling endpoint of the problem and nothing more.
 \item Statement (i) also yields, with a little more work (comparison of different volumes through the same coupling
 argument, with the boundary playing the role of $B$), the existence of the infinite-volume limit of all local expectations
-for $\beta<\beta_D$; this is milestone T1.1 of the research program and is not carried out here.
+for $\beta<\beta_D$; this is milestone T1.1 of the research program. It is carried out, for the larger range
+$\beta<\beta_*(d)$ and together with uniqueness, the Markov property of time slices and the infinite-volume mass gap, in
+Part~II, \texttt{theory/infinite-volume-strong-coupling.tex}.
 \end{enumerate}
 \end{remark}
 
@@ -1161,7 +1167,10 @@ observables with constants uniform in $\Lambda$ (an alternative to Theorem~\ref{
 of proof once the expectation of a local observable is written as a ratio of polymer partition functions); the existence
 and uniqueness of the infinite-volume limit; analyticity of $F$ in $\beta$ in a complex neighbourhood of $(0,\beta_0)$; and
 the area law for Wilson loops in representations with non-trivial $N$-ality (the surfaces carrying the character
-expansion must span the loop). These are Osterwalder--Seiler's results and are milestones T1.1 of the research program.
+expansion must span the loop). These are Osterwalder--Seiler's results. The infinite-volume statements belong to milestone
+T1.1 and the area law to milestone T0.7 of the research program. Except for analyticity, they are now proved in this project:
+the infinite-volume statements by Dobrushin's method in Part~II (\texttt{theory/infinite-volume-strong-coupling.tex}), and the
+area law in Part~III (\texttt{theory/area-law-strong-coupling.tex}).
 \end{remark}
 
 \section{Summary, and what is open}\label{sec:open}

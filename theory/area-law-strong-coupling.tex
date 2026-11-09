@@ -31,6 +31,7 @@
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\osc}{osc}
 \DeclareMathOperator{\gap}{gap}
+\DeclareMathOperator{\artanh}{artanh}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -66,7 +67,7 @@
 \title{Lattice Yang--Mills theory at strong coupling III: confinement (area law)\\
 \large A sequel to the foundations monograph of the project ``Solving Yang--Mills and the Mass Gap''}
 \author{}
-\date{7 November 2026; living document}
+\date{7 November 2026; revised 9 November 2026 after two referee reports; living document}
 
 \begin{document}
 \maketitle
@@ -74,22 +75,23 @@
 \begin{abstract}
 We prove Wilson's area law for lattice gauge theories at strong coupling, with complete proofs and explicit
 constants, in the framework of the foundations monograph [F] of this project. For $G=SU(N)$, every dimension
-$d\ge2$, every periodic lattice with all sides $L_\lambda\ge3$, every $0<\beta<\beta_0(d)$ (the radius of the
-cluster expansion of [F], independent of $N$), every rectangular $R\times T$ loop $C$ in a coordinate plane
+$d\ge2$, every periodic lattice with all sides $L_\lambda\ge3$, every $0<\beta<\beta_0(d)$ (a threshold below which the
+cluster expansion of [F] converges; it does not depend on $N$), every rectangular $R\times T$ loop $C$ in a coordinate plane
 $(\mu,\nu)$ and every irreducible representation $r$ of non-zero $N$-ality,
 \[
 \bigl|\langle\chi_r(U_C)\rangle_{\Lambda,\beta}\bigr|\le d_r\exp\bigl(-\sigma(\beta)A+\kappa(\beta)|C|\bigr),
 \qquad A=\min(RT,\,L_\mu L_\nu-RT),
 \]
 with $\sigma(\beta)=\log\bigl(1/(e^2K_\cP(e^{2\beta}-1))\bigr)\to\infty$ as $\beta\downarrow0$, $K_\cP=4(2d-3)$, and
-an explicit $\kappa(\beta)\le 21/20$. Consequently the string tension of every infinite-volume limit point is at
+an explicit $\kappa(\beta)\le 21/20$. Consequently the string tension of every infinite-volume limit point of the periodic Wilson measures is at
 least $\sigma(\beta)$. The proof combines a centre (charge) selection rule, a projection chain map onto a coordinate
 $2$-torus together with the $\Z_N$-homology of the $2$-torus (which produces the torus area $A$), the polymer
 expansion of [F], and a self-contained inductive bound for ratios of polymer partition functions. Only a central
-element of finite order acting non-trivially in $r$ is used. The theorem therefore holds verbatim for $U(N)$ and for
-$U(1)$ (every non-trivial representation); for $U(1)$ the area law is known to fail at weak coupling in four
-dimensions, so strong-coupling confinement is not a non-abelian phenomenon. We also prove that in $d=2$ the area law holds for
-every non-trivial representation, that every non-trivial Wilson loop decays at least exponentially in its
+element of finite order acting non-trivially in $r$ is used. The theorem therefore holds verbatim for
+$U(1)$ (every non-trivial representation) and for $U(N)$ (every representation that is non-trivial on the centre); for
+$U(1)$ in four dimensions the area law fails at weak coupling (proved for the Villain action, and asserted for Wilson's
+action, by Fröhlich and Spencer), so strong-coupling confinement is not a non-abelian phenomenon. We also prove that in $d=2$ the area law holds for
+every non-trivial representation, that every rectangular Wilson loop in a non-trivial representation decays at least exponentially in its
 perimeter, and that loops winding around the torus with non-zero charge have vanishing expectation; and we compare
 with Osterwalder--Seiler (1978) and Seiler (1982), where the strong-coupling area law was first proved.
 \end{abstract}
@@ -134,8 +136,13 @@ Moreover $\sigma(\beta)>\log(K_\cP+2)$, $\sigma(\beta)=\log\frac1{2e^2K_\cP\beta
 $\beta\downarrow0$, and $\kappa(\beta)<\frac{d-1}{2d-3}+\frac1{4(K_\cP+1)}\le\frac{21}{20}$.
 \end{theorem}
 
-Theorem~\ref{al:thm:intro} is Corollary~\ref{al:cor:sun} below. The threshold $\beta_1(d,N):=\beta_0(d)$ is the
-radius of the cluster expansion of \Fref{Theorem}{Convergence of the strong-coupling cluster expansion}{thm:conv}; in
+Since reversing a loop replaces $\chi_r(U_C)$ by its complex conjugate, cyclic shifts of $C$ do not change it, and the Wilson
+measure is translation invariant (\Fref{Theorem}{Basic properties}{thm:basic}(iv)), the bound \eqref{al:eq:main} holds for
+every rectangle with sides $R,T$ in a coordinate plane, whatever its base point, starting point and orientation.
+
+Theorem~\ref{al:thm:intro} is Corollary~\ref{al:cor:sun} below. The threshold $\beta_0(d)$ is the one below which
+\Fref{Theorem}{Convergence of the strong-coupling cluster expansion}{thm:conv} proves convergence of the cluster expansion
+(a lower bound for its radius of convergence, not the radius itself); in
 the normalisation $w_\beta=\exp(\frac\beta N\mathrm{Re}\Tr U)$ of \cite{F} it does not depend on $N$. Numerically,
 $\beta_0(2)\approx2.81\cdot10^{-3}$, $\beta_0(3)\approx4.03\cdot10^{-4}$, $\beta_0(4)\approx1.54\cdot10^{-4}$. The
 constants are far from optimal (Remark~\ref{al:rem:constants}).
@@ -145,15 +152,15 @@ constants are far from optimal (Remark~\ref{al:rem:constants}).
 \item a general form (Theorem~\ref{al:thm:general}) for any compact group $G$ as in \cite{F} with a central element
 $z_0$ of finite order $M$ acting non-trivially in $r$, and any closed lattice path, the area being replaced by the
 minimal size of a $\Z_M$-valued $2$-chain with the prescribed boundary;
-\item the same area law for $U(1)$, for every non-trivial representation, and for $U(N)$
-(Corollary~\ref{al:cor:u1}); this is the precise sense in which strong-coupling confinement fails the
+\item the same area law for $U(1)$, for every non-trivial representation, and for $U(N)$, for every representation
+non-trivial on the centre (Corollary~\ref{al:cor:u1}); this is the precise sense in which strong-coupling confinement fails the
 ``$U(1)$ test'' of the research program (Remark~\ref{al:rem:u1test});
-\item a lower bound $\sigma(\beta)$ on the string tension of every infinite-volume limit point
-(Corollary~\ref{al:cor:tension});
+\item a lower bound $\sigma(\beta)$ on the string tension of every infinite-volume limit point of the periodic Wilson
+measures (Corollary~\ref{al:cor:tension});
 \item a variant in which the perimeter coefficient tends to $0$ as $\beta\downarrow0$ (Corollary~\ref{al:cor:smallkappa});
 \item in $d=2$, the area law for \emph{every} non-trivial representation of any $G$ (Proposition~\ref{al:prop:2d});
-\item for every non-trivial representation in any $d$, decay at least exponential in the perimeter
-(Proposition~\ref{al:prop:perimeter}), and the vanishing of loops which wind around the torus with non-zero charge
+\item for rectangular loops in every non-trivial representation, in every $d$ and for all $\beta<\beta_0(d)$, decay at least
+exponential in the perimeter (Proposition~\ref{al:prop:perimeter}), and the vanishing of loops which wind around the torus with non-zero charge
 (Proposition~\ref{al:prop:winding}).
 \end{enumerate}
 
@@ -162,11 +169,11 @@ minimal size of a $\Z_M$-valued $2$-chain with the prescribed boundary;
 $\langle\chi_r(U_C)\rangle$ becomes $\sum_X\Phi(X)\,\Xi(\text{plaquettes avoiding }X\cup C)$, where $\Phi(X)$ is the integral
 of $\chi_r(U_C)\prod_{p\in X}f_\beta(U_p)$ (Lemma~\ref{al:lem:loopexp}). (2) Decomposing $f_\beta$ according to the
 action of the centre, a single-link substitution $U_\ell\mapsto z_0U_\ell$ shows that $\Phi(X)$ is a sum of terms
-indexed by $\Z_M$-valued $2$-chains $\kappa$ supported in $X$, each of which vanishes unless
-$\partial\kappa=-m(r)\,[C]$ (Lemma~\ref{al:lem:selection}). (3) Projecting onto the coordinate $2$-torus of the loop by
-a chain map and using that the $2$-cycles of a $2$-torus are the multiples of its fundamental class, such a $\kappa$ has
+indexed by $\Z_M$-valued $2$-chains $\zeta$ supported in $X$, each of which vanishes unless
+$\partial\zeta=-m(r)\,[C]$ (Lemma~\ref{al:lem:selection}). (3) Projecting onto the coordinate $2$-torus of the loop by
+a chain map and using that the $2$-cycles of a $2$-torus are the multiples of its fundamental class, such a $\zeta$ has
 at least $A$ plaquettes (Proposition~\ref{al:prop:area}). (4) The ratio of polymer partition functions is at most
-$e^{\theta(|X|(K_\cP+1)+2(d-1)|C|)}$ by an inductive lemma of Kotecký--Preiss--Dobrushin type
+$e^{\theta(|X|(K_\cP+1)+2(d-1)|E_C|)}$ by an inductive lemma of Kotecký--Preiss--Dobrushin type
 (Lemma~\ref{al:lem:ratio}) whose hypothesis is the estimate proved in \cite{F}. (5) Connected sets attached to $C$ are
 counted with a rooted tree encoding (Lemma~\ref{al:lem:rooted}), which produces the perimeter term.
 
@@ -413,16 +420,16 @@ $\alpha=\lambda'$). Since $\pi(x+e_\tau)=\pi x$, the two $\alpha$-links have the
 \begin{definition}[$\Z_M$-area]\label{al:def:area}
 For a closed path $C$ and $m\in\Z_M$ let
 \[
-A_m(C):=\min\bigl\{|\supp\kappa|:\ \kappa\in\sC_2(\Lambda;\Z_M),\ \partial\kappa=-m[C]\bigr\}\in\{0,1,2,\dots\}\cup\{+\infty\},
+A_m(C):=\min\bigl\{|\supp\zeta|:\ \zeta\in\sC_2(\Lambda;\Z_M),\ \partial\zeta=-m[C]\bigr\}\in\{0,1,2,\dots\}\cup\{+\infty\},
 \]
 with $\min\emptyset:=+\infty$ (here $[C]$ is reduced modulo $M$). Clearly $A_0(C)=0$.
 \end{definition}
 
 \begin{proposition}[Area of a rectangle]\label{al:prop:area}
-Let $C$ be a rectangular loop in the plane $(\mu,\nu)$, $m\in\Z_M\setminus\{0\}$, and $\kappa\in\sC_2(\Lambda;\Z_M)$ with
-$\partial\kappa=-m[C]$. Then
+Let $C$ be a rectangular loop in the plane $(\mu,\nu)$, $m\in\Z_M\setminus\{0\}$, and $\zeta\in\sC_2(\Lambda;\Z_M)$ with
+$\partial\zeta=-m[C]$. Then
 \[
-\bigl|\supp\kappa\cap\cP_{\mu\nu}\bigr|\ \ge\ A=\min\bigl(RT,\,L_\mu L_\nu-RT\bigr).
+\bigl|\supp\zeta\cap\cP_{\mu\nu}\bigr|\ \ge\ A=\min\bigl(RT,\,L_\mu L_\nu-RT\bigr).
 \]
 Moreover $A_m(C)=A$.
 \end{proposition}
@@ -430,18 +437,18 @@ Moreover $A_m(C)=A$.
 \begin{proof}
 By Lemmas~\ref{al:lem:chainmap} and \ref{al:lem:boundaries}(ii),
 \[
-\partial(\pi_\#\kappa)=\pi_\#(\partial\kappa)=-m\,\pi_\#[C]=-m\,\pi_\#\partial D=-m\,\partial(\pi_\#D).
+\partial(\pi_\#\zeta)=\pi_\#(\partial\zeta)=-m\,\pi_\#[C]=-m\,\pi_\#\partial D=-m\,\partial(\pi_\#D).
 \]
 Here
 $\pi_\#D=D'$ is the set of the $RT$ plaquettes $(\pi x_{ij},12)$ of $\Lambda_{\mu\nu}$, which are distinct since
-$R\le L_\mu$ and $T\le L_\nu$. Thus $\pi_\#\kappa+mD'$ is a $2$-cycle of $\Lambda_{\mu\nu}$ with coefficients in $\Z_M$,
-and by Lemma~\ref{al:lem:2cycles} there is $k\in\Z_M$ with $\pi_\#\kappa=k\mathbf 1-mD'$: the coefficient of $\pi_\#\kappa$
+$R\le L_\mu$ and $T\le L_\nu$. Thus $\pi_\#\zeta+mD'$ is a $2$-cycle of $\Lambda_{\mu\nu}$ with coefficients in $\Z_M$,
+and by Lemma~\ref{al:lem:2cycles} there is $k\in\Z_M$ with $\pi_\#\zeta=k\mathbf 1-mD'$: the coefficient of $\pi_\#\zeta$
 is $k-m$ on the $RT$ plaquettes of $D'$ and $k$ on the other $L_\mu L_\nu-RT$ plaquettes. If $k=0$ it is non-zero on
 $D'$ (as $m\neq0$); if $k=m$ it is non-zero off $D'$; otherwise it is non-zero everywhere. In all cases the number of
-plaquettes $q$ of $\Lambda_{\mu\nu}$ with $(\pi_\#\kappa)_q\neq0$ is at least $A$. Now
-$(\pi_\#\kappa)_q=\sum_{p\in\pi^{-1}(q)}\kappa_p$, where $\pi^{-1}(q):=\{(x,\mu\nu):\pi x=q\}\subseteq\cP_{\mu\nu}$; so
-$(\pi_\#\kappa)_q\ne0$ implies $\supp\kappa\cap\pi^{-1}(q)\neq\emptyset$, and the sets $\pi^{-1}(q)$ are pairwise
-disjoint. Hence $|\supp\kappa\cap\cP_{\mu\nu}|\ge A$, and in particular $A_m(C)\ge A$. Conversely, by
+plaquettes $q$ of $\Lambda_{\mu\nu}$ with $(\pi_\#\zeta)_q\neq0$ is at least $A$. Now
+$(\pi_\#\zeta)_q=\sum_{p\in\pi^{-1}(q)}\zeta_p$, where $\pi^{-1}(q):=\{(x,\mu\nu):\pi x=q\}\subseteq\cP_{\mu\nu}$; so
+$(\pi_\#\zeta)_q\ne0$ implies $\supp\zeta\cap\pi^{-1}(q)\neq\emptyset$, and the sets $\pi^{-1}(q)$ are pairwise
+disjoint. Hence $|\supp\zeta\cap\cP_{\mu\nu}|\ge A$, and in particular $A_m(C)\ge A$. Conversely, by
 Lemma~\ref{al:lem:boundaries}(ii) the chains $-mD$ and $m(\Sigma-D)$ have boundary $-m[C]$ and supports $D$ and
 $\Sigma\setminus D$, of sizes $RT$ and $L_\mu L_\nu-RT$; so $A_m(C)\le A$.
 \end{proof}
@@ -477,16 +484,16 @@ $f_k=\sum_{r\neq0}(c_r/c_0)\chi_r\cdot\frac1M\sum_j\omega^{j(m(r)-k)}=\sum_{r\ne
 \end{proof}
 
 \begin{definition}[Loop integrals]\label{al:def:Phi}
-For a closed path $C$, an irreducible representation $r$, a set $X\subseteq\cP$ and a map $\kappa:X\to\Z_M$, put
+For a closed path $C$, an irreducible representation $r$, a set $X\subseteq\cP$ and a map $\zeta:X\to\Z_M$, put
 \[
 \Phi_{r,C}(X):=\int\chi_r(U_C)\prod_{p\in X}f_\beta(U_p)\dU,\qquad
-\Phi_{r,C}(X;\kappa):=\int\chi_r(U_C)\prod_{p\in X}f_{\kappa(p)}(U_p)\dU ,
+\Phi_{r,C}(X;\zeta):=\int\chi_r(U_C)\prod_{p\in X}f_{\zeta(p)}(U_p)\dU ,
 \]
-and identify $\kappa$ with the chain $\sum_{p\in X}\kappa(p)\,p\in\sC_2(\Lambda;\Z_M)$, whose support is contained in $X$.
+and identify $\zeta$ with the chain $\sum_{p\in X}\zeta(p)\,p\in\sC_2(\Lambda;\Z_M)$, whose support is contained in $X$.
 \end{definition}
 
 \begin{lemma}[Selection rule]\label{al:lem:selection}
-If $\Phi_{r,C}(X;\kappa)\neq0$, then $\partial\kappa=-m(r)\,[C]$ in $\sC_1(\Lambda;\Z_M)$.
+If $\Phi_{r,C}(X;\zeta)\neq0$, then $\partial\zeta=-m(r)\,[C]$ in $\sC_1(\Lambda;\Z_M)$.
 \end{lemma}
 
 \begin{proof}
@@ -494,28 +501,28 @@ Fix a link $\ell$ and let $\tau_\ell:\Omega_\Lambda\to\Omega_\Lambda$ replace $U
 coordinates unchanged. It preserves $dU$ (left invariance of Haar measure in the $\ell$-th factor). Since $z_0$ is central
 and $\ell$ occurs at most once among the links of a plaquette, $(\tau_\ell U)_p=z_0^{[p:\ell]}U_p$ for every plaquette $p$
 (Definition~\ref{al:def:chains}); and $(\tau_\ell U)_C=z_0^{[C:\ell]}U_C$, since every occurrence of $\ell$ in $C$
-contributes a factor $z_0^{\pm1}$ which can be moved to the front. Let $F(U):=\chi_r(U_C)\prod_{p\in X}f_{\kappa(p)}(U_p)$.
+contributes a factor $z_0^{\pm1}$ which can be moved to the front. Let $F(U):=\chi_r(U_C)\prod_{p\in X}f_{\zeta(p)}(U_p)$.
 By Lemma~\ref{al:lem:fk}(i) and Lemma~\ref{al:lem:central},
 \[
-F(\tau_\ell U)=\omega^{\sum_{p\in X}[p:\ell]\kappa(p)\,+\,m(r)[C:\ell]}\,F(U)=\omega^{(\partial\kappa+m(r)[C])_\ell}\,F(U),
+F(\tau_\ell U)=\omega^{\sum_{p\in X}[p:\ell]\zeta(p)\,+\,m(r)[C:\ell]}\,F(U)=\omega^{(\partial\zeta+m(r)[C])_\ell}\,F(U),
 \]
-the exponent being computed in $\Z_M$. Integrating, $\Phi_{r,C}(X;\kappa)=\omega^{(\partial\kappa+m(r)[C])_\ell}\,\Phi_{r,C}(X;\kappa)$.
-If $\Phi_{r,C}(X;\kappa)\neq0$, then $\omega^{(\partial\kappa+m(r)[C])_\ell}=1$, i.e.\ $(\partial\kappa+m(r)[C])_\ell=0$
+the exponent being computed in $\Z_M$. Integrating, $\Phi_{r,C}(X;\zeta)=\omega^{(\partial\zeta+m(r)[C])_\ell}\,\Phi_{r,C}(X;\zeta)$.
+If $\Phi_{r,C}(X;\zeta)\neq0$, then $\omega^{(\partial\zeta+m(r)[C])_\ell}=1$, i.e.\ $(\partial\zeta+m(r)[C])_\ell=0$
 in $\Z_M$, because $\omega$ is a primitive $M$-th root of unity. This holds for every $\ell$.
 \end{proof}
 
 \begin{proposition}[Vanishing of small loop polymers]\label{al:prop:vanish}
 Let $C$ be a closed path, $r$ irreducible and $X\subseteq\cP$. If $\Phi_{r,C}(X)\neq0$, then there is
-$\kappa\in\sC_2(\Lambda;\Z_M)$ with $\supp\kappa\subseteq X$ and $\partial\kappa=-m(r)[C]$; in particular
+$\zeta\in\sC_2(\Lambda;\Z_M)$ with $\supp\zeta\subseteq X$ and $\partial\zeta=-m(r)[C]$; in particular
 $|X|\ge A_{m(r)}(C)$. If $C$ is a rectangular loop in the plane $(\mu,\nu)$ and $m(r)\neq0$, then $\Phi_{r,C}(X)\neq0$
 implies $|X\cap\cP_{\mu\nu}|\ge A$.
 \end{proposition}
 
 \begin{proof}
-By Lemma~\ref{al:lem:fk}(ii), $\prod_{p\in X}f_\beta(U_p)=\sum_{\kappa\in\Z_M^X}\prod_{p\in X}f_{\kappa(p)}(U_p)$, so
-$\Phi_{r,C}(X)=\sum_\kappa\Phi_{r,C}(X;\kappa)$ (a finite sum). If $\Phi_{r,C}(X)\ne0$, some $\Phi_{r,C}(X;\kappa)\neq0$,
-and Lemma~\ref{al:lem:selection} applies to this $\kappa$. Then $|X|\ge|\supp\kappa|\ge A_{m(r)}(C)$, and for a
-rectangle Proposition~\ref{al:prop:area} gives $|X\cap\cP_{\mu\nu}|\ge|\supp\kappa\cap\cP_{\mu\nu}|\ge A$.
+By Lemma~\ref{al:lem:fk}(ii), $\prod_{p\in X}f_\beta(U_p)=\sum_{\zeta\in\Z_M^X}\prod_{p\in X}f_{\zeta(p)}(U_p)$, so
+$\Phi_{r,C}(X)=\sum_\zeta\Phi_{r,C}(X;\zeta)$ (a finite sum). If $\Phi_{r,C}(X)\ne0$, some $\Phi_{r,C}(X;\zeta)\neq0$,
+and Lemma~\ref{al:lem:selection} applies to this $\zeta$. Then $|X|\ge|\supp\zeta|\ge A_{m(r)}(C)$, and for a
+rectangle Proposition~\ref{al:prop:area} gives $|X\cap\cP_{\mu\nu}|\ge|\supp\zeta\cap\cP_{\mu\nu}|\ge A$.
 \end{proof}
 
 \begin{proposition}[Loops winding around the torus]\label{al:prop:winding}
@@ -529,7 +536,7 @@ Let $\phi_\lambda:\sC_1(\Lambda;\Z_M)\to\Z_M$, $\phi_\lambda(c):=\sum_{x:\,x_\la
 spanning direction $\lambda$ has no $\lambda$-links; a plaquette spanning $\lambda$ and $\lambda'$ has exactly two
 $\lambda$-links, $(y,\lambda)$ and $(y+e_{\lambda'},\lambda)$, with opposite incidence numbers and the same
 $\lambda$-coordinate. Hence $\phi_\lambda(\partial p)=0$ for every plaquette, so $\phi_\lambda\circ\partial=0$. If
-$\partial\kappa=-m(r)[C]$, then $0=\phi_\lambda(\partial\kappa)=-m(r)w_\lambda(C)$ in $\Z_M$, a contradiction; so
+$\partial\zeta=-m(r)[C]$, then $0=\phi_\lambda(\partial\zeta)=-m(r)w_\lambda(C)$ in $\Z_M$, a contradiction; so
 $A_{m(r)}(C)=+\infty$. For the second claim let $\tau$ replace $U_\ell$ by $z_0U_\ell$ simultaneously for all links
 $\ell=(x,\lambda)$ with $x_\lambda=0$. It preserves $dU$. By the observation just made, a plaquette contains either
 no transformed link or exactly two, $\ell$ and $\ell'$, with $[p:\ell]+[p:\ell']=0$; as $z_0$ is central,
@@ -625,8 +632,9 @@ Dividing by $Z_\Lambda/c_0^{|\cP|}=\Xi(\cP)$ gives the lemma.
 \end{proof}
 
 The following lemma is the inductive ``no-cluster-expansion'' form of the Kotecký--Preiss criterion
-\cite{KP86,Dob96}; see \cite[Section~2]{FP07} for its history and for the same bounds (their (2.10), (2.11), (2.14),
-(2.15)). We give the short proof.
+\cite{KP86,Dob96}; see \cite[Section~1]{FP07} for its history. The same bound also follows from
+\cite[(2.11), (2.14), (2.15)]{FP07}, where it is derived from the cluster (tree-graph) expansion. We give the short inductive
+proof.
 
 \begin{lemma}[Ratio bound for polymer systems]\label{al:lem:ratio}
 Let $\Gamma$ be a finite set with a symmetric reflexive relation $\not\approx$, let $z:\Gamma\to\C$, and suppose
@@ -755,7 +763,7 @@ $\cP$ (Lemma~\ref{al:lem:facts}(d)). A set $X\subseteq\cP$ belongs to $\cX_C$ if
 subgraph: if every component of $X$ contains a plaquette of $\cP_C$, each component is joined to $o$; conversely, if
 $X\cup\{o\}$ is connected and $Y$ is a component of $X$, a shortest path from $o$ to $Y$ in $X\cup\{o\}$ leaves $o$ through
 some $p\in\cP_C\cap X$ and then stays in $X$, hence in the component of $p$, so $p\in Y$. Apply
-Lemma~\ref{al:lem:rooted} (the bound is increasing in $J$).
+Lemma~\ref{al:lem:rooted}.
 \end{proof}
 
 \section{The area law}\label{al:sec:main}
@@ -907,9 +915,10 @@ $\sigma(\beta)-\bigl(2\kappa(\beta)(R+T)+\log d_r\bigr)/(RT)$, which tends to $\
 Infinite-volume limit points exist: for $G$ a compact Lie group, $\Omega_\infty$ is compact and metrisable, so every
 sequence of probability measures on it has a weakly convergent subsequence (Prokhorov's theorem; e.g.\
 \cite[Section~5]{Bil99}). They are invariant under translations of $\Z^d$, since each $\tilde\mu_{\Lambda,\beta}$ is
-(\Fref{Theorem}{Basic properties}{thm:basic}(iv)). We do not prove here that the limit point is unique (milestone T1.1
-of the research program; cf.\ \Fname{Remark}{On the constants and on what this proves}, item (iii), the remark
-following \texttt{thm:strong}); Corollary~\ref{al:cor:tension} holds for all of them.
+(\Fref{Theorem}{Basic properties}{thm:basic}(iv)). Corollary~\ref{al:cor:tension} holds for all of them and does not use
+uniqueness. Uniqueness of the limit point (milestone T1.1 of the research program; cf.\ \Fname{Remark}{On the constants and on
+what this proves}, item (iii), the remark following \texttt{thm:strong}) is proved in Part~II \cite{II} for
+$\beta<\beta_*(d)=\artanh\frac1{6(d-1)}$, a range containing $(0,\beta_0(d))$.
 \end{remark}
 
 \section{Representations without central charge; two dimensions}\label{al:sec:other}
@@ -938,16 +947,29 @@ assumption on the centre). Then
 \[
 \bigl|\langle\chi_r(U_C)\rangle_{\Lambda,\beta}\bigr|\le\frac{d_r}{1-x(\beta)}\exp\Bigl(-\Bigl[\frac{\sigma(\beta)}4-\kappa_1(\beta)\Bigr]|C|\Bigr).
 \]
-The exponent is negative for all $\beta<\beta_0(d)$ if $d\ge4$ (then $\frac\sigma4-\kappa_1>\frac14\log22-\frac35>0.17$),
-and for all sufficiently small $\beta$ in every $d$.
+For $d\ge3$ the rate is positive for all $\beta<\beta_0(d)$: $\frac\sigma4-\kappa_1>\frac14\log22-\frac35>0.17$ if $d\ge4$, and
+$\frac\sigma4-\kappa_1>\frac14\log14-4\bigl(\log\frac{13}{12}+\frac1{13}\bigr)>0.03$ if $d=3$. For $d=2$ and all $\beta<\beta_0(2)$,
+\[
+\bigl|\langle\chi_r(U_C)\rangle_{\Lambda,\beta}\bigr|\le\frac{d_r}{x(\beta)(1-x(\beta))}\exp\Bigl(-\Bigl[\frac{\sigma(\beta)}2-\kappa_1(\beta)\Bigr]|C|\Bigr),
+\]
+with $\frac\sigma2-\kappa_1>\frac12\log6-2\log\frac54-\frac25>0.049$.
+Hence in every dimension $d\ge2$ and for all $\beta<\beta_0(d)$, rectangular Wilson loops in non-trivial representations decay at
+least exponentially in their length.
 \end{proposition}
 
 \begin{proof}
 By Lemma~\ref{al:lem:singlelink}(a), $\Phi_{r,C}(X)\neq0$ forces $E_C\subseteq E(X)$, hence $|X|\ge|E(X)|/4\ge|C|/4$.
 Apply Proposition~\ref{al:prop:master} with $n_0=\lceil|C|/4\rceil$ and $t=1/K$ as in the proof of
-Theorem~\ref{al:thm:general}, and use $x^{\lceil|C|/4\rceil}\le e^{-\sigma|C|/4}$. For $d\ge4$, Lemma~\ref{al:lem:constants}
-gives $\frac\sigma4>\frac14\log(8d-10)\ge\frac14\log22>0.77$ and $\kappa_1<\frac{d-1}{2d-3}\le\frac35$. In general
-$\sigma(\beta)\to\infty$ while $\kappa_1(\beta)$ stays bounded.
+Theorem~\ref{al:thm:general}, and use $x^{\lceil|C|/4\rceil}\le e^{-\sigma|C|/4}$. By Lemma~\ref{al:lem:constants},
+$\sigma>\log(K+2)$ and $\theta<\frac1{K+1}$, so $\kappa_1<2(d-1)\bigl[\log(1+\frac1K)+\frac1{K+1}\bigr]$. For $d\ge4$ this gives
+$\frac\sigma4>\frac14\log(8d-10)\ge\frac14\log22>0.77$ and, as in Lemma~\ref{al:lem:constants}, $\kappa_1<\frac{d-1}{2d-3}\le\frac35$.
+For $d=3$ ($K=12$): $\frac14\log14>0.6597$ and $4(\log\frac{13}{12}+\frac1{13})<0.6279$. For $d=2$ ($K=4$),
+Lemma~\ref{al:lem:2dsupport} shows that Proposition~\ref{al:prop:master} applies with $n_0=A$, and
+$A\ge R+T-1=\frac{|C|}2-1$ because $RT-(R+T-1)=(R-1)(T-1)\ge0$ and $L_0L_1-RT\ge(R+1)(T+1)-RT=R+T+1$; with $t=1/K$ as in the proof of
+Theorem~\ref{al:thm:general} and $x<1$ this gives
+$|\langle\chi_r(U_C)\rangle|\le\frac{d_r}{1-x}x^{A}e^{\kappa_1|C|}\le\frac{d_r}{1-x}x^{|C|/2-1}e^{\kappa_1|C|}$, which is the
+displayed bound; finally $\frac12\log6>0.8958$ and $2(\log\frac54+\frac15)<0.8463$. (The rates in these bounds are the infima over
+$0<\beta<\beta_0(d)$, approached as $\beta\uparrow\beta_0(d)$.)
 \end{proof}
 
 \begin{lemma}[Contributing loop polymers in two dimensions]\label{al:lem:2dsupport}
@@ -989,14 +1011,17 @@ c_1(\beta)\,e^{-c_2(\beta)|C|}\ \le\ \langle\chi_r(U_C)\rangle_{\Lambda,\beta}\ 
 \qquad c_1,c_2,c_3>0,
 \]
 uniformly in rectangular loops, so that the string tension of $r$ vanishes (``screening of adjoint charges by gluons'').
-The reason is geometric. For $\lambda\notin\{\mu,\nu\}$, $L_\mu\ge R+2$ and $L_\nu\ge T+2$, let $F$ be the union of the $2(R+T)+4$ unit cubes spanned by
+The reason is geometric. For $\lambda\notin\{\mu,\nu\}$, $L_\mu\ge R+3$ and $L_\nu\ge T+3$, let $F$ be the union of the $2(R+T)+4$ unit cubes spanned by
 $e_\mu,e_\nu,e_\lambda$ that lie in $\{x^0_\lambda\le x_\lambda\le x^0_\lambda+1\}$ and project onto the unit squares
 outside the rectangle sharing at least a vertex with its boundary. Then $F$ is a solid torus, its boundary $\partial F$ is
-a closed surface of $4|C|+16$ plaquettes, and each link of $C$ lies in exactly two plaquettes of $\partial F$. Assigning the
+a closed surface of $4|C|+16$ plaquettes, and each link of $C$ lies in exactly two plaquettes of $\partial F$. (If $L_\mu=R+2$ or
+$L_\nu=T+2$, the ring closes up around the torus and $F$ is a handlebody of genus two instead.) For $r=\mathrm{adj}$, assigning the
 fundamental representation to these plaquettes (oriented as the boundary of $F$), the representations meeting at every
 link contain the trivial representation in their tensor product ($\mathrm{adj}\otimes\rho\otimes\bar\rho$ on $C$,
 $\rho\otimes\bar\rho$ elsewhere), so terms of order $\beta^{4|C|+16}$ are not excluded by any selection rule, whereas a surface
-spanning $C$ has at least $A$ plaquettes, each carrying a factor $O(\beta)$. Proving the lower bound requires showing that such terms are not
+spanning $C$ has at least $A$ plaquettes, each carrying a factor $O(\beta)$. For other $r$ of $N$-ality zero other representations
+must be placed on $\partial F$: for the $\mathbf{10}$ of $SU(3)$, $\mathbf{10}\otimes\mathbf3\otimes\bar{\mathbf3}$ contains no invariant,
+but $\mathbf{10}\otimes\mathbf8\otimes\mathbf8$ does, which gives terms of order $\beta^{2(4|C|+16)}$. Proving the lower bound requires showing that such terms are not
 cancelled, which the absolute-value bounds of this article cannot do; we leave it open. In $d=2$ no such surfaces exist,
 and Proposition~\ref{al:prop:2d} shows that the area law holds for every $r\neq0$: the distinction between zero and
 non-zero $N$-ality is a phenomenon of $d\ge3$.
@@ -1009,14 +1034,17 @@ The proof of Theorem~\ref{al:thm:general} uses only compactness, the bound $\nor
 central element of finite order acting non-trivially in $r$; nothing non-abelian enters. Accordingly
 Corollary~\ref{al:cor:u1} proves the same area law for $G=U(1)$, for \emph{every} non-trivial representation (all of them
 have non-zero charge with respect to a suitable finite subgroup of the centre $U(1)$). On the other hand, for $G=U(1)$
-in $d=4$ the area law fails at large $\beta$ \cite{Gut80,FS82}, while in $d=3$ it holds at all $\beta$ \cite{GM82}
-(as summarised in \cite[Section~4]{Cha19b} and \cite[Section~1]{CNS25a}; the precise class of actions covered by these
-proofs is to be checked against the originals, which are marked ``verify''). Two conclusions follow.
+in $d=4$ the area law fails at large $\beta$, while in $d=3$ it holds at all $\beta$ \cite{GM82}
+(as summarised in \cite[Section~4]{Cha19b} and \cite[Section~1]{CNS25a}). The four-dimensional statement is proved in
+\cite{FS82} for the Villain action and asserted there to extend to Wilson's action (see also \cite{Gut80}); the precise class
+of actions covered by these proofs is to be checked against the originals, which are marked ``verify''. Two conclusions
+follow.
 \begin{enumerate}[label=(\roman*)]
 \item Strong-coupling confinement is \emph{not} a non-abelian phenomenon: it is a property of the disordered
 (high-temperature) regime together with the centre symmetry, which forces every contributing surface to span the loop.
 \item In the terminology of \texttt{docs/03-research-program.md} (\S3.1, principle~2), the argument does not pass the
-$U(1)$ test: it applies verbatim to $U(1)_4$, where the large-$\beta$ conclusion is false. Hence no argument which uses
+$U(1)$ test: it applies verbatim to $U(1)_4$, where the large-$\beta$ conclusion is false (for the Villain action, and by
+the extension asserted in \cite{FS82} for Wilson's action). Hence no argument which uses
 only the ingredients listed above can give the area law at large $\beta$ in four dimensions; a proof of confinement at
 all $\beta$ for $SU(N)$ must use a genuinely non-abelian mechanism at an essential step. This is the same lesson as item (ii) of
 \Fname{Remark}{On the constants and on what this proves} (the remark following \texttt{thm:strong}) for the Dobrushin
@@ -1029,8 +1057,9 @@ The area law at small $\beta$ was derived at leading order of the strong-couplin
 proved rigorously by Osterwalder and Seiler \cite{OS78} (Theorem~5.1 there, according to the citation in the proof of
 \cite[Theorem~1.2]{CNS25a}), for planar loops and gauge groups with non-trivial centre such as $SU(N)$ and $U(N)$, with
 the extension to general loops given in Seiler's monograph \cite{Sei82}; both statements are as summarised in
-\cite[Section~3]{Cha19a}. Their proofs rest on the convergent strong-coupling (high-temperature) cluster expansion,
-as described in \cite[Section~1]{SZZ23} and \cite[Remark~1.5]{CNS25a}. We have not been able to consult \cite{OS78,Sei82} directly
+\cite[Section~3]{Cha19a}. The work of Osterwalder and Seiler is based on the convergent strong-coupling
+(high-temperature) cluster expansion \cite[Section~1]{SZZ23}; \cite[Remark~1.5]{CNS25a} describes its regime as one in which
+even a single plaquette is rare. We have not been able to consult \cite{OS78,Sei82} directly
 (they are marked ``verify'' in the bibliography), so the following comparison is with these descriptions.
 \begin{enumerate}[label=(\roman*)]
 \item \emph{Mechanism.} As far as can be judged from these descriptions, the mechanism is the same: centre symmetry
@@ -1048,7 +1077,7 @@ $\tilde\beta\ll_d1$ for the action written with the normalised trace in \cite[Fi
 single central element of finite order acting non-trivially, which covers $SU(N)$, $U(N)$, $U(1)$ and finite groups
 with non-trivial centre uniformly.
 \item \emph{Beyond the strong-coupling regime of \cite{OS78}.} The area law has recently been extended, for large $N$,
-to $\beta\lesssim_dN$ for $U(N)$ \cite{CNS25a} and to the 't Hooft regime $\beta\lesssim_dN^2$ for $U(N)$ and $SU(N)$
+to $\beta\lesssim_dN$ for $U(N)$ \cite{CNS25a} and to the 't Hooft regime $\beta\lesssim_dN^2$ for $U(N)$ and $SU(N)$ (and $SO(2N)$)
 \cite{CNS25b} (in the normalisation of \cite{F}; these papers write the action with the unnormalised trace and with
 the 't Hooft scaling, respectively), using the master loop equation and, respectively, the Durhuus--Fröhlich
 criterion \cite{DF80} verified by Bakry--Émery methods \cite{SZZ23}. For fixed $N$ and large $\beta$ the problem is
@@ -1057,7 +1086,9 @@ open (Remark~\ref{al:rem:u1test}).
 \end{remark}
 
 \begin{remark}[Constants, sharpness, improvements]\label{al:rem:constants}
-(i) For the fundamental representation $\rho$ of $SU(N)$ the leading term of Lemma~\ref{al:lem:loopexp} is $X=D$, and a
+(i) For the fundamental representation $\rho$ of $SU(N)$ and $RT<L_\mu L_\nu-RT$, the leading term of
+Lemma~\ref{al:lem:loopexp} is $X=D$ (if $RT>L_\mu L_\nu-RT$ it is $X=\Sigma\setminus D$, and both contribute if the two areas
+are equal), and a
 standard computation with \Fref{Cited Theorem}{Haar measure, Peter--Weyl}{thm:pw}(iv) and the character expansion gives
 $\Phi_{\rho,C}(D)=d_\rho\,u_\rho(\beta)^{RT}$ with $u_\rho=c_\rho/(Nc_0)$, where $u_\rho(\beta)=\frac\beta4+O(\beta^3)$ for $N=2$
 and $u_\rho(\beta)=\frac\beta{2N^2}+O(\beta^2)$ for $N\ge3$. The string tension suggested by this term is therefore
@@ -1077,11 +1108,14 @@ controlled by the parameter $t$ of Proposition~\ref{al:prop:master}.
 
 \begin{remark}[Status in the research program]
 Together with \Fref{Theorem}{Strong-coupling clustering and mass gap, uniform in the volume}{thm:strong}, the results of
-this article complete the strong-coupling endpoint of the program on the confinement side. The area law is listed under
+this article establish the area-law part of the strong-coupling endpoint of the program on the confinement side (lower
+bounds on Wilson loops, and the perimeter law for $N$-ality zero, are not proved here). The area law is listed under
 milestone T0.7 of \texttt{docs/03-research-program.md} (``Theorem modulo cited KP theorem''), although \cite{F} does not
 prove it (\Flab{Remark}{rem:further}); it now has a self-contained proof, uniform in the volume and valid for every
-infinite-volume limit point. The uniqueness of the
-infinite-volume limit (T1.1) is not addressed. By Remark~\ref{al:rem:u1test}, the large-$\beta$ problem is untouched by
+infinite-volume limit point of the periodic Wilson measures. The uniqueness of the infinite-volume limit (T1.1) is proved in
+Part~II \cite{II} for $\beta<\beta_*(d):=\artanh\frac1{6(d-1)}$, a range containing $(0,\beta_0(d))$; so for $\beta<\beta_0(d)$
+Corollary~\ref{al:cor:tension}(ii) concerns the unique infinite-volume Gibbs measure \cite[Corollary~`Area law in infinite
+volume']{II}. By Remark~\ref{al:rem:u1test}, the large-$\beta$ problem is untouched by
 these methods.
 \end{remark}
 
@@ -1089,7 +1123,7 @@ these methods.
 
 \begin{center}
 \small
-\begin{tabular}{@{}lll@{}}
+\begin{tabular}{@{}p{0.57\textwidth}p{0.22\textwidth}l@{}}
 \toprule
 Statement & Where & Status\\
 \midrule
@@ -1101,7 +1135,7 @@ Area law, general groups and closed paths & Thm.~\ref{al:thm:general}, Cor.~\ref
 Area law for $SU(N)$, $n(r)\neq0$ & Thm.~\ref{al:thm:intro} $=$ Cor.~\ref{al:cor:sun} & Theorem\\
 Area law for $U(1)$ and $U(N)$ & Cor.~\ref{al:cor:u1} & Theorem\\
 String tension $\ge\sigma(\beta)$, uniformly and in infinite volume & Cor.~\ref{al:cor:tension} & Theorem\\
-Perimeter decay for all $r\neq0$; area law for all $r\neq0$ in $d=2$ & Prop.~\ref{al:prop:perimeter}, \ref{al:prop:2d} & Theorem\\
+Perimeter decay of rectangular loops for all $r\neq0$; area law for all $r\neq0$ in $d=2$ & Prop.~\ref{al:prop:perimeter}, \ref{al:prop:2d} & Theorem\\
 Perimeter law for $N$-ality zero in $d\ge3$ & Rem.~\ref{al:rem:perimeterlaw} & open (expected)\\
 \bottomrule
 \end{tabular}
@@ -1113,6 +1147,10 @@ Perimeter law for $N$-ality zero in $d\ge3$ & Rem.~\ref{al:rem:perimeterlaw} & o
 \emph{Lattice Yang--Mills theory: foundations for the mass gap problem}, Part~I of the project ``Solving Yang--Mills
 and the Mass Gap'', \texttt{theory/lattice-foundations.tex} (this repository), living document, version of
 5~November~2026.
+
+\bibitem[II]{II}
+\emph{Lattice Yang--Mills theory at strong coupling II: the infinite-volume theory, its transfer operator and its mass gap},
+\texttt{theory/infinite-volume-strong-coupling.tex} (this repository), living document, version of 9~November~2026.
 
 \bibitem[Bil99]{Bil99}
 P.~Billingsley, \emph{Convergence of Probability Measures}, 2nd ed., Wiley, New York, 1999.
