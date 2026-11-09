@@ -30,17 +30,18 @@ To build the monographs, first install the TeX packages listed in `.github/workf
 `lmodern`, which the cloud container lacked on 2026-11-09) if `latexmk` or `lmodern.sty` is missing, then:
 
 ```bash
-cd theory && for f in lattice-foundations infinite-volume-strong-coupling area-law-strong-coupling; do latexmk -pdf -interaction=nonstopmode $f.tex; done
+cd theory && for f in lattice-foundations infinite-volume-strong-coupling area-law-strong-coupling mass-gap-strong-coupling; do latexmk -pdf -interaction=nonstopmode $f.tex; done
 ```
 
 The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.tex` source changes.
 
 ## State on 2026-11-09
 
-- `theory/` holds three monographs: the foundations [F] (`lattice-foundations.tex`, errata 2026-11-09), Part II
-  (`infinite-volume-strong-coupling.tex`, the infinite-volume theory, milestone T1.1, new on 2026-11-09) and Part III
-  (`area-law-strong-coupling.tex`, the area law; checked by two independent referees and revised on 2026-11-09).
-- Part II's own referee check: see the newest journal entry for its status.
+- `theory/` holds four monographs: the foundations [F] (`lattice-foundations.tex`, errata 2026-11-09); Part II
+  (`infinite-volume-strong-coupling.tex`, the infinite-volume theory, milestone T1.1; refereed and revised 2026-11-09);
+  Part III (`area-law-strong-coupling.tex`, the area law; two referees, revised 2026-11-09); Part IV
+  (`mass-gap-strong-coupling.tex`, the strong-coupling gap with the correct asymptotics $4\log(1/\beta)$; new on
+  2026-11-09, see the newest journal entry for its referee status).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.

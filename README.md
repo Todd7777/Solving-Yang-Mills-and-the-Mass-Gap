@@ -20,6 +20,7 @@ was established, what failed, and what is next.
 | `docs/03-research-program.md` | Principles, milestones (Tiers 0–3), the crossover problem in mathematical form, an exact reformulation of the gap as a Markov-chain spectral gap, triage of mechanisms, anti-patterns, next steps |
 | `theory/lattice-foundations.tex` | Rigorous monograph: Wilson measure, gauge invariance, reflection positivity, transfer matrix and Hamiltonian, gap ⇔ clustering, ground-state chain, reduction theorem, strong-coupling mass gap (self-contained Dobrushin proof), polymer representation and cluster expansion |
 | `theory/infinite-volume-strong-coupling.tex` | Part II: the infinite-volume lattice theory. For every $\beta$, limit points are reflection-positive Gibbs measures with an OS transfer operator, so the infinite-volume gap $m(\mu)$ is defined. For $\beta<\beta_*(d)=\operatorname{artanh}\frac1{6(d-1)}$: unique Gibbs measure, convergence with rate, invariance under all gauge transformations, clustering, global Markov property, transfer operator $=$ a reversible Markov chain of time slices, unique vacuum, mass gap $\ge\log(1/(6(d-1)\tanh\beta))$ |
+| `theory/mass-gap-strong-coupling.tex` | Part IV: for $d\ge3$ and $\beta<\beta_0(d)$ the infinite- and finite-volume mass gaps are $\ge4\log(1/\beta)-O(1)$, the correct leading coefficient of the strong-coupling expansion (duplicate variables plus a "four plaquettes per time layer" lemma) |
 | `theory/area-law-strong-coupling.tex` | Part III: Wilson's area law at strong coupling for every representation of non-zero $N$-ality (and the same for $U(1)$: strong-coupling confinement is not non-abelian) |
 | `lattice/` | `ymlattice`: tested SU(2)/SU(3) Wilson-action Monte Carlo (heat bath, overrelaxation, Cabibbo–Marinari), observables (Wilson loops, Polyakov loops, APE smearing, $0^{++}$ correlators), exact formulas (character coefficients, exact 2-d solution, strong/weak-coupling series, asymptotic scaling) |
 | `results/` | Validation data and analyses produced by the scripts in `lattice/scripts` |
@@ -45,7 +46,8 @@ was established, what failed, and what is next.
 | Survey of rigorous and numerical knowledge | done (`docs/02`) |
 | Research program with milestones | done (`docs/03`) |
 | Foundations monograph (Tier 0 theorems) | see `theory/` and `journal/` for the current state of each section |
-| Part II: infinite-volume theory at strong coupling (T1.1) | done for $\beta<\beta_*(d)$ ($\beta_*(4)\approx0.056$); referee check in progress |
+| Part II: infinite-volume theory at strong coupling (T1.1) | done for $\beta<\beta_*(d)$ ($\beta_*(4)\approx0.056$); independent referee report addressed (2026-11-09) |
+| Part IV: strong-coupling gap with the correct asymptotics $4\log(1/\beta)$ | done for $d\ge3$, $\beta<\beta_0(d)$; referee check in progress |
 | Part III: area law at strong coupling | done; two independent referee reports addressed (2026-11-09) |
 | Lattice toolkit, 41 fast tests + 4 slow tests | passing (`cd lattice && pytest` / `pytest --runslow`) |
 | Numerical validation against exact 2-d solution, strong/weak coupling, reference values | done (`results/`) |

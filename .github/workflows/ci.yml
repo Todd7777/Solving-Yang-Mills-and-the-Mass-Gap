@@ -32,7 +32,7 @@ jobs:
       - name: Build the monographs (foundations, Part II, Part III)
         run: |
           cd theory
-          for f in lattice-foundations infinite-volume-strong-coupling area-law-strong-coupling; do
+          for f in lattice-foundations infinite-volume-strong-coupling area-law-strong-coupling mass-gap-strong-coupling; do
             latexmk -pdf -interaction=nonstopmode -halt-on-error $f.tex
           done
       - uses: actions/upload-artifact@v4
