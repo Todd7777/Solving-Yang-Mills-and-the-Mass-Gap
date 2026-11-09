@@ -22,6 +22,8 @@
 
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\Var}{Var}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
 \DeclareMathOperator{\artanh}{artanh}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
@@ -40,10 +42,10 @@
 \newcommand{\IIIref}[3]{\cite[#1~`#2' (\texttt{#3})]{III}}
 \newcommand{\IIIlab}[2]{\cite[#1 \texttt{#2}]{III}}
 
-\title{Lattice Yang--Mills theory at strong coupling IV:\\ a mass-gap bound with the correct leading coefficient\\
+\title{Lattice Yang--Mills theory at strong coupling IV:\\ the mass gap is $4\log(1/\beta)+O(1)$\\
 \large A sequel to the foundations monograph of the project ``Solving Yang--Mills and the Mass Gap''}
 \author{}
-\date{9 November 2026; revised the same day after an independent referee report; living document}
+\date{9 November 2026; revised after an independent referee report, and the matching upper bound added (Section~\ref{mg:sec:upper}), the same day; living document}
 
 \begin{document}
 \maketitle
@@ -63,8 +65,13 @@ time layer it crosses, because these plaquettes form a graph of minimum degree t
 is four (sides $\ge4$ are needed: with a side of length $3$ the girth is three). In $d=2$ the girth is the spatial size,
 which gives an infinite mass gap in infinite volume and a finite-volume gap growing linearly with the spatial size, in
 agreement with the exact solution. As in [F], II and III nothing non-abelian is used, so the result belongs to the
-strong-coupling endpoint of the problem; it is the lower half of what principle~3 (``the strong-coupling test'') of the
-research program requires, the matching upper bound being open.
+strong-coupling endpoint of the problem. We also prove the matching upper bound: for an irreducible $\rho$ of dimension $N$,
+$m\le4\log(1/u(\beta))+O(\beta)$ with $u=c_\rho/(Nc_0)$, by an exact evaluation of the leading term of a plaquette--plaquette
+correlation (the four sides of a unit cube), a proof that every other term of the duplicated expansion has at least five
+plaquettes, and the spectral inequality $\mathrm{Cov}\le e^{-m}\mathrm{Var}$ of the ground-state chain of Part~II. Together:
+$m(\mu_\beta)=4\log(1/\beta)+O(1)$ as $\beta\downarrow0$, which is what principle~3 (``the strong-coupling test'') of the
+research program requires. The upper bound is proved only for extremely small $\beta$ (of order $10^{-16}$ for $SU(2)$ in
+$d=4$), an artefact of sup-norm counting; its content is the asymptotics.
 \end{abstract}
 
 \tableofcontents
@@ -79,7 +86,9 @@ $\log(1/\beta)$ as $\beta\downarrow0$. The strong-coupling expansion predicts $m
 $u(\beta)=c_\rho(\beta)/(Nc_0(\beta))$ ($\approx\beta/4$ for $SU(2)$, $\approx\beta/(2N^2)$ for $N\ge3$): the lightest
 state in the gauge-invariant sector propagates as a tube of plaquettes with four plaquettes per unit of Euclidean time.
 Principle~3 of the research program (\texttt{docs/03-research-program.md}, \S3.1) asks every argument in the
-strong-coupling regime to reproduce this behaviour. Here we prove a lower bound with the correct leading coefficient.
+strong-coupling regime to reproduce this behaviour. Here we prove a lower bound with the correct leading coefficient for all
+$\beta<\beta_0(d)$ (Theorem~\ref{mg:thm:main}) and, for sufficiently small $\beta$, the matching upper bound
+(Theorem~\ref{mg:thm:upperintro}); together, $m(\mu_\beta)=4\log(1/\beta)+O(1)$.
 
 \emph{Literature.} The strong-coupling glueball spectrum was studied rigorously in the 1980s: by their abstracts, Schor
 \cite{Sch83} proved the existence of glueballs in strongly coupled lattice gauge theories, and O'Carroll, Braga and Schor
@@ -118,6 +127,21 @@ where $c(\beta):=\bigl(e^{2\theta(\beta)}(1+\frac1K)\bigr)^{2(d-1)}$.
 As $\beta\downarrow0$, $4\log(1/q(\beta))=4\log(1/\beta)-4\log(4e^3K)+O(\beta)$.
 \end{theorem}
 
+\begin{theorem}[Upper bound; the gap is $4\log(1/\beta)+O(1)$]\label{mg:thm:upperintro}
+Let $d\ge3$, let $\rho$ be irreducible (of dimension $N$), put $\iota:=1$ if $\rho\cong\bar\rho$ and $\iota:=0$ otherwise, and
+$u(\beta):=c_\rho(\beta)/(Nc_0(\beta))$. There are explicit functions $\delta(\beta),D(\beta)=O(\beta)$ (Theorem~\ref{mg:thm:upper}) such
+that, whenever $0<\beta<\beta_0(d)$ and $\delta(\beta)<e^{-48(d-1)\theta(\beta)}$,
+\[
+m(\mu_\beta)\le4\log\frac1{u(\beta)}+D(\beta),
+\]
+and the same bound holds for $m_{\Lambda_s}(\beta)$ for every periodic spatial lattice with all sides $\ge3$. Consequently, as
+$\beta\downarrow0$,
+\[
+-4\log(4e^3K)+O(\beta)\ \le\ m(\mu_\beta)-4\log\frac1\beta\ \le\ 4\log\frac{2N^2}{1+\iota}+O(\beta),
+\]
+and the same holds for $m_{\Lambda_s}(\beta)$, uniformly in the spatial lattices with all sides $\ge4$.
+\end{theorem}
+
 Here $\Cov(A,B):=\mu(AB)-\mu(A)\mu(B)$. Statement (iii) is the infinite-volume form of the covariance bound of
 Theorem~\ref{mg:thm:finite}; (i) follows from Theorem~\ref{mg:thm:finite} by \Fref{Corollary}{Gap from Euclidean
 correlations}{cor:gapfromcorr}, and (ii) from (iii) by \IIref{Theorem}{OS reconstruction of the lattice theory}{iv:thm:OS}(iii).
@@ -140,7 +164,11 @@ plaquettes that does not contain a component connecting the supports of $A$ and 
 odd under the exchange $U\leftrightarrow U'$, hence zero (Lemma~\ref{mg:lem:cancel}). (3) A connecting component has no
 free edges away from the supports, so in every time layer between the supports it contains at least four temporal plaquettes
 (Lemma~\ref{mg:lem:layer}), hence at least $4\times$(number of layers) plaquettes (Corollary~\ref{mg:cor:size}). (4) The sum
-over such sets is controlled by the ratio bound and the rooted counting of \cite{III}.
+over such sets is controlled by the ratio bound and the rooted counting of \cite{III}. (5) For the upper bound
+(Section~\ref{mg:sec:upper}) the same expansion is applied to two plaquettes at times $0$ and $1$: the four sides of the unit cube
+between them form the unique minimal connecting set, its contribution is computed exactly by character orthogonality, all other
+terms have at least five plaquettes, and the spectral inequality $\Cov\le e^{-m}\Var$ converts the resulting lower bound on the
+covariance into an upper bound on $m$.
 
 \section{The duplicated system}\label{mg:sec:dup}
 
@@ -293,7 +321,9 @@ endpoints of the links of $S_A$ have time coordinates in $\{a_1,\dots,a_2\}$ and
 \tau_{\rm in}:=b_1-a_2,\qquad \tau_{\rm out}:=L_0-(b_2-a_1),\qquad \tau:=\min(\tau_{\rm in},\tau_{\rm out})\ \ (\ge1).
 \]
 Let $X\subseteq\cP$ be such that every link of $E(X)\setminus(S_A\cup S_B)$ lies in at least two plaquettes of $X$, and let $Y$ be a
-component of $X$ containing a plaquette of $\cP_{S_A}$ and a plaquette of $\cP_{S_B}$. Then $|Y|\ge g\,\tau$.
+component of $X$ containing a plaquette of $\cP_{S_A}$ and a plaquette of $\cP_{S_B}$. Then $|Y|\ge g\,\tau$. More precisely, with
+the inner layers $\{a_2,\dots,b_1-1\}$ and the outer layers $\{b_2,\dots,a_1-1+L_0\}$, $Y$ contains at least $g$ temporal plaquettes
+in every inner layer, or at least $g$ temporal plaquettes in every outer layer.
 \end{corollary}
 
 \begin{proof}
@@ -390,6 +420,196 @@ $|E(\Lambda_s)|$ only, not on $L_0$; for $t=0$ the left side is at most $2\norm 
 lets $L_0\to\infty$ at fixed $t$, so that the bound is needed only for large $L_0$) gives $m_{\Lambda_s}(\beta)\ge4\log(1/q)$.
 \end{proof}
 
+\section{The matching upper bound}\label{mg:sec:upper}
+
+Throughout this section $d\ge3$ and, in addition to the standing assumptions, $\rho$ is irreducible; $N=d_\rho$,
+$\iota:=1$ if $\rho\cong\bar\rho$ and $\iota:=0$ otherwise, and $u(\beta):=c_\rho(\beta)/(Nc_0(\beta))$. Fix two spatial directions,
+labelled $1,2$. On a periodic lattice $\Lambda$ (all $L_\lambda\ge3$) let $p_0:=(0,12)$ be the spatial plaquette at the origin and time
+$0$, $p_1:=(e_0,12)$ its translate at time $1$, and
+\[
+A:=\mathrm{Re}\,\chi_\rho(U_{p_0}),\qquad A_1:=\mathrm{Re}\,\chi_\rho(U_{p_1}),\qquad S_A:=E(p_0),\quad S_B:=E(p_1),\quad S:=S_A\cup S_B,
+\]
+$F(U,U'):=(A(U)-A(U'))(A_1(U)-A_1(U'))$ as in Lemma~\ref{mg:lem:cancel}, and let $X_0$ be the set of the four temporal plaquettes
+$(y,0i)$ of layer $0$ with $(y,i)\in E(p_0)$: the sides of the unit cube $Q$ with bottom $p_0$ and top $p_1$. The same notation is
+used on $\Z^d$.
+
+\begin{lemma}[Leading terms]\label{mg:lem:leading}
+For every $\beta>0$:
+\begin{enumerate}[label=(\roman*)]
+\item $\tau_0:=\int A^2\dU=\frac{1+\iota}2$;
+\item $\tau_1:=\int A\,A_1\prod_{s\in X_0}f_\beta(U_s)\dU=\tau_0\,u(\beta)^4$;
+\item $\Phi_F(X_0)=2\tau_1$;
+\item $\frac{(1+\iota)\beta e^{-\beta}}{2N^2}\le u(\beta)\le\frac{(1+\iota)\beta+\beta^2e^\beta}{2N^2}$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) With $\mathrm{Re}\,\chi=\frac12(\chi+\bar\chi)$, $\int(\mathrm{Re}\,\chi_\rho)^2=\frac14\bigl(\int\chi_\rho^2+2\int|\chi_\rho|^2+\int\overline{\chi_\rho}^{\,2}\bigr)$.
+By Schur orthogonality \Fref{Cited Theorem}{Haar measure, Peter--Weyl}{thm:pw}(ii), $\int|\chi_\rho|^2=1$ and, since $\chi_{\bar\rho}=\overline{\chi_\rho}$,
+$\int\chi_\rho^2=\int\chi_\rho\overline{\chi_{\bar\rho}}=\iota$; likewise $\int\overline{\chi_\rho}^{\,2}=\iota$.
+
+(ii) Orient the six faces of $Q$ as its boundary. The computation in the proof of \Fref{Proposition}{Cube activity}{prop:cube} shows:
+for irreducible representations attached to the six faces, $\int\prod_{\text{faces}}\chi_{r_{\rm face}}(U_{\rm face})\dU$ equals $d_r^{-4}$
+if all six are the same $r$, and $0$ otherwise. The functions $f_\beta$ and $\mathrm{Re}\,\chi_\rho$ are invariant under inversion and
+conjugation, so $A$, $A_1$ and $f_\beta(U_s)$ are the same functions of the boundary-oriented holonomies. Insert
+$f_\beta=\sum_{r\neq0}(c_r/c_0)\chi_r$ (absolutely and uniformly convergent, \Flab{Corollary}{cor:uniform}) for the four sides, and
+$A=\chi_\rho$ if $\iota=1$ ($\chi_\rho$ is then real), $A=\frac12(\chi_\rho+\chi_{\bar\rho})$ if $\iota=0$, and the same for $A_1$. Only the
+terms in which all six faces carry the same $r\in\{\rho,\bar\rho\}$ survive. As $c_{\bar\rho}=\overline{c_\rho}=c_\rho$
+(\Fref{Lemma}{Positivity of the character coefficients}{lem:cr}) and $d_{\bar\rho}=d_\rho=N$, this gives $\tau_1=(c_\rho/c_0)^4N^{-4}=u^4$
+if $\iota=1$ and $\tau_1=\frac14\cdot2\cdot(c_\rho/c_0)^4N^{-4}=\frac12u^4$ if $\iota=0$; in both cases $\tau_1=\tau_0u^4$.
+
+(iii) Expand $\prod_{s\in X_0}g_s=\prod_s(f_s+f'_s+f_sf'_s)$, where $f_s:=f_\beta(U_s)$ and $f'_s:=f_\beta(U'_s)$, and for each of the $3^4$
+terms let $Q_1\subseteq X_0$ ($Q_2\subseteq X_0$) be the set of sides carrying a factor $f_s$ (a factor $f'_s$); $Q_1\cup Q_2=X_0$. Each of
+the four temporal links of $Q$ lies in exactly two sides, adjacent around the square, and in no other factor of the integrand. If
+some temporal link lies in exactly one plaquette of $Q_1$, integrating it out in the first copy gives $0$
+(\IIIlab{Lemma}{al:lem:facts}(c)); so $Q_1\in\{\emptyset,X_0\}$, and likewise $Q_2\in\{\emptyset,X_0\}$. Three terms remain:
+$\prod f_s$, $\prod f'_s$ and $\prod f_sf'_s$. Expand $F=AA_1-AA_1'-A'A_1+A'A_1'$; the integral over $dU\,dU'$ factorises into
+the two copies. A factor $\int A\prod_{s}f_s\dU$, $\int A_1\prod_sf_s\dU$ or $\int\prod_sf_s\dU$ vanishes, because the top
+(resp.\ bottom) edges of $Q$ then lie in exactly one factor; the same holds in the second copy. Hence the term $\prod f_s$
+contributes $\int AA_1\prod_sf_s\dU=\tau_1$, the term $\prod f'_s$ contributes $\tau_1$, and the term $\prod f_sf'_s$ contributes $0$.
+
+(iv) By the proof of \Flab{Lemma}{lem:cr}, $c_\rho=\sum_{n,m\ge0}\frac{t^{n+m}}{n!\,m!}m_\rho(n,m)$ with $t=\beta/(2N)$ and $m_\rho(n,m)$
+the multiplicity of $\rho$ in $\rho^{\otimes n}\otimes\bar\rho^{\otimes m}$. Here $m_\rho(0,0)=0$, $m_\rho(1,0)=1$, $m_\rho(0,1)=\iota$, and
+$m_\rho(n,m)\le N^{n+m-1}$ (dimension count). Hence $(1+\iota)t\le c_\rho\le(1+\iota)t+N^{-1}(e^{2Nt}-1-2Nt)\le\frac{(1+\iota)\beta}{2N}
++\frac{\beta^2e^\beta}{2N}$, using $e^y-1-y\le\frac{y^2}2e^y$ with $y=2Nt=\beta$. Divide by $Nc_0$ and use $1\le c_0\le e^\beta$
+(\IIIlab{Lemma}{al:lem:facts}(b)).
+\end{proof}
+
+\begin{lemma}[Minimal connecting set]\label{mg:lem:minimal}
+Let $\Lambda$ be periodic with all $L_\lambda\ge3$. Let $X\subseteq\cP$ be such that every link of $E(X)\setminus S$ lies in at least two
+plaquettes of $X$, and let $Y$ be a component of $X$ containing a plaquette of $\cP_{S_A}$ and a plaquette of $\cP_{S_B}$. Then
+$|Y|\ge4$, with equality only if $Y=X_0$. Consequently, $\Phi_F(X)=0$ for every $X\in\cX_S$ with $|X|\le4$ and $X\neq X_0$.
+\end{lemma}
+
+\begin{proof}
+Apply Corollary~\ref{mg:cor:size} with $a_1=a_2=0$, $b_1=b_2=1$: the only inner layer is $0$, the outer layers are $1,\dots,L_0-1$
+(at least two), and $g\ge3$ (Lemma~\ref{mg:lem:girth}). If $Y$ has temporal plaquettes in every outer layer, $|Y|\ge3\cdot2>4$. Otherwise
+$|Y_0|\ge g\ge3$. Suppose $|Y|\le4$. The temporal plaquette $(y,0i)$ of layer $0$ contains exactly one spatial link at time $0$, its
+bottom edge $(y,i)$, and distinct such plaquettes have distinct bottom edges. A bottom edge of a plaquette of $Y_0$ lies in no
+plaquette of another component; it is not in $S_B$ (whose links are at time $1$); so, unless it lies in $S_A$, it lies in a second
+plaquette of $Y$, not in $Y_0$.
+
+If $|Y_0|=4$, then $Y=Y_0$, so all four bottom edges lie in $S_A=E(p_0)$; being four distinct links, they are the four edges of
+$p_0$, and $Y=X_0$.
+
+If $|Y_0|=3$, the graph $\Gamma$ of the proof of Lemma~\ref{mg:lem:layer} has three edges and minimum degree $2$ at its non-isolated
+vertices, so it is a triangle; by Lemma~\ref{mg:lem:girth} some $L_i=3$ and the bottom edges are the three collinear links
+$(y,i),(y+e_i,i),(y+2e_i,i)$ at time $0$. At most one further plaquette $p'$ belongs to $Y$, and $p'$ contains at most one of them
+(the links of a plaquette in direction $i$ are $(z,i)$ and $(z+e_j,i)$ with $j\neq i$, and a temporal plaquette contains one spatial
+link at time $0$). So at least two of the three lie in $S_A=E(p_0)$, which contains at most one link of a collinear triple (its links
+in direction $i\in\{1,2\}$ are $(0,i)$ and $(e_j,i)$, $\{i,j\}=\{1,2\}$). This contradiction shows $|Y_0|\neq3$.
+
+For the last statement: if $\Phi_F(X)\neq0$, Lemma~\ref{mg:lem:cancel} gives no free edges outside $S$ and a component $Y$ as above, so
+$|X|\ge|Y|\ge4$, and $|X|=4$ forces $X=Y=X_0$.
+\end{proof}
+
+\begin{lemma}[Two-point bounds in finite volume]\label{mg:lem:twopoint}
+Let $0<\beta<\beta_0(d)$ and let $\Lambda$ be periodic with all $L_\lambda\ge3$. Put
+\[
+\hat q(\beta):=eK\,e^{2(K+1)\theta(\beta)}\bigl(e^{4\beta}-1\bigr)\ \le\ q(\beta)<1,\qquad c(\beta)=\bigl(e^{2\theta(\beta)}(1+\tfrac1K)\bigr)^{2(d-1)} .
+\]
+Then
+\begin{align*}
+\Cov_{\mu_{\Lambda,\beta}}(A,A_1)&\ge\tau_1\,e^{-48(d-1)\theta}-\frac{2N^2c^8\hat q^{\,5}}{1-\hat q},\\
+\Var_{\mu_{\Lambda,\beta}}(A)&\le\tau_0\,e^{8(d-1)\theta}+N^2\bigl(e^{\theta}(1+\tfrac1K)\bigr)^{8(d-1)}\frac{x}{1-x}.
+\end{align*}
+\end{lemma}
+
+\begin{proof}
+\emph{Covariance.} By Lemmas~\ref{mg:lem:loopexp} and~\ref{mg:lem:cancel}(i),
+$2\Cov(A,A_1)=\sum_{X\in\cX_S}\Phi_F(X)\rho_X^2$ with $\rho_X:=\Xi(\cP\setminus\overline X)/\Xi(\cP)$. The term $X_0$ equals $2\tau_1\rho_{X_0}^2$
+(Lemma~\ref{mg:lem:leading}(iii)), and $\rho_{X_0}^2\ge e^{-2\theta|\overline{X_0}|}$ by \IIIref{Proposition}{Removing plaquettes}{al:prop:remove};
+since $S\subseteq E(X_0)$ and $E(X_0)$ consists of the twelve edges of $Q$, $\overline{X_0}$ is the set of plaquettes containing one of
+these edges, and $|\overline{X_0}|\le24(d-1)$. By Lemma~\ref{mg:lem:minimal} every other non-zero term has $|X|\ge5$. Bound them as in the
+proof of Theorem~\ref{mg:thm:finite}, but keeping the factor $e^{2\theta(K+1)|X|}$ instead of $e^{2|X|}$: with $J_S=16(d-1)$ and
+$\norm A_\infty,\norm{A_1}_\infty\le N$,
+\[
+\sum_{X\neq X_0}|\Phi_F(X)|\rho_X^2\le4N^2e^{2\theta J_S}\Bigl(1+\frac1K\Bigr)^{J_S}\sum_{n\ge5}\bigl(eK\,e^{2\theta(K+1)}\epsilon(2\beta)\bigr)^n
+=\frac{4N^2c^8\hat q^{\,5}}{1-\hat q}.
+\]
+Divide by $2$.
+
+\emph{Variance.} $\Var(A)\le\langle A^2\rangle$. The proof of \IIIref{Lemma}{Loop expansion}{al:lem:loopexp} applies verbatim to the function $A^2$,
+which depends only on the links of $S_A$, with $E_C$ replaced by $S_A$; it gives $\langle A^2\rangle=\sum_{X\in\cX_{S_A}}\Phi_{A^2}(X)\,
+\Xi(\cP\setminus\overline X)/\Xi(\cP)$ with $\Phi_{A^2}(X):=\int A^2\prod_{p\in X}f_\beta(U_p)\dU$. The term $X=\emptyset$ is
+$\tau_0\,\Xi(\cP\setminus\cP_{S_A})/\Xi(\cP)\le\tau_0e^{\theta|\cP_{S_A}|}\le\tau_0e^{8(d-1)\theta}$. For the others,
+$|\Phi_{A^2}(X)|\le N^2\epsilon^{|X|}$, the ratio is at most $e^{\theta(K+1)|X|+\theta J_{S_A}}$ with $J_{S_A}=8(d-1)$, and there are at
+most $(1+\frac1K)^{J_{S_A}}(eK)^n$ sets with $|X|=n$ (as in the proof of Theorem~\ref{mg:thm:finite}); since
+$eKe^{\theta(K+1)}\epsilon\le e^2K\epsilon=x$, their sum is at most $N^2(e^\theta(1+\frac1K))^{8(d-1)}\sum_{n\ge1}x^n$.
+\end{proof}
+
+\begin{theorem}[Upper bound]\label{mg:thm:upper}
+Let $d\ge3$, $\rho$ irreducible, $0<\beta<\beta_0(d)$, and with the notation of Lemma~\ref{mg:lem:twopoint} suppose that
+\[
+\delta(\beta):=\frac{4N^2}{1+\iota}\;\frac{c(\beta)^8\,\hat q(\beta)^5}{(1-\hat q(\beta))\,u(\beta)^4}\ <\ e^{-48(d-1)\theta(\beta)} .
+\]
+Put
+\[
+D(\beta):=\log\frac{e^{8(d-1)\theta}+\frac{2N^2}{1+\iota}\bigl(e^\theta(1+\frac1K)\bigr)^{8(d-1)}\frac{x}{1-x}}{e^{-48(d-1)\theta}-\delta(\beta)} .
+\]
+Then
+\begin{enumerate}[label=(\roman*)]
+\item $m(\mu_\beta)\le4\log\frac1{u(\beta)}+D(\beta)$;
+\item $m_{\Lambda_s}(\beta)\le4\log\frac1{u(\beta)}+D(\beta)$ for every periodic spatial lattice $\Lambda_s$ with all sides $\ge3$.
+\end{enumerate}
+Moreover $\delta(\beta)=O(\beta)$ and $D(\beta)=O(\beta)$ as $\beta\downarrow0$; in particular the hypothesis holds for all sufficiently
+small $\beta$.
+\end{theorem}
+
+\begin{proof}
+Write $c_1$ and $c_0$ for the covariance of $A_1$ and $A$ and for the variance of $A$ in the relevant theory. By
+Lemma~\ref{mg:lem:twopoint}, $\tau_0/\tau_1=u^{-4}$ (Lemma~\ref{mg:lem:leading}) and $2N^2/\tau_1=\frac{4N^2}{(1+\iota)u^4}$,
+\[
+c_1\ge\tau_1\bigl(e^{-48(d-1)\theta}-\delta(\beta)\bigr)>0,\qquad c_0\le\tau_0\Bigl(e^{8(d-1)\theta}+\frac{2N^2}{1+\iota}\bigl(e^\theta(1+\tfrac1K)\bigr)^{8(d-1)}
+\frac x{1-x}\Bigr),
+\]
+so $\log(c_0/c_1)\le4\log(1/u)+D(\beta)$, provided these bounds hold for the theory in question. It remains to show $m\le\log(c_0/c_1)$.
+
+(ii) Let $\Lambda=(\Z/L_0\Z)\times\Lambda_s$ with $L_0\ge3$, and $A$ the corresponding gauge-invariant function on the spatial
+configurations, so that $A_1=A(1)$ in the notation of \Fref{Theorem}{Transfer matrix formalism}{thm:tm}. By
+\Fref{Theorem}{Ground-state expectations}{thm:gs}, as $L_0\to\infty$, $\Cov_\Lambda(A_1,A)\to\ip{Q\hat A\Omega}{e^{-H}Q\hat A\Omega}$ and
+$\Var_\Lambda(A)\to\norm{Q\hat A\Omega}^2$, where $Q$ is the projection orthogonal to the vacuum, as in the proof of
+\Fref{Theorem}{Gap $\Leftrightarrow$ clustering in time}{thm:gapclust}(i); and $\ip{Q\hat A\Omega}{e^{-H}Q\hat A\Omega}\le
+e^{-m_{\Lambda_s}(\beta)}\norm{Q\hat A\Omega}^2$. The bounds of Lemma~\ref{mg:lem:twopoint} are uniform in $L_0$, so they hold for the limits
+$c_1,c_0$, and $e^{-m_{\Lambda_s}(\beta)}\ge c_1/c_0$.
+
+(i) By \IIref{Theorem}{Uniqueness and convergence}{iv:thm:unique}(iii) (note $\beta<\beta_0(d)<\beta_*(d)$, Lemma~\ref{mg:lem:q}), the
+covariance and the variance under $\mu_\beta$ are limits of those on periodic lattices with all sides tending to infinity, so the bounds
+of Lemma~\ref{mg:lem:twopoint} hold for them. With $\nu$ and $P$ as in \IIref{Corollary}{The time-slice chain}{iv:cor:chain} and
+$\tilde A:=A-\nu(A)$, a function of the time-zero slice, \IIlab{Corollary}{iv:cor:chain}(iv) gives $c_1=\ip{\tilde A}{P\tilde A}_\nu$ and
+$c_0=\norm{\tilde A}_\nu^2$; since $\tilde A\perp\mathbf1$ and $\norm{P|_{\mathbf1^\perp}}=e^{-m(\mu_\beta)}$
+\IIref{Theorem}{Transfer operator, ground-state chain and mass gap}{iv:thm:gap}, $c_1\le e^{-m(\mu_\beta)}c_0$.
+
+Finally, $c(\beta)$ is bounded, $\theta(\beta),x(\beta),\hat q(\beta)=O(\beta)$, and $u(\beta)\ge(1+\iota)\beta e^{-\beta}/(2N^2)$
+(Lemma~\ref{mg:lem:leading}(iv)), so $\delta(\beta)=O(\hat q^5/\beta^4)=O(\beta)$ and $D(\beta)=O(\beta)$.
+\end{proof}
+
+\begin{corollary}[The gap is $4\log(1/\beta)+O(1)$]\label{mg:cor:twosided}
+Under the hypotheses of Theorem~\ref{mg:thm:upper},
+\[
+4\log\frac1\beta-4\log(4e^3K)-4\log\frac{e^{4\beta}-1}{4\beta}\ \le\ m(\mu_\beta)\ \le\ 4\log\frac1\beta+4\log\frac{2N^2}{1+\iota}+4\beta+D(\beta),
+\]
+and the same bounds hold for $m_{\Lambda_s}(\beta)$ for every periodic spatial lattice with all sides $\ge4$. In particular
+$m(\mu_\beta)=4\log(1/\beta)+O(1)$ as $\beta\downarrow0$, and the same holds uniformly for the finite-volume gaps on spatial lattices with
+all sides $\ge4$.
+\end{corollary}
+
+\begin{proof}
+The lower bounds are Theorem~\ref{mg:thm:main}(ii) and (i), with $q(\beta)=4e^3K\beta\cdot\frac{e^{4\beta}-1}{4\beta}$. The upper bounds
+are Theorem~\ref{mg:thm:upper} with $\log\frac1u\le\log\frac{2N^2}{(1+\iota)\beta}+\beta$ (Lemma~\ref{mg:lem:leading}(iv)).
+\end{proof}
+
+\begin{remark}[The threshold of Theorem~\ref{mg:thm:upper}]\label{mg:rem:threshold}
+Numerically (\texttt{python3}), $\delta(\beta)\approx1.0\cdot10^{16}\beta$ for $SU(2)$ in $d=4$, $\approx1.0\cdot10^{15}\beta$ for $SU(2)$ in
+$d=3$, $\approx1.9\cdot10^{19}\beta$ for $SU(3)$ in $d=4$, and $\approx3.2\cdot10^{14}\beta$ for $U(1)$ in $d=4$; the condition
+$\delta\le\frac12e^{-48(d-1)\theta}$ holds for $\beta\le4.8\cdot10^{-17}$, $5.0\cdot10^{-16}$, $2.6\cdot10^{-20}$ and $1.5\cdot10^{-15}$
+respectively. These numbers have no physical meaning. They come from comparing the exact leading term, in which each of the four faces
+carries the dimension-reduced weight $u\approx(1+\iota)\beta/(2N^2)$, with sup-norm bounds on the remainder, in which each plaquette
+carries $\approx4\beta$ times a polymer-counting factor $\approx eK$. A bound on the remainder through the character expansion,
+giving each face of a closed surface a weight of order $u$, would remove most of this loss; it is not attempted here. What
+the theorem establishes is the asymptotic statement of Corollary~\ref{mg:cor:twosided}.
+\end{remark}
+
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
 
 \begin{proposition}[Two dimensions]\label{mg:prop:2d}
@@ -421,11 +641,11 @@ $4$): in $d\ge3$ a closed surface can turn a corner in every time layer with fou
 
 \begin{remark}[The strong-coupling test, sharpness, and the $U(1)$ test]\label{mg:rem:tests}
 (i) Principle~3 of the research program requires the correct asymptotics $m(\beta)\sim4\log(1/u(\beta))$. Theorem~\ref{mg:thm:main}
-gives the lower bound $m\ge4\log(1/\beta)-O(1)$; this is the lower half. For the upper half: since $P\ge0$
-\IIref{Theorem}{Transfer operator, ground-state chain and mass gap}{iv:thm:gap}(ii), the effective masses of any correlator decrease to a
-limit $\ge m(\mu_\beta)$ \IIref{Remark}{Consequences for the numerics}{iv:rem:numerics}, so a computation of a single correlator (e.g.\ of two
-plaquettes) at two fixed separations, to leading order with a remainder bound, would give $m\le4\log(1/u(\beta))+O(\beta)$. This is
-expected but not proved here. (ii) The constant $-4\log(4e^3K)$ reflects the crude counting of \cite{III} and the crude bound
+gives the lower half, $m\ge4\log(1/\beta)-O(1)$ for all $\beta<\beta_0(d)$, and Theorem~\ref{mg:thm:upper} the upper half,
+$m\le4\log(1/u(\beta))+O(\beta)$ for sufficiently small $\beta$; Corollary~\ref{mg:cor:twosided} combines them. The upper bound uses a
+single correlator at time separations $0$ and $1$; by the positivity of $P$ (\IIref{Remark}{Consequences for the numerics}{iv:rem:numerics})
+any larger pair of separations could be used instead. The additive constants of the two halves differ
+($-4\log(4e^3K)$ versus $+4\log\frac{2N^2}{1+\iota}$); the strong-coupling expansion predicts $m=4\log(1/u)+O(u)$, i.e.\ the upper one. (ii) The constant $-4\log(4e^3K)$ reflects the crude counting of \cite{III} and the crude bound
 $\norm{g_p}_\infty\le e^{4\beta}-1$: for $SU(N)$ and $U(1)$, $c_0=1+O(\beta^2)$ gives $\norm{g_p}_\infty\le2\beta+O(\beta^2)$, which improves the
 constant by $4\log2$, and counting only surfaces without free edges, as in \IIIref{Remark}{Constants, sharpness,
 improvements}{al:rem:constants}(ii), would improve it further. (iii) The hypothesis $L_i\ge4$ in (i) is needed: if a spatial side equals $3$,
@@ -450,7 +670,10 @@ Surfaces without free edges have $\ge g$ temporal plaquettes per crossed layer (
 Covariance bound $q^{g\tau}$ in finite and infinite volume & Thm.~\ref{mg:thm:finite}, \ref{mg:thm:main}(iii) & Theorem\\
 $m(\mu_\beta)\ge4\log(1/q(\beta))=4\log(1/\beta)-O(1)$, and $m_{\Lambda_s}(\beta)\ge4\log(1/q(\beta))$ for spatial sides $\ge4$; $d\ge3$, $\beta<\beta_0(d)$ & Thm.~\ref{mg:thm:main} & Theorem\\
 $d=2$: gap $\ge L_1\log(1/q)$; infinite gap in infinite volume & Prop.~\ref{mg:prop:2d} & Theorem\\
-Matching upper bound $m\le4\log(1/u(\beta))+O(1)$ & Rem.~\ref{mg:rem:tests} & open (expected)\\
+Leading term of the plaquette--plaquette covariance: exactly $\tau_0u^4$ (four sides of a cube); unique minimal connecting set & Lem.~\ref{mg:lem:leading}, \ref{mg:lem:minimal} & Theorem\\
+Matching upper bound $m\le4\log(1/u(\beta))+O(\beta)$ (infinite volume; finite volume, sides $\ge3$), for sufficiently small $\beta$ & Thm.~\ref{mg:thm:upper} & Theorem\\
+$m(\mu_\beta)=4\log(1/\beta)+O(1)$ as $\beta\downarrow0$ (also finite volume, sides $\ge4$) & Cor.~\ref{mg:cor:twosided} & Theorem\\
+Upper bound for $\beta$ of order $10^{-4}$ (character-expansion bound for the remainder) & Rem.~\ref{mg:rem:threshold} & open\\
 \bottomrule
 \end{tabular}
 \end{center}
