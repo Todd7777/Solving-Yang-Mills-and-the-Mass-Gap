@@ -1,0 +1,438 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\hypersetup{colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{convention}[theorem]{Convention}
+
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\artanh}{artanh}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\cP}{\mathcal{P}}
+\newcommand{\cX}{\mathcal{X}}
+\newcommand{\dU}{\,dU}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\Fref}[3]{\cite[#1~`#2' (\texttt{#3})]{F}}
+\newcommand{\Flab}[2]{\cite[#1 \texttt{#2}]{F}}
+\newcommand{\Fname}[2]{\cite[#1~`#2']{F}}
+\newcommand{\IIref}[3]{\cite[#1~`#2' (\texttt{#3})]{II}}
+\newcommand{\IIlab}[2]{\cite[#1 \texttt{#2}]{II}}
+\newcommand{\IIIref}[3]{\cite[#1~`#2' (\texttt{#3})]{III}}
+\newcommand{\IIIlab}[2]{\cite[#1 \texttt{#2}]{III}}
+
+\title{Lattice Yang--Mills theory at strong coupling IV:\\ the mass gap with the correct leading asymptotics\\
+\large A sequel to the foundations monograph of the project ``Solving Yang--Mills and the Mass Gap''}
+\author{}
+\date{9 November 2026; living document}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For lattice Yang--Mills theory with Wilson's action in dimension $d\ge3$ and $0<\beta<\beta_0(d)$ (the threshold of
+the cluster expansion of [F]), we prove that the mass gap of the infinite-volume theory of Part~II and the volume-uniform
+finite-volume gap of [F] are at least $4\log(1/q(\beta))$, with $q(\beta)=e^3K(e^{4\beta}-1)$ and $K=4(2d-3)$. As
+$\beta\downarrow0$ this is $4\log(1/\beta)-O(1)$. The leading coefficient $4$ is the one of the strong-coupling expansion
+(the lightest glueball is a tube with four plaquettes per unit of time, so its mass is $-4\log u(\beta)+o(1)$ with
+$u(\beta)\sim\beta/4$ for $SU(2)$), whereas the Dobrushin bounds of [F] and Part~II give only $\log(1/\beta)-O(1)$. The
+proof combines three ingredients: duplicate variables, by which every term of the expansion of a covariance that does
+not connect the two observables cancels by the swap symmetry; the loop expansion and the ratio bound of Part~III for the
+duplicated system; and a geometric lemma: a surface without free edges has at least four temporal plaquettes in each
+time layer it crosses, because these plaquettes form a graph of minimum degree two on the spatial lattice, whose girth
+is four. In $d=2$ the same lemma gives an infinite mass gap in infinite volume and a finite-volume gap growing linearly
+with the spatial size, in agreement with the exact solution. As in [F], II and III nothing non-abelian is used, so the
+result belongs to the strong-coupling endpoint of the problem; it is what principle~3 (``the strong-coupling test'') of
+the research program requires of any argument in this regime.
+\end{abstract}
+
+\tableofcontents
+
+\section{Introduction and main result}\label{mg:sec:intro}
+
+The foundations monograph \cite{F} proves that the finite-volume mass gap is bounded below uniformly in the volume for
+small $\beta$, by Dobrushin's method; Part~II \cite{II} constructs the infinite-volume theory, identifies its transfer
+operator with a reversible Markov chain of time slices, and proves the same kind of bound,
+$m\ge\log(1/(6(d-1)\tanh\beta))$, for the infinite-volume mass gap $m(\mu_\beta)$. These bounds behave like
+$\log(1/\beta)$ as $\beta\downarrow0$. The strong-coupling expansion predicts $m(\beta)=-4\log u(\beta)+O(u)$, where
+$u(\beta)=c_\rho(\beta)/(Nc_0(\beta))$ ($\approx\beta/4$ for $SU(2)$, $\approx\beta/(2N^2)$ for $N\ge3$): the lightest
+state in the gauge-invariant sector propagates as a tube of plaquettes with four plaquettes per unit of Euclidean time.
+Principle~3 of the research program (\texttt{docs/03-research-program.md}, \S3.1) asks every argument in the
+strong-coupling regime to reproduce this behaviour. Here we prove a lower bound with the correct leading coefficient.
+
+\begin{convention}[Labels]
+As in \Fname{Convention}{Labels}: every Theorem, Proposition, Lemma and Corollary below has a complete proof here or in
+\cite{F,II,III}; Remarks are commentary. We use the notation of \cite{III}: $K:=4(2d-3)$,
+$\epsilon(\beta)=e^{2\beta}-1$, $x(\beta)=e^2K\epsilon(\beta)$, $\theta(\beta)=x/(1-x)$, and
+$\beta_0(d)=\frac12\log(1+\frac1{e^2K(K+2)})$, the threshold below which \Fref{Theorem}{Convergence of the
+strong-coupling cluster expansion}{thm:conv} holds.
+\end{convention}
+
+\begin{theorem}[Main theorem]\label{mg:thm:main}
+Let $G,\rho$ be as in \Fname{Convention}{Group} with $G$ metrisable, $d\ge3$, $0<\beta<\beta_0(d)$, and
+\[
+q(\beta):=e^3K\bigl(e^{4\beta}-1\bigr).
+\]
+Then $q(\beta)<\frac{e(2+\epsilon_0)}{K+2}<0.389$, where $\epsilon_0=\frac1{e^2K(K+2)}$, and:
+\begin{enumerate}[label=(\roman*)]
+\item for every periodic spatial lattice $\Lambda_s$ with all sides $L_i\ge4$, the finite-volume mass gap of
+\Fref{Definition}{Hamiltonian and mass gap}{def:H} satisfies $m_{\Lambda_s}(\beta)\ge4\log(1/q(\beta))$;
+\item the mass gap of the infinite-volume theory \IIref{Definition}{Mass gap of an infinite-volume lattice theory}{iv:def:gap}
+satisfies $m(\mu_\beta)\ge4\log(1/q(\beta))$;
+\item for bounded measurable $A,B$ on $G^{E(\Z^d)}$ depending only on finite link sets $S_A,S_B$, all of whose
+endpoints have time coordinates in $[a_1,a_2]$, resp.\ $[b_1,b_2]$, with $a_2<b_1$,
+\[
+\bigl|\Cov_{\mu_\beta}(A,B)\bigr|\le\frac{2\norm A_\infty\norm B_\infty}{1-q(\beta)}\,
+c(\beta)^{|S_A|+|S_B|}\;q(\beta)^{4(b_1-a_2-2)^+},\qquad c(\beta):=\Bigl(e^{2\theta(\beta)}\bigl(1+\tfrac1K\bigr)\Bigr)^{2(d-1)} .
+\]
+\end{enumerate}
+As $\beta\downarrow0$, $4\log(1/q(\beta))=4\log(1/\beta)-4\log(4e^3K)+O(\beta)$.
+\end{theorem}
+
+Here $\Cov(A,B):=\mu(AB)-\mu(A)\mu(B)$. Statement (iii) is the infinite-volume form of the covariance bound of
+Theorem~\ref{mg:thm:finite}; (i) and (ii) follow from it by \Fref{Corollary}{Gap from Euclidean correlations}{cor:gapfromcorr}
+and by \IIref{Theorem}{OS reconstruction of the lattice theory}{iv:thm:OS}(iii).
+
+\begin{remark}[Comparison]\label{mg:rem:comparison}
+For $d=4$: the bound of Part~II, $\log(1/(18\tanh\beta))$, is $\log(1/\beta)-2.89+O(\beta^2)$; the bound here is
+$4\log(1/\beta)-29.5+O(\beta)$. In the common range of validity $\beta<\beta_0(4)\approx1.54\cdot10^{-4}$ the two are
+comparable near $\beta_0(4)$ (both $\approx5.6$--$5.9$), and the present one is larger for $\beta\lesssim1.4\cdot10^{-4}$ and
+by an arbitrarily large factor as $\beta\to0$ (both computed in \texttt{lattice/tests} style with \texttt{python3}; see the
+session journal of 9~November~2026). The point of the theorem is the coefficient $4$, not the numerical strength at
+fixed $\beta$; the additive constant is far from the expected $-4\log(1/4)$ for $SU(2)$.
+\end{remark}
+
+\paragraph{Strategy.} (1) For the product measure $\mu\otimes\mu$ of two independent copies $(U,U')$,
+$2\Cov_\mu(A,B)=\int(A-A')(B-B')\,d(\mu\otimes\mu)$. The duplicated Wilson weight is
+$\prod_p(1+f_\beta(U_p))(1+f_\beta(U'_p))=\prod_p(1+g_p)$ with $|g_p|\le e^{4\beta}-1$, so the loop expansion of
+\cite{III} applies to the duplicated system, with partition functions $\Xi(\cdot)^2$. (2) In this expansion every set of
+plaquettes that does not contain a component connecting the supports of $A$ and $B$ gives a product of two integrals, each
+odd under the exchange $U\leftrightarrow U'$, hence zero (Lemma~\ref{mg:lem:cancel}). (3) A connecting component has no
+free edges away from the supports, so in every time layer between the supports it contains at least four temporal plaquettes
+(Lemma~\ref{mg:lem:layer}), hence at least $4\times$(number of layers) plaquettes (Corollary~\ref{mg:cor:size}). (4) The sum
+over such sets is controlled by the ratio bound and the rooted counting of \cite{III}.
+
+\section{The duplicated system}\label{mg:sec:dup}
+
+Throughout this section and the next, $\Lambda=\prod_{\lambda=0}^{d-1}\Z/L_\lambda\Z$ is a periodic lattice with all
+$L_\lambda\ge3$, with the conventions of \cite{F,III}: $\cP=\cP(\Lambda)$, $E(\Lambda)$, $E(p)$, $E(X)$, adjacency and
+connectedness of sets of plaquettes, $f_\beta=w_\beta/c_0(\beta)-1$, and for $\mathcal Q\subseteq\cP$ the restricted
+partition function $\Xi(\mathcal Q)=\int\prod_{p\in\mathcal Q}(1+f_\beta(U_p))\dU$ of \IIIref{Definition}{Restricted partition
+functions, loop polymers}{al:def:Xi}, so that $\Xi(\cP)=Z_\Lambda(\beta)/c_0(\beta)^{|\cP|}$.
+
+\begin{definition}[Duplicated system]\label{mg:def:dup}
+On $\Omega_\Lambda\times\Omega_\Lambda$ with the product Haar measure $dU\,dU'$ put, for $p\in\cP$,
+\[
+g_p(U,U'):=\bigl(1+f_\beta(U_p)\bigr)\bigl(1+f_\beta(U'_p)\bigr)-1 .
+\]
+For $X\subseteq\cP$ and bounded measurable $F$ on $\Omega_\Lambda\times\Omega_\Lambda$ let
+$\Phi_F(X):=\iint F\prod_{p\in X}g_p\,dU\,dU'$.
+\end{definition}
+
+\begin{lemma}[Properties of the duplicated system]\label{mg:lem:dup}
+\begin{enumerate}[label=(\alph*)]
+\item $\norm{g_p}_\infty\le\epsilon(2\beta)=e^{4\beta}-1$.
+\item For $\mathcal Q\subseteq\cP$, $\iint\prod_{p\in\mathcal Q}(1+g_p)\,dU\,dU'=\Xi(\mathcal Q)^2$; and
+$\mu_{\Lambda,\beta}\otimes\mu_{\Lambda,\beta}$ has density $\prod_{p\in\cP}(1+g_p)/\Xi(\cP)^2$ with respect to $dU\,dU'$.
+\item Let $X\subseteq\cP$, let $\ell$ be a link lying in exactly one plaquette of $X$, and let $H$ be bounded measurable and
+independent of $(U_\ell,U'_\ell)$. Then $\iint H\prod_{p\in X}g_p\,dU\,dU'=0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) By \IIIlab{Lemma}{al:lem:facts}(b), $1+f_\beta=w_\beta/c_0\in[e^{-2\beta},e^{\beta}]$, so
+$(1+f_\beta(U_p))(1+f_\beta(U'_p))\in[e^{-4\beta},e^{2\beta}]$ and $g_p\in[e^{-4\beta}-1,e^{2\beta}-1]$; both
+$1-e^{-4\beta}$ and $e^{2\beta}-1$ are at most $e^{4\beta}-1$.
+(b) The integrand is $\prod_{p\in\mathcal Q}(1+f_\beta(U_p))\cdot\prod_{p\in\mathcal Q}(1+f_\beta(U'_p))$; integrate over $U$ and $U'$
+separately. For the density: $W_\beta(U)W_\beta(U')=c_0^{2|\cP|}\prod_p(1+g_p)$ and $Z_\Lambda^2=c_0^{2|\cP|}\Xi(\cP)^2$.
+(c) Let $p$ be the plaquette of $X$ containing $\ell$. Then $U_p=AU_\ell^{\pm1}B$ and $U'_p=A'U_\ell'^{\pm1}B'$ with $A,B,A',B'$
+independent of $(U_\ell,U'_\ell)$, and no other factor of the integrand depends on $(U_\ell,U'_\ell)$. By Fubini it suffices that
+$\iint g_p\,dU_\ell\,dU'_\ell=\int(1+f_\beta(AU^{\pm1}B))\dU\cdot\int(1+f_\beta(A'U^{\pm1}B'))\dU-1=1\cdot1-1=0$, by
+\IIIlab{Lemma}{al:lem:facts}(c).
+\end{proof}
+
+\begin{definition}[Loop polymers for a set of links]\label{mg:def:loop}
+For $S\subseteq E(\Lambda)$ let $\cP_S:=\{p:E(p)\cap S\neq\emptyset\}$, let $\cX_S$ be the family of sets $X\subseteq\cP$ each of
+whose connected components contains a plaquette of $\cP_S$ (including $X=\emptyset$), and for $X\subseteq\cP$ let
+$\overline X:=\{p:E(p)\cap(E(X)\cup S)\neq\emptyset\}$. Put $J_S:=2(d-1)|S|$. Then $|\cP_S|\le J_S$ and
+$|\overline X|\le(K+1)|X|+J_S$ (each link lies in $2(d-1)$ plaquettes, and each plaquette is adjacent to at most $K$ plaquettes,
+\IIIlab{Lemma}{al:lem:facts}(d)).
+\end{definition}
+
+\begin{lemma}[Duplicated loop expansion]\label{mg:lem:loopexp}
+Let $S\subseteq E(\Lambda)$ and let $F$ be bounded, measurable, and dependent only on the variables $(U_\ell,U'_\ell)$,
+$\ell\in S$. Then
+\[
+\int F\,d(\mu_{\Lambda,\beta}\otimes\mu_{\Lambda,\beta})=\sum_{X\in\cX_S}\Phi_F(X)\,\Bigl(\frac{\Xi(\cP\setminus\overline X)}{\Xi(\cP)}\Bigr)^2 .
+\]
+\end{lemma}
+
+\begin{proof}
+This is the proof of \IIIref{Lemma}{Loop expansion}{al:lem:loopexp} with $f_\beta$ replaced by $g$, single link variables by
+pairs $(U_\ell,U'_\ell)$, $dU$ by $dU\,dU'$, and $E_C$ by $S$. By Lemma~\ref{mg:lem:dup}(b),
+$\Xi(\cP)^2\int F\,d(\mu\otimes\mu)=\sum_{T\subseteq\cP}\iint F\prod_{p\in T}g_p\,dU\,dU'$. For $T\subseteq\cP$ let $X(T)$ be the union of
+the components of $T$ meeting $\cP_S$ and $Y(T):=T\setminus X(T)$. The proof of the claim in \IIIlab{Lemma}{al:lem:loopexp}, which
+uses only the combinatorics of components, of $\cP_S$ (there $\cP_C$) and of $\overline X$, shows that $T\mapsto(X(T),Y(T))$ is a
+bijection onto the pairs with $X\in\cX_S$ and $Y\subseteq\cP\setminus\overline X$. For such a pair, $F\prod_{p\in X}g_p$ depends only on
+the variables of the links in $S\cup E(X)$ and $\prod_{p\in Y}g_p$ only on those in $E(Y)$, a disjoint set; so the integral factorises,
+and $\sum_{Y\subseteq\cP\setminus\overline X}\iint\prod_{p\in Y}g_p=\iint\prod_{p\in\cP\setminus\overline X}(1+g_p)=\Xi(\cP\setminus\overline X)^2$
+by Lemma~\ref{mg:lem:dup}(b). Divide by $\Xi(\cP)^2$.
+\end{proof}
+
+\begin{lemma}[Cancellation]\label{mg:lem:cancel}
+Let $A,B$ be bounded measurable functions on $\Omega_\Lambda$ depending only on disjoint link sets $S_A,S_B$, put $S:=S_A\cup S_B$ and
+$F(U,U'):=(A(U)-A(U'))(B(U)-B(U'))$. Then:
+\begin{enumerate}[label=(\roman*)]
+\item $\int F\,d(\mu\otimes\mu)=2\Cov_\mu(A,B)$ for every probability measure $\mu$ on $\Omega_\Lambda$, and $\norm F_\infty\le4\norm A_\infty\norm B_\infty$;
+\item if $X\in\cX_S$ and no connected component of $X$ contains both a plaquette of $\cP_{S_A}$ and a plaquette of $\cP_{S_B}$, then
+$\Phi_F(X)=0$;
+\item if some link of $E(X)\setminus S$ lies in exactly one plaquette of $X$, then $\Phi_F(X)=0$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) Expand: $\int(A-A')(B-B')\,d(\mu\otimes\mu)=2\mu(AB)-2\mu(A)\mu(B)$.
+(ii) Let $X_1$ be the union of the components of $X$ that contain a plaquette of $\cP_{S_A}$, and $X_2:=X\setminus X_1$; by
+hypothesis no component of $X_1$ meets $\cP_{S_B}$, and every component of $X_2$ meets $\cP_{S_B}$ but not $\cP_{S_A}$. A component
+containing a link of $S_B$ contains a plaquette of $\cP_{S_B}$; hence $E(X_1)\cap S_B=\emptyset$, and likewise
+$E(X_2)\cap S_A=\emptyset$; and $E(X_1)\cap E(X_2)=\emptyset$, since distinct components share no link. So $S_A\cup E(X_1)$ and
+$S_B\cup E(X_2)$ are disjoint, and since $dU\,dU'$ is a product measure,
+\[
+\Phi_F(X)=\iint(A-A')\prod_{p\in X_1}g_p\;\cdot\;\iint(B-B')\prod_{p\in X_2}g_p .
+\]
+The exchange $(U,U')\mapsto(U',U)$ preserves $dU\,dU'$ and every $g_p$ (which is symmetric in $U_p,U'_p$), and changes the sign of
+$A-A'$; so the first factor equals its negative and vanishes.
+(iii) Apply Lemma~\ref{mg:lem:dup}(c) with $H=F\prod_{p'\in X\setminus\{p\}}g_{p'}$, $p$ the plaquette containing the link.
+\end{proof}
+
+\section{Geometry: four plaquettes per time layer}\label{mg:sec:geometry}
+
+Time coordinates are taken in $\Z/L_0\Z$. A link $(x,0)$ is \emph{temporal of layer} $x_0$ (it joins times $x_0$ and $x_0+1$); a
+plaquette $(x,0i)$, $1\le i\le d-1$, is \emph{temporal of layer} $x_0$. For $Y\subseteq\cP$ and a layer $s$, $Y_s$ denotes the set of
+temporal plaquettes of layer $s$ in $Y$, and $T(p)$ the set of time coordinates of the corners of $p$ (one time for a spatial
+plaquette, two consecutive times for a temporal one).
+
+\begin{lemma}[Four plaquettes per layer]\label{mg:lem:layer}
+Let $d\ge3$ and let all spatial sides satisfy $L_i\ge4$ ($1\le i\le d-1$). Let $S\subseteq E(\Lambda)$ and $X\subseteq\cP$ be such that
+every link of $E(X)\setminus S$ lies in at least two plaquettes of $X$. Let $s$ be a layer none of whose temporal links belongs to
+$S$, and let $Y$ be a connected component of $X$ with $Y_s\neq\emptyset$. Then $|Y_s|\ge4$.
+\end{lemma}
+
+\begin{proof}
+The temporal links of layer $s$ are $\ell_{\vec x}:=((s,\vec x),0)$, $\vec x\in\Lambda_s:=\prod_{i\ge1}\Z/L_i\Z$, and the plaquettes
+containing $\ell_{\vec x}$ are the temporal plaquettes $((s,\vec x),0i)$ and $((s,\vec x-e_i),0i)$ of layer $s$. Let $\Gamma$ be the graph
+on $\Lambda_s$ whose edges are the plaquettes $((s,\vec x),0i)\in Y_s$, each joining $\vec x$ and $\vec x+e_i$ (the positions of its two
+temporal links). Since $L_i\ge3$, distinct plaquettes give distinct edges and there are no loops, so $\Gamma$ is a simple graph. If
+$\vec x$ is an endpoint of an edge, then $\ell_{\vec x}\in E(Y)\setminus S$, so $\ell_{\vec x}$ lies in at least two plaquettes of $X$;
+these are temporal plaquettes of layer $s$ sharing the link $\ell_{\vec x}$ with a plaquette of $Y$, hence they belong to the
+component $Y$, i.e.\ to $Y_s$. So every non-isolated vertex of $\Gamma$ has degree at least $2$, and since $Y_s\neq\emptyset$, $\Gamma$
+contains a cycle (follow edges without immediately backtracking until a vertex repeats). A cycle in the nearest-neighbour graph of
+the torus $\Lambda_s$ has length at least $4$ when $d-1\ge2$ and all $L_i\ge4$: a closed walk of length $2$ or $3$ without
+backtracking would need $e_i+e_j=0$ or $e_i\pm e_j\pm e_k=0$ in $\Lambda_s$ with unit vectors $e_i,e_j,e_k$, which is impossible
+when all $L_i\ge4$. The edges of the cycle are distinct plaquettes of $Y_s$.
+\end{proof}
+
+\begin{lemma}[Crossing layers]\label{mg:lem:crossing}
+Let $Y\subseteq\cP$ be connected and let $s\neq s'$ be layers with $Y_s=Y_{s'}=\emptyset$. Then either $T(p)\subseteq I_1$ for all
+$p\in Y$, or $T(p)\subseteq I_2$ for all $p\in Y$, where $I_1:=\{s+1,\dots,s'\}$ and $I_2:=\{s'+1,\dots,s\}$ are the two cyclic
+intervals of $\Z/L_0\Z$ determined by $s,s'$.
+\end{lemma}
+
+\begin{proof}
+$I_1$ and $I_2$ partition $\Z/L_0\Z$. A spatial plaquette has $T(p)=\{r\}$, contained in one of them. A temporal plaquette of layer
+$r\notin\{s,s'\}$ has $T(p)=\{r,r+1\}$, and $r,r+1$ lie in the same interval because the only consecutive pairs split between
+$I_1$ and $I_2$ are $\{s,s+1\}$ and $\{s',s'+1\}$. If $p,p'\in Y$ are adjacent, the time coordinates of the endpoints of a
+common link lie in $T(p)\cap T(p')$, so $p,p'$ lie in the same class. By connectedness all plaquettes of $Y$ lie in the same class.
+\end{proof}
+
+\begin{corollary}[Size of connecting components]\label{mg:cor:size}
+Let $d\ge3$, all $L_\lambda\ge3$ and all spatial sides $\ge4$. Let $S_A,S_B\subseteq E(\Lambda)$ and integers $a_1\le a_2<b_1\le b_2$
+with $b_2-a_1<L_0$ be such that the endpoints of the links of $S_A$ have time coordinates in $\{a_1,\dots,a_2\}$ and those of $S_B$ in
+$\{b_1,\dots,b_2\}$ (modulo $L_0$). Put
+\[
+\tau_{\rm in}:=b_1-a_2-2,\qquad \tau_{\rm out}:=L_0-(b_2-a_1)-2 .
+\]
+Let $X\subseteq\cP$ be such that every link of $E(X)\setminus(S_A\cup S_B)$ lies in at least two plaquettes of $X$, and let $Y$ be a
+component of $X$ containing a plaquette of $\cP_{S_A}$ and a plaquette of $\cP_{S_B}$. Then $|Y|\ge4\min(\tau_{\rm in},\tau_{\rm out})$.
+\end{corollary}
+
+\begin{proof}
+We may assume $\tau_{\rm in},\tau_{\rm out}\ge1$. The corners of a plaquette of $\cP_{S_A}$ are within time distance $1$ of an
+endpoint of a link of $S_A$, so their times lie in $W_A:=\{a_1-1,\dots,a_2+1\}$; likewise those of $\cP_{S_B}$ lie in
+$W_B:=\{b_1-1,\dots,b_2+1\}$. Call the layers $s\in\{a_2+1,\dots,b_1-2\}$ inner ($\tau_{\rm in}$ of them) and the layers
+$s'\in\{b_2+1,\dots,a_1-2+L_0\}$ outer ($\tau_{\rm out}$ of them). The temporal links of an inner or outer layer join two times of
+which at least one lies outside $\{a_1,\dots,a_2\}$ and at least one outside $\{b_1,\dots,b_2\}$, so they belong neither to $S_A$ nor to
+$S_B$. For an inner $s$ and an outer $s'$, the cyclic intervals of Lemma~\ref{mg:lem:crossing} satisfy $W_B\subseteq I_1=\{s+1,\dots,s'\}$
+and $W_A\subseteq I_2=\{s'+1,\dots,s\}$. If $Y_s=Y_{s'}=\emptyset$ for some inner $s$ and some outer $s'$, Lemma~\ref{mg:lem:crossing}
+puts all of $Y$ in one of the classes $I_1$, $I_2$, contradicting the fact that $Y$ contains a plaquette with corner times in $W_A$
+and one with corner times in $W_B$. Hence $Y_s\neq\emptyset$ for all inner layers, or $Y_{s'}\neq\emptyset$ for all outer layers. In
+either case Lemma~\ref{mg:lem:layer} (with $S=S_A\cup S_B$) gives at least four plaquettes of $Y$ in each of these layers, and
+plaquettes of different layers are different.
+\end{proof}
+
+\section{The covariance bound and the mass gap}\label{mg:sec:main}
+
+\begin{theorem}[Covariance bound in finite volume]\label{mg:thm:finite}
+Let $d\ge3$, $0<\beta<\beta_0(d)$, and let $\Lambda$ be a periodic lattice with all $L_\lambda\ge3$ and all spatial sides $\ge4$.
+Let $A,B$ be bounded measurable functions on $\Omega_\Lambda$ depending only on disjoint link sets $S_A,S_B$ as in
+Corollary~\ref{mg:cor:size}, with $\tau:=\min(\tau_{\rm in},\tau_{\rm out})$. Then, with $q=q(\beta)$ and $c=c(\beta)$ as in
+Theorem~\ref{mg:thm:main},
+\[
+\bigl|\Cov_{\mu_{\Lambda,\beta}}(A,B)\bigr|\le\frac{2\norm A_\infty\norm B_\infty}{1-q}\,c^{|S_A|+|S_B|}\,q^{4\tau^+}.
+\]
+\end{theorem}
+
+\begin{proof}
+Let $S:=S_A\cup S_B$ and $F$ as in Lemma~\ref{mg:lem:cancel}. By Lemmas~\ref{mg:lem:loopexp} and~\ref{mg:lem:cancel},
+$2\Cov(A,B)=\sum_X\Phi_F(X)(\Xi(\cP\setminus\overline X)/\Xi(\cP))^2$, where only sets $X\in\cX_S$ contribute in which every link of
+$E(X)\setminus S$ lies in at least two plaquettes of $X$ and some component meets both $\cP_{S_A}$ and $\cP_{S_B}$; by
+Corollary~\ref{mg:cor:size} these have $|X|\ge n_0:=4\tau^+$. For each of them: $|\Phi_F(X)|\le4\norm A_\infty\norm B_\infty\,\epsilon(2\beta)^{|X|}$
+by Lemmas~\ref{mg:lem:cancel}(i) and~\ref{mg:lem:dup}(a); and by \IIIref{Proposition}{Removing plaquettes}{al:prop:remove} and
+Definition~\ref{mg:def:loop},
+\[
+\Bigl(\frac{\Xi(\cP\setminus\overline X)}{\Xi(\cP)}\Bigr)^2\le e^{2\theta|\overline X|}\le e^{2\theta(K+1)|X|}e^{2\theta J_S}\le e^{2|X|}e^{2\theta J_S},
+\]
+using $(K+1)\theta<1$ \IIIlab{Lemma}{al:lem:constants}. The number of $X\in\cX_S$ with $|X|=n$ is at most $\binom{J_S+Kn}{n}$: this is
+\IIIref{Corollary}{Counting loop polymers}{al:cor:countloop} with $E_C$ replaced by $S$ (its proof uses only $|\cP_S|\le J_S$ and the
+adjacency bound $K$). With $\binom mnt^n\le(1+t)^m$ at $t=1/K$, $\binom{J_S+Kn}n\le(1+\frac1K)^{J_S}(1+\frac1K)^{Kn}K^n\le(1+\frac1K)^{J_S}(eK)^n$.
+Altogether
+\[
+2|\Cov(A,B)|\le4\norm A_\infty\norm B_\infty\,e^{2\theta J_S}\Bigl(1+\frac1K\Bigr)^{J_S}\sum_{n\ge n_0}\bigl(eK\cdot e^2\epsilon(2\beta)\bigr)^n
+=\frac{4\norm A_\infty\norm B_\infty\,c^{|S|}}{1-q}\,q^{n_0},
+\]
+since $e^3K\epsilon(2\beta)=q$ and $(e^{2\theta}(1+\frac1K))^{J_S}=c^{|S|}$.
+\end{proof}
+
+\begin{lemma}[Constants]\label{mg:lem:q}
+For $d\ge3$ and $0<\beta<\beta_0(d)$: $q(\beta)<\frac{e(2+\epsilon_0)}{K+2}<0.389$, and $4\log\frac1{q(\beta)}=4\log\frac1\beta-4\log(4e^3K)+O(\beta)$
+as $\beta\downarrow0$. Moreover $\beta_0(d)<\beta_*(d)=\artanh\frac1{6(d-1)}$, the threshold of \cite{II}.
+\end{lemma}
+
+\begin{proof}
+With $\epsilon=e^{2\beta}-1<\epsilon_0$ (which is the condition $\beta<\beta_0(d)$), $e^{4\beta}-1=\epsilon(2+\epsilon)<\epsilon_0(2+\epsilon_0)$ and
+$e^3K\epsilon_0=\frac e{K+2}$; for $d\ge3$, $K\ge12$ and $\frac{e(2+\epsilon_0)}{14}<0.389$. The asymptotics follow from
+$e^{4\beta}-1=4\beta+O(\beta^2)$. The last claim is \IIref{Corollary}{Area law in infinite volume}{iv:cor:arealaw} (first line of its proof).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{mg:thm:main}]
+The bound on $q$ is Lemma~\ref{mg:lem:q}.
+(iii) Since $\beta<\beta_*(d)$, the infinite-volume Gibbs measure $\mu_\beta$ of \IIref{Theorem}{Uniqueness and convergence}{iv:thm:unique}
+exists and is the limit of the periodised measures $\tilde\mu_{\Lambda_k,\beta}$ on every bounded measurable local function, for
+every sequence of periodic lattices with all sides tending to infinity. Take such $\Lambda_k$ with spatial sides $\ge4$. For $k$ large,
+the reduction map is injective on the links of $S_A\cup S_B$, the functions $A\circ\iota$, $B\circ\iota$ on $\Omega_{\Lambda_k}$ (in the notation
+of \cite{II}) depend on the images of $S_A$, $S_B$, which satisfy the hypotheses of Theorem~\ref{mg:thm:finite} with the same $a_i,b_i$,
+$\tau_{\rm in}=b_1-a_2-2$ and $\tau_{\rm out}\to\infty$. Theorem~\ref{mg:thm:finite} bounds
+$\Cov_{\tilde\mu_{\Lambda_k,\beta}}(A,B)$ uniformly in $k$, and the left side converges to $\Cov_{\mu_\beta}(A,B)$.
+
+(ii) Let $F\in\cA_+$ in the notation of \IIref{Definition}{Reflection, shifts, half-space algebras}{iv:def:reflection}, depending only on a
+finite set of links whose endpoints have time coordinates in $[0,n_F]$. Then $\Theta F$ depends only on links with endpoint times in
+$[-n_F,0]$ and $S_tF$ on links with endpoint times in $[t,t+n_F]$, with the same number of links. For $t\ge1$ the two sets are disjoint
+and (iii) gives, by $\theta$- and translation invariance of $\mu_\beta$ (so that $\mu_\beta(\Theta F)\mu_\beta(S_tF)=|\mu_\beta(F)|^2$),
+\[
+\bigl|\mu_\beta(\Theta F\cdot S_tF)-|\mu_\beta(F)|^2\bigr|=\bigl|\Cov_{\mu_\beta}(\Theta F,S_tF)\bigr|\le C_F\,q^{4(t-2)^+},
+\]
+with $C_F$ independent of $t$; for $t=0$ the left side is at most $2\norm F_\infty^2$. By \IIlab{Theorem}{iv:thm:OS}(iii) with $m=4\log(1/q)$,
+$m(\mu_\beta)\ge4\log(1/q)$.
+
+(i) Let $A$ be a bounded gauge-invariant function on $\Omega_s=G^{E(\Lambda_s)}$ and $\Lambda=(\Z/L_0\Z)\times\Lambda_s$ with $L_0\ge3$.
+The functions $\overline A(t)$ and $A(0)$ depend on the spatial links of the slices $t$ and $0$: in Corollary~\ref{mg:cor:size} take
+$a_1=a_2=0$, $b_1=b_2=t$; for $1\le t\le L_0/2$, $\tau=\min(t-2,L_0-t-2)=t-2$. Theorem~\ref{mg:thm:finite} gives
+$|\langle\overline A(t)A(0)\rangle-\langle\overline A(t)\rangle\langle A(0)\rangle|\le C_Aq^{4(t-2)^+}$ with $C_A$ depending on $\norm A_\infty$ and
+$|E(\Lambda_s)|$ only, not on $L_0$. \Flab{Corollary}{cor:gapfromcorr} (whose proof lets $L_0\to\infty$ at fixed $t$, so that the bound is needed
+only for large $L_0$) gives $m_{\Lambda_s}(\beta)\ge4\log(1/q)$.
+\end{proof}
+
+\section{Two dimensions; discussion}\label{mg:sec:discussion}
+
+\begin{proposition}[Two dimensions]\label{mg:prop:2d}
+Let $d=2$ and $0<\beta<\beta_0(2)$, so that $K=4$ and $q(\beta)<\frac{e(2+\epsilon_0)}6<0.91$.
+\begin{enumerate}[label=(\roman*)]
+\item For every periodic lattice with $L_0,L_1\ge3$, the spatial lattice $\Lambda_s=\Z/L_1\Z$ has $m_{\Lambda_s}(\beta)\ge L_1\log(1/q(\beta))$.
+\item In infinite volume, $\Cov_{\mu_\beta}(A,B)=0$ whenever the time ranges satisfy $b_1-a_2\ge3$; hence $m(\mu_\beta)=\infty$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+In $d=2$ the graph $\Gamma$ of the proof of Lemma~\ref{mg:lem:layer} lives on the cycle $\Z/L_1\Z$ ($L_1\ge3$, so it is simple), and a
+subgraph of a cycle in which every non-isolated vertex has degree $\ge2$ is the whole cycle. So the conclusion of
+Lemma~\ref{mg:lem:layer} becomes $|Y_s|\ge L_1$, that of Corollary~\ref{mg:cor:size} becomes $|Y|\ge L_1\min(\tau_{\rm in},\tau_{\rm out})$, and
+the proof of Theorem~\ref{mg:thm:finite} gives the bound with $q^{L_1\tau^+}$ in place of $q^{4\tau^+}$; here $q<1$ since
+$\frac{e(2+\epsilon_0)}6<0.91$. (i) then follows as in the proof of Theorem~\ref{mg:thm:main}(i). For (ii), the bound for the periodised
+observables on tori with $L_1\to\infty$ tends to $0$ when $\tau_{\rm in}\ge1$, and the torus covariances converge to
+$\Cov_{\mu_\beta}(A,B)$ as in the proof of Theorem~\ref{mg:thm:main}(iii) (note $\beta_0(2)<\beta_*(2)$); then
+\IIlab{Theorem}{iv:thm:OS}(iii) applies with every $m>0$.
+\end{proof}
+
+\begin{remark}[Consistency with the exact solution]
+In $d=2$ the transfer matrix on a spatial circle of length $L_1$ is diagonal in the characters of the holonomy, with eigenvalue ratios
+$(c_r/(d_rc_0))^{L_1}$ (\texttt{lattice/ymlattice/transfer2d.py}, tested against the Monte Carlo); so the exact finite-volume gap is
+$L_1\log(1/u(\beta))$ for $SU(2)$, linear in $L_1$, and the infinite-volume theory has no propagating states. Proposition~\ref{mg:prop:2d}
+reproduces both features (with $q$ in place of $u$). The difference between $d=2$ and $d\ge3$ is the girth of the spatial graph
+($L_1$ versus $4$): in $d\ge3$ a closed surface can turn a corner in every time layer with four plaquettes, the minimal glueball.
+\end{remark}
+
+\begin{remark}[The strong-coupling test, sharpness, and the $U(1)$ test]\label{mg:rem:tests}
+(i) Principle~3 of the research program requires the correct asymptotics $m(\beta)\sim4\log(1/u(\beta))$. Theorem~\ref{mg:thm:main}
+gives the lower bound $m\ge4\log(1/\beta)-O(1)$; the corresponding upper bound would follow from a lower bound on a single correlator
+(e.g.\ of two plaquettes), i.e.\ from showing that the minimal straight tube of $4t$ plaquettes is not cancelled by the other terms of
+Lemma~\ref{mg:lem:loopexp}. This is expected but not proved here. (ii) The constant $-4\log(4e^3K)$ reflects the crude counting of
+\cite{III}; counting only surfaces without free edges, as in \IIIref{Remark}{Constants, sharpness, improvements}{al:rem:constants}(ii),
+would improve it. (iii) Nothing here is non-abelian: the argument applies verbatim to $G=U(1)$, whose $d=4$ theory is massless at large
+$\beta$ (Part~III, Remark on the $U(1)$ test). The result therefore concerns the strong-coupling endpoint only; it shows that the
+endpoint is now controlled with the right leading behaviour, which is what a renormalisation-group argument would need to reach.
+\end{remark}
+
+\subsection*{Summary of results}
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.6\textwidth}p{0.2\textwidth}l@{}}
+\toprule
+Statement & Where & Status\\
+\midrule
+Duplicated system; loop expansion with $\Xi^2$; cancellation of non-connecting terms & Lem.~\ref{mg:lem:dup}, \ref{mg:lem:loopexp}, \ref{mg:lem:cancel} & Theorem\\
+Surfaces without free edges have $\ge4$ temporal plaquettes per crossed layer ($d\ge3$) & Lem.~\ref{mg:lem:layer}, \ref{mg:lem:crossing}, Cor.~\ref{mg:cor:size} & Theorem\\
+Covariance bound $q^{4\tau}$ in finite and infinite volume & Thm.~\ref{mg:thm:finite}, \ref{mg:thm:main}(iii) & Theorem\\
+$m_{\Lambda_s}(\beta),\ m(\mu_\beta)\ge4\log(1/q(\beta))=4\log(1/\beta)-O(1)$, $d\ge3$, $\beta<\beta_0(d)$ & Thm.~\ref{mg:thm:main} & Theorem\\
+$d=2$: gap $\ge L_1\log(1/q)$; infinite gap in infinite volume & Prop.~\ref{mg:prop:2d} & Theorem\\
+Matching upper bound $m\le4\log(1/u(\beta))+O(1)$ & Rem.~\ref{mg:rem:tests} & open (expected)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{thebibliography}{III}
+
+\bibitem[F]{F}
+\emph{Lattice Yang--Mills theory: foundations for the mass gap problem}, Part~I of the project ``Solving Yang--Mills and the Mass
+Gap'', \texttt{theory/lattice-foundations.tex} (this repository), living document.
+
+\bibitem[II]{II}
+\emph{Lattice Yang--Mills theory at strong coupling II: the infinite-volume theory, its transfer operator and its mass gap},
+\texttt{theory/infinite-volume-strong-coupling.tex} (this repository), living document, version of 9~November~2026.
+
+\bibitem[III]{III}
+\emph{Lattice Yang--Mills theory at strong coupling III: confinement (area law)}, \texttt{theory/area-law-strong-coupling.tex}
+(this repository), living document, revised 9~November~2026.
+
+\end{thebibliography}
+
+\end{document}
