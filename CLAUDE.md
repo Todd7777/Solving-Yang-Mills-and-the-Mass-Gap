@@ -45,13 +45,15 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   `theory/checks/upper-bound/`; the lower bound sharpened the same day to $m=4\log(1/u)+O(\beta)$ by transfer-kernel norms and counting by fronts, Sections 6–7, checks in
   `theory/checks/lower-bound/`; Section 7 refereed, then revised to be effective on the whole range (for $SU(2)$,
   $-1.38\le m-4\log(1/u)\le0.0014$ in $d=4$), revision refereed (minor revisions, applied); the asymptotics is classical (Schor), see Part IV's Literature paragraph).
-  Section 8 (junctions, 10 November) gives the first-order constant $\delta=b(1+O(\beta))$: $m\ge4\log(1/u)-2\beta+O(\beta^2)$, and for $SU(2)$
-  $-5\cdot10^{-4}\le m-4\log(1/u)\le1.4\cdot10^{-3}$ on the whole range in $d=4$; refereed (minor revisions, applied). Next: the cap evaluated by
-  characters (its first-order matrix element vanishes for $SU(N)$), and the same for the upper bound (journal, Part 4).
+  Section 8 (junctions, 10 November) gives $m\ge4\log(1/u)-2\beta+O(\beta^2)$; refereed (minor revisions, applied). Section 9 (the cap by
+  characters, 10 November) gives the first-order term: $m=4\log(1/u)-\kappa(\beta)+O(\beta^2)$, $\kappa=\tau_0^{-1}\int(\mathrm{Re}\,\chi_\rho)^2f_\beta$,
+  which is $O(\beta^2)$ for $SU(2)$, $U(1)$, $SU(N\ne3)$ and $\beta/6+O(\beta^2)$ for $SU(3)$ (three fundamental fluxes can meet at a link); for $SU(2)$
+  $-1.3\cdot10^{-4}\le m-4\log(1/u)\le4.8\cdot10^{-4}$ on the whole range in $d=4$; checks in `theory/checks/first-order/`; referee: pending. Next: the
+  second-order coefficient (shifts and jumps by characters) and the $C$-odd sector (journal, Part 5).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-10.md` (session 3, continued; Parts 1–4); `journal/2026-11-09b.md` is its first part and
+- The newest journal entry is `journal/2026-11-10.md` (session 3, continued; Parts 1–5); `journal/2026-11-09b.md` is its first part and
   `journal/2026-11-09.md` is session 2.
 
 ## Where the next steps are
