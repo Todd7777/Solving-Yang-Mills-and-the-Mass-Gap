@@ -49,7 +49,8 @@
 \author{}
 \date{9 November 2026; revised after an independent referee report, and the matching upper bound added (Section~\ref{mg:sec:upper}), the same day;
 upper bound extended to the whole range $\beta<\beta_0(d)$ (for $\dim\rho\le4$, or $\le5$ if $\rho\cong\bar\rho$) and revised after a second referee
-report, and sharper lower bounds added (Sections~\ref{mg:sec:sharp} and~\ref{mg:sec:fronts}), 10 November 2026; living document}
+report, and sharper lower bounds added (Sections~\ref{mg:sec:sharp} and~\ref{mg:sec:fronts}), 10 November 2026; Section~\ref{mg:sec:fronts} revised
+after a referee report, and the lower bound made effective on the whole range, the same day; living document}
 
 \begin{document}
 \maketitle
@@ -80,10 +81,12 @@ $4\log(1/q(\beta))\le m(\mu_\beta)\le4\log(1/u(\beta))+D(\beta)$ for all $\beta<
 what principle~3 (``the strong-coupling test'') of the research program requires. The additive constants of the two bounds still
 differ by about $35$ for $SU(2)$ in $d=4$. A transfer-matrix bound that weighs the temporal plaquettes of all but one time layer by the
 operator norm $u_*=\max_{r\neq0}u_r$ of their kernel ($u_*=u$ for $\dim\rho\le49$) improves the lower bound to
-$4\log(1/u(\beta))-4\log(eK)-O(\beta)$, so that for these $\rho$ the two bounds differ by at most $4\log(eK)+O(\beta)$ ($16.0$ for $d=4$ as
-$\beta\downarrow0$, at most $24.0$ on the whole range). Counting the connecting surfaces by their fronts (the temporal plaquettes of one time
-layer, which can change only at spatial plaquettes) removes the remaining entropy and gives the sharp constant:
-$m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$ as $\beta\downarrow0$, with explicit bounds (the lower one useful for $\beta$ well below $\beta_0(d)$).
+$4\log(1/u(\beta))-4\log(eK)-O(\beta)$, so that for these $\rho$ the two bounds differ by at most $4\log(eK)+O(\beta)$ (about $16.0$ for $d=4$ on
+the whole range). Counting the connecting surfaces by their fronts (the temporal plaquettes of one time layer, which can change only where a spatial
+plaquette or a support touches them) removes the remaining entropy and gives the sharp constant on the whole range:
+$m(\mu_\beta)\ge4\log(1/u(\beta))-\log(1+\delta(\beta))-O(\beta^5)$ with an explicit $\delta(\beta)=O(\beta)$, so that $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$.
+For $SU(2)$ the two bounds give $-1.38\le m(\mu_\beta)-4\log(1/u(\beta))\le0.0014$ for all $\beta<\beta_0(4)$ in $d=4$, and $-0.63\le
+m(\mu_\beta)-4\log(1/u(\beta))\le0.005$ for all $\beta<\beta_0(3)$ in $d=3$ (a numerical evaluation of the explicit constants).
 The asymptotics
 itself, indeed the full expansion of the glueball mass, is classical (Schor; O'Carroll et al.); what is new here is a self-contained
 proof with explicit constants on the whole range, for general compact $G$ and the infinite-volume theory of Part~II.
@@ -162,10 +165,12 @@ periodic spatial lattice with all sides $\ge4$. Hence
 \[
 -4\log(4e^3K)-O(\beta)\ \le\ m(\mu_\beta)-4\log\frac1\beta\ \le\ 4\log\frac{2N^2}{1+\iota}+O(\beta)\qquad(0<\beta<\beta_0(d)).
 \]
-Moreover $m(\mu_\beta)\ge4\log(1/u(\beta))-4\log(eK)-8(K+1)\theta(\beta)$ for every $0<\beta<\beta_0(d)$, also for $m_{\Lambda_s}(\beta)$ when all
-spatial sides are $\ge4$ (Theorem~\ref{mg:thm:sharp}, Corollary~\ref{mg:cor:window}), so that $m(\mu_\beta)-4\log(1/u(\beta))$ lies in an interval
-of length at most $4\log(eK)+8(K+1)\theta(\beta)+D(\beta)$; and $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$ as $\beta\downarrow0$
-(Theorem~\ref{mg:thm:fronts}, Corollary~\ref{mg:cor:sharpconst}). The upper bound holds, with a larger explicit bound on $D$, whenever $N\le4$, or
+Moreover, for every $0<\beta<\beta_0(d)$, $m(\mu_\beta)\ge4\log(1/u(\beta))-8(K+1)\theta_5(\beta)-\log(1+\delta_\infty(\beta))$ with
+$\theta_5=O(\beta^5)$ and an explicit $\delta_\infty(\beta)=O(\beta)$, and the same holds for $m_{\Lambda_s}(\beta)$ when all spatial sides are $\ge4$, with a
+slightly larger $\delta$ (Theorem~\ref{mg:thm:fronts}, Lemma~\ref{mg:lem:frontsrange}, Corollary~\ref{mg:cor:sharpconst}). So
+$m(\mu_\beta)-4\log(1/u(\beta))$ lies in an interval of length at most $8(K+1)\theta_5+\log(1+\delta_\infty)+D(\beta)$, and
+$m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$ as $\beta\downarrow0$; for $SU(2)$ the length is at most $1.39$ ($d=4$) and $0.63$ ($d=3$) on the whole range
+(Remark~\ref{mg:rem:fronts}; Numerical). The upper bound holds, with a larger explicit bound on $D$, whenever $N\le4$, or
 $N=5$ and $\rho\cong\bar\rho$. Without any restriction on $N$, the
 upper bound holds for all sufficiently small $\beta$, so $m(\mu_\beta)=4\log(1/\beta)+O(1)$ as $\beta\downarrow0$.
 \end{theorem}
@@ -174,7 +179,8 @@ Here $\Cov(A,B):=\mu(AB)-\mu(A)\mu(B)$. Statement (iii) is the infinite-volume f
 Theorem~\ref{mg:thm:finite}; (i) follows from Theorem~\ref{mg:thm:finite} by \Fref{Corollary}{Gap from Euclidean
 correlations}{cor:gapfromcorr}, and (ii) from (iii) by \IIref{Theorem}{OS reconstruction of the lattice theory}{iv:thm:OS}(iii).
 Theorem~\ref{mg:thm:upperintro} is Corollary~\ref{mg:cor:twosided}, together with Theorem~\ref{mg:thm:upper}(ii) and Lemma~\ref{mg:lem:range} for
-the upper bound on spatial lattices with sides $\ge3$, Corollary~\ref{mg:cor:window} for the sharper lower bound, Corollary~\ref{mg:cor:sharpconst} for the asymptotics, and the last sentence of
+the upper bound on spatial lattices with sides $\ge3$, Corollary~\ref{mg:cor:sharpconst} (with Theorem~\ref{mg:thm:fronts} and
+Lemma~\ref{mg:lem:frontsrange}) for the sharper lower bound and the asymptotics, and the last sentence of
 Theorem~\ref{mg:thm:upper} for arbitrary $N$.
 
 \begin{remark}[Comparison]\label{mg:rem:comparison}
@@ -204,10 +210,12 @@ $\Cov\le e^{-m}\Var$ gives $m\le4\log(1/u)+O(\beta)$, on the whole range $\beta<
 and for every $\rho$ when $\beta$ is small. (6) Returning to the lower bound (Section~\ref{mg:sec:sharp}): in the transfer-matrix
 representation of the terms of the duplicated expansion, a temporal plaquette is an operator between two time slices of norm
 $u_*=\max_{r\neq0}u_r$, far below the sup norm $e^{4\beta}-1$ used in (4); this gives $m\ge4\log(1/u)-4\log(eK)-O(\beta)$ (when $u_*=u$, e.g.\
-$\dim\rho\le49$). (7) Finally (Section~\ref{mg:sec:fronts}) the connecting sets are encoded by their fronts: a front changes only where a spatial
-plaquette touches it, so the sum over connecting sets becomes a sum over paths of segments and clusters with decorations, in which an
-unchanged front costs $u_*$ per temporal plaquette and nothing in entropy. A generating function in which only the segments of one path
-carry the weight $z=1/(u_*^4(1+\delta))$ then gives $m\ge4\log(1/u)-O(\beta)$.
+$\dim\rho\le49$). (7) Finally (Section~\ref{mg:sec:fronts}) the connecting sets are encoded by their fronts: a front changes only where a marker (a
+spatial plaquette or a support) touches it, so the sum over connecting sets becomes a sum over paths of segments and clusters with decorations, in
+which an unchanged front of $k$ edges costs $a^k$ per layer, $a=e^{2(K+1)\theta_5}u_*$, and nothing in entropy. A generating function in which only
+the segments of one path carry the weight $z=1/(a^4(1+\delta'))$ then gives $m\ge4\log(1/u_*)-O(\beta)$ ($=4\log(1/u)-O(\beta)$ when $u_*=u$).
+Counting at vertices, with the exact numbers of fronts with four and five edges, a sharper sup norm of $g_p$ and a ratio bound that sees only closed
+polymers (which have at least five plaquettes), makes the constant effective on the whole range.
 
 \section{The duplicated system}\label{mg:sec:dup}
 
@@ -233,6 +241,8 @@ $\Phi_F(X):=\iint F\prod_{p\in X}g_p\,dU\,dU'$.
 $\mu_{\Lambda,\beta}\otimes\mu_{\Lambda,\beta}$ has density $\prod_{p\in\cP}(1+g_p)/\Xi(\cP)^2$ with respect to $dU\,dU'$.
 \item Let $X\subseteq\cP$, let $\ell$ be a link lying in exactly one plaquette of $X$, and let $H$ be bounded measurable and
 independent of $(U_\ell,U'_\ell)$. Then $\iint H\prod_{p\in X}g_p\,dU\,dU'=0$.
+\item If $\rho$ has no trivial summand (for instance if $\rho$ is irreducible and non-trivial), then
+$\norm{g_p}_\infty\le\gamma_2(\beta):=e^{2\beta}-1+\beta^2e^\beta$.
 \end{enumerate}
 \end{lemma}
 
@@ -247,6 +257,10 @@ separately. For the density: $W_\beta(U)W_\beta(U')=c_0^{2|\cP|}\prod_p(1+g_p)$ 
 independent of $(U_\ell,U'_\ell)$, and no other factor of the integrand depends on $(U_\ell,U'_\ell)$. By Fubini it suffices that
 $\iint g_p\,dU_\ell\,dU'_\ell=\int(1+f_\beta(AU^{\pm1}B))\dU\cdot\int(1+f_\beta(A'U^{\pm1}B'))\dU-1=1\cdot1-1=0$, by
 \IIIlab{Lemma}{al:lem:facts}(c).
+(d) Put $y:=\frac\beta N\mathrm{Re}\Tr\rho(U)\in[-\beta,\beta]$. As in the proof of \IIIlab{Lemma}{al:lem:facts}(b), $\int\Tr\rho(U)\dU$ is the
+multiplicity of the trivial representation in $\rho$, here $0$, so $\int y\dU=0$; and $e^y\le1+y+\frac12y^2e^{|y|}$. Hence $1\le c_0\le1+\frac12\beta^2e^\beta$,
+so $1+f_\beta=w_\beta/c_0\in[e^{-\beta}(1-\frac12\beta^2e^\beta),e^\beta]$, $(1+f_\beta(U_p))(1+f_\beta(U'_p))\in[e^{-2\beta}(1-\beta^2e^\beta),e^{2\beta}]$, and
+$g_p\in[-(1-e^{-2\beta})-\beta^2e^{-\beta},e^{2\beta}-1]$; finally $1-e^{-2\beta}\le e^{2\beta}-1$.
 \end{proof}
 
 \begin{definition}[Loop polymers for a set of links]\label{mg:def:loop}
@@ -831,7 +845,25 @@ $u_r$ is as in Section~\ref{mg:sec:upper}, and
 \[
 u_*(\beta):=\sup_{r\neq0}u_r(\beta)\ \le\ \epsilon(\beta),
 \]
-the inequality because $u_r=d_r^{-1}\int f_\beta\overline{\chi_r}\dU$ and $\int|\chi_r|\le1$.
+the inequality because $u_r=d_r^{-1}\int f_\beta\overline{\chi_r}\dU$ and $\int|\chi_r|\le1$. The ratios of partition functions are controlled by
+the following sharpening of \IIIref{Proposition}{Removing plaquettes}{al:prop:remove}: only closed polymers have non-zero activity.
+
+\begin{lemma}[Removing plaquettes: closed polymers]\label{mg:lem:closed}
+Let $0<\beta<\beta_0(d)$ and $\theta_5(\beta):=x(\beta)^5/(1-x(\beta))$, so that $\theta_5\le\theta$ and $\theta_5=O(\beta^5)$. Then for every $\mathcal Q\subseteq\cP$
+\[
+e^{-\theta_5(\beta)|\cP\setminus\mathcal Q|}\ \le\ \frac{\Xi(\mathcal Q)}{\Xi(\cP)}\ \le\ e^{\theta_5(\beta)|\cP\setminus\mathcal Q|} .
+\]
+\end{lemma}
+
+\begin{proof}
+Let $\gamma$ be a polymer and $\ell$ a link lying in exactly one plaquette $p$ of $\gamma$. Then $U_p=AU_\ell^{\pm1}B$ with $A,B$ independent of $U_\ell$, no
+other factor of $\prod_{p'\in\gamma}f_\beta(U_{p'})$ depends on $U_\ell$, and $\int f_\beta(AU^{\pm1}B)\dU=0$ (\IIIlab{Lemma}{al:lem:facts}(c)); so
+$z(\gamma)=0$. Hence $z(\gamma)\ne0$ only if every link of $E(\gamma)$ lies in at least two plaquettes of $\gamma$, and then $|\gamma|\ge5$ by
+Lemma~\ref{mg:lem:five} with $\mathcal L=\emptyset$. In the proof of \IIIref{Lemma}{The Kotecký--Preiss condition for plaquette polymers}{al:lem:KPsums}
+the sum over $n$ may therefore start at $n=5$, which gives $\sum_{\gamma\cap S\ne\emptyset}|z(\gamma)|e^{|\gamma|}\le\theta_5|S|$ for every $S\subseteq\cP$; and
+\IIIlab{Lemma}{al:lem:ratio} applies with $a(\gamma)=|\gamma|$, because $(K+1)\theta_5\le(K+1)\theta<1$. The proof of
+\IIIlab{Proposition}{al:prop:remove} then gives the claim.
+\end{proof}
 
 \begin{lemma}[Layer operators]\label{mg:lem:layerop}
 Let $\beta>0$, let $\Pi_0$ be the projection onto the constants in $L^2(G)$, and let $F_f$ be the integral operator on $L^2(G)$ with kernel
@@ -859,8 +891,9 @@ slices $0$ and $t$, $0<t<L_0$, and $F:=(A-A')(B-B')$. For $X\subseteq\cP$ let $T
 $T(X):=\bigcup_sT_s(X)$, $S(X):=X\setminus T(X)$ (its spatial plaquettes), $S_s(X)$ the spatial plaquettes of $X$ at slice $s$, and
 $m(X):=\min_s|T_s(X)|$. Then
 \[
-|\Phi_F(X)|\ \le\ 4\norm A_\infty\norm B_\infty\,\bigl(e^{4\beta}-1\bigr)^{|S(X)|}\,\bigl(e^{2\beta}-1\bigr)^{m(X)}\,u_*^{\,|T(X)|-m(X)} .
+|\Phi_F(X)|\ \le\ 4\norm A_\infty\norm B_\infty\,\gamma_g^{\,|S(X)|}\,\bigl(e^{2\beta}-1\bigr)^{m(X)}\,u_*^{\,|T(X)|-m(X)} ,
 \]
+where $\gamma_g:=\norm{g_p}_\infty$ (the same for all $p$; $\gamma_g\le e^{4\beta}-1$ by Lemma~\ref{mg:lem:dup}(a)).
 \end{lemma}
 
 \begin{proof}
@@ -879,15 +912,15 @@ $\Phi_F(X)=\Tr\bigl(\mathbb M_0\mathcal K_0\mathbb M_1\mathcal K_1\cdots\mathbb 
 class. By H\"older's inequality for traces, $|\Phi_F(X)|\le\norm{\mathcal K_{s_0}}_1\prod_{s\ne s_0}\norm{\mathcal K_s}\prod_s\norm{\mathbb M_s}$
 for any $s_0$. By Lemma~\ref{mg:lem:layerop}, $\norm{\mathcal K_s}\le u_*^{|T_s(X)|}$ and $\norm{\mathcal K_s}_1\le(e^{2\beta}-1)^{|T_s(X)|}$ (and
 $\norm{\Pi_0\otimes\Pi_0}=\Tr(\Pi_0\otimes\Pi_0)=1$, $\norm{P_{\mathcal G}\otimes P_{\mathcal G}}=1$); by Lemma~\ref{mg:lem:dup}(a),
-$\norm{\mathbb M_s}\le(e^{4\beta}-1)^{|S_s(X)|}$ times $2\norm A_\infty$ or $2\norm B_\infty$ at $s=0,t$. Choose $s_0$ with $|T_{s_0}(X)|=m(X)$.
+$\norm{\mathbb M_s}\le\gamma_g^{|S_s(X)|}$ times $2\norm A_\infty$ or $2\norm B_\infty$ at $s=0,t$. Choose $s_0$ with $|T_{s_0}(X)|=m(X)$.
 \end{proof}
 
 \begin{theorem}[Sharper covariance bound and gap]\label{mg:thm:sharp}
 Let $d\ge2$, $0<\beta<\beta_0(d)$, let $\Lambda$ be periodic with all sides $\ge3$ and girth $g$ (Lemma~\ref{mg:lem:girth}), and let $A,B$ be
 bounded measurable functions of finitely many spatial links of the time slices $0$ and $t$, with $1\le t\le L_0/2$; $S$ is the set of these
-links. Put $\hat q(\beta):=eK\,e^{2(K+1)\theta(\beta)}(e^{4\beta}-1)\le q(\beta)$ and
+links. Put $\hat q(\beta):=eK\,e^{2(K+1)\theta_5(\beta)}(e^{4\beta}-1)\le q(\beta)$ and, with $\theta_5$ as in Lemma~\ref{mg:lem:closed},
 \[
-q_u(\beta):=eK\,e^{2(K+1)\theta(\beta)}\,u_*(\beta) .
+q_u(\beta):=eK\,e^{2(K+1)\theta_5(\beta)}\,u_*(\beta) .
 \]
 Then $\hat q<1$ and, with $c=c(\beta)$ as in Theorem~\ref{mg:thm:main},
 \[
@@ -905,14 +938,15 @@ $\cP_{S_B}$. Fix such an $X$. Temporal links are never in $S$, so Lemma~\ref{mg:
 that $T_s(X)$ is empty or has at least $g$ elements, for every layer $s$. Put
 $n(X):=|T(X)|-m(X)$. If some layer contains no temporal plaquette of $X$, then $m(X)=0$, and by Corollary~\ref{mg:cor:size} the connecting
 component has at least $g$ temporal plaquettes in every inner layer or in every outer layer, so $n(X)\ge g\min(t,L_0-t)=gt$. Otherwise every
-layer has at least $m(X)\ge g$ temporal plaquettes and $n(X)\ge(L_0-1)m(X)\ge(L_0-1)g\ge gt$. Let $\gamma:=e^{4\beta}-1$. Since $u_*\le\epsilon\le\gamma$ and
-$e^{2\beta}-1\le\gamma$, Lemma~\ref{mg:lem:transfer} gives
+layer has at least $m(X)\ge g$ temporal plaquettes and $n(X)\ge(L_0-1)m(X)\ge(L_0-1)g\ge gt$. Let $\gamma:=e^{4\beta}-1$. Since $u_*\le\epsilon\le\gamma$,
+$e^{2\beta}-1\le\gamma$ and $\gamma_g\le\gamma$, Lemma~\ref{mg:lem:transfer} gives
 \[
 |\Phi_F(X)|\le4\norm A_\infty\norm B_\infty\,\gamma^{|X|-n(X)}u_*^{\,n(X)}\le4\norm A_\infty\norm B_\infty\,\gamma^{|X|}\,(u_*/\gamma)^{gt},
 \]
-and $|X|\ge n(X)\ge gt$. The rest is the computation in the proof of Theorem~\ref{mg:thm:finite}, keeping the factor $e^{2\theta(K+1)|X|}$:
+and $|X|\ge n(X)\ge gt$. The rest is the computation in the proof of Theorem~\ref{mg:thm:finite}, with $r_X^2\le e^{2\theta_5|\overline X|}\le e^{2\theta J_S}e^{2\theta_5(K+1)|X|}$
+(Lemma~\ref{mg:lem:closed}) in place of $e^{2\theta|\overline X|}$, keeping the factor $e^{2\theta_5(K+1)|X|}$:
 \[
-2|\Cov(A,B)|\le4\norm A_\infty\norm B_\infty\Bigl(\frac{u_*}\gamma\Bigr)^{gt}c^{|S|}\sum_{n\ge gt}\bigl(eK\,e^{2\theta(K+1)}\gamma\bigr)^n
+2|\Cov(A,B)|\le4\norm A_\infty\norm B_\infty\Bigl(\frac{u_*}\gamma\Bigr)^{gt}c^{|S|}\sum_{n\ge gt}\bigl(eK\,e^{2\theta_5(K+1)}\gamma\bigr)^n
 =\frac{4\norm A_\infty\norm B_\infty\,c^{|S|}}{1-\hat q}\Bigl(\frac{u_*}\gamma\Bigr)^{gt}\hat q^{\,gt},
 \]
 and $\hat qu_*/\gamma=q_u$.
@@ -936,7 +970,7 @@ $m(\mu_\beta)=-\log\sup\spec(P|_{\mathbf1^\perp})\ge4\log(1/q_u)$ by \IIlab{Theo
 \begin{corollary}[The window on the whole range]\label{mg:cor:window}
 Let $d\ge3$, $0<\beta<\beta_0(d)$, and let $\rho$ be irreducible and non-trivial with $N\le49$. Then $u_*(\beta)=u(\beta)$, so
 \[
--4\log(eK)-8(K+1)\theta(\beta)\ \le\ m(\mu_\beta)-4\log\frac1{u(\beta)}\ \le\ D(\beta),
+-4\log(eK)-8(K+1)\theta_5(\beta)\ \le\ m(\mu_\beta)-4\log\frac1{u(\beta)}\ \le\ D(\beta),
 \]
 the upper inequality when $N^4\le1200\tau_0^2$ (Corollary~\ref{mg:cor:twosided}); the lower one also holds for $m_{\Lambda_s}(\beta)$ on
 spatial lattices with all sides $\ge4$. As $\beta\downarrow0$ the width of the window tends to $4\log(eK)$, which is $13.9$ for $d=3$ and
@@ -949,16 +983,17 @@ $n+m\le1$ and satisfies $d_rm_r(n,m)\le N^{n+m}$; the series of the proof of \Fl
 $c_r\le d_r^{-1}\sum_{k\ge2}(2Nt)^k/k!=(e^\beta-1-\beta)/d_r$, so $u_r\le e^\beta-1-\beta\le\frac12\beta^2e^\beta$. By
 Lemma~\ref{mg:lem:char}(iii), $u_\rho=u_{\bar\rho}=u\ge(1+\iota)\beta e^{-\beta}/(2N^2)$. Hence $u_*=u$ as soon as $\beta e^{2\beta}\le(1+\iota)/N^2$, which
 holds for $\beta<\beta_0(d)\le\beta_0(3)<4.03\cdot10^{-4}$ when $N\le49$. The lower bound is Theorem~\ref{mg:thm:sharp} with
-$\log(1/q_u)=\log(1/u)-\log(eK)-2(K+1)\theta$; the upper bound is Corollary~\ref{mg:cor:twosided}. Finally $\theta(\beta)\to0$ and
+$\log(1/q_u)=\log(1/u)-\log(eK)-2(K+1)\theta_5$; the upper bound is Corollary~\ref{mg:cor:twosided}. Finally $\theta_5(\beta)\to0$ and
 $D(\beta)\to0$ (Theorem~\ref{mg:thm:upper}).
 \end{proof}
 
 \begin{remark}[Comparison and what remains]\label{mg:rem:sharp}
 (i) Numerically (\texttt{python3} with \texttt{mpmath}; $u$ computed exactly), at $\beta=\beta_0(4)\approx1.54\cdot10^{-4}$ for $SU(2)$ the
-lower bounds are $4\log(1/q_u)=16.68$ (Theorem~\ref{mg:thm:sharp}), $4\log(1/q)=5.59$ (Theorem~\ref{mg:thm:main}) and $5.89$ (Part~II), and
-the upper bound is $40.67$; as $\beta\downarrow0$ the window between the two bounds of Corollary~\ref{mg:cor:window} decreases to $16.0$
-($d=4$; $13.9$ for $d=3$), against $35.1$ for Theorem~\ref{mg:thm:main} and Corollary~\ref{mg:cor:twosided} ($SU(2)$, $d=4$). At $\beta_0(d)$ the
-window is about $24.0$ ($d=4$) and $21.9$ ($d=3$), the excess coming from $e^{2(K+1)\theta}$.
+lower bounds are $4\log(1/q_u)=24.68$ (Theorem~\ref{mg:thm:sharp}), $4\log(1/q)=5.59$ (Theorem~\ref{mg:thm:main}) and $5.89$ (Part~II), and
+the upper bound is $40.67$; the window between the two bounds of Corollary~\ref{mg:cor:window} is $4\log(eK)+O(\beta)$, about $16.0$ ($d=4$; $13.9$ for
+$d=3$) on the whole range, against $35.1$ for Theorem~\ref{mg:thm:main} and Corollary~\ref{mg:cor:twosided} ($SU(2)$, $d=4$). (The first version of this
+section had $\theta$ in place of $\theta_5$, and its window at $\beta_0(d)$ was $24.0$ and $21.9$; now $8(K+1)\theta_5<2.1\cdot10^{-4}$.)
+Section~\ref{mg:sec:fronts} raises the lower bound at $\beta_0(4)$ to $39.29$ (Remark~\ref{mg:rem:fronts}).
 
 (ii) What remains is polymer entropy: the factor $eK$ per required temporal plaquette comes from the rooted counting of all connected sets
 (\IIIlab{Lemma}{al:lem:rooted}), whereas a connecting surface with exactly four temporal plaquettes in each layer is essentially rigid: if
@@ -982,21 +1017,26 @@ Lemma~\ref{mg:lem:transfer} (\texttt{theory/checks/lower-bound/}).
 
 The remaining loss $4\log(eK)$ in Theorem~\ref{mg:thm:sharp} is entropy: the rooted counting of all connected sets charges every
 temporal plaquette a factor $eK$, although a surface with exactly four temporal plaquettes in each layer is rigid. In this section the
-connecting sets are organised by their \emph{fronts}, the temporal plaquettes of a single layer. A front can change only at a spatial
-plaquette, so an unchanged front costs $u_*^{|\text{front}|}$ per layer and carries no entropy. The outcome is
-$m\ge4\log(1/u)-O(\beta)$, the sharp constant: together with Section~\ref{mg:sec:upper}, $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$.
+connecting sets are organised by their \emph{fronts}, the temporal plaquettes of a single layer. A front can change only where a marker (a
+spatial plaquette or a support) touches it, so an unchanged front of $k$ edges costs $a^k$ per layer, with $a=e^{2(K+1)\theta_5}u_*$, and
+carries no entropy. The outcome is $m\ge4\log(1/u_*)-O(\beta)$, the sharp constant: together with Section~\ref{mg:sec:upper},
+$m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$ (here $u_*=u$, Corollary~\ref{mg:cor:window}). Counting the fronts and clusters that meet a given
+front or cluster at a vertex, and using the exact numbers of fronts with four and five edges, makes the bound effective on the whole
+range: for $SU(2)$ it lies within $1.4$ ($d=4$) and $0.7$ ($d=3$) of $4\log(1/u)$ for all $\beta<\beta_0(d)$ (Remark~\ref{mg:rem:fronts}).
 
-Throughout this section $d\ge3$, $0<\beta<\beta_0(d)$, $\Lambda$ is periodic with all sides $\ge3$ and all spatial sides $\ge4$ (so $g=4$),
-$A,B$ are bounded measurable functions of finitely many spatial links of the slices $0$ and $t$, $1\le t\le L_0/2$, with link sets $S_A,S_B$,
-$S:=S_A\cup S_B$, and $F:=(A-A')(B-B')$. Let $\Gamma$ be the nearest-neighbour graph of $\Lambda_s$; we identify a temporal plaquette of
-layer $s$ with the edge of $\Gamma$ on which it is based, a spatial link at time $s$ with an edge of $\Gamma$, and $S_A,S_B$ with sets of edges
-of $\Gamma$. Put
+Throughout this section $d\ge3$, $0<\beta<\beta_0(d)$, $G$ is metrisable whenever the infinite-volume gap $m(\mu_\beta)$ is concerned,
+$\Lambda$ is periodic with all sides $\ge3$ and all spatial sides $\ge4$ (so $g=4$), $A,B$ are bounded measurable functions of finitely many
+spatial links of the slices $0$ and $t$, $1\le t\le L_0/2$, with link sets $S_A,S_B$, $S:=S_A\cup S_B$, and $F:=(A-A')(B-B')$. Let $\Gamma$ be the
+nearest-neighbour graph of $\Lambda_s$; we identify a temporal plaquette of layer $s$ with the edge of $\Gamma$ on which it is based, a spatial
+link at time $s$ with an edge of $\Gamma$, and $S_A,S_B$ with sets of edges of $\Gamma$. For a set $E$ of edges, $V(E)$ is the set of their
+endpoints. A \emph{front in $\Gamma$} is a non-empty set of edges, connected (any two of its edges are linked by a chain of edges of the set,
+consecutive ones sharing an endpoint), in which every vertex has degree $\ge2$. Put
 \[
-D_e:=4d-5,\qquad K_S:=4(2d-5),\qquad N_k:=\max_e\#\{\varphi\ni e\},
+P_v:=2(d-1)(d-2),\qquad K_S:=4(2d-5),\qquad N^v_k:=\max_v\,\#\{\varphi:\ |\varphi|=k,\ v\in V(\varphi)\},
 \]
-where $\varphi$ ranges over the connected sets of $k$ edges of $\Gamma$ in which every vertex has degree $\ge2$ (connected meaning: linked by
-shared endpoints). $D_e$ is the number of edges of $\Gamma$ that are equal to or share an endpoint with a given edge; a link of $\Lambda_s$
-lies in $2(d-2)$ plaquettes of $\Lambda_s$; and a plaquette of $\Lambda_s$ shares a link with $K_S$ others.
+$\varphi$ ranging over the fronts in $\Gamma$.
+$P_v$ is the number of plaquettes of $\Lambda_s$ containing a given vertex; a link of $\Lambda_s$ lies in $2(d-2)$ plaquettes of $\Lambda_s$;
+and a plaquette of $\Lambda_s$ shares a link with $K_S$ others.
 
 \begin{definition}[Fronts, clusters, markers, segments]\label{mg:def:fronts}
 Let $X\subseteq\cP$ be such that every link of $E(X)\setminus S$ lies in at least two plaquettes of $X$, and such that some layer $s_*$ contains
@@ -1006,9 +1046,10 @@ no temporal plaquette of $X$; times are represented in $\{s_*+1,\dots,s_*+L_0\}$
 component of $T_s$.
 \item A \emph{cluster} at slice $s$ is a connected component (two plaquettes being connected when they share a link) of the set of spatial
 plaquettes of $X$ at time $s$; $E(C)\subseteq E(\Gamma)$ is its set of links and $|C|$ its number of plaquettes. The \emph{markers} at slice
-$s$ are the clusters at slice $s$, together with $S_A$ if $s\equiv0$ and $S_B$ if $s\equiv t$; $E(\mu)$ is the edge set of a marker $\mu$.
-\item A marker $\mu$ at slice $s$ \emph{touches} a front $\varphi$ of layer $s-1$ or $s$ if some edge of $E(\mu)$ equals or shares an endpoint
-with an edge of $\varphi$.
+$s$ are the clusters at slice $s$, together with $S_A$ if $s\equiv0$ and $S_B$ if $s\equiv t$; $E(\mathfrak m)$ is the edge set of a marker
+$\mathfrak m$.
+\item A marker $\mathfrak m$ at slice $s$ \emph{touches} a front $\varphi$ of layer $s-1$ or $s$ if $E(\mathfrak m)$ and $\varphi$ have a common
+vertex, i.e.\ some edge of $E(\mathfrak m)$ equals or shares an endpoint with an edge of $\varphi$.
 \item A \emph{segment} is a pair $\sigma=(\varphi,[s_1,s_2))$, $s_1<s_2$, such that $\varphi$ is a front of every layer $s\in[s_1,s_2)$, no marker at a
 slice $s\in(s_1,s_2)$ touches $\varphi$, and some marker at slice $s_1$ and some marker at slice $s_2$ touch $\varphi$. We write $\ell(\sigma):=s_2-s_1$
 and $|\sigma|:=|\varphi|$.
@@ -1018,8 +1059,8 @@ and $|\sigma|:=|\varphi|$.
 \begin{lemma}[Fronts and segments]\label{mg:lem:fronts}
 Let $X$ be as in Definition~\ref{mg:def:fronts}.
 \begin{enumerate}[label=(\roman*)]
-\item Every vertex of $\Gamma$ has degree $0$ or at least $2$ in $T_s$; every front has at least $4$ edges.
-\item For every slice $s$, $T_{s-1}\triangle T_s\subseteq\bigcup_\mu E(\mu)$, the union over the markers $\mu$ at slice $s$.
+\item Every vertex of $\Gamma$ has degree $0$ or at least $2$ in $T_s$; every front of a layer is a front in $\Gamma$ and has at least $4$ edges.
+\item For every slice $s$, $T_{s-1}\triangle T_s\subseteq\bigcup_{\mathfrak m}E(\mathfrak m)$, the union over the markers $\mathfrak m$ at slice $s$.
 \item If a front $\varphi$ of layer $s-1$ is touched by no marker at slice $s$, then $\varphi$ is a front of layer $s$; and if a front of layer $s$ is
 touched by no marker at slice $s$, it is a front of layer $s-1$.
 \item Every front of every layer belongs to exactly one segment, i.e.\ for every front $\varphi$ of a layer $s$ there is exactly one segment
@@ -1035,8 +1076,8 @@ cycle, of length $\ge4$ (Lemma~\ref{mg:lem:girth}).
 If it lies in no marker at slice $s$, it is not in $S$ and in no spatial plaquette of $X$, so it lies in $0$ or $2$ plaquettes of $X$: in both of
 $T_{s-1},T_s$ or in neither.
 (iii) Let $\varphi$ be a front of layer $s-1$ touched by no marker at slice $s$. By (ii), $\varphi\subseteq T_s$. If an edge $e\in T_s\setminus\varphi$ shared
-an endpoint with an edge of $\varphi$, then $e\notin T_{s-1}$ ($\varphi$ is a component of $T_{s-1}$), so $e\in E(\mu)$ for a marker $\mu$ at slice $s$ by
-(ii), and $\mu$ would touch $\varphi$. So $\varphi$ is a component of $T_s$. The second statement is symmetric.
+an endpoint with an edge of $\varphi$, then $e\notin T_{s-1}$ ($\varphi$ is a component of $T_{s-1}$), so $e\in E(\mathfrak m)$ for a marker $\mathfrak m$ at
+slice $s$ by (ii), and $\mathfrak m$ would touch $\varphi$. So $\varphi$ is a component of $T_s$. The second statement is symmetric.
 (iv) Let $\varphi$ be a front of layer $s$. Going up, let $s_2>s$ be the first slice at which a marker touches $\varphi$; by (iii) and induction, $\varphi$ is
 a front of every layer in $[s,s_2)$. Such a slice exists: otherwise $\varphi$ would be a front of every later layer, including $s_*$. Likewise let
 $s_1\le s$ be the last slice $\le s$ at which a marker touches $\varphi$. Then $(\varphi,[s_1,s_2))$ is a segment, and it is the only one containing
@@ -1071,10 +1112,10 @@ $s$, both segments end at $s$ and are joined to it. Let $\varphi\neq\varphi'$. I
 meets $\varphi'$), and if also $\varphi'\subseteq T_{s-1}$ then $\varphi=\varphi'$; so, by symmetry, we may assume $\varphi\not\subseteq T_s$. Follow a path of edges
 $e=e_0,e_1,\dots,e_m$ in $\varphi$ (consecutive edges sharing an endpoint) ending outside $T_s$, and let $e_j$ be its first edge outside $\varphi'$. Then
 $e_j\notin T_s$ (otherwise it would lie in the component $\varphi'$ of its neighbour $e_{j-1}$), so $e_j\in T_{s-1}\setminus T_s$, and by
-Lemma~\ref{mg:lem:fronts}(ii) $e_j\in E(\mu)$ for a marker $\mu$ at slice $s$. This $\mu$ touches $\varphi$ ($e_j\in\varphi$) and $\varphi'$ ($e_j$ shares an endpoint
-with $e_{j-1}\in\varphi'$), so both segments end at $s$ and are joined to $\mu$. Finally, a temporal plaquette based on an edge of $S_A$ lies in layer $-1$ or
-$0$, its front is touched by $S_A$, and its segment ends at the slice $0$; a spatial plaquette containing a link of $S_A$ lies at time $0$, in a cluster
-joined to $S_A$.
+Lemma~\ref{mg:lem:fronts}(ii) $e_j\in E(\mathfrak m)$ for a marker $\mathfrak m$ at slice $s$. This $\mathfrak m$ touches $\varphi$ ($e_j\in\varphi$) and $\varphi'$
+($e_j$ shares an endpoint with $e_{j-1}\in\varphi'$), so both segments end at $s$ and are joined to $\mathfrak m$. Finally, a temporal plaquette based on an
+edge of $S_A$ lies in layer $-1$ or $0$, its front is touched by $S_A$, and its segment ends at the slice $0$; a spatial plaquette containing a link of
+$S_A$ lies at time $0$, in a cluster joined to $S_A$.
 (ii) Each component of $X\in\cX_S$ contains a plaquette with a link in $S_A$ or $S_B$; apply (i) along chains of adjacent plaquettes.
 (iii) Assign to a marker at slice $s$ the point $s$ and to a segment $(\varphi,[s_1,s_2))$ the interval $[s_1,s_2]$, in the representation of
 Definition~\ref{mg:def:fronts}. Joined vertices get intersecting sets, so the union of the sets along $\pi$ is an interval containing the points
@@ -1083,74 +1124,114 @@ between them are the $t$ inner layers in the first case and the $L_0-t$ outer la
 consecutive integers, lies in $[s_1,s_2]$ for some segment $\sigma=(\varphi,[s_1,s_2))$ of $\pi$ (markers are points), hence in its set of layers.
 \end{proof}
 
+\begin{lemma}[Small fronts]\label{mg:lem:smallfronts}
+Let $\varphi$ be a front in $\Gamma$ (all sides of $\Lambda_s$ are $\ge4$).
+\begin{enumerate}[label=(\roman*)]
+\item $|V(\varphi)|\le|\varphi|$.
+\item If $|\varphi|=4$, then $\varphi$ is the boundary of a plaquette of $\Lambda_s$ or a straight cycle $\{\{v+je_\lambda,v+(j+1)e_\lambda\}:0\le j<4\}$ around a
+side of length $L_\lambda=4$.
+\item If $|\varphi|=5$, then $\varphi$ is a straight cycle around a side of length $5$.
+\end{enumerate}
+Consequently, if $n_j$ is the number of spatial directions in which $\Lambda_s$ has side $j$,
+\[
+N^v_4=P_v+n_4\le(d-1)(2d-3),\qquad N^v_5=n_5\le d-1,\qquad N^v_k\le(d-1)\binom{(4d-6)k}{k-1}\quad(k\ge4).
+\]
+\end{lemma}
+
+\begin{proof}
+A closed walk of length $m$ in $\Gamma$ lifts to a walk in $\Z^{d-1}$ from $0$ to a point $w$ with $w_\lambda\in L_\lambda\Z$ for every $\lambda$. If
+$m_\lambda$ is its number of steps in direction $\lambda$, then $m=\sum_\lambda m_\lambda$, $m_\lambda\ge|w_\lambda|$ and $m_\lambda\equiv w_\lambda$ (mod $2$).
+So if $w=0$, $m$ is even; and if $w_\lambda\ne0$, then $m_\lambda\ge L_\lambda\ge4$. Hence for $m\le5$ either $w=0$, or exactly one component $w_\lambda$ is
+non-zero, $w_\lambda=\pm L_\lambda$, and then $m-m_\lambda$ is even. (a) $\Gamma$ has no cycle of length $3$: $3$ is odd and $<4$. (b) Let $C$ be a cycle
+of length $4$. If $w=0$, every $m_\lambda$ is even; the four steps are not all in one direction (such a walk visits at most three vertices), so there is
+one step in each sense in each of two directions $\lambda,\lambda'$, and the four vertices are the corners of a unit square of the plane
+$\{\lambda,\lambda'\}$: $C$ is the boundary of a plaquette. If $w\ne0$, then $m_\lambda=4\ge L_\lambda=|w_\lambda|\ge4$, so all four steps go in direction
+$\lambda$, in the same sense: $C$ is a straight cycle and $L_\lambda=4$. (c) A cycle of length $5$ has $w\ne0$; then $5-m_\lambda$ is even, so
+$m_\lambda=5$, and $4\le L_\lambda\le m_\lambda$ with $L_\lambda\equiv m_\lambda$ (mod $2$) gives $L_\lambda=5=|w_\lambda|$: a straight cycle.
+
+(i) $2|V(\varphi)|\le\sum_v\deg_\varphi(v)=2|\varphi|$. (ii) $\Gamma$ is a simple graph (all sides are $\ge3$), so three vertices span at most three edges;
+hence $|V(\varphi)|=4$, every vertex has degree $2$, and the connected graph $\varphi$ is a cycle; apply (b). (iii) If $|V(\varphi)|=5$, $\varphi$ is a cycle,
+as in (ii); apply (c). If $|V(\varphi)|=4$, $\varphi$ is a simple graph with four vertices and five edges, the complete graph minus one edge, which contains a
+triangle, contrary to (a). Three vertices span at most three edges.
+
+The plaquettes of $\Lambda_s$ containing a vertex $v$ are the four plaquettes of each coordinate plane that have $v$ as a corner, $P_v$ in all, and
+the straight cycles through $v$ are one for each direction with side $4$ (resp.\ $5$); this gives $N^v_4$ and $N^v_5$. For the last bound: a front
+containing $v$ contains at least two of the $2(d-1)$ edges at $v$, and for each edge $e$ the connected sets of $k$ edges containing $e$ number at most
+$\binom{(4d-6)k}{k-1}$, by \IIIref{Lemma}{Rooted counting}{al:lem:rooted} for the graph on $E(\Gamma)$ in which two edges are adjacent when they share
+an endpoint (root $e$, $J=K=4d-6$, $n=k-1$); summing over $e$ counts every front through $v$ at least twice.
+\end{proof}
+
 \begin{lemma}[Local counts]\label{mg:lem:localcounts}
 Let $X$ be as in Definition~\ref{mg:def:fronts}.
 \begin{enumerate}[label=(\roman*)]
-\item Given a marker $\mu$ at slice $s$ and integers $k\ge4$, $\ell\ge1$, at most $2D_e|E(\mu)|N_k$ pairs $(\varphi,[s_1,s_2))$ with $|\varphi|=k$,
-$s_2-s_1=\ell$ and $s\in\{s_1,s_2\}$ have a front $\varphi$ (of layer $s$ or $s-1$) touched by $\mu$.
-\item Given a segment $\sigma$ and $n\ge1$, at most $2|\sigma|D_e\cdot2(d-2)\cdot e(eK_S)^{n-1}$ clusters $C$ with $|C|=n$, at an end slice of
-$\sigma$, touch its front; at most $|S_A|\cdot2(d-2)\cdot e(eK_S)^{n-1}$ clusters with $|C|=n$ at slice $0$ contain an edge of $S_A$, and likewise for $S_B$.
-\item $N_4\le2d-3$, $N_k\le e\,(e(4d-6))^{k-1}$ for all $k$, and $|E(C)|\le4|C|$.
+\item Given a marker $\mathfrak m$ at slice $s$ and integers $k\ge4$, $\ell\ge1$, at most $2|V(E(\mathfrak m))|N^v_k$ candidate segments
+$(\varphi,[s_1,s_2))$ (that is, $\varphi$ a front in $\Gamma$ with $|\varphi|=k$, $s_2-s_1=\ell$ and $s\in\{s_1,s_2\}$) have a vertex of $\varphi$ in
+$V(E(\mathfrak m))$.
+\item Given a segment $\sigma$ and $n\ge1$, at most $2|\sigma|P_v\binom{K_Sn}{n-1}$ clusters $C$ with $|C|=n$, at an end slice of $\sigma$, touch its front;
+at most $2(d-2)|S_A|\binom{K_Sn}{n-1}$ clusters $C$ with $|C|=n$ at slice $0$ contain an edge of $S_A$, and likewise for $S_B$.
+\item $|V(E(C))|\le4|C|$ for every cluster $C$, and $|V(S_A)|\le2|S_A|$, $|V(S_B)|\le2|S_B|$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-(i) The front lies in layer $s$ (then $s_1=s$) or $s-1$ (then $s_2=s$); it contains an edge equal to or sharing an endpoint with one of the
-$|E(\mu)|$ edges of $\mu$, which leaves at most $D_e|E(\mu)|$ such edges $e$; given $e$, there are at most $N_k$ choices of $\varphi$; and $(\varphi,s,\ell)$
-and the layer determine the pair. (ii) The slice is one of the two end slices; the cluster contains a link equal to or sharing an endpoint with an edge
-of $\sigma$'s front (at most $|\sigma|D_e$ choices), a plaquette of that slice containing this link ($2(d-2)$ choices), and is a connected set of $n$
-plaquettes of the slice containing that plaquette; by \IIIref{Lemma}{Rooted counting}{al:lem:rooted} (root the plaquette, $J=K=K_S$, $t=1/K_S$)
-there are at most $\binom{K_Sn}{n-1}\le e(eK_S)^{n-1}$ of those. The statement for $S_A$ is the same without the first two factors. (iii) A set of $4$
-edges in which every vertex has degree $\ge2$ has $4$ vertices of degree $2$ and is a cycle; the $4$-cycles of $\Gamma$ through an edge $e$ are the $2(d-2)$
-plaquettes containing $e$ and, if the side of $\Lambda_s$ in the direction of $e$ is $4$, one straight cycle. The general bound is the same rooted counting
-for connected sets of edges, each edge sharing an endpoint with at most $4d-6$ others.
+(i) The front contains one of the $|V(E(\mathfrak m))|$ vertices of $E(\mathfrak m)$; given this vertex there are at most $N^v_k$ choices of $\varphi$; and
+$s\in\{s_1,s_2\}$ (two choices) together with $\ell$ determines the interval. (ii) The cluster lies at one of the two end slices; it contains a vertex of the
+front $\varphi$ of $\sigma$ (at most $|V(\varphi)|\le|\sigma|$ choices, Lemma~\ref{mg:lem:smallfronts}(i)) and a plaquette of that slice containing this
+vertex ($P_v$ choices), and it is a connected set of $n$ plaquettes of the slice containing that plaquette, of which there are at most $\binom{K_Sn}{n-1}$
+by \IIIref{Lemma}{Rooted counting}{al:lem:rooted} (root the plaquette, $J=K=K_S$). For $S_A$: an edge of $S_A$, a plaquette of slice $0$ containing it
+($2(d-2)$ choices), and the same count. (iii) A plaquette has four vertices, a link two.
 \end{proof}
 
 \begin{lemma}[Tree sums]\label{mg:lem:treesums}
 Let $\mathcal V$ be a set, $w:\mathcal V\to[0,\infty)$, and $\mathcal N(v)\subseteq\mathcal V$ for $v\in\mathcal V$ (the possible children of $v$). For
 $v\in\mathcal V$ let $\Psi(v)$ be the sum, over all finite rooted trees whose root is labelled $v$ and in which the children of a vertex labelled $v'$
-carry distinct labels in $\mathcal N(v')$, of the product of $w$ over the non-root labels. If $\Lambda:\mathcal V\to[0,\infty)$ satisfies
-$\sum_{c\in\mathcal N(v)}w(c)e^{\Lambda(c)}\le\Lambda(v)$ for all $v$, then $\Psi(v)\le e^{\Lambda(v)}$.
+carry distinct labels in $\mathcal N(v')$, of the product of $w$ over the non-root labels. If $h:\mathcal V\to[0,\infty)$ satisfies
+$\sum_{c\in\mathcal N(v)}w(c)e^{h(c)}\le h(v)$ for all $v$, then $\Psi(v)\le e^{h(v)}$.
 \end{lemma}
 
 \begin{proof}
 Let $\Psi_n$ be the same sum restricted to trees of depth $\le n$; $\Psi_0=1$. A tree of depth $\le n$ is a set of distinct children of the root with
 subtrees of depth $\le n-1$, so $\Psi_n(v)\le\prod_{c\in\mathcal N(v)}(1+w(c)\Psi_{n-1}(c))\le\exp\sum_cw(c)\Psi_{n-1}(c)$. By induction
-$\Psi_n\le e^\Lambda$, and $\Psi=\lim_n\Psi_n$.
+$\Psi_n\le e^h$, and $\Psi=\lim_n\Psi_n$.
 \end{proof}
 
 \begin{theorem}[The sharp constant]\label{mg:thm:fronts}
-Let $a:=e^{2(K+1)\theta}u_*$ and $b:=e^{2(K+1)\theta}(e^{4\beta}-1)$. For $\lambda_C,\lambda_T\ge0$ with $eK_Sbe^{\lambda_C}<1$ put
+Let $\gamma_g:=\norm{g_p}_\infty$ (so $\gamma_g\le e^{4\beta}-1$, and $\gamma_g\le\gamma_2(\beta)$ if $\rho$ has no trivial summand,
+Lemma~\ref{mg:lem:dup}(a),(d)), let $\theta_5$ be as in Lemma~\ref{mg:lem:closed}, and put $a:=e^{2(K+1)\theta_5}u_*$ and
+$b:=e^{2(K+1)\theta_5}\gamma_g$. For $\lambda_C,\lambda_T\ge0$ put
 \begin{gather*}
-\eta_C:=4(d-2)D_e\,e\sum_{n\ge1}(eK_S)^{n-1}(be^{\lambda_C})^n,\qquad
-\kappa_C:=16(d-2)D_e\,e\sum_{n\ge1}n(eK_S)^{n-1}(be^{\lambda_C})^n,\\
-\eta_T:=2D_e\sum_{k\ge4}N_k\,e^{\lambda_Tk}\frac{a^k}{1-a^k},\qquad
-\nu:=\sum_{k\ge4}kN_k\,e^{\lambda_Tk}a^{k-4},
+\eta_C:=2P_v\sum_{n\ge1}\binom{K_Sn}{n-1}(be^{\lambda_C})^n,\qquad
+\kappa_C:=8P_v\sum_{n\ge1}n\binom{K_Sn}{n-1}(be^{\lambda_C})^n,\\
+\eta_T:=8\sum_{k\ge4}N^v_k\,e^{\lambda_Tk}\frac{a^k}{1-a^k},\qquad
+\nu:=2\sum_{k\ge4}kN^v_k\,e^{\lambda_Tk}a^{k-4},\qquad\delta:=\kappa_C\,\nu,
 \end{gather*}
-and suppose $\eta_C\le\lambda_T$ and $4\eta_T\le\lambda_C$ (all series convergent). Put $\delta:=4D_e\,\kappa_C\,\nu$. Then for $A,B$ as above there is
-$C_{A,B}$, independent of $t$ and $L_0$, with
+and suppose that the four series converge, $\eta_C\le\lambda_T$, $\eta_T\le\lambda_C$ and $a^4(1+\delta)<1$. Then for every $\delta'>\delta$ with
+$a^4(1+\delta')\le1$ there is $C_{A,B}$, independent of $t$ and $L_0$, with
 \[
-\bigl|\Cov_{\mu_{\Lambda,\beta}}(A,B)\bigr|\le C_{A,B}\bigl(a^4(1+\delta)\bigr)^t+\frac{2\norm A_\infty\norm B_\infty c^{|S|}}{1-\hat q}\,\hat q^{\,4L_0}.
+\bigl|\Cov_{\mu_{\Lambda,\beta}}(A,B)\bigr|\le C_{A,B}\bigl(a^4(1+\delta')\bigr)^t+\frac{2\norm A_\infty\norm B_\infty c^{|S|}}{1-\hat q}\,\hat q^{\,4L_0}.
 \]
-Consequently the gaps $m(\mu_\beta)$ and $m_{\Lambda_s}(\beta)$ (the latter for spatial lattices with all sides $\ge4$) are at least
+Consequently $m_{\Lambda_s}(\beta)\ge4\log(1/u_*)-8(K+1)\theta_5-\log(1+\delta)$, with $\delta$ and the hypotheses taken for the spatial lattice
+$\Lambda_s$; and
 \[
-4\log(1/u_*)-8(K+1)\theta-\log(1+\delta).
-\] As $\beta\downarrow0$ the hypotheses hold, with $\lambda_T=O(\beta)$ and $\lambda_C=O(\beta^4)$, and
-$\delta\le256\,e\,(d-2)(4d-5)^2(2d-3)\cdot4\beta\,(1+O(\beta))$.
+m(\mu_\beta)\ \ge\ 4\log\frac1{u_*}-8(K+1)\theta_5-\log(1+\delta_\infty),
+\]
+where $\delta_\infty$, and the hypotheses, are taken with $N^v_4=P_v$, $N^v_5=0$ and $N^v_k=(d-1)\binom{(4d-6)k}{k-1}$ for $k\ge6$ (which bound the
+counts when all spatial sides are $\ge6$, Lemma~\ref{mg:lem:smallfronts}). As $\beta\downarrow0$ the hypotheses hold, with $\lambda_T=O(\beta)$ and
+$\lambda_C=O(\beta^4)$, and $\delta=64P_vN^v_4\gamma_g(1+O(\beta))$; if $\rho$ has no trivial summand, $\delta_\infty\le128P_v^2\beta(1+O(\beta))$.
 \end{theorem}
 
 \begin{proof}
 As in the proof of Theorem~\ref{mg:thm:sharp}, $2\Cov(A,B)=\sum_X\Phi_F(X)r_X^2$ over the sets $X\in\cX_S$ without free links outside $S$ that have a
 component meeting $\cP_{S_A}$ and $\cP_{S_B}$. Those $X$ with a temporal plaquette in every layer have $|X|\ge4L_0$ (Lemma~\ref{mg:lem:layer}), and the
-computation in the proof of Theorem~\ref{mg:thm:finite}, with $\hat q$ in place of $q$, bounds their contribution by the second term. For the other
-$X$, Lemma~\ref{mg:lem:transfer} (with $m(X)=0$), $r_X^2\le e^{2\theta J_S}e^{2\theta(K+1)|X|}$ (\IIIlab{Proposition}{al:prop:remove}) and
-Lemma~\ref{mg:lem:fronts}(v) give
+computation in the proof of Theorem~\ref{mg:thm:finite}, with $\hat q$ in place of $q$ (as in the proof of Theorem~\ref{mg:thm:sharp}), bounds their
+contribution by the second term. For the other $X$, Lemma~\ref{mg:lem:transfer} (with $m(X)=0$), $r_X^2\le e^{2\theta_5J_S}e^{2\theta_5(K+1)|X|}$
+(Lemma~\ref{mg:lem:closed} and $|\overline X|\le(K+1)|X|+J_S$) and Lemma~\ref{mg:lem:fronts}(v) give
 \[
-|\Phi_F(X)|r_X^2\le4\norm A_\infty\norm B_\infty e^{2\theta J_S}\,W(X),\qquad W(X):=\prod_\sigma a^{|\sigma|\ell(\sigma)}\prod_Cb^{|C|}.
+|\Phi_F(X)|r_X^2\le4\norm A_\infty\norm B_\infty e^{2\theta_5J_S}\,W(X),\qquad W(X):=\prod_\sigma a^{|\sigma|\ell(\sigma)}\prod_Cb^{|C|}.
 \]
-Let $z:=1/(a^4(1+\delta))\ge1$. For each such $X$ choose a path $\pi(X)$ in $\mathcal I(X)$ from $S_A$ to $S_B$ of minimal length
-(Lemma~\ref{mg:lem:incidence}(ii)) and a spanning forest $\mathcal F(X)$ of $\mathcal I(X)$ each of whose trees contains exactly one vertex of $\pi(X)$ (possible
-by Lemma~\ref{mg:lem:incidence}(ii)). By Lemma~\ref{mg:lem:incidence}(iii), $z^t\le z^{\sum_{\sigma\in\pi(X)}\ell(\sigma)}$, so
+Fix $\delta'$ as in the statement and put $z:=1/(a^4(1+\delta'))\ge1$. For each such $X$ choose a path $\pi(X)$ in $\mathcal I(X)$ from $S_A$ to $S_B$ of
+minimal length (Lemma~\ref{mg:lem:incidence}(ii)) and a spanning forest $\mathcal F(X)$ of $\mathcal I(X)$ each of whose trees contains exactly one vertex of
+$\pi(X)$ (possible by Lemma~\ref{mg:lem:incidence}(ii)). By Lemma~\ref{mg:lem:incidence}(iii), $z^t\le z^{\sum_{\sigma\in\pi(X)}\ell(\sigma)}$, so
 \[
 z^tW(X)\le\prod_{\sigma\in\pi(X)}\bigl(za^{|\sigma|}\bigr)^{\ell(\sigma)}\prod_{\sigma\notin\pi(X)}a^{|\sigma|\ell(\sigma)}\prod_Cb^{|C|} .
 \]
@@ -1161,53 +1242,119 @@ $\prod_{v\in\pi}w_\pi(v)\Psi(v)$. Here $w_\pi(\sigma)=(za^{|\sigma|})^{\ell(\sig
 Lemma~\ref{mg:lem:treesums} with $w(\sigma)=a^{|\sigma|\ell(\sigma)}$, $w(C)=b^{|C|}$ and children given by Definition~\ref{mg:def:incidence} (supports
 excluded).
 
-\emph{Decorations.} Let $\Lambda(C):=\lambda_C|C|$, $\Lambda(\sigma):=\lambda_T|\sigma|$, and $\Lambda(S_A):=|S_A|(\lambda_C/4+\lambda_T')$ with
-$\lambda_T':=2(d-2)e\sum_n(eK_S)^{n-1}(be^{\lambda_C})^n$, and likewise for $S_B$. By Lemma~\ref{mg:lem:localcounts}: for a cluster,
-$\sum_\sigma a^{|\sigma|\ell(\sigma)}e^{\lambda_T|\sigma|}\le2D_e|E(C)|\sum_kN_ke^{\lambda_Tk}\sum_{\ell\ge1}a^{k\ell}=|E(C)|\eta_T\le\lambda_C|C|$; for a segment,
-$\sum_Cb^{|C|}e^{\lambda_C|C|}\le|\sigma|\eta_C\le\lambda_T|\sigma|$; for $S_A$ the two kinds of children give at most $|S_A|\eta_T+|S_A|\lambda'_T\le\Lambda(S_A)$. By
-Lemma~\ref{mg:lem:treesums}, $\Psi\le e^\Lambda$.
+\emph{Decorations.} Let $h(C):=\lambda_C|C|$, $h(\sigma):=\lambda_T|\sigma|$, and $h(S_A):=|S_A|(\lambda_T'+\eta_T/2)$ with
+$\lambda_T':=2(d-2)\sum_n\binom{K_Sn}{n-1}(be^{\lambda_C})^n$, and likewise for $S_B$. By Lemma~\ref{mg:lem:localcounts}: for a cluster $C$,
+$\sum_\sigma a^{|\sigma|\ell(\sigma)}e^{\lambda_T|\sigma|}\le2|V(E(C))|\sum_kN^v_ke^{\lambda_Tk}\sum_{\ell\ge1}a^{k\ell}\le|C|\eta_T\le\lambda_C|C|$; for a segment $\sigma$,
+$\sum_Cb^{|C|}e^{\lambda_C|C|}\le|\sigma|\eta_C\le\lambda_T|\sigma|$; for $S_A$, the clusters contribute at most $|S_A|\lambda'_T$ and the segments at most
+$2|V(S_A)|\sum_kN^v_ke^{\lambda_Tk}a^k/(1-a^k)\le|S_A|\eta_T/2$. By Lemma~\ref{mg:lem:treesums}, $\Psi\le e^h$.
 
-\emph{The path.} Since $za^4=1/(1+\delta)$, $\sum_{\ell\ge1}(za^k)^\ell=za^k/(1-za^k)\le a^{k-4}/\delta$ for $k\ge4$. A minimal path has the form
-$S_A$, possibly a cluster at slice $0$, then $\sigma_1,C_1,\sigma_2,\dots,C_{r-1},\sigma_r$ (clusters are not joined to clusters), possibly a cluster at slice $t$,
-and $S_B$. Give each segment of the path the extra weight $|\sigma|$. Given $\sigma_i$, by Lemma~\ref{mg:lem:localcounts}(ii),(iii) the clusters $C_i$ joined to it,
-weighted by $b^{|C_i|}e^{\lambda_C|C_i|}|E(C_i)|$, sum to at most $|\sigma_i|\kappa_C$; given $C_i$, by Lemma~\ref{mg:lem:localcounts}(i) the segments
-$\sigma_{i+1}$ joined to it, weighted by $|\sigma_{i+1}|w_\pi(\sigma_{i+1})e^{\lambda_T|\sigma_{i+1}|}$, sum to at most
-$2D_e|E(C_i)|\sum_kkN_ke^{\lambda_Tk}a^{k-4}/\delta=2D_e|E(C_i)|\nu/\delta$. So each step from $\sigma_i$ to $\sigma_{i+1}$ multiplies the sum by at most
-$\kappa_C\cdot2D_e\nu/\delta=\frac12$. The first segment (joined to $S_A$ or to a cluster at slice $0$ joined to $S_A$), the possible cluster before $S_B$ and the
-decorations of $S_A$ and $S_B$ contribute a factor $C_0$ depending only on $|S_A|,|S_B|,d,\beta$ and $\delta$. Hence
-$z^t\sum_XW(X)\le C_0\sum_{r\ge1}2^{-(r-1)}=2C_0$, i.e.\ $\sum_XW(X)\le2C_0(a^4(1+\delta))^t$, which is the covariance bound with
-$C_{A,B}=4C_0\norm A_\infty\norm B_\infty e^{2\theta J_S}$.
+\emph{The path.} Since $za^4=1/(1+\delta')$ and $a\le1$, $\sum_{\ell\ge1}(za^k)^\ell=za^k/(1-za^k)\le a^{k-4}/\delta'$ for $k\ge4$. Hence, by
+Lemma~\ref{mg:lem:localcounts}(i), for a marker $\mathfrak m$ the segments $\sigma$ joined to $\mathfrak m$, weighted by $|\sigma|w_\pi(\sigma)e^{h(\sigma)}$, sum
+to at most $|V(E(\mathfrak m))|\nu/\delta'$; and by Lemma~\ref{mg:lem:localcounts}(ii),(iii), for a segment $\sigma$ the clusters $C$ joined to $\sigma$,
+weighted by $|V(E(C))|b^{|C|}e^{h(C)}$, sum to at most $|\sigma|\kappa_C$. A minimal path has the form $S_A$, possibly a cluster $C_0$ at slice $0$, then
+$\sigma_1,C_1,\sigma_2,\dots,C_{r-1},\sigma_r$ (clusters are not joined to clusters), possibly a cluster $C_r$ at slice $t$, and $S_B$. For a segment $\sigma$ let
+$R(\sigma)$ be the sum, over the possible continuations of a path after $\sigma$ (namely $S_B$; or $C,S_B$; or $C,\sigma'$ followed by a continuation of
+$\sigma'$), of the product of $w_\pi(v)e^{h(v)}$ over the vertices $v$ of the continuation. Then
+\[
+R(\sigma)\le e^{h(S_B)}\bigl(1+|\sigma|\eta_C\bigr)+\sum_{C\sim\sigma}b^{|C|}e^{h(C)}\sum_{\sigma'\sim C}w_\pi(\sigma')e^{h(\sigma')}R(\sigma'),
+\]
+and by induction on the length of the continuations $R(\sigma)\le M|\sigma|$ with $M:=e^{h(S_B)}(1+\eta_C)/(1-\delta/\delta')$: the double sum is at most
+$M\sum_{C\sim\sigma}b^{|C|}e^{h(C)}|V(E(C))|\nu/\delta'\le M|\sigma|\kappa_C\nu/\delta'=(\delta/\delta')M|\sigma|$, and $1+|\sigma|\eta_C\le(1+\eta_C)|\sigma|$. The beginning of the
+path is treated in the same way:
+\[
+z^t\sum_XW(X)\le e^{h(S_A)}M\Bigl(|V(S_A)|+\sum_{C_0}b^{|C_0|}e^{h(C_0)}|V(E(C_0))|\Bigr)\frac\nu{\delta'}=:C_0<\infty,
+\]
+the sum over the clusters $C_0$ at slice $0$ containing an edge of $S_A$, which is at most $8(d-2)|S_A|\sum_nn\binom{K_Sn}{n-1}(be^{\lambda_C})^n$. Hence
+$\sum_XW(X)\le C_0(a^4(1+\delta'))^t$, which is the covariance bound with $C_{A,B}=2C_0\norm A_\infty\norm B_\infty e^{2\theta_5J_S}$.
 
-\emph{Gaps.} The second term tends to $0$ as $L_0\to\infty$; the arguments of Theorem~\ref{mg:thm:sharp}(i),(ii) then give $m\ge4\log(1/a)-\log(1+\delta)$,
-and $4\log(1/a)=4\log(1/u_*)-8(K+1)\theta$.
+\emph{Gaps.} Let $A$ be bounded, measurable and gauge invariant on $\Omega_s$. Applying the covariance bound to the real and imaginary parts of
+$\overline A(t)$ and $A(0)$, letting $L_0\to\infty$ at fixed $t$ (the second term tends to $0$) and using \Fref{Theorem}{Ground-state expectations}{thm:gs},
+we get $|\ip\Omega{\hat A^*e^{-tH}\hat A\Omega}-|\langle A\rangle_\nu|^2|\le C_A(a^4(1+\delta'))^t$ for all $t\ge0$, with $C_A$ independent of $t$
+($t=0$ is trivial), hence $m_{\Lambda_s}(\beta)\ge-\log(a^4(1+\delta'))$ by \Fref{Theorem}{Gap $\Leftrightarrow$ clustering in time}{thm:gapclust}(ii).
+(The bound is not uniform in $L_0$ for $t$ up to $L_0/2$, as \Flab{Corollary}{cor:gapfromcorr} would require, unless $\beta$ is small: near $\beta_0(d)$
+the term $\hat q^{4L_0}$ decays more slowly than $(a^4(1+\delta'))^{L_0/2}$.) For $m(\mu_\beta)$ argue as in the proof of Theorem~\ref{mg:thm:sharp}(ii), with $q_u^{4t}$ replaced by $(a^4(1+\delta'))^t$: the
+infinite-volume covariance is the limit over periodic lattices with all sides tending to infinity, on which (sides $\ge6$) the counts are bounded as in the
+definition of $\delta_\infty$, so the covariance bound holds with any $\delta'>\delta_\infty$ and the second term vanishes in the limit. Finally let
+$\delta'\downarrow\delta$ (resp.\ $\delta_\infty$), and note $4\log(1/a)=4\log(1/u_*)-8(K+1)\theta_5$.
 
-\emph{Small $\beta$.} Here $a=O(\beta)$ and $b=4\beta+O(\beta^2)$. Take $\lambda_T:=\eta_C|_{\lambda_C=1}=O(\beta)$ and then $\lambda_C:=\max(4\eta_T,\beta^4)\le1$;
-since $\eta_C$ increases with $\lambda_C$, both conditions hold, $\lambda_C=O(\beta^4)$, and $\delta=4D_e\cdot16(d-2)D_e\,e\,b\cdot4N_4(1+O(\beta))$ with
-$N_4\le2d-3$ (Lemma~\ref{mg:lem:localcounts}(iii)).
+\emph{Small $\beta$.} Here $a,b=O(\beta)$. Take $\lambda_T:=\eta_C|_{\lambda_C=1}=O(\beta)$ and then $\lambda_C:=\max(\eta_T,\beta^4)\le1$; since $\eta_C$
+increases with $\lambda_C$, both conditions hold, $\lambda_C=O(\beta^4)$ (as $\eta_T=O(a^4)$), $\kappa_C=8P_vb(1+O(\beta))$, $\nu=8N^v_4(1+O(\beta))$, and
+$\delta=64P_vN^v_4\gamma_g(1+O(\beta))$, $a^4(1+\delta)\to0$. If $\rho$ has no trivial summand, $\gamma_g\le\gamma_2=2\beta+O(\beta^2)$, and $N^v_4=P_v$ in
+$\delta_\infty$.
 \end{proof}
 
-\begin{remark}[Numbers]\label{mg:rem:fronts}
-For $SU(2)$, with $\lambda_C,\lambda_T$ chosen by iterating the two conditions and $N_k$ bounded by Lemma~\ref{mg:lem:localcounts}(iii), the lower bound
-$4\log(1/u)-8(K+1)\theta-\log(1+\delta)$ of Theorem~\ref{mg:thm:fronts} lies below $4\log(1/u)$ by $0.30$, $1.61$ and $4.92$ at $\beta=10^{-7}$, $10^{-6}$ and
-$10^{-5}$ ($d=4$), and by $0.04$, $0.37$ and $2.02$ ($d=3$), against $16.0$ and $13.9$ for Theorem~\ref{mg:thm:sharp}; $\delta/\beta\to3.4\cdot10^6$ ($d=4$) and
-$4.1\cdot10^5$ ($d=3$). Near $\beta_0(d)$ the crude decoration counting makes Theorem~\ref{mg:thm:fronts} weaker than Theorem~\ref{mg:thm:sharp} (for $d=4$
-its hypotheses fail at $\beta_0(4)$), and both bounds hold, so the larger one applies. The constants are far from optimal; what matters is that the
-loss tends to $0$ with $\beta$. These checks are in \texttt{theory/checks/lower-bound/}, together with a test of Lemmas~\ref{mg:lem:fronts}
-and~\ref{mg:lem:incidence} on $400$ random sets $X$ (unions and sums of tubes and cube boundaries) on a periodic lattice $8\times5\times5$, and an
-enumeration of the constants $D_e$, $N_k$ and $K_S$.
+\begin{lemma}[The hypotheses on the whole range]\label{mg:lem:frontsrange}
+For every $d\ge3$ and $0<\beta<\beta_0(d)$, every $G$ and $\rho$, and every spatial lattice with all sides $\ge4$, the hypotheses of
+Theorem~\ref{mg:thm:fronts} hold with $\lambda_C=\lambda_T=\frac1{10}$, both for $\delta$ (with the bounds of Lemma~\ref{mg:lem:smallfronts} for $N^v_k$) and
+for $\delta_\infty$; moreover $\eta_C<0.023$ and $\eta_T<10^{-9}$.
+\end{lemma}
+
+\begin{proof}
+The series increase with $a$, $b$ and the $N^v_k$, and we use the largest bounds for the latter, $N^v_4\le(d-1)(2d-3)$, $N^v_5\le d-1$. Since $u_*\le\epsilon$
+and $\gamma_g\le e^{4\beta}-1=\epsilon(2+\epsilon)$, $a\le\bar a:=e^{2(K+1)\theta_5}\epsilon$ and $b\le\bar b:=e^{2(K+1)\theta_5}\epsilon(2+\epsilon)$, which increase with
+$\beta$; so it suffices to bound the series at $\beta=\beta_0(d)$, where $\epsilon=\epsilon_0:=1/(e^2K(K+2))$ and $x=1/(K+2)$. Then
+$2(K+1)\theta_5\le2(K+1)x^5/(1-x)=2(K+2)^{-4}<6\cdot10^{-5}$, so $\bar a\le1.0001\,\epsilon_0$ and $y:=\bar be^{1/10}\le2.212\,\epsilon_0\le0.3/(K(K+2))$. We write
+$K=8d-12\ge12$, so that $K_S=K-8$, $4d-6=K/2$, $2P_v=(K^2-16)/16$ and $(d-1)(2d-3)=K(K+4)/32$, and use $\binom{Jn}{n-1}\le e(eJ)^{n-1}$ for $n\ge2$
+(from $\binom mj\le(em/j)^j$). With $w:=eK_Sy\le0.82/(K+2)\le0.06$,
+\[
+\eta_C\le2P_vy\Bigl(1+\frac{ew}{1-w}\Bigr)\le\frac{K^2-16}{16}\cdot\frac{0.3}{K(K+2)}\cdot1.18<0.023 .
+\]
+With $r:=e^{1.1}(K/2)\bar a\le0.21/(K+2)\le0.015$, the terms $k\ge6$ of $\eta_T$ are at most $8(d-1)e^{1.1}\bar a\sum_{k\ge6}r^{k-1}<10^{-10}$, and the terms
+$k=4,5$ at most $8\frac{K(K+4)}{32}e^{0.4}\bar a^4(1+10^{-6})+8(d-1)e^{0.5}\bar a^5<10^{-10}$, using $\bar a\le1.0001/(e^2K(K+2))\le8.1\cdot10^{-4}$; so
+$\eta_T<10^{-9}$. All series converge ($w,r<1$). Finally $\kappa_C\le8P_vy\bigl(1+e((1-w)^{-2}-1)\bigr)<0.11$ and, bounding every $N^v_k$ by
+$(d-1)e(eK/2)^{k-1}$, $\bar a^4\nu\le2(d-1)e^{1.1}\bar a\sum_{k\ge4}kr^{k-1}<10^{-6}$; so $a^4(1+\delta)\le\bar a^4+0.11\,\bar a^4\nu<10^{-6}$.
+\end{proof}
+
+\begin{remark}[Numbers, the first version, and checks]\label{mg:rem:fronts}
+(i) For $SU(2)$ ($\rho$ has no trivial summand and $u_*=u$, computed exactly), with $\lambda_C,\lambda_T$ the smallest solution of the two conditions
+(obtained by iterating them from $\lambda_C=0$), the lower bound of Theorem~\ref{mg:thm:fronts} for $m(\mu_\beta)$ lies below $4\log(1/u)$ by
+$0.0018$, $0.018$, $0.17$, $0.90$ and $1.38$ at $\beta=10^{-7}$, $10^{-6}$, $10^{-5}$, $\beta_0(4)/2$ and $\beta_0(4)$ for $d=4$, and by $0.0002$, $0.0020$,
+$0.020$, $0.35$ and $0.62$ at $\beta=10^{-7}$, $10^{-6}$, $10^{-5}$, $\beta_0(3)/2$ and $\beta_0(3)$ for $d=3$; the loss increases with $\beta$. For the
+finite-volume gap on spatial lattices with all sides $\ge4$ the loss is at most $1.55$ ($d=4$) and $0.83$ ($d=3$). With the upper bound
+(Corollary~\ref{mg:cor:twosided}; $D\le1.4\cdot10^{-3}$ and $4.8\cdot10^{-3}$, Remark~\ref{mg:rem:threshold}), for all $0<\beta<\beta_0(d)$
+\begin{gather*}
+-1.38\le m(\mu_\beta)-4\log\frac1{u(\beta)}\le0.0014\quad(d=4),\\
+-0.63\le m(\mu_\beta)-4\log\frac1{u(\beta)}\le0.005\quad(d=3)
+\end{gather*}
+(Numerical: an evaluation of the explicit constants, \texttt{python3} with \texttt{mpmath}). Theorem~\ref{mg:thm:sharp} loses $4\log(eK)$, i.e.\ $16.0$ and
+$13.9$, throughout. As $\beta\downarrow0$, $\delta_\infty/\beta\to128P_v^2$, which is $18432$ for $d=4$ and $2048$ for $d=3$.
+
+(ii) The first version of this section (commit \texttt{1766bb3}) counted the fronts and clusters meeting a marker or a front through an edge rather than
+through a vertex, bounded $N_k$ by $e(e(4d-6))^{k-1}$ for every $k$, and used $e^{4\beta}-1$ and $\theta$ in place of $\gamma_g$ and $\theta_5$; its
+$\delta/\beta$ tended to $3.4\cdot10^6$ ($d=4$) and $4.1\cdot10^5$ ($d=3$), and near $\beta_0(d)$ it was weaker than Theorem~\ref{mg:thm:sharp}. That version
+said that its hypotheses fail at $\beta_0(4)$; an independent referee found this to be false (the iteration had been started at $\lambda_C=1$ instead of
+$0$): they hold, with a loss of $27.7$.
+
+(iii) The constants are still far from optimal. The dominant term of $\delta$ comes from clusters of one plaquette at an end of a segment with a
+four-edge front; most of these are impossible, since such a plaquette at slice $s$ needs each of its links in $T_{s-1}\cup T_s$. For the family of
+tubes whose fronts are boundaries of plaquettes, with at most three spatial plaquettes per slice, an exact transfer-matrix sum (first done by the
+referee) gives the growth factor $a^4(1+b)$ per layer up to $O(b^2)$, i.e.\ an effective $\delta$ of about $b\approx2\beta$ rather than $128P_v^2\beta$
+(Numerical).
+
+(iv) Checks (a compass): the constants of (i), and those of Lemma~\ref{mg:lem:frontsrange} for $3\le d\le12$; an exhaustive enumeration of the
+fronts with at most six edges through a vertex on all spatial tori with sides in $\{4,\dots,7\}$ ($d=3,4$), which confirms
+Lemma~\ref{mg:lem:smallfronts} and the value of $P_v$, and gives also $N^v_6=12\binom{d-1}2+96\binom{d-1}3+18(d-2)n_4+n_6$; the transfer-matrix sum of
+(iii); a test of Lemmas~\ref{mg:lem:fronts} and~\ref{mg:lem:incidence} on $400$ random sets $X$ on the periodic lattice $8\times5\times5$ (the referee's
+independent test covered $4513$ pairs $(X,s_*)$ on five lattices); and the enumeration of $K_S$ and $2(d-2)$. The scripts are in
+\texttt{theory/checks/lower-bound/}.
 \end{remark}
 
-\begin{corollary}[The gap is $4\log(1/u)+O(\beta)$]\label{mg:cor:sharpconst}
-Let $\rho$ be irreducible and non-trivial with $N\le49$, and $N^4\le1200\tau_0^2$ for the upper bound. Then for $0<\beta<\beta_0(d)$
+\begin{corollary}[The gap is $4\log(1/u)+O(\beta)$, on the whole range]\label{mg:cor:sharpconst}
+Let $G$ be metrisable and $\rho$ irreducible and non-trivial with $N\le49$. Then for every $0<\beta<\beta_0(d)$
 \[
--8(K+1)\theta(\beta)-\log(1+\delta(\beta))\ \le\ m(\mu_\beta)-4\log\frac1{u(\beta)}\ \le\ D(\beta),
+-8(K+1)\theta_5(\beta)-\log\bigl(1+\delta_\infty(\beta)\bigr)\ \le\ m(\mu_\beta)-4\log\frac1{u(\beta)},
 \]
-whenever the conditions of Theorem~\ref{mg:thm:fronts} hold; in particular $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$ as $\beta\downarrow0$, and the same
-holds for $m_{\Lambda_s}(\beta)$, uniformly in the spatial lattices with all sides $\ge4$.
+with $\delta_\infty$ as in Theorem~\ref{mg:thm:fronts} for any $\lambda_C,\lambda_T$ satisfying its hypotheses (for instance $\frac1{10}$); the same holds for
+$m_{\Lambda_s}(\beta)$, with $\delta$ in place of $\delta_\infty$, on every periodic spatial lattice with all sides $\ge4$. If $N^4\le1200\tau_0^2$, then also
+$m(\mu_\beta)-4\log(1/u(\beta))\le D(\beta)$. As $\beta\downarrow0$, $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$, and the same holds for $m_{\Lambda_s}(\beta)$,
+uniformly in the spatial lattices with all sides $\ge4$.
 \end{corollary}
 
 \begin{proof}
-Theorem~\ref{mg:thm:fronts}, Corollary~\ref{mg:cor:window} ($u_*=u$) and Corollary~\ref{mg:cor:twosided}.
+Theorem~\ref{mg:thm:fronts} and Lemma~\ref{mg:lem:frontsrange}, with $u_*=u$ (Corollary~\ref{mg:cor:window}). The upper bound is
+Corollary~\ref{mg:cor:twosided} when $N^4\le1200\tau_0^2$, and for small $\beta$ the last sentence of Theorem~\ref{mg:thm:upper} (which has no condition on
+$N$; for the finite-volume gaps, Theorem~\ref{mg:thm:upper}(ii)). As $\beta\downarrow0$, $\theta_5=O(\beta^5)$, $\delta,\delta_\infty=O(\beta)$
+(Theorem~\ref{mg:thm:fronts}) and $D(\beta)=O(\beta)$.
 \end{proof}
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
 
@@ -1248,7 +1395,8 @@ any larger pair of separations could be used instead. The additive constants of 
 ($-4\log(4e^3K)$ versus $+4\log\frac{2N^2}{1+\iota}$); the strong-coupling expansion predicts $m=4\log(1/u)+O(u)$, i.e.\ the upper one. (ii) The constant $-4\log(4e^3K)$ of Theorem~\ref{mg:thm:main} reflects the crude counting of \cite{III} and the sup-norm bound
 $\norm{g_p}_\infty\le e^{4\beta}-1$ on every plaquette. Section~\ref{mg:sec:sharp} removes the second loss for the temporal plaquettes, which
 gives the constant $-4\log(eK)$ relative to $4\log(1/u)$ as $\beta\downarrow0$ (Corollary~\ref{mg:cor:window}); counting by fronts
-(Section~\ref{mg:sec:fronts}) removes the counting loss as well, so that the lower bound is $4\log(1/u)-O(\beta)$. (iii) The hypothesis $L_i\ge4$ cannot be dropped from the sharper finite-volume bounds: if a spatial side equals $3$,
+(Section~\ref{mg:sec:fronts}) removes the counting loss as well, so that the lower bound is $4\log(1/u_*)-O(\beta)$, i.e.\ $4\log(1/u)-O(\beta)$
+when $u_*=u$. (iii) The hypothesis $L_i\ge4$ cannot be dropped from the sharper finite-volume bounds: if a spatial side equals $3$,
 Theorem~\ref{mg:thm:finite} holds only with $g=3$, and closed strips of three plaquettes per layer around that side (torelons, carrying the
 flux of a Polyakov loop) give states of energy $\approx3\log(1/u(\beta))$. For $\mathbb Z_2$ in $d=3$ on a $3\times3$ spatial torus the transfer
 matrix preserves the winding class, and a high-precision computation of the top eigenvalues of the sectors of winding $(0,0)$ and $(1,0)$ gives a
@@ -1277,12 +1425,14 @@ Positivity: $\Cov(A(0),A(1))$ dominates the expectation in which the four sides 
 Cube identity $\sum_{r\ne0}\hat a_{0,r}\hat a_{1,r}u_r^4$; five-plaquette lemma & Lem.~\ref{mg:lem:char}, \ref{mg:lem:five} & Theorem\\
 Matching upper bound $m\le4\log(1/u(\beta))+D(\beta)$, $D=O(\beta)$ (infinite volume; finite volume, sides $\ge3$): for all $\beta<\beta_0(d)$ if $N^4\le1200\tau_0^2$ ($D<0.32$ if $N\le3$), for small $\beta$ in general & Thm.~\ref{mg:thm:upper}, Lem.~\ref{mg:lem:range} & Theorem\\
 $4\log(1/q)\le m(\mu_\beta)\le4\log(1/u)+D$ for all $\beta<\beta_0(d)$ ($N^4\le1200\tau_0^2$; also finite volume, sides $\ge4$); $m=4\log(1/\beta)+O(1)$ & Cor.~\ref{mg:cor:twosided} & Theorem\\
+Ratio bound with $\theta_5=x^5/(1-x)$ (only closed polymers count); $\norm{g_p}_\infty\le e^{2\beta}-1+\beta^2e^\beta$ & Lem.~\ref{mg:lem:closed}, \ref{mg:lem:dup}(d) & Theorem\\
 Transfer bound: the temporal plaquettes of all but one layer weigh $u_*=\max_{r\ne0}u_r$, not $e^{4\beta}-1$ & Lem.~\ref{mg:lem:layerop}, \ref{mg:lem:transfer} & Theorem\\
 $m\ge4\log(1/q_u)$ for all $\beta<\beta_0(d)$ (infinite volume; finite volume, sides $\ge4$), $=4\log(1/u)-4\log(eK)-O(\beta)$ for $\dim\rho\le49$; window $4\log(eK)+O(\beta)$ when also $N^4\le1200\tau_0^2$ & Thm.~\ref{mg:thm:sharp}, Cor.~\ref{mg:cor:window} & Theorem\\
-Fronts and segments; incidence graph; local counts; tree sums & Lem.~\ref{mg:lem:fronts}--\ref{mg:lem:treesums} & Theorem\\
-Sharp constant: $m\ge4\log(1/u_*)-8(K+1)\theta-\log(1+\delta)$, $\delta=O(\beta)$; hence $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$ (also finite volume, sides $\ge4$) & Thm.~\ref{mg:thm:fronts}, Cor.~\ref{mg:cor:sharpconst} & Theorem\\
+Fronts and segments; incidence graph; fronts with $4$ and $5$ edges; local counts at vertices; tree sums & Lem.~\ref{mg:lem:fronts}--\ref{mg:lem:treesums} & Theorem\\
+Sharp constant on the whole range: $m\ge4\log(1/u_*)-8(K+1)\theta_5-\log(1+\delta)$, $\delta=O(\beta)$, hypotheses verified for all $\beta<\beta_0(d)$; $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$ (also finite volume, sides $\ge4$) & Thm.~\ref{mg:thm:fronts}, Lem.~\ref{mg:lem:frontsrange}, Cor.~\ref{mg:cor:sharpconst} & Theorem\\
+$SU(2)$, all $\beta<\beta_0(d)$: $-1.38\le m-4\log(1/u)\le0.0014$ ($d=4$), $-0.63\le m-4\log(1/u)\le0.005$ ($d=3$) & Rem.~\ref{mg:rem:fronts} & Numerical\\
 Sides $\ge4$ needed for Thm.~\ref{mg:thm:sharp}(i): torelon below the bound on a $3\times3$ torus ($\mathbb Z_2$) & Rem.~\ref{mg:rem:tests}(iii) & Numerical\\
-Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; a lower bound as good as the upper one near $\beta_0(d)$ & Rem.~\ref{mg:rem:fronts} & open\\
+Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the first-order constant (an effective $\delta\approx b\approx2\beta$ for the dominant family, against $128P_v^2\beta$) & Rem.~\ref{mg:rem:fronts} & open\\
 \bottomrule
 \end{tabular}
 \end{center}
