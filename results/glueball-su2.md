@@ -7,11 +7,11 @@ Method: zero-momentum time-slice sums of spatial plaquettes at several APE-smear
 | beta | lattice | meas. (runs) | plaquette | a m_eff(tau=0) | a m_eff(tau=1) | a m_eff(tau=2) | chi(R,R), largest R with <10% error | a Lambda_L (2-loop) | m/Lambda_L (tau=1) |
 |---|---|---|---|---|---|---|---|---|---|
 | 2.3 | 8^3 x 16 | 8000 (2) | 0.60234 +- 0.00006 | 1.351 +- 0.013 | 1.278 +- 0.041 | 1.148 +- 0.112 | 0.1775 +- 0.0067 (R=4) | 5.914e-03 | 216 +- 7 |
-| 2.4 | 12^3 x 24 | 700 (1, partial) | 0.62983 +- 0.00007 | 1.146 +- 0.024 | 1.015 +- 0.050 | 0.941 +- 0.151 | 0.1170 +- 0.0055 (R=4) | 4.600e-03 | 221 +- 11 |
+| 2.4 | 12^3 x 24 | 2000 (1) | 0.62990 +- 0.00004 | 1.114 +- 0.021 | 0.974 +- 0.039 | 0.877 +- 0.095 | 0.1141 +- 0.0041 (R=4) | 4.600e-03 | 212 +- 8 |
 
 Asymptotic scaling test (conjecture G2 in lattice form): if the continuum limit has a mass gap, a*m(beta)/a*Lambda_L(beta) tends to a positive constant as beta grows. The Wilson action is known to approach asymptotic scaling slowly (ratios of physical quantities scale much earlier than either quantity matches the two-loop formula), so moderate drifts of m/Lambda_L at these couplings are expected.
 
-## Runs (session 2, 2026-11-09; container with 4 cores, one chain per core)
+## Runs (sessions 2–3, 2026-11-09/10; container with 4 cores, one chain per core)
 
 ```bash
 cd lattice
@@ -20,11 +20,13 @@ python3 scripts/glueball.py --group su2 --beta 2.3 --shape 16 8 8 8 --ntherm 500
 python3 scripts/glueball.py --group su2 --beta 2.4 --shape 24 12 12 12 --ntherm 400 --nmeas 2000 --nor 4 --levels 0 4 8 12 --maxloop 6 --wloop-every 4 --seed 201 --out ../results/gb_su2_b2.4_12x24_s201.npz
 ```
 
-The two beta = 2.3 chains are complete. The beta = 2.4 row is **partial and preliminary**: a snapshot of the first 700 of
-2000 planned measurements (about 10 s per measurement here); its error bars come from 20 blocks of 35 measurements and may be
-underestimated. The chain checkpoints and can be completed by rerunning the same command (on a cluster: `lattice/slurm/`).
+All three chains are complete. The beta = 2.4 chain (2000 measurements, about 7-10 s each here) was interrupted by two container
+restarts and resumed from its checkpoint both times (`results/logs/gb_su2_b2.4_s201.log`); per-run analysis in
+`results/gb_su2_b2.4_12x24.md` (it supersedes the 700-measurement snapshot `results/gb_su2_b2.4_12x24_partial.md`). A single chain
+with 20 jackknife blocks of 100 measurements: the errors may still be somewhat underestimated.
 
 Reading (Numerical, a compass and not evidence): m/Lambda_L is the same within errors at beta = 2.3 and 2.4 (216 +- 7 and
-221 +- 11), as asymptotic scaling predicts, and the effective masses decrease with tau, as positivity of the transfer matrix
-requires. With the commonly quoted a*sqrt(sigma) ~ 0.37 at beta = 2.3 (verify) this would be m/sqrt(sigma) ~ 3.5, inside
-the range 3.4-3.8 recorded in docs/02 §2.4; the Creutz ratio chi(4,4) over-estimates sigma on these small loops.
+212 +- 8), as asymptotic scaling predicts, and the GEVP effective masses decrease with tau (at beta = 2.4: 1.114, 0.974, 0.877,
+0.753), as positivity of the transfer matrix requires. With the commonly quoted a*sqrt(sigma) ~ 0.37 at beta = 2.3 (verify) this
+would be m/sqrt(sigma) ~ 3.5, inside the range 3.4-3.8 recorded in docs/02 §2.4; the Creutz ratio chi(4,4) over-estimates sigma on
+these small loops.

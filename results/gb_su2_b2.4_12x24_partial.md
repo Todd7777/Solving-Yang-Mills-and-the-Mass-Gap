@@ -1,3 +1,6 @@
+> **Superseded** (2026-11-10) by `results/gb_su2_b2.4_12x24.md`, the analysis of the complete chain (2000 measurements;
+> a*m_eff(tau=1) = 0.974 +- 0.039, m/Lambda_L = 212 +- 8). Kept as the record of the 700-measurement snapshot.
+
 # 0++ glueball, variational analysis: SU2 beta=2.4 lattice 12^3 x 24
 
 - runs pooled: 1 (700 = 700 measurements)
