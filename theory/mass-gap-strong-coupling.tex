@@ -50,7 +50,8 @@
 \date{9 November 2026; revised after an independent referee report, and the matching upper bound added (Section~\ref{mg:sec:upper}), the same day;
 upper bound extended to the whole range $\beta<\beta_0(d)$ (for $\dim\rho\le4$, or $\le5$ if $\rho\cong\bar\rho$) and revised after a second referee
 report, and sharper lower bounds added (Sections~\ref{mg:sec:sharp} and~\ref{mg:sec:fronts}), 10 November 2026; Section~\ref{mg:sec:fronts} revised
-after a referee report, and the lower bound made effective on the whole range, the same day; living document}
+after a referee report, and the lower bound made effective on the whole range, the same day; the first-order constant (Section~\ref{mg:sec:junctions})
+added, 10 November 2026; living document}
 
 \begin{document}
 \maketitle
@@ -85,8 +86,11 @@ $4\log(1/u(\beta))-4\log(eK)-O(\beta)$, so that for these $\rho$ the two bounds 
 the whole range). Counting the connecting surfaces by their fronts (the temporal plaquettes of one time layer, which can change only where a spatial
 plaquette or a support touches them) removes the remaining entropy and gives the sharp constant on the whole range:
 $m(\mu_\beta)\ge4\log(1/u(\beta))-\log(1+\delta(\beta))-O(\beta^5)$ with an explicit $\delta(\beta)=O(\beta)$, so that $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$.
-For $SU(2)$ the two bounds give $-1.38\le m(\mu_\beta)-4\log(1/u(\beta))\le0.0014$ for all $\beta<\beta_0(4)$ in $d=4$, and $-0.63\le
-m(\mu_\beta)-4\log(1/u(\beta))\le0.005$ for all $\beta<\beta_0(3)$ in $d=3$ (a numerical evaluation of the explicit constants).
+Grouping everything that meets at one time slice into a junction, the condition that no link of a connecting surface is free leaves a single
+junction of order $\beta$ through which a front of four plaquettes can pass, the cap; this gives the first-order constant of the method,
+$\delta(\beta)=2\beta(1+O(\beta))$, i.e.\ $m(\mu_\beta)\ge4\log(1/u(\beta))-2\beta+O(\beta^2)$. For $SU(2)$ the two bounds give
+$-5\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le1.4\cdot10^{-3}$ for all $\beta<\beta_0(4)$ in $d=4$, and
+$-1.1\cdot10^{-3}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.9\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$ (a numerical evaluation of the explicit constants).
 The asymptotics
 itself, indeed the full expansion of the glueball mass, is classical (Schor; O'Carroll et al.); what is new here is a self-contained
 proof with explicit constants on the whole range, for general compact $G$ and the infinite-volume theory of Part~II.
@@ -169,8 +173,10 @@ Moreover, for every $0<\beta<\beta_0(d)$, $m(\mu_\beta)\ge4\log(1/u(\beta))-8(K+
 $\theta_5=O(\beta^5)$ and an explicit $\delta_\infty(\beta)=O(\beta)$, and the same holds for $m_{\Lambda_s}(\beta)$ when all spatial sides are $\ge4$, with a
 slightly larger $\delta$ (Theorem~\ref{mg:thm:fronts}, Lemma~\ref{mg:lem:frontsrange}, Corollary~\ref{mg:cor:sharpconst}). So
 $m(\mu_\beta)-4\log(1/u(\beta))$ lies in an interval of length at most $8(K+1)\theta_5+\log(1+\delta_\infty)+D(\beta)$, and
-$m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$ as $\beta\downarrow0$; for $SU(2)$ the length is at most $1.39$ ($d=4$) and $0.63$ ($d=3$) on the whole range
-(Remark~\ref{mg:rem:fronts}; Numerical). The upper bound holds, with a larger explicit bound on $D$, whenever $N\le4$, or
+$m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$ as $\beta\downarrow0$. Grouping by junctions (Theorem~\ref{mg:thm:junctions},
+Corollary~\ref{mg:cor:firstorder}) improves $\delta_\infty$ to $\delta_J=2\beta(1+O(\beta))$: $m(\mu_\beta)\ge4\log(1/u(\beta))-2\beta+O(\beta^2)$; for
+$SU(2)$ the interval has length at most $1.9\cdot10^{-3}$ ($d=4$) and $6\cdot10^{-3}$ ($d=3$) on the whole range (Remark~\ref{mg:rem:junctions};
+Numerical). The upper bound holds, with a larger explicit bound on $D$, whenever $N\le4$, or
 $N=5$ and $\rho\cong\bar\rho$. Without any restriction on $N$, the
 upper bound holds for all sufficiently small $\beta$, so $m(\mu_\beta)=4\log(1/\beta)+O(1)$ as $\beta\downarrow0$.
 \end{theorem}
@@ -215,7 +221,10 @@ spatial plaquette or a support) touches it, so the sum over connecting sets beco
 which an unchanged front of $k$ edges costs $a^k$ per layer, $a=e^{2(K+1)\theta_5}u_*$, and nothing in entropy. A generating function in which only
 the segments of one path carry the weight $z=1/(a^4(1+\delta'))$ then gives $m\ge4\log(1/u_*)-O(\beta)$ ($=4\log(1/u)-O(\beta)$ when $u_*=u$).
 Counting at vertices, with the exact numbers of fronts with four and five edges, a sharper sup norm of $g_p$ and a ratio bound that sees only closed
-polymers (which have at least five plaquettes), makes the constant effective on the whole range.
+polymers (which have at least five plaquettes), makes the constant effective on the whole range. (8) Grouping all markers and fronts that meet at a slice
+into junctions (Section~\ref{mg:sec:junctions}) and splitting the weight of each segment between its two ends, the local form of the no-free-link
+condition shows that the only junction of order $b\approx2\beta$ through which a four-edge front can pass is the cap, a plaquette closing the front at a
+slice where it continues; this gives $\delta=b(1+O(\beta))$, the first-order constant.
 
 \section{The duplicated system}\label{mg:sec:dup}
 
@@ -1334,7 +1343,7 @@ $0$): they hold, with a loss of $27.7$.
 four-edge front; most of these are impossible, since such a plaquette at slice $s$ needs each of its links in $T_{s-1}\cup T_s$. For the family of
 tubes whose fronts are boundaries of plaquettes, with at most three spatial plaquettes per slice, an exact transfer-matrix sum (first done by the
 referee) gives the growth factor $a^4(1+b)$ per layer up to $O(b^2)$, i.e.\ an effective $\delta$ of about $b\approx2\beta$ rather than $128P_v^2\beta$
-(Numerical).
+(Numerical). Section~\ref{mg:sec:junctions} proves $\delta=b(1+O(\beta))$.
 
 (iv) Checks (a compass): the constants of (i), and those of Lemma~\ref{mg:lem:frontsrange} for $3\le d\le12$; an exhaustive enumeration of the
 fronts with at most six edges through a vertex on all spatial tori with sides in $\{4,\dots,7\}$ ($d=3,4$), which confirms
@@ -1361,6 +1370,361 @@ Corollary~\ref{mg:cor:twosided} when $N^4\le1200\tau_0^2$, and for small $\beta$
 $N$; for the finite-volume gaps, Theorem~\ref{mg:thm:upper}(ii)). As $\beta\downarrow0$, $\theta_5=O(\beta^5)$, $\delta,\delta_\infty=O(\beta)$
 (Theorem~\ref{mg:thm:fronts}) and $D(\beta)=O(\beta)$.
 \end{proof}
+\section{The first-order constant: junctions}\label{mg:sec:junctions}
+
+In Theorem~\ref{mg:thm:fronts} the constant $\delta$ is about $2\cdot10^4\beta$ ($d=4$). Its dominant term counts a cluster of one plaquette at an end of a
+segment with a four-edge front, together with any front that touches it, although almost all of these configurations violate the condition that no
+link of $X$ is free (Remark~\ref{mg:rem:fronts}(iii)). In this section all markers and fronts that meet at a slice are grouped into a \emph{junction};
+the path of Section~\ref{mg:sec:fronts} becomes a path of junctions and segments, and the weight of each segment is split between its two end
+junctions. The local form of the no-free-link condition then leaves exactly one junction of order $b$ through which a path can pass: the
+\emph{cap}, one plaquette closing a four-edge front at a slice where the front continues. All other junctions are of order $b^2$, or carry a further
+front and with it a factor $a^2$. The outcome is $\delta=b\,(1+O(\beta))\approx2\beta$ (Theorem~\ref{mg:thm:junctions}), the first-order constant of the
+method, and for $SU(2)$ the lower bound for $m(\mu_\beta)$ lies within $5\cdot10^{-4}$ ($d=4$) and $1.1\cdot10^{-3}$ ($d=3$) of $4\log(1/u)$ on the whole
+range (Remark~\ref{mg:rem:junctions}).
+
+The setting is that of Section~\ref{mg:sec:fronts}; in addition we put $T_v:=4(P_v-1)$, an upper bound for the number of plaquettes of $\Lambda_s$
+other than a given one that share a vertex with it.
+
+\begin{definition}[Junctions]\label{mg:def:junction}
+Let $X$ be as in Definition~\ref{mg:def:fronts} and $s$ a slice. A \emph{front-pair} at slice $s$ is a pair $p=(\varphi,\lambda)$ with
+$\lambda\in\{s-1,s\}$ and $\varphi$ a front of layer $\lambda$ touched by a marker at slice $s$; we write $|p|:=|\varphi|$. Let $H_s$ be the graph whose
+vertices are the markers and the front-pairs at slice $s$, two of them being adjacent when their edge sets ($E(\mathfrak m)$, resp.\ $\varphi$) have a
+common vertex. A \emph{junction} at slice $s$ is a connected component $J$ of $H_s$. We write $M(J)$ and $\Phi(J)$ for its markers and front-pairs,
+$E(J)$ for the union of their edge sets, $E_\mu(J)$ for the union of the fronts of its front-pairs of layer $\mu$, $E_M(J):=\bigcup_{\mathfrak m\in
+M(J)}E(\mathfrak m)$, and $|J|_C$ for the number of plaquettes of the clusters in $M(J)$.
+\end{definition}
+
+\begin{lemma}[Junctions]\label{mg:lem:junction}
+Let $X$ be as in Definition~\ref{mg:def:fronts}.
+\begin{enumerate}[label=(\roman*)]
+\item Every junction contains a marker, and every front-pair is adjacent to a marker of its junction. For every segment $\sigma=(\varphi,[s_1,s_2))$,
+$(\varphi,s_1)$ is a front-pair at slice $s_1$ and $(\varphi,s_2-1)$ one at slice $s_2$, and every front-pair arises in this way from exactly one
+segment. The junctions containing these two front-pairs are the \emph{end junctions} of $\sigma$; they lie at different slices.
+\item If $J$ is a junction at slice $s$ and $e\in E(J)$, then every marker at slice $s$ whose edge set contains $e$ belongs to $J$, and for every
+front $\psi$ of layer $\mu\in\{s-1,s\}$ with $e\in\psi$, $(\psi,\mu)$ is a front-pair and belongs to $J$.
+\item If $J$ contains no support, then for every $e\in E(J)$
+\[
+n_J(e):=[e\in E_{s-1}(J)]+[e\in E_s(J)]+\pi_J(e)\ \ge\ 2,
+\]
+where $\pi_J(e)$ is the number of plaquettes of the clusters of $J$ that contain $e$.
+\item $|X|=\sum_\sigma|\sigma|\,\ell(\sigma)+\sum_J|J|_C$, the sums over the segments and the junctions of $X$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) A front-pair is touched by a marker at its slice, which is adjacent to it. A front $\varphi$ of layer $s$ touched by a marker at slice $s$ lies in a
+segment $(\varphi,[s_1,s_2))$ with $s\in[s_1,s_2)$ (Lemma~\ref{mg:lem:fronts}(iv)); no marker at a slice in $(s_1,s_2)$ touches $\varphi$, so $s=s_1$.
+Likewise a front-pair $(\varphi,s-1)$ is the end of its segment, $s=s_2$. Uniqueness is Lemma~\ref{mg:lem:fronts}(iv), and $s_1<s_2$.
+(ii) A marker whose edge set contains $e$ shares the endpoints of $e$ with the vertex of $J$ whose edge set contains $e$, so it is adjacent to it.
+Let $\psi\ni e$ be a front of layer $\mu$. If $\psi$ is touched by a marker at slice $s$, $(\psi,\mu)$ is a front-pair adjacent to that vertex of $J$.
+Otherwise no marker at slice $s$ contains $e$, so $e\in\varphi$ for some $(\varphi,\nu)\in\Phi(J)$. If $\nu=\mu$, then $\psi=\varphi$, the component of $T_\mu$
+containing $e$; if $\nu\neq\mu$, then $\psi$ is a front of layer $\nu$ as well (Lemma~\ref{mg:lem:fronts}(iii)), so again $\psi=\varphi$. In both cases
+$\psi$ is touched by a marker at slice $s$ after all, a contradiction.
+(iii) If $e\in E(J)$ were in $S_A$ (so $s\equiv0$), $S_A$ would belong to $J$ by (ii); likewise for $S_B$. So the link $e$ of time $s$ is not in $S$, and it
+lies in a plaquette of $X$ (a plaquette of a cluster, or the temporal plaquette based on $e$ in the layer of a front-pair). Hence it lies in at least two
+plaquettes of $X$. These are the temporal plaquettes based on $e$ in layers $s-1$ and $s$, which by (ii) are counted by the first two terms, and the
+spatial plaquettes of time $s$ containing $e$, which lie in clusters containing $e$, hence by (ii) in clusters of $J$.
+(iv) Lemma~\ref{mg:lem:fronts}(v); every cluster lies in exactly one junction.
+\end{proof}
+
+\begin{definition}[Junction graph]\label{mg:def:jgraph}
+For $X$ as in Definition~\ref{mg:def:fronts}, $\mathcal J(X)$ is the bipartite graph whose vertices are the junctions and the segments of $X$, every
+segment being joined to its two end junctions; $J_A$ and $J_B$ are the junctions containing $S_A$ and $S_B$.
+\end{definition}
+
+\begin{lemma}[Connectivity and covering for junctions]\label{mg:lem:jgraph}
+Let $X\in\cX_S$ be as in Definition~\ref{mg:def:fronts}, with a component that contains a plaquette of $\cP_{S_A}$ and one of $\cP_{S_B}$. Then every
+vertex of $\mathcal J(X)$ is joined by a path to $J_A$ or to $J_B$, there is a path from $J_A$ to $J_B$, and every such path
+$J_A=J_0,\sigma_1,J_1,\dots,\sigma_r,J_r=J_B$ satisfies $\sum_i\ell(\sigma_i)\ge t$.
+\end{lemma}
+
+\begin{proof}
+Send a segment of $\mathcal I(X)$ to itself and a marker to its junction. If a segment and a marker are joined in $\mathcal I(X)$, the marker touches
+the front of the segment at an end slice $s$, i.e.\ it is adjacent in $H_s$ to the corresponding front-pair, so the segment is joined to the image of the
+marker; a cluster joined to $S_A$ shares an edge with it, hence lies in $J_A$. So paths of $\mathcal I(X)$ become walks of $\mathcal J(X)$, and
+Lemma~\ref{mg:lem:incidence}(ii) gives the first two statements. The last is proved as Lemma~\ref{mg:lem:incidence}(iii), a junction at slice $s$
+being assigned the point $s$.
+\end{proof}
+
+\emph{Weights.} For a junction $J$ and a segment $\sigma$ put
+\[
+w(J):=b^{|J|_C}\prod_{p\in\Phi(J)}a^{|p|/2},\qquad w(\sigma):=a^{|\sigma|(\ell(\sigma)-1)} .
+\]
+Every segment has exactly two end front-pairs (Lemma~\ref{mg:lem:junction}(i)), so by Lemma~\ref{mg:lem:junction}(iv) the weight $W(X)$ of the proof of
+Theorem~\ref{mg:thm:fronts} factorises as $W(X)=\prod_Jw(J)\prod_\sigma w(\sigma)$.
+
+\begin{lemma}[Fronts with six edges]\label{mg:lem:sixfronts}
+If all sides of $\Lambda_s$ are $\ge4$, every front with six edges is a cycle, and $N^v_6\le(2(d-1))^5/2=16(d-1)^5$.
+\end{lemma}
+
+\begin{proof}
+Let $\varphi$ be a front with six edges. $\Gamma$ has no triangles (proof of Lemma~\ref{mg:lem:smallfronts}), and a graph on four vertices with at
+least five edges contains one, so $|V(\varphi)|\in\{5,6\}$. If $|V(\varphi)|=6$, all degrees are $2$ and $\varphi$ is a cycle. If $|V(\varphi)|=5$, the degrees
+are $(4,2,2,2,2)$ or $(3,3,2,2,2)$. Following the edges at the vertices of degree $\ge3$ through the vertices of degree $2$, in the first case $\varphi$
+is the union of two cycles through the vertex of degree $4$, of lengths $\ge4$ each: too many edges. In the second case it is either two cycles joined
+by a path (at least $4+4+1$ edges) or two vertices $x,y$ joined by three internally disjoint paths of lengths $l_1+l_2+l_3=6$, with $l_i+l_j\ge4$ (no
+cycles of length $\le3$) and at most one $l_i=1$ ($\Gamma$ is simple); so $l_1=l_2=l_3=2$ and $x,y$ have three common neighbours. But a common
+neighbour $z$ of $x\ne y$ gives $y-x\equiv e+e'$ with unit vectors $e=z-x$, $e'=y-z$, and as all sides are $\ge4$ every class $y-x\not\equiv0$ is
+represented by at most two ordered pairs $(e,e')$: by $(e,e')$ and $(e',e)$ if $y-x\equiv e+e'$ with $e\ne\pm e'$, and by $(e,e)$ and $(-e,-e)$ if
+$y-x\equiv2e$ (the second only when the side in that direction is $4$). Hence $\varphi$ is a $6$-cycle. A $6$-cycle through $v$ is traversed by two closed
+walks of length $6$ from $v$, and there are at most $(2(d-1))^5$ such walks.
+\end{proof}
+
+\begin{lemma}[Junctions with two front-pairs]\label{mg:lem:twofront}
+Let $J$ be a junction without support at slice $s$ whose front-pairs are exactly $p=(\varphi,\lambda)$ and $p'=(\varphi',\lambda')$, with $|\varphi|=4$,
+and let $n:=|J|_C$.
+\begin{enumerate}[label=(\roman*)]
+\item If $\lambda\ne\lambda'$, then $\varphi\triangle\varphi'\subseteq E_M(J)$ and $\varphi'\subseteq E_M(J)\cup\varphi$; if $\lambda=\lambda'$, then
+$\varphi\cup\varphi'\subseteq E_M(J)$. Every plaquette of $J$ has at least $5-n$ edges in $\varphi\cup\varphi'$. Every plaquette of $J$ is joined to $V(\varphi)$
+by a chain of plaquettes of $J$, consecutive ones sharing a vertex and the first having a vertex in $V(\varphi)$.
+\item If $|\varphi'|=4$ and $n=1$, then $\lambda\ne\lambda'$, $\varphi=\varphi'$, and the plaquette of $J$ is the one bounded by $\varphi$ (a \emph{cap}).
+\item If $|\varphi'|=4$ and $n=2$, then $\lambda\ne\lambda'$, $\varphi$ and $\varphi'$ are the boundaries of two distinct plaquettes $q,q'$ that share a vertex, and
+$q,q'$ are the plaquettes of $J$.
+\item If $|\varphi'|=4$ and $n=3$, then $\varphi'\neq\varphi$, every plaquette of $J$ is the plaquette bounded by $\varphi$, the one bounded by $\varphi'$, or the
+unique plaquette containing two given distinct edges $e\in\varphi$, $e'\in\varphi'$, and at least one plaquette of $J$ is of the last kind.
+\item If $|\varphi'|=5$, then $n\ge4$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) By Lemma~\ref{mg:lem:junction}(iii), an edge of $E(J)$ outside $E_M(J)$ has $n_J(e)\ge2$ from the two layers alone; this gives the first statements.
+An edge of a plaquette of $J$ outside $\varphi\cup\varphi'$ lies in no front of $J$, so it lies in two plaquettes of $J$; two plaquettes share at most one link
+(proof of Lemma~\ref{mg:lem:five}), so a plaquette has at most $n-1$ such edges. For the chains: let $\mathcal A$ be the set of plaquettes of $J$ joined to
+$V(\varphi)$ by such chains, $\mathcal B$ the others, and suppose $\mathcal B\ne\emptyset$. Plaquettes sharing a link share a vertex, so each cluster lies in
+$\mathcal A$ or in $\mathcal B$, and a cluster in $\mathcal B$ shares no vertex with $\varphi$ or with a cluster in $\mathcal A$. By the first statement every
+edge of $\varphi'$ lies in $E(\mathcal A)\cup\varphi$ or in $E(\mathcal B)$. If every edge of $\varphi'$ lies in $E(\mathcal A)\cup\varphi$, the clusters in $\mathcal B$
+are adjacent in $H_s$ only to each other (a common vertex with $\varphi'$ would be one with $\mathcal A$ or $\varphi$), and $J$ is disconnected. If every edge
+lies in $E(\mathcal B)$, then $p'$ and the clusters in $\mathcal B$ are adjacent only to each other ($p$ and the clusters in $\mathcal A$ share no vertex with
+$E(\mathcal B)$), and again $J$ is disconnected. Otherwise, $\varphi'$ being connected, some vertex is an endpoint of an edge of each kind, and then lies in
+$V(E(\mathcal B))\cap V(E(\mathcal A)\cup\varphi)$, a contradiction.
+(ii) If $\lambda=\lambda'$, $\varphi$ and $\varphi'$ are distinct components of $T_\lambda$, so vertex-disjoint, and (i) gives $8\le4n$. So $\lambda\neq\lambda'$, the
+four edges of the plaquette lie in $\varphi\cup\varphi'$, and $\varphi\triangle\varphi'$ lies in its boundary. Two distinct cycles of length $4$ in $\Gamma$ share at most
+one edge (two plaquette boundaries by the proof of Lemma~\ref{mg:lem:five}; a plaquette contains no two collinear edges, so a straight cycle shares
+at most one edge with a plaquette boundary; distinct straight cycles are disjoint), so $\varphi\ne\varphi'$ would give $|\varphi\triangle\varphi'|\ge6$. Hence
+$\varphi=\varphi'$ contains the boundary of the plaquette, and they are equal.
+(iii) If $\lambda=\lambda'$, (i) shows that the two plaquettes have all their edges in $\varphi\cup\varphi'$, so they are the plaquettes bounded by $\varphi$ and
+$\varphi'$ (a cycle of length $4$ contained in the union of two vertex-disjoint ones is one of them); but these have disjoint vertex sets, and $J$
+would be disconnected. So $\lambda\ne\lambda'$. Every edge of $E_M(J)$ outside $\varphi\cup\varphi'$ lies in both plaquettes, so there is at most one such edge
+$e_0$. If $\varphi=\varphi'$, each plaquette has three edges in $\varphi$ and is bounded by $\varphi$, which is impossible for two distinct plaquettes. So
+$\varphi\ne\varphi'$; a plaquette whose boundary is neither $\varphi$ nor $\varphi'$ has at most one edge in each and at most one further edge $e_0$, three in all,
+which is impossible. So the boundaries of the two plaquettes are $\varphi$ and $\varphi'$, and $J$ is connected only if they share a vertex.
+(iv) By (i) every plaquette has two edges in $\varphi\cup\varphi'$. A plaquette with two edges in one cycle of length $4$ is the plaquette that cycle bounds
+(two edges of a plaquette at a corner, or opposite ones, determine it, and a straight cycle contains at most one edge of a plaquette). If
+$\varphi'=\varphi$, all three plaquettes would be the one bounded by $\varphi$. Otherwise a plaquette not bounded by $\varphi$ or $\varphi'$ has exactly one edge
+$e\in\varphi$ and one edge $e'\in\varphi'$, $e\ne e'$, and is the only plaquette containing both. As there are three plaquettes, at least one is of this kind.
+(v) A front with five edges is a straight cycle (Lemma~\ref{mg:lem:smallfronts}), with five collinear edges, around a side of length $5$. By (i) these lie
+in $E_M(J)\cup\varphi$. A plaquette has at most one edge on a given line; $\varphi$ has at most one if it bounds a plaquette, and none if it is straight (its
+direction has side $4$). So $5\le n+1$.
+\end{proof}
+
+\begin{lemma}[Counting junctions with two front-pairs]\label{mg:lem:twofrontcount}
+Let $p=(\varphi,\lambda)$ be a front-pair candidate at slice $s$ with $|\varphi|=4$ (a front in $\Gamma$ and a layer). For $n\ge1$ and $k\ge4$ let $Z_{n,k}$
+be the number of pairs $(J,p')$ with $J$ a junction without support at slice $s$ of some set $X$ as in Definition~\ref{mg:def:fronts}, with
+$\Phi(J)=\{p,p'\}$, $|J|_C=n$ and $|p'|=k$.
+Then $Z_{1,4}\le1$, $Z_{2,4}\le T_v$, $Z_{3,4}\le48\binom{18}2(d-2)(2d-3)$, and for all $n,k$
+\[
+Z_{n,k}\le2\binom{4P_v+T_vn}{n}X_{n,k},
+\]
+where $X_{n,4}:=(n+1)(2d-3)$, $X_{n,5}:=0$ for $n\le3$ and $\frac45(n+1)$ for $n\ge4$, and $X_{n,k}:=\min\{\binom{4n+4}{k},(4n+4)N^v_k\}$ for $k\ge6$.
+\end{lemma}
+
+\begin{proof}
+$Z_{1,4}$ and $Z_{2,4}$: Lemma~\ref{mg:lem:twofront}(ii),(iii) (for (iii), $q'$ is a plaquette other than $q$ with a vertex in $V(q)$). $Z_{3,4}$: by
+Lemma~\ref{mg:lem:twofront}(iv), choose $e\in\varphi$ ($4$ ways), a plaquette $P\ni e$ ($2(d-2)$ ways), an edge $e'\ne e$ of $P$ ($3$ ways), the cycle
+$\varphi'\ni e'$ of length $4$ (at most $2d-3$ ways: the plaquettes containing $e'$ and the straight cycle through it), the layer $\lambda'$ ($2$ ways), and
+two further plaquettes among the at most $2+16$ allowed by Lemma~\ref{mg:lem:twofront}(iv). For the general bound: by
+Lemma~\ref{mg:lem:twofront}(i) the set of the $n$ plaquettes of $J$, together with $\varphi$, is connected in the graph in which $\varphi$ is joined to the at
+most $4P_v$ plaquettes with a vertex in $V(\varphi)$ and plaquettes sharing a vertex are joined; by \IIIref{Lemma}{Rooted counting}{al:lem:rooted} there are
+at most $\binom{4P_v+T_vn}{n}$ such sets, and they determine the clusters. Given them, $\varphi'$ is a front contained in $F:=E_M(J)\cup\varphi$, with
+$|F|\le4n+4$ and $|V(F)|\le4n+4$, at one of two layers. Fronts with $k\ge6$ edges in $F$ number at most $\binom{|F|}k$ and at most $|V(F)|N^v_k$; fronts
+with four edges in $F$ are plaquette boundaries (at most $2(d-2)|F|/4$, each edge of $F$ lying in $2(d-2)$ plaquettes of the slice) or straight cycles,
+which are disjoint and so at most $|F|/4$; straight cycles with five edges are disjoint, at most $|F|/5$, and occur only for $n\ge4$
+(Lemma~\ref{mg:lem:twofront}(v)).
+\end{proof}
+
+\begin{lemma}[Marked tree sums]\label{mg:lem:marked}
+In the setting of Lemma~\ref{mg:lem:treesums}, let $h$ satisfy its hypothesis, and let $\omega_1,\omega_2:\mathcal V\to[0,\infty)$. Let $\Psi_i(v)$ be the
+same sum as $\Psi(v)$ over trees with one marked non-root vertex $u$, with $w(u)$ replaced by $\omega_i(u)$, and $\Psi_{12}(v)$ the sum over trees with
+two distinct marked non-root vertices $u_1,u_2$, with $w(u_j)$ replaced by $\omega_j(u_j)$. If $g_1,g_2,g_{12}:\mathcal V\to[0,\infty)$ satisfy
+\begin{gather*}
+G_i(v):=\sum_{c\in\mathcal N(v)}\bigl(\omega_i(c)+w(c)g_i(c)\bigr)e^{h(c)}\le g_i(v)\qquad(i=1,2),\\
+G_1(v)G_2(v)+\sum_{c\in\mathcal N(v)}\bigl(\omega_1(c)g_2(c)+\omega_2(c)g_1(c)+w(c)g_{12}(c)\bigr)e^{h(c)}\le g_{12}(v)
+\end{gather*}
+for all $v$, then $\Psi_i\le g_ie^h$ and $\Psi_{12}\le g_{12}e^h$.
+\end{lemma}
+
+\begin{proof}
+By induction on the depth $n$, as in Lemma~\ref{mg:lem:treesums}, with $\Psi_{\cdot,n}$ the sums over trees of depth $\le n$. A tree with one mark is a
+set of children of the root of which exactly one carries the mark or has it in its subtree, so
+\[
+\Psi_{i,n}(v)\le\Psi_n(v)\sum_c\bigl(\omega_i(c)\Psi_{n-1}(c)+w(c)\Psi_{i,n-1}(c)\bigr)\le e^{h(v)}G_i(v).
+\]
+With two marks, either one child carries or contains both, or two distinct children carry or contain one each:
+\begin{multline*}
+\frac{\Psi_{12,n}(v)}{\Psi_n(v)}\le\sum_c\bigl(\omega_1(c)\Psi_{2,n-1}(c)+\omega_2(c)\Psi_{1,n-1}(c)+w(c)\Psi_{12,n-1}(c)\bigr)\\
++\prod_{i=1,2}\sum_c\bigl(\omega_i(c)\Psi_{n-1}(c)+w(c)\Psi_{i,n-1}(c)\bigr),
+\end{multline*}
+which is at most $g_{12}(v)$ by the induction hypothesis.
+\end{proof}
+
+\begin{definition}[Constants of the junction expansion]\label{mg:def:jconst}
+Let $a,b$ be as in Theorem~\ref{mg:thm:fronts}, and take $N^v_4,N^v_5$ from Lemma~\ref{mg:lem:smallfronts}, $N^v_6\le16(d-1)^5$
+(Lemma~\ref{mg:lem:sixfronts}) and $N^v_k\le(d-1)\binom{(4d-6)k}{k-1}$ for $k\ge7$. For $\xi_F,\xi_C,h_J,F\ge0$ put $c_J:=e^{h_J}/(1-a^4)$ and, for
+$j=0,1,2$,
+\begin{gather*}
+Y_j:=\sum_{n\ge1}n^j\binom{K_Sn}{n-1}(be^{\xi_C})^n,\qquad A_j:=e^{c_J}\sum_{k\ge4}k^jN^v_ka^{k/2}e^{\xi_Fk},\qquad B_j:=\sum_{k\ge4}k^jN^v_kf(k)e^{\xi_Fk},\\
+f(4):=1,\qquad f(k):=Fk^2e^{\xi_Fk}a^{k-4}\quad(k\ge5),
+\end{gather*}
+and let $g_F,g_C,g'_F,g'_C,\kappa_F,\kappa_C\ge0$ satisfy
+\begin{gather*}
+P_vg_CY_1+B_0+g_FA_1\le g_F,\qquad4P_vg_CY_1+8B_0+8g_FA_1\le g_C,\\
+P_vg'_CY_1+A_0+g'_FA_1\le g'_F,\qquad4P_vg'_CY_1+8A_0+8g'_FA_1\le g'_C,\\
+g_Fg'_F+P_v\kappa_CY_2+g'_FB_1+g_FA_1+\kappa_FA_2\le\kappa_F,\\
+g_Cg'_C+4P_v\kappa_CY_2+8(g'_FB_1+g_FA_1+\kappa_FA_2)\le\kappa_C .
+\end{gather*}
+Finally let
+\begin{multline*}
+\Sigma_4:=b+T_vb^2+48\binom{18}2(d-2)(2d-3)\,b^3+2\sum_{n\ge4}(n+1)(2d-3)\binom{4P_v+T_vn}{n}b^n\\
++2\sum_{n\ge1}\binom{4P_v+T_vn}{n}b^n\sum_{k\ge5}X_{n,k}f(k)
++4P_ve^{4\xi_F}\bigl(\kappa_CY_2+4(g_Cg'_F+g'_Cg_F)Y_1+16\kappa_FY_0\bigr),
+\end{multline*}
+with $X_{n,k}$ as in Lemma~\ref{mg:lem:twofrontcount}.
+\end{definition}
+
+\begin{lemma}[Junction sums]\label{mg:lem:jsums}
+In the setting of Definition~\ref{mg:def:jconst} suppose that the series converge and that
+\[
+P_vY_0+A_0\le\xi_F,\qquad4P_vY_0+8A_0\le\xi_C,\qquad kP_vY_0a^{k/2}e^{\xi_Fk}\le h_J\quad(k\ge4).
+\]
+Let $p$ be a front-pair candidate at slice $s$, $k:=|p|$, and let $J$ range over the junctions without support at slice $s$ containing $p$, of sets $X$ as
+in Definition~\ref{mg:def:fronts}. Then:
+\begin{enumerate}[label=(\roman*)]
+\item $\displaystyle\sum_Jb^{|J|_C}\prod_{\psi\in\Phi(J)\setminus\{p\}}\bigl(a^{|\psi|/2}e^{c_J}\bigr)\le kP_vY_0e^{\xi_Fk}$;
+\item with $\mathcal S(p):=\sum_J\sum_{p'\in\Phi(J)\setminus\{p\}}b^{|J|_C}\prod_{\psi\in\Phi(J)\setminus\{p,p'\}}\bigl(a^{|\psi|/2}e^{c_J}\bigr)f(|p'|)$:
+$\mathcal S(p)\le\Sigma_4$ if $k=4$, and $\mathcal S(p)\le kP_ve^{\xi_Fk}(g_CY_1+g_FkY_0)$ for all $k$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Apply Lemmas~\ref{mg:lem:treesums} and~\ref{mg:lem:marked} with $\mathcal V$ the set of candidate clusters at slice $s$ (connected sets of plaquettes of
+the slice) and candidate front-pairs, $w(C):=b^{|C|}$, $w(\psi):=a^{|\psi|/2}e^{c_J}$, the children of a cluster being the clusters and the front-pairs
+(of either layer) with which it shares a vertex, and the children of a front-pair being the clusters and the front-pairs of the other layer with which
+it shares a vertex; $h(C):=\xi_C|C|$, $h(\psi):=\xi_F|\psi|$. Counting as in Lemma~\ref{mg:lem:localcounts} (a cluster through a vertex: a plaquette at
+the vertex and a connected set through it; a front-pair of a given layer through a vertex: $N^v_{k'}$ fronts of each size $k'$), the children of a
+front-pair $\psi$ contribute at most $|\psi|(P_vY_0+A_0)$ to the condition of Lemma~\ref{mg:lem:treesums} and those of a cluster $C$ at most
+$4|C|P_vY_0+8|C|A_0$, since $|V(\psi)|\le|\psi|$ and $|V(E(C))|\le4|C|$; so $\Psi\le e^h$. In the same way the six inequalities of
+Definition~\ref{mg:def:jconst} are the hypotheses of Lemma~\ref{mg:lem:marked} with $\omega_1(\psi):=f(|\psi|)$, $\omega_2(\psi):=w(\psi)$,
+$\omega_i(C):=0$, $g_1=g_F|\cdot|$, $g_2=g'_F|\cdot|$, $g_{12}=\kappa_F|\cdot|^2$ on front-pairs and $g_1=g_C|\cdot|$, $g_2=g'_C|\cdot|$,
+$g_{12}=\kappa_C|\cdot|^2$ on clusters (using $|v|\le|v|^2$).
+
+A junction $J\ni p$ without support is a connected subgraph of this graph, and $p$ is adjacent to a cluster $C_0$ of $J$ (Lemma~\ref{mg:lem:junction}(i));
+so $J$ is the label set of a tree rooted at $p$ in which $C_0$ is a child of $p$, and a pair $(J,p')$ is such a tree with a marked vertex. The trees in which
+$C_0$ is a child of the root contribute at most $w(C_0)\Psi(C_0)\cdot\Psi(p)$, and those with marks at most the corresponding sums of the
+decompositions in the proof of Lemma~\ref{mg:lem:marked}. Summing over the at most $kP_v\binom{K_Sn}{n-1}$ clusters $C_0$ with $n$ plaquettes touching
+$p$ gives (i) and the second bound in (ii). For the first bound in (ii), split the pairs $(J,p')$: if $\Phi(J)=\{p,p'\}$ and $|p'|=4$, they are counted by
+$Z_{n,4}$ (Lemma~\ref{mg:lem:twofrontcount}) with weight $b^n$; if $\Phi(J)=\{p,p'\}$ and $|p'|\ge5$, by $Z_{n,k}$ with weight $b^nf(k)$; if $|\Phi(J)|\ge3$,
+choose a further front-pair $p''$ and mark it with $\omega_2=w$: these terms are bounded by the doubly marked sum, at most
+$\sum_{C_0}w(C_0)e^{\xi_C|C_0|}e^{4\xi_F}\bigl(\kappa_C|C_0|^2+g_C|C_0|\,4g'_F+g'_C|C_0|\,4g_F+16\kappa_F\bigr)$.
+\end{proof}
+
+\begin{theorem}[The first-order constant]\label{mg:thm:junctions}
+In the setting of Definition~\ref{mg:def:jconst} and Lemma~\ref{mg:lem:jsums}, let $\delta'>0$ and suppose that
+\[
+\Sigma_4<\delta',\qquad P_v\bigl(g_CY_1/5+g_FY_0\bigr)<F\delta',\qquad a^4(1+\delta')\le1 .
+\]
+Then there is $C_{A,B}$, independent of $t$ and $L_0$, with
+\[
+\bigl|\Cov_{\mu_{\Lambda,\beta}}(A,B)\bigr|\le C_{A,B}\bigl(a^4(1+\delta')\bigr)^t+\frac{2\norm A_\infty\norm B_\infty c^{|S|}}{1-\hat q}\,\hat q^{\,4L_0},
+\]
+and $m_{\Lambda_s}(\beta)\ge4\log(1/u_*)-8(K+1)\theta_5-\log(1+\delta')$. With the values $N^v_4=P_v$, $N^v_5=0$, valid
+when all spatial sides are $\ge6$, the same holds for $m(\mu_\beta)$. Let $\delta_J$ be the infimum of the admissible $\delta'$ (for the respective
+values of $N^v_4,N^v_5$). As $\beta\downarrow0$ the hypotheses hold for every $\delta'>b(1+c\beta)$ with a constant $c$, so
+$\delta_J=b\,(1+O(\beta))$; if $\rho$ has no trivial summand, $\delta_J\le2\beta(1+O(\beta))$ and
+\[
+m(\mu_\beta)\ \ge\ 4\log\frac1{u_*(\beta)}-2\beta+O(\beta^2).
+\]
+\end{theorem}
+
+\begin{proof}
+As in the proof of Theorem~\ref{mg:thm:fronts}, the sets $X$ with a temporal plaquette in every layer give the second term, and for the others
+$|\Phi_F(X)|r_X^2\le4\norm A_\infty\norm B_\infty e^{2\theta_5J_S}W(X)$ with $W(X)=\prod_Jw(J)\prod_\sigma w(\sigma)$. Put $z:=1/(a^4(1+\delta'))\ge1$. For each
+such $X$ choose a path $\pi(X)$ of minimal length from $J_A$ to $J_B$ in $\mathcal J(X)$ and a spanning forest $\mathcal F(X)$ of $\mathcal J(X)$ each of
+whose trees contains exactly one vertex of $\pi(X)$ (Lemma~\ref{mg:lem:jgraph}); then $z^t\le z^{\sum_{\sigma\in\pi(X)}\ell(\sigma)}$, and $X$ is determined by
+$(\pi(X),\mathcal F(X))$. On $\pi(X)$ we combine each segment with the factors $a^{|\sigma|/2}$ of its two end junctions: a path segment carries
+$(za^{|\sigma|})^{\ell(\sigma)}$, and a path junction $J$ the weight $b^{|J|_C}\prod a^{|\psi|/2}$ over its front-pairs $\psi$ that are not ends of path segments.
+Every intermediate junction of the path contains no support, since $\pi(X)$ is simple and $J_A$, $J_B$ are its ends.
+
+\emph{Decorations.} The children of a junction in $\mathcal F(X)$ are segments with an end in it, those of a segment the junction at its other end. A
+path segment has no children. Give a segment $\sigma$ the weight $w(\sigma)$ and $h(\sigma):=h_J$, and a junction that is not on the path the weight
+$w(J)$ and $h(J):=c_J(|\Phi(J)|-1)$. The segments with an end at a given front-pair $\psi$ of a junction contribute at most
+$\sum_{\ell\ge1}a^{|\psi|(\ell-1)}e^{h_J}\le c_J$, which gives the condition of Lemma~\ref{mg:lem:treesums} at junctions; at a segment ending at a front-pair
+$p^*$ with $|p^*|=k$, the junctions $J'\ni p^*$ contribute $\sum w(J')e^{h(J')}=a^{k/2}\sum b^{|J'|_C}\prod_{\psi\ne p^*}(a^{|\psi|/2}e^{c_J})\le
+a^{k/2}kP_vY_0e^{\xi_Fk}\le h_J$ by Lemma~\ref{mg:lem:jsums}(i). Hence the decorations of a path junction $J$ are bounded by $e^{c_J}$ for each of its
+front-pairs that is not an end of a path segment.
+
+\emph{The path.} For a front-pair $p$ at a path junction that is the start of the next path segment, let $\mathcal V(p)$ be the sum over the
+continuations of the path (the segment, of any length $\ell$, the junction $J'$ at its far end with its decorations, and then either $J'=J_B$ or a further
+start $p'\in\Phi(J')$ and its continuation) of the product of the weights just described. Since $\sum_{\ell\ge1}(za^{k})^\ell\le a^{k-4}/\delta'$ for $k\ge4$,
+\[
+\mathcal V(p)\le\frac{a^{|p|-4}}{\delta'}\Bigl(E_B(|p|)+\sup_{p^*}\sum_{J'\ni p^*}\sum_{p'}b^{|J'|_C}\prod_{\psi\ne p^*,p'}\bigl(a^{|\psi|/2}e^{c_J}\bigr)\,\mathcal V(p')\Bigr),
+\]
+where $p^*$ ranges over the front-pairs with the front of $p$ at the far end and $E_B(k)$ bounds the contribution of the junctions $J'=J_B$; by the
+tree-sum bounds above, applied with $S_B$ as an additional vertex of weight $1$ (marked as in Lemma~\ref{mg:lem:marked}), $E_B(k)\le E_Bk^2e^{\xi_Fk}$ for a
+constant $E_B$ depending on $|S_B|$. We show by
+induction on the length of the continuations that $\mathcal V(p)\le Mf(|p|)$ for a constant $M$. If $|p|=4$, Lemma~\ref{mg:lem:jsums}(ii) bounds the
+right-hand side by $(E_B(4)+M\Sigma_4)/\delta'\le M$ when $M\ge E_B(4)/(\delta'-\Sigma_4)$. If $|p|=k\ge5$, it is at most
+$a^{k-4}(E_Bk^2e^{\xi_Fk}+MkP_ve^{\xi_Fk}(g_CY_1+g_FkY_0))/\delta'\le Mf(k)$ when $M\ge E_B/(F\delta'-P_v(g_CY_1/5+g_FY_0))$, since
+$(g_CY_1+g_FkY_0)/k\le g_CY_1/5+g_FY_0$. The beginning of the path, at $J_A$, gives in the same way a factor $C_A<\infty$. So
+$z^t\sum_XW(X)\le MC_A$, which is the covariance bound.
+
+\emph{Gaps:} as in the proof of Theorem~\ref{mg:thm:fronts}.
+
+\emph{Small $\beta$.} Here $a,b=O(\beta)$. Take $h_J:=a^2$, $\xi_F:=2P_vb$, $\xi_C:=8P_vb$: for small $\beta$, $Y_0\le b(1+O(\beta))$, $A_j=O(\beta^2)$, so
+the three conditions of Lemma~\ref{mg:lem:jsums} hold. Take $F:=3P_vN^v_4$. Then $B_0=N^v_4+O(\beta)$, $B_1=4N^v_4+O(\beta)$, and the six
+inequalities hold with $g_F=N^v_4(1+O(\beta))$, $g_C=8N^v_4(1+O(\beta))$, $g'_F,g'_C=O(\beta^2)$ and $\kappa_F,\kappa_C=O(\beta^2)$. Then
+$\Sigma_4=b+O(\beta^2)$ (the terms after the first are $O(b^2)$, $O(b\,a^2F)$ and $O(\beta^3)$), and $P_v(g_CY_1/5+g_FY_0)=\frac{13}5P_vN^v_4b(1+O(\beta))<F\delta'$
+for $\delta'$ near $b$. Finally $b=e^{2(K+1)\theta_5}\gamma_g$, $\theta_5=O(\beta^5)$, and $\gamma_g\le\gamma_2=2\beta+O(\beta^2)$ if $\rho$ has no trivial summand.
+\end{proof}
+
+\begin{remark}[Numbers and checks]\label{mg:rem:junctions}
+(i) For $SU(2)$, with the parameters of Definition~\ref{mg:def:jconst} found by iterating the conditions, the lower bound of
+Theorem~\ref{mg:thm:junctions} for $m(\mu_\beta)$ lies below $4\log(1/u)$ by $2.0\cdot10^{-7}$, $2.0\cdot10^{-6}$, $2.00\cdot10^{-5}$, $1.7\cdot10^{-4}$ and
+$4.9\cdot10^{-4}$ at $\beta=10^{-7}$, $10^{-6}$, $10^{-5}$, $\beta_0(4)/2$ and $\beta_0(4)$ ($d=4$; $\delta_J/b=1.00001$, $1.0001$, $1.0015$, $1.08$, $1.49$), and by
+$2.0\cdot10^{-7}$, $2.0\cdot10^{-6}$, $2.00\cdot10^{-5}$, $4.2\cdot10^{-4}$ and $1.09\cdot10^{-3}$ for $d=3$; on spatial lattices with all sides $\ge4$ the
+loss is at most $5.3\cdot10^{-4}$ ($d=4$) and $1.12\cdot10^{-3}$ ($d=3$). The loss increases with $\beta$ (all the constants increase with $a$ and $b$). With
+the upper bound (Corollary~\ref{mg:cor:twosided}), for all $0<\beta<\beta_0(d)$
+\begin{gather*}
+-5.0\cdot10^{-4}\le m(\mu_\beta)-4\log\frac1{u(\beta)}\le1.4\cdot10^{-3}\quad(d=4),\\
+-1.1\cdot10^{-3}\le m(\mu_\beta)-4\log\frac1{u(\beta)}\le4.9\cdot10^{-3}\quad(d=3)
+\end{gather*}
+(Numerical: an evaluation of the explicit constants, \texttt{python3} with \texttt{mpmath}). As $\beta\downarrow0$ the two bounds are
+$-2\beta(1+O(\beta))$ and $6\beta(1+O(\beta))$ (Remark~\ref{mg:rem:threshold}). Near $\beta_0(4)$ the largest corrections to $\Sigma_4\approx b$ come from
+junctions with two front-pairs and at least four plaquettes, from exits with at least six edges, and from junctions with three or more front-pairs
+(each about $0.15\,b$ at $\beta_0(4)$); all are crude, and the first-order term $b$ is the cap.
+
+(ii) The method cannot go below the first order: the cap is a plaquette $q$ at a slice where a tube with front $\partial q$ continues, and its weight $b$
+is the sup norm of $g_q$. Its true contribution is an integral of characters; a sharper treatment would evaluate it, as the classical expansions do.
+
+(iii) Checks (\texttt{theory/checks/lower-bound/}, a compass): the constants of (i); an exhaustive enumeration of the junctions with two front-pairs, an
+entry with four edges and at most two plaquettes (and three for $d=3$) on spatial tori $6\times6$, $7\times7$, $4\times6$, $6\times6\times6$ and
+$4\times6\times6$, which finds exactly the cap, the $8$ ($d=3$) and $32$ ($d=4$) junctions of Lemma~\ref{mg:lem:twofront}(iii) with four-edge exits, no
+junction with three plaquettes and a four-edge exit in $d=3$, and none with a straight entry and a four-edge exit; and a test of
+Lemmas~\ref{mg:lem:junction} and~\ref{mg:lem:jgraph} on $400$ random sets $X$ on the periodic lattice $8\times5\times5$ ($2228$ junctions).
+\end{remark}
+
+\begin{corollary}[The gap to first order, on the whole range]\label{mg:cor:firstorder}
+Let $G$ be metrisable and $\rho$ irreducible and non-trivial with $N\le49$. For every $0<\beta<\beta_0(d)$ for which the hypotheses of
+Theorem~\ref{mg:thm:junctions} hold (for $d=3,4$ and $SU(2)$, all of them, Remark~\ref{mg:rem:junctions}),
+\[
+-8(K+1)\theta_5(\beta)-\log\bigl(1+\delta_J(\beta)\bigr)\ \le\ m(\mu_\beta)-4\log\frac1{u(\beta)}\ \le\ D(\beta),
+\]
+the upper bound when $N^4\le1200\tau_0^2$; and $-2\beta+O(\beta^2)\le m(\mu_\beta)-4\log(1/u(\beta))\le D(\beta)=O(\beta)$ as $\beta\downarrow0$.
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{mg:thm:junctions} with $u_*=u$ (Corollary~\ref{mg:cor:window}) and Corollary~\ref{mg:cor:twosided}, or Theorem~\ref{mg:thm:upper} for small $\beta$.
+\end{proof}
+
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
 
 \begin{proposition}[Two dimensions]\label{mg:prop:2d}
@@ -1401,7 +1765,7 @@ any larger pair of separations could be used instead. The additive constants of 
 $\norm{g_p}_\infty\le e^{4\beta}-1$ on every plaquette. Section~\ref{mg:sec:sharp} removes the second loss for the temporal plaquettes, which
 gives the constant $-4\log(eK)$ relative to $4\log(1/u)$ as $\beta\downarrow0$ (Corollary~\ref{mg:cor:window}); counting by fronts
 (Section~\ref{mg:sec:fronts}) removes the counting loss as well, so that the lower bound is $4\log(1/u_*)-O(\beta)$, i.e.\ $4\log(1/u)-O(\beta)$
-when $u_*=u$. (iii) The hypothesis $L_i\ge4$ cannot be dropped from the sharper finite-volume bounds: if a spatial side equals $3$,
+when $u_*=u$, and grouping by junctions (Section~\ref{mg:sec:junctions}) brings the $O(\beta)$ to $2\beta(1+O(\beta))$ when $\rho$ has no trivial summand. (iii) The hypothesis $L_i\ge4$ cannot be dropped from the sharper finite-volume bounds: if a spatial side equals $3$,
 Theorem~\ref{mg:thm:finite} holds only with $g=3$, and closed strips of three plaquettes per layer around that side (torelons, carrying the
 flux of a Polyakov loop) give states of energy $\approx3\log(1/u(\beta))$. For $\mathbb Z_2$ in $d=3$ on a $3\times3$ spatial torus the transfer
 matrix preserves the winding class, and a high-precision computation of the top eigenvalues of the sectors of winding $(0,0)$ and $(1,0)$ gives a
@@ -1436,8 +1800,11 @@ $m\ge4\log(1/q_u)$ for all $\beta<\beta_0(d)$ (infinite volume; finite volume, s
 Fronts and segments; incidence graph; fronts with $4$ and $5$ edges; local counts at vertices; tree sums & Lem.~\ref{mg:lem:fronts}--\ref{mg:lem:treesums} & Theorem\\
 Sharp constant on the whole range: $m\ge4\log(1/u_*)-8(K+1)\theta_5-\log(1+\delta)$, $\delta=O(\beta)$, hypotheses verified for all $\beta<\beta_0(d)$; $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$ (also finite volume, sides $\ge4$) & Thm.~\ref{mg:thm:fronts}, Lem.~\ref{mg:lem:frontsrange}, Cor.~\ref{mg:cor:sharpconst} & Theorem\\
 $SU(2)$, all $\beta<\beta_0(d)$: $-1.38\le m-4\log(1/u)\le0.0014$ ($d=4$), $-0.63\le m-4\log(1/u)\le0.005$ ($d=3$) & Rem.~\ref{mg:rem:fronts} & Numerical\\
+Junctions: locality and local admissibility; junction graph; fronts with six edges; junctions with two front-pairs (cap, shift, jump); marked tree sums & Lem.~\ref{mg:lem:junction}--\ref{mg:lem:jsums} & Theorem\\
+First-order constant: $m\ge4\log(1/u_*)-8(K+1)\theta_5-\log(1+\delta_J)$, $\delta_J=b(1+O(\beta))$, so $m(\mu_\beta)\ge4\log(1/u(\beta))-2\beta+O(\beta^2)$ ($\rho$ without trivial summand) & Thm.~\ref{mg:thm:junctions}, Cor.~\ref{mg:cor:firstorder} & Theorem\\
+$SU(2)$, all $\beta<\beta_0(d)$: $-5.0\cdot10^{-4}\le m-4\log(1/u)\le1.4\cdot10^{-3}$ ($d=4$), $-1.1\cdot10^{-3}\le m-4\log(1/u)\le4.9\cdot10^{-3}$ ($d=3$) & Rem.~\ref{mg:rem:junctions} & Numerical\\
 Sides $\ge4$ needed for Thm.~\ref{mg:thm:sharp}(i): torelon below the bound on a $3\times3$ torus ($\mathbb Z_2$) & Rem.~\ref{mg:rem:tests}(iii) & Numerical\\
-Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the first-order constant (an effective $\delta\approx b\approx2\beta$ for the dominant family, against $128P_v^2\beta$) & Rem.~\ref{mg:rem:fronts} & open\\
+Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the exact first-order coefficient (the cap evaluated by characters instead of its sup norm) & Rem.~\ref{mg:rem:junctions}(ii) & open\\
 \bottomrule
 \end{tabular}
 \end{center}
