@@ -48,7 +48,7 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   Section 8 (junctions, 10 November) gives $m\ge4\log(1/u)-2\beta+O(\beta^2)$; refereed (minor revisions, applied). Section 9 (the cap by
   characters, 10 November) gives the first-order term: $m=4\log(1/u)-\kappa(\beta)+O(\beta^2)$, $\kappa=\tau_0^{-1}\int(\mathrm{Re}\,\chi_\rho)^2f_\beta$,
   which is $O(\beta^2)$ for $SU(2)$, $U(1)$, $SU(N\ne3)$ and $\beta/6+O(\beta^2)$ for $SU(3)$ (three fundamental fluxes can meet at a link); for $SU(2)$
-  $-1.3\cdot10^{-4}\le m-4\log(1/u)\le4.8\cdot10^{-4}$ on the whole range in $d=4$; checks in `theory/checks/first-order/`; referee: pending. Next: the
+  $-1.3\cdot10^{-4}\le m-4\log(1/u)\le4.8\cdot10^{-4}$ on the whole range in $d=4$; checks in `theory/checks/first-order/`; refereed (minor revisions, applied). Next: the
   second-order coefficient (shifts and jumps by characters) and the $C$-odd sector (journal, Part 5).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
