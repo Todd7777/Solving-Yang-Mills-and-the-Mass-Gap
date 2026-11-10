@@ -44,7 +44,7 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   $\beta<\beta_0(d)$ when $\dim\rho\le4$ ($\le5$ if self-conjugate); new on 2026-11-09; the upper bound was reproved by transfer-matrix positivity on 2026-11-10, refereed the same day, with checks in
   `theory/checks/upper-bound/`; the lower bound sharpened the same day to $m=4\log(1/u)+O(\beta)$ by transfer-kernel norms and counting by fronts, Sections 6–7, checks in
   `theory/checks/lower-bound/`; Section 7 refereed, then revised to be effective on the whole range (for $SU(2)$,
-  $-1.38\le m-4\log(1/u)\le0.0014$ in $d=4$), revision under referee review; the asymptotics is classical (Schor), see Part IV's Literature paragraph).
+  $-1.38\le m-4\log(1/u)\le0.0014$ in $d=4$), revision refereed (minor revisions, applied); the asymptotics is classical (Schor), see Part IV's Literature paragraph).
   The next step for the lower bound is the first-order constant: closedness and the column lemma in the path step (journal, Part 3).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
