@@ -22,10 +22,10 @@ def counts(d, volume):
     for k in range(7, 200): N[k] = n * binomial((4*d-6)*k, k-1)
     return Pv, 4*(2*d-5), 4*(Pv-1), N
 
-def junction_bound(beta, d, u, volume='infinite', KMAX=60, NMAX=40, verbose=False):
+def junction_bound(beta, d, u, volume='infinite', KMAX=60, NMAX=40, verbose=False, gamma='gamma2'):
     K = 4*(2*d-3)
     eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x); lam = exp(2*(K+1)*th5)
-    a = lam*u; b = lam*(expm1(2*beta) + beta**2*exp(beta))
+    a = lam*u; b = lam*((expm1(2*beta) + beta**2*exp(beta)) if gamma == 'gamma2' else expm1(4*beta))
     Pv, KS, Tv, N = counts(d, volume)
     def Yf(z, p=0): return sum(m**p*binomial(KS*m, m-1)*(b*exp(z))**m for m in range(1, NMAX))
     # junction tree-sum constants eta, zeta (front weight a^{k/2} e^{cT}), iterate with c_T
@@ -59,7 +59,7 @@ def junction_bound(beta, d, u, volume='infinite', KMAX=60, NMAX=40, verbose=Fals
         # anchored bounds at a 4-entry
         S3plus = 4*Pv*exp(4*eta)*(kC*Y2 + 4*(gC*g2F + g2C*gF)*Y1 + 16*kF*Y)
         # two-front parts
-        S_cap = b; S_2 = 4*(Pv-1)*b**2; S_3 = 2*24*(d-2)*(2*d-3)*binomial(18, 2)*b**3
+        S_cap = b; S_2 = (4*(Pv-1)-KS)*b**2; S_3 = 2*24*(d-2)*(2*d-3)*binomial(18, 2)*b**3
         S_4plus = sum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(4, NMAX))
         def nfr(n, k):
             if k == 5: return mpf(4*n+4)/5 if (N[5] > 0 and n >= 4) else 0
@@ -78,7 +78,19 @@ def junction_bound(beta, d, u, volume='infinite', KMAX=60, NMAX=40, verbose=Fals
     r = solve(F); delta = r['S4']
     return dict(delta=delta, b=b, a=a, F=F, eta=eta, zeta=zeta, cT=cT, parts=r['parts'], th5=th5, K=K, gF=r['gF'], gC=r['gC'])
 
+def worst_case():
+    """Hypotheses at beta_0(d) for every G and rho: u_* <= eps, ||g|| <= e^{4beta}-1 (or gamma_2 without trivial summand);
+    counts for spatial sides >= 6 (Remark mg:rem:junctions(i))."""
+    print("worst case over G, rho at beta_0(d) (u_* = eps), counts for spatial sides >= 6:")
+    for gam, label in (('e4', 'any rho'), ('gamma2', 'rho without trivial summand')):
+        for d in (3, 4, 5, 6):
+            b0 = beta0(d)*(1-mpf(10)**-12)
+            r = junction_bound(b0, d, expm1(2*b0), 'infinite', gamma=gam)
+            loss = 8*(r['K']+1)*r['th5'] + log(1+r['delta'])
+            print(f"  {label:28s} d={d}: delta_J={float(r['delta']):.3e} (delta_J/b={float(r['delta']/r['b']):.3f}), loss {float(loss):.3f}")
+
 if __name__ == "__main__":
+    worst_case()
     for d in (3, 4):
         b0 = beta0(d)
         for volume in ('infinite', 'finite'):
