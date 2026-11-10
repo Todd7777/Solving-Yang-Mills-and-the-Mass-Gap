@@ -849,7 +849,8 @@ the inequality because $u_r=d_r^{-1}\int f_\beta\overline{\chi_r}\dU$ and $\int|
 the following sharpening of \IIIref{Proposition}{Removing plaquettes}{al:prop:remove}: only closed polymers have non-zero activity.
 
 \begin{lemma}[Removing plaquettes: closed polymers]\label{mg:lem:closed}
-Let $0<\beta<\beta_0(d)$ and $\theta_5(\beta):=x(\beta)^5/(1-x(\beta))$, so that $\theta_5\le\theta$ and $\theta_5=O(\beta^5)$. Then for every $\mathcal Q\subseteq\cP$
+Let $\Lambda$ be periodic with all sides $\ge3$, $0<\beta<\beta_0(d)$ and $\theta_5(\beta):=x(\beta)^5/(1-x(\beta))$, so that $\theta_5\le\theta$ and
+$\theta_5=O(\beta^5)$. Then for every $\mathcal Q\subseteq\cP$
 \[
 e^{-\theta_5(\beta)|\cP\setminus\mathcal Q|}\ \le\ \frac{\Xi(\mathcal Q)}{\Xi(\cP)}\ \le\ e^{\theta_5(\beta)|\cP\setminus\mathcal Q|} .
 \]
@@ -1022,7 +1023,8 @@ spatial plaquette or a support) touches it, so an unchanged front of $k$ edges c
 carries no entropy. The outcome is $m\ge4\log(1/u_*)-O(\beta)$, the sharp constant: together with Section~\ref{mg:sec:upper},
 $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$ (here $u_*=u$, Corollary~\ref{mg:cor:window}). Counting the fronts and clusters that meet a given
 front or cluster at a vertex, and using the exact numbers of fronts with four and five edges, makes the bound effective on the whole
-range: for $SU(2)$ it lies within $1.4$ ($d=4$) and $0.7$ ($d=3$) of $4\log(1/u)$ for all $\beta<\beta_0(d)$ (Remark~\ref{mg:rem:fronts}).
+range: for $SU(2)$ the bound for $m(\mu_\beta)$ lies within $1.4$ ($d=4$) and $0.7$ ($d=3$) of $4\log(1/u)$ for all $\beta<\beta_0(d)$
+(Remark~\ref{mg:rem:fronts}).
 
 Throughout this section $d\ge3$, $0<\beta<\beta_0(d)$, $G$ is metrisable whenever the infinite-volume gap $m(\mu_\beta)$ is concerned,
 $\Lambda$ is periodic with all sides $\ge3$ and all spatial sides $\ge4$ (so $g=4$), $A,B$ are bounded measurable functions of finitely many
@@ -1299,7 +1301,7 @@ $K=8d-12\ge12$, so that $K_S=K-8$, $4d-6=K/2$, $2P_v=(K^2-16)/16$ and $(d-1)(2d-
 \[
 \eta_C\le2P_vy\Bigl(1+\frac{ew}{1-w}\Bigr)\le\frac{K^2-16}{16}\cdot\frac{0.3}{K(K+2)}\cdot1.18<0.023 .
 \]
-With $r:=e^{1.1}(K/2)\bar a\le0.21/(K+2)\le0.015$, the terms $k\ge6$ of $\eta_T$ are at most $8(d-1)e^{1.1}\bar a\sum_{k\ge6}r^{k-1}<10^{-10}$, and the terms
+With $r:=e^{1.1}(K/2)\bar a\le0.21/(K+2)\le0.015$, the terms $k\ge6$ of $\eta_T$ are at most $8(d-1)e^{1.1}\bar a\sum_{k\ge6}r^{k-1}(1-\bar a^6)^{-1}<10^{-10}$, and the terms
 $k=4,5$ at most $8\frac{K(K+4)}{32}e^{0.4}\bar a^4(1+10^{-6})+8(d-1)e^{0.5}\bar a^5<10^{-10}$, using $\bar a\le1.0001/(e^2K(K+2))\le8.1\cdot10^{-4}$; so
 $\eta_T<10^{-9}$. All series converge ($w,r<1$). Finally $\kappa_C\le8P_vy\bigl(1+e((1-w)^{-2}-1)\bigr)<0.11$ and, bounding every $N^v_k$ by
 $(d-1)e(eK/2)^{k-1}$, $\bar a^4\nu\le2(d-1)e^{1.1}\bar a\sum_{k\ge4}kr^{k-1}<10^{-6}$; so $a^4(1+\delta)\le\bar a^4+0.11\,\bar a^4\nu<10^{-6}$.
@@ -1309,9 +1311,12 @@ $(d-1)e(eK/2)^{k-1}$, $\bar a^4\nu\le2(d-1)e^{1.1}\bar a\sum_{k\ge4}kr^{k-1}<10^
 (i) For $SU(2)$ ($\rho$ has no trivial summand and $u_*=u$, computed exactly), with $\lambda_C,\lambda_T$ the smallest solution of the two conditions
 (obtained by iterating them from $\lambda_C=0$), the lower bound of Theorem~\ref{mg:thm:fronts} for $m(\mu_\beta)$ lies below $4\log(1/u)$ by
 $0.0018$, $0.018$, $0.17$, $0.90$ and $1.38$ at $\beta=10^{-7}$, $10^{-6}$, $10^{-5}$, $\beta_0(4)/2$ and $\beta_0(4)$ for $d=4$, and by $0.0002$, $0.0020$,
-$0.020$, $0.35$ and $0.62$ at $\beta=10^{-7}$, $10^{-6}$, $10^{-5}$, $\beta_0(3)/2$ and $\beta_0(3)$ for $d=3$; the loss increases with $\beta$. For the
-finite-volume gap on spatial lattices with all sides $\ge4$ the loss is at most $1.55$ ($d=4$) and $0.83$ ($d=3$). With the upper bound
-(Corollary~\ref{mg:cor:twosided}; $D\le1.4\cdot10^{-3}$ and $4.8\cdot10^{-3}$, Remark~\ref{mg:rem:threshold}), for all $0<\beta<\beta_0(d)$
+$0.020$, $0.35$ and $0.62$ at $\beta=10^{-7}$, $10^{-6}$, $10^{-5}$, $\beta_0(3)/2$ and $\beta_0(3)$ for $d=3$. The loss increases with $\beta$: $a$ and $b$
+do (as $\theta_5$, $u=I_2/I_1$ and $\gamma_2$ do), $\eta_C,\eta_T,\kappa_C,\nu$ increase with $a$, $b$ and the $\lambda$'s, and the smallest solution, the limit of the
+iteration of an increasing map started at $0$, increases with $(a,b)$; so its supremum over the range is its limit at $\beta_0(d)$. For the finite-volume gap
+on spatial lattices with all sides $\ge4$ the loss is at most $1.56$ ($d=4$) and $0.83$ ($d=3$). (With the choice $\lambda_C=\lambda_T=\frac1{10}$ of
+Lemma~\ref{mg:lem:frontsrange} instead of the smallest solution, the loss at $\beta_0(d)$ is $1.75$ and $0.87$.) With the upper bound
+(Corollary~\ref{mg:cor:twosided}; $D<1.4\cdot10^{-3}$ and $D<4.9\cdot10^{-3}$, $D$ increasing, Remark~\ref{mg:rem:threshold}), for all $0<\beta<\beta_0(d)$
 \begin{gather*}
 -1.38\le m(\mu_\beta)-4\log\frac1{u(\beta)}\le0.0014\quad(d=4),\\
 -0.63\le m(\mu_\beta)-4\log\frac1{u(\beta)}\le0.005\quad(d=3)
@@ -1425,7 +1430,7 @@ Positivity: $\Cov(A(0),A(1))$ dominates the expectation in which the four sides 
 Cube identity $\sum_{r\ne0}\hat a_{0,r}\hat a_{1,r}u_r^4$; five-plaquette lemma & Lem.~\ref{mg:lem:char}, \ref{mg:lem:five} & Theorem\\
 Matching upper bound $m\le4\log(1/u(\beta))+D(\beta)$, $D=O(\beta)$ (infinite volume; finite volume, sides $\ge3$): for all $\beta<\beta_0(d)$ if $N^4\le1200\tau_0^2$ ($D<0.32$ if $N\le3$), for small $\beta$ in general & Thm.~\ref{mg:thm:upper}, Lem.~\ref{mg:lem:range} & Theorem\\
 $4\log(1/q)\le m(\mu_\beta)\le4\log(1/u)+D$ for all $\beta<\beta_0(d)$ ($N^4\le1200\tau_0^2$; also finite volume, sides $\ge4$); $m=4\log(1/\beta)+O(1)$ & Cor.~\ref{mg:cor:twosided} & Theorem\\
-Ratio bound with $\theta_5=x^5/(1-x)$ (only closed polymers count); $\norm{g_p}_\infty\le e^{2\beta}-1+\beta^2e^\beta$ & Lem.~\ref{mg:lem:closed}, \ref{mg:lem:dup}(d) & Theorem\\
+Ratio bound with $\theta_5=x^5/(1-x)$ (only closed polymers count); $\norm{g_p}_\infty\le e^{2\beta}-1+\beta^2e^\beta$ if $\rho$ has no trivial summand & Lem.~\ref{mg:lem:closed}, \ref{mg:lem:dup}(d) & Theorem\\
 Transfer bound: the temporal plaquettes of all but one layer weigh $u_*=\max_{r\ne0}u_r$, not $e^{4\beta}-1$ & Lem.~\ref{mg:lem:layerop}, \ref{mg:lem:transfer} & Theorem\\
 $m\ge4\log(1/q_u)$ for all $\beta<\beta_0(d)$ (infinite volume; finite volume, sides $\ge4$), $=4\log(1/u)-4\log(eK)-O(\beta)$ for $\dim\rho\le49$; window $4\log(eK)+O(\beta)$ when also $N^4\le1200\tau_0^2$ & Thm.~\ref{mg:thm:sharp}, Cor.~\ref{mg:cor:window} & Theorem\\
 Fronts and segments; incidence graph; fronts with $4$ and $5$ edges; local counts at vertices; tree sums & Lem.~\ref{mg:lem:fronts}--\ref{mg:lem:treesums} & Theorem\\
