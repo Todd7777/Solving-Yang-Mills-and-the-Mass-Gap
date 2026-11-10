@@ -45,11 +45,12 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   `theory/checks/upper-bound/`; the lower bound sharpened the same day to $m=4\log(1/u)+O(\beta)$ by transfer-kernel norms and counting by fronts, Sections 6–7, checks in
   `theory/checks/lower-bound/`; Section 7 refereed, then revised to be effective on the whole range (for $SU(2)$,
   $-1.38\le m-4\log(1/u)\le0.0014$ in $d=4$), revision refereed (minor revisions, applied); the asymptotics is classical (Schor), see Part IV's Literature paragraph).
-  The next step for the lower bound is the first-order constant: closedness and the column lemma in the path step (journal, Part 3).
+  Section 8 (junctions, 10 November) gives the first-order constant $\delta=b(1+O(\beta))$: $m\ge4\log(1/u)-2\beta+O(\beta^2)$, and for $SU(2)$
+  $-5\cdot10^{-4}\le m-4\log(1/u)\le1.4\cdot10^{-3}$ on the whole range in $d=4$; referee pending (journal, Part 4).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-10.md` (session 3, continued; Parts 1–3); `journal/2026-11-09b.md` is its first part and
+- The newest journal entry is `journal/2026-11-10.md` (session 3, continued; Parts 1–4); `journal/2026-11-09b.md` is its first part and
   `journal/2026-11-09.md` is session 2.
 
 ## Where the next steps are
