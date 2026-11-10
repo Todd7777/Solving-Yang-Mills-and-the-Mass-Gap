@@ -51,7 +51,7 @@
 upper bound extended to the whole range $\beta<\beta_0(d)$ (for $\dim\rho\le4$, or $\le5$ if $\rho\cong\bar\rho$) and revised after a second referee
 report, and sharper lower bounds added (Sections~\ref{mg:sec:sharp} and~\ref{mg:sec:fronts}), 10 November 2026; Section~\ref{mg:sec:fronts} revised
 after a referee report, and the lower bound made effective on the whole range, the same day; the first-order constant (Section~\ref{mg:sec:junctions})
-added, 10 November 2026; living document}
+added, 10 November 2026; the cap by characters and the first-order term (Section~\ref{mg:sec:cap}) added the same day; living document}
 
 \begin{document}
 \maketitle
@@ -88,9 +88,12 @@ plaquette or a support touches them) removes the remaining entropy and gives the
 $m(\mu_\beta)\ge4\log(1/u(\beta))-\log(1+\delta(\beta))-O(\beta^5)$ with an explicit $\delta(\beta)=O(\beta)$, so that $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$.
 Grouping everything that meets at one time slice into a junction, the condition that no link of a connecting surface is free leaves a single
 junction of order $\beta$ through which a front of four plaquettes can pass, the cap; this gives the first-order constant of the method,
-$\delta(\beta)=2\beta(1+O(\beta))$ when $\rho$ has no trivial summand, i.e.\ $m(\mu_\beta)\ge4\log(1/u(\beta))-2\beta+O(\beta^2)$. For $SU(2)$ the two bounds give
-$-5\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le1.4\cdot10^{-3}$ for all $\beta<\beta_0(4)$ in $d=4$, and
-$-1.1\cdot10^{-3}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.9\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$ (a numerical evaluation of the explicit constants).
+$\delta(\beta)=2\beta(1+O(\beta))$ when $\rho$ has no trivial summand, i.e.\ $m(\mu_\beta)\ge4\log(1/u(\beta))-2\beta+O(\beta^2)$. Evaluating the cap, and two sup-norm
+bounds of the upper bound, by characters gives the first-order term exactly: $m(\mu_\beta)=4\log(1/u(\beta))-\kappa(\beta)+O(\beta^2)$ with
+$\kappa(\beta)=\tau_0^{-1}\int(\mathrm{Re}\,\chi_\rho)^2f_\beta\dU=\frac\beta{N\tau_0}\int(\mathrm{Re}\,\chi_\rho)^3\dU+O(\beta^2)$, which vanishes to first order
+for $U(1)$ and for $SU(N)$, $N\ne3$, and is $\beta/6+O(\beta^2)$ for $SU(3)$, where three fundamental fluxes can meet at a link. For $SU(2)$ the two
+bounds give $-1.3\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
+$-2.5\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$ (a numerical evaluation of the explicit constants).
 The asymptotics
 itself, indeed the full expansion of the glueball mass, is classical (Schor; O'Carroll et al.); what is new here is a self-contained
 proof with explicit constants on the whole range, for general compact $G$ and the infinite-volume theory of Part~II.
@@ -121,7 +124,9 @@ dimensions) and O'Carroll and Barbosa \cite{OB85} ($3+1$ dimensions) studied the
 plaquette fields (in \cite{OB85}: at least one and at most four, with convergent expansions), and O'Carroll \cite{OC85} the excited
 masses near $-6\log\beta$ in $2+1$ dimensions. We have read \cite{FO25} and the abstracts of \cite{OB85,OC85}, not the original
 papers (marked ``verify''), and nothing below relies on them. These results are much sharper than ours: they determine the glueball
-mass to all orders in $\beta$, whereas the two bounds proved here differ by an additive constant (Remark~\ref{mg:rem:threshold}(i)).
+mass to all orders in $\beta$, whereas the bounds proved here determine it up to $O(\beta^2)$ (Corollary~\ref{mg:cor:firstorder2}). The title and the
+first lines of the abstract of \cite{OBS85} mention a mass splitting for complex characters; for $SU(3)$ we find a first-order splitting of the
+$C$-even and $C$-odd plaquette states (Remark~\ref{mg:rem:cap}(iii)).
 What this article adds for the project is a short self-contained proof, with explicit constants and the explicit range
 $\beta<\beta_0(d)$, for general compact $G$ and for the infinite-volume theory of \cite{II}, together with a covariance bound for all
 bounded local observables.
@@ -174,9 +179,11 @@ $\theta_5=O(\beta^5)$ and an explicit $\delta_\infty(\beta)=O(\beta)$, and the s
 slightly larger $\delta$ (Theorem~\ref{mg:thm:fronts}, Lemma~\ref{mg:lem:frontsrange}, Corollary~\ref{mg:cor:sharpconst}). So
 $m(\mu_\beta)-4\log(1/u(\beta))$ lies in an interval of length at most $8(K+1)\theta_5+\log(1+\delta_\infty)+D(\beta)$, and
 $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$ as $\beta\downarrow0$. Grouping by junctions (Theorem~\ref{mg:thm:junctions},
-Corollary~\ref{mg:cor:firstorder}) improves $\delta_\infty$ to $\delta_J=2\beta(1+O(\beta))$: $m(\mu_\beta)\ge4\log(1/u(\beta))-2\beta+O(\beta^2)$; for
-$SU(2)$ the interval has length at most $1.9\cdot10^{-3}$ ($d=4$) and $6\cdot10^{-3}$ ($d=3$) on the whole range (Remark~\ref{mg:rem:junctions};
-Numerical). The upper bound holds, with a larger explicit bound on $D$, whenever $N\le4$, or
+Corollary~\ref{mg:cor:firstorder}) improves $\delta_\infty$ to $\delta_J=2\beta(1+O(\beta))$: $m(\mu_\beta)\ge4\log(1/u(\beta))-2\beta+O(\beta^2)$. Evaluating
+the cap and the upper bound by characters (Theorems~\ref{mg:thm:caplower} and~\ref{mg:thm:upperchar}, Corollary~\ref{mg:cor:firstorder2}) gives the
+first-order term, $m(\mu_\beta)=4\log(1/u(\beta))-\kappa(\beta)+O(\beta^2)$ with $\kappa(\beta)=\tau_0^{-1}\int(\mathrm{Re}\,\chi_\rho)^2f_\beta\dU$, which is
+$O(\beta^2)$ for $U(1)$ and $SU(2)$ and $\beta/6+O(\beta^2)$ for $SU(3)$; for $SU(2)$ the interval has length at most $6.1\cdot10^{-4}$ ($d=4$) and
+$2.7\cdot10^{-3}$ ($d=3$) on the whole range (Remark~\ref{mg:rem:cap}; Numerical). The upper bound holds, with a larger explicit bound on $D$, whenever $N\le4$, or
 $N=5$ and $\rho\cong\bar\rho$. Without any restriction on $N$, the
 upper bound holds for all sufficiently small $\beta$, so $m(\mu_\beta)=4\log(1/\beta)+O(1)$ as $\beta\downarrow0$.
 \end{theorem}
@@ -225,7 +232,10 @@ polymers (which have at least five plaquettes), makes the constant effective on 
 into junctions (Section~\ref{mg:sec:junctions}) and splitting the weight of each segment between its two ends, the local form of the no-free-link
 condition shows that the only junction of order $b=e^{2(K+1)\theta_5}\norm{g_p}_\infty$ (about $2\beta$ when $\rho$ has no trivial summand) through which a
 four-edge front can pass is the cap, a plaquette closing the front at a slice where it continues; this gives $\delta=b(1+O(\beta))$, the first-order
-constant.
+constant of the method. (9) Finally (Section~\ref{mg:sec:cap}) the transfer bound is applied junction by junction, with the gauge projections at the
+vertices of each junction; the cap then becomes an operator on the class functions of the holonomy of its plaquette, whose norm relative to the tube is
+$\kappa(\beta)+O(\beta^2)$, $\kappa(\beta)=\tau_0^{-1}\int(\mathrm{Re}\,\chi_\rho)^2f_\beta\dU$, and the same number replaces two sup-norm bounds of the upper
+bound; so $m(\mu_\beta)=4\log(1/u(\beta))-\kappa(\beta)+O(\beta^2)$.
 
 \section{The duplicated system}\label{mg:sec:dup}
 
@@ -1715,7 +1725,7 @@ $\beta$ (as $\theta_5$, $u=I_2/I_1$ and $\gamma_2$ do), so parameters admissible
 -1.1\cdot10^{-3}\le m(\mu_\beta)-4\log\frac1{u(\beta)}\le4.9\cdot10^{-3}\quad(d=3)
 \end{gather*}
 (Numerical: an evaluation of the explicit constants, \texttt{python3} with \texttt{mpmath}). As $\beta\downarrow0$ the two bounds are
-$-2\beta(1+O(\beta))$ and $6\beta(1+O(\beta))$ (Remark~\ref{mg:rem:threshold}). Near $\beta_0(4)$ the largest corrections to $\Sigma_4\approx b$ come from
+$-2\beta(1+O(\beta))$ and $6\beta(1+O(\beta))$ (Remark~\ref{mg:rem:threshold}); Section~\ref{mg:sec:cap} improves both to $-\kappa(\beta)+O(\beta^2)$. Near $\beta_0(4)$ the largest corrections to $\Sigma_4\approx b$ come from
 junctions with two front-pairs and at least four plaquettes, from exits with at least six edges, and from junctions with three or more front-pairs
 (each about $0.15\,b$ at $\beta_0(4)$); all are crude, and the first-order term $b$ is the cap. The largest single source of the last two is the crude bound
 $N^v_7\le(d-1)\binom{7(4d-6)}{6}$ (about $3.9\cdot10^8$ for $d=4$), whereas on large tori the fronts with seven edges are the $108$ ($d=4$) and $12$ ($d=3$)
@@ -1724,8 +1734,8 @@ about $1.40$. Without the special structure of $SU(2)$, i.e.\ with $u_*\le\epsil
 $\beta_0(d)$ for $3\le d\le6$, with losses $0.051$, $0.21$, $0.44$, $0.70$ (and $0.023$, $0.094$, $0.21$, $0.36$ when $\rho$ has no trivial summand), so for
 every $G$ and $\rho$ on the whole range (Numerical, values for spatial sides $\ge6$).
 
-(ii) The method cannot go below the first order: the cap is a plaquette $q$ at a slice where a tube with front $\partial q$ continues, and its weight $b$
-is the sup norm of $g_q$. Its true contribution is an integral of characters; a sharper treatment would evaluate it, as the classical expansions do.
+(ii) The cap is a plaquette $q$ at a slice where a tube with front $\partial q$ continues, and its weight $b$ is the sup norm of $g_q$. Its true
+contribution is an integral of characters; Section~\ref{mg:sec:cap} evaluates it, together with the corresponding terms of the upper bound.
 
 (iii) Checks (\texttt{theory/checks/lower-bound/}, a compass): the constants of (i); an exhaustive enumeration of the junctions with two front-pairs, an
 entry with four edges and at most two plaquettes (and three for $d=3$) on spatial tori $6\times6$, $7\times7$, $4\times6$, $6\times6\times6$ and
@@ -1749,6 +1759,309 @@ the upper bound when $N^4\le1200\tau_0^2$; and $-2\beta+O(\beta^2)\le m(\mu_\bet
 \begin{proof}
 Theorem~\ref{mg:thm:junctions} with $u_*=u$ (Corollary~\ref{mg:cor:window}) and Corollary~\ref{mg:cor:twosided}, or Theorem~\ref{mg:thm:upper} for small $\beta$.
 \end{proof}
+
+\section{The cap by characters: the first-order term}\label{mg:sec:cap}
+
+In Theorem~\ref{mg:thm:junctions} the first-order constant $b$ of the lower bound is the cap, a plaquette $q$ at a slice where a tube with front
+$\partial q$ continues, weighed by the sup norm of $g_q$ (Remark~\ref{mg:rem:junctions}(ii)); and the first-order term $2(1+2/\sqrt{\tau_0})\beta$ of
+$D(\beta)$ in Theorem~\ref{mg:thm:upper} comes from two sup-norm bounds in the proof of Lemma~\ref{mg:lem:twopoint}. In this section both are
+evaluated by characters. In the transfer-matrix representation the cap is an operator on the class functions of the holonomy of $q$ in the two
+copies; on the plaquette states $\chi_\rho(U_q)$, $\chi_{\bar\rho}(U_q)$ its norm, relative to the tube, is
+\[
+\kappa(\beta):=\frac1{\tau_0}\int(\mathrm{Re}\,\chi_\rho)^2f_\beta\dU=\frac\beta{N\tau_0}\int(\mathrm{Re}\,\chi_\rho)^3\dU+O(\beta^2),
+\]
+and the same number appears in the upper bound. The outcome is $m(\mu_\beta)=4\log(1/u(\beta))-\kappa(\beta)+O(\beta^2)$
+(Corollary~\ref{mg:cor:firstorder2}). The first-order term vanishes when the centre of $G$ acts on $\rho$ by a scalar that is neither $1$ nor a cube
+root of unity: for $U(1)$, and for $SU(N)$ with $N\ne3$ and the fundamental representation, $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta^2)$. For
+$SU(3)$ it does not vanish: $\rho\otimes\rho\otimes\rho$ contains the trivial representation, so three sheets of fundamental flux can meet along
+the edges of the cap, and the cap can reverse the orientation of the flux through the tube; here $\int(\mathrm{Re}\,\chi_\rho)^3\dU=\frac14$ and
+$m(\mu_\beta)=4\log(1/u(\beta))-\beta/6+O(\beta^2)$. Two further changes make the remainder of order $\beta^2$: the transfer bound is applied
+junction by junction, with the gauge projections at the vertices of each junction (Lemma~\ref{mg:lem:pieces}), and path segments whose fronts
+have at least five edges are summed without the factor $1/\delta'$ of the proof of Theorem~\ref{mg:thm:junctions}.
+
+Throughout this section $\rho$ is irreducible and non-trivial, with $N,\iota,\tau_0,u_r,u$ as in Section~\ref{mg:sec:upper};
+$L^2_{\rm cl}(G)$ is the space of square-integrable class functions on $G$, with orthonormal basis $(\chi_r)_r$; and
+\[
+u_2(\beta):=\sup_{r\notin\{0,\rho,\bar\rho\}}u_r(\beta),\qquad\sigma_6(\beta):=\sum_{r\neq0}d_r^2u_r(\beta)^6 .
+\]
+
+\begin{lemma}[The cap matrix element]\label{mg:lem:capelement}
+For every $\beta>0$:
+\begin{enumerate}[label=(\roman*)]
+\item For $a,b\in\{\rho,\bar\rho\}$ the numbers $\varphi_{ab}:=\int\overline{\chi_a}\,f_\beta\,\chi_b\dU$ are real and non-negative, with
+$\varphi_{\bar\rho\bar\rho}=\varphi_{\rho\rho}$ and $\varphi_{\bar\rho\rho}=\varphi_{\rho\bar\rho}$. If $P_\rho$ is the orthogonal projection of
+$L^2_{\rm cl}(G)$ onto the span of $\chi_\rho$ and $\chi_{\bar\rho}$, and $M_f$ is multiplication by $f_\beta$, then
+$\norm{P_\rho M_fP_\rho}=\kappa(\beta)$; and $\int\mathrm{Re}\,\chi_\rho\,f_\beta\,\overline{\chi_\rho}\dU=\tau_0\kappa(\beta)$.
+\item $0\le\kappa(\beta)\le\epsilon(\beta)$; $\int(\mathrm{Re}\,\chi_\rho)^3\dU\ge0$; and
+$\bigl|\kappa(\beta)-\frac\beta{N\tau_0}\int(\mathrm{Re}\,\chi_\rho)^3\dU\bigr|\le\frac12\beta^2e^\beta(1+\beta)$.
+\item If $\rho(z)=\zeta\mathbf1$ for a central element $z$ of $G$ with $\zeta\neq1$ and $\zeta^3\neq1$, then $\int(\mathrm{Re}\,\chi_\rho)^3\dU=0$,
+so $\kappa(\beta)=O(\beta^2)$. This applies to $U(1)$ with $\rho(e^{i\theta})=e^{i\theta}$, to $\mathbb Z_n$ ($n\ne1,3$) with a faithful
+character, and to $SU(N)$ with the fundamental representation for $N=2$ and $N\ge4$. For $SU(3)$ with the fundamental representation,
+$\int(\mathrm{Re}\,\chi_\rho)^3\dU=\frac14$, so $\kappa(\beta)=\frac\beta6+O(\beta^2)$.
+\item $u_2(\beta)\le e^\beta-1-\beta$ and $\sigma_6(\beta)\le(2-\iota)N^2u(\beta)^6+u_2(\beta)^5(e^\beta-1)$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) Inserting the absolutely and uniformly convergent expansion $f_\beta=\sum_{r\ne0}d_ru_r\chi_r$ gives
+$\varphi_{ab}=\sum_rd_ru_r\int\overline{\chi_a}\chi_r\chi_b\dU$, where $\int\overline{\chi_a}\chi_r\chi_b\dU$ is the multiplicity of $a$ in $r\otimes b$; as $u_r>0$, $\varphi_{ab}\ge0$. Since $f_\beta$ is real and
+$\overline{\chi_r}=\chi_{\bar r}$, $\varphi_{\bar a\bar b}=\overline{\varphi_{ab}}=\varphi_{ab}$, which gives the two equalities. If $\iota=1$, $P_\rho$
+is the projection onto the real function $\chi_\rho$ ($\norm{\chi_\rho}=1$), so $\norm{P_\rho M_fP_\rho}=\varphi_{\rho\rho}$, which is
+$\int(\mathrm{Re}\,\chi_\rho)^2f_\beta=\kappa$ as $\tau_0=1$. If $\iota=0$, $\chi_\rho\perp\chi_{\bar\rho}$, and in this basis $P_\rho M_fP_\rho$ has diagonal entries $\alpha:=\varphi_{\rho\rho}$ and
+off-diagonal entries $\gamma:=\varphi_{\rho\bar\rho}$, so its eigenvalues are $\alpha\pm\gamma$, with eigenvectors $\chi_\rho\pm\chi_{\bar\rho}$; its norm is
+$\alpha+\gamma$, attained at $\chi_\rho+\chi_{\bar\rho}=2\,\mathrm{Re}\,\chi_\rho$, and therefore equals the Rayleigh quotient of $\mathrm{Re}\,\chi_\rho$, which is
+$\kappa$ because $\norm{\mathrm{Re}\,\chi_\rho}^2=\tau_0$ (Lemma~\ref{mg:lem:char}(i)). Finally
+$\int\mathrm{Re}\,\chi_\rho f_\beta\overline{\chi_\rho}$ equals $\varphi_{\rho\rho}=\kappa$ if $\iota=1$, and $\frac12(\varphi_{\rho\rho}+\varphi_{\rho\bar\rho})=\frac12\kappa$ if
+$\iota=0$.
+
+(ii) $\kappa=\norm{P_\rho M_fP_\rho}\ge0$, and $\kappa\le\norm{M_f}=\norm{f_\beta}_\infty\le\epsilon$, because $1+f_\beta\in[e^{-2\beta},e^\beta]$ (proof of
+Lemma~\ref{mg:lem:dup}(a)). Expanding $(\mathrm{Re}\,\chi_\rho)^3=\frac18(\chi_\rho+\overline{\chi_\rho})^3$ writes $\int(\mathrm{Re}\,\chi_\rho)^3$ as a combination
+with positive coefficients of the integrals $\int\chi_\rho^j\overline{\chi_\rho}^{\,3-j}$, $0\le j\le3$, which are multiplicities of the trivial
+representation, hence non-negative. Put $y:=\frac\beta N\mathrm{Re}\,\chi_\rho\in[-\beta,\beta]$ and $R:=e^y-1-y\in[0,\frac12\beta^2e^\beta]$. As
+$\int y=0$, $c_0=1+\int R$, and $f_\beta=e^y/c_0-1$ gives $f_\beta-y=(R-\int R-y\int R)/c_0$; so $|f_\beta-y|\le\frac12\beta^2e^\beta(1+\beta)$, since
+$c_0\ge1$ and $|R-\int R|\le\frac12\beta^2e^\beta$. Hence $|\kappa-\tau_0^{-1}\int(\mathrm{Re}\,\chi_\rho)^2y|\le\frac12\beta^2e^\beta(1+\beta)$, and
+$\tau_0^{-1}\int(\mathrm{Re}\,\chi_\rho)^2y=\frac\beta{N\tau_0}\int(\mathrm{Re}\,\chi_\rho)^3$.
+
+(iii) Haar measure is invariant under $U\mapsto zU$, and $\chi_\rho(zU)=\zeta\chi_\rho(U)$, $|\zeta|=1$; so
+$\int\chi_\rho^j\overline{\chi_\rho}^{\,3-j}=\zeta^{2j-3}\int\chi_\rho^j\overline{\chi_\rho}^{\,3-j}$, and $\zeta^{2j-3}\in\{\zeta^{-3},\zeta^{-1},\zeta,\zeta^3\}$ is
+not $1$. Take $z=-1$ for $U(1)$, a generator of $\mathbb Z_n$, and $z=e^{2\pi i/N}\mathbf1$ for $SU(N)$, for which $\zeta=e^{2\pi i/N}$ and $\zeta^3=1$ only
+if $N\in\{1,3\}$. For $SU(3)$ the same argument removes the terms with $j=1,2$, and $\int\chi_\rho^3=\int\overline{\chi_\rho}^{\,3}$ is the dimension of the
+space of $SU(3)$-invariant tensors $T=\sum T_{ijk}e_i\otimes e_j\otimes e_k\in(\C^3)^{\otimes3}$ (the trace of the projection $\int U^{\otimes3}\dU$). The
+diagonal matrices $\mathrm{diag}(z_1,z_2,z_3)$, $z_1z_2z_3=1$, multiply $T_{ijk}$ by $z_iz_jz_k$, so $T_{ijk}=0$ unless $\{i,j,k\}=\{1,2,3\}$. Let
+$H\cong SU(2)$ act on the span of $e_1,e_2$ and fix $e_3$. Then $T=T^{(1)}+T^{(2)}+T^{(3)}$, where $T^{(m)}$ collects the terms with $e_3$ in the $m$-th
+factor; $H$ preserves each of these three subspaces and acts on each as on $\C^2\otimes\C^2$, whose $H$-invariants are the multiples of
+$e_1\otimes e_2-e_2\otimes e_1$ (their dimension is $\int\chi_{1/2}^2=1$, and the determinant of $\C^2$ is invariant). So $T$ is antisymmetric under the
+exchange of the values $1$ and $2$, and likewise for the other pairs: $T_{\sigma(1)\sigma(2)\sigma(3)}=\mathrm{sgn}(\sigma)T_{123}$, and $T$ is a multiple of
+the determinant tensor, which is invariant. So $\int\chi_\rho^3=1$,
+$\int(\mathrm{Re}\,\chi_\rho)^3=\frac18(1+1)=\frac14$, and (ii) with $N=3$, $\tau_0=\frac12$ gives $\kappa=\frac\beta6+O(\beta^2)$.
+
+(iv) The first bound is in the proof of Corollary~\ref{mg:cor:window}. In $\sigma_6$ the terms $r\in\{\rho,\bar\rho\}$ contribute $(2-\iota)N^2u^6$, and the
+others at most $u_2^5\sum_{r\ne0}d_r^2u_r=u_2^5(e^\beta/c_0-1)\le u_2^5(e^\beta-1)$ (Lemma~\ref{mg:lem:layerop}).
+\end{proof}
+
+\begin{lemma}[Transfer bound by pieces]\label{mg:lem:pieces}
+Let $X$ be as in Definition~\ref{mg:def:fronts}, and $s$ a slice. The \emph{pieces} at slice $s$ are the junctions at slice $s$ and the fronts of
+layer $s-1$ touched by no marker at slice $s$ (which are fronts of layer $s$ as well, Lemma~\ref{mg:lem:fronts}(iii)). For a junction $J$ at slice
+$s$, let $M_J$ be multiplication by the product of the $g_p$ over the plaquettes $p$ of the clusters of $J$, times $A(U^{(0)})-A(U'^{(0)})$ if
+$S_A\in M(J)$ and times $B(U^{(t)})-B(U'^{(t)})$ if $S_B\in M(J)$; for $\lambda\in\{s-1,s\}$ let $K_{J,\lambda}$ be the tensor product over $e\in E(J)$ of
+$G_g^{1/2}$ if $e\in E_\lambda(J)$ and of $\Pi_0\otimes\Pi_0$ otherwise (notation of Lemma~\ref{mg:lem:layerop}); and let $O_J:=K_{J,s-1}M_JK_{J,s}$,
+an operator on $L^2(G^{E(J)}\times G^{E(J)})$. For an untouched front $\varphi$ let $E(\varphi):=\varphi$ and $O_\varphi:=G_g^{\otimes\varphi}$. For a
+piece $\pi$ let $P^\pi$ be the orthogonal projection onto the functions of $(U_e,U'_e)_{e\in E(\pi)}$ that are invariant, in each copy, under the gauge
+transformations at the vertices of $V(E(\pi))$ (acting on the links of $E(\pi)$). Then
+\[
+|\Phi_F(X)|\ \le\ \prod_s\prod_{\pi\text{ at }s}\norm{P^\pi O_\pi P^\pi},
+\]
+and $\norm{P^\varphi O_\varphi P^\varphi}\le u_*^{|\varphi|}$, $\norm{P^JO_JP^J}\le\norm{M_J}\prod_{p\in\Phi(J)}u_*^{|p|/2}$.
+\end{lemma}
+
+\begin{proof}
+In the proof of Lemma~\ref{mg:lem:transfer}, $\Phi_F(X)=\Tr(\mathbb M_0\mathcal K_0\cdots\mathbb M_{L_0-1}\mathcal K_{L_0-1})$ and $\mathcal K_s=\tilde{\mathcal
+K}_s\mathbf P$, where $\mathbf P:=P_{\mathcal G}\otimes P_{\mathcal G}$ and $\tilde{\mathcal K}_s\ge0$ is the tensor product over the spatial links of
+$G_g$ (on $T_s(X)$) and $\Pi_0\otimes\Pi_0$ (elsewhere). It commutes with $\mathbf P$, so $\mathcal K_s=\tilde{\mathcal K}_s^{1/2}\mathbf P\tilde{\mathcal
+K}_s^{1/2}$, where $\tilde{\mathcal K}_s^{1/2}$ is the tensor product of the operators $G_g^{1/2}$ and $\Pi_0\otimes\Pi_0$. By cyclicity of the trace and
+$\mathbf P^2=\mathbf P$,
+\[
+\Phi_F(X)=\Tr\Bigl(\prod_s\mathbf P\,\mathcal O_s\mathbf P\Bigr),\qquad\mathcal O_s:=\tilde{\mathcal K}_{s-1}^{1/2}\,\mathbb M_s\,\tilde{\mathcal K}_s^{1/2}
+\]
+(indices modulo $L_0$). For a layer $s_*$ without temporal plaquettes, $\tilde{\mathcal K}_{s_*}^{1/2}$ is the rank-one projection $\Pi$ onto the constants,
+and $\mathbf P\Pi=\Pi$; so $\mathbf P\mathcal O_{s_*+1}\mathbf P=\Pi(\mathbf P\mathcal O_{s_*+1}\mathbf P)$ has trace norm at most its operator norm, and
+H\"older's inequality for traces gives $|\Phi_F(X)|\le\prod_s\norm{\mathbf P\mathcal O_s\mathbf P}$.
+
+Fix $s$. A spatial link of slice $s$ that lies in $T_{s-1}$, in $T_s$ or in the edge set of a marker at slice $s$ belongs to exactly one piece (by
+Lemma~\ref{mg:lem:junction}(ii), and Lemma~\ref{mg:lem:fronts}(iii)), and on the links of a junction $J$ the factor $\tilde{\mathcal K}_\lambda^{1/2}$ is
+$K_{J,\lambda}$ (an edge of $E(J)$ lies in $T_\lambda$ exactly when it lies in $E_\lambda(J)$, by Lemma~\ref{mg:lem:junction}(ii)), while on an untouched front
+$\varphi$ the product $\tilde{\mathcal K}_{s-1}^{1/2}\tilde{\mathcal K}_s^{1/2}$ is $G_g^{\otimes\varphi}$. Moreover no link outside $E(\pi)$ at a vertex $v$
+of a piece $\pi$ lies in $T_{s-1}$, in $T_s$ or in a marker. Indeed, a marker at slice $s$ with the vertex $v$ touches $\pi$ if $\pi$ is a front, and
+is adjacent in $H_s$ to the vertex of $J$ whose edge set has the endpoint $v$ if $\pi=J$. A front $\psi$ of layer $\lambda\in\{s-1,s\}$ through $v$ is $\pi$
+itself if $\pi$ is a front (fronts of one layer are vertex-disjoint). If $\pi=J$ and $\psi$ is touched at slice $s$, then $(\psi,\lambda)$ is a front-pair
+adjacent to the vertex of $J$ with the endpoint $v$, hence in $J$; if $\psi$ is not touched, it is a front of both layers, so it is the front of every
+front-pair of $J$ through $v$, which is touched, and no front-pair of $J$ passes through $v$; then a marker of $J$ does, and touches $\psi$: a contradiction.
+Hence $\mathcal O_s=\bigotimes_\pi O_\pi\otimes(\Pi_0\otimes\Pi_0)^{\otimes\mathcal R}$, with $\mathcal R$ the remaining links. Now $\mathbf P=\prod_v
+P_v\otimes P_v$, where $P_v=\int R^{(v)}_h\,dh$ is the projection for the gauge transformations $R^{(v)}_h$ at the vertex $v$ of the slice; as $\Pi_0$ is
+invariant under left and right translations, $R^{(v)}_h$ acts on $\mathcal O_s$, from either side, only through the links of the piece containing $v$,
+and trivially if $v$ lies in no piece. So $\mathbf P\mathcal O_s\mathbf P=\bigotimes_\pi P^\pi O_\pi P^\pi\otimes(\Pi_0\otimes\Pi_0)^{\otimes\mathcal R}$,
+whose norm is $\prod_\pi\norm{P^\pi O_\pi P^\pi}$. The last two bounds follow from $\norm{G_g^{1/2}}=u_*^{1/2}$ (Lemma~\ref{mg:lem:layerop}),
+$\norm{\Pi_0\otimes\Pi_0}=1$ and $|E_\lambda(J)|=\sum|p|$ over the front-pairs $p$ of $J$ of layer $\lambda$.
+\end{proof}
+
+With $\norm{M_J}\le\gamma_g^{|J|_C}$ (times $2\norm A_\infty$, $2\norm B_\infty$ for $J_A,J_B$) this is the bound of Lemma~\ref{mg:lem:transfer} for sets with
+$m(X)=0$, split into the factors $w(J)$ and $w(\sigma)$ of Section~\ref{mg:sec:junctions} (before the factors $e^{2(K+1)\theta_5}$). The point of the
+splitting is that a single factor can now be computed exactly.
+
+\begin{lemma}[The cap by characters]\label{mg:lem:capchar}
+Let $\beta>0$ with $u_*(\beta)=u(\beta)$, and let $J$ be a cap at slice $s$ (Lemma~\ref{mg:lem:twofront}(ii)): $M(J)=\{\{q\}\}$ and
+$\Phi(J)=\{(\partial q,s-1),(\partial q,s)\}$. Then $\norm{P^JO_JP^J}\le u^4\bar\kappa_{\rm cap}$, where
+\[
+\bar\kappa_{\rm cap}:=\kappa+\frac{u_2^2}{u^2}\Bigl(1+\frac{u_2^2}{u^2}\Bigr)\epsilon+\frac{\sigma_6}{u^4}+\sqrt2\,e^\beta\sigma_6^{1/2}+u^4\gamma_g ,
+\]
+all at $\beta$. As $\beta\downarrow0$, $\bar\kappa_{\rm cap}=\kappa(\beta)+(2-\iota)N^2u(\beta)^2+O(\beta^3)$.
+\end{lemma}
+
+\begin{proof}
+Here $E(J)=\partial q=\{e_1,\dots,e_4\}$, $O_J=(G_g^{1/2})^{\otimes4}M_{g_q}(G_g^{1/2})^{\otimes4}$, and $g_q=(1+f_\beta(U_q))(1+f_\beta(U'_q))-1$. A
+function of the four links of the square $\partial q$ that is invariant under the gauge transformations at its corners is a class function of the
+holonomy $U_q$ (fix the gauge on three links), and $U_q$ is Haar distributed when the $U_{e_i}$ are; so $(U,U')\mapsto(U_q,U'_q)$ identifies the range
+of $P^J$ with $\mathcal H:=L^2_{\rm cl}(G)\otimes L^2_{\rm cl}(G)$, with orthonormal basis $e_{aa'}:=\chi_a(U_q)\chi_{a'}(U'_q)$. Both factors of $O_J$
+commute with $P^J$ (gauge transformations act by translations, which commute with $G_g$, and $g_q$ is gauge invariant). As a function of $U_{e_i}$,
+$\chi_a(U_q)$ is a matrix coefficient of $a$ or of $\bar a$, and $u_{\bar a}=u_a$; so by Lemma~\ref{mg:lem:layerop}, $(G_g^{1/2})^{\otimes4}$ multiplies
+$e_{aa'}$ by $\lambda_{aa'}^2$, where $\lambda_{a0}=u_a$, $\lambda_{0a'}=u_{a'}$, $\lambda_{aa'}=u_au_{a'}$ ($a,a'\ne0$) and $\lambda_{00}=0$. Hence
+$P^JO_JP^J$ is $\Lambda M_g\Lambda$ on $\mathcal H$, with $\Lambda e_{aa'}=\lambda_{aa'}^2e_{aa'}$ and
+$\ip{e_{aa'}}{M_ge_{bb'}}=m_{ab}m_{a'b'}-\delta_{ab}\delta_{a'b'}$, where $m_{ab}:=\int\overline{\chi_a}(1+f_\beta)\chi_b\dU=\delta_{ab}+\varphi_{ab}$ (the
+notation of Lemma~\ref{mg:lem:capelement}, for all $a,b$). Since $\Lambda e_{00}=0$, only $\mathcal H_1\oplus\mathcal H_2\oplus\mathcal H_{12}$ matters, the
+spans of the $e_{a0}$, the $e_{0a'}$ and the $e_{aa'}$ with $a,a'\ne0$. With $m_{00}=1+\int f_\beta=1$, $\varphi_{a0}=d_au_a$ and $\varphi_{0b}=d_bu_b$
+($a,b\ne0$), $v_a:=d_au_a^3$, $D:=\mathrm{diag}(u_a^2)_{a\ne0}$ (of norm $u^2$, as $u_*=u$), $\Phi:=(\varphi_{ab})_{a,b\ne0}$ and $\mathfrak m:=(m_{ab})_{a,b\ne0}$ (compressions of $M_f$ and
+$M_{1+f}$, so $\norm\Phi\le\norm{f_\beta}_\infty\le\epsilon$ and $\norm{\mathfrak m}\le e^\beta$), the blocks of $\Lambda M_g\Lambda$ are: $D\Phi D$ from
+$\mathcal H_1$ to $\mathcal H_1$ and from $\mathcal H_2$ to $\mathcal H_2$; the rank-one operator $e_{0b'}\mapsto v_{b'}\sum_av_ae_{a0}$, of norm
+$\sum_av_a^2=\sigma_6$, from $\mathcal H_2$ to $\mathcal H_1$, and its adjoint; $e_{bb'}\mapsto v_{b'}\sum_a(D\mathfrak mD)_{ab}e_{a0}$, of norm at most
+$u^4e^\beta\sigma_6^{1/2}$, from $\mathcal H_{12}$ to $\mathcal H_1$, likewise to $\mathcal H_2$, and the adjoints; and
+$(D\otimes D)(\mathfrak m\otimes\mathfrak m-\mathbf1)(D\otimes D)$, of norm at most $u^8\gamma_g$, on $\mathcal H_{12}$, because
+$\mathfrak m\otimes\mathfrak m-\mathbf1$ is a compression of $M_g$. For $D\Phi D$ write $D=u^2P_\rho+D'$ with $\norm{D'}\le u_2^2$;
+since $P_\rho$ and $D'$ act on orthogonal subspaces, $\norm{D\Phi D}\le\max(u^4\kappa,u_2^4\epsilon)+u^2u_2^2\epsilon\le n_1:=u^4\kappa+u^2u_2^2\epsilon+u_2^4\epsilon$
+(Lemma~\ref{mg:lem:capelement}(i)). The norm of a block operator is at most the largest eigenvalue of the matrix of the norms of its blocks, here
+\[
+\begin{pmatrix}n_1&\sigma_6&n_y\\\sigma_6&n_1&n_y\\n_y&n_y&n_z\end{pmatrix},\qquad n_y:=u^4e^\beta\sigma_6^{1/2},\quad n_z:=u^8\gamma_g .
+\]
+Its eigenvectors are symmetric or antisymmetric in the first two coordinates; the antisymmetric one has the eigenvalue $n_1-\sigma_6$, and on the
+symmetric ones it acts as $\bigl(\begin{smallmatrix}n_1+\sigma_6&\sqrt2n_y\\\sqrt2n_y&n_z\end{smallmatrix}\bigr)$, with eigenvalues at most
+$n_1+\sigma_6+n_z+\sqrt2n_y=u^4\bar\kappa_{\rm cap}$. As $\beta\downarrow0$: $u\ge(1+\iota)\beta e^{-\beta}/(2N^2)$ (Lemma~\ref{mg:lem:char}(iii)) and
+$u_2=O(\beta^2)$, so $(u_2/u)^2\epsilon=O(\beta^3)$, $\sigma_6/u^4=(2-\iota)N^2u^2+O(\beta^7)$ and $\sqrt2e^\beta\sigma_6^{1/2}+u^4\gamma_g=O(\beta^3)$
+(Lemma~\ref{mg:lem:capelement}(iv)).
+\end{proof}
+
+\begin{theorem}[The lower bound to first order]\label{mg:thm:caplower}
+Suppose that $u_*=u$. In the setting of Definition~\ref{mg:def:jconst} and Lemma~\ref{mg:lem:jsums} put
+$b_{\rm cap}:=e^{2(K+1)\theta_5}\min(\bar\kappa_{\rm cap},\gamma_g)$ and $\Sigma_4^\chi:=\Sigma_4-b+b_{\rm cap}$. Let $\delta'>0$ satisfy
+\[
+\Sigma_4^\chi<\delta',\qquad P_v\bigl(g_CY_1/5+g_FY_0\bigr)<F(1+\delta'-a),\qquad a^4(1+\delta')\le1 .
+\]
+Then the conclusions of Theorem~\ref{mg:thm:junctions} hold for this $\delta'$. Let $\delta_\chi$ be the infimum of the admissible $\delta'$ (with
+$N^v_4=P_v$, $N^v_5=0$ for $m(\mu_\beta)$). As $\beta\downarrow0$ the hypotheses hold for every $\delta'>b_{\rm cap}+(4P_v-4-K_S)b^2+c\beta^3$, with a
+constant $c$; so
+\[
+\delta_\chi\le\kappa(\beta)+(2-\iota)N^2u(\beta)^2+(4P_v-4-K_S)\gamma_g^2+O(\beta^3),\qquad m(\mu_\beta)\ \ge\ 4\log\frac1{u(\beta)}-\kappa(\beta)-O(\beta^2).
+\]
+\end{theorem}
+
+\begin{proof}
+\emph{Weights.} By Lemmas~\ref{mg:lem:pieces} and~\ref{mg:lem:capchar}, and $r_X^2\le e^{2\theta_5J_S}e^{2(K+1)\theta_5|X|}$, every set $X$ with an
+empty layer satisfies
+\[
+|\Phi_F(X)|\,r_X^2\le4\norm A_\infty\norm B_\infty e^{2\theta_5J_S}\,W^\chi(X),\qquad W^\chi(X):=\prod_Jw^\chi(J)\prod_\sigma w(\sigma),
+\]
+where $w^\chi(J):=w(J)$ for junctions other than caps and $w^\chi(J):=a^4b_{\rm cap}\le w(J)$ for caps; the factor $e^{2(K+1)\theta_5}$ of each
+plaquette is distributed as in Section~\ref{mg:sec:junctions}, one for the plaquette of the cap and the factors of the half layers with its two
+front-pairs. (A cap contains no support, so the bound applies to every cap of $X$.)
+
+\emph{The path.} The proof of Theorem~\ref{mg:thm:junctions} applies to $W^\chi$, with two changes. First, the decorations are bounded as there, as
+$w^\chi\le w$, but a cap on the path now carries $b_{\rm cap}$: in the bound of Lemma~\ref{mg:lem:jsums}(ii) for $k=4$ the contribution $Z_{1,4}b$ of the
+cap becomes $b_{\rm cap}$, so $\Sigma_4$ becomes $\Sigma_4^\chi$. Second, for a front-pair $p$ with $k:=|p|\ge5$ we have
+$za^k=a^{k-4}/(1+\delta')\le a/(1+\delta')$, so $\sum_{\ell\ge1}(za^k)^\ell\le a^{k-4}/(1+\delta'-a)$ instead of $a^{k-4}/\delta'$, and the induction step for
+$|p|\ge5$ holds when $M\ge E_B/(F(1+\delta'-a)-P_v(g_CY_1/5+g_FY_0))$.
+
+\emph{Small $\beta$.} Take $h_J$, $\xi_F$, $\xi_C$ as in the proof of Theorem~\ref{mg:thm:junctions}, but $F:=3P_vN^v_4b$. Then $f(k)=O(\beta a^{k-4})$ for
+$k\ge5$, so $B_0=N^v_4(1+O(\beta))$ and $B_1=4N^v_4(1+O(\beta))$, and the six inequalities of Definition~\ref{mg:def:jconst} hold with
+$g_F=N^v_4(1+O(\beta))$, $g_C=8N^v_4(1+O(\beta))$ and $g'_F,g'_C,\kappa_F,\kappa_C=O(\beta^2)$; so $P_v(g_CY_1/5+g_FY_0)=\frac{13}5P_vN^v_4b(1+O(\beta))<
+F(1+\delta'-a)$. In $\Sigma_4^\chi$ the term of $Z_{2,4}$ is $(4P_v-4-K_S)b^2$; the terms of three plaquettes and of $n\ge4$ plaquettes are $O(b^3)$; those
+with exits of $k\ge5$ edges are $O(b\,Fa)=O(\beta^3)$ (the five-edge exits occur only for $n\ge4$); and the last term is
+$O((\kappa_C+\kappa_F+g'_F+g'_C)b)=O(\beta^3)$. So $\Sigma_4^\chi=b_{\rm cap}+(4P_v-4-K_S)b^2+O(\beta^3)$, and
+$b_{\rm cap}\le\bar\kappa_{\rm cap}(1+O(\beta^5))$, $b=\gamma_g(1+O(\beta^5))$ give the bound on $\delta_\chi$ by Lemma~\ref{mg:lem:capchar}. Finally
+$m(\mu_\beta)\ge4\log(1/u)-8(K+1)\theta_5-\log(1+\delta')$ with $\theta_5=O(\beta^5)$, and $\gamma_g\le\gamma_2=O(\beta)$, $u=O(\beta)$.
+\end{proof}
+
+\begin{theorem}[The upper bound by characters]\label{mg:thm:upperchar}
+In the setting of Lemma~\ref{mg:lem:twopoint} put $\eta_2:=a_*N\bar u/\tau_0$, $\kappa:=\kappa(\beta)$, and
+\[
+V^\chi:=(1+\kappa)(1+\mathcal T_p)+\mathcal T_p,\qquad L^\chi:=\frac{(1+\kappa-\eta_2)^2(1-\mathcal T_Q)}{1+\epsilon^6}-\Bigl(1+\frac{a_*^2}{\tau_0}\Bigr)e^{16\beta}\,
+\frac{N^4}{\tau_0^2}\,\mathcal T_Q .
+\]
+Then $V^\chi\le V$ and, if $\eta\le1$, $L^\chi\ge L$. If $\eta_2\le1$ and $L^\chi>0$, then (i) and (ii) of Theorem~\ref{mg:thm:upper} hold with
+$D^\chi(\beta):=\log(V^\chi/L^\chi)$ in place of $D(\beta)$. As $\beta\downarrow0$, $D^\chi=-\log(1+\kappa)+2\eta_2+O(\beta^3)=-\kappa(\beta)+O(\beta^2)$; for
+$SU(2)$, $D^\chi(\beta)=\frac38\beta^2+O(\beta^3)$. Moreover $D^\chi\le-\log(1+\kappa)+D_0$, where
+$D_0:=\log\bigl((1+2\mathcal T_p)/L_0\bigr)$ and $L_0$ is $L^\chi$ with $\kappa$ replaced by $0$; $D_0$ increases with $\beta$.
+\end{theorem}
+
+\begin{proof}
+In the proof of Lemma~\ref{mg:lem:twopoint} two estimates are replaced by identities. First, $M_{S_A}(A^2)=\int A^2(1+f_\beta)\dU=\tau_0+\int(\mathrm{Re}\,\chi_\rho)^2
+f_\beta\dU=\tau_0(1+\kappa)$ (Lemma~\ref{mg:lem:char}(i) and the definition of $\kappa$), instead of $M_{S_A}(A^2)\le(1+\epsilon)\tau_0$; so
+$\Var(A)\le\langle A^2\rangle\le(1+\mathcal T_p)\tau_0(1+\kappa)+\tau_0\mathcal T_p=\tau_0V^\chi$. Second, by Lemma~\ref{mg:lem:capelement}(i),
+$\hat a_\rho=\tau_0+\int\mathrm{Re}\,\chi_\rho f_\beta\overline{\chi_\rho}\dU-aNu=\tau_0(1+\kappa)-aNu\ge\tau_0(1+\kappa-\eta_2)\ge0$, as $|a|\le a_*$ and
+$u\le\bar u$; so $M_Q\ge\frac2{1+\iota}\hat a_\rho^2u^4\ge\tau_0(1+\kappa-\eta_2)^2u^4$. The rest of the proofs of Lemma~\ref{mg:lem:twopoint} and
+Theorem~\ref{mg:thm:upper} is unchanged and gives $\Cov(A,A_1)\ge\tau_0u^4L^\chi$, $\Var(A)\le\tau_0V^\chi$ and the theorem. As $0\le\kappa\le\epsilon$
+(Lemma~\ref{mg:lem:capelement}(ii)) and $\eta_2\le\eta$, $V^\chi\le V$ and $L^\chi\ge L$. As $\beta\downarrow0$: $\mathcal T_Q,\mathcal T_p=O(\beta^5)$,
+$a_*=O(\beta)$, $\eta_2=O(\beta^2)$, so $\log V^\chi=\log(1+\kappa)+O(\beta^5)$ and $\log L^\chi=2\log(1+\kappa)-2\eta_2+O(\beta^3)$. For $SU(2)$,
+$\kappa=O(\beta^2)$ by Lemma~\ref{mg:lem:capelement}(iii); more precisely $\kappa=d_1u_1=3I_3(\beta)/I_1(\beta)=\frac18\beta^2+O(\beta^4)$ ($u_j=I_{2j+1}/I_1$
+for the spin-$j$ representation, as in Remark~\ref{mg:rem:fronts}), and $\eta_2=\frac14\beta^2+O(\beta^3)$, so $D^\chi=\frac38\beta^2+O(\beta^3)$. Finally,
+$V^\chi\le(1+\kappa)(1+2\mathcal T_p)$ and $L^\chi\ge(1+\kappa)^2L_0$, because $(1+\kappa-\eta_2)/(1+\kappa)\ge1-\eta_2$; and $\mathcal T_p$, $\mathcal T_Q$,
+$\epsilon$, $a_*$, $\eta_2$ increase with $\beta$ (Lemma~\ref{mg:lem:range}).
+\end{proof}
+
+\begin{corollary}[The first-order term]\label{mg:cor:firstorder2}
+Let $G$ be metrisable and $\rho$ irreducible and non-trivial. As $\beta\downarrow0$,
+\[
+m(\mu_\beta)=4\log\frac1{u(\beta)}-\kappa(\beta)+O(\beta^2)=4\log\frac1{u(\beta)}-\frac\beta{N\tau_0}\int(\mathrm{Re}\,\chi_\rho)^3\dU+O(\beta^2),
+\]
+and the same holds for $m_{\Lambda_s}(\beta)$, uniformly in the periodic spatial lattices with all sides $\ge4$. In particular
+$m(\mu_\beta)=4\log(1/u(\beta))+O(\beta^2)$ for $U(1)$, and for $SU(N)$ with $N\ne3$ and the fundamental representation; and for $SU(3)$ with the
+fundamental representation
+\[
+m(\mu_\beta)=4\log\frac1{u(\beta)}-\frac\beta6+O(\beta^2).
+\]
+\end{corollary}
+
+\begin{proof}
+For small $\beta$, $u_*=u$ (proof of Corollary~\ref{mg:cor:window}: as soon as $\beta e^{2\beta}\le(1+\iota)/N^2$). The lower bound is
+Theorem~\ref{mg:thm:caplower}, with $\log(1+\delta_\chi)\le\delta_\chi$, and in finite volume the same theorem with the values of $N^v_4,N^v_5$ of the
+lattice (bounded by Lemma~\ref{mg:lem:smallfronts}, uniformly). The upper bound is Theorem~\ref{mg:thm:upperchar}, since $L^\chi\to1$ and $\eta_2\to0$.
+The rest is Lemma~\ref{mg:lem:capelement}(ii),(iii).
+\end{proof}
+
+\begin{remark}[Numbers, meaning, and checks]\label{mg:rem:cap}
+(i) For $SU(2)$ ($\kappa=3I_3/I_1$, $u=I_2/I_1$; $u_2$ and $\sigma_6$ bounded by Lemma~\ref{mg:lem:capelement}(iv)), with the parameters found by
+iterating the conditions, the lower bound of Theorem~\ref{mg:thm:caplower} for $m(\mu_\beta)$ lies below $4\log(1/u)$ by $1.3\cdot10^{-12}$,
+$1.3\cdot10^{-10}$, $1.5\cdot10^{-8}$, $6.8\cdot10^{-6}$ and $1.28\cdot10^{-4}$ at $\beta=10^{-7}$, $10^{-6}$, $10^{-5}$, $\beta_0(4)/2$ and $\beta_0(4)$
+($d=4$; $\delta_\chi/\beta^2=128.5$, $129.8$, $151.7$, $979$, $3971$), and by $3.2\cdot10^{-13}$, $3.3\cdot10^{-11}$, $3.4\cdot10^{-9}$, $1.0\cdot10^{-5}$ and
+$2.44\cdot10^{-4}$ for $d=3$ ($\delta_\chi/\beta^2=32.4$, $32.6$, $34.5$, $95$, $219$; at $\beta_0(3)$ most of the loss is $8(K+1)\theta_5$). On spatial
+lattices with all sides $\ge4$ the loss is at most $1.4\cdot10^{-4}$ ($d=4$) and $2.51\cdot10^{-4}$ ($d=3$). As $\beta\downarrow0$, $\delta_\chi/\beta^2\to
+\frac18+\frac14+4(4P_v-4-K_S)$, i.e.\ $128.375$ ($d=4$) and $32.375$ ($d=3$): the shifts and jumps of the tube, still at their sup norm, are now the
+leading term. The upper bound of Theorem~\ref{mg:thm:upperchar} has $D^\chi=\frac38\beta^2(1+O(\beta))$, and $D_0(\beta_0(d))$ is $4.8\cdot10^{-4}$ ($d=4$)
+and $2.4\cdot10^{-3}$ ($d=3$), where $\mathcal T_Q$, the five-plaquette remainder, dominates. As before (Remark~\ref{mg:rem:junctions}(i)) the hypotheses of
+Theorem~\ref{mg:thm:caplower} are monotone in $(a,b,b_{\rm cap})$, the right side of the second one decreases with $a$, and $a$, $b$, $b_{\rm cap}$ increase with
+$\beta$ (checked on a grid for $b_{\rm cap}$), so for all $0<\beta<\beta_0(d)$
+\begin{gather*}
+-1.3\cdot10^{-4}\le m(\mu_\beta)-4\log\frac1{u(\beta)}\le4.8\cdot10^{-4}\quad(d=4),\\
+-2.5\cdot10^{-4}\le m(\mu_\beta)-4\log\frac1{u(\beta)}\le2.4\cdot10^{-3}\quad(d=3),
+\end{gather*}
+and $-128.4\beta^2\le m(\mu_\beta)-4\log(1/u(\beta))\le0.375\beta^2$ up to factors $1+O(\beta)$ ($d=4$; $-32.4\beta^2$ for $d=3$) (Numerical:
+an evaluation of the explicit constants, \texttt{python3} with \texttt{mpmath}). For $SU(3)$ ($\kappa$ and $u$ by Weyl integration) $\kappa/\beta=0.1667$ on the
+whole range, and the two bounds are $-\kappa(1+O(\beta))$ for small $\beta$ (at $\beta=10^{-7}$: $\delta_\chi=1.6668\cdot10^{-8}$ and $D^\chi=-1.6667\cdot10^{-8}$,
+$\kappa=1.6667\cdot10^{-8}$); near $\beta_0(4)$ the lower bound loses $1.1\cdot10^{-4}$ and $D^\chi\approx9.0\cdot10^{-3}$, dominated by the factor
+$N^4/\tau_0^2=324$ in front of $\mathcal T_Q$.
+
+(ii) Without the second change in the proof of Theorem~\ref{mg:thm:caplower} the method would not reach the second order: with $\sum_\ell(za^k)^\ell\le
+a^{k-4}/\delta'$ for $k\ge5$ the constant $F$ must be of order $b/\delta'$, and with $\delta'=O(\beta^2)$ the exits with six edges contribute
+$O(bFa^2)=O(\beta^2)$ with a large constant; numerically $\delta/\beta^2\to4.2\cdot10^3$ instead of $128.4$ ($SU(2)$, $d=4$).
+
+(iii) Meaning. In the transfer-matrix picture the cap acts on the plaquette states $\chi_\rho(U_q)$ and $\chi_{\bar\rho}(U_q)$ by the matrix of
+Lemma~\ref{mg:lem:capelement}(i); its eigenvectors are $\mathrm{Re}\,\chi_\rho$ and $\mathrm{Im}\,\chi_\rho$, which are even and odd under charge conjugation
+$U\mapsto\bar U$, with eigenvalues $\kappa=\alpha+\gamma$ and $\alpha-\gamma$. So to first order the $C$-even plaquette state is lowered by $\kappa$ and, if
+$\iota=0$, the $C$-odd one is shifted by $-(\alpha-\gamma)$ (Heuristic; only the lowest mass is bounded here). For $SU(3)$, $\alpha=O(\beta^2)$ and
+$\gamma=3u+O(\beta^2)$: the two plaquette glueballs split at first order, $m_\pm\approx4\log(1/u)\mp3u$. The title and the first lines of the abstract of
+\cite{OBS85} (complex characters, the subspace generated by the plaquette function and its complex conjugate, ``mass splitting'') suggest that this
+splitting was found there, in $2+1$ dimensions; we have not seen the paper.
+
+(iv) Checks (\texttt{theory/checks/first-order/}, a compass): an exact computation for $\mathbb Z_3$ in $d=3$ on the $3\times3$ spatial torus, in the sector
+of winding zero (dimension $3^8$; there $\kappa=u$ exactly), gives $(m-4\log(1/u))/u=-0.99875$ for the lowest $C$-even state and $+1.00025$ for the lowest
+$C$-odd state at $\beta=10^{-3}$, tending to $\mp1$; for $\mathbb Z_2$ ($\kappa=0$) on the $4\times4$ torus, winding zero, $(m-4\log(1/u))/u^2\to1$, so there
+is no first-order term. A brute-force computation of $\norm{P^JO_JP^J}$ on the full two-copy space of the four links of a cap
+($\mathbb Z_3$: dimension $3^8$; $S_3$ with its two-dimensional representation, for which $\int\chi_\rho^3=1$ and $\kappa\approx\beta/2$: dimension $6^8$)
+agrees with the class-function formula of the proof of Lemma~\ref{mg:lem:capchar} to all printed digits, lies below $u^4\bar\kappa_{\rm cap}$, and is
+$u^4(\kappa+(2-\iota)N^2u^2)$ to six digits. Weyl integration gives $\int(\mathrm{Re}\,\chi)^3=0$ for $SU(2)$, $SU(4)$, $SU(5)$ and $\frac14$ for $SU(3)$, and
+$\kappa_{SU(3)}(\beta)/(\beta/6)=1+O(\beta)$.
+
+(v) What remains at second order: the shifts and jumps of Lemma~\ref{mg:lem:twofront}(iii), $4(P_v-1)-K_S$ junctions of two plaquettes at their sup norm
+$b^2\approx4\beta^2$, whose character values should be of order $N^2u^2$, about $\beta^2/4$ for $SU(2)$ (Heuristic); the copy switch $\sigma_6/u^4$ and the term $\eta_2$, which come
+from the duplicated system and from the mean $a$; and, near $\beta_0(d)$, the crude counts of Remark~\ref{mg:rem:junctions}(i) and $\mathcal T_Q$.
+\end{remark}
 
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
 
@@ -1790,7 +2103,9 @@ any larger pair of separations could be used instead. The additive constants of 
 $\norm{g_p}_\infty\le e^{4\beta}-1$ on every plaquette. Section~\ref{mg:sec:sharp} removes the second loss for the temporal plaquettes, which
 gives the constant $-4\log(eK)$ relative to $4\log(1/u)$ as $\beta\downarrow0$ (Corollary~\ref{mg:cor:window}); counting by fronts
 (Section~\ref{mg:sec:fronts}) removes the counting loss as well, so that the lower bound is $4\log(1/u_*)-O(\beta)$, i.e.\ $4\log(1/u)-O(\beta)$
-when $u_*=u$, and grouping by junctions (Section~\ref{mg:sec:junctions}) brings the $O(\beta)$ to $2\beta(1+O(\beta))$ when $\rho$ has no trivial summand. (iii) The hypothesis $L_i\ge4$ cannot be dropped from the sharper finite-volume bounds: if a spatial side equals $3$,
+when $u_*=u$, and grouping by junctions (Section~\ref{mg:sec:junctions}) brings the $O(\beta)$ to $2\beta(1+O(\beta))$ when $\rho$ has no trivial summand.
+Evaluating the cap by characters (Section~\ref{mg:sec:cap}) brings it to $\kappa(\beta)+O(\beta^2)$, which is also the first-order term of the upper bound:
+$m=4\log(1/u)-\kappa+O(\beta^2)$. (iii) The hypothesis $L_i\ge4$ cannot be dropped from the sharper finite-volume bounds: if a spatial side equals $3$,
 Theorem~\ref{mg:thm:finite} holds only with $g=3$, and closed strips of three plaquettes per layer around that side (torelons, carrying the
 flux of a Polyakov loop) give states of energy $\approx3\log(1/u(\beta))$. For $\mathbb Z_2$ in $d=3$ on a $3\times3$ spatial torus the transfer
 matrix preserves the winding class, and a high-precision computation of the top eigenvalues of the sectors of winding $(0,0)$ and $(1,0)$ gives a
@@ -1824,12 +2139,27 @@ Transfer bound: the temporal plaquettes of all but one layer weigh $u_*=\max_{r\
 $m\ge4\log(1/q_u)$ for all $\beta<\beta_0(d)$ (infinite volume; finite volume, sides $\ge4$), $=4\log(1/u)-4\log(eK)-O(\beta)$ for $\dim\rho\le49$; window $4\log(eK)+O(\beta)$ when also $N^4\le1200\tau_0^2$ & Thm.~\ref{mg:thm:sharp}, Cor.~\ref{mg:cor:window} & Theorem\\
 Fronts and segments; incidence graph; fronts with $4$ and $5$ edges; local counts at vertices; tree sums & Lem.~\ref{mg:lem:fronts}--\ref{mg:lem:treesums} & Theorem\\
 Sharp constant on the whole range: $m\ge4\log(1/u_*)-8(K+1)\theta_5-\log(1+\delta)$, $\delta=O(\beta)$, hypotheses verified for all $\beta<\beta_0(d)$; $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta)$ (also finite volume, sides $\ge4$) & Thm.~\ref{mg:thm:fronts}, Lem.~\ref{mg:lem:frontsrange}, Cor.~\ref{mg:cor:sharpconst} & Theorem\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.6\textwidth}p{0.2\textwidth}l@{}}
+\toprule
+Statement (continued) & Where & Status\\
+\midrule
 $SU(2)$, all $\beta<\beta_0(d)$: $-1.38\le m-4\log(1/u)\le0.0014$ ($d=4$), $-0.63\le m-4\log(1/u)\le0.005$ ($d=3$) & Rem.~\ref{mg:rem:fronts} & Numerical\\
 Junctions: locality and local admissibility; junction graph; fronts with six edges; junctions with two front-pairs (cap, shift, jump); marked tree sums & Lem.~\ref{mg:lem:junction}--\ref{mg:lem:jsums} & Theorem\\
 First-order constant: $m\ge4\log(1/u_*)-8(K+1)\theta_5-\log(1+\delta_J)$, $\delta_J=b(1+O(\beta))$, so $m(\mu_\beta)\ge4\log(1/u(\beta))-2\beta+O(\beta^2)$ ($\rho$ without trivial summand) & Thm.~\ref{mg:thm:junctions}, Cor.~\ref{mg:cor:firstorder} & Theorem\\
 $SU(2)$, all $\beta<\beta_0(d)$: $-5.0\cdot10^{-4}\le m-4\log(1/u)\le1.4\cdot10^{-3}$ ($d=4$), $-1.1\cdot10^{-3}\le m-4\log(1/u)\le4.9\cdot10^{-3}$ ($d=3$) & Rem.~\ref{mg:rem:junctions} & Numerical\\
+Cap matrix element: $\kappa=\norm{P_\rho M_fP_\rho}=\frac\beta{N\tau_0}\int(\mathrm{Re}\,\chi_\rho)^3+O(\beta^2)$; $O(\beta^2)$ if the centre acts on $\rho$ by a scalar $\ne1$ that is not a cube root of unity ($U(1)$, $SU(N)$, $N\ne3$); $\frac\beta6+O(\beta^2)$ for $SU(3)$ & Lem.~\ref{mg:lem:capelement} & Theorem\\
+Transfer bound by pieces (junctions with their gauge projections); the cap by characters, $\norm{P^JO_JP^J}\le u^4(\kappa+(2-\iota)N^2u^2+O(\beta^3))$ & Lem.~\ref{mg:lem:pieces}, \ref{mg:lem:capchar} & Theorem\\
+First-order term: $m(\mu_\beta)=4\log(1/u(\beta))-\kappa(\beta)+O(\beta^2)$ (also finite volume, sides $\ge4$): $4\log(1/u)+O(\beta^2)$ for $U(1)$ and $SU(N)$, $N\ne3$; $4\log(1/u)-\beta/6+O(\beta^2)$ for $SU(3)$ & Thm.~\ref{mg:thm:caplower}, \ref{mg:thm:upperchar}, Cor.~\ref{mg:cor:firstorder2} & Theorem\\
+$SU(2)$, all $\beta<\beta_0(d)$: $-1.3\cdot10^{-4}\le m-4\log(1/u)\le4.8\cdot10^{-4}$ ($d=4$), $-2.5\cdot10^{-4}\le m-4\log(1/u)\le2.4\cdot10^{-3}$ ($d=3$); as $\beta\downarrow0$, between $-128.4\beta^2$ and $0.375\beta^2$ ($d=4$) & Rem.~\ref{mg:rem:cap} & Numerical\\
+$\mathbb Z_3$ ($3\times3$ torus, winding zero): $C$-even and $C$-odd plaquette states at $4\log(1/u)\mp u$ ($\kappa=u$); $\mathbb Z_2$: no first-order term & Rem.~\ref{mg:rem:cap}(iv) & Numerical\\
 Sides $\ge4$ needed for Thm.~\ref{mg:thm:sharp}(i): torelon below the bound on a $3\times3$ torus ($\mathbb Z_2$) & Rem.~\ref{mg:rem:tests}(iii) & Numerical\\
-Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the exact first-order coefficient (the cap evaluated by characters instead of its sup norm) & Rem.~\ref{mg:rem:junctions}(ii) & open\\
+Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the second-order coefficient (shifts and jumps by characters); the $C$-odd mass & Rem.~\ref{mg:rem:cap}(iii),(v) & open\\
 \bottomrule
 \end{tabular}
 \end{center}
