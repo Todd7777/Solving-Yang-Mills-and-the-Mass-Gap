@@ -97,9 +97,10 @@ for $U(1)$ and for $SU(N)$, $N\ne3$, with the fundamental representation, and is
 can meet at a link. At second order the shifts and jumps of the tube drop out (in the duplicated system the covariance lives on the sector that is odd
 under the exchange of the copies, where their operators vanish), and $m(\mu_\beta)=4\log(1/u(\beta))-\log\Upsilon(\beta)+O(\beta^3)$, where $\Upsilon(\beta)$
 is the largest variance of a real unit plaquette function in the span of $\chi_\rho,\overline{\chi_\rho}$ under the weight of one plaquette; for $SU(2)$,
-$m(\mu_\beta)=4\log(1/u(\beta))+\beta^2/8+O(\beta^3)=4\log(4/\beta)+\frac7{24}\beta^2+O(\beta^3)$. At third order nothing new enters:
+$m(\mu_\beta)=4\log(1/u(\beta))+\beta^2/8+O(\beta^3)$. At third order nothing new enters:
 $m(\mu_\beta)=4\log(1/u(\beta))-\log\Upsilon(\beta)+O(\beta^4)$, so the term of order $\beta^3$ is that of $-\log\Upsilon$, which is $\beta^3/432$ for $SU(3)$,
-$-\beta^3/6000$ for $SU(5)$ (five fundamental fluxes meet at a link), and $0$ for $U(1)$, $SU(2)$, $SU(4)$ and $SU(N)$, $N\ge6$. For $SU(2)$ the two
+$-\beta^3/6000$ for $SU(5)$ (five fundamental fluxes meet at a link), and $0$ for $U(1)$, $SU(2)$, $SU(4)$ and $SU(N)$, $N\ge6$; for $SU(2)$,
+$m(\mu_\beta)=4\log(4/\beta)+\frac7{24}\beta^2+O(\beta^4)$. For $SU(2)$ the two
 bounds give $-1.3\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
 $-2.5\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$ (a numerical evaluation of the explicit constants).
 The asymptotics
@@ -2473,7 +2474,7 @@ m(\mu_\beta)=4\log\frac1{u(\beta)}-\frac\beta6+\frac{\beta^2}{72}+O(\beta^3)\qua
 m(\mu_\beta)=4\log\frac1{u(\beta)}-\frac{\beta^2}{128}+O(\beta^3)\quad\text{for $SU(4)$},
 \end{gather*}
 and $m(\mu_\beta)=4\log(1/u(\beta))+O(\beta^3)$ for $SU(N)$, $N\ge5$. For $SU(2)$, $u=I_2(\beta)/I_1(\beta)=\frac\beta4(1-\frac{\beta^2}{24}+O(\beta^4))$, so
-$m(\mu_\beta)=4\log(4/\beta)+\frac7{24}\beta^2+O(\beta^3)$.
+$m(\mu_\beta)=4\log(4/\beta)+\frac7{24}\beta^2+O(\beta^3)$. (Corollary~\ref{mg:cor:third} improves all the remainders to $O(\beta^4)$.)
 \end{corollary}
 
 \begin{proof}
@@ -2527,7 +2528,8 @@ contributions to $\delta'$ are of order $\beta^3$, and none of them is a third-o
 of Lemma~\ref{mg:lem:oddslice}, which can be taken of order $\beta^2$. The junctions with three plaquettes and two front-pairs of four edges, counted by
 $Z_{3,4}$, do not exist (Lemma~\ref{mg:lem:threeplaq}). The junctions with three or more front-pairs are bounded in Lemma~\ref{mg:lem:jsums} by tree sums
 that charge a further front-pair only the factor $a^2$ of its half; but such a junction has two or more plaquettes, which costs $b^2a^2$, or one plaquette
-and a front of at least five edges (Lemma~\ref{mg:lem:oneplaq}). With these changes $\delta'=O(\beta^4)$ (Theorem~\ref{mg:thm:lower3}), and
+and then either a front of at least five edges (if it has exactly three front-pairs, Lemma~\ref{mg:lem:oneplaq}) or at least two further front-pairs,
+which costs $ba^4$. With these changes $\delta'=O(\beta^4)$ (Theorem~\ref{mg:thm:lower3}), and
 \[
 m(\mu_\beta)=4\log\frac1{u(\beta)}-\log\Upsilon(\beta)+O(\beta^4)
 \]
@@ -2568,7 +2570,8 @@ $\chi_\rho,\overline{\chi_\rho}$ and using the moments below). So $A_-=1-2r_3t+(
 Lemma~\ref{mg:lem:Upsilon}(iii), $\langle\chi^j\bar\chi^k\rangle=0$ unless $N$ divides $j-k$ ($\chi:=\chi_\rho$), $\langle|\chi|^2\rangle=1$, $\langle|\chi|^4\rangle=2$ and
 $\langle\chi^N\rangle=1$; for $j+k\le5$ the only other non-zero moments are $\langle\chi^4\bar\chi\rangle=\langle\chi\bar\chi^4\rangle$ for $N=3$. This is the multiplicity of $\rho$
 in $\rho^{\otimes4}$, i.e.\ the dimension of the space of vectors of weight $e_1$ in $(\C^3)^{\otimes4}$ annihilated by the raising operators $E_{12}$ and $E_{23}$ of
-$\mathfrak{sl}(3)$ (the theorem of the highest weight). Such a vector is $\sum_{a\ne b}c_{ab}w_{ab}$, where $w_{ab}$ has $e_3$ in the tensor factor $a$, $e_2$ in the
+$\mathfrak{sl}(3)$ (by the theorem of the highest weight, a standard fact of Lie theory that we do not prove; the value obtained below is confirmed
+by the Weyl integration formula and, independently, by Bessel--Toeplitz determinants, Remark~\ref{mg:rem:third}(ii)). Such a vector is $\sum_{a\ne b}c_{ab}w_{ab}$, where $w_{ab}$ has $e_3$ in the tensor factor $a$, $e_2$ in the
 factor $b$ and $e_1$ in the other two. $E_{12}$ replaces an $e_2$ by $e_1$, and $E_{23}$ an $e_3$ by $e_2$; so the conditions are $\sum_bc_{ab}=0$ for every $a$
 and $c_{ab}+c_{ba}=0$. The antisymmetric $4\times4$ matrices form a space of dimension $6$, on which the row sums are $3$ independent conditions, so
 $\langle\chi^4\bar\chi\rangle=3$. Hence $r_3=\frac18(\langle\chi^3\rangle+\langle\bar\chi^3\rangle)=\frac14[N=3]$;
@@ -2597,11 +2600,13 @@ If $q_1$ or $q_2$ is a plaquette of $J$, the other plaquettes of $J$ are at most
 the other bridge: impossible. So the three plaquettes are bridges, which cover at most three edges of $\varphi\setminus\varphi'$ and three of $\varphi'\setminus\varphi$.
 If $\lambda=\lambda'$, the fronts are vertex-disjoint and all eight edges of $\varphi\cup\varphi'$ lie in plaquettes of $J$ (Lemma~\ref{mg:lem:twofront}(i)):
 impossible. So $\lambda\ne\lambda'$, every edge of $\varphi\triangle\varphi'$ lies in a plaquette of $J$, and $|\varphi\triangle\varphi'|\le6$ forces $|\varphi\cap\varphi'|=1$: $q_1$ and $q_2$
-share a link $\{x,x+e_\mu\}$, with $q_1$ spanned at $x$ by $e_\mu,e_\nu$ and $q_2$ by $e_\mu,e_\kappa$, where $\kappa\notin\{\mu,\pm\nu\}$ or $e_\kappa=-e_\nu$. The
-edges of $\varphi\setminus\varphi'$ are $\{x,x+e_\nu\}$, $\{x+e_\mu,x+e_\mu+e_\nu\}$ and $\{x+e_\nu,x+e_\nu+e_\mu\}$, and those of $\varphi'\setminus\varphi$ are the same with $\kappa$ in
-place of $\nu$. Two edges lie in a common plaquette only if they are perpendicular with a common vertex or parallel at distance one. If $e_\kappa=-e_\nu$,
-no such pair exists. Otherwise exactly two pairs exist, at $x$ and at $x+e_\mu$: the bridges are the two plaquettes spanned by $e_\nu,e_\kappa$ at $x$ and at
-$x+e_\mu$. In either case there are fewer than three bridges, a contradiction.
+share a link $\{x,x+e_\mu\}$, with $q_1$ spanned at $x$ by $e_\mu$ and a unit vector $f_1$, and $q_2$ by $e_\mu$ and a unit vector $f_2\ne f_1$, both
+perpendicular to $e_\mu$; so either $f_2=-f_1$ (the two plaquettes are coplanar) or $f_2\perp f_1$. The edges of $\varphi\setminus\varphi'$ are $\{x,x+f_1\}$,
+$\{x+e_\mu,x+e_\mu+f_1\}$ and $\{x+f_1,x+f_1+e_\mu\}$, and those of $\varphi'\setminus\varphi$ are the same with $f_2$ in place of $f_1$. Two edges lie in a common
+plaquette only if they are perpendicular with a common vertex or parallel at distance one. If $f_2=-f_1$, the pairs with a common vertex are collinear,
+and the only parallel pair, $\{x+f_1,x+f_1+e_\mu\}$ and $\{x-f_1,x-f_1+e_\mu\}$, is at distance two (the sides $\ge5$ are used here again: with a side $3$ it
+would be at distance one); so there is no bridge. If $f_2\perp f_1$, exactly two pairs exist, at $x$ and at $x+e_\mu$: the bridges are the two plaquettes
+spanned by $f_1,f_2$ at $x$ and at $x+e_\mu$. In either case there are fewer than three bridges, a contradiction.
 \end{proof}
 
 \begin{lemma}[One plaquette, three front-pairs]\label{mg:lem:oneplaq}
@@ -2619,15 +2624,15 @@ union $\varphi_1\cup\varphi_2$. A cycle of four edges in the disjoint union of t
 $\partial c=\varphi_2$. But $c$ touches $\varphi_1$, whereas $\partial c=\varphi_2$ shares no vertex with $\varphi_1$: a contradiction.
 \end{proof}
 
-The proof of the next lemma uses the following bound. Let $W_J\ge0$ be weights of the junctions that do not depend on the weight $b$ given to their
-plaquettes. Then for $b\le\bar b$,
+The proof of the next lemma uses the following elementary bound: for any fixed numbers $W_J\ge0$ and $0<b\le\bar b$,
 \[
-\sum_{|J|_C\ge2}b^{|J|_C}W_J\le\Bigl(\frac b{\bar b}\Bigr)^2\sum_{|J|_C\ge2}\bar b^{|J|_C}W_J .
+\sum_{|J|_C\ge2}b^{|J|_C}W_J\le\Bigl(\frac b{\bar b}\Bigr)^2\sum_{|J|_C\ge2}\bar b^{|J|_C}W_J ,
 \]
+since $b^n\le(b/\bar b)^2\bar b^n$ for $n\ge2$.
 
 \begin{lemma}[Junction sums to third order]\label{mg:lem:jsums3}
 In the setting of Theorem~\ref{mg:thm:lower2}, suppose all spatial sides are $\ge5$. Let $\bar b\ge b$, and let $\bar\xi_F,\bar\xi_C$ and
-$\bar g_F,\bar g_C,\bar g'_F,\bar g'_C,\bar\kappa_F,\bar\kappa_C$ satisfy the first two conditions of Lemma~\ref{mg:lem:jsums} and the six inequalities of
+$\bar g_F,\bar g_C,\bar g'_F,\bar g'_C,\bar\kappa_F,\bar\kappa_C$ be such that the series below converge and that they satisfy the first two conditions of Lemma~\ref{mg:lem:jsums} and the six inequalities of
 Definition~\ref{mg:def:jconst} with $\bar b$ in place of $b$ in $Y_j$. The resulting quantities are written $\bar Y_j$, $\bar A_j$, $\bar B_j$; they keep the
 $c_J$ and the $f$ of Theorem~\ref{mg:thm:lower2}. Put
 \begin{gather*}
@@ -2638,7 +2643,7 @@ $c_J$ and the $f$ of Theorem~\ref{mg:thm:lower2}. Put
 &+\Bigl(\frac b{\bar b}\Bigr)^2\,4P_ve^{4\bar\xi_F}\bigl(\bar\kappa_C\bar Y_2+4(\bar g_C\bar g'_F+\bar g'_C\bar g_F)\bar Y_1+16\bar\kappa_F\bar Y_0\bigr).
 \end{aligned}
 \end{gather*}
-Let $p$ be a front-pair candidate with four edges, and let $J$ range over the junctions without support and without caps containing $p$, a junction as
+Let $p$ be a front-pair candidate with four edges, and let $J$ range over the junctions containing $p$ that have no support and are not caps, a junction as
 in Lemma~\ref{mg:lem:twoplaq} carrying $\varpi\min(b^2,b_2)$ in place of $b^{|J|_C}$. Then the sum $\mathcal S(p)$ of Lemma~\ref{mg:lem:jsums}(ii) is at most
 $\Sigma^{(3)}_4$.
 \end{lemma}
@@ -2657,8 +2662,10 @@ Definition~\ref{mg:def:jconst}.
 candidates with $k$ edges. Write $\Psi:=\Phi(J)\setminus\{p,p'\}\ne\emptyset$. If $|\Psi|=1$, then $p'$ or the front-pair of $\Psi$ has at least five edges
 (Lemma~\ref{mg:lem:oneplaq}); these terms give at most $\mathsf F'\mathsf A+\mathsf F\mathsf A'$. The terms with $|\Psi|\ge2$ give at most $\mathsf F\sum_{m\ge2}\mathsf A^m/m!$.
 
-\emph{Three or more front-pairs, two or more plaquettes.} By the inequality before the lemma, these terms are at most $(b/\bar b)^2$ times the
-doubly marked sum of the proof of Lemma~\ref{mg:lem:jsums}(ii) with plaquette weight $\bar b$. That sum is at most the last factor.
+\emph{Three or more front-pairs, two or more plaquettes.} These terms are $\sum_{|J|_C\ge2}b^{|J|_C}W_J$ with
+$W_J:=\sum_{p'}f(|p'|)\prod_{\psi\ne p,p'}a^{|\psi|/2}e^{c_J}$, computed with the actual $a$, $c_J$ and $f$. By the inequality before the lemma they are at most
+$(b/\bar b)^2$ times the same sum with plaquette weight $\bar b$, and the doubly marked sums of the proof of Lemma~\ref{mg:lem:jsums}(ii), with the
+constants at $\bar b$, bound that sum by the last factor.
 \end{proof}
 
 \begin{theorem}[The lower bound to third order]\label{mg:thm:lower3}
@@ -2672,7 +2679,9 @@ m(\mu_\beta)\ \ge\ 4\log\frac1{u(\beta)}-\log\Upsilon(\beta)-O(\beta^4).
 
 \begin{proof}
 In case (a) of the proof of Theorem~\ref{mg:thm:lower2} the far junction $J'$ is main and contains no cap. So Lemma~\ref{mg:lem:jsums3}, in place of
-Lemma~\ref{mg:lem:jsums}(ii), bounds the sum over $J'$ and the continuations by $E_B(4)+M\Sigma^{(3)}_4$; nothing else changes.
+Lemma~\ref{mg:lem:jsums}(ii), bounds the sum over $J'$ and the continuations by $E_B(4)+M\Sigma^{(3)}_4$, where the constant $M$ of that proof is now
+defined with $\Sigma^{(3)}_4$ in place of $\Sigma^{(2)}_4$. Nothing else changes: case (c) uses only the full sum $\Sigma_4$, through the third hypothesis,
+where $C_\varpi a^4\Sigma_4=O(a^4/b)$ is small.
 
 \emph{Small $\beta$.} Take $\varpi:=b^2$; then $C_\varpi=1+1/b^2$ for small $\beta$. Take $\xi_F:=2P_vb$, $\xi_C:=8P_vb$, $h_J:=8P_va^2/b$ and
 $F:=3P_vN^v_4b$. Then:
@@ -2683,8 +2692,10 @@ second hypothesis hold as in the proof of Theorem~\ref{mg:thm:caplower};
 \item the third hypothesis holds as $C_\varpi a^4=O(\beta^2)$, and the fourth as $a^4/b^2=O(\beta^2)$.
 \end{itemize}
 Let $\bar b$ be so small, depending only on $d$, that the conditions at $\bar b$ hold with room when $a=0$ and $F=0$ (then $\bar A_j=0$,
-$\bar B_0=N^v_4e^{4\bar\xi_F}$ and $\bar B_1=4\bar B_0$); for small $\beta$ they then hold for the actual $a$, $c_J$ and $F$. In particular
-$\bar g_F,\bar g_C=O(1)$ and $\bar g'_F,\bar g'_C,\bar\kappa_F,\bar\kappa_C=O(a^2)$. The terms of $\Sigma^{(3)}_4$ are then:
+$\bar B_0=N^v_4e^{4\bar\xi_F}$ and $\bar B_1=4\bar B_0$); for small $\beta$ they then hold for the actual $a$, $c_J$ and $F$, as $\bar Y_j$ converges at
+$\bar b$ and $\bar A_j$, $\bar B_j$ converge uniformly as $a\to0$ and $F\to0$ ($N^v_k\le C_d^k$). We take for $\bar g$, $\bar\kappa$ the minimal solutions, i.e.\ the six
+inequalities with equality: a linear system which at $a=0$, $F=0$ is a contraction with room. Its sources for $\bar g'_F,\bar g'_C,\bar\kappa_F,\bar\kappa_C$ are
+$O(a^2)$, so $\bar g_F,\bar g_C=O(1)$ and $\bar g'_F,\bar g'_C,\bar\kappa_F,\bar\kappa_C=O(a^2)$. The terms of $\Sigma^{(3)}_4$ are then:
 \begin{itemize}
 \item the shifts and jumps, at most $(4P_v-4-K_S)b^4$;
 \item the terms with $n\ge4$, $O(b^4)$;
@@ -2723,38 +2734,60 @@ shifts and jumps cancel. The next corrections are of order $\beta^4$:
 \begin{itemize}
 \item the hopping of the plaquette state through a junction that widens the tube to six edges and one that narrows it again, of order $u^2\cdot a^2$ per hop
 in characters;
-\item the junctions with four plaquettes;
+\item in $d=4$, the junctions with four plaquettes and two four-edge front-pairs (twelve by enumeration, (iii)); in $d=3$ there are none;
 \item at order $\beta^6$, the vacuum.
 \end{itemize}
-In the exact $\mathbb Z_n$ spectra in $d=3$ the residual $m-4\log(1/u)+\log\Upsilon_C$ is $-8.0u^4$ at momentum $0$ and $O(u^5)$ at momentum $(\pi,\pi)$
-(Remark~\ref{mg:rem:second}(ii)). As the upper bound is $-\log\Upsilon+O(\beta^5)$, the fourth-order coefficient of this residual is $\le0$ for every $G$ and
-$\rho$.
+(Numerical) In the exact $\mathbb Z_n$ spectra in $d=3$ the residual $m-4\log(1/u)+\log\Upsilon_C$ is about $-8u^4$ at momentum $0$ and $O(u^5)$ at momentum
+$(\pi,\pi)$ (Remark~\ref{mg:rem:second}(ii)). (Theorem) By Theorem~\ref{mg:thm:upper2}, whose error is $O(\beta^5)$,
+$\limsup_{\beta\downarrow0}\beta^{-4}\bigl(m(\mu_\beta)-4\log(1/u)+\log\Upsilon\bigr)\le0$ for every $G$ and $\rho$.
+
+The values of Lemma~\ref{mg:lem:Upsilon3} follow a pattern. If $\iota=0$, then exactly $\Upsilon_+=2\partial_t^2K(t,0)$ and $\Upsilon_-=2\partial_s^2K(t,0)$ at $t=\beta/N$,
+where $K(t,s):=\log\langle\exp(t\,\mathrm{Re}\,\chi_\rho+s\,\mathrm{Im}\,\chi_\rho)\rangle$; so $\Upsilon_\pm-1$ are given by the cumulants of
+$(\mathrm{Re}\,\chi_\rho,\mathrm{Im}\,\chi_\rho)$ of order at least three, and tilting a Gaussian changes no variance. For $SU(N)$ the moments $\langle\chi^j\bar\chi^k\rangle$
+of degree $j+k<N$ are those of a standard complex Gaussian ($\langle|\chi|^{2j}\rangle=j!$ for $j\le N$ by Schur--Weyl duality, and $\langle\chi^j\bar\chi^k\rangle=0$ for
+$j\ne k$), and at degree $N$ the only excess is $\langle\chi^N\rangle=\langle\bar\chi^N\rangle=1$. So
+$K=\frac14(t^2+s^2)+2^{1-N}\mathrm{Re}\bigl((t+is)^N\bigr)/N!+O(|(t,s)|^{N+1})$ and $\Upsilon_\pm=1\pm2^{2-N}(\beta/N)^{N-2}/(N-2)!+O(\beta^{N-1})$: for $SU(N)$
+the $C$-even and $C$-odd plaquette states split first at order $N-2$, when $N$ fundamental fluxes meet at a link. For $N=3,4,5$ this is part of
+Lemma~\ref{mg:lem:Upsilon3}; an independent referee's exact series confirm it for $N=6,7$ ($\mp\beta^4/497664$, $\mp\beta^5/64538880$), where it lies beyond the
+order controlled here.
 
 (ii) Checks (\texttt{theory/checks/third-order/}, a compass).
 \begin{itemize}
-\item Lemmas~\ref{mg:lem:threeplaq} and~\ref{mg:lem:oneplaq}, by exhaustive enumeration. The first on spatial tori of dimensions $2$, $3$ and $4$, where the
-junctions with two front-pairs of four edges and at most three plaquettes are exactly the cap and the $4(P_v-1)-K_S$ shifts and jumps. The second on
-dimensions $2$ and $3$, with all fronts of at most six edges. There the junctions with one plaquette and three front-pairs merge two fronts into one of at
-least eight edges.
-\item Lemma~\ref{mg:lem:Upsilon3}, by Weyl integration (the moments exactly, and $-\log\Upsilon$ at small $\beta$).
-\item Exact transfer-matrix spectra of $\mathbb Z_3$ and $\mathbb Z_5$ on the $3\times3$ torus, in both $C$-sectors. For these groups $-\log\Upsilon_C$ has a term
-$c_3\beta^3$; for $\mathbb Z_5$, $c_3=\mp\frac1{48}$ for $C=\pm$.
+\item Lemmas~\ref{mg:lem:threeplaq} and~\ref{mg:lem:oneplaq}, by exhaustive enumeration.
 \begin{itemize}
-\item After subtracting $-\log\Upsilon_C$, the residual is $-8.0u^4$ at $\beta=0.04$, $0.02$ and $0.01$.
+\item The first on spatial tori of dimensions $2$, $3$ and $4$, with the plaquettes pre-filtered by Lemma~\ref{mg:lem:twofront}(i): the junctions with two
+front-pairs of four edges and at most three plaquettes are exactly the cap and the $4(P_v-1)-K_S$ shifts and jumps.
+\item The second on dimensions $2$ and $3$, with the fronts of one layer restricted to four or six edges (those of the other layer arbitrary). There the
+junctions with one plaquette and three front-pairs merge two fronts into one of at least eight edges.
+\item An independent referee, with separate code working from the definitions alone (all cycles of four edges, straight ones included, and no lemma of the
+paper), found the same on tori with sides $4$ to $6$ in spatial dimensions $2$, $3$ and $4$, and in addition $Z_{4,4}=0$ for $d=3$ and $Z_{4,4}=12$ for $d=4$ (two
+jumps across a cube, eight turns through a cube, and two U-turns).
+\end{itemize}
+\item Lemma~\ref{mg:lem:Upsilon3}, by Weyl integration (the moments exactly, and $-\log\Upsilon$ at small $\beta$). The referee, independently, from exact power
+series of Bessel--Toeplitz determinants.
+\item Exact transfer-matrix spectra of $\mathbb Z_3$ and $\mathbb Z_5$ on the $3\times3$ torus, in both $C$-sectors. This torus has sides $3<6$ (and girth $3$),
+outside the hypotheses of Theorem~\ref{mg:thm:lower3}. For these groups $-\log\Upsilon_C$ has a term $c_3\beta^3$; for $\mathbb Z_5$, $c_3=\mp\frac1{48}$ for $C=\pm$.
+\begin{itemize}
+\item After subtracting $-\log\Upsilon_C$, the residual divided by $u^4$ lies between $-8.16$ and $-7.99$ at $\beta=0.04$, $0.02$ and $0.01$, tending to $-8$. The
+referee found the same on the $3\times4$ and $4\times4$ tori; fits give a $\beta^3$ coefficient of the residual below $5\cdot10^{-4}$ of $c_3$.
 \item After subtracting only its expansion to second order, the remainder divided by $\beta^3$ tends to $c_3$: for $\mathbb Z_5$, $C=+$, it is $-0.042$, $-0.032$ and
 $-0.026$ against $c_3=-0.021$, the difference being the term $-8u^4$.
 \end{itemize}
 \end{itemize}
 
 (iii) Numbers (\texttt{third\_order\_constants.py}; Numerical). For $SU(2)$ the smallest admissible $\delta'$ of Theorem~\ref{mg:thm:lower3}, with $\varpi=b^2$ and the
-best $\bar b$ among the powers of $2$, has $\delta'/\beta^4\to8.4\cdot10^{10}$ ($d=4$) and $3.4\cdot10^8$ ($d=3$). Almost all of it is the crude count of the
-junctions with four plaquettes and a four-edge exit, $2\cdot5\cdot(2d-3)\binom{4P_v+4T_v}4b^4$. For $SU(3)$ the limits are $8.2\cdot10^{10}$ and $3.1\cdot10^8$, so the
+best $\bar b$ among the powers of $2$, has $\delta'/\beta^4\to8.4\cdot10^{10}$ ($d=4$) and $3.4\cdot10^8$ ($d=3$). Almost all of it ($91\%$ and $97\%$) is the crude
+count of the junctions with four plaquettes and a four-edge exit, $2\cdot5\cdot(2d-3)\binom{4P_v+4T_v}4b^4$. With the enumerated values $Z_{4,4}=0$ ($d=3$) and $12$
+($d=4$), if proved, $\delta'/\beta^4$ would drop to about $3\cdot10^7$ and $2.5\cdot10^9$; and by Lemma~\ref{mg:lem:threeplaq} the term $Z_{3,4}b^3$ of $\Sigma_4$
+(Definition~\ref{mg:def:jconst}) vanishes when all spatial sides are $\ge5$. The one-plaquette term reaches its limit slowly, because of the crude bound for
+$N^v_7$. For $SU(3)$ the limits are $8.2\cdot10^{10}$ and $3.1\cdot10^8$, so the
 lower bound resolves the term $\beta^3/432$ only for $\beta\lesssim3\cdot10^{-14}$ ($d=4$) and $8\cdot10^{-12}$ ($d=3$): this part of the statement is
 asymptotic. For $SU(2)$ the two bounds now give $1.249966\cdot10^{-15}\le m(\mu_\beta)-4\log(1/u)\le1.250000\cdot10^{-15}$ at $\beta=10^{-7}$ and
 $1.2465\cdot10^{-13}\le m(\mu_\beta)-4\log(1/u)\le1.2500\cdot10^{-13}$ at $\beta=10^{-6}$ ($d=3$), and $1.2416\cdot10^{-15}\le m(\mu_\beta)-4\log(1/u)\le1.2500\cdot10^{-15}$
 at $\beta=10^{-7}$ ($d=4$): the second-order term $\beta^2/8$ is resolved there to a few parts in $10^5$, $10^3$ and $10^3$.
 
-(iv) What remains: the fourth-order term, which needs the hopping of (i) and the junctions with four plaquettes by characters; the analyticity of
+(iv) What remains: the fourth-order term, which needs the hopping of (i) and the junctions with four plaquettes by characters (and a proof of the
+counts $Z_{4,4}$); the analyticity of
 $m+4\log u$; the $C$-odd mass; and, near $\beta_0(d)$, the crude counts and $\mathcal T_Q$.
 \end{remark}
 
@@ -2873,7 +2906,7 @@ $SU(2)$: $\delta'/\beta^3\to1.4\cdot10^6$ ($d=4$), $2.1\cdot10^5$ ($d=3$); at $\
 Sides $\ge4$ needed for Thm.~\ref{mg:thm:sharp}(i): torelon below the bound on a $3\times3$ torus ($\mathbb Z_2$) & Rem.~\ref{mg:rem:tests}(iii) & Numerical\\
 Plaquette variance to third order: $\beta^3$ terms $\frac1{432}$ ($SU(3)$), $-\frac1{6000}$ ($SU(5)$), $0$ ($U(1)$, $SU(2)$, $SU(4)$, $SU(N\ge6)$); no junctions with three plaquettes and two four-edge fronts ($Z_{3,4}=0$); one plaquette and three front-pairs force a front of $\ge5$ edges; junction sums to third order & Lem.~\ref{mg:lem:Upsilon3}--\ref{mg:lem:jsums3} & Theorem\\
 Third-order term: $m=4\log(1/u)-\log\Upsilon+O(\beta^4)$ (infinite volume; finite volume, sides $\ge6$); for $SU(2)$, $m(\mu_\beta)=4\log(4/\beta)+\frac7{24}\beta^2+O(\beta^4)$ & Thm.~\ref{mg:thm:lower3}, Cor.~\ref{mg:cor:third} & Theorem\\
-$SU(2)$: $\delta'/\beta^4\to8.4\cdot10^{10}$ ($d=4$), $3.4\cdot10^8$ ($d=3$); at $\beta=10^{-7}$, $d=3$: $1.249966\cdot10^{-15}\le m-4\log(1/u)\le1.25\cdot10^{-15}$; enumerations, Weyl integration, exact $\mathbb Z_3$, $\mathbb Z_5$ spectra (third order confirmed, residual $-8u^4$) & Rem.~\ref{mg:rem:third} & Numerical\\
+$SU(2)$: $\delta'/\beta^4\to8.4\cdot10^{10}$ ($d=4$), $3.4\cdot10^8$ ($d=3$); at $\beta=10^{-7}$, $d=3$: $1.249966\cdot10^{-15}\le m-4\log(1/u)\le1.25\cdot10^{-15}$; enumerations, Weyl integration, exact $\mathbb Z_3$, $\mathbb Z_5$ spectra on tori outside the hypotheses (consistent with the third-order claim, residual $\approx-8u^4$) & Rem.~\ref{mg:rem:third} & Numerical\\
 Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the fourth-order term (hopping of the plaquette state, junctions with four plaquettes); the $C$-odd mass for $SU(3)$ & Rem.~\ref{mg:rem:third}(iv) & open\\
 \bottomrule
 \end{tabular}

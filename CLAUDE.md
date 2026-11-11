@@ -53,8 +53,8 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   $\mathrm{span}(\chi_\rho,\bar\chi_\rho)$ under $w_\beta/c_0$; for $SU(2)$ $m=4\log(1/u)+\beta^2/8+O(\beta^3)$ (the shifts and jumps of the tube vanish on
   the swap-odd sector of the duplicated system); checks in `theory/checks/second-order/`; refereed: minor revisions, applied. Section 11 (11 November) shows that nothing new enters at
   third order: $m=4\log(1/u)-\log\Upsilon+O(\beta^4)$, so the $\beta^3$ term is that of $-\log\Upsilon$ ($\beta^3/432$ for $SU(3)$, $-\beta^3/6000$ for
-  $SU(5)$, $0$ for $U(1)$, $SU(2)$, $SU(4)$, $SU(N\ge6)$); asymptotic only (constant $\sim10^{11}$); checks in `theory/checks/third-order/`; referee
-  pending. Next: the fourth order (hopping of the plaquette state, junctions with four plaquettes), the $C$-odd sector, near $\beta_0$ (journal
+  $SU(5)$, $0$ for $U(1)$, $SU(2)$, $SU(4)$, $SU(N\ge6)$); asymptotic only (constant $\sim10^{11}$); checks in `theory/checks/third-order/`; refereed:
+  minor revisions, applied. Next: the fourth order (hopping of the plaquette state, junctions with four plaquettes), the $C$-odd sector, near $\beta_0$ (journal
   2026-11-11, Part 7).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
