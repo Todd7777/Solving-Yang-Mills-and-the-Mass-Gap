@@ -52,7 +52,7 @@ upper bound extended to the whole range $\beta<\beta_0(d)$ (for $\dim\rho\le4$, 
 report, and sharper lower bounds added (Sections~\ref{mg:sec:sharp} and~\ref{mg:sec:fronts}), 10 November 2026; Section~\ref{mg:sec:fronts} revised
 after a referee report, and the lower bound made effective on the whole range, the same day; the first-order constant (Section~\ref{mg:sec:junctions})
 added, 10 November 2026; the cap by characters and the first-order term (Section~\ref{mg:sec:cap}) added the same day, and revised after a referee
-report; the second-order term (Section~\ref{mg:sec:second}) added, 11 November 2026; living document}
+report; the second-order term (Section~\ref{mg:sec:second}) added, 11 November 2026, and revised after a referee report; living document}
 
 \begin{document}
 \maketitle
@@ -2099,8 +2099,8 @@ the vacuum; it vanishes on the sector of the duplicated system that is odd under
 sector (Lemmas~\ref{mg:lem:swap} and~\ref{mg:lem:twoplaq}). What remains is one number, the largest variance of a plaquette function under the weight
 of a single plaquette:
 \[
-\Upsilon(\beta):=\max\Bigl\{\int\varphi^2\,\frac{w_\beta}{c_0}\dU-\Bigl(\int\varphi\,\frac{w_\beta}{c_0}\dU\Bigr)^2\ :\ \varphi\in\mathrm{span}_\R\{\mathrm{Re}\,\chi_\rho,
-\mathrm{Im}\,\chi_\rho\},\ \int\varphi^2\dU=1\Bigr\}.
+\Upsilon(\beta):=\max\Bigl\{\int\psi^2\,\frac{w_\beta}{c_0}\dU-\Bigl(\int\psi\,\frac{w_\beta}{c_0}\dU\Bigr)^2\ :\ \psi\in\mathrm{span}_\R\{\mathrm{Re}\,\chi_\rho,
+\mathrm{Im}\,\chi_\rho\},\ \int\psi^2\dU=1\Bigr\}.
 \]
 The outcome is $m(\mu_\beta)=4\log(1/u(\beta))-\log\Upsilon(\beta)+O(\beta^3)$ (Corollary~\ref{mg:cor:second}). For $SU(2)$,
 $-\log\Upsilon(\beta)=\beta^2/8+O(\beta^3)$: the gap has no first-order term above $4\log(1/u)$, and the second-order term $+\beta^2/8$. With the
@@ -2111,9 +2111,10 @@ The upper bound (Theorem~\ref{mg:thm:upper2}) is the argument of Section~\ref{mg
 exactly; its error is $O(\beta^5)$. The lower bound (Theorem~\ref{mg:thm:lower2}) has four ingredients. (a) The caps are summed into the tube, which
 they do not change as a set of links (Lemma~\ref{mg:lem:capsum}). (b) Between the two observables only the swap-odd sector of the duplicated system
 contributes (Lemma~\ref{mg:lem:swap}); there the dressed tube has norm $u^4\Upsilon(1+O(\beta^6))$ (Lemma~\ref{mg:lem:dressed}), and the shifts and
-jumps vanish. (c) A slice can be bounded on the odd sector through any one of its pieces, the others being taken at their full norm with a
-bounded factor (Lemma~\ref{mg:lem:oddslice}). (d) Along the path of junctions, the factor $z$ of the generating function is charged only to the
-slices that the path reaches for the first time; at a slice it reaches again, its pieces cost about $u^4$ each and pay for the bookkeeping. The
+jumps vanish. (c) A slice can be bounded on the odd sector through any one of its pieces, the others being taken at their full norm times a
+factor $C_\varpi$ of order $1/\beta$ (Lemma~\ref{mg:lem:oddslice}). (d) Along the path of junctions, the factor $z$ of the generating function is charged only to the
+slices that the path reaches for the first time; at a slice it reaches again, a piece of the tube costs $C_\varpi u^4(1+\gamma_g)=O(\beta^3)$, which
+pays for the factors $C_\varpi$. The
 constant in the $O(\beta^3)$ of the lower bound is large (Remark~\ref{mg:rem:second}(iii)).
 
 The setting is that of Section~\ref{mg:sec:cap}: $\rho$ is irreducible and non-trivial, with the notation $\varphi_{ab}$, $\alpha_\rho$, $\gamma_\rho$,
@@ -2125,13 +2126,13 @@ an operator on the span of $\chi_\rho$ and $\chi_{\bar\rho}$ in $L^2_{\rm cl}(G)
 
 \begin{lemma}[The plaquette variance]\label{mg:lem:Upsilon}
 \begin{enumerate}[label=(\roman*)]
-\item For real $\varphi$ in the span of $\chi_\rho,\chi_{\bar\rho}$, $\ip\varphi{\mathsf V\varphi}=\mathrm{Var}_\beta(\varphi):=\langle\varphi^2(1+f_\beta)\rangle-\langle\varphi(1+f_\beta)\rangle^2$,
-the variance of $\varphi(U)$ when $U$ has the density $w_\beta/c_0=1+f_\beta$. The operator $\mathsf V$ is positive and commutes with complex
+\item For real $\psi$ in the span of $\chi_\rho,\chi_{\bar\rho}$, $\ip\psi{\mathsf V\psi}=\mathrm{Var}_\beta(\psi):=\langle\psi^2(1+f_\beta)\rangle-\langle\psi(1+f_\beta)\rangle^2$,
+the variance of $\psi(U)$ when $U$ has the density $w_\beta/c_0=1+f_\beta$. The operator $\mathsf V$ is positive and commutes with complex
 conjugation, and its largest eigenvalue is $\Upsilon(\beta)$, with a real eigenvector. If $\iota=1$, the eigenvector is $\chi_\rho$ and
 $\Upsilon=1+\kappa-N^2u^2$. If $\iota=0$, the eigenvectors are $\sqrt2\,\mathrm{Re}\,\chi_\rho$ and $\sqrt2\,\mathrm{Im}\,\chi_\rho$, with the
 eigenvalues $\Upsilon_+:=1+\kappa-2N^2u^2$ and $\Upsilon_-:=1+\alpha_\rho-\gamma_\rho$, and $\Upsilon=\max(\Upsilon_+,\Upsilon_-)$.
-\item With $y:=\frac\beta N\mathrm{Re}\,\chi_\rho$, uniformly in the real unit vectors $\varphi$ of this span,
-$\mathrm{Var}_\beta(\varphi)=1+\langle y\varphi^2\rangle+\frac12\langle y^2\varphi^2\rangle-\frac12\langle y^2\rangle-\langle y\varphi\rangle^2+O(\beta^3)$.
+\item With $y:=\frac\beta N\mathrm{Re}\,\chi_\rho$, uniformly in the real unit vectors $\psi$ of this span,
+$\mathrm{Var}_\beta(\psi)=1+\langle y\psi^2\rangle+\frac12\langle y^2\psi^2\rangle-\frac12\langle y^2\rangle-\langle y\psi\rangle^2+O(\beta^3)$.
 \item For the fundamental representations: $SU(2)$: $-\log\Upsilon=\frac{\beta^2}8+O(\beta^3)$. $U(1)$: $-\log\Upsilon_+=\frac38\beta^2+O(\beta^3)$ and
 $-\log\Upsilon_-=\frac{\beta^2}8+O(\beta^3)$, so $\Upsilon=\Upsilon_-$ for small $\beta$. $SU(3)$: $-\log\Upsilon=-\log\Upsilon_+=-\frac\beta6+\frac{\beta^2}{72}+O(\beta^3)$.
 $SU(4)$: $-\log\Upsilon=-\log\Upsilon_+=-\frac{\beta^2}{128}+O(\beta^3)$. $SU(N)$, $N\ge5$: $-\log\Upsilon=O(\beta^3)$.
@@ -2139,7 +2140,7 @@ $SU(4)$: $-\log\Upsilon=-\log\Upsilon_+=-\frac{\beta^2}{128}+O(\beta^3)$. $SU(N)
 \end{lemma}
 
 \begin{proof}
-(i) As $\langle\varphi\rangle=0$, $\langle f_\beta\varphi\rangle=\langle(1+f_\beta)\varphi\rangle$, and $\ip\varphi{\mathsf V\varphi}=\langle(1+f_\beta)\varphi^2\rangle-\langle f_\beta\varphi\rangle^2$ is the
+(i) As $\langle\psi\rangle=0$, $\langle f_\beta\psi\rangle=\langle(1+f_\beta)\psi\rangle$, and $\ip\psi{\mathsf V\psi}=\langle(1+f_\beta)\psi^2\rangle-\langle f_\beta\psi\rangle^2$ is the
 variance. The three factors of $\mathsf V$ commute with complex conjugation ($f_\beta$ is real), so the real and imaginary parts of an eigenvector are
 eigenvectors, and $\mathsf V\ge0$ because it is non-negative on real vectors. If $\iota=1$ the span is that of the real function $\chi_\rho$, and
 $\mathrm{Var}_\beta(\chi_\rho)=1+\langle\chi_\rho^2f_\beta\rangle-\langle f_\beta\chi_\rho\rangle^2=1+\kappa-N^2u^2$ (Lemma~\ref{mg:lem:capelement}(i); $\langle f_\beta\chi_\rho\rangle=d_{\bar\rho}u_{\bar\rho}=Nu$).
@@ -2148,9 +2149,9 @@ off-diagonal entries $\gamma_\rho$ (Lemma~\ref{mg:lem:capelement}(i)), and $P_\r
 $1+\alpha_\rho-N^2u^2$ and the off-diagonal entries $\gamma_\rho-N^2u^2$, the eigenvectors $\chi_\rho\pm\chi_{\bar\rho}$ and the eigenvalues
 $1+\alpha_\rho+\gamma_\rho-2N^2u^2=1+\kappa-2N^2u^2$ and $1+\alpha_\rho-\gamma_\rho$.
 
-(ii) $w_\beta=e^y$, $|y|\le\beta$, $\langle y\rangle=\langle\varphi\rangle=0$, $\langle\varphi^2\rangle=1$ and $|\varphi|\le\sqrt2N$. Taylor's formula with $|e^y-1-y-\frac12y^2|\le\frac16\beta^3e^\beta$ gives
-$\langle e^y\varphi^2\rangle=1+\langle y\varphi^2\rangle+\frac12\langle y^2\varphi^2\rangle+O(\beta^3)$, $\langle e^y\varphi\rangle=\langle y\varphi\rangle+O(\beta^2)$ and
-$c_0=\langle e^y\rangle=1+\frac12\langle y^2\rangle+O(\beta^3)$; insert these in $\mathrm{Var}_\beta(\varphi)=\langle e^y\varphi^2\rangle/c_0-\langle e^y\varphi\rangle^2/c_0^2$.
+(ii) $w_\beta=e^y$, $|y|\le\beta$, $\langle y\rangle=\langle\psi\rangle=0$, $\langle\psi^2\rangle=1$ and $|\psi|\le\sqrt2N$. Taylor's formula with $|e^y-1-y-\frac12y^2|\le\frac16\beta^3e^\beta$ gives
+$\langle e^y\psi^2\rangle=1+\langle y\psi^2\rangle+\frac12\langle y^2\psi^2\rangle+O(\beta^3)$, $\langle e^y\psi\rangle=\langle y\psi\rangle+O(\beta^2)$ and
+$c_0=\langle e^y\rangle=1+\frac12\langle y^2\rangle+O(\beta^3)$; insert these in $\mathrm{Var}_\beta(\psi)=\langle e^y\psi^2\rangle/c_0-\langle e^y\psi\rangle^2/c_0^2$.
 
 (iii) We use (ii) and, for $SU(N)$ with $N\ge2$ and $\chi:=\chi_\rho$: $\langle\chi^j\bar\chi^k\rangle=0$ unless $j\equiv k$ modulo $N$ (the centre, as in the
 proof of Lemma~\ref{mg:lem:capelement}(iii)); $\langle|\chi|^2\rangle=1$; $\langle|\chi^2|^2\rangle=2$, since $\rho\otimes\rho$ is the sum of its symmetric and
@@ -2158,11 +2159,11 @@ antisymmetric parts, which are irreducible and inequivalent; and $\langle\chi^N\
 Lemma~\ref{mg:lem:capelement}(iii) for $SU(3)$ applies to $N$ tensor factors: the diagonal subgroup forces every invariant tensor $T$ to have
 $T_{i_1\cdots i_N}=0$ unless $\{i_1,\dots,i_N\}=\{1,\dots,N\}$, the subgroups $SU(2)$ acting on two basis vectors force $T$ to be antisymmetric under
 the exchange of any two values, and so $T$ is a multiple of the determinant tensor, which is invariant. Then:
-$SU(2)$, $\varphi=\chi$, $y=\frac\beta2\chi$: $\langle y\varphi^2\rangle=0$, $\frac12\langle y^2\varphi^2\rangle=\frac{\beta^2}8\langle\chi^4\rangle=\frac{\beta^2}4$,
-$\frac12\langle y^2\rangle=\frac{\beta^2}8$ and $\langle y\varphi\rangle^2=\frac{\beta^2}4$, so $\Upsilon=1-\frac{\beta^2}8+O(\beta^3)$.
-$U(1)$, $y=\beta\cos\theta$: for $\varphi=\sqrt2\cos\theta$, $\frac12\langle y^2\varphi^2\rangle=\beta^2\langle\cos^4\theta\rangle=\frac38\beta^2$, $\frac12\langle y^2\rangle=\frac{\beta^2}4$,
-$\langle y\varphi\rangle^2=\frac{\beta^2}2$ and $\langle y\varphi^2\rangle=0$; for $\varphi=\sqrt2\sin\theta$, $\frac12\langle y^2\varphi^2\rangle=\beta^2\langle\cos^2\theta\sin^2\theta\rangle=\frac{\beta^2}8$
-and $\langle y\varphi\rangle=\langle y\varphi^2\rangle=0$. $SU(N)$, $N\ge3$, $y=\frac\beta N\mathrm{Re}\,\chi$: expanding the powers of $\mathrm{Re}\,\chi=\frac12(\chi+\bar\chi)$ and
+$SU(2)$, $\psi=\chi$, $y=\frac\beta2\chi$: $\langle y\psi^2\rangle=0$, $\frac12\langle y^2\psi^2\rangle=\frac{\beta^2}8\langle\chi^4\rangle=\frac{\beta^2}4$,
+$\frac12\langle y^2\rangle=\frac{\beta^2}8$ and $\langle y\psi\rangle^2=\frac{\beta^2}4$, so $\Upsilon=1-\frac{\beta^2}8+O(\beta^3)$.
+$U(1)$, $y=\beta\cos\theta$: for $\psi=\sqrt2\cos\theta$, $\frac12\langle y^2\psi^2\rangle=\beta^2\langle\cos^4\theta\rangle=\frac38\beta^2$, $\frac12\langle y^2\rangle=\frac{\beta^2}4$,
+$\langle y\psi\rangle^2=\frac{\beta^2}2$ and $\langle y\psi^2\rangle=0$; for $\psi=\sqrt2\sin\theta$, $\frac12\langle y^2\psi^2\rangle=\beta^2\langle\cos^2\theta\sin^2\theta\rangle=\frac{\beta^2}8$
+and $\langle y\psi\rangle=\langle y\psi^2\rangle=0$. $SU(N)$, $N\ge3$, $y=\frac\beta N\mathrm{Re}\,\chi$: expanding the powers of $\mathrm{Re}\,\chi=\frac12(\chi+\bar\chi)$ and
 $\mathrm{Im}\,\chi=\frac1{2i}(\chi-\bar\chi)$ gives $\langle(\mathrm{Re}\,\chi)^2\rangle=\frac12$, $\langle\mathrm{Re}\,\chi\,\mathrm{Im}\,\chi\rangle=0$,
 $\langle(\mathrm{Re}\,\chi)^3\rangle=\frac14[N=3]$, $\langle\mathrm{Re}\,\chi(\mathrm{Im}\,\chi)^2\rangle=-\frac14[N=3]$, $\langle(\mathrm{Re}\,\chi)^4\rangle=\frac34+\frac18[N=4]$ and
 $\langle(\mathrm{Re}\,\chi)^2(\mathrm{Im}\,\chi)^2\rangle=\frac14-\frac18[N=4]$; so
@@ -2173,46 +2174,46 @@ which gives the values, with $-\log(1+\frac\beta6)=-\frac\beta6+\frac{\beta^2}{7
 \end{proof}
 
 The upper bound uses the cube identity of Lemma~\ref{mg:lem:char}(ii) for real class functions that need not be invariant under inversion: for such
-an $a$ with $\sum_r|\hat a_r|d_r<\infty$, $\hat a_r:=\int a\,\overline{\chi_r}\dU$,
+an $h$ with $\sum_r|\hat h_r|d_r<\infty$, $\hat h_r:=\int h\,\overline{\chi_r}\dU$,
 \begin{equation}\label{mg:eq:cubereal}
-\int a(U_{p_0})\,a(U_{p_1})\prod_{s\in X_0}f_\beta(U_s)\dU=\sum_{r\neq0}|\hat a_r|^2u_r^4 .
+\int h(U_{p_0})\,h(U_{p_1})\prod_{s\in X_0}f_\beta(U_s)\dU=\sum_{r\neq0}|\hat h_r|^2u_r^4 .
 \end{equation}
 Indeed, in the proof of Lemma~\ref{mg:lem:char}(ii) the boundary-oriented holonomies of the bottom and the top face are conjugate to $U_{p_0}$ and
-$U_{p_1}$, with exactly one of them inverted (the two faces carry the same orientation in space and have opposite outward normals), and for real $a$,
-$a(U^{-1})=\sum_r\hat a_r\overline{\chi_r(U)}=\sum_r\overline{\hat a_r}\chi_r(U)$, because $\hat a_{\bar r}=\overline{\hat a_r}$. The six-fold sum of that proof
-then gives $\sum_{r\ne0}\overline{\hat a_r}\hat a_ru_r^4$.
+$U_{p_1}$, with exactly one of them inverted (the two faces carry the same orientation in space and have opposite outward normals), and for real $h$,
+$h(U^{-1})=\sum_r\hat h_r\overline{\chi_r(U)}=\sum_r\overline{\hat h_r}\chi_r(U)$, because $\hat h_{\bar r}=\overline{\hat h_r}$. The six-fold sum of that proof
+then gives $\sum_{r\ne0}\overline{\hat h_r}\hat h_ru_r^4$.
 
 \begin{theorem}[The upper bound to second order]\label{mg:thm:upper2}
-In the setting of Lemma~\ref{mg:lem:twopoint}, let $\varphi$ be a real eigenvector of $\mathsf V$ for the eigenvalue $\Upsilon=\Upsilon(\beta)$ with
-$\langle\varphi^2\rangle=1$, $\psi_1:=|\langle f_\beta\varphi\rangle|$, $a_2:=(1+\mathcal T_p)\psi_1+\mathcal T_p$, and
+In the setting of Lemma~\ref{mg:lem:twopoint}, let $\psi$ be a real eigenvector of $\mathsf V$ for the eigenvalue $\Upsilon=\Upsilon(\beta)$ with
+$\langle\psi^2\rangle=1$, $a_1:=|\langle f_\beta\psi\rangle|$, $a_2:=(1+\mathcal T_p)a_1+\mathcal T_p$, and
 \begin{gather*}
-V_2:=(1+\mathcal T_p)(\Upsilon+\psi_1^2)+\mathcal T_p-\bigl((1-\mathcal T_p)\psi_1-\mathcal T_p\bigr)_+^2,\\
-L_2:=\frac{1-\mathcal T_Q}{1+\epsilon^6}\Bigl(\Upsilon-\mathcal T_p(1+\psi_1)\sqrt{2-\iota}\,Nu\Bigr)_+^2-(1+a_2^2)\,e^{16\beta}\frac{N^4}{\tau_0^2}\,\mathcal T_Q ,
+V_2:=(1+\mathcal T_p)(\Upsilon+a_1^2)+\mathcal T_p-\bigl((1-\mathcal T_p)a_1-\mathcal T_p\bigr)_+^2,\\
+L_2:=\frac{1-\mathcal T_Q}{1+\epsilon^6}\Bigl(\Upsilon-\mathcal T_p(1+a_1)\sqrt{2-\iota}\,Nu\Bigr)_+^2-(1+a_2^2)\,e^{16\beta}\frac{N^4}{\tau_0^2}\,\mathcal T_Q ,
 \end{gather*}
 where $x_+:=\max(x,0)$. If $L_2>0$, then (i) and (ii) of Theorem~\ref{mg:thm:upper} hold with $D_2(\beta):=\log(V_2/L_2)$ in place of $D(\beta)$.
 As $\beta\downarrow0$, $D_2(\beta)=-\log\Upsilon(\beta)+O(\beta^5)$.
 \end{theorem}
 
 \begin{proof}
-Follow the proofs of Lemma~\ref{mg:lem:twopoint} and Theorem~\ref{mg:thm:upper} with $A:=\varphi(U_{p_0})$ and $A_1:=\varphi(U_{p_1})$ in place of
+Follow the proofs of Lemma~\ref{mg:lem:twopoint} and Theorem~\ref{mg:thm:upper} with $A:=\psi(U_{p_0})$ and $A_1:=\psi(U_{p_1})$ in place of
 $\mathrm{Re}\,\chi_\rho(U_{p_0})$ and $\mathrm{Re}\,\chi_\rho(U_{p_1})$; $A$ is a real, bounded, continuous and gauge-invariant function of the links of $p_0$.
-By \eqref{mg:eq:local}, $|R_{S_A}-1|\le\mathcal T_p$, $\langle\varphi\rangle=0$ and $\langle|\varphi|\rangle\le1$, the mean $a:=\langle A\rangle_{\Lambda,\beta}$ satisfies
-$|a-R_{S_A}\langle(1+f_\beta)\varphi\rangle|\le\mathcal T_p$, where $\langle(1+f_\beta)\varphi\rangle=\langle f_\beta\varphi\rangle$; hence $(1-\mathcal T_p)\psi_1-\mathcal T_p\le|a|\le a_2$ and
-$|a-\langle f_\beta\varphi\rangle|\le\mathcal T_p(1+\psi_1)$. Likewise $\langle A^2\rangle_{\Lambda,\beta}\le(1+\mathcal T_p)\langle(1+f_\beta)\varphi^2\rangle+\mathcal T_p=(1+\mathcal T_p)(\Upsilon+\psi_1^2)+\mathcal T_p$,
+By \eqref{mg:eq:local}, $|R_{S_A}-1|\le\mathcal T_p$, $\langle\psi\rangle=0$ and $\langle|\psi|\rangle\le1$, the mean $a:=\langle A\rangle_{\Lambda,\beta}$ satisfies
+$|a-R_{S_A}\langle(1+f_\beta)\psi\rangle|\le\mathcal T_p$, where $\langle(1+f_\beta)\psi\rangle=\langle f_\beta\psi\rangle$; hence $(1-\mathcal T_p)a_1-\mathcal T_p\le|a|\le a_2$ and
+$|a-\langle f_\beta\psi\rangle|\le\mathcal T_p(1+a_1)$. Likewise $\langle A^2\rangle_{\Lambda,\beta}\le(1+\mathcal T_p)\langle(1+f_\beta)\psi^2\rangle+\mathcal T_p=(1+\mathcal T_p)(\Upsilon+a_1^2)+\mathcal T_p$,
 by Lemma~\ref{mg:lem:Upsilon}(i). So $\Var(A)=\langle A^2\rangle-a^2\le V_2$. By Lemma~\ref{mg:lem:pos}, $\Cov(A,A_1)\ge\langle H_Q\rangle$ with
-$H_Q:=(A-a)(A_1-a)\prod_{s\in X_0}\varphi_\beta(U_s)$, and by \eqref{mg:eq:cubereal}, with $\tilde a:=(\varphi-a)(1+f_\beta)$,
+$H_Q:=(A-a)(A_1-a)\prod_{s\in X_0}\varphi_\beta(U_s)$, and by \eqref{mg:eq:cubereal}, with $\tilde a:=(\psi-a)(1+f_\beta)$,
 \[
-M_Q=\sum_{r\ne0}|\hat{\tilde a}_r|^2u_r^4\ \ge\ u^4\norm{P_\rho\tilde a}^2,\qquad P_\rho\tilde a=P_\rho M_{1+f_\beta}\varphi-a\,P_\rho f_\beta=\mathsf V\varphi+\bigl(\langle f_\beta\varphi\rangle-a\bigr)P_\rho f_\beta ,
+M_Q=\sum_{r\ne0}|\hat{\tilde a}_r|^2u_r^4\ \ge\ u^4\norm{P_\rho\tilde a}^2,\qquad P_\rho\tilde a=P_\rho M_{1+f_\beta}\psi-a\,P_\rho f_\beta=\mathsf V\psi+\bigl(\langle f_\beta\psi\rangle-a\bigr)P_\rho f_\beta ,
 \]
-because $P_\rho\varphi=\varphi$ and $P_\rho\mathbf1=0$. As $\mathsf V\varphi=\Upsilon\varphi$ and $\norm{P_\rho f_\beta}=\sqrt{2-\iota}\,Nu$,
-$\norm{P_\rho\tilde a}\ge\Upsilon-\mathcal T_p(1+\psi_1)\sqrt{2-\iota}\,Nu$. As in the proof of Lemma~\ref{mg:lem:twopoint},
-$\int|H_Q|\le\langle(\varphi-a)^2\rangle(\int|\varphi_\beta|)^4\le(1+a_2^2)e^{16\beta}N^4u^4/\tau_0^2$ and $R_{S_Q}\ge(1-\mathcal T_Q)/(1+\epsilon^6)$, so
+because $P_\rho\psi=\psi$ and $P_\rho\mathbf1=0$. As $\mathsf V\psi=\Upsilon\psi$ and $\norm{P_\rho f_\beta}=\sqrt{2-\iota}\,Nu$,
+$\norm{P_\rho\tilde a}\ge\Upsilon-\mathcal T_p(1+a_1)\sqrt{2-\iota}\,Nu$. As in the proof of Lemma~\ref{mg:lem:twopoint},
+$\int|H_Q|\le\langle(\psi-a)^2\rangle(\int|\varphi_\beta|)^4\le(1+a_2^2)e^{16\beta}N^4u^4/\tau_0^2$ and $R_{S_Q}\ge(1-\mathcal T_Q)/(1+\epsilon^6)$, so
 $\langle H_Q\rangle\ge R_{S_Q}M_Q-\mathcal T_Q\int|H_Q|\ge u^4L_2$. The rest of the proof of Theorem~\ref{mg:thm:upper} gives
 $m\le\log(\Var(A)/\Cov(A,A_1))\le4\log(1/u)+D_2$. As $\beta\downarrow0$: $\mathcal T_p,\mathcal T_Q=O(\beta^5)$, $\epsilon^6=O(\beta^6)$ and
-$\psi_1\le\sqrt{2-\iota}\,Nu=O(\beta)$, so $V_2=\Upsilon+O(\beta^5)$ and $L_2=\Upsilon^2+O(\beta^5)$.
+$a_1\le\sqrt{2-\iota}\,Nu=O(\beta)$, so $V_2=\Upsilon+O(\beta^5)$ and $L_2=\Upsilon^2+O(\beta^5)$.
 \end{proof}
 
-We turn to the lower bound. Let $S$ be the exchange of the two copies, $(S\psi)(U,U'):=\psi(U',U)$, on $L^2(\Omega_s\times\Omega_s)$, and
+We turn to the lower bound. Let $S$ be the exchange of the two copies, $(Sh)(U,U'):=h(U',U)$, on $L^2(\Omega_s\times\Omega_s)$, and
 $P_\pm:=\frac12(1\pm S)$; for a set $E$ of spatial links, $S_E$ and $P^E_\pm$ are defined in the same way on $L^2(G^E\times G^E)$. A \emph{cap} of $X$ is
 a junction $J$ as in Lemma~\ref{mg:lem:twofront}(ii): $M(J)=\{\{q\}\}$ and $\Phi(J)=\{(\partial q,s-1),(\partial q,s)\}$. For a plaquette $q$ of a slice let
 \[
@@ -2287,12 +2288,12 @@ The vectors $\xi,\xi'$ are invariant under $S_{E(J)}$, so $P^{E(J)}_-P^JO_JP^JP^
 
 \begin{proof}
 Here $O_J=\tilde{\mathcal K}^{1/2}_{J,s-1}M_{g_qg_{q'}}\tilde{\mathcal K}^{1/2}_{J,s}$, where $\tilde{\mathcal K}^{1/2}_{J,s-1}$ is $G_g^{1/2}$ on the links of $\partial q$ and
-$\Pi_0\otimes\Pi_0$ on those of $\partial q'\setminus\partial q$, and $\tilde{\mathcal K}^{1/2}_{J,s}$ vice versa. Let $\psi,\psi'$ be in the range of $P^J$. The
-function $h:=\tilde{\mathcal K}^{1/2}_{J,s-1}\psi$ does not depend on the links of $\partial q'\setminus\partial q$ and, as the $\tilde{\mathcal K}^{1/2}$ commute with
+$\Pi_0\otimes\Pi_0$ on those of $\partial q'\setminus\partial q$, and $\tilde{\mathcal K}^{1/2}_{J,s}$ vice versa. Let $\vartheta,\vartheta'$ be in the range of $P^J$. The
+function $h:=\tilde{\mathcal K}^{1/2}_{J,s-1}\vartheta$ does not depend on the links of $\partial q'\setminus\partial q$ and, as the $\tilde{\mathcal K}^{1/2}$ commute with
 gauge transformations, it is invariant under those at the corners of $q$; so it is a function of $(U_q,U'_q)$ (proof of Lemma~\ref{mg:lem:capchar}).
-Likewise $h':=\tilde{\mathcal K}^{1/2}_{J,s}\psi'$ is a function of $(U_{q'},U'_{q'})$. The plaquettes $q\ne q'$ share at most one link, so integrating
+Likewise $h':=\tilde{\mathcal K}^{1/2}_{J,s}\vartheta'$ is a function of $(U_{q'},U'_{q'})$. The plaquettes $q\ne q'$ share at most one link, so integrating
 first over a link of $q$ not in $q'$ shows that $(U_q,U'_q)$ is Haar distributed and independent of $(U_{q'},U'_{q'})$. Hence
-$\ip\psi{O_J\psi'}=\ip h{g_qg_{q'}h'}=\ip h{g_q}\ip{g_{q'}}{h'}=\ip\psi\xi\ip{\xi'}{\psi'}$, as $g$ is real and the $\tilde{\mathcal K}^{1/2}$ are self-adjoint; and
+$\ip\vartheta{O_J\vartheta'}=\ip h{g_qg_{q'}h'}=\ip h{g_q}\ip{g_{q'}}{h'}=\ip\vartheta\xi\ip{\xi'}{\vartheta'}$, as $g$ is real and the $\tilde{\mathcal K}^{1/2}$ are self-adjoint; and
 $\xi,\xi'$ lie in the range of $P^J$. They are invariant under the exchange of the copies because $g$ and $G_g$ are. Finally, in the notation of the
 proof of Lemma~\ref{mg:lem:capchar}, $\xi=\sum_{(a,a')\ne(0,0)}\hat u_{aa'}^2\ip{e_{aa'}}{g}e_{aa'}$ with $\ip{e_{a0}}g=\ip{e_{0a}}g=d_au_a$ and
 $\ip{e_{aa'}}g=d_au_ad_{a'}u_{a'}$ for $a,a'\ne0$, so $\norm\xi^2=2\sigma_6+\sigma_6^2$; the same holds for $\xi'$.
@@ -2305,8 +2306,8 @@ $\norm{P^qD_qP^q}\le u^4(1+\gamma_g)$, and $\norm{P^{\partial q}_-P^qD_qP^qP^{\p
 n_B:=\frac{u_2^2}{u^2}\,\epsilon+\sqrt{2-\iota}\,\frac Nu\bigl(u_2^5(e^\beta-1)\bigr)^{1/2},\\
 \upsilon_1:=\Upsilon+\frac{n_B^2}{\Upsilon-(u_2/u)^4e^\beta},\qquad\bar\Upsilon:=\upsilon_1+\frac{2e^{2\beta}\sigma_6}{\upsilon_1-u^4(1+\gamma_g)},
 \end{gather*}
-provided the two denominators are positive. On the span of $\frac1{\sqrt2}(e_{a0}-e_{0a})$, $a\in\{\rho,\bar\rho\}$, the operator $P^qD_qP^q$ acts as
-$u^4\mathsf V$. As $\beta\downarrow0$, $\bar\Upsilon=\Upsilon(\beta)(1+O(\beta^6))$.
+provided the two denominators are positive. The compression of $P^qD_qP^q$ to the span of $\frac1{\sqrt2}(e_{a0}-e_{0a})$, $a\in\{\rho,\bar\rho\}$, is
+$u^4\mathsf V$ (in the identification $\frac1{\sqrt2}(e_{a0}-e_{0a})\leftrightarrow\chi_a$). As $\beta\downarrow0$, $\bar\Upsilon=\Upsilon(\beta)(1+O(\beta^6))$.
 \end{lemma}
 
 \begin{proof}
@@ -2318,8 +2319,8 @@ between $\mathcal H_1$ and $\mathcal H_2$; $e_{bb'}\mapsto v_{b'}\sum_a(\mathsf 
 $\mathcal H_2$; and $(\mathsf D\otimes\mathsf D)(\mathfrak m\otimes\mathfrak m)(\mathsf D\otimes\mathsf D)$ on $\mathcal H_{12}$, of norm at most $u^8(1+\gamma_g)$. The odd sector is
 $\mathcal H_1^-\oplus\mathcal H_{12}^-$, where $\mathcal H_1^-$ has the orthonormal basis $e^-_a:=\frac1{\sqrt2}(e_{a0}-e_{0a})$, $a\ne0$, and $\mathcal H_{12}^-$ consists of
 the antisymmetric vectors of $\mathcal H_{12}$. In the basis $(e^-_a)$ the operator acts on $\mathcal H_1^-$ as $\mathsf D(1+\mathsf B)\mathsf D-vv^{\mathsf T}$: the switch
-enters with the sign $-1$ on antisymmetric vectors. On the span of $e^-_\rho,e^-_{\bar\rho}$ this is $u^4\bigl(P_\rho M_{1+f}P_\rho-|P_\rho f_\beta\rangle\langle P_\rho f_\beta|\bigr)
-=u^4\mathsf V$, since $P_\rho v=u^3P_\rho f_\beta$ in the identification $e^-_a\leftrightarrow\chi_a$; its largest eigenvalue is $u^4\Upsilon$. Write $\mathsf D=u^2P_\rho+\mathsf D'$ with
+enters with the sign $-1$ on antisymmetric vectors. Its compression to the span of $e^-_\rho,e^-_{\bar\rho}$ is $u^4\bigl(P_\rho M_{1+f}P_\rho-|P_\rho f_\beta\rangle\langle P_\rho f_\beta|\bigr)
+=u^4\mathsf V$, since $P_\rho v=u^2P_\rho f_\beta$ in the identification $e^-_a\leftrightarrow\chi_a$; its largest eigenvalue is $u^4\Upsilon$. Write $\mathsf D=u^2P_\rho+\mathsf D'$ with
 $\norm{\mathsf D'}\le u_2^2$ and $P_\rho\mathsf D'=0$. The block from the complement of $\rho,\bar\rho$ to $\rho,\bar\rho$ is $u^2P_\rho\mathsf B\mathsf D'-(P_\rho v)v'^{\mathsf T}$, $v'$
 the part of $v$ outside $\rho,\bar\rho$, of norm at most $u^4n_B$, since $\norm{\mathsf B}\le\epsilon$, $\norm{P_\rho v}=\sqrt{2-\iota}\,Nu^3$ and
 $\norm{v'}^2\le u_2^5\sum_{a\ne0}d_a^2u_a\le u_2^5(e^\beta-1)$ (proof of Lemma~\ref{mg:lem:capelement}(iv)); the block on the complement is at most
@@ -2360,7 +2361,7 @@ $\nu(\mu)$. In the first case $\max(\cdot)\le u^4\bar\Upsilon\,(1+(1+\gamma_g)/\
 \end{proof}
 
 \begin{theorem}[The lower bound to second order]\label{mg:thm:lower2}
-Suppose $u_*=u$ and let $\varpi\in(0,1]$, $\omega:=C_\varpi a^4(1+\gamma_g)<1$ and $b_2:=e^{4(K+1)\theta_5}(2\sigma_6+\sigma_6^2)/u^4$. In
+Suppose $u_*=u$ and that the two denominators in Lemma~\ref{mg:lem:dressed} are positive, and let $\varpi\in(0,1]$, $\omega:=C_\varpi a^4(1+\gamma_g)<1$ and $b_2:=e^{4(K+1)\theta_5}(2\sigma_6+\sigma_6^2)/u^4$. In
 Definition~\ref{mg:def:jconst} and Lemma~\ref{mg:lem:jsums} replace $c_J$ by $e^{h_J}/(1-\omega)$ and the third condition of Lemma~\ref{mg:lem:jsums} by
 $C_\varpi kP_vY_0a^{k/2}e^{\xi_Fk}\le h_J$ ($k\ge4$), and let $\Sigma_4$ be as there with these constants. Let $\Sigma^{(2)}_4$ be $\Sigma_4$ without its first term
 $b$ and with its second term $(4P_v-4-K_S)b^2$ replaced by $(4P_v-4-K_S)\varpi\min(b^2,b_2)$. Let $\delta'>0$ satisfy
@@ -2382,14 +2383,14 @@ m(\mu_\beta)\ \ge\ 4\log\frac1{u(\beta)}-\log\Upsilon(\beta)-O(\beta^3).
 \begin{proof}
 \emph{Reductions.} As in the proof of Theorem~\ref{mg:thm:junctions}, the sets with a temporal plaquette in every layer give the second term. The other
 sets $X$ are summed over the caps (Lemma~\ref{mg:lem:capsum}): it suffices to bound $\sum_{X'}r_{X'}^2|\Tr\prod_s\hat{\mathcal O}_s|$ over the sets $X'$ without
-caps, as in Lemma~\ref{mg:lem:capsum}, that are in $\cX_S$ with a component meeting $\cP_{S_A}$ and $\cP_{S_B}$. Suppose $X'$ has an empty outer layer; if it has
-only empty inner layers, the same argument applies with the outer layers, $L_0-t\ge t$ of them, in place of the inner ones. We use the representation of
-Definition~\ref{mg:def:fronts} in which the slice of $S_A$ is $0$ and that of $S_B$ is $t$, so that the inner slices are $1,\dots,t-1$. Choose the path
+caps, as in Lemma~\ref{mg:lem:capsum}, that are in $\cX_S$ with a component meeting $\cP_{S_A}$ and $\cP_{S_B}$. Suppose $X'$ has an empty outer layer (the other case is treated at the end of the
+proof). We use the representation of Definition~\ref{mg:def:fronts} in which the slice of $S_A$ is $0$ and that of $S_B$ is $t$, so that the inner slices are $1,\dots,t-1$. Choose the path
 $\pi(X')=(J_0,\sigma_1,J_1,\dots,\sigma_r,J_r)$, $J_0=J_A$, $J_r=J_B$, and the forest as in the proof of Theorem~\ref{mg:thm:junctions}; the dressed tubes are pieces of
 segments. The slices of a junction are its slice, those of a segment its interior slices; consecutive elements of $\pi(X')$ have adjacent sets of slices, so the
 slices of $J_0,\sigma_1,\dots,J_i$ form an interval $I_i\ni0$, and every slice of $[0,t]$ is a slice of some element of $\pi(X')$ (Lemma~\ref{mg:lem:jgraph}). A
-slice $s$ of an element is \emph{new} for it if $s$ exceeds every slice of the earlier elements; every slice of $[1,t]$ is new for exactly one element.
-At a new slice the piece of that element is the \emph{main piece} $\mu(s)$.
+slice $s$ of an element other than $J_0$ is \emph{new} for it if $s$ exceeds every slice of the earlier elements. Every slice of $[1,t]$ is new for
+exactly one element, and no slice $s\le0$ is new. At a new slice the piece of that element is the \emph{main piece} $\mu(s)$; all other pieces are
+not main.
 
 \emph{Weights.} Put $z:=1/(a^4\bar\Upsilon(1+\delta'))$. By Lemma~\ref{mg:lem:swap}, Lemma~\ref{mg:lem:oddslice} at the slices $1,\dots,t-1$ and
 Lemma~\ref{mg:lem:pieces} elsewhere,
@@ -2400,9 +2401,9 @@ where $W^{(2)}$ is the product of the following weights, each plaquette of $X'$ 
 Section~\ref{mg:sec:junctions}. A main piece carries $zw_\varpi(\mu)$ and every other piece $C_\varpi\nu(\pi)$, bounded as in Section~\ref{mg:sec:junctions} (an
 untouched front by $u^{|\varphi|}$, a dressed tube by $u^4(1+\gamma_g)$, a junction by $w(J)$ before the factors $e^{2(K+1)\theta_5}$). This uses
 $z^t=\prod_{s=1}^tz$, one factor for each slice of $[1,t]$; at the slice $t$, where Lemma~\ref{mg:lem:oddslice} is not available,
-$\nu(\mu)\le C_\varpi w_\varpi(\mu)$, which gives the factor $C_\varpi$; and at a new slice $s>t$, $\nu(\mu)\le zw_\varpi(\mu)$, by the last hypothesis for a
-junction as in Lemma~\ref{mg:lem:twoplaq} and by $a^4(1+\gamma_g)(1+\delta')\le1$ (a consequence of the third hypothesis) for a dressed tube. The slices
-$s<0$ and the slices of $[1,t]$ that are not new carry no main piece. With the factors $e^{2(K+1)\theta_5}$: a main dressed tube carries $za^4\bar\Upsilon=
+$\nu(\mu)\le C_\varpi w_\varpi(\mu)$, which gives the factor $C_\varpi$; and at a new slice $s>t$, $\nu(\mu)\le zw_\varpi(\mu)$: by the last hypothesis for a
+junction as in Lemma~\ref{mg:lem:twoplaq}, by $a^4(1+\gamma_g)(1+\delta')\le1$ (a consequence of the third hypothesis) for a dressed tube, and by
+$z\ge1$ (a consequence of the last hypothesis) for the other pieces. With the factors $e^{2(K+1)\theta_5}$: a main dressed tube carries $za^4\bar\Upsilon=
 1/(1+\delta')$, an untouched front of $k\ge5$ edges $za^k$ if main and $C_\varpi a^k$ otherwise, a dressed tube that is not main
 $C_\varpi a^4(1+\gamma_g)=\omega$, a junction as in Lemma~\ref{mg:lem:twoplaq} $z\varpi\min(b^2,b_2)$ if main and $C_\varpi b^2$ otherwise, each times the
 factors $a^{|p|/2}$ of its two front-pairs (with $\nu\le\min(b^2,b_2)u^4$ by Lemmas~\ref{mg:lem:pieces} and~\ref{mg:lem:twoplaq}), and every other junction
@@ -2410,30 +2411,36 @@ $zw(J)$ if main and $C_\varpi w(J)$ otherwise. The caps carry nothing: they are 
 
 \emph{Decorations} are bounded as in the proof of Theorem~\ref{mg:thm:junctions}, as none of their pieces is main: the factor $C_\varpi$ of a junction is
 covered by the modified third condition of Lemma~\ref{mg:lem:jsums}, and that of the interior slices of a segment by the modified $c_J$, since a segment
-with an end at a front-pair $\psi$ contributes at most $\sum_{\ell\ge1}\omega^{\ell-1}e^{h_J}$ (as $C_\varpi a^{|\psi|}\le\omega$ for $|\psi|\ge5$).
+with an end at a front-pair $p''$ contributes at most $\sum_{\ell\ge1}\omega^{\ell-1}e^{h_J}$ (as $C_\varpi a^{|p''|}\le\omega$ for $|p''|\ge5$).
 
-\emph{The path.} For a front-pair $p$ of a path junction that starts the next path segment, let $D:=\max I-s(p)\ge0$, where $s(p)$ is the slice of $p$ and $I$
-the interval of slices of the path up to this junction, and let $\mathcal V(p,D)$ be the sum over the continuations of the path, as in the proof of
+\emph{The path.} For a front-pair $p$ of a path junction that starts the next path segment, let $\Delta:=\max I-s(p)\ge0$, where $s(p)$ is the slice of $p$ and $I$
+the interval of slices of the path up to this junction, and let $\mathcal V(p,\Delta)$ be the sum over the continuations of the path, as in the proof of
 Theorem~\ref{mg:thm:junctions}, of the product of the weights of $W^{(2)}$ (with the front-pair factors $a^{|\sigma|/2}$ of the two ends of a path segment
-assigned to the segment). We show by induction on the number of segments of the continuations that $\mathcal V(p,D)\le Mf(|p|)$, with $f$ as in
+assigned to the segment). We show by induction on the number of segments of the continuations that $\mathcal V(p,\Delta)\le Mf(|p|)$, with $f$ as in
 Definition~\ref{mg:def:jconst} and
 \[
 M:=\max\Bigl(\frac{E_B(4)}{\bar\Upsilon\delta'-\Sigma^{(2)}_4},\ \frac{E_B}{F(\bar\Upsilon(1+\delta')-a)-P_v(g_CY_1/5+g_FY_0)}\Bigr),
 \]
-$E_B(k)\le E_Bk^2e^{\xi_Fk}$ as there. (a) $p$ upward, $D=0$, $|p|=4$. A segment of length $\ell$ has $\ell-1$ interior slices, all new, with main dressed tubes, and
+$E_B(k)\le E_Bk^2e^{\xi_Fk}$ as there. (a) $p$ upward, $\Delta=0$, $|p|=4$. A segment of length $\ell$ has $\ell-1$ interior slices, all new, with main dressed tubes, and
 its far end is new: it carries $(1+\delta')^{-(\ell-1)}za^4=(1+\delta')^{-\ell}/\bar\Upsilon$, and $\sum_{\ell\ge1}$ gives $1/(\bar\Upsilon\delta')$. The far junction $J'$ is
 main; it is not a cap, and if it is as in Lemma~\ref{mg:lem:twoplaq} it carries $\varpi\min(b^2,b_2)$ besides $z$, which is used for the far end. The exits of
-$J'$ start with $D=0$, and by the induction hypothesis and Lemma~\ref{mg:lem:jsums}(ii) (whose bound for $k=4$ splits the junctions as in
+$J'$ start with $\Delta=0$, and by the induction hypothesis and Lemma~\ref{mg:lem:jsums}(ii) (whose bound for $k=4$ splits the junctions as in
 Definition~\ref{mg:def:jconst}) the sum over $J'$ and the continuations is at most $E_B(4)+M\Sigma^{(2)}_4$. So
-$\mathcal V(p,0)\le(E_B(4)+M\Sigma^{(2)}_4)/(\bar\Upsilon\delta')\le M$. (b) $p$ upward, $D=0$, $|p|=k\ge5$: $\sum_{\ell\ge1}(za^k)^\ell\le a^{k-4}/(\bar\Upsilon(1+\delta')-a)$, and
-$J'$ carries at most $zw(J')$; as in the proof of Theorem~\ref{mg:thm:caplower}, $\mathcal V(p,0)\le Mf(k)$. (c) $p$ upward with $D\ge1$, or downward. A
-segment that passes the first $D$ interior slices upward (all old) and reaches new slices carries, at the old ones, at most $\omega$ each and no $z$, and
-then exactly what it carries in (a), (b); these continuations give at most $\omega Mf(|p|)$. In the remaining continuations (the segment ends at an old
+$\mathcal V(p,0)\le(E_B(4)+M\Sigma^{(2)}_4)/(\bar\Upsilon\delta')\le M$. (b) $p$ upward, $\Delta=0$, $|p|=k\ge5$: $\sum_{\ell\ge1}(za^k)^\ell\le a^{k-4}/(\bar\Upsilon(1+\delta')-a)$, and
+$J'$ carries at most $zw(J')$; as in the proof of Theorem~\ref{mg:thm:caplower}, $\mathcal V(p,0)\le Mf(k)$. (c) $p$ upward with $\Delta\ge1$, or downward. A
+segment that passes the first $\Delta$ interior slices upward (all old) and reaches new slices carries, at the old ones, at most $\omega$ each and no $z$, and
+then exactly what it carries in (a), (b); these continuations give at most $\omega^\Delta$ times the bound of (a) or (b) for a segment starting at the slice $\max I$, hence at most
+$\omega Mf(|p|)$. In the remaining continuations (the segment ends at an old
 slice, or below $0$) no slice of the segment or of $J'$ is new: a segment of length $\ell$ carries at most $\omega^{\ell-1}a^{|p|}$, the junction $J'$ at most
 $C_\varpi w(J')$, and their sum, with Lemma~\ref{mg:lem:jsums}(ii), is at most $C_\varpi a^{|p|}(E_B(|p|)+M\mathcal S)/(1-\omega)$, where $\mathcal S\le\Sigma_4$ if
 $|p|=4$ and $\mathcal S\le kP_ve^{\xi_Fk}(g_CY_1+g_FkY_0)$ if $|p|=k$. By the definition of $M$, $E_B(4)\le M\bar\Upsilon\delta'$, $E_B\le MF\bar\Upsilon(1+\delta')$ and
-$P_v(g_CY_1/5+g_FY_0)\le F\bar\Upsilon(1+\delta')$; so in both cases $\mathcal V(p,D)\le Mf(|p|)\bigl(\omega+C_\varpi a^4(2\bar\Upsilon(1+\delta')+\Sigma_4)/(1-\omega)\bigr)\le Mf(|p|)$ by
+$P_v(g_CY_1/5+g_FY_0)\le F\bar\Upsilon(1+\delta')$; so in both cases $\mathcal V(p,\Delta)\le Mf(|p|)\bigl(\omega+C_\varpi a^4(2\bar\Upsilon(1+\delta')+\Sigma_4)/(1-\omega)\bigr)\le Mf(|p|)$ by
 the third hypothesis. The beginning of the path is treated as in the proof of Theorem~\ref{mg:thm:junctions}, which gives $z^t\sum_{X'}W^{(2)}(X')\le MC_A$.
+
+\emph{An empty inner layer.} If $X'$ has only empty inner layers, the same argument applies with the direction of time reversed: in the
+representation of Definition~\ref{mg:def:fronts} in which the slices of $S_A$ and $S_B$ are $L_0$ and $t$, Lemma~\ref{mg:lem:swap} gives $P_-$ at the outer
+slices $t+1,\dots,L_0-1$; the path is followed from $J_A$ downward, a slice is new if it lies below every slice of the earlier elements, the factor $z$ is
+charged to the $L_0-t$ slices $t,\dots,L_0-1$ (by $z^t\le z^{L_0-t}$, as $z\ge1$), and the factor $C_\varpi$ comes from the slice $t$.
 
 \emph{Gaps:} as in the proof of Theorem~\ref{mg:thm:fronts}. The spatial sides $\ge5$ exclude fronts of four edges other than plaquette boundaries,
 which would carry $za^4=1/(\bar\Upsilon(1+\delta'))$ at every interior slice without being dressed; $4\log(1/a)=4\log(1/u)-8(K+1)\theta_5$.
@@ -2472,27 +2479,30 @@ Theorem~\ref{mg:thm:lower2}, in finite volume with the values of $N^v_4,N^v_5$ o
 (i) Meaning (Heuristic). In the transfer-matrix picture the plaquette states $\chi_\rho(U_q)$, $\chi_{\bar\rho}(U_q)$ propagate with the amplitude $u^4$ per
 unit of time, the cap and the subtraction of the vacuum act on them through $\mathsf V$, and a shift moves the tube from $q$ to a neighbour $q'$ with the
 amplitude of closing it on $q$ and opening it on $q'$, which the subtraction of the vacuum cancels; the band of plaquette states is flat to second
-order. For $SU(2)$ the gap is raised by $\beta^2/8$: the subtraction of the vacuum, $N^2u^2=\beta^2/4$, outweighs the second-order cap, $\kappa=3u_1=
-\beta^2/8$. For $U(1)$ the $C$-odd plaquette state is the lighter one ($+\beta^2/8$ against $+3\beta^2/8$); for $SU(3)$ the $C$-even one, by the
+order (in the exact spectra of (ii) its width is about $8u^4$ in $d=3$, the state of momentum $0$ being the lowest). For $SU(2)$ the gap is raised by $\beta^2/8$: the subtraction of the vacuum, $N^2u^2=\beta^2/4+O(\beta^4)$, outweighs the second-order cap,
+$\kappa=3u_1=\beta^2/8+O(\beta^4)$. For $U(1)$ the $C$-odd plaquette state is the lighter one ($+\beta^2/8$ against $+3\beta^2/8$); for $SU(3)$ the $C$-even one, by the
 first-order cap; for $SU(4)$ the $C$-even one is lowered by $\beta^2/128$, as four fundamental fluxes can meet at a link ($\langle\chi^4\rangle=1$).
 Only the lowest mass is bounded here.
 
 (ii) Checks (\texttt{theory/checks/second-order/}, a compass). Exact transfer-matrix spectra: for $\mathbb Z_n$ in $d=3$, in the sector of winding zero
-($\mathbb Z_2$ on the $4\times4$ torus; $\mathbb Z_3$, $\mathbb Z_4$, $\mathbb Z_5$ on $3\times3$), in both $C$-sectors, $m-4\log(1/u)$ agrees with
-$-\log\Upsilon_\pm$ up to about $-0.02u^3$ at $u\approx2.5\cdot10^{-3}$; on one square (class functions; $SU(2)$, $S_3$, the quaternion group) to all
+($\mathbb Z_2$ on the $4\times4$ torus; $\mathbb Z_3$, $\mathbb Z_4$, $\mathbb Z_5$ on $3\times3$), in both $C$-sectors, $m-4\log(1/u)+\log\Upsilon_\pm\approx-8u^4$ for
+the lowest state; an independent referee, with separate code in dual plaquette variables (\texttt{zn\_dual\_spectra.py}), found the same residual $-8.0u^4$
+at momentum $0$ and $O(u^5)$ at momentum $(\pi,\pi)$, also on a torus that satisfies the hypotheses of Theorem~\ref{mg:thm:lower2} ($\mathbb Z_2$ on $5\times5$;
+the $3\times3$ and $4\times4$ tori have sides $<5$); on one square (class functions; $SU(2)$, $S_3$, the quaternion group) to all
 printed digits; and on two squares sharing an edge (the full link space with the gauge projection; $S_3$: $6^7$, quaternion group: $8^7$ states), where the
 tube can shift between the two plaquettes, the two lowest plaquette states agree with each other and with $-\log\Upsilon$ up to $3\cdot10^{-4}\beta^3$ at
 $\beta=0.01$ and $0.04$. Brute force on one cube ($\mathbb Z_3$, $\mathbb Z_5$, $A_4$) confirms \eqref{mg:eq:cubereal} to machine precision;
 on the two-copy space of the four links of a square ($\mathbb Z_3$, $\mathbb Z_4$, $S_3$) the largest eigenvalue of the dressed tube on the odd sector
-lies between $u^4\Upsilon$ and $u^4\bar\Upsilon$ and agrees with $u^4\Upsilon$ to ten digits at $\beta=0.1$; and for a shift and a jump ($\mathbb Z_2$; and a shift for $\mathbb Z_3$) the operator $P^JO_JP^J$ has rank one,
-with the singular value $2\sigma_6+\sigma_6^2$ to ten digits, and vanishes on the odd sector (the other singular values are below $10^{-20}$ of the first). Weyl integration confirms Lemma~\ref{mg:lem:Upsilon}(iii) for
+lies between $u^4\Upsilon$ and $u^4\bar\Upsilon$, within a relative $3\cdot10^{-8}$ of $u^4\Upsilon$ at $\beta=0.1$ (and equal
+to it for $\mathbb Z_3$, where charge conjugation decouples the other states); and for a shift and a jump ($\mathbb Z_2$; and a shift for $\mathbb Z_3$) the operator $P^JO_JP^J$ has rank one,
+with the singular value $2\sigma_6+\sigma_6^2$ to ten digits, and vanishes on the odd sector (the other singular values are at the level of round-off). Weyl integration confirms Lemma~\ref{mg:lem:Upsilon}(iii) for
 $U(1)$ and $SU(2),\dots,SU(5)$.
 
 (iii) Numbers (\texttt{second\_order\_constants.py}; Numerical, an evaluation of the explicit constants). For $SU(2)$ the upper bound of
 Theorem~\ref{mg:thm:upper2} is $D_2=\beta^2/8+O(\beta^5)$ (for instance $1.25\cdot10^{-15}$ at $\beta=10^{-7}$), and $D_2(\beta_0(4))=4.8\cdot10^{-4}$, where
 $\mathcal T_Q$ dominates. The lower bound of Theorem~\ref{mg:thm:lower2}, with $\varpi=b$ and the smallest admissible $\delta'$, has $\delta'/\beta^3\to1.4\cdot10^6$ ($d=4$)
-and $2.1\cdot10^5$ ($d=3$); the largest terms are the crude bounds for the junctions with three plaquettes ($Z_{3,4}$, which the enumerations of
-Remark~\ref{mg:rem:junctions}(iii) found to vanish) and with three or more front-pairs. So the lower bound resolves the term $\beta^2/8$ only for very small
+and $2.1\cdot10^5$ ($d=3$); the largest terms are the crude bounds for the junctions with three or more front-pairs and for those with three plaquettes
+($Z_{3,4}$, which the enumerations of Remark~\ref{mg:rem:junctions}(iii) found to vanish). So the lower bound resolves the term $\beta^2/8$ only for very small
 $\beta$: at $\beta=10^{-7}$ it gives $m(\mu_\beta)-4\log(1/u)\ge1.04\cdot10^{-15}$ for $d=3$ (against $\beta^2/8=1.25\cdot10^{-15}$), the first lower bound
 above $4\log(1/u)$, and $\ge-1.4\cdot10^{-16}$ for $d=4$. Near $\beta_0(d)$ it is slightly better than that of Theorem~\ref{mg:thm:caplower}:
 $-1.25\cdot10^{-4}$ instead of $-1.28\cdot10^{-4}$ at $\beta_0(4)$, and $-2.38\cdot10^{-4}$ instead of $-2.44\cdot10^{-4}$ at $\beta_0(3)$. For $SU(3)$ at $\beta=10^{-7}$

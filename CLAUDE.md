@@ -51,7 +51,7 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   $-1.3\cdot10^{-4}\le m-4\log(1/u)\le4.8\cdot10^{-4}$ on the whole range in $d=4$; checks in `theory/checks/first-order/`; refereed (minor revisions, applied). Section 10 (11 November) gives the
   second-order term: $m=4\log(1/u)-\log\Upsilon(\beta)+O(\beta^3)$, $\Upsilon$ the largest variance of a real unit plaquette function in
   $\mathrm{span}(\chi_\rho,\bar\chi_\rho)$ under $w_\beta/c_0$; for $SU(2)$ $m=4\log(1/u)+\beta^2/8+O(\beta^3)$ (the shifts and jumps of the tube vanish on
-  the swap-odd sector of the duplicated system); checks in `theory/checks/second-order/`; referee pending. Next: the third order (crude counts of
+  the swap-odd sector of the duplicated system); checks in `theory/checks/second-order/`; refereed: minor revisions, applied. Next: the third order (crude counts of
   Section 8), the $C$-odd sector, near $\beta_0$ (journal 2026-11-11, open threads).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
