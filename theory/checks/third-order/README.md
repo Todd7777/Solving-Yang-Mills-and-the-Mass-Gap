@@ -1,0 +1,15 @@
+# Checks for the third-order term of Part IV (Section 11)
+
+Numerical checks of `theory/mass-gap-strong-coupling.tex`, Section 11 ("The third-order term"). A compass, not part of the proofs.
+Run with `python3 <script>` from this directory (needs `numpy`, `scipy`, `mpmath`; the scripts import helpers from `../lower-bound/`,
+`../upper-bound/` and `../second-order/`).
+
+Claim (Corollary 11.6): $m=4\log(1/u)-\log\Upsilon(\beta)+O(\beta^4)$, so the third-order term of the gap is that of $-\log\Upsilon$: $\beta^3/432$ for $SU(3)$,
+$-\beta^3/6000$ for $SU(5)$, $0$ for $U(1)$, $SU(2)$, $SU(4)$, $SU(N\ge6)$ (fundamental representations).
+
+| Script | What it checks | Runtime |
+|---|---|---|
+| `third_order_values.py` | Lemma 11.1: the moments $\langle\chi^j\bar\chi^k\rangle$, $j+k\le5$, by Weyl integration with an alias-free grid (exact integers; for $SU(3)$ $\langle\chi^4\bar\chi\rangle=3$), the exact rational expansion of $\Upsilon_\pm$ to order $\beta^3$, and the third-order coefficients of $-\log\Upsilon_\pm$ against direct numerical evaluation (Richardson): $SU(3)$ $\frac1{432}$ ($C+$), $\frac1{1296}$ ($C-$); $SU(4)$ $0$; $SU(5)$ $\mp\frac1{6000}$; $SU(6)$ $0$; $U(1)$, $SU(2)$: $(-\log\Upsilon-\beta^2/8)/\beta^3\to0$. | seconds |
+| `junction_checks.py` | (A) Lemma 11.2: on spatial tori $7\times7$, $6^3$, $6^4$, the admissible junctions with two front-pairs of four edges (plaquette boundaries) and at most three plaquettes are exactly the cap and the $4(P_v-1)-K_S$ shifts and jumps ($8$, $32$, $72$); none with three plaquettes. (B) Lemma 11.3: all junctions with one plaquette and at least three front-pairs (fronts of layer $s-1$ with at most six edges; $7\times7$ and $7^3$): none has exactly three front-pairs of four edges; those with three front-pairs merge two fronts into one of at least eight edges. | ~15 min |
+| `third_order_spectra.py` | Exact transfer matrix of $\mathbb Z_3$ and $\mathbb Z_5$ gauge theory, $d=3$, $3\times3$ torus, winding-zero sector, both $C$-sectors (dual plaquette variables; `../second-order/zn_dual_spectra.py`). For these groups $-\log\Upsilon_C$ has a $\beta^3$ term ($\mathbb Z_5$: $\mp\beta^3/48$). The residual after subtracting the exact $-\log\Upsilon_C$ is $-8.0u^4$ at $\beta=0.04,0.02,0.01$; after subtracting only the expansion to second order, the remainder over $\beta^3$ tends to the third-order coefficient (difference $-8u^4/\beta^3$). Below $\beta=0.01$ the residual reaches the precision of the eigenvalues. | ~1 min |
+| `third_order_constants.py` | Theorem 11.5 for $SU(2)$, $SU(3)$, $U(1)$, $d=3,4$: $\varpi=b^2$, no cap and no $Z_{3,4}$ term, the one-plaquette bound, and the majorant $(b/\bar b)^2\times$(tree sum at $\bar b$) with the best $\bar b$ among powers of 2. $\delta'/\beta^4\to8.4\cdot10^{10}$ ($SU(2)$, $d=4$), $3.4\cdot10^8$ ($d=3$), dominated by the crude count of the junctions with four plaquettes. Lower bound against the upper bound $D_2$: e.g. $SU(2)$, $d=3$, $\beta=10^{-7}$: $1.249966\cdot10^{-15}\le m-4\log(1/u)\le1.250000\cdot10^{-15}$. | ~10 min |
