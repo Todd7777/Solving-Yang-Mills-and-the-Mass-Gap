@@ -26,13 +26,22 @@ def em1x(A):
     """e^A - 1 - A without cancellation"""
     return fsum(A**m/factorial(m) for m in range(2, 60)) if A < mpf(1)/2 else exp(A) - 1 - A
 
+# Section 16 options (off by default, so that the output above is that of Sections 13-14); set by practical_beta.py:
+#   THETA7: the ratio bound with theta_7 (Lemma mg:lem:theta7) in place of theta_5;  NOVR[d]: exact N^v_k;  ZSMALL[d][n]: exact Z_{n,4}, n = 5, 6, 7;
+#   LOW[d] = (N_3, N_2, N'_2): the exact junctions with three front-pairs of lowest order and the majorant M_5 (Lemmas mg:lem:threelow, mg:lem:jsums5).
+THETA7 = False; ZSMALL = None; NOVR = None; LOW = None
 def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None, abar_grid=None, sharp6=True, uturn=True, seven=True, chars=False):
-    K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x); lam = exp(2*(K+1)*th5)
+    K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x)
+    if THETA7:                                    # Lemma mg:lem:theta7: theta_7 = 2(d-2) e^6 sigma_6 + x^8/(1-x)
+        th5 = 2*(d-2)*e**6*dressed(beta, g)[1] + x**8/(1-x)
+    lam = exp(2*(K+1)*th5)
     u = g['u']; a = lam*u; gam = expm1(2*beta) + beta**2*exp(beta); b = lam*gam
     Ubar, s6 = dressed(beta, g)
     varpi = b**varpi_pow; C = 1 + max(1/varpi, (1+gam)/Ubar); omega = C*a**4*(1+gam)
     b2 = lam**2*(2*s6 + s6**2)/u**4
     Pv, KS, Tv, N = counts(d, volume)
+    if NOVR and d in NOVR:
+        for k, v in NOVR[d].items(): N[k] = mpf(v)
     if volume == 'finite': N[4] = Pv; N[5] = 0
     def Yf(z, p=0): return fsum(m**p*binomial(KS*m, m-1)*(b*exp(z))**m for m in range(1, NMAX))
     cT = mpf(1); xF = mpf(0); xC = mpf(0)
@@ -89,6 +98,11 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
                 S3 = 4*Pv*exp(4*xFb)*(kCb*Yb[2] + 4*(gCb*g2Fb + g2Cb*gFb)*Yb[1] + 16*kFb*Yb[0])
                 val = ((b/bb)**3*(a/ab)**2 + (b/bb)**2*(a/ab)**3)*S3
                 if best is None or val < best[0]: best = (val, (bb, ab))
+                if LOW is not None:              # M_5 (Lemma mg:lem:jsums5): (n,E) = (3,2), (2,3), (2,7/2) exactly, the majorant from (4,2), (3,3), (2,4)
+                    N3, N2, N2p = LOW[d]
+                    val5 = exp(cT)*(2*N3*b**3*a**2 + N2*b**2*a**3 + N2p*b**2*a**(mpf(7)/2)) \
+                           + ((b/bb)**4*(a/ab)**2 + (b/bb)**3*(a/ab)**3 + (b/bb)**2*(a/ab)**4)*S3
+                    if val5 < best[0]: best = (val5, (bb, ab, 'M5'))
         for bb, tc in tcache11.items():
                 xFb, xCb, Yb, Ab = tc
                 mkb = marked(xFb, Yb, Ab, f, Pv, N, KMAX)
@@ -104,7 +118,9 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
         eta = C*a**4*(2*Ubar*(1+dl) + full)/(1-omega) if uturn else mpf(1)
         parts = dict(two=(4*(Pv-1)-KS)*varpi*min(b**2, b2),
                      # chars (Theorem 14.2): the turns and jumps, widenings and narrowings by characters (Lemma 14.1), a in place of b
-                     four=(10*(a**4 if chars else b**4) + 2*eta*b**4)*(d-3) + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(5, NMAX)),
+                     four=(10*(a**4 if chars else b**4) + 2*eta*b**4)*(d-3) + (fsum(ZSMALL[d][n]*b**n for n in (5, 6, 7))
+                          + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(8, NMAX)) if ZSMALL
+                          else fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(5, NMAX))),
                      exits=KS*((a if chars else b)*f(6) + b*f(7)) + (4*(Pv-1)-2*KS)*b*f(8)
                            + fsum(2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(2, NMAX)),
                      one_plaq=4*Pv*b*(Fk(8)*Ak(4) + Fk(4)*Ak(8) + Fk(4)*em1x(Ak(4))),
