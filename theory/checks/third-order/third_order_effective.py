@@ -22,7 +22,7 @@ from junction_constants import counts
 from third_order_constants import tree_constants, marked, lower3
 mp.dps = 40
 
-def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None):
+def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None, sharp6=True):
     K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x); lam = exp(2*(K+1)*th5)
     u = g['u']; a = lam*u; gam = expm1(2*beta) + beta**2*exp(beta); b = lam*gam
     Ubar, s6 = dressed(beta, g)
@@ -61,15 +61,21 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
         if bb < b: continue
         tc = tree_constants(bb, a, cT, Pv, KS, N, KMAX, NMAX)
         if tc is not None: tcache11[bb] = tc
-    def solve(F):
-        f = lambda k: mpf(1) if k == 4 else F*k**2*exp(xF*k)*a**(k-4)
+    def solve(F, F6):
+        def f(k):                              # f(6) has its own constant F6 when sharp6 (the sum at a six-edge front, Sigma^(6))
+            if k == 4: return mpf(1)
+            if k == 6 and sharp6: return 36*F6*exp(6*xF)*a**2
+            return F*k**2*exp(xF*k)*a**(k-4)
         gF, gC, g2F, g2C, kF, kC = marked(xF, Y, A, f, Pv, N, KMAX)
         Fk = lambda kmin: 8*fsum(N[k]*f(k) for k in range(kmin, KMAX))
         Fc = lambda kmin, kmax=KMAX: 16*fsum(N[k]*(1 + mpf(k)/8)*f(k) for k in range(kmin, kmax))
         best = None
         for (bb, ab), tc in tcache.items():
                 xFb, xCb, Yb, Ab = tc
-                fb = lambda k: mpf(1) if k == 4 else F*k**2*exp(xF*k)*ab**(k-4)
+                def fb(k, ab=ab):
+                    if k == 4: return mpf(1)
+                    if k == 6 and sharp6: return 36*F6*exp(6*xF)*ab**2
+                    return F*k**2*exp(xF*k)*ab**(k-4)
                 mkb = marked(xFb, Yb, Ab, fb, Pv, N, KMAX)
                 if mkb is None: continue
                 gFb, gCb, g2Fb, g2Cb, kFb, kCb = mkb
@@ -93,34 +99,45 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
         full = b + (4*(Pv-1)-KS)*b**2 + 48*binomial(18, 2)*(d-2)*(2*d-3)*b**3 + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(4, NMAX)) \
                + fsum(2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(1, NMAX)) \
                + 4*Pv*exp(4*xF)*(kC*Y[2] + 4*(gC*g2F + g2C*gF)*Y[1] + 16*kF*Y[0])
-        return fsum(parts.values()), parts, Pv*(gC*Y[1]/5 + gF*Y[0]), full, best[1]
-    F = mpf(1)
-    for _ in range(60):
-        S, parts, need, full, bb = solve(F); dl = S/Ubar*(1+mpf(10)**-12)
+        # the junction sum at a six-edge front-pair (two narrowings with one plaquette; crude counts for the rest)
+        X6 = lambda n, k: 0 if k == 5 else min(binomial(4*n+6, k), (4*n+6)*N[k])
+        sig6 = 2*b + fsum(2*(2*d-3)*(mpf(2*n+3)/2)*binomial(6*Pv+Tv*n, n)*b**n for n in range(2, NMAX)) \
+               + fsum(2*binomial(6*Pv+Tv*n, n)*b**n*fsum(X6(n, k)*f(k) for k in range(5, min(4*n+7, 199))) for n in range(1, NMAX)) \
+               + 6*Pv*exp(6*xF)*(kC*Y[2] + 6*(gC*g2F + g2C*gF)*Y[1] + 36*kF*Y[0])
+        return fsum(parts.values()), parts, Pv*(gC*Y[1]/5 + gF*Y[0]), full, best[1], sig6
+    F = mpf(1); F6 = mpf(1)
+    for _ in range(80):
+        S, parts, need, full, bb, sig6 = solve(F, F6); dl = S/Ubar*(1+mpf(10)**-12)
         Fn = need/(Ubar*(1+dl)-a)*(1+mpf(10)**-9)
-        done = abs(Fn-F) < mpf(10)**-12*F
-        F = Fn
+        F6n = sig6/(36*exp(6*xF)*(Ubar*(1+dl)-a))*(1+mpf(10)**-9) if sharp6 else F6
+        done = abs(Fn-F) < mpf(10)**-12*F and abs(F6n-F6) < mpf(10)**-12*F6
+        F, F6 = Fn, F6n
         if done: break
-    S, parts, need, full, bb = solve(F); dl = S/Ubar*(1+mpf(10)**-12)
+    S, parts, need, full, bb, sig6 = solve(F, F6); dl = S/Ubar*(1+mpf(10)**-12)
     hyp = dict(sigma=S < Ubar*dl, exits=need < F*(Ubar*(1+dl)-a), omega=omega < 1,
+               six=(sig6 < 36*F6*exp(6*xF)*(Ubar*(1+dl)-a)) if sharp6 else True,
                old=omega + C*a**4*(2*Ubar*(1+dl) + full)/(1-omega) <= 1, beyond=a**4*Ubar*(1+dl) <= varpi, growth=a**4*Ubar*(1+dl) <= 1)
     assert all(hyp.values()), hyp
-    return dict(delta=dl, parts=parts, b=b, a=a, F=F, Ubar=Ubar, bars=bb, loss=8*(K+1)*th5 + log(Ubar) + log(1+dl))
+    return dict(delta=dl, parts=parts, b=b, a=a, F=F, F6=F6, sig6=sig6, Ubar=Ubar, bars=bb, loss=8*(K+1)*th5 + log(Ubar) + log(1+dl))
 
 GROUPS = (('SU(2)', su2), ('SU(3)', su3), ('U(1)', u1))
 NIOTA = {'SU(2)': (2, 1), 'SU(3)': (3, 0), 'U(1)': (1, 0)}
 
-def delta4_limit(d, N, iota):
-    """delta'_4 = lim delta'/beta^4 (Theorem of Section 13): shifts and jumps + cube junctions + six-edge exits."""
+def delta4_limit(d, N, iota, sharp6=True):
+    """delta'_4 = lim delta'/beta^4 (Theorem of Section 13): shifts and jumps + cube junctions + six-edge exits (bulges and hops).
+    With sharp6 the six-edge exits are K_S b f(6) with F6 ~ 2b/36 (two narrowings): 2 K_S b^2 a^2; without, F ~ (13/5) P_v^2 b."""
     Pv = 2*(d-1)*(d-2); KS = 4*(2*d-5); u1 = mpf(1+iota)/(2*N**2)
-    parts = (8*(4*Pv-4-KS)*(2-iota)*N**2*u1**2, 192*(d-3), mpf(1872)/5*KS*Pv**2*u1**2)
+    exits = 8*KS*u1**2 if sharp6 else mpf(1872)/5*KS*Pv**2*u1**2
+    parts = (8*(4*Pv-4-KS)*(2-iota)*N**2*u1**2, 192*(d-3), exits)
     return sum(parts), parts
 
 def main():
     for gname, gf in GROUPS:
         for d in (3, 4):
             dl4, p4 = delta4_limit(d, *NIOTA[gname])
-            print(f"{gname}, d={d}:  limit delta'_4 = {float(dl4):.6g} = {' + '.join(f'{float(x):.6g}' for x in p4)}")
+            dl4c, p4c = delta4_limit(d, *NIOTA[gname], sharp6=False)
+            print(f"{gname}, d={d}:  limit delta'_4 = {float(dl4):.6g} = {' + '.join(f'{float(x):.6g}' for x in p4)}"
+                  f"   (with the crude F for six-edge fronts: {float(dl4c):.6g})")
             for beta in (mpf('1e-9'), mpf('1e-7'), mpf('1e-6'), mpf('1e-5'), mpf('1e-4')):
                 if d == 4 and beta > mpf('1.5e-4'): continue
                 g = gf(beta)
@@ -132,7 +149,7 @@ def main():
                 pc = ', '.join(f'{k}={float(v/beta**4):.3g}' for k, v in lo['parts'].items())
                 print(f"  beta={float(beta):.0e}: delta'/beta^4 = {float(lo['delta']/beta**4):.4g} (Section 11: {float(lo_old['delta']/beta**4):.3g});"
                       f"  window for m - 4log(1/u): [{float(-lo['loss']):+.6e}, {float(up['D2']):+.6e}], -log Ups = {float(-log(g['Ups'])):+.6e}")
-                print(f"     parts/beta^4: {pc};  majorant at (bbar, abar) = {lo['bars'][0]}, {lo['bars'][1]}")
+                print(f"     parts/beta^4: {pc};  majorant at (bbar, abar) = {lo['bars'][0]}, {lo['bars'][1]};  Sigma^(6)/b = {float(lo['sig6']/lo['b']):.4g}")
                 sys.stdout.flush()
 
 if __name__ == "__main__":
