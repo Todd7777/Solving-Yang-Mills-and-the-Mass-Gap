@@ -35,7 +35,7 @@ cd theory && for f in lattice-foundations infinite-volume-strong-coupling area-l
 
 The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.tex` source changes.
 
-## State on 2026-11-11
+## State on 2026-11-12
 
 - `theory/` holds four monographs: the foundations [F] (`lattice-foundations.tex`, errata 2026-11-09); Part II
   (`infinite-volume-strong-coupling.tex`, the infinite-volume theory, milestone T1.1; refereed and revised 2026-11-09);
@@ -54,12 +54,18 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   the swap-odd sector of the duplicated system); checks in `theory/checks/second-order/`; refereed: minor revisions, applied. Section 11 (11 November) shows that nothing new enters at
   third order: $m=4\log(1/u)-\log\Upsilon+O(\beta^4)$, so the $\beta^3$ term is that of $-\log\Upsilon$ ($\beta^3/432$ for $SU(3)$, $-\beta^3/6000$ for
   $SU(5)$, $0$ for $U(1)$, $SU(2)$, $SU(4)$, $SU(N\ge6)$); asymptotic only (constant $\sim10^{11}$); checks in `theory/checks/third-order/`; refereed:
-  minor revisions, applied. Next: the fourth order (hopping of the plaquette state, junctions with four plaquettes), the $C$-odd sector, near $\beta_0$ (journal
-  2026-11-11, Part 7).
+  minor revisions, applied. Section 12 (12 November) on the fourth order: the plaquette state moves (bulges and hops through six-edge fronts,
+  turns and jumps through unit cubes), with a hopping matrix whose top is $h_+=26d-70$ ($h_-=10d-22$ for $C$-odd). Proved: the upper bound
+  $\limsup\beta^{-4}(m-4\log(1/u)+\log\Upsilon)\le-hu_1^4$ (e.g. $-\frac{17}{128}$ for $SU(2)$, $d=4$). Conjectured: equality,
+  $m=4\log(1/u)-\log\Upsilon-hu^4+O(\beta^5)$. Evidence: exact $\mathbb Z_2$/$\mathbb Z_3$ spectra, and the classical series (Münster, Seo, as quoted by
+  Langelage–Münster–Philipsen) at order $u^4$ in four of five channels ($-\frac{98}3u^4$ for the $SU(2)$ scalar; the $SU(3)$ $T_1^{+-}$ differs by $u^4/4$,
+  unresolved). Checks in `theory/checks/fourth-order/`; referee pending. Next: the lower bound at fourth order, the $u^6$ term, the $C$-odd sector, near
+  $\beta_0$ (journal 2026-11-12, Part 8).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-11.md` (session 3, Parts 6–7: the second- and third-order terms); `journal/2026-11-10.md` has Parts 1–5,
+- The newest journal entry is `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term); `journal/2026-11-11.md` has Parts 6–7 (the second- and
+  third-order terms), `journal/2026-11-10.md` has Parts 1–5,
   `journal/2026-11-09b.md` is the first part of session 3 and `journal/2026-11-09.md` is session 2.
 
 ## Where the next steps are
