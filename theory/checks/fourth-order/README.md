@@ -21,6 +21,16 @@ other faces of a unit cube of a time slice. Each process has relative weight $u^
 | `slice_lemmas.py` | Exhaustive enumeration in spatial dimensions 2, 3, 4. (A) Lemma 12.5: a set of plaquettes with no link in exactly one of them has at least 6 plaquettes, and exactly 6 only for a unit cube; none of 7 in dimension 3. (B) Lemma 12.6(i): for a four-edge front, the configurations with $\le4$ further plaquettes are only $q'=q$ with nothing, and the $5\cdot2(n-2)$ cube partners with their four faces. (C) Lemma 12.6(ii): for a six-edge front (coplanar or perpendicular), the configurations with $\le2$ plaquettes are only the bulge and hop completions. The search is complete; see the docstring. | ~1 min |
 | `fourth_order_values.py` | The predicted series of the gap, in exact rational arithmetic, for $U(1)$, $SU(2)$–$SU(5)$, $d=3,4$, in $\beta$ and in $u$. For $SU(2)$, $d=4$: $m+4\log u=2u^2-\frac{98}3u^4$, i.e. $m-4\log(4/\beta)=\frac7{24}\beta^2-\frac{167}{1152}\beta^4$. For $SU(3)$: $-3u+9u^2-\frac{27}2u^3-7u^4$ ($C+$) and $3u+\frac92u^3-\frac{99}4u^4$ ($C-$, the $T_1^{+-}$). For $U(1)$ ($C-$): $\frac12u^2-\frac{425}{24}u^4$. | seconds |
 
+Written by the independent referee of Section 12 (added with credit; separate code from the scripts above):
+
+| Script | What it checks | Runtime |
+|---|---|---|
+| `zn_links_tm.py`, `zn_links_mp.py` | Exact $\mathbb Z_n$ transfer matrices in **link** variables (gauge orbits by label propagation; centre shifts on tori). For each level, the plaquette band against $-\log(1+h_iu^4)$. The equal-time and unit-time covariance matrices of the plaquette functions are checked entry by entry against Steps 2 and 5 of the proof of Theorem 12.8: $G=\Upsilon\delta+u^4\Upsilon^2C$ and $T^{(1)}=u^4\Upsilon^2(\delta+u^4(K_S\delta+A+2C))$, all signs included. `zn_links_mp.py` runs at 50 digits for $\mathbb Z_3$ on one cube. | minutes |
+| `geometry_H.py` | Orientations and the matrices $H_\pm$ from scratch. $\epsilon_\Gamma$ is solved from $\sum_p\epsilon(p)\partial p=0$, without outward normals. Covers all sign identities, row sums and $k=0$ blocks. | seconds |
+| `enum_lemmas.py` | Lemmas 12.5 and 12.6 by a different exhaustive algorithm: growth of rooted connected sets with a pruning bound. | ~1 min |
+| `series_check.py` | Exact series of $u$, $\Upsilon_\pm$ and the predicted masses from Weyl-integrated moments, for $U(1)$, $SU(2)$, $SU(3)$. Also the identification of the tube factors $a,b,c$ of LMP07 eq. (2.9) with $\Upsilon$, $\Upsilon_-$, $\Upsilon_+$. | seconds |
+| `lmp_fractions.py` | The printed coefficients of LMP07 eqs. (2.14)–(2.18): which are not in lowest terms, the integer residuals $-34,-10,-34,-10$ against $-71/4$ for $T_1^{+-}$, and the sensitivity to errors in $u_6$, $u_8$. | seconds |
+
 ## Comparison with the classical series (Remark 12.10(iii))
 
 Langelage, Münster and Philipsen, PoS(LATTICE 2007) 201 (arXiv:0710.0512), eqs. (2.14)–(2.18), quote for $d=4$ the strong-coupling series of Münster
@@ -36,4 +46,5 @@ $10$ ($E^{++}$) and $18$ ($T_1^{+-}$):
 | $SU(3)$ $T_1^{+-}$ | $-98/4$ (both arXiv versions) | $-99/4$ |
 
 The terms of orders $u$, $u^2$, $u^3$ agree in all five channels. The $SU(3)$ series of $\Upsilon_\pm$ were checked by Weyl integration to about $10^{-16}$.
-The $T_1^{+-}$ difference of $u^4/4$ is unresolved.
+The $T_1^{+-}$ difference of $u^4/4$ is very probably a misprint in the printed series (Remark 12.10(iii)): it is the only printed fraction not in lowest
+terms, and in the band picture the difference from $-\log\Upsilon_C$ must be an integer on $T_1$.
