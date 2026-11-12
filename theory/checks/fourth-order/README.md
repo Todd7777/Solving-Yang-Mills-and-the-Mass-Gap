@@ -30,7 +30,7 @@ Written by the independent referee of Section 12 (added with credit; separate co
 | `enum_lemmas.py` | Lemmas 12.5 and 12.6 by a different exhaustive algorithm: growth of rooted connected sets with a pruning bound. | ~1 min |
 | `series_check.py` | Exact series of $u$, $\Upsilon_\pm$ and the predicted masses from Weyl-integrated moments, for $U(1)$, $SU(2)$, $SU(3)$. Also the identification of the tube factors $a,b,c$ of LMP07 eq. (2.9) with $\Upsilon$, $\Upsilon_-$, $\Upsilon_+$. | seconds |
 | `lmp_fractions.py` | The printed coefficients of LMP07 eqs. (2.14)–(2.18): which are not in lowest terms, the integer residuals $-34,-10,-34,-10$ against $-71/4$ for $T_1^{+-}$, and the sensitivity to errors in $u_6$, $u_8$. | seconds |
-| `moves_by_characters.py` | Lemma 14.1 (Section 14), by exact group sums on $\mathbb Z_3$ and on $S_3$ (non-abelian, two-dimensional representation), $\beta=0.3$ and $1$, for a widening, a turn and a jump. The single-copy integrals $I(a,b,S)$ are $1$, $u_a^{|P|}$ or $0$ exactly as stated, for all irreducible $a,b$ and all subsets $S$; and the two-copy operator $P^JO_JP^J$ on the class functions of the front holonomies has norm exactly $u_*^6$, resp. $u_*^8$ (to machine precision). | ~2 min |
+| `moves_by_characters.py` | Lemma 14.1 (Section 14), by exact group sums on $\mathbb Z_3$ and on $S_3$ (non-abelian, two-dimensional representation), $\beta=0.3$ and $1$, for a widening, a turn and a jump. The single-copy integrals $I(a,b,S)$ are $1$, $u_a^{|P|}$ or $0$ exactly as stated, for all irreducible $a,b$ and all subsets $S$; and the two-copy operator $P^JO_JP^J$ on the class functions of the front holonomies has norm exactly $u_*^6$, resp. $u_*^8$ (to machine precision). The domino holonomy is built by hand here; the referee's checks in `referee-section14/` build it from the lattice geometry and compute the norm from the definitions without the reduction. | ~2 min |
 
 ## Comparison with the classical series (Remark 12.10(iii))
 
@@ -49,3 +49,5 @@ $10$ ($E^{++}$) and $18$ ($T_1^{+-}$):
 The terms of orders $u$, $u^2$, $u^3$ agree in all five channels. The $SU(3)$ series of $\Upsilon_\pm$ were checked by Weyl integration to about $10^{-16}$.
 The $T_1^{+-}$ difference of $u^4/4$ is very probably a misprint in the printed series (Remark 12.10(iii)): it is the only printed fraction not in lowest
 terms, and in the band picture the difference from $-\log\Upsilon_C$ must be an integer on $T_1$.
+
+The independent referee of Section 14 checked Lemma 14.1 and the values of Corollary 14.3 with its own code; see `referee-section14/README.md`.

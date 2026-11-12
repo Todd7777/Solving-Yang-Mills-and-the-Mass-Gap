@@ -62,9 +62,9 @@ both hold.
 ($Z_{4,4}\le12(d-3)$, proved) and the widenings to six-edge fronts (two narrowings each) enter at order $\beta^4$; with $\varpi=b^{5/2}$ the shifts and jumps drop out, and the
 U-turns too. Theorem: the third-order lower bound holds with $\delta'=(\delta'_4+o(1))\beta^4$, $\delta'_4=160(d-3)+8K_Su_1^2$ ($2$ in $d=3$, $166$ in $d=4$ for $SU(2)$,
 instead of $3.4\cdot10^8$ and $8.4\cdot10^{10}$): the moves of the hopping matrix at the sup norm. So $\liminf$ and $\limsup$ of $\beta^{-4}(m-4\log(1/u)+\log\Upsilon)$ lie
-in $[-166,-\frac{17}{128}]$ for $SU(2)$, $d=4$. Lower bound to fourth order (Section 14, 2026-11-12; referee pending): the junctions of the moves are closed surfaces, on which the transfer operator is
-diagonal with norm $u$ per plaquette; so the lower bound has $-h_+u^4$ and, with the upper bound, $m=4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$ for $SU(N)$, $2\le N\le5$
-(Conjecture 12.4 for these groups), and $-8u^4$ for $U(1)$ in $d=3$. Open: the $C$-odd fourth-order term ($U(1)$, $d\ge4$: signs); the $u^6$ term; analyticity of $m+4\log u$ (classical); the $C$-odd mass |
+in $[-166,-\frac{17}{128}]$ for $SU(2)$, $d=4$. Lower bound to fourth order (Section 14, 2026-11-12; refereed: minor revisions, applied): the junctions of the moves are closed surfaces, on which the transfer
+operator is diagonal with norm $u$ per plaquette; so the lower bound has $-h_+u^4$ and, with the upper bound, $m=4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$ for $SU(N)$,
+$2\le N\le5$, and for every self-conjugate $\rho$ (Conjecture 12.4 there, with $o(\beta^4)$), and $-8u^4$ for every $\rho$ in $d=3$. Open: the $C$-odd fourth-order term ($U(1)$, $d\ge4$: signs); the $u^6$ term; analyticity of $m+4\log u$ (classical); the $C$-odd mass |
 | T0.7 | Polymer (closed-surface) representation of the Wilson measure; convergence of the cluster expansion for $\beta<\beta_0$ via Kotecký–Preiss; analyticity; area law | Theorem modulo cited KP theorem (§7); area law for every representation of non-zero $N$-ality: Theorem (Part III, `theory/area-law-strong-coupling.tex`, checked by two referees 2026-11-09); analyticity not done |
 
 ### Tier 1 — Consolidation (next 2–4 sessions)

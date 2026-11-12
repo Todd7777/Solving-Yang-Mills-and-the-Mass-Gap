@@ -68,10 +68,15 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   terms dominate. Checks in `theory/checks/third-order/` (with the referee's independent code in `referee-section13/`); two referees: minor revisions, applied.
   Section 14 (12 November) evaluates the moves by characters. Their junctions are closed surfaces (each link in exactly two faces), on which the transfer
   operator is diagonal in the representations with norm exactly $u_*$ per plaquette (Lemma 14.1: $u_*^6$ widening/narrowing, $u_*^8$ turn/jump). So $b\to a$ for them,
-  and $\delta'_4=h_+u_1^4$ (Theorem 14.2); the recursion follows the moving tube by translation invariance (row sums of $|H_C|$). Corollary 14.3, **the fourth-order
-  term**: $m=4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$ for $SU(N)$, $2\le N\le5$, every $d\ge3$ (Conjecture 12.4 for these groups; $SU(2)$, $d=4$: $-\frac{98}3u^4$, the
-  classical coefficient), and $-8u^4$ for $U(1)$ in $d=3$; for $U(1)$, $d\ge4$, between $-(26d-70)/16$ and $-(10d-22)/16$ (the $C$-odd signs are lost by norms). Check
-  `theory/checks/fourth-order/moves_by_characters.py` ($\mathbb Z_3$, $S_3$, exact). Referee pending. Next: the $C$-odd sector ($U(1)$, $d\ge4$), the $u^6$ term, effective
+  and $\delta'_4=h_+u_1^4$ (Theorem 14.2). The recursion follows the moving tube because the induction's bound is uniform over all front-pairs; each move
+  is counted in absolute value, which gives the row sums of $H_+$. Corollary 14.3, **the fourth-order term**: $m=4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$:
+  * for $SU(N)$, $2\le N\le5$, and for every self-conjugate $\rho$, in every $d\ge3$;
+  * $-8u^4$ for every $\rho$ in $d=3$.
+
+  This is Conjecture 12.4 there, with $o(\beta^4)$ in place of $O(\beta^5)$; for $SU(2)$, $d=4$, the coefficient is $-\frac{98}3u^4$, the classical one. For $U(1)$, $d\ge4$, the
+  coefficient lies between $-(26d-70)/16$ and $-(10d-22)/16$, because norms lose the $C$-odd signs. Checks: `theory/checks/fourth-order/moves_by_characters.py`
+  ($\mathbb Z_3$, $S_3$, exact), and the referee's own code in `referee-section14/` (five finite groups; the full operator from the definitions for $\mathbb Z_2$,
+  $\mathbb Z_3$). Refereed: minor revisions, applied. Next: the $C$-odd sector ($U(1)$, $d\ge4$), the $u^6$ term, effective
   constants, near $\beta_0$ (journal 2026-11-12, Parts 8–10).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
