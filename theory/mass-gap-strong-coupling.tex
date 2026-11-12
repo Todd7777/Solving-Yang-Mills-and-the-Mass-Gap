@@ -3849,6 +3849,309 @@ $\mathbb Z_3$ (dominos) and $\mathbb Z_2$ (cube): $u_*^6$ and $u_*^8$ to $10^{-1
 \end{itemize}
 \end{remark}
 
+\section{The fourth-order term in both sectors of charge conjugation}\label{mg:sec:codd}
+
+The lower bound of Section~\ref{mg:sec:fourthlower} counts every move of the plaquette state in absolute value, so it gives $h_+$ in both sectors of charge
+conjugation. In the $C$-odd sector the hop and the turn between perpendicular neighbours cancel (Lemma~\ref{mg:lem:hopping}(ii)). For $U(1)$ in $d\ge4$ this
+sector carries the gap, and the bounds of Corollary~\ref{mg:cor:fourthterm}(v) differ. Here the two sectors are separated, and in the odd one the two
+moves are paired before the norms are taken.
+
+\begin{itemize}
+\item \emph{Sectors.} A charge conjugation of $G$ commutes with the transfer operators of the duplicated system, so between two observables of the same
+parity only the sector of that parity contributes (Lemma~\ref{mg:lem:csectors}). There the dressed tube has norm $u^4\bar\Upsilon_C$.
+\item \emph{The pair.} The hop from $q$ to $c$ and the turn through their common cube span the same two slices, and as operators from the plaquette
+states of $q$ to those of $c$ they differ exactly by charge conjugation (Lemma~\ref{mg:lem:hopturn}). Their sum vanishes on the odd sector, up to the
+cap that dresses the tube under the turn.
+\item \emph{The partner.} The two moves have different footprints, so another part of the set can touch one and not the other. Then the partner set is
+a set with a larger junction, of order $\beta^5$ in the junction sums, and the pair still splits into a cancelling part and a part bounded by that set
+(Lemma~\ref{mg:lem:partners}).
+\end{itemize}
+The outcome (Theorem~\ref{mg:thm:lowerC}): in the sector $C$ the lower bound holds with $\Upsilon_C$ and $h_C$. With the upper bound of
+Theorem~\ref{mg:thm:upper4} this determines $m(\mu_\beta)=\min_C\bigl(4\log(1/u)-\log\Upsilon_C-h_Cu^4\bigr)+o(\beta^4)$ for every $\rho$ when $G$ has a
+charge conjugation, in particular for $U(1)$ and $SU(N)$ in every $d\ge3$ (Corollary~\ref{mg:cor:fourthall}).
+
+\begin{definition}[Charge conjugation]\label{mg:def:charge}
+A \emph{charge conjugation} of $G$ is a continuous automorphism $\mathsf c$ of $G$ with $\mathsf c\circ\mathsf c=\mathrm{id}$ and $\chi_r\circ\mathsf c=\overline{\chi_r}$ for every irreducible $r$.
+For $U(1)$, $U(N)$ and $SU(N)$, $\mathsf c(U):=\overline U$ is one: the character of an irreducible representation is a polynomial with integer coefficients in
+the eigenvalues of $U$ (times a power of $\det U$ for $U(N)$), and those of $\overline U$ are the complex conjugates. For an abelian $G$, $\mathsf c(U):=U^{-1}$ is one.
+On functions of the links of a slice in two copies put $(\mathsf Ch)(U,U'):=h(\mathsf c(U),\mathsf c(U'))$, $\mathsf c$ acting on every link, and
+$Q_\pm:=\frac12(1\pm\mathsf C)$.
+\end{definition}
+
+As $\mathsf c$ preserves Haar measure and $\mathrm{Re}\,\chi_\rho\circ\mathsf c=\mathrm{Re}\,\chi_\rho$, it preserves $w_\beta$, $f_\beta$ and $g_p$, and the measures
+$\mu_{\Lambda,\beta}$ and $\mu_\beta$. On class functions $\mathsf C$ acts by $\chi_a\mapsto\chi_{\bar a}$, so $\mathsf Ce_{aa'}=e_{\bar a\bar a'}$ in the notation of
+Section~\ref{mg:sec:cap}, and $\mathsf C$ commutes with the exchange $S$ of the copies.
+
+\begin{lemma}[The sectors of charge conjugation]\label{mg:lem:csectors}
+Let $\mathsf c$ be a charge conjugation.
+\begin{enumerate}[label=(\roman*)]
+\item $\mathsf C$ commutes with $\mathbf P$, with $G_g^{1/2}$ and $\Pi_0\otimes\Pi_0$ on every link, and with multiplication by $g_p$ and $1+g_p$. For bounded $A$
+put $A_\pm:=\frac12(A\pm A\circ\mathsf c)$. Then $\Cov(A,B)=\Cov(A_+,B_+)+\Cov(A_-,B_-)$ for $\mu_{\Lambda,\beta}$ and for $\mu_\beta$.
+\item If $A\circ\mathsf c=\varepsilon A$ and $B\circ\mathsf c=\varepsilon B$, $\varepsilon=\pm1$, then Lemma~\ref{mg:lem:swap} holds with $P_-Q_\varepsilon$ in place of $P_-$.
+\item For a piece $\pi$ put $\nu^{-C}(\pi):=\norm{P^{E(\pi)}_-Q^{E(\pi)}_CY_\pi P^{E(\pi)}_-Q^{E(\pi)}_C}$. Lemma~\ref{mg:lem:oddslice} holds for
+$\norm{P_-Q_C\mathbf P\mathcal O^d_s\mathbf PQ_CP_-}$ with $\nu^{-C}$ in place of $\nu^-$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) $\mathsf c$ maps the gauge transformation by $h$ at a vertex to the one by $\mathsf c(h)$, and preserves Haar measure; so $\mathsf C$ commutes with
+$\mathbf P$, with $\Pi_0$, and with $F_f$, whose kernel $f_\beta(UV^{-1})$ is $\mathsf c$-invariant. So does $G_g$, whose kernel is built from $f_\beta$ in the same way, and hence $G_g^{1/2}$. The functions $g_p$ are invariant. As $\mathsf c$ is an
+involution, $A_\pm\circ\mathsf c=\pm A_\pm$; so $\mu(A_+B_-)=\mu((A_+B_-)\circ\mathsf c)=-\mu(A_+B_-)$ and $\mu(B_-)=-\mu(B_-)$, and the cross terms vanish. (ii) $\mathsf C\hat{\mathcal O}_s\mathsf C=\hat{\mathcal O}_s$ for $s\notin\{0,t\}$ and
+$=\varepsilon\hat{\mathcal O}_s$ for $s\in\{0,t\}$, and $\mathsf C$ commutes with $S$. In the proof of Lemma~\ref{mg:lem:swap}, after $P_-$ is inserted, insert
+$1=Q_++Q_-$ after $\hat{\mathcal O}_0$. Since $Q_\kappa\hat{\mathcal O}_t=\hat{\mathcal O}_tQ_{\kappa\varepsilon}$, the term with $Q_\kappa$ is
+$\Tr(\hat{\mathcal O}_0P_-\mathcal XP_-\hat{\mathcal O}_tQ_{\kappa\varepsilon}\mathcal Y)$, which vanishes for $\kappa=-\varepsilon$ because $Q_-\Pi=0$ ($\Pi$ projects
+onto the constants, which are $\mathsf C$-invariant). With an empty inner layer the same holds with the roles of $\mathcal X$ and $\mathcal Y$ exchanged.
+(iii) As in the proof of Lemma~\ref{mg:lem:oddslice}, now over the pairs of sign patterns $(\varepsilon_\pi)$, $(\kappa_\pi)$ with $\prod\varepsilon_\pi=-1$ and
+$\prod\kappa_\pi=C$; a pattern in which $\mu$ is not in the sector $(-,C)$ has another piece.
+\end{proof}
+
+\begin{lemma}[The dressed tube in a sector]\label{mg:lem:dressedC}
+Let $\iota=0$, $u_*=u$, $C\in\{+,-\}$, and let $\bar\Upsilon_C$ be defined by the formulas of Lemma~\ref{mg:lem:dressed} with $\Upsilon_C$ in place of $\Upsilon$,
+provided the two denominators are positive. Then $\norm{P^{\partial q}_-Q_CP^qD_qP^qQ_CP^{\partial q}_-}\le u^4\bar\Upsilon_C$, the compression to the unit vector
+$\frac1{\sqrt2}(e^-_\rho+Ce^-_{\bar\rho})$ is $u^4\Upsilon_C$, and $\bar\Upsilon_C=\Upsilon_C(1+O(\beta^6))$ as $\beta\downarrow0$.
+\end{lemma}
+
+\begin{proof}
+$Q_C$ commutes with $P^qD_qP^q$ and with $S$ (Lemma~\ref{mg:lem:csectors}(i)), and maps $e^-_a$ to $e^-_{\bar a}$. So the proof of Lemma~\ref{mg:lem:dressed}
+applies on the range of $Q_C$: the span of $e^-_\rho,e^-_{\bar\rho}$ meets it in the line of $e^-_\rho+Ce^-_{\bar\rho}$, which corresponds to
+$\chi_\rho+C\chi_{\bar\rho}$, the eigenvector of $\mathsf V$ for $\Upsilon_C$ (Lemma~\ref{mg:lem:Upsilon}(i)); the other blocks are restrictions of those
+bounded there.
+\end{proof}
+
+For two plaquettes $q\ne c$ of a slice that share a link $l$ and are perpendicular, let $\Gamma$ be the unit cube of the slice having both as faces
+(Lemma~\ref{mg:lem:hopping}(i)) and $E(\Gamma)$ its twelve links. For $F\subseteq E(\Gamma)$ let $K_F$ and $K^{1/2}_F$ be the tensor products over $E(\Gamma)$ of
+$G_g$, resp.\ $G_g^{1/2}$, on the links of $F$ and of $\Pi_0\otimes\Pi_0$ on the others; let $P^\Gamma$ be the gauge projection at the eight vertices of
+$\Gamma$, and $M_h$ multiplication by $h$. The \emph{hop} and the \emph{turn} from $q$ to $c$ are the operators on $L^2(G^{E(\Gamma)}\times G^{E(\Gamma)})$
+\begin{gather*}
+Y_{\rm hop}:=P^\Gamma K^{1/2}_{\partial q}\,M_{g_c}\,K_{\partial q\triangle\partial c}\,M_{g_q}\,K^{1/2}_{\partial c}P^\Gamma,\qquad
+Y_{\rm turn}:=P^\Gamma K^{1/2}_{\partial q}\,M_{1+g_q}\,K_{\partial q}\,M_{g_{\Gamma\setminus\{q,c\}}}\,K^{1/2}_{\partial c}P^\Gamma,
+\end{gather*}
+where $g_{\Gamma\setminus\{q,c\}}$ is the product of $g_p$ over the other four faces. They are the products of the operators of the slices $s-1$ and $s$, restricted
+to $E(\Gamma)$, for a tube that crosses from $q$ to $c$: with $c$ at slice $s-1$, the six-edge front in layer $s-1$ and $q$ at slice $s$ (a hop), or with the dressed
+tube on $q$ at slice $s-1$ and the four faces at slice $s$ (a turn). Write $Y^0_{\rm turn}$ for $Y_{\rm turn}$ with $1$ in place of $1+g_q$, and
+$e^{(q)}_{aa'}:=\chi_a(U_q)\chi_{a'}(U'_q)$, $e^{(c)}_{bb'}$ likewise, and $a^{+1}:=a$, $a^{-1}:=\bar a$.
+
+\begin{lemma}[The hop and the turn]\label{mg:lem:hopturn}
+In this setting, with $\sigma:=\sigma(q,c)$ (Definition~\ref{mg:def:hopping}),
+\[
+Y_{\rm hop}=\sum_{(a,a')\ne(0,0)}\hat u_{aa'}^{12}\,\bigl|e^{(q)}_{aa'}\bigr\rangle\bigl\langle e^{(c)}_{a^\sigma a'^\sigma}\bigr|,\qquad Y^0_{\rm turn}=Y_{\rm hop}\mathsf C .
+\]
+Hence $Y_{\rm hop}+Y^0_{\rm turn}=Y_{\rm hop}(1+\mathsf C)$ vanishes on the range of $Q_-$, and
+$\norm{Q_-(Y_{\rm hop}+Y_{\rm turn})Q_-}\le\norm{Y_{\rm turn}-Y^0_{\rm turn}}\le\gamma_gu_*^{12}$.
+\end{lemma}
+
+\begin{proof}
+The gauge projection commutes with all factors, so $Y_{\rm hop}=O_1O_2$ with $O_1:=P^\Gamma K^{1/2}_{\partial q}M_{g_c}K^{1/2}_{\partial q\triangle\partial c}P^\Gamma$ and
+$O_2:=P^\Gamma K^{1/2}_{\partial q\triangle\partial c}M_{g_q}K^{1/2}_{\partial c}P^\Gamma$, the operators of a widening and a narrowing (Lemma~\ref{mg:lem:moves}(i)), extended by
+$\Pi_0\otimes\Pi_0$ to the other links of $E(\Gamma)$; on these links both act on constants only, and the gauge projections at the two far vertices of $\Gamma$ act
+trivially. Orient the six-edge front as the boundary of $q+\sigma c$. In the proof of Lemma~\ref{mg:lem:moves}(i) its holonomy is then conjugate to $U_qU_c^{\sigma}$, with $U_q,U_c$ the
+holonomies in the standard orientations, so the widening maps $\chi_a(U_q)$ to $\chi_a$ of the six-edge front; for the narrowing,
+$\int f_\beta(U_q)\overline{\chi_a(U_qU_c^\sigma)}\,dU_q=u_a\overline{\chi_a(U_c^\sigma)}$ and $\int\overline{\chi_a(U_c^\sigma)}\chi_b(U_c)\,dU_c=[b=a^\sigma]$. With the two-copy formula of that
+proof, $O_1O_2$ is the stated sum, with $\hat u_{aa'}^{1+5}\hat u_{aa'}^{1+5}$. For the turn, $P^\Gamma K^{1/2}_{\partial q}K^{1/2}_{\partial q}P^\Gamma$ is the plain tube on $q$, which
+multiplies $e^{(q)}_{aa'}$ by $\hat u_{aa'}^4$, and the cube junction (Lemma~\ref{mg:lem:moves}(ii)) maps it to $\hat u_{aa'}^{8}e^{(c)}_{bb'}$ with $b=a^{\sigma_\Gamma(q,c)}$, by
+Lemma~\ref{mg:lem:twocubes}(i) with $h_q=\overline{\chi_a}$ and $h_c=\chi_b$; and $\sigma_\Gamma(q,c)=-\sigma$ (Lemma~\ref{mg:lem:hopping}(i)). So $Y^0_{\rm turn}$ is the
+stated sum with $a^{-\sigma}$ in place of $a^\sigma$, which is $Y_{\rm hop}\mathsf C$ because $\mathsf Ce^{(c)}_{bb'}=e^{(c)}_{\bar b\bar b'}$. As $\mathsf CQ_-=-Q_-$, $Y_{\rm hop}(1+\mathsf C)Q_-=0$.
+Finally $Y_{\rm turn}-Y^0_{\rm turn}$ is the product of the operator of a cap, of norm at most $\gamma_gu_*^4$ (Lemma~\ref{mg:lem:pieces}), and of the cube junction,
+of norm $u_*^8$.
+\end{proof}
+
+The identity is checked by exact group sums over all link variables of the two slices ($\mathbb Z_3$, $\mathbb Z_4$, $\mathbb Z_5$, both signs of $\sigma$;
+\texttt{c\_odd\_pairing.py} in \texttt{theory/checks/fourth-order/}): $Y^0_{\rm turn}=Y_{\rm hop}\mathsf C$ to $6\cdot10^{-14}$ relative.
+
+In the proof of Theorem~\ref{mg:thm:lower2} the operators of a set $X'$ without caps at the slices $s-1$ and $s$ multiply to the \emph{block}
+$B_{s}(X'):=\mathbf P\mathcal O^d_{s-1}\mathcal O^d_s\mathbf P$. A set $Y$ \emph{uses} a link $e$ at the slice $s$ if $e$ lies in a spatial plaquette of $Y$ at $s$,
+or the temporal plaquette over $e$ in layer $s-1$ or $s$ belongs to $Y$; it \emph{touches} a vertex $v$ at $s$ if it uses a link with the endpoint $v$
+there.
+
+\begin{definition}[Moves and partners]\label{mg:def:partner}
+Let $X'$ be as in Lemma~\ref{mg:lem:capsum}, and let $q\perp c$ share the link $l=\{x,x'\}$, with $\Gamma$ their cube. Let $\hat c$ be the link of $c$ opposite
+$l$, and $\hat e$ the link of $\Gamma$ opposite $l$.
+\begin{itemize}
+\item $X'$ has a \emph{turn} $(q,c,\sigma)$ if it has a junction at $\sigma$ with the clusters of $\Gamma\setminus\{q,c\}$ and the front-pairs $(\partial q,\sigma-1)$,
+$(\partial c,\sigma)$ only, and $\partial q$ is a front of layer $\sigma-2$ untouched at $\sigma-1$.
+\item $X'$ has a \emph{hop} $(q,c,\sigma)$ if it has the junctions $\{\{c\},(\partial q,\sigma-2),(\partial q\triangle\partial c,\sigma-1)\}$ at $\sigma-1$ and
+$\{\{q\},(\partial q\triangle\partial c,\sigma-1),(\partial c,\sigma)\}$ at $\sigma$.
+\end{itemize}
+The \emph{partner} $X'^*$ is obtained by exchanging the local plaquettes: those of a turn are $\Gamma\setminus\{q,c\}$ at $\sigma$ and the temporal plaquettes over
+$\partial q$ in layer $\sigma-1$, those of a hop are $c$ at $\sigma-1$, the temporal plaquettes over $\partial q\triangle\partial c$ in layer $\sigma-1$, and $q$ at $\sigma$. The
+\emph{rest} $R$ is $X'$ without its local plaquettes; it is also $X'^*$ without its local plaquettes.
+\end{definition}
+
+\begin{lemma}[Partners]\label{mg:lem:partners}
+Let $X'$ have a turn or a hop $(q,c,\sigma)$ with $\sigma-1,\sigma$ inner slices, and let $R$, $X'^*$ be as above.
+\begin{enumerate}[label=(\roman*)]
+\item $X'^*$ is as in Lemma~\ref{mg:lem:capsum}, has the same empty layers, and $|\log(r_{X'^*}/r_{X'})|\le c_\Gamma\theta_5$ with $c_\Gamma:=24(d-1)$.
+\item Suppose that $R$ does not use the links of $\partial q\cup\partial c$ at $\sigma-1$ or $\sigma$, does not touch $x,x'$ there, and does not use the other five links of
+$\Gamma$ at $\sigma$. Then, with $Y_{\rm hop}$ and $Y_{\rm turn}$ as in Lemma~\ref{mg:lem:hopturn},
+\[
+\norm{P_-Q_-\bigl(B_\sigma(X')+B_\sigma(X'^*)\bigr)Q_-P_-}\le\max_{\kappa}\ \norm{P_\kappa(Y_{\rm hop}+Y_{\rm turn})P_\kappa}\prod_{\pi}\norm{Y_\pi},
+\]
+the product over the pieces $\pi$ of $R$ at the slices $\sigma-1$ and $\sigma$, and $\kappa$ over the joint sectors of $S$ and $\mathsf C$; the sector $(-,-)$ alone
+occurs if $R$ has no piece at one of the two slices.
+\item If $X'$ has a turn, the hypothesis of (ii) fails only if $R$ uses $\hat c$ at $\sigma-1$. If $X'$ has a hop, it fails only if $R$ uses $\hat e$ at $\sigma$. In these
+cases $B_\sigma(X')+B_\sigma(X'^*)=Z+\mathrm{Rem}$, where $Z$ satisfies the bound of (ii) and $\norm{\mathrm{Rem}}\le2\prod_\pi\bar w(\pi)$, the product over the pieces of
+$X'^*$ at $\sigma-1$ and $\sigma$, where $\bar w(J):=\gamma_g^{|J|_C}\prod_{p\in\Phi(J)}u_*^{|p|/2}$, $\bar w(\varphi):=u_*^{|\varphi|}$ and $\bar w(D_q):=u_*^4(1+\gamma_g)$ bound
+their norms (Lemmas~\ref{mg:lem:pieces} and~\ref{mg:lem:dressed}); and $X'^*$ has at $\sigma-1$ (for a turn of $X'$), resp.\ at $\sigma$ (for a hop), a junction that contains the widening, resp.\ the four faces,
+together with a piece of $R$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) The local plaquettes of both kinds cover each link of $\partial q\cup\partial c$ at $\sigma-1$ and $\sigma$, each temporal link over a vertex of their fronts, and
+each other link of $\Gamma$ at $\sigma$ an even number of times ($0$ or $2$), as a count shows; so $X'^*$ has no free link whenever $R$ uses the links where
+the counts of the two kinds differ ($\partial c\setminus l$ at $\sigma-1$, the five other links of $\Gamma$ at $\sigma$, the temporal links over the two vertices of
+$c$ not in $q$) an even number of times or not at all. For a turn, $R$ does not use $\partial c\setminus l$ at $\sigma-1$ except possibly $\hat c$ (the other two
+links have an end in $q$, which is untouched), nor the temporal links over $\hat c$'s ends in layer $\sigma-1$, nor any link of $\Gamma$ at $\sigma$ (the turn's
+junction is a component of $H_\sigma$ and every vertex of $\Gamma$ lies on one of its four faces); and a link used once by $R$ and by the hop would have to be
+used once by $R$ in the turn, a free link of $X'$. For a hop the junctions at $\sigma-1$ and $\sigma$ are components, so $R$ touches no vertex of $\partial q\cup\partial c$ at
+these slices. In both cases components of $X'^*$ are unions of components of $X'$ (the local plaquettes of either kind connect $\partial q$ below to $\partial c$
+above), no cap is created (the new junctions at $\sigma-1$, $\sigma$ are not caps, and the others are unchanged), and the layers outside $\sigma-1$ are unchanged,
+while layer $\sigma-1$ keeps a temporal plaquette. Finally $\overline{X'}\triangle\overline{X'^*}$ consists of plaquettes with a link in $E(\Gamma)$ at $\sigma-1$ or $\sigma$ or a
+temporal link over a vertex of $\Gamma$, at most $c_\Gamma$ of them, and the ratio bound of \IIIlab{Lemma}{al:lem:ratio}, with the polymers of Lemma~\ref{mg:lem:closed},
+applies to nested sets: $\Xi(\mathcal Q)/\Xi(\mathcal Q')\in[e^{-\theta_5|\mathcal Q'\setminus\mathcal Q|},e^{\theta_5|\mathcal Q'\setminus\mathcal Q|}]$ for $\mathcal Q\subseteq\mathcal Q'$; compare
+both with $\cP\setminus(\overline{X'}\cup\overline{X'^*})$.
+
+(ii) Under the hypothesis the factors of $B_\sigma$ split into those on the links of $\Gamma$ and those on the other links. On the five far links of $\Gamma$ the
+turn's factors are $\Pi_0\otimes\Pi_0$ on both sides at $\sigma$, so they may be integrated first; then both local operators act on the seven links of
+$\partial q\cup\partial c$. At a common vertex $v$ of the local part and $R$, the gauge projection factorises if one side of the local operator is
+$\Pi_0\otimes\Pi_0$ on all its links at $v$: the local operator then vanishes on the functions that transform non-trivially at $v$, and both parts commute
+with the gauge action at $v$. The left factor $K^{1/2}_{\partial q}$ is $\Pi_0\otimes\Pi_0$ at the vertices of $c$ not in $q$, the right factor $K^{1/2}_{\partial c}$ at those
+of $q$ not in $c$, and $x,x'$ are excluded. So $B_\sigma(X')+B_\sigma(X'^*)=(Y_{\rm hop}+Y_{\rm turn})\otimes B_R$, with $B_R$ the block of $R$, which is the product of
+the operators of the pieces of $R$ at $\sigma-1$ and at $\sigma$. As in the proof of Lemma~\ref{mg:lem:oddslice}, the norm on the sector $(-,-)$ is the largest
+product over the sector patterns. If $R$ has no piece at one of the two slices, its operator there projects onto the constants, which lie in the sector $(+,+)$,
+so only the pattern in which the local part is in $(-,-)$ remains.
+
+(iii) For a turn, by the proof of (i) the only link of $\partial q\cup\partial c$ that $R$ can use at $\sigma-1$ is $\hat c$, and it touches $x,x'$ at neither slice and $\Gamma$ not
+at $\sigma$. In $X'$ the link $\hat c$ carries $\Pi_0\otimes\Pi_0$ in layer $\sigma-1$, which separates its use by $R$ from its use by the turn at $\sigma$; so
+$B_\sigma(X')=Y_{\rm turn}\otimes B^0_R$, $B^0_R$ the block of $R$ with $\Pi_0\otimes\Pi_0$ on $\hat c$ in layer $\sigma-1$. In $B_\sigma(X'^*)$ insert $1=\Pi_0+(1-\Pi_0)$, in
+both copies, on $\hat c$ between the factors of $R$ and of the hop at $\sigma-1$: the term with $\Pi_0\otimes\Pi_0$ is $Y_{\rm hop}\otimes B^0_R$, and $Z:=(Y_{\rm turn}+Y_{\rm hop})\otimes B^0_R$
+satisfies the bound of (ii). The rest is $\mathrm{Rem}=B_\sigma(X'^*)-Y_{\rm hop}\otimes B^0_R$, of norm at most $\norm{B_\sigma(X'^*)}+\norm{Y_{\rm hop}}\norm{B^0_R}$; both terms are at most
+$\prod_\pi\bar w(\pi)$ over the pieces of $X'^*$, in which the widening and the pieces of $R$ using $\hat c$ form one junction, because $\bar w$ is multiplicative over
+plaquettes and front-pairs. For a hop, $R$ touches no vertex of $\partial q\cup\partial c$, so only $\hat e$ can be shared, and $B_\sigma(X')=Y_{\rm hop}\otimes B_R$. In
+$B_\sigma(X'^*)$ write the product of the $g_p$ over the four faces as its average over the variables of $\hat e$ (in both copies), plus the difference. With the
+average the faces no longer depend on $\hat e$, and that term is $Y_{\rm turn}\otimes B_R$; so $Z:=(Y_{\rm hop}+Y_{\rm turn})\otimes B_R$. The difference has sup norm at most
+$2\gamma_g^4$, so the remainder is bounded as before.
+\end{proof}
+
+\begin{definition}[Move vertices]\label{mg:def:movevertex}
+Let $X'$ be as in Lemma~\ref{mg:lem:capsum}, with a turn or a hop $(q,c,\sigma)$ (Definition~\ref{mg:def:partner}). Let $y,y'$ be the vertices of $c$ not in $q$
+and $v,v'$ the vertices of $\Gamma$ not in $q\cup c$. The \emph{move vertex} $\mathfrak v$ of $(q,c,\sigma)$ is the set consisting of the junctions of the turn (with the
+segment of $\partial q$ through $\sigma-1$), resp.\ of the hop (with the six-edge segment), and of the pieces of the rest $R$ that touch $y$ or $y'$ at $\sigma-1$ or touch $v$ or
+$v'$ at $\sigma$. Its \emph{exits} are $(\partial c,\sigma)$ and the front-pairs of those pieces; its \emph{entry} is $(\partial q,\sigma-2)$.
+\end{definition}
+
+The pieces of $R$ in $\mathfrak v$ are those that are separate from the local part in one of $X'$, $X'^*$ and merged with it in the other (proof of
+Lemma~\ref{mg:lem:partners}). So $\mathfrak v$ is the same set of pieces of $R$ for $X'$ and $X'^*$, with the same exits, and the graph $\mathcal J^\natural(X')$ obtained from
+$\mathcal J(X')$ by contracting every move vertex to one vertex is the same for $X'$ and $X'^*$, up to the local part inside $\mathfrak v$. If two move vertices share a piece
+or a slice and a vertex, contract them together.
+
+\begin{theorem}[The lower bound in a sector of charge conjugation]\label{mg:thm:lowerC}
+Let $G$ have a charge conjugation, $\rho$ irreducible with $\iota=0$, $d\ge3$, and all spatial sides $\ge8$. Let $C\in\{+,-\}$ and put $h_C$ as in
+Lemma~\ref{mg:lem:hopping}. As $\beta\downarrow0$: for all bounded $A,B$ as in Lemma~\ref{mg:lem:cancel}, at the slices $0$ and $t$, with $A\circ\mathsf c=CA$ and $B\circ\mathsf c=CB$,
+\[
+\bigl|\Cov_{\mu_{\Lambda,\beta}}(A,B)\bigr|\le C_{A,B}\Bigl(u^4\bar\Upsilon_C\bigl(1+(h_Cu_1^4+\varepsilon)\beta^4\bigr)e^{8(K+1)\theta_5}\Bigr)^t+\frac{2\norm A_\infty\norm B_\infty c^{|S|}}{1-\hat q}\,\hat q^{\,4L_0}
+\]
+for every $\varepsilon>0$ and $\beta<\beta_\varepsilon$, with $C_{A,B}$ independent of $t$ and $L_0$. Consequently
+\[
+m(\mu_\beta)\ \ge\ \min_{C=\pm}\Bigl(4\log\frac1{u(\beta)}-\log\Upsilon_C(\beta)-h_Cu(\beta)^4\Bigr)-o(\beta^4),
+\]
+and the same holds for $m_{\Lambda_s}(\beta)$, uniformly in the periodic spatial lattices with all sides $\ge8$.
+\end{theorem}
+
+\begin{proof}
+\emph{The sectors.} By Lemma~\ref{mg:lem:csectors}(i) it suffices to bound $\Cov(A_C,B_C)$ for each $C$: $\Theta$ and the time translations commute with
+$\mathsf c$, so $\mu(\Theta F\cdot S_tF)-|\mu(F)|^2=\sum_C\Cov(\Theta F_C,S_tF_C)$, and the hypothesis of \IIlab{Theorem}{iv:thm:OS}(iii) (and of
+\Flab{Corollary}{cor:gapfromcorr} in finite volume) holds with the smaller of the two rates. For $C$ fixed, the proof of Theorem~\ref{mg:thm:lower5} applies with
+$P_-Q_C$ in place of $P_-$ at the inner slices (Lemma~\ref{mg:lem:csectors}(ii)), Lemma~\ref{mg:lem:csectors}(iii) in place of Lemma~\ref{mg:lem:oddslice}, and
+$\bar\Upsilon_C$ in place of $\bar\Upsilon$ (Lemma~\ref{mg:lem:dressedC}): the dressed tube enters only through its norm on the odd sector. For $C=+$ this is the claim, with
+$\delta'_4=h_+u_1^4$. For $C=-$ three further changes are made.
+
+\emph{(1) The path and the groups.} Choose the path $\pi(X')$ of minimal length in $\mathcal J^\natural(X')$ (a move vertex covers the slices $\sigma-1,\sigma$; with a fixed rule
+for ties that depends only on $\mathcal J^\natural(X')$), and the forest as there. Lemma~\ref{mg:lem:jgraph} holds for $\mathcal J^\natural$, since contracting connected sets of
+vertices maps paths to paths covering the same slices. Call a move vertex of the path whose two slices are new (proof of Theorem~\ref{mg:thm:lower2}) a
+\emph{paired move}. The flip at a paired move ($X'\mapsto X'^*$) leaves $\mathcal J^\natural$, the path and the other paired moves unchanged: it changes only
+plaquettes at the slices $\sigma-1,\sigma$ inside $E(\Gamma)$, the paired moves have disjoint pairs of new slices, and a move vertex contains every piece of $R$ whose
+junction structure differs between $X'$ and $X'^*$. So the sets $X'$ fall into groups $\{X'^{*\mathsf S}:\mathsf S\subseteq\text{paired moves}\}$ of $2^k$ sets, and by
+Lemma~\ref{mg:lem:partners}(i) the factors $r^2$ within a group differ by at most $e^{2kc_\Gamma\theta_5}$; we absorb $e^{2c_\Gamma\theta_5}$ into each paired move.
+
+\emph{(2) The weights of a group.} Within a group the operators at all slices other than the pairs $(\sigma-1,\sigma)$ of the paired moves are the same, so the sum
+of the traces over the group is the trace with $B_\sigma(X')+B_\sigma(X'^*)$ at each paired move. At such a slice pair, Lemma~\ref{mg:lem:partners}(ii),(iii) and
+Lemma~\ref{mg:lem:hopturn} bound its norm on the sector $P_-Q_-$ by
+\[
+\max\bigl(\gamma_gu^{12},\,2\varpi u^{12}\bigr)\prod_\pi C_\varpi\nu(\pi)\;+\;2\prod_{\pi'}\bar w(\pi'),
+\]
+the first product over the pieces of $R$ at the two slices (a factor $C_\varpi$ each, as for the pieces that are not main in Lemma~\ref{mg:lem:oddslice}; if the local part
+is not in the sector $(-,-)$, both slices carry pieces of $R$), the second over the pieces of the version with a merged junction, present only if $\mathfrak v$ contains a
+piece of $R$. We assign the first term to the version with the turn and the second to the merged version; then every group is bounded by the sum over its
+members of weights $W^\natural$ of the form of $W^{(2)}$ in the proof of Theorem~\ref{mg:thm:lower2}, in which a paired move carries, besides the factors $z$ of its
+two new slices and $e^{2(K+1)\theta_5}$ per plaquette, the weight $\max(\gamma_g,2\varpi)a^4\cdot a^4a^{(|\partial q|+|\partial c|)/2}$ in the version with the turn when $\mathfrak v$ has no
+piece of $R$, and at most $3$ times the weight of its junctions in all other cases.
+
+\emph{(3) The far vertices.} Step (a) of the induction is as in the proof of Theorem~\ref{mg:thm:lower4}, with the far vertex of the segment either a junction or a move
+vertex. A move vertex after a segment of length $\ell'$ ending at $\sigma-1$ contributes, relative to the sum $\sum_\ell(1+\delta')^{-\ell}$ of the tube, at most
+$8(d-3)\bigl(\max(\gamma_g,2\varpi)a^4(1+O(b))+3\,\mathcal M\bigr)$, where $\mathcal M=O(\beta^5)$ bounds the move vertices with a piece of $R$: these are, at $\sigma-1$ or at
+$\sigma$, junctions with at least two plaquettes or three front-pairs, of the kinds already counted in $\Sigma^{(4)}_4$ and in $\Sigma^{(6)}$, together with the decorations at
+the four vertices $y,y',v,v'$ (tree sums, Lemma~\ref{mg:lem:jsums}(i), a factor $e^{O(b)}$). The junctions that remain are those of Theorem~\ref{mg:thm:lower5}, except that:
+\begin{itemize}
+\item a perpendicular turn is a junction only if its four-edge segment has length $1$ (otherwise it belongs to a move vertex). Such turns contribute
+$8(d-3)a^4M/\bar\Upsilon_-$ to $\mathcal V(p,0)$, without the factor $1/\delta'$; so the first hypothesis becomes $\Sigma^-_4+8(d-3)a^4\delta'<\bar\Upsilon_-\delta'$;
+\item after a perpendicular widening, the narrowing by $q$ at the end of a six-edge segment of length $1$ belongs to the move vertex. So in step (b) for the six-edge
+front-pair of a perpendicular widening, the sum over the far junctions is $\Sigma^{(6)}-a$ for that length, and the continuation is at most $Mf_-(6)$ with
+$f_-(6)=f(6)\,(\Sigma^{(6)}-a)/\Sigma^{(6)}+O(a^5)$.
+\end{itemize}
+So $\Sigma^-_4$ is $\Sigma^{(4)}_4$ of Theorem~\ref{mg:thm:lower5} with $(10a^4+2\eta b^4)(d-3)$ replaced by $(2a^4+2\eta b^4)(d-3)$, $K_Saf(6)$ by $4af(6)+8(d-3)af_-(6)$,
+and the terms above added.
+
+\emph{Small $\beta$.} As in the proof of Theorem~\ref{mg:thm:lower5}, $\Sigma^{(6)}=2a(1+O(\beta))$, so $af(6)\sim(1+\varepsilon')2u_1^4\beta^4$ and $af_-(6)\sim(1+\varepsilon')u_1^4\beta^4$;
+$\max(\gamma_g,2\varpi)a^4=O(\beta^5)$, $\mathcal M=O(\beta^5)$, and $8(d-3)a^4\delta'=O(\beta^8)$. Hence
+\[
+\Sigma^-_4\le\bigl(2(d-3)+8+8(d-3)+\varepsilon''\bigr)u_1^4\beta^4=\bigl(h_-u_1^4+\varepsilon''\bigr)\beta^4,
+\]
+the jumps, the bulges and hops to coplanar neighbours, and the bulges to perpendicular ones: the row sum of $H_-$ (Lemma~\ref{mg:lem:hopping}(ii)). The rest is as there.
+\end{proof}
+
+\begin{corollary}[The fourth-order term for every $\rho$]\label{mg:cor:fourthall}
+Let $G$ be metrisable with a charge conjugation (for instance $U(1)$, $U(N)$, $SU(N)$, or abelian), $\rho$ irreducible and non-trivial, and $d\ge3$. Then
+\[
+m(\mu_\beta)=\min_C\Bigl(4\log\frac1{u(\beta)}-\log\Upsilon_C(\beta)-h_C\,u(\beta)^4\Bigr)+o(\beta^4),
+\]
+with $C$ as in Conjecture~\ref{mg:conj:fourth}. So
+Conjecture~\ref{mg:conj:fourth} holds with $o(\beta^4)$ in place of $O(\beta^5)$ for these $G$. In particular:
+\begin{enumerate}[label=(\roman*)]
+\item for $U(1)$, $m(\mu_\beta)=4\log(1/u)-\log\Upsilon-(10d-22)u^4+o(\beta^4)$, that is $R(\beta)\to-(10d-22)/16$; in $d=4$,
+$m(\mu_\beta)=-4\log u+\frac12u^2-\frac{425}{24}u^4+o(u^4)$;
+\item for $SU(N)$, $N\ge6$, $d\ge4$, the value of Conjecture~\ref{mg:conj:fourth}, whichever of $\Upsilon_+$, $\Upsilon_-$ is the larger.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+For $\iota=1$ this is Corollary~\ref{mg:cor:fourthterm}(i). For $\iota=0$ the lower bound is Theorem~\ref{mg:thm:lowerC}, and the upper bound is
+Theorem~\ref{mg:thm:upper4}, applied once with each $C$, which gives $m\le$ each of the two expressions. For $U(1)$, $\log\Upsilon_--\log\Upsilon_+=\beta^2/4+O(\beta^3)$
+(Lemma~\ref{mg:lem:Upsilon}(iii)) dominates $(h_+-h_-)u^4$, so the minimum is attained at $C=-$, where $\Upsilon_-=\Upsilon$ and $h_-=10d-22$, $u_1=\frac12$. The value
+in $d=4$ is that of Conjecture~\ref{mg:conj:fourth}.
+\end{proof}
+
+\begin{remark}[Meaning, checks and what remains]\label{mg:rem:codd}
+(i) Meaning (Heuristic). The hop and the turn between perpendicular neighbours carry the flux of $\rho$ from $q$ to $c$ along two surfaces with the same boundary,
+which together bound the two unit cubes $c\times[\sigma-1,\sigma]$ and $\Gamma$. They reach $c$ with opposite orientations, $\sigma(q,c)$ and $\sigma_\Gamma(q,c)=-\sigma(q,c)$, so on
+$\mathrm{Im}\,\chi_\rho$ their amplitudes cancel and on $\mathrm{Re}\,\chi_\rho$ they add. Before this section the lower bound took each in norm. Pairing them before the
+norm is taken removes $16(d-3)u^4$ from the moves of the $C$-odd state, which is $h_+-h_-$. The pairing has to respect the rest of the set. The two moves use different
+links, so a piece of the rest can be separate from one and merged with the other. Such a piece is contracted into the move vertex, and the merged version is then
+a junction of higher order. The proof of the
+theorem also gives the $C$-odd glueball: for every $\rho$ with $\iota=0$ the covariances of $C$-odd observables decay at the rate
+$4\log(1/u)-\log\Upsilon_--h_-u^4+o(\beta^4)$, and no faster (Theorem~\ref{mg:thm:upper4} with $C=-$). For $SU(3)$ this includes the first-order splitting
+$m_\pm\approx4\log(1/u)\mp3u$ of Remark~\ref{mg:rem:cap}(iii), up to $o(\beta^4)$.
+
+(ii) Checks (a compass; \texttt{theory/checks/fourth-order/}). \texttt{c\_odd\_pairing.py} computes the two-slice blocks of the hop and the turn by exact
+group sums over all link variables of the local complex ($\mathbb Z_3$, $\mathbb Z_4$, $\mathbb Z_5$; both signs of $\sigma(q,c)$; the coplanar hop). Every single-copy
+integral vanishes except for the empty set and the full set of plaquettes. The two-copy blocks satisfy $Y_{\rm hop}=\hat u^{12}$ on the twist $a\mapsto a^\sigma$ and
+$Y^0_{\rm turn}=Y_{\rm hop}\mathsf C$ to $6\cdot10^{-14}$, so their sum vanishes on the $C$-odd sector and has twice the norm of $Y_{\rm hop}$ on the even one. The exact
+$\mathbb Z_3$ spectra of Remark~\ref{mg:rem:fourth} follow the band of $H_-$ in the $C$-odd sector.
+
+(iii) What remains: a remainder $O(\beta^5)$ in place of $o(\beta^4)$ (Remark~\ref{mg:rem:fourthlower}(iii)); groups $G$ with complex representations but no charge
+conjugation; the term of order $u^6$; effective constants.
+\end{remark}
+
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
 
 \begin{proposition}[Two dimensions]\label{mg:prop:2d}
