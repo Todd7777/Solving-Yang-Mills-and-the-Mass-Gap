@@ -1,0 +1,11 @@
+E1 (turn, lid at y at sigma-1): free links X' 0, X'* 0; |E(X') xor E(X'*)| = 10
+   X'  has turn: True, hop: False
+   X'* has turn: False, hop: False
+   junction of the partner at sigma-1 containing c: [(2, 3)] (clusters, front-pairs)
+E2 (hop, lid at v at sigma): free links X' 0, X'* 0; |E(X') xor E(X'*)| = 10
+   X'  has turn: False, hop: True
+   X'* has turn: False, hop: False
+E3 (hop at (3,4); rest has a turn at (4,5)): free links X' 0, X'* 0; |E(X') xor E(X'*)| = 10
+   X'  has turn: False, hop: True
+   X'* has turn: False, hop: False
+   second move (q',c',5): turn in X': True;  turn in X'*: False

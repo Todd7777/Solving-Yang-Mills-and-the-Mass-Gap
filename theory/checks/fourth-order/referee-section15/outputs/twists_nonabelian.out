@@ -1,0 +1,49 @@
+  F21 rho=4 (dim 3, self-conj: False), q=((0, 0, 0), 0, 1), c=((0, 0, 0), 0, 2): sigma=-1, sigma_Gamma=+1
+    widening twist id (|I|-u_a: 1.5e-16); narrowing twist conj (1.7e-16); turn twist id (|I|-u_a^4: 8.8e-20; 0<S<P: 1.1e-15)
+    hop twist = conj (expect conj);  turn twist = id (expect id)
+    |Y_hop|/u_*^12 = 1.0000000000;  |Y0_turn - Y_hop C|/|Y_hop| = 5.7e-15;  |Q-(Y_hop+Y0_turn)Q-|/|Y_hop| = 2.2e-15
+  F21 rho=4 (dim 3, self-conj: False), q=((0, 0, 0), 0, 1), c=((0, 0, -1), 0, 2): sigma=+1, sigma_Gamma=-1
+    widening twist id (|I|-u_a: 1.5e-16); narrowing twist id (1.7e-16); turn twist conj (|I|-u_a^4: 2.0e-19; 0<S<P: 1.0e-15)
+    hop twist = id (expect id);  turn twist = conj (expect conj)
+    |Y_hop|/u_*^12 = 1.0000000000;  |Y0_turn - Y_hop C|/|Y_hop| = 1.3e-14;  |Q-(Y_hop+Y0_turn)Q-|/|Y_hop| = 5.9e-15
+  F21 rho=4 (dim 3, self-conj: False), q=((0, 0, 0), 0, 1), c=((0, 0, 0), 1, 2): sigma=+1, sigma_Gamma=-1
+    widening twist id (|I|-u_a: 1.5e-16); narrowing twist id (1.7e-16); turn twist conj (|I|-u_a^4: 1.5e-19; 0<S<P: 4.6e-17)
+    hop twist = id (expect id);  turn twist = conj (expect conj)
+    |Y_hop|/u_*^12 = 1.0000000000;  |Y0_turn - Y_hop C|/|Y_hop| = 6.5e-15;  |Q-(Y_hop+Y0_turn)Q-|/|Y_hop| = 3.9e-16
+  F21 rho=4 (dim 3, self-conj: False), q=((0, 0, 0), 0, 1), c=((1, 0, 0), 1, 2): sigma=-1, sigma_Gamma=+1
+    widening twist id (|I|-u_a: 1.5e-16); narrowing twist conj (1.7e-16); turn twist id (|I|-u_a^4: 1.5e-19; 0<S<P: 1.1e-15)
+    hop twist = conj (expect conj);  turn twist = id (expect id)
+    |Y_hop|/u_*^12 = 1.0000000000;  |Y0_turn - Y_hop C|/|Y_hop| = 9.9e-15;  |Q-(Y_hop+Y0_turn)Q-|/|Y_hop| = 1.4e-15
+  A4 rho=2 (dim 1, self-conj: False), q=((0, 0, 0), 0, 1), c=((0, 0, 0), 0, 2): sigma=-1, sigma_Gamma=+1
+    widening twist id (|I|-u_a: 1.7e-16); narrowing twist conj (2.8e-16); turn twist id (|I|-u_a^4: 1.0e-16; 0<S<P: 1.5e-15)
+    hop twist = conj (expect conj);  turn twist = id (expect id)
+    |Y_hop|/u_*^12 = 1.0000000000;  |Y0_turn - Y_hop C|/|Y_hop| = 4.2e-15;  |Q-(Y_hop+Y0_turn)Q-|/|Y_hop| = 2.4e-15
+  A4 rho=2 (dim 1, self-conj: False), q=((0, 0, 0), 0, 1), c=((0, 0, -1), 0, 2): sigma=+1, sigma_Gamma=-1
+    widening twist id (|I|-u_a: 2.2e-16); narrowing twist id (1.7e-16); turn twist conj (|I|-u_a^4: 1.9e-16; 0<S<P: 1.5e-15)
+    hop twist = id (expect id);  turn twist = conj (expect conj)
+    |Y_hop|/u_*^12 = 1.0000000000;  |Y0_turn - Y_hop C|/|Y_hop| = 6.9e-15;  |Q-(Y_hop+Y0_turn)Q-|/|Y_hop| = 5.0e-15
+  A4 rho=2 (dim 1, self-conj: False), q=((0, 0, 0), 0, 1), c=((0, 0, 0), 1, 2): sigma=+1, sigma_Gamma=-1
+    widening twist id (|I|-u_a: 2.2e-16); narrowing twist id (1.7e-16); turn twist conj (|I|-u_a^4: 6.2e-17; 0<S<P: 2.2e-16)
+    hop twist = id (expect id);  turn twist = conj (expect conj)
+    |Y_hop|/u_*^12 = 1.0000000000;  |Y0_turn - Y_hop C|/|Y_hop| = 2.1e-15;  |Q-(Y_hop+Y0_turn)Q-|/|Y_hop| = 3.0e-16
+  A4 rho=2 (dim 1, self-conj: False), q=((0, 0, 0), 0, 1), c=((1, 0, 0), 1, 2): sigma=-1, sigma_Gamma=+1
+    widening twist id (|I|-u_a: 1.7e-16); narrowing twist conj (2.8e-16); turn twist id (|I|-u_a^4: 9.7e-17; 0<S<P: 1.5e-15)
+    hop twist = conj (expect conj);  turn twist = id (expect id)
+    |Y_hop|/u_*^12 = 1.0000000000;  |Y0_turn - Y_hop C|/|Y_hop| = 3.6e-15;  |Q-(Y_hop+Y0_turn)Q-|/|Y_hop| = 2.7e-15
+  Z5 rho=1 (dim 1, self-conj: False), q=((0, 0, 0), 0, 1), c=((0, 0, 0), 0, 2): sigma=-1, sigma_Gamma=+1
+    widening twist id (|I|-u_a: 1.1e-16); narrowing twist conj (1.1e-16); turn twist id (|I|-u_a^4: 2.8e-17; 0<S<P: 5.1e-16)
+    hop twist = conj (expect conj);  turn twist = id (expect id)
+    |Y_hop|/u_*^12 = 1.0000000000;  |Y0_turn - Y_hop C|/|Y_hop| = 3.2e-15;  |Q-(Y_hop+Y0_turn)Q-|/|Y_hop| = 1.1e-15
+  Z5 rho=1 (dim 1, self-conj: False), q=((0, 0, 0), 0, 1), c=((0, 0, -1), 0, 2): sigma=+1, sigma_Gamma=-1
+    widening twist id (|I|-u_a: 1.7e-16); narrowing twist id (1.1e-16); turn twist conj (|I|-u_a^4: 4.2e-17; 0<S<P: 4.8e-16)
+    hop twist = id (expect id);  turn twist = conj (expect conj)
+    |Y_hop|/u_*^12 = 1.0000000000;  |Y0_turn - Y_hop C|/|Y_hop| = 4.9e-15;  |Q-(Y_hop+Y0_turn)Q-|/|Y_hop| = 1.6e-15
+  Z5 rho=1 (dim 1, self-conj: False), q=((0, 0, 0), 0, 1), c=((0, 0, 0), 1, 2): sigma=+1, sigma_Gamma=-1
+    widening twist id (|I|-u_a: 1.7e-16); narrowing twist id (1.1e-16); turn twist conj (|I|-u_a^4: 3.5e-17; 0<S<P: 8.6e-17)
+    hop twist = id (expect id);  turn twist = conj (expect conj)
+    |Y_hop|/u_*^12 = 1.0000000000;  |Y0_turn - Y_hop C|/|Y_hop| = 3.9e-15;  |Q-(Y_hop+Y0_turn)Q-|/|Y_hop| = 7.6e-16
+  Z5 rho=1 (dim 1, self-conj: False), q=((0, 0, 0), 0, 1), c=((1, 0, 0), 1, 2): sigma=-1, sigma_Gamma=+1
+    widening twist id (|I|-u_a: 1.7e-16); narrowing twist conj (1.7e-16); turn twist id (|I|-u_a^4: 3.5e-17; 0<S<P: 3.7e-16)
+    hop twist = conj (expect conj);  turn twist = id (expect id)
+    |Y_hop|/u_*^12 = 1.0000000000;  |Y0_turn - Y_hop C|/|Y_hop| = 2.8e-15;  |Q-(Y_hop+Y0_turn)Q-|/|Y_hop| = 9.1e-16
+worst |Y0_turn - Y_hop C|/|Y_hop| = 1.3e-14

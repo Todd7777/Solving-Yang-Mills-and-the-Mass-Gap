@@ -1,0 +1,46 @@
+Z3, beta=1.0: u=0.537158, |G_g|=0.537158 (=u), gamma_g=3.3028
+  q=((0, 0, 0), 0, 1), c=((0, 0, 0), 0, 2): sigma(q,c)=-1, sigma_Gamma(q,c)=+1  (Lemma 12.2(i): sigma_Gamma=-sigma: True)
+    P^Gamma: basis fixed 0.0e+00, spans range 1.3e-14; block commutes with P: 2.1e-15   [115s]
+    |Y_hop| = 5.770607e-04, u^12 = 5.770607e-04, ratio 1.0000000000
+    |Y0_turn - Y_hop C| / |Y_hop| = 5.9e-17
+    |Q-(Y_hop+Y0_turn)Q-| / |Y_hop| = 3.0e-17
+    |Q-(Y_hop+Y_turn)Q-| = 3.1545e-04 <= |Y_turn-Y0_turn| = 6.9931e-04 <= gamma_g u^12 = 1.9059e-03: True
+    sector (S-,C-): |P(Y_hop+Y_turn)P| / u^12 = 0.546654
+    sector (S-,C+): |P(Y_hop+Y_turn)P| / u^12 = 1.960081
+    sector (S+,C-): |P(Y_hop+Y_turn)P| / u^12 = 0.546654
+    sector (S+,C+): |P(Y_hop+Y_turn)P| / u^12 = 3.150478
+    hop kernel a function of U_q - sigma U_c: 1.7e-21 (of U_q + sigma U_c: 2.1e-05);  turn kernel a function of U_q - sigma_Gamma U_c: 1.7e-21
+  q=((0, 0, 0), 0, 1), c=((0, 0, -1), 0, 2): sigma(q,c)=+1, sigma_Gamma(q,c)=-1  (Lemma 12.2(i): sigma_Gamma=-sigma: True)
+    P^Gamma: basis fixed 0.0e+00, spans range 8.5e-15; block commutes with P: 2.1e-15   [111s]
+    |Y_hop| = 5.770607e-04, u^12 = 5.770607e-04, ratio 1.0000000000
+    |Y0_turn - Y_hop C| / |Y_hop| = 2.3e-17
+    |Q-(Y_hop+Y0_turn)Q-| / |Y_hop| = 1.6e-17
+    |Q-(Y_hop+Y_turn)Q-| = 3.1545e-04 <= |Y_turn-Y0_turn| = 6.9931e-04 <= gamma_g u^12 = 1.9059e-03: True
+    sector (S-,C-): |P(Y_hop+Y_turn)P| / u^12 = 0.546654
+    sector (S-,C+): |P(Y_hop+Y_turn)P| / u^12 = 1.960081
+    sector (S+,C-): |P(Y_hop+Y_turn)P| / u^12 = 0.546654
+    sector (S+,C+): |P(Y_hop+Y_turn)P| / u^12 = 3.150478
+    hop kernel a function of U_q - sigma U_c: 0.0e+00 (of U_q + sigma U_c: 2.1e-05);  turn kernel a function of U_q - sigma_Gamma U_c: 0.0e+00
+  q=((0, 0, 0), 0, 1), c=((0, 0, 0), 1, 2): sigma(q,c)=+1, sigma_Gamma(q,c)=-1  (Lemma 12.2(i): sigma_Gamma=-sigma: True)
+    P^Gamma: basis fixed 0.0e+00, spans range 1.0e-14; block commutes with P: 2.1e-15   [110s]
+    |Y_hop| = 5.770607e-04, u^12 = 5.770607e-04, ratio 1.0000000000
+    |Y0_turn - Y_hop C| / |Y_hop| = 2.6e-17
+    |Q-(Y_hop+Y0_turn)Q-| / |Y_hop| = 1.3e-17
+    |Q-(Y_hop+Y_turn)Q-| = 3.1545e-04 <= |Y_turn-Y0_turn| = 6.9931e-04 <= gamma_g u^12 = 1.9059e-03: True
+    sector (S-,C-): |P(Y_hop+Y_turn)P| / u^12 = 0.546654
+    sector (S-,C+): |P(Y_hop+Y_turn)P| / u^12 = 1.960081
+    sector (S+,C-): |P(Y_hop+Y_turn)P| / u^12 = 0.546654
+    sector (S+,C+): |P(Y_hop+Y_turn)P| / u^12 = 3.150478
+    hop kernel a function of U_q - sigma U_c: 0.0e+00 (of U_q + sigma U_c: 2.1e-05);  turn kernel a function of U_q - sigma_Gamma U_c: 0.0e+00
+  q=((0, 0, 0), 0, 1), c=((1, 0, 0), 1, 2): sigma(q,c)=-1, sigma_Gamma(q,c)=+1  (Lemma 12.2(i): sigma_Gamma=-sigma: True)
+    P^Gamma: basis fixed 0.0e+00, spans range 8.1e-15; block commutes with P: 2.0e-15   [127s]
+    |Y_hop| = 5.770607e-04, u^12 = 5.770607e-04, ratio 1.0000000000
+    |Y0_turn - Y_hop C| / |Y_hop| = 2.6e-17
+    |Q-(Y_hop+Y0_turn)Q-| / |Y_hop| = 1.9e-17
+    |Q-(Y_hop+Y_turn)Q-| = 3.1545e-04 <= |Y_turn-Y0_turn| = 6.9931e-04 <= gamma_g u^12 = 1.9059e-03: True
+    sector (S-,C-): |P(Y_hop+Y_turn)P| / u^12 = 0.546654
+    sector (S-,C+): |P(Y_hop+Y_turn)P| / u^12 = 1.960081
+    sector (S+,C-): |P(Y_hop+Y_turn)P| / u^12 = 0.546654
+    sector (S+,C+): |P(Y_hop+Y_turn)P| / u^12 = 3.150478
+    hop kernel a function of U_q - sigma U_c: 1.7e-21 (of U_q + sigma U_c: 2.1e-05);  turn kernel a function of U_q - sigma_Gamma U_c: 0.0e+00
+worst |Y0_turn - Y_hop C|/|Y_hop| = 5.9e-17

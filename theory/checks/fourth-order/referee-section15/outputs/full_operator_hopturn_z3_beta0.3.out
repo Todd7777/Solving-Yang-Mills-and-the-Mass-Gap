@@ -1,0 +1,12 @@
+Z3, beta=0.3: u=0.159266, |G_g|=0.159266 (=u), gamma_g=0.7385
+  q=((0, 0, 0), 0, 1), c=((0, 0, 0), 0, 2): sigma(q,c)=-1, sigma_Gamma(q,c)=+1  (Lemma 12.2(i): sigma_Gamma=-sigma: True)
+    P^Gamma: basis fixed 0.0e+00, spans range 1.3e-14; block commutes with P: 2.6e-15   [123s]
+    |Y_hop| = 2.663726e-10, u^12 = 2.663726e-10, ratio 1.0000000000
+    |Y0_turn - Y_hop C| / |Y_hop| = 0.0e+00
+    |Q-(Y_hop+Y0_turn)Q-| / |Y_hop| = 0.0e+00
+    |Q-(Y_hop+Y_turn)Q-| = 4.2443e-11 <= |Y_turn-Y0_turn| = 5.5993e-11 <= gamma_g u^12 = 1.9672e-10: True
+    sector (S-,C-): |P(Y_hop+Y_turn)P| / u^12 = 0.159339
+    sector (S-,C+): |P(Y_hop+Y_turn)P| / u^12 = 2.108535
+    sector (S+,C-): |P(Y_hop+Y_turn)P| / u^12 = 0.159339
+    sector (S+,C+): |P(Y_hop+Y_turn)P| / u^12 = 2.210018
+    hop kernel a function of U_q - sigma U_c: 0.0e+00 (of U_q + sigma U_c: 9.9e-12);  turn kernel a function of U_q - sigma_Gamma U_c: 0.0e+00

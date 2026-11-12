@@ -57,7 +57,8 @@ report; the second-order term (Section~\ref{mg:sec:second}) added, 11 November 2
 (Section~\ref{mg:sec:third}) added the same day, and revised after a referee report; the upper bound to fourth order and the fourth-order
 conjecture (Section~\ref{mg:sec:fourth}) added, 12 November 2026, and revised after a referee report; the junctions of order $\beta^4$ and the
 third-order term with an effective constant (Section~\ref{mg:sec:betafour}) added the same day, and revised after two referee reports; the lower bound to
-fourth order and the fourth-order term (Section~\ref{mg:sec:fourthlower}) added, 12 November 2026; living document}
+fourth order and the fourth-order term (Section~\ref{mg:sec:fourthlower}) added, 12 November 2026; the sectors of charge conjugation and $SU(N)$, $N\ge6$ (Section~\ref{mg:sec:codd}) added the same day,
+after a referee report that found the first draft's proof for the odd sector incomplete; living document}
 
 \begin{document}
 \maketitle
@@ -114,9 +115,12 @@ $SU(2)$ and $SU(3)$ in $d=4$ the conjecture reproduces the terms of order $u^4$ 
 in four of five channels. In the lower bound only the moves of the hopping matrix enter at order $\beta^4$: the junctions with four plaquettes are turns,
 jumps and U-turns through unit cubes, a six-edge front ends at leading order in one of two narrowings, and the shifts and jumps and the U-turns drop out.
 Each move goes through a junction whose plaquettes and fronts form a closed surface, on which the transfer operator is diagonal in the representations,
-with norm $u$ per plaquette. So the lower bound has the same term for $C=+$, and for $SU(N)$, $2\le N\le5$, and every $d\ge3$,
-$m(\mu_\beta)=4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$. So the conjecture holds, with $o(\beta^4)$ in place of $O(\beta^5)$, for these groups, for every
-self-conjugate representation, and in $d=3$. For $SU(2)$ in $d=4$ this is
+with norm $u$ per plaquette. So the lower bound has the same term for $C=+$. The plaquette variances of $SU(N)$, $N\ge6$, satisfy $\Upsilon_+\ge\Upsilon_-$ up to
+$O(\beta^5)$, so for $SU(N)$, every $N\ge2$, and every $d\ge3$, $m(\mu_\beta)=4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$. So the conjecture holds, with $o(\beta^4)$
+in place of $O(\beta^5)$, for these groups, for every self-conjugate representation, and in $d=3$. When $G$ has a charge conjugation, the even and odd sectors
+are bounded separately: each is determined to third order, and the even one to fourth order. For $SU(3)$ this proves the first-order splitting $\beta/3$ of
+the two plaquette glueballs. The odd sector at fourth order, which carries the gap of $U(1)$ in $d\ge4$, remains open. Its moves cancel in pairs, which we prove
+as an identity of two-slice operators, but the grouping of the sets along the path is not done. For $SU(2)$ in $d=4$ this is
 $m(\mu_\beta)=-4\log u+2u^2-\frac{98}3u^4+o(u^4)$, the coefficient of the classical series. For $SU(2)$ the two
 bounds give $-1.3\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
 $-2.5\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$ (a numerical evaluation of the explicit constants).
@@ -154,7 +158,7 @@ mass to all orders in $\beta$, whereas the bounds proved here determine it up to
 $SU(N)$, $2\le N\le5$, for every self-conjugate $\rho$, and in $d=3$ (Corollary~\ref{mg:cor:fourthterm}). The title and the
 first lines of the abstract of \cite{OBS85} mention a mass splitting for complex characters. For $SU(3)$ the cap of Section~\ref{mg:sec:cap} gives a
 first-order splitting of the $C$-even and $C$-odd plaquette states, presumably the splitting found in \cite{OBS85}; only the shift of the lowest
-($C$-even) state is proved here (Corollary~\ref{mg:cor:firstorder2}), that of the $C$-odd state is Heuristic (Remark~\ref{mg:rem:cap}(iii)).
+($C$-even) state is proved in Corollary~\ref{mg:cor:firstorder2}, and the splitting, $m_--m_+=\beta/3+O(\beta^2)$, in Corollary~\ref{mg:cor:sectors}(ii).
 The strong-coupling series of the glueball masses were computed by Münster \cite{Mun81} and Seo \cite{Seo82}. We know them only as quoted by Langelage,
 Münster and Philipsen \cite{LMP07,LMP08}, which we have read. Their terms through order $u^3$ agree with Corollaries~\ref{mg:cor:second}
 and~\ref{mg:cor:third}, and their terms of order $u^4$ agree with Conjecture~\ref{mg:conj:fourth} in four of five channels
@@ -219,10 +223,12 @@ $m(\mu_\beta)=4\log(1/u(\beta))-\log\Upsilon(\beta)+O(\beta^3)$, with $\Upsilon(
 $\chi_\rho,\overline{\chi_\rho}$ under the weight $w_\beta/c_0$ (Theorems~\ref{mg:thm:upper2} and~\ref{mg:thm:lower2}, Corollary~\ref{mg:cor:second}); for $SU(2)$,
 $m(\mu_\beta)=4\log(1/u(\beta))+\beta^2/8+O(\beta^3)$. At third order, $m(\mu_\beta)=4\log(1/u(\beta))-\log\Upsilon(\beta)+O(\beta^4)$
 (Theorem~\ref{mg:thm:lower3}, Corollary~\ref{mg:cor:third}). At fourth order the plaquette state moves, and
-$m(\mu_\beta)\le4\log(1/u(\beta))-\log\Upsilon(\beta)-(26d-70)u(\beta)^4+o(\beta^4)$ for $SU(N)$, $2\le N\le5$ ($10d-22$ in place of $26d-70$ for $U(1)$)
-(Theorem~\ref{mg:thm:upper4}, Corollary~\ref{mg:cor:fourthupper}), and the lower bound has the same term for $SU(N)$, $2\le N\le5$, and for $U(1)$ in $d=3$
-(Theorem~\ref{mg:thm:lower5}, Corollary~\ref{mg:cor:fourthterm}): there $m(\mu_\beta)=4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$ ($8u^4$ for $U(1)$, $d=3$), which is
-Conjecture~\ref{mg:conj:fourth} for these groups with $o(\beta^4)$ in place of $O(\beta^5)$; the same holds for every self-conjugate $\rho$, and for every $\rho$ in $d=3$. The upper
+$m(\mu_\beta)\le4\log(1/u(\beta))-\log\Upsilon(\beta)-(26d-70)u(\beta)^4+o(\beta^4)$ for $SU(N)$ ($10d-22$ in place of $26d-70$ for $U(1)$)
+(Theorem~\ref{mg:thm:upper4}, Corollary~\ref{mg:cor:fourthupper}), and the lower bound has the same term for $SU(N)$, every $N\ge2$, and for $U(1)$ in $d=3$
+(Theorem~\ref{mg:thm:lower5}, Corollaries~\ref{mg:cor:fourthterm} and~\ref{mg:cor:sectors}): there $m(\mu_\beta)=4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$ ($8u^4$ for $U(1)$, $d=3$), which is
+Conjecture~\ref{mg:conj:fourth} for these groups with $o(\beta^4)$ in place of $O(\beta^5)$; the same holds for every self-conjugate $\rho$, and for every $\rho$ in $d=3$. With a charge
+conjugation the two sectors are bounded separately (Theorem~\ref{mg:thm:sectors}): each to third order, the even one to fourth. The odd sector at fourth order,
+the case of $U(1)$ in $d\ge4$, is Conjecture~\ref{mg:conj:codd}. The upper
 bound holds, with a
 larger explicit bound on $D$, whenever $N\le4$, or
 $N=5$ and $\rho\cong\bar\rho$. Without any restriction on $N$, the
@@ -302,7 +308,10 @@ whose plaquettes, together with the fronts on either side, form a closed surface
 On it the transfer operator, evaluated by characters, is diagonal in the representations, with norm $u$ per plaquette instead of the sup norm $b\approx2\beta$. So
 the constant becomes the row sum of the hopping matrix, $h_+u_1^4$: the lower bound to fourth order matches the upper bound for $C=+$, and
 $m(\mu_\beta)=4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$ for $SU(N)$, $2\le N\le5$. The recursion follows the moving tube by itself, since the bound for a four-edge
-front does not depend on where the front is.
+front does not depend on where the front is. (15) For $SU(N)$, $N\ge6$, the plaquette variances satisfy $\Upsilon_+\ge\Upsilon_-$ up to $O(\beta^5)$, which gives the same term for every
+$N$. A charge conjugation of $G$ commutes with the transfer operators, so the even and odd sectors can be bounded separately, each with its own $\Upsilon_C$
+(Section~\ref{mg:sec:codd}). In the odd sector the hop and the turn between perpendicular neighbours are, as two-slice operators, equal up to charge conjugation,
+and cancel; grouping the sets so as to use this along the whole path is the step that remains for $U(1)$ in $d\ge4$.
 
 \section{The duplicated system}\label{mg:sec:dup}
 
@@ -2122,7 +2131,7 @@ $O(bFa^2)=O(\beta^2)$ with a large constant; numerically $\delta/\beta^2\to4.2\c
 (iii) Meaning. In the transfer-matrix picture the cap acts on the plaquette states $\chi_\rho(U_q)$ and $\chi_{\bar\rho}(U_q)$ by the matrix of
 Lemma~\ref{mg:lem:capelement}(i); its eigenvectors are $\mathrm{Re}\,\chi_\rho$ and $\mathrm{Im}\,\chi_\rho$, which are even and odd under charge conjugation
 $U\mapsto\bar U$, with eigenvalues $\kappa=\alpha_\rho+\gamma_\rho$ and $\alpha_\rho-\gamma_\rho$. So to first order the $C$-even plaquette state is lowered by $\kappa$ and, if
-$\iota=0$, the $C$-odd one is shifted by $-(\alpha_\rho-\gamma_\rho)$ (Heuristic; only the lowest mass is bounded here). For $SU(3)$, $\alpha_\rho=O(\beta^2)$ and
+$\iota=0$, the $C$-odd one is shifted by $-(\alpha_\rho-\gamma_\rho)$ (Heuristic here; the decay rates of the two sectors are bounded in Section~\ref{mg:sec:codd}). For $SU(3)$, $\alpha_\rho=O(\beta^2)$ and
 $\gamma_\rho=3u+O(\beta^2)$: the two plaquette glueballs split at first order, $m_\pm\approx4\log(1/u)\mp3u$. The title and the first lines of the abstract of
 \cite{OBS85} (complex characters, the subspace generated by the plaquette function and its complex conjugate, ``mass splitting'') suggest that this
 splitting was found there, in $2+1$ dimensions; we have not seen the paper.
@@ -2539,7 +2548,7 @@ amplitude of closing it on $q$ and opening it on $q'$, which the subtraction of 
 order (in the exact spectra of (ii) its width is about $8u^4$ in $d=3$, the state of momentum $0$ being the lowest). For $SU(2)$ the gap is raised by $\beta^2/8$: the subtraction of the vacuum, $N^2u^2=\beta^2/4+O(\beta^4)$, outweighs the second-order cap,
 $\kappa=3u_1=\beta^2/8+O(\beta^4)$. For $U(1)$ the $C$-odd plaquette state is the lighter one ($+\beta^2/8$ against $+3\beta^2/8$); for $SU(3)$ the $C$-even one, by the
 first-order cap; for $SU(4)$ the $C$-even one is lowered by $\beta^2/128$, as four fundamental fluxes can meet at a link ($\langle\chi^4\rangle=1$).
-Only the lowest mass is bounded here.
+Only the lowest mass is bounded here; the two sectors are treated in Section~\ref{mg:sec:codd}.
 
 (ii) Checks (\texttt{theory/checks/second-order/}, a compass). Exact transfer-matrix spectra: for $\mathbb Z_n$ in $d=3$, in the sector of winding zero
 ($\mathbb Z_2$ on the $4\times4$ torus; $\mathbb Z_3$, $\mathbb Z_4$, $\mathbb Z_5$ on $3\times3$), in both $C$-sectors, $m-4\log(1/u)+\log\Upsilon_\pm\approx-8u^4$ for
@@ -3824,9 +3833,9 @@ conjugation in the recursion as the swap is used in Section~\ref{mg:sec:second}.
 
 (iii) What remains:
 \begin{itemize}
-\item $U(1)$ in $d\ge4$, as in (ii);
-\item $SU(N)$, $N\ge6$, in $d\ge4$: what is missing is $\Upsilon_-\le\Upsilon_++o(\beta^4)$. By the Heuristic of Remark~\ref{mg:rem:third}(i), $\Upsilon_\pm$ split only at order
-$\beta^{N-2}$, with $\Upsilon_+>\Upsilon_-$. In $d=3$ nothing remains, by (ii);
+\item $U(1)$ in $d\ge4$, as in (ii): the sectors are separated in Section~\ref{mg:sec:codd}, where the cancellation is proved as an identity of two-slice operators
+(Lemma~\ref{mg:lem:hopturn}); the grouping of the sets along the path is open (Conjecture~\ref{mg:conj:codd});
+\item $SU(N)$, $N\ge6$, in $d\ge4$, where what was missing was $\Upsilon_-\le\Upsilon_++o(\beta^4)$, is settled by Lemma~\ref{mg:lem:split} (Corollary~\ref{mg:cor:sectors}(iii));
 \item a remainder $O(\beta^5)$ in place of $o(\beta^4)$. The upper bound needs a quantitative version of the limit over $\mathcal W$ in Theorem~\ref{mg:thm:upper4}, and the
 lower bound a choice of $\varepsilon'$ that tends to $0$ with $\beta$. (Heuristic: with $\varepsilon'$ of order $\beta^{1/2}$, the proof of Theorem~\ref{mg:thm:lower5} appears to
 leave only terms $O(\beta^{9/2})$ when $\varpi=b^{5/2}$.)
@@ -3849,26 +3858,25 @@ $\mathbb Z_3$ (dominos) and $\mathbb Z_2$ (cube): $u_*^6$ and $u_*^8$ to $10^{-1
 \end{itemize}
 \end{remark}
 
-\section{The fourth-order term in both sectors of charge conjugation}\label{mg:sec:codd}
+\section{The sectors of charge conjugation}\label{mg:sec:codd}
 
-The lower bound of Section~\ref{mg:sec:fourthlower} counts every move of the plaquette state in absolute value, so it gives $h_+$ in both sectors of charge
-conjugation. In the $C$-odd sector the hop and the turn between perpendicular neighbours cancel (Lemma~\ref{mg:lem:hopping}(ii)). For $U(1)$ in $d\ge4$ this
-sector carries the gap, and the bounds of Corollary~\ref{mg:cor:fourthterm}(v) differ. Here the two sectors are separated, and in the odd one the two
-moves are paired before the norms are taken.
-
+The lower bounds of Sections~\ref{mg:sec:second}--\ref{mg:sec:fourthlower} bound the covariances of all observables at once, with $\Upsilon=\max(\Upsilon_+,\Upsilon_-)$. When $G$ has a
+charge conjugation, the even and odd observables can be treated separately. Between two observables of the same parity only the sector of that parity
+contributes (Lemma~\ref{mg:lem:csectors}), and there the dressed tube has norm $u^4\bar\Upsilon_C$ (Lemma~\ref{mg:lem:dressedC}). So the proof of
+Theorem~\ref{mg:thm:lower5} bounds the decay rate $m_C$ of the covariances in each sector (Theorem~\ref{mg:thm:sectors}).
 \begin{itemize}
-\item \emph{Sectors.} A charge conjugation of $G$ commutes with the transfer operators of the duplicated system, so between two observables of the same
-parity only the sector of that parity contributes (Lemma~\ref{mg:lem:csectors}). There the dressed tube has norm $u^4\bar\Upsilon_C$.
-\item \emph{The pair.} The hop from $q$ to $c$ and the turn through their common cube span the same two slices, and as operators from the plaquette
-states of $q$ to those of $c$ they differ exactly by charge conjugation (Lemma~\ref{mg:lem:hopturn}). Their sum vanishes on the odd sector, up to the
-cap that dresses the tube under the turn.
-\item \emph{The partner.} The two moves have different footprints, so another part of the set can touch one and not the other. Then the partner set is
-a set with a larger junction, of order $\beta^5$ in the junction sums, and the pair still splits into a cancelling part and a part bounded by that set
-(Lemma~\ref{mg:lem:partners}).
+\item With the upper bound of Theorem~\ref{mg:thm:upper4}, each sector is determined to third order, $m_C=4\log(1/u)-\log\Upsilon_C+O(\beta^4)$, and the even one to fourth
+order (Corollary~\ref{mg:cor:sectors}).
+\item For $SU(3)$ this proves the first-order splitting of the two plaquette glueballs, $m_--m_+=\beta/3+O(\beta^2)$. In Remark~\ref{mg:rem:cap}(iii) it was Heuristic.
+\item Independently of the sectors, the plaquette variances of $SU(N)$, $N\ge6$, satisfy $\Upsilon_+\ge\Upsilon_-$ up to $O(\beta^5)$, with a split at order $\beta^4$ for
+$N=6$ (Lemma~\ref{mg:lem:split}). This
+settles the fourth-order term for $SU(N)$, $N\ge6$, $d\ge4$, the case left open in Corollary~\ref{mg:cor:fourthterm}. So for $SU(N)$ it is now known for every $N$ and every
+$d\ge3$.
 \end{itemize}
-The outcome (Theorem~\ref{mg:thm:lowerC}): in the sector $C$ the lower bound holds with $\Upsilon_C$ and $h_C$. With the upper bound of
-Theorem~\ref{mg:thm:upper4} this determines $m(\mu_\beta)=\min_C\bigl(4\log(1/u)-\log\Upsilon_C-h_Cu^4\bigr)+o(\beta^4)$ for every $\rho$ when $G$ has a
-charge conjugation, in particular for $U(1)$ and $SU(N)$ in every $d\ge3$ (Corollary~\ref{mg:cor:fourthall}).
+What the sectors do not give is the fourth-order term of the odd sector. There the hop and the turn between perpendicular neighbours cancel; we prove the
+cancellation as an identity between two-slice operators (Lemma~\ref{mg:lem:hopturn}). We also prove the decomposition of a hop and its partner turn in the presence
+of the rest of the set (Lemma~\ref{mg:lem:partners}). The step that remains is to group the sets consistently along the whole path
+(Conjecture~\ref{mg:conj:codd}, Remark~\ref{mg:rem:codd}). It is what $U(1)$ in $d\ge4$ needs.
 
 \begin{definition}[Charge conjugation]\label{mg:def:charge}
 A \emph{charge conjugation} of $G$ is a continuous automorphism $\mathsf c$ of $G$ with $\mathsf c\circ\mathsf c=\mathrm{id}$ and $\chi_r\circ\mathsf c=\overline{\chi_r}$ for every irreducible $r$.
@@ -3917,6 +3925,85 @@ applies on the range of $Q_C$: the span of $e^-_\rho,e^-_{\bar\rho}$ meets it in
 $\chi_\rho+C\chi_{\bar\rho}$, the eigenvector of $\mathsf V$ for $\Upsilon_C$ (Lemma~\ref{mg:lem:Upsilon}(i)); the other blocks are restrictions of those
 bounded there.
 \end{proof}
+
+\begin{definition}[The masses of the two sectors]\label{mg:def:sectormass}
+Let $\mathsf c$ be a charge conjugation and $C\in\{+,-\}$. Call a bounded measurable function $F$ on $G^{E(\Z^d)}$ a \emph{local $C$-observable} if it depends on
+finitely many links, all with endpoint times in $[0,n_F]$ for some $n_F$, and $F\circ\mathsf c=CF$. Let $m_C(\mu_\beta)$ be the supremum of the $r\ge0$ such that for every
+local $C$-observable $F$ there is $C_F$ with $|\Cov_{\mu_\beta}(\Theta F,S_tF)|\le C_Fe^{-rt}$ for all $t\ge1$.
+\end{definition}
+
+By Lemma~\ref{mg:lem:csectors}(i), with $\Theta$ and $S_t$ commuting with $\mathsf c$, $\Cov(\Theta F,S_tF)=\sum_C\Cov(\Theta F_C,S_tF_C)$ for every local $F$. Conversely,
+$\Cov(\Theta F,S_tF)=\ip{[F]}{\hat T_{\mu_\beta}^t[F]}-|\ip{\Omega_{\mu_\beta}}{[F]}|^2\le e^{-m(\mu_\beta)t}\norm{[F]}^2$ by \IIlab{Theorem}{iv:thm:OS}(i),(ii) and \IIlab{Definition}{iv:def:gap}.
+So, with \IIlab{Theorem}{iv:thm:OS}(iii),
+\[
+m(\mu_\beta)=\min\bigl(m_+(\mu_\beta),m_-(\mu_\beta)\bigr).
+\]
+
+\begin{theorem}[The two sectors]\label{mg:thm:sectors}
+Let $G$ be metrisable with a charge conjugation, $\rho$ irreducible with $\iota=0$, and $d\ge3$. For $C\in\{+,-\}$:
+\begin{enumerate}[label=(\roman*)]
+\item $\liminf_{\beta\downarrow0}\beta^{-4}\bigl(m_C(\mu_\beta)-4\log(1/u)+\log\Upsilon_C\bigr)\ge-h_+u_1^4$;
+\item $\limsup_{\beta\downarrow0}\beta^{-4}\bigl(m_C(\mu_\beta)-4\log(1/u)+\log\Upsilon_C\bigr)\le-h_Cu_1^4$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+(i) Let $F$ be a local $C$-observable. As in the proof of Theorem~\ref{mg:thm:main}(iii), the covariance under $\mu_\beta$ is a limit of covariances on periodic lattices,
+for the pair $(\Theta F,S_tF)$ of functions with disjoint supports, both $C$-observables. On such a lattice we follow the proof of Theorem~\ref{mg:thm:lower5} with three
+changes. Lemma~\ref{mg:lem:csectors}(ii) gives $P_-Q_C$ at the inner slices. Lemma~\ref{mg:lem:csectors}(iii) replaces Lemma~\ref{mg:lem:oddslice}. And
+Lemma~\ref{mg:lem:dressedC} gives $\bar\Upsilon_C$ in place of $\bar\Upsilon$: the dressed tube enters the proof only through its norm on the odd sector, and every other bound
+there is a bound on norms, valid on any sector. So $|\Cov(\Theta F,S_tF)|\le C_F\bigl(u^4\bar\Upsilon_C(1+\delta')e^{8(K+1)\theta_5}\bigr)^t$ with
+$\delta'=(h_+u_1^4+\varepsilon)\beta^4$, for every $\varepsilon>0$ and small $\beta$. Since $\log\bar\Upsilon_C=\log\Upsilon_C+O(\beta^6)$ and $\theta_5=O(\beta^5)$, this is (i).
+
+(ii) Let $A$ be the trial function of the proof of Theorem~\ref{mg:thm:upper4} for the sector $C$, a real function of the spatial links of the time-zero slice with
+$A\circ\mathsf c=CA$. With $\nu$ and $P$ as in \IIlab{Corollary}{iv:cor:chain}, $\tilde A:=A-\nu(A)$ and $P\ge0$ \IIlab{Theorem}{iv:thm:gap}(ii), we have
+$\Cov(A,S_tA)=\ip{\tilde A}{P^t\tilde A}_\nu$ \IIlab{Corollary}{iv:cor:chain}(iv). By Jensen's inequality for the spectral measure of $\tilde A$, a positive measure on
+$[0,1]$, this is at least $\Gamma_0(\Gamma_1/\Gamma_0)^t$, with $\Gamma_1:=\ip{\tilde A}{P\tilde A}_\nu$ and $\Gamma_0:=\norm{\tilde A}^2_\nu$. The proof of Theorem~\ref{mg:thm:upper4}
+bounds $\log(\Gamma_0/\Gamma_1)$ by its right-hand side. Since $\Theta A=A$, no rate above $\log(\Gamma_0/\Gamma_1)$ is admissible for $F=A$ in Definition~\ref{mg:def:sectormass}.
+\end{proof}
+
+\begin{lemma}[The split of the plaquette variances for $SU(N)$, $N\ge6$]\label{mg:lem:split}
+For $SU(N)$ with the fundamental representation, $\Upsilon_+-\Upsilon_-=\beta^4/248832+O(\beta^5)$ if $N=6$, and $\Upsilon_+-\Upsilon_-=O(\beta^5)$ if $N\ge7$. So for
+$N\ge6$, $\log\Upsilon_-\le\log\Upsilon_++O(\beta^5)$.
+\end{lemma}
+
+\begin{proof}
+Write $\chi:=\chi_\rho$, $y:=\frac\beta N\mathrm{Re}\,\chi$ and $\langle h\rangle_y:=\langle h\,e^y\rangle/\langle e^y\rangle$. By the proof of Lemma~\ref{mg:lem:Upsilon}(i), in the basis $\chi,\bar\chi$ the
+off-diagonal entry of $\mathsf V$ is $\langle\bar\chi^2\rangle_y-\langle\bar\chi\rangle_y^2$ (there $\gamma_\rho-N^2u^2$; $\langle\bar\chi^2\rangle=0$ for $N\ge3$), so
+$\Upsilon_+-\Upsilon_-=2(\langle\bar\chi^2\rangle_y-\langle\bar\chi\rangle_y^2)$. Up to order $\beta^4$ this expression involves the moments $\langle\chi^a\bar\chi^b\rangle$ with $a+b\le6$. They vanish
+unless $a\equiv b$ (mod $N$), by the centre (proof of Lemma~\ref{mg:lem:capelement}(iii)); the diagonal ones are $\langle|\chi|^{2k}\rangle=k!$ for $k\le3$: for $k\le2$ by the
+proof of Lemma~\ref{mg:lem:Upsilon}(iii), and for $k=3$ because $\rho^{\otimes3}$ is the sum of its symmetric and antisymmetric cubes and two copies of the representation of
+type $(2,1)$, irreducible and mutually inequivalent for $N\ge3$, so that its commutant has dimension $1+1+2^2=6$. These are the moments $\delta_{ab}a!$ of a standard
+complex Gaussian $Z=(X+iY)/\sqrt2$, for which the expression vanishes identically: with $s:=\beta/(\sqrt2N)$,
+$\langle\bar Z^2e^{sX}\rangle=\frac{s^2}2e^{s^2/2}$, $\langle\bar Ze^{sX}\rangle=\frac s{\sqrt2}e^{s^2/2}$ and $\langle e^{sX}\rangle=e^{s^2/2}$. So up to order $\beta^4$ only off-diagonal moments with
+$a+b\le6$ and $a\equiv b$ (mod $N$) contribute. For $N\ge7$ there are none. For $N=6$ they are $\langle\chi^6\rangle=\langle\bar\chi^6\rangle=1$ (proof of
+Lemma~\ref{mg:lem:Upsilon}(iii)), which enter only through $\langle\bar\chi^2y^4\rangle/4!$, the coefficient of $\bar\chi^4$ in $y^4$ being $(\beta/12)^4$:
+$\Upsilon_+-\Upsilon_-=2(\beta/12)^4/24+O(\beta^5)$.
+\end{proof}
+
+Expanding further (\texttt{upsilon\_split.py} in \texttt{theory/checks/fourth-order/}, with the moments checked by Haar sampling in \texttt{haar\_moments.py}), $\Upsilon_+-\Upsilon_-=\beta^5/32269440+O(\beta^6)$ for
+$N=7$ and $O(\beta^6)$ for $N=8$, in agreement with $2(\beta/2N)^{N-2}/(N-2)!$, the term of $\langle\bar\chi^N\rangle=1$ (Heuristic for general $N$).
+
+\begin{corollary}[The sectors and $SU(N)$]\label{mg:cor:sectors}
+\begin{enumerate}[label=(\roman*)]
+\item Let $G$ be metrisable with a charge conjugation and $\rho$ irreducible with $\iota=0$. Then $m_C(\mu_\beta)=4\log(1/u)-\log\Upsilon_C+O(\beta^4)$ for $C=\pm$, and
+$m_+(\mu_\beta)=4\log(1/u)-\log\Upsilon_+-h_+u^4+o(\beta^4)$.
+\item For $SU(3)$ with the fundamental representation, $m_-(\mu_\beta)-m_+(\mu_\beta)=\beta/3+O(\beta^2)$.
+\item For $SU(N)$, $N\ge6$, with the fundamental representation and $d\ge3$, $m(\mu_\beta)=4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$. With
+Corollary~\ref{mg:cor:fourthterm}, Conjecture~\ref{mg:conj:fourth} holds with $o(\beta^4)$ in place of $O(\beta^5)$ for $SU(N)$, every $N\ge2$, in every $d\ge3$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(i) is Theorem~\ref{mg:thm:sectors}, as $h_-\le h_+$. (ii) By (i) and Lemma~\ref{mg:lem:Upsilon}(iii), $-\log\Upsilon_\pm=\mp\beta/6+O(\beta^2)$. (iii) By Lemma~\ref{mg:lem:split},
+$0\le\log\Upsilon-\log\Upsilon_+=O(\beta^5)$, where $\Upsilon=\max(\Upsilon_+,\Upsilon_-)$. So the lower bound of Theorem~\ref{mg:thm:lower5}, $\liminf R\ge-h_+u_1^4$, and the
+upper bound of Theorem~\ref{mg:thm:upper4} with $C=+$, $\limsup\beta^{-4}(m-4\log(1/u)+\log\Upsilon_+)\le-h_+u_1^4$, coincide. In Conjecture~\ref{mg:conj:fourth} the minimum is
+then attained at $C=+$, as $\Upsilon_+\ge\Upsilon_-$ up to $O(\beta^5)$ and $h_+>h_-$. For $N\le5$ see Corollary~\ref{mg:cor:fourthterm}(iii).
+\end{proof}
+
+\subsection*{The odd sector: the hop and the turn}
+
+The rest of this section concerns the fourth-order term of the odd sector, the case of $U(1)$ in $d\ge4$.
 
 For two plaquettes $q\ne c$ of a slice that share a link $l$ and are perpendicular, let $\Gamma$ be the unit cube of the slice having both as faces
 (Lemma~\ref{mg:lem:hopping}(i)) and $E(\Gamma)$ its twelve links. For $F\subseteq E(\Gamma)$ let $K_F$ and $K^{1/2}_F$ be the tensor products over $E(\Gamma)$ of
@@ -3980,7 +4067,7 @@ $\partial q$ in layer $\sigma-1$, those of a hop are $c$ at $\sigma-1$, the temp
 \begin{lemma}[Partners]\label{mg:lem:partners}
 Let $X'$ have a turn or a hop $(q,c,\sigma)$ with $\sigma-1,\sigma$ inner slices, and let $R$, $X'^*$ be as above.
 \begin{enumerate}[label=(\roman*)]
-\item $X'^*$ is as in Lemma~\ref{mg:lem:capsum}, has the same empty layers, and $|\log(r_{X'^*}/r_{X'})|\le c_\Gamma\theta_5$ with $c_\Gamma:=24(d-1)$.
+\item $X'^*$ is as in Lemma~\ref{mg:lem:capsum}, has the same empty layers, and $|\log(r_{X'^*}/r_{X'})|\le c_\Gamma\theta_5$ with $c_\Gamma:=20(d-1)$.
 \item Suppose that $R$ does not use the links of $\partial q\cup\partial c$ at $\sigma-1$ or $\sigma$, does not touch $x,x'$ there, and does not use the other five links of
 $\Gamma$ at $\sigma$. Then, with $Y_{\rm hop}$ and $Y_{\rm turn}$ as in Lemma~\ref{mg:lem:hopturn},
 \[
@@ -3997,8 +4084,8 @@ together with a piece of $R$.
 \end{lemma}
 
 \begin{proof}
-(i) The local plaquettes of both kinds cover each link of $\partial q\cup\partial c$ at $\sigma-1$ and $\sigma$, each temporal link over a vertex of their fronts, and
-each other link of $\Gamma$ at $\sigma$ an even number of times ($0$ or $2$), as a count shows; so $X'^*$ has no free link whenever $R$ uses the links where
+(i) On each link of $\partial q\cup\partial c$ at $\sigma-1$ and $\sigma$, each temporal link over a vertex of their fronts, and each other link of $\Gamma$ at $\sigma$,
+the numbers of local plaquettes of the two kinds containing it differ by $0$ or $2$, as a count shows; so $X'^*$ has no free link whenever $R$ uses the links where
 the counts of the two kinds differ ($\partial c\setminus l$ at $\sigma-1$, the five other links of $\Gamma$ at $\sigma$, the temporal links over the two vertices of
 $c$ not in $q$) an even number of times or not at all. For a turn, $R$ does not use $\partial c\setminus l$ at $\sigma-1$ except possibly $\hat c$ (the other two
 links have an end in $q$, which is untouched), nor the temporal links over $\hat c$'s ends in layer $\sigma-1$, nor any link of $\Gamma$ at $\sigma$ (the turn's
@@ -4006,8 +4093,8 @@ junction is a component of $H_\sigma$ and every vertex of $\Gamma$ lies on one o
 used once by $R$ in the turn, a free link of $X'$. For a hop the junctions at $\sigma-1$ and $\sigma$ are components, so $R$ touches no vertex of $\partial q\cup\partial c$ at
 these slices. In both cases components of $X'^*$ are unions of components of $X'$ (the local plaquettes of either kind connect $\partial q$ below to $\partial c$
 above), no cap is created (the new junctions at $\sigma-1$, $\sigma$ are not caps, and the others are unchanged), and the layers outside $\sigma-1$ are unchanged,
-while layer $\sigma-1$ keeps a temporal plaquette. Finally $\overline{X'}\triangle\overline{X'^*}$ consists of plaquettes with a link in $E(\Gamma)$ at $\sigma-1$ or $\sigma$ or a
-temporal link over a vertex of $\Gamma$, at most $c_\Gamma$ of them, and the ratio bound of \IIIlab{Lemma}{al:lem:ratio}, with the polymers of Lemma~\ref{mg:lem:closed},
+while layer $\sigma-1$ keeps a temporal plaquette. Finally $E(X')$ and $E(X'^*)$ differ in ten links (the three links of $\partial c\setminus l$ at $\sigma-1$, the two temporal links over the
+vertices of $c$ not in $q$, and the five other links of $\Gamma$ at $\sigma$), so $\overline{X'}\triangle\overline{X'^*}$ has at most $20(d-1)=c_\Gamma$ plaquettes, and the ratio bound of \IIIlab{Lemma}{al:lem:ratio}, with the polymers of Lemma~\ref{mg:lem:closed},
 applies to nested sets: $\Xi(\mathcal Q)/\Xi(\mathcal Q')\in[e^{-\theta_5|\mathcal Q'\setminus\mathcal Q|},e^{\theta_5|\mathcal Q'\setminus\mathcal Q|}]$ for $\mathcal Q\subseteq\mathcal Q'$; compare
 both with $\cP\setminus(\overline{X'}\cup\overline{X'^*})$.
 
@@ -4027,129 +4114,55 @@ $B_\sigma(X')=Y_{\rm turn}\otimes B^0_R$, $B^0_R$ the block of $R$ with $\Pi_0\o
 both copies, on $\hat c$ between the factors of $R$ and of the hop at $\sigma-1$: the term with $\Pi_0\otimes\Pi_0$ is $Y_{\rm hop}\otimes B^0_R$, and $Z:=(Y_{\rm turn}+Y_{\rm hop})\otimes B^0_R$
 satisfies the bound of (ii). The rest is $\mathrm{Rem}=B_\sigma(X'^*)-Y_{\rm hop}\otimes B^0_R$, of norm at most $\norm{B_\sigma(X'^*)}+\norm{Y_{\rm hop}}\norm{B^0_R}$; both terms are at most
 $\prod_\pi\bar w(\pi)$ over the pieces of $X'^*$, in which the widening and the pieces of $R$ using $\hat c$ form one junction, because $\bar w$ is multiplicative over
-plaquettes and front-pairs. For a hop, $R$ touches no vertex of $\partial q\cup\partial c$, so only $\hat e$ can be shared, and $B_\sigma(X')=Y_{\rm hop}\otimes B_R$. In
+plaquettes and front-pairs and $u\le\gamma_g$ for small $\beta$ (the local operators have norm $u^{12}$, the sup-norm weights $\gamma_g^2u^{10}$). For a hop, $R$ touches no vertex of $\partial q\cup\partial c$, so only $\hat e$ can be shared, and $B_\sigma(X')=Y_{\rm hop}\otimes B_R$. In
 $B_\sigma(X'^*)$ write the product of the $g_p$ over the four faces as its average over the variables of $\hat e$ (in both copies), plus the difference. With the
 average the faces no longer depend on $\hat e$, and that term is $Y_{\rm turn}\otimes B_R$; so $Z:=(Y_{\rm hop}+Y_{\rm turn})\otimes B_R$. The difference has sup norm at most
 $2\gamma_g^4$, so the remainder is bounded as before.
 \end{proof}
 
-\begin{definition}[Move vertices]\label{mg:def:movevertex}
-Let $X'$ be as in Lemma~\ref{mg:lem:capsum}, with a turn or a hop $(q,c,\sigma)$ (Definition~\ref{mg:def:partner}). Let $y,y'$ be the vertices of $c$ not in $q$
-and $v,v'$ the vertices of $\Gamma$ not in $q\cup c$. The \emph{move vertex} $\mathfrak v$ of $(q,c,\sigma)$ is the set consisting of the junctions of the turn (with the
-segment of $\partial q$ through $\sigma-1$), resp.\ of the hop (with the six-edge segment), and of the pieces of the rest $R$ that touch $y$ or $y'$ at $\sigma-1$ or touch $v$ or
-$v'$ at $\sigma$. Its \emph{exits} are $(\partial c,\sigma)$ and the front-pairs of those pieces; its \emph{entry} is $(\partial q,\sigma-2)$.
-\end{definition}
+\begin{conjecture}[The fourth-order term of the odd sector]\label{mg:conj:codd}
+Let $G$ be metrisable with a charge conjugation and $\rho$ irreducible with $\iota=0$, $d\ge3$. Then
+$\liminf_{\beta\downarrow0}\beta^{-4}\bigl(m_-(\mu_\beta)-4\log(1/u)+\log\Upsilon_-\bigr)\ge-h_-u_1^4$. With Theorem~\ref{mg:thm:sectors}(ii) this would give
+$m_-(\mu_\beta)=4\log(1/u)-\log\Upsilon_--h_-u^4+o(\beta^4)$; for $U(1)$, where $m=m_-$, it would give $R(\beta)\to-(10d-22)/16$, and in $d=4$
+$m(\mu_\beta)=-4\log u+\frac12u^2-\frac{425}{24}u^4+o(u^4)$, as in Conjecture~\ref{mg:conj:fourth}.
+\end{conjecture}
 
-The pieces of $R$ in $\mathfrak v$ are those that are separate from the local part in one of $X'$, $X'^*$ and merged with it in the other (proof of
-Lemma~\ref{mg:lem:partners}). So $\mathfrak v$ is the same set of pieces of $R$ for $X'$ and $X'^*$, with the same exits, and the graph $\mathcal J^\natural(X')$ obtained from
-$\mathcal J(X')$ by contracting every move vertex to one vertex is the same for $X'$ and $X'^*$, up to the local part inside $\mathfrak v$. If two move vertices share a piece
-or a slice and a vertex, contract them together.
+\begin{remark}[The route to Conjecture~\ref{mg:conj:codd}, and what is missing]\label{mg:rem:codd}
+(i) What is proved. In the proof of Theorem~\ref{mg:thm:lower5}, run in the odd sector, the moves of the plaquette state are counted in absolute value, and those
+between perpendicular neighbours give $16(d-3)u_1^4=(h_+-h_-)u_1^4$. Lemma~\ref{mg:lem:hopturn} shows that, as two-slice operators, the hop and the turn cancel on the odd
+sector up to the cap under the turn, of relative order $\gamma_g$. Lemma~\ref{mg:lem:partners} shows that for one move this survives the rest of the set. Either the
+two blocks factorise, or they split into a cancelling part and a remainder bounded by the pieces of the version with a merged junction, which is a junction of higher
+order. If every perpendicular move on the path could be paired in this way, the junction sum of the odd sector would be the row sum of $H_-$: the jumps $2(d-3)$, the
+bulges and hops to coplanar neighbours $8$, the bulges to perpendicular ones $8(d-3)$, in all $h_-=10d-22$.
 
-\begin{theorem}[The lower bound in a sector of charge conjugation]\label{mg:thm:lowerC}
-Let $G$ have a charge conjugation, $\rho$ irreducible with $\iota=0$, $d\ge3$, and all spatial sides $\ge8$. Let $C\in\{+,-\}$ and put $h_C$ as in
-Lemma~\ref{mg:lem:hopping}. As $\beta\downarrow0$: for all bounded $A,B$ as in Lemma~\ref{mg:lem:cancel}, at the slices $0$ and $t$, with $A\circ\mathsf c=CA$ and $B\circ\mathsf c=CB$,
-\[
-\bigl|\Cov_{\mu_{\Lambda,\beta}}(A,B)\bigr|\le C_{A,B}\Bigl(u^4\bar\Upsilon_C\bigl(1+(h_Cu_1^4+\varepsilon)\beta^4\bigr)e^{8(K+1)\theta_5}\Bigr)^t+\frac{2\norm A_\infty\norm B_\infty c^{|S|}}{1-\hat q}\,\hat q^{\,4L_0}
-\]
-for every $\varepsilon>0$ and $\beta<\beta_\varepsilon$, with $C_{A,B}$ independent of $t$ and $L_0$. Consequently
-\[
-m(\mu_\beta)\ \ge\ \min_{C=\pm}\Bigl(4\log\frac1{u(\beta)}-\log\Upsilon_C(\beta)-h_Cu(\beta)^4\Bigr)-o(\beta^4),
-\]
-and the same holds for $m_{\Lambda_s}(\beta)$, uniformly in the periodic spatial lattices with all sides $\ge8$.
-\end{theorem}
-
-\begin{proof}
-\emph{The sectors.} By Lemma~\ref{mg:lem:csectors}(i) it suffices to bound $\Cov(A_C,B_C)$ for each $C$: $\Theta$ and the time translations commute with
-$\mathsf c$, so $\mu(\Theta F\cdot S_tF)-|\mu(F)|^2=\sum_C\Cov(\Theta F_C,S_tF_C)$, and the hypothesis of \IIlab{Theorem}{iv:thm:OS}(iii) (and of
-\Flab{Corollary}{cor:gapfromcorr} in finite volume) holds with the smaller of the two rates. For $C$ fixed, the proof of Theorem~\ref{mg:thm:lower5} applies with
-$P_-Q_C$ in place of $P_-$ at the inner slices (Lemma~\ref{mg:lem:csectors}(ii)), Lemma~\ref{mg:lem:csectors}(iii) in place of Lemma~\ref{mg:lem:oddslice}, and
-$\bar\Upsilon_C$ in place of $\bar\Upsilon$ (Lemma~\ref{mg:lem:dressedC}): the dressed tube enters only through its norm on the odd sector. For $C=+$ this is the claim, with
-$\delta'_4=h_+u_1^4$. For $C=-$ three further changes are made.
-
-\emph{(1) The path and the groups.} Choose the path $\pi(X')$ of minimal length in $\mathcal J^\natural(X')$ (a move vertex covers the slices $\sigma-1,\sigma$; with a fixed rule
-for ties that depends only on $\mathcal J^\natural(X')$), and the forest as there. Lemma~\ref{mg:lem:jgraph} holds for $\mathcal J^\natural$, since contracting connected sets of
-vertices maps paths to paths covering the same slices. Call a move vertex of the path whose two slices are new (proof of Theorem~\ref{mg:thm:lower2}) a
-\emph{paired move}. The flip at a paired move ($X'\mapsto X'^*$) leaves $\mathcal J^\natural$, the path and the other paired moves unchanged: it changes only
-plaquettes at the slices $\sigma-1,\sigma$ inside $E(\Gamma)$, the paired moves have disjoint pairs of new slices, and a move vertex contains every piece of $R$ whose
-junction structure differs between $X'$ and $X'^*$. So the sets $X'$ fall into groups $\{X'^{*\mathsf S}:\mathsf S\subseteq\text{paired moves}\}$ of $2^k$ sets, and by
-Lemma~\ref{mg:lem:partners}(i) the factors $r^2$ within a group differ by at most $e^{2kc_\Gamma\theta_5}$; we absorb $e^{2c_\Gamma\theta_5}$ into each paired move.
-
-\emph{(2) The weights of a group.} Within a group the operators at all slices other than the pairs $(\sigma-1,\sigma)$ of the paired moves are the same, so the sum
-of the traces over the group is the trace with $B_\sigma(X')+B_\sigma(X'^*)$ at each paired move. At such a slice pair, Lemma~\ref{mg:lem:partners}(ii),(iii) and
-Lemma~\ref{mg:lem:hopturn} bound its norm on the sector $P_-Q_-$ by
-\[
-\max\bigl(\gamma_gu^{12},\,2\varpi u^{12}\bigr)\prod_\pi C_\varpi\nu(\pi)\;+\;2\prod_{\pi'}\bar w(\pi'),
-\]
-the first product over the pieces of $R$ at the two slices (a factor $C_\varpi$ each, as for the pieces that are not main in Lemma~\ref{mg:lem:oddslice}; if the local part
-is not in the sector $(-,-)$, both slices carry pieces of $R$), the second over the pieces of the version with a merged junction, present only if $\mathfrak v$ contains a
-piece of $R$. We assign the first term to the version with the turn and the second to the merged version; then every group is bounded by the sum over its
-members of weights $W^\natural$ of the form of $W^{(2)}$ in the proof of Theorem~\ref{mg:thm:lower2}, in which a paired move carries, besides the factors $z$ of its
-two new slices and $e^{2(K+1)\theta_5}$ per plaquette, the weight $\max(\gamma_g,2\varpi)a^4\cdot a^4a^{(|\partial q|+|\partial c|)/2}$ in the version with the turn when $\mathfrak v$ has no
-piece of $R$, and at most $3$ times the weight of its junctions in all other cases.
-
-\emph{(3) The far vertices.} Step (a) of the induction is as in the proof of Theorem~\ref{mg:thm:lower4}, with the far vertex of the segment either a junction or a move
-vertex. A move vertex after a segment of length $\ell'$ ending at $\sigma-1$ contributes, relative to the sum $\sum_\ell(1+\delta')^{-\ell}$ of the tube, at most
-$8(d-3)\bigl(\max(\gamma_g,2\varpi)a^4(1+O(b))+3\,\mathcal M\bigr)$, where $\mathcal M=O(\beta^5)$ bounds the move vertices with a piece of $R$: these are, at $\sigma-1$ or at
-$\sigma$, junctions with at least two plaquettes or three front-pairs, of the kinds already counted in $\Sigma^{(4)}_4$ and in $\Sigma^{(6)}$, together with the decorations at
-the four vertices $y,y',v,v'$ (tree sums, Lemma~\ref{mg:lem:jsums}(i), a factor $e^{O(b)}$). The junctions that remain are those of Theorem~\ref{mg:thm:lower5}, except that:
+(ii) What is missing is the grouping. The sets $X'$ must be grouped into classes, closed under the flips at all the moves on the path, whose sums are bounded by
+product weights that the recursion of Theorem~\ref{mg:thm:lower2} can sum. A draft of this section did this with \emph{move vertices}: each move was contracted in
+$\mathcal J(X')$ together with the pieces of the rest that it merges with in one of its two versions. An independent referee found three gaps
+(\texttt{referee-section15/flip\_structure.py}):
 \begin{itemize}
-\item a perpendicular turn is a junction only if its four-edge segment has length $1$ (otherwise it belongs to a move vertex). Such turns contribute
-$8(d-3)a^4M/\bar\Upsilon_-$ to $\mathcal V(p,0)$, without the factor $1/\delta'$; so the first hypothesis becomes $\Sigma^-_4+8(d-3)a^4\delta'<\bar\Upsilon_-\delta'$;
-\item after a perpendicular widening, the narrowing by $q$ at the end of a six-edge segment of length $1$ belongs to the move vertex. So in step (b) for the six-edge
-front-pair of a perpendicular widening, the sum over the far junctions is $\Sigma^{(6)}-a$ for that length, and the continuation is at most $Mf_-(6)$ with
-$f_-(6)=f(6)\,(\Sigma^{(6)}-a)/\Sigma^{(6)}+O(a^5)$.
+\item the partner of a move need not be a move, since its junction can be merged with a piece of the rest (cases E1, E2), so the classes were not shown to be closed;
+\item a flip can destroy another move nearby: a hop at the slices $(3,4)$ and a turn at $5$ whose entry front passes through a far vertex of the first cube, which the
+four faces touch at slice $4$ (case E3);
+\item the factors $r_X^2$ differ within a class, as $E(X')$ and $E(X'^*)$ differ in ten links, and they do not factorise over the moves.
 \end{itemize}
-So $\Sigma^-_4$ is $\Sigma^{(4)}_4$ of Theorem~\ref{mg:thm:lower5} with $(10a^4+2\eta b^4)(d-3)$ replaced by $(2a^4+2\eta b^4)(d-3)$, $K_Saf(6)$ by $4af(6)+8(d-3)af_-(6)$,
-and the terms above added.
+A bound that loses the product structure loses the cancellation, because the error then multiplies the uncancelled weights of all the moves. The bookkeeping of
+move vertices that contain pieces of the rest (the factors $C_\varpi$, the decorations at the four extra vertices, the tree sums over the contracted graph) was
+also not justified.
 
-\emph{Small $\beta$.} As in the proof of Theorem~\ref{mg:thm:lower5}, $\Sigma^{(6)}=2a(1+O(\beta))$, so $af(6)\sim(1+\varepsilon')2u_1^4\beta^4$ and $af_-(6)\sim(1+\varepsilon')u_1^4\beta^4$;
-$\max(\gamma_g,2\varpi)a^4=O(\beta^5)$, $\mathcal M=O(\beta^5)$, and $8(d-3)a^4\delta'=O(\beta^8)$. Hence
-\[
-\Sigma^-_4\le\bigl(2(d-3)+8+8(d-3)+\varepsilon''\bigr)u_1^4\beta^4=\bigl(h_-u_1^4+\varepsilon''\bigr)\beta^4,
-\]
-the jumps, the bulges and hops to coplanar neighbours, and the bulges to perpendicular ones: the row sum of $H_-$ (Lemma~\ref{mg:lem:hopping}(ii)). The rest is as there.
-\end{proof}
+(iii) Possible routes (Heuristic). One is a symmetric notion of move: the rest avoids the vertices of $q$ at $\sigma-1$ and those of $q$ and $c$ at $\sigma$, with a
+contraction rule closed under flips. Another is a coarser adjacency in the junction expansion of Sections~\ref{mg:sec:junctions}--\ref{mg:sec:fourthlower}, two objects
+being adjacent at lattice distance $\le2$, so that no piece of the rest can touch a move without merging with it in both versions. That costs only constants in the
+terms of higher order, but every counting lemma has to be checked again. For the factors $r^2$, the identity
+$r_X^2=\bigl\langle\prod_{p\in\overline X}(1+g_p)^{-1}\bigr\rangle_{\mu_{\Lambda,\beta}\otimes\mu_{\Lambda,\beta}}$ (the referee's suggestion) turns the sum over a class into one expectation of
+a multilinear trace, in which each move carries the blocks of its two versions with factors $1+O(\beta)$.
 
-\begin{corollary}[The fourth-order term for every $\rho$]\label{mg:cor:fourthall}
-Let $G$ be metrisable with a charge conjugation (for instance $U(1)$, $U(N)$, $SU(N)$, or abelian), $\rho$ irreducible and non-trivial, and $d\ge3$. Then
-\[
-m(\mu_\beta)=\min_C\Bigl(4\log\frac1{u(\beta)}-\log\Upsilon_C(\beta)-h_C\,u(\beta)^4\Bigr)+o(\beta^4),
-\]
-with $C$ as in Conjecture~\ref{mg:conj:fourth}. So
-Conjecture~\ref{mg:conj:fourth} holds with $o(\beta^4)$ in place of $O(\beta^5)$ for these $G$. In particular:
-\begin{enumerate}[label=(\roman*)]
-\item for $U(1)$, $m(\mu_\beta)=4\log(1/u)-\log\Upsilon-(10d-22)u^4+o(\beta^4)$, that is $R(\beta)\to-(10d-22)/16$; in $d=4$,
-$m(\mu_\beta)=-4\log u+\frac12u^2-\frac{425}{24}u^4+o(u^4)$;
-\item for $SU(N)$, $N\ge6$, $d\ge4$, the value of Conjecture~\ref{mg:conj:fourth}, whichever of $\Upsilon_+$, $\Upsilon_-$ is the larger.
-\end{enumerate}
-\end{corollary}
-
-\begin{proof}
-For $\iota=1$ this is Corollary~\ref{mg:cor:fourthterm}(i). For $\iota=0$ the lower bound is Theorem~\ref{mg:thm:lowerC}, and the upper bound is
-Theorem~\ref{mg:thm:upper4}, applied once with each $C$, which gives $m\le$ each of the two expressions. For $U(1)$, $\log\Upsilon_--\log\Upsilon_+=\beta^2/4+O(\beta^3)$
-(Lemma~\ref{mg:lem:Upsilon}(iii)) dominates $(h_+-h_-)u^4$, so the minimum is attained at $C=-$, where $\Upsilon_-=\Upsilon$ and $h_-=10d-22$, $u_1=\frac12$. The value
-in $d=4$ is that of Conjecture~\ref{mg:conj:fourth}.
-\end{proof}
-
-\begin{remark}[Meaning, checks and what remains]\label{mg:rem:codd}
-(i) Meaning (Heuristic). The hop and the turn between perpendicular neighbours carry the flux of $\rho$ from $q$ to $c$ along two surfaces with the same boundary,
-which together bound the two unit cubes $c\times[\sigma-1,\sigma]$ and $\Gamma$. They reach $c$ with opposite orientations, $\sigma(q,c)$ and $\sigma_\Gamma(q,c)=-\sigma(q,c)$, so on
-$\mathrm{Im}\,\chi_\rho$ their amplitudes cancel and on $\mathrm{Re}\,\chi_\rho$ they add. Before this section the lower bound took each in norm. Pairing them before the
-norm is taken removes $16(d-3)u^4$ from the moves of the $C$-odd state, which is $h_+-h_-$. The pairing has to respect the rest of the set. The two moves use different
-links, so a piece of the rest can be separate from one and merged with the other. Such a piece is contracted into the move vertex, and the merged version is then
-a junction of higher order. The proof of the
-theorem also gives the $C$-odd glueball: for every $\rho$ with $\iota=0$ the covariances of $C$-odd observables decay at the rate
-$4\log(1/u)-\log\Upsilon_--h_-u^4+o(\beta^4)$, and no faster (Theorem~\ref{mg:thm:upper4} with $C=-$). For $SU(3)$ this includes the first-order splitting
-$m_\pm\approx4\log(1/u)\mp3u$ of Remark~\ref{mg:rem:cap}(iii), up to $o(\beta^4)$.
-
-(ii) Checks (a compass; \texttt{theory/checks/fourth-order/}). \texttt{c\_odd\_pairing.py} computes the two-slice blocks of the hop and the turn by exact
-group sums over all link variables of the local complex ($\mathbb Z_3$, $\mathbb Z_4$, $\mathbb Z_5$; both signs of $\sigma(q,c)$; the coplanar hop). Every single-copy
-integral vanishes except for the empty set and the full set of plaquettes. The two-copy blocks satisfy $Y_{\rm hop}=\hat u^{12}$ on the twist $a\mapsto a^\sigma$ and
-$Y^0_{\rm turn}=Y_{\rm hop}\mathsf C$ to $6\cdot10^{-14}$, so their sum vanishes on the $C$-odd sector and has twice the norm of $Y_{\rm hop}$ on the even one. The exact
-$\mathbb Z_3$ spectra of Remark~\ref{mg:rem:fourth} follow the band of $H_-$ in the $C$-odd sector.
-
-(iii) What remains: a remainder $O(\beta^5)$ in place of $o(\beta^4)$ (Remark~\ref{mg:rem:fourthlower}(iii)); groups $G$ with complex representations but no charge
-conjugation; the term of order $u^6$; effective constants.
+(iv) Checks (a compass; \texttt{theory/checks/fourth-order/}). Our \texttt{c\_odd\_pairing.py} computes the two-slice blocks by exact group sums ($\mathbb Z_3$, $\mathbb Z_4$,
+$\mathbb Z_5$, both signs of $\sigma(q,c)$, and the coplanar hop): $Y^0_{\rm turn}=Y_{\rm hop}\mathsf C$ to $6\cdot10^{-14}$. The referee's code (\texttt{referee-section15/})
+builds the same operators for $\mathbb Z_3$ from the definitions, with explicit $G_g^{1/2}$, $\Pi_0$ and gauge projections on all $3^{14}$ two-copy configurations,
+without characters. It confirms Lemma~\ref{mg:lem:hopturn}, including $\norm{Y_{\rm hop}}=u^{12}$ and the bound on the cap. It also confirms the twists for $\mathbb Z_7\rtimes\mathbb Z_3$
+(three-dimensional complex representations), $A_4$ and $\mathbb Z_5$, and tests the factorisation at a shared vertex of Lemma~\ref{mg:lem:partners}(ii) on $S_3$: the two sides
+agree to $10^{-15}$ under the hypothesis and differ by $4\cdot10^{-2}$ without it. \texttt{upsilon\_split.py} and \texttt{haar\_moments.py} check Lemma~\ref{mg:lem:split}. The exact
+spectra of Remark~\ref{mg:rem:fourth} follow the band of $H_-$ in the odd sector.
 \end{remark}
 
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
@@ -4293,7 +4306,11 @@ $SU(2)$: admissible $\delta'/\beta^4$ at $\beta=10^{-9}$: $1.9\cdot10^5$ ($d=4$)
 Widenings, narrowings, turns and jumps by characters: diagonal, with norm $u_*$ per plaquette and $u_*^{1/2}$ per link of each front & Lem.~\ref{mg:lem:moves} & Theorem\\
 Lower bound to fourth order: $\liminf\beta^{-4}(m-4\log(1/u)+\log\Upsilon)\ge-h_+u_1^4$, $h_+=26d-70$ & Thm.~\ref{mg:thm:lower5} & Theorem\\
 The fourth-order term: $m=4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$ for $SU(N)$, $2\le N\le5$, and for every self-conjugate $\rho$, $d\ge3$; $-8u^4$ for every $\rho$ in $d=3$; for $SU(2)$, $d=4$: $m=-4\log u+2u^2-\frac{98}3u^4+o(u^4)$; for $U(1)$, $d\ge4$: between $-\frac{26d-70}{16}\beta^4$ and $-\frac{10d-22}{16}\beta^4$ & Cor.~\ref{mg:cor:fourthterm} & Theorem\\
-Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order in the $C$-odd sector ($U(1)$, $d\ge4$), and for $SU(N\ge6)$; the $C$-odd mass; the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\
+$SU(N)$, $N\ge6$: $\Upsilon_+-\Upsilon_-=\beta^4/248832+O(\beta^5)$ ($N=6$), $O(\beta^5)$ ($N\ge7$); hence the fourth-order term for $SU(N)$, every $N$, every $d\ge3$ & Lem.~\ref{mg:lem:split}, Cor.~\ref{mg:cor:sectors}(iii) & Theorem\\
+Sectors of charge conjugation: $m=\min(m_+,m_-)$; $m_C=4\log(1/u)-\log\Upsilon_C+O(\beta^4)$, the even one to $o(\beta^4)$; for $SU(3)$, $m_--m_+=\beta/3+O(\beta^2)$ & Thm.~\ref{mg:thm:sectors}, Cor.~\ref{mg:cor:sectors} & Theorem\\
+Hop and turn between perpendicular neighbours as two-slice operators: $Y^0_{\rm turn}=Y_{\rm hop}\mathsf C$, so they cancel on the odd sector; partners in the presence of the rest & Lem.~\ref{mg:lem:hopturn}, \ref{mg:lem:partners} & Theorem\\
+The odd sector at fourth order: $m_-=4\log(1/u)-\log\Upsilon_--h_-u^4+o(\beta^4)$; for $U(1)$, $d\ge4$, $R\to-(10d-22)/16$ & Conj.~\ref{mg:conj:codd}, Rem.~\ref{mg:rem:codd} & Conjecture\\
+Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order in the $C$-odd sector ($U(1)$, $d\ge4$; Conjecture~\ref{mg:conj:codd}); the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\
 \bottomrule
 \end{tabular}
 \end{center}
