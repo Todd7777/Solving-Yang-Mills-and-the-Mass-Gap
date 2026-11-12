@@ -1,0 +1,4 @@
+n=3: 132 six-edge fronts through the origin; fronts with <= 7 edges per vertex: 252
+  (number of domino decompositions {q,c}, narrowings to four edges, all of the expected form) -> number of six-cycles: {(1, 2, True): 108, (0, 0, True): 24}
+  all one-plaquette exits (domino?, |psi|, layer of psi) summed over the six-cycles: {(False, 6, 'other'): 144, (True, 4, 'other'): 216, (True, 6, 'other'): 144, (True, 7, 'other'): 216}
+  (110s)

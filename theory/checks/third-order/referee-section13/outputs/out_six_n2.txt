@@ -1,0 +1,4 @@
+n=2: 12 six-edge fronts through the origin; fronts with <= 8 edges per vertex: 98
+  (number of domino decompositions {q,c}, narrowings to four edges, all of the expected form) -> number of six-cycles: {(1, 2, True): 12}
+  all one-plaquette exits (domino?, |psi|, layer of psi) summed over the six-cycles: {(True, 4, 'other'): 24, (True, 7, 'other'): 24, (True, 8, 'other'): 72}
+  (1s)

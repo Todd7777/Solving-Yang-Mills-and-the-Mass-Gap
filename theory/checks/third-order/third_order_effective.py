@@ -16,13 +16,17 @@ import sys, os
 here = os.path.dirname(os.path.abspath(__file__))
 for sub in ('second-order', 'upper-bound', 'lower-bound'): sys.path.insert(0, os.path.join(here, '..', sub))
 sys.path.insert(0, here)
-from mpmath import mp, mpf, e, exp, log, expm1, binomial, fsum
+from mpmath import mp, mpf, e, exp, log, expm1, binomial, fsum, factorial
 from second_order_constants import su2, su3, u1, dressed, upper2
 from junction_constants import counts
 from third_order_constants import tree_constants, marked, lower3
-mp.dps = 40
+mp.dps = 60                                   # e^A - 1 - A and the small parts need more than 40 digits below beta ~ 1e-12
 
-def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None, sharp6=True):
+def em1x(A):
+    """e^A - 1 - A without cancellation"""
+    return fsum(A**m/factorial(m) for m in range(2, 60)) if A < mpf(1)/2 else exp(A) - 1 - A
+
+def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None, abar_grid=None, sharp6=True, uturn=True, seven=True):
     K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x); lam = exp(2*(K+1)*th5)
     u = g['u']; a = lam*u; gam = expm1(2*beta) + beta**2*exp(beta); b = lam*gam
     Ubar, s6 = dressed(beta, g)
@@ -47,8 +51,8 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
         return min(binomial(4*n+4, k), (4*n+4)*N[k])
     Ak = lambda kmin: 8*exp(cT)*fsum(N[k]*a**(mpf(k)/2) for k in range(kmin, KMAX))
     Ac = lambda kmin, kmax=KMAX: 16*exp(cT)*fsum(N[k]*(1 + mpf(k)/8)*a**(mpf(k)/2) for k in range(kmin, kmax))
-    if bbar_grid is None: bbar_grid = [mpf(2)**(-j) for j in range(3, 14)]
-    abar_grid = [mpf(2)**(-j) for j in range(2, 12)]
+    if bbar_grid is None: bbar_grid = [mpf(2)**(-j) for j in range(3, 18)]       # the grid of the referee of Section 13 (finer than the first one)
+    if abar_grid is None: abar_grid = [mpf(2)**(-j) for j in range(2, 26)]
     tcache = {}
     for bb in bbar_grid:                      # the tree constants at (bbar, abar) do not depend on F: compute them once
         if bb < b: continue
@@ -57,11 +61,11 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
             tc = tree_constants(bb, ab, cT, Pv, KS, N, KMAX, NMAX)
             if tc is not None: tcache[(bb, ab)] = tc
     tcache11 = {}
-    for bb in [mpf(2)**(-j) for j in range(3, 16)]:   # Section 11's majorant: bbar for the plaquettes only, the actual a
+    for bb in [mpf(2)**(-j) for j in range(3, 18)]:   # Section 11's majorant: bbar for the plaquettes only, the actual a
         if bb < b: continue
         tc = tree_constants(bb, a, cT, Pv, KS, N, KMAX, NMAX)
         if tc is not None: tcache11[bb] = tc
-    def solve(F, F6):
+    def solve(F, F6, dl):
         def f(k):                              # f(6) has its own constant F6 when sharp6 (the sum at a six-edge front, Sigma^(6))
             if k == 4: return mpf(1)
             if k == 6 and sharp6: return 36*F6*exp(6*xF)*a**2
@@ -90,31 +94,35 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
                 S3 = 4*Pv*exp(4*xFb)*(kCb*Yb[2] + 4*(gCb*g2Fb + g2Cb*gFb)*Yb[1] + 16*kFb*Yb[0])
                 val = (b/bb)**2*S3
                 if best is None or val < best[0]: best = (val, (bb, 'a'))
-        parts = dict(two=(4*(Pv-1)-KS)*varpi*min(b**2, b2),
-                     four=12*(d-3)*b**4 + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(5, NMAX)),
-                     exits=KS*b*(f(6) + f(7)) + (4*(Pv-1)-2*KS)*b*f(8)
-                           + fsum(2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(2, NMAX)),
-                     one_plaq=4*Pv*b*(Fk(8)*Ak(4) + Fk(4)*Ak(8) + Fk(4)*(exp(Ak(4))-1-Ak(4))),
-                     multi=best[0])
         full = b + (4*(Pv-1)-KS)*b**2 + 48*binomial(18, 2)*(d-2)*(2*d-3)*b**3 + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(4, NMAX)) \
                + fsum(2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(1, NMAX)) \
                + 4*Pv*exp(4*xF)*(kC*Y[2] + 4*(gC*g2F + g2C*gF)*Y[1] + 16*kF*Y[0])
+        # a downward exit (the U-turns: p' in the layer of p) costs eta = C a^4 (2 Ubar (1+delta') + Sigma_4)/(1-omega)  (step (c) of Thm 10.8)
+        eta = C*a**4*(2*Ubar*(1+dl) + full)/(1-omega) if uturn else mpf(1)
+        parts = dict(two=(4*(Pv-1)-KS)*varpi*min(b**2, b2),
+                     four=(10 + 2*eta)*(d-3)*b**4 + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(5, NMAX)),
+                     exits=KS*b*(f(6) + f(7)) + (4*(Pv-1)-2*KS)*b*f(8)
+                           + fsum(2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(2, NMAX)),
+                     one_plaq=4*Pv*b*(Fk(8)*Ak(4) + Fk(4)*Ak(8) + Fk(4)*em1x(Ak(4))),
+                     multi=best[0])
         # the junction sum at a six-edge front-pair (two narrowings with one plaquette; crude counts for the rest)
         X6 = lambda n, k: 0 if k == 5 else min(binomial(4*n+6, k), (4*n+6)*N[k])
         sig6 = 2*b + fsum(2*(2*d-3)*(mpf(2*n+3)/2)*binomial(6*Pv+Tv*n, n)*b**n for n in range(2, NMAX)) \
                + fsum(2*binomial(6*Pv+Tv*n, n)*b**n*fsum(X6(n, k)*f(k) for k in range(5, min(4*n+7, 199))) for n in range(1, NMAX)) \
                + 6*Pv*exp(6*xF)*(kC*Y[2] + 6*(gC*g2F + g2C*gF)*Y[1] + 36*kF*Y[0])
-        return fsum(parts.values()), parts, Pv*(gC*Y[1]/5 + gF*Y[0]), full, best[1], sig6
-    F = mpf(1); F6 = mpf(1)
-    for _ in range(80):
-        S, parts, need, full, bb, sig6 = solve(F, F6); dl = S/Ubar*(1+mpf(10)**-12)
-        Fn = need/(Ubar*(1+dl)-a)*(1+mpf(10)**-9)
-        F6n = sig6/(36*exp(6*xF)*(Ubar*(1+dl)-a))*(1+mpf(10)**-9) if sharp6 else F6
-        done = abs(Fn-F) < mpf(10)**-12*F and abs(F6n-F6) < mpf(10)**-12*F6
-        F, F6 = Fn, F6n
+        kmin = 7 if (seven and sharp6) else 5                   # with f(6) separate and no five-edge fronts, the F-condition is needed for k >= 7 only
+        return fsum(parts.values()), parts, Pv*(gC*Y[1]/kmin + gF*Y[0]), full, best[1], sig6
+    F = mpf(1); F6 = mpf(1); dl = mpf(0)
+    for _ in range(100):
+        S, parts, need, full, bb, sig6 = solve(F, F6, dl); dln = S/Ubar*(1+mpf(10)**-12)
+        Fn = need/(Ubar*(1+dln)-a)*(1+mpf(10)**-9)
+        F6n = sig6/(36*exp(6*xF)*(Ubar*(1+dln)-a))*(1+mpf(10)**-9) if sharp6 else F6
+        done = abs(Fn-F) < mpf(10)**-12*F and abs(F6n-F6) < mpf(10)**-12*F6 and abs(dln-dl) < mpf(10)**-12*dln
+        F, F6, dl = Fn, F6n, dln
         if done: break
-    S, parts, need, full, bb, sig6 = solve(F, F6); dl = S/Ubar*(1+mpf(10)**-12)
-    hyp = dict(sigma=S < Ubar*dl, exits=need < F*(Ubar*(1+dl)-a), omega=omega < 1,
+    dl = dl*(1+mpf(10)**-9)                                      # final delta'; eta is evaluated at this delta'
+    S, parts, need, full, bb, sig6 = solve(F, F6, dl)
+    hyp = dict(sigma=S < Ubar*dl, exits=need < F*(Ubar*(1+dl)-a), omega=omega < 1, F6=F6 > 0,
                six=(sig6 < 36*F6*exp(6*xF)*(Ubar*(1+dl)-a)) if sharp6 else True,
                old=omega + C*a**4*(2*Ubar*(1+dl) + full)/(1-omega) <= 1, beyond=a**4*Ubar*(1+dl) <= varpi, growth=a**4*Ubar*(1+dl) <= 1)
     assert all(hyp.values()), hyp
@@ -123,32 +131,46 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
 GROUPS = (('SU(2)', su2), ('SU(3)', su3), ('U(1)', u1))
 NIOTA = {'SU(2)': (2, 1), 'SU(3)': (3, 0), 'U(1)': (1, 0)}
 
-def delta4_limit(d, N, iota, sharp6=True):
-    """delta'_4 = lim delta'/beta^4 (Theorem of Section 13): shifts and jumps + cube junctions + six-edge exits (bulges and hops).
-    With sharp6 the six-edge exits are K_S b f(6) with F6 ~ 2b/36 (two narrowings): 2 K_S b^2 a^2; without, F ~ (13/5) P_v^2 b."""
+def delta4_limit(d, N, iota, sharp6=True, varpi_pow=3, uturn=True):
+    """delta'_4 = lim delta'/beta^4 (Theorem 13.4): the moves of the tube at the sup norm.
+    Shifts and jumps 8(4P_v-4-K_S)(2-iota)N^2u_1^2 if varpi = b^2 (O(beta^5) if varpi = b^3); turns and jumps through cubes 160(d-3)
+    (and the U-turns 32(d-3), unless they are charged eta, uturn=True); bulges and hops 8K_S u_1^2 (two narrowings, sharp6=True),
+    or (1872/5) K_S P_v^2 u_1^2 with the crude F of the first version."""
     Pv = 2*(d-1)*(d-2); KS = 4*(2*d-5); u1 = mpf(1+iota)/(2*N**2)
+    shifts = 8*(4*Pv-4-KS)*(2-iota)*N**2*u1**2 if varpi_pow == 2 else mpf(0)
+    cube = (160 if uturn else 192)*(d-3)
     exits = 8*KS*u1**2 if sharp6 else mpf(1872)/5*KS*Pv**2*u1**2
-    parts = (8*(4*Pv-4-KS)*(2-iota)*N**2*u1**2, 192*(d-3), exits)
+    parts = (shifts, mpf(cube), exits)
     return sum(parts), parts
+
+def best_lower(beta, d, g):
+    """the smaller admissible delta' of varpi = b^2 and varpi = b^3 (both are allowed by Theorem 13.4)"""
+    out = None
+    for vp in (2, 3):
+        try:
+            lo = lower3e(beta, d, g, varpi_pow=vp); lo['varpi_pow'] = vp
+        except AssertionError:
+            continue
+        if out is None or lo['delta'] < out['delta']: out = lo
+    return out
 
 def main():
     for gname, gf in GROUPS:
         for d in (3, 4):
             dl4, p4 = delta4_limit(d, *NIOTA[gname])
-            dl4c, p4c = delta4_limit(d, *NIOTA[gname], sharp6=False)
-            print(f"{gname}, d={d}:  limit delta'_4 = {float(dl4):.6g} = {' + '.join(f'{float(x):.6g}' for x in p4)}"
-                  f"   (with the crude F for six-edge fronts: {float(dl4c):.6g})")
-            for beta in (mpf('1e-9'), mpf('1e-7'), mpf('1e-6'), mpf('1e-5'), mpf('1e-4')):
-                if d == 4 and beta > mpf('1.5e-4'): continue
+            dl42, _ = delta4_limit(d, *NIOTA[gname], varpi_pow=2)
+            dl4c, _ = delta4_limit(d, *NIOTA[gname], sharp6=False, varpi_pow=2, uturn=False)
+            print(f"{gname}, d={d}:  limit delta'_4 = {float(dl4):.6g} = {' + '.join(f'{float(x):.6g}' for x in p4)}  (varpi = b^3);"
+                  f"  with varpi = b^2: {float(dl42):.6g};  first version (crude F, U-turns at b^4, varpi = b^2): {float(dl4c):.6g}")
+            for beta in (mpf('1e-12'), mpf('1e-9'), mpf('1e-7'), mpf('1e-5'), mpf('1e-4')):
                 g = gf(beta)
-                try:
-                    lo = lower3e(beta, d, g)
-                except AssertionError as err:
-                    print(f"  beta={float(beta):.0e}: hypotheses fail {err}"); continue
+                lo = best_lower(beta, d, g)
+                if lo is None:
+                    print(f"  beta={float(beta):.0e}: hypotheses fail for varpi = b^2 and b^3"); continue
                 lo_old = lower3(beta, d, g); up = upper2(beta, d, g)
                 pc = ', '.join(f'{k}={float(v/beta**4):.3g}' for k, v in lo['parts'].items())
-                print(f"  beta={float(beta):.0e}: delta'/beta^4 = {float(lo['delta']/beta**4):.4g} (Section 11: {float(lo_old['delta']/beta**4):.3g});"
-                      f"  window for m - 4log(1/u): [{float(-lo['loss']):+.6e}, {float(up['D2']):+.6e}], -log Ups = {float(-log(g['Ups'])):+.6e}")
+                print(f"  beta={float(beta):.0e}: delta'/beta^4 = {float(lo['delta']/beta**4):.4g} with varpi = b^{lo['varpi_pow']} (Section 11: {float(lo_old['delta']/beta**4):.3g});"
+                      f"  window for m - 4log(1/u): [{float(-lo['loss']):+.7e}, {float(up['D2']):+.7e}], -log Ups = {float(-log(g['Ups'])):+.7e}")
                 print(f"     parts/beta^4: {pc};  majorant at (bbar, abar) = {lo['bars'][0]}, {lo['bars'][1]};  Sigma^(6)/b = {float(lo['sig6']/lo['b']):.4g}")
                 sys.stdout.flush()
 

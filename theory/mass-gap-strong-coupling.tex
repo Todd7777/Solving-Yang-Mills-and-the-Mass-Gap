@@ -110,9 +110,10 @@ $\partial q\triangle\partial c$ of these plaquettes in the crossing layer, we pr
 which carries the gap for $U(1)$) and $u_1=\lim u/\beta$: the term of order $\beta^4$ is negative. We conjecture equality,
 $m(\mu_\beta)=4\log(1/u)-\log\Upsilon-hu^4+O(\beta^5)$. Numerically, exact transfer-matrix spectra of $\mathbb Z_2$ and $\mathbb Z_3$ on small tori and blocks of cubes follow the predicted band level by level. For
 $SU(2)$ and $SU(3)$ in $d=4$ the conjecture reproduces the terms of order $u^4$ of the classical strong-coupling series ($-\frac{98}3u^4$ for the $SU(2)$ scalar glueball)
-in four of five channels. The lower bound at this order is weaker. Only these moves (and the shifts and jumps) enter it at order $\beta^4$: the junctions with
-four plaquettes are the turns, jumps and U-turns through unit cubes, and a six-edge front ends at leading order in one of two narrowings. Counted at the sup
-norm, they give $m(\mu_\beta)\ge4\log(1/u)-\log\Upsilon-(\delta'_4+o(1))\beta^4$ with an explicit $\delta'_4$, $262$ for $SU(2)$ in $d=4$ ($18$ in $d=3$). For $SU(2)$ the two
+in four of five channels. The lower bound at this order is weaker. The junctions with four plaquettes are turns, jumps and U-turns through unit cubes, a
+six-edge front ends at leading order in one of two narrowings, and the shifts and jumps and the U-turns drop out; so only the moves of the hopping matrix
+enter at order $\beta^4$. Counted at the sup norm, they give $m(\mu_\beta)\ge4\log(1/u)-\log\Upsilon-(\delta'_4+o(1))\beta^4$ with $\delta'_4=160(d-3)+8K_Su_1^2$: $166$ for
+$SU(2)$ in $d=4$, and $2$ in $d=3$. For $SU(2)$ the two
 bounds give $-1.3\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
 $-2.5\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$ (a numerical evaluation of the explicit constants).
 The asymptotics
@@ -285,8 +286,9 @@ at least six plaquettes, and six only for a unit cube. This gives $m\le4\log(1/u
 hopping matrix ($26d-70$; $10d-22$ in the $C$-odd sector, which carries the gap for $U(1)$); the conjecture is equality. (13) The junctions that enter
 the lower bound at order $\beta^4$ (Section~\ref{mg:sec:betafour}) are only the shifts and jumps, the turns, jumps and U-turns through a unit cube
 ($Z_{4,4}\le12(d-3)$, by the lemma on six plaquettes), and the bulges and hops through six-edge fronts, which end at leading order in one of two narrowings;
-three front-pairs force a front of at least eight edges (one plaquette) or six (two plaquettes). Counted at the sup norm, these give the third-order lower bound
-with $\delta'=(\delta'_4+o(1))\beta^4$ and an explicit $\delta'_4$, $262$ for $SU(2)$ in $d=4$ instead of $8.4\cdot10^{10}$.
+three front-pairs force a front of at least eight edges (one plaquette) or six (two plaquettes). With $\varpi$ of order $\beta^3$ the shifts and jumps drop out, and so
+do the U-turns, whose exit runs back in time. Counted at the sup norm, the remaining moves, those of the hopping matrix, give the third-order lower bound with
+$\delta'=(\delta'_4+o(1))\beta^4$, $\delta'_4=160(d-3)+8K_Su_1^2$: $166$ for $SU(2)$ in $d=4$ instead of $8.4\cdot10^{10}$.
 
 \section{The duplicated system}\label{mg:sec:dup}
 
@@ -2569,7 +2571,7 @@ m(\mu_\beta)=4\log\frac1{u(\beta)}-\log\Upsilon(\beta)+O(\beta^4)
 (Corollary~\ref{mg:cor:third}): the third-order term of the gap is that of $-\log\Upsilon$. With the fundamental representations it is $\beta^3/432$ for
 $SU(3)$, $-\beta^3/6000$ for $SU(5)$, where five fundamental fluxes can meet at a link, and $0$ for $U(1)$, $SU(2)$, $SU(4)$ and $SU(N)$, $N\ge6$
 (Lemma~\ref{mg:lem:Upsilon3}). The constant in the $O(\beta^4)$ of the lower bound is very large (Remark~\ref{mg:rem:third}(iii)); Section~\ref{mg:sec:betafour}
-reduces its limit by a factor of about $3\cdot10^8$ (Theorem~\ref{mg:thm:lower4}).
+reduces its limit by a factor of about $5\cdot10^8$ (Theorem~\ref{mg:thm:lower4}).
 
 \begin{lemma}[The plaquette variance to third order]\label{mg:lem:Upsilon3}
 \begin{enumerate}[label=(\roman*)]
@@ -2813,7 +2815,7 @@ $-0.026$ against $c_3=-0.021$, the difference being the term $-8u^4$.
 (iii) Numbers (\texttt{third\_order\_constants.py}; Numerical). For $SU(2)$ the smallest admissible $\delta'$ of Theorem~\ref{mg:thm:lower3}, with $\varpi=b^2$ and the
 best $\bar b$ among the powers of $2$, has $\delta'/\beta^4\to8.4\cdot10^{10}$ ($d=4$) and $3.4\cdot10^8$ ($d=3$). Almost all of it ($91\%$ and $97\%$) is the crude
 count of the junctions with four plaquettes and a four-edge exit, $2\cdot5\cdot(2d-3)\binom{4P_v+4T_v}4b^4$. Section~\ref{mg:sec:betafour} proves $Z_{4,4}\le12(d-3)$ and
-counts the other junctions of order $\beta^4$; the limit then drops to $18$ ($d=3$) and $262$ ($d=4$) (Theorem~\ref{mg:thm:lower4},
+counts the other junctions of order $\beta^4$; the limit then drops to $2$ ($d=3$) and $166$ ($d=4$) (Theorem~\ref{mg:thm:lower4},
 Remark~\ref{mg:rem:betafour}(ii)). By Lemma~\ref{mg:lem:threeplaq} the term $Z_{3,4}b^3$ of $\Sigma_4$
 (Definition~\ref{mg:def:jconst}) vanishes when all spatial sides are $\ge5$. The one-plaquette term reaches its limit slowly, because of the crude bound for
 $N^v_7$. For $SU(3)$ the limits are $8.2\cdot10^{10}$ and $3.1\cdot10^8$, so the
@@ -3274,19 +3276,19 @@ charge conjugation, the proof of Theorem~\ref{mg:thm:upper4} with $\psi=\sqrt2\,
 sector, should bound the lowest mass of that sector by $4\log(1/u)-\log\Upsilon_--h_-u^4+o(\beta^4)$. We have not written out the spectral statement for that
 sector.
 
-(v) What remains: the lower bound at order $\beta^4$. By Section~\ref{mg:sec:betafour}, the constant $\delta'$ contains at order $\beta^4$ only three terms
-(Theorem~\ref{mg:thm:lower4}): the shifts and jumps, charged $\varpi\min(b^2,b_2)$; the junctions through a unit cube ($Z_{4,4}\le12(d-3)$, Lemma~\ref{mg:lem:betafour}(i)),
-at the sup norm $b^4$; and the bulges and hops (the term $bf(6)$: a widening to $\partial q\triangle\partial c$ and one of the two narrowings,
-Lemma~\ref{mg:lem:jsums6}), at $b^2a^2$. A proof of the conjecture would need three things:
+(v) What remains: the lower bound at order $\beta^4$. By Theorem~\ref{mg:thm:lower4}, the constant $\delta'$ contains at order $\beta^4$ only the moves of $H_C$:
+the turns and jumps through a unit cube (Lemma~\ref{mg:lem:betafour}(i)), at the sup norm $b^4$, and the bulges and hops (the term $bf(6)$: a widening to
+$\partial q\triangle\partial c$ and one of the two narrowings, Lemma~\ref{mg:lem:jsums6}), at $b^2a^2$. The shifts and jumps and the U-turns are of order $\beta^5$ there.
+A proof of the conjecture would need at least two things:
 \begin{itemize}
 \item these junctions by characters, with operator norm about $u^2$ for each widening or narrowing junction (so $u^4$ per bulge or hop) and $u^4$ per turn or
 jump;
 \item a recursion that follows the moving tube, in which the sum over paths is bounded by the row sums of $H_C$. For $C=+$ the row sum is sharp, because $H_+$
 has non-negative entries. For the $C$-odd gap of $U(1)$ the signs must be kept: bounding the hop and the turn between perpendicular neighbours separately in absolute value gives
 $H_+$, with row sum $h_+>h_-$, instead of $H_-$.
-\item the shifts and jumps removed from $\delta'$ on the odd sector, where their operators vanish.
 \end{itemize}
-The terms $b^2a^2$ and $ba^3$ of Theorem~\ref{mg:thm:lower3} are $O(\beta^5)$ by Lemma~\ref{mg:lem:betafour}(iii),(iv).
+Two terms of Theorem~\ref{mg:thm:lower3} are $O(\beta^5)$ by Lemma~\ref{mg:lem:betafour}(iii),(iv): the $b^2a^2$ of the junctions with three or more front-pairs and two
+or more plaquettes, and the $ba^3$ of those with one plaquette.
 The terms of order $u^6$ (for $SU(2)$ in $d=4$, $-\frac{20984}{405}u^6$ in \cite{LMP07}) involve the vacuum cubes and pairs of moves.
 \end{remark}
 
@@ -3302,15 +3304,16 @@ front of seven or eight edges;
 \item one plaquette and three front-pairs force a front of at least eight edges, and two plaquettes and three front-pairs one of at least six.
 \end{itemize}
 A six-edge front $\partial q\triangle\partial c$, in turn, ends at leading order in one of exactly two junctions, which narrow it back to $\partial q$ or to $\partial c$
-(Lemma~\ref{mg:lem:jsums6}). The junction sums then have explicit terms of order $\beta^4$ (Lemma~\ref{mg:lem:jsums4}), and the third-order lower bound holds with
-$\delta'=(\delta'_4+o(1))\beta^4$ (Theorem~\ref{mg:thm:lower4}). For $SU(2)$, $\delta'_4=18$ ($d=3$) and $262$ ($d=4$), instead of $3.4\cdot10^8$ and $8.4\cdot10^{10}$. The
-three terms of $\delta'_4$ are the moves of the tube:
+(Lemma~\ref{mg:lem:jsums6}). The junction sums then have explicit terms of order $\beta^4$ (Lemma~\ref{mg:lem:jsums4}). The shifts and jumps of
+Section~\ref{mg:sec:second} drop out with $\varpi$ of order $\beta^3$, and the U-turns because their exit runs back in time. So the third-order lower bound holds with
+$\delta'=(\delta'_4+o(1))\beta^4$ (Theorem~\ref{mg:thm:lower4}), where $\delta'_4$ has two terms:
 \begin{itemize}
-\item the shifts and jumps of Section~\ref{mg:sec:second};
-\item the turns, jumps and U-turns through a unit cube, and the bulges and hops through six-edge fronts, of Section~\ref{mg:sec:fourth}.
+\item the turns and jumps through a unit cube;
+\item the bulges and hops through six-edge fronts.
 \end{itemize}
-They are counted at the sup norm $b\approx2\beta$ per plaquette instead of at $u$. Evaluating them by characters is what the lower bound at fourth order needs
-(Remark~\ref{mg:rem:betafour}). Throughout this section all spatial sides are $\ge8$, so that fronts with
+These are the moves of the plaquette state of Section~\ref{mg:sec:fourth}, counted at the sup norm $b\approx2\beta$ per plaquette instead of at $u$. For $SU(2)$,
+$\delta'_4=2$ ($d=3$) and $166$ ($d=4$), instead of $3.4\cdot10^8$ and $8.4\cdot10^{10}$. Evaluating the moves by characters is what the lower bound at fourth order
+needs (Remark~\ref{mg:rem:betafour}). Throughout this section all spatial sides are $\ge8$, so that fronts with
 four edges are plaquette boundaries, there are no fronts with five edges, and fronts with six edges are cycles (Lemmas~\ref{mg:lem:smallfronts}
 and~\ref{mg:lem:sixfronts}).
 
@@ -3324,7 +3327,8 @@ Lemma~\ref{mg:lem:twofrontcount}: at most $10(d-3)$ pairs with $\lambda'\ne\lamb
 following: $\partial q\triangle\partial c$ (six edges) or $\partial q\cup\partial c$ (seven edges), where $c$ shares a link with $q$; or $\partial q\cup\partial c$ (eight
 edges), where $c$ shares exactly one vertex with $q$. So, given $p$, there are at most $K_S$ such pairs $(J,p')$ with $|p'|=6$, $K_S$ with $|p'|=7$,
 $4(P_v-1)-2K_S$ with $|p'|=8$, and none with $|p'|=5$ or $|p'|\ge9$.
-\item If $P=\{c\}$, $|\Phi(J)|=3$ and one front-pair has four edges, then one of the other two has at least eight edges.
+\item If $P=\{c\}$ and $|\Phi(J)|=3$, then one of the fronts has at least eight edges; if one front-pair has four edges, one of the other two has at least
+eight edges.
 \item If $|P|=2$, $|\Phi(J)|=3$ and two front-pairs have four edges, then the third has at least six edges.
 \end{enumerate}
 \end{lemma}
@@ -3361,11 +3365,12 @@ $\lambda'=\lambda$; and then $P$ is determined.
 $\partial q\triangle\varphi'\subseteq\partial c\subseteq\partial q\cup\varphi'$. If $c=q$, then $\varphi'\subseteq\partial q$ and $|\varphi'|\le4$. So $c\ne q$, and $k:=|\partial q\cap\partial c|\le1$.
 The inclusions give $\partial q\triangle\partial c\subseteq\varphi'\subseteq\partial q\cup\partial c$. If $k=1$, then $\varphi'$ is $\partial q\triangle\partial c$ or $\partial q\cup\partial c$. If
 $k=0$, then $\varphi'=\partial q\cup\partial c$, and $c$ shares exactly one vertex with $q$: at least one because $\varphi'$ is connected, and at most one because two
-distinct plaquettes with two common vertices share the link joining them. The plaquettes sharing exactly one vertex with $q$ number $4(P_v-1)-2K_S$: there are
+distinct plaquettes with two common vertices share the link joining them (two diagonal vertices of a plaquette determine it). The plaquettes sharing exactly one vertex with $q$ number $4(P_v-1)-2K_S$: there are
 $4(P_v-1)$ pairs (vertex of $q$, plaquette $\ne q$ at it), and each of the $K_S$ plaquettes sharing a link with $q$ occurs in two of them.
 
-(iii) Let $\varphi=\partial q$ be the four-edge front and $\psi_1,\psi_2$ the other two, and suppose $|\psi_1|,|\psi_2|\le7$. By (a), $|A\triangle B|\le4$, and every front
-touches $c$ (Lemma~\ref{mg:lem:oneplaq}).
+(iii) By (a), $|A\triangle B|\le4$, and every front touches $c$ (Lemma~\ref{mg:lem:oneplaq}). If no front has four edges, all three have at least six. Two of
+them lie in one layer, so $|A|\ge12$ for that layer, and $|A\triangle B|\ge12-|\psi|$ if the third, $\psi$, lies in the other layer, while $|A\triangle B|\ge18$ if it does not;
+so $|\psi|\ge8$. Now let $\varphi=\partial q$ be a four-edge front and $\psi_1,\psi_2$ the other two, and suppose $|\psi_1|,|\psi_2|\le7$.
 \begin{itemize}
 \item All three in one layer: $|A\triangle B|\ge12$.
 \item $\varphi$ alone in its layer: $|A\triangle B|\ge|\psi_1|+|\psi_2|-4\ge4$, with equality only if $|\psi_1|=|\psi_2|=4$ and $\varphi\subseteq\psi_1\sqcup\psi_2$, i.e.\ $\varphi$ is
@@ -3402,38 +3407,41 @@ contradiction.\qedhere
 \begin{lemma}[Junction sums with the junctions of order $\beta^4$]\label{mg:lem:jsums4}
 In the setting of Lemma~\ref{mg:lem:jsums3}, suppose all spatial sides are $\ge8$, and let $\bar b\ge b$ and $\bar a\ge a$. Let $\bar\xi_F,\bar\xi_C$ and
 $\bar g_F,\dots,\bar\kappa_C$ satisfy the first two conditions of Lemma~\ref{mg:lem:jsums} and the six inequalities of Definition~\ref{mg:def:jconst}, with $\bar b$ in place of
-$b$ in $Y_j$, with $\bar a$ in place of $a$ in the front weights $a^{k/2}$ of $A_j$, and with $\bar f(4):=1$, $\bar f(k):=Fk^2e^{\xi_Fk}\bar a^{k-4}$ ($k\ge5$) in place of
-$f$ in $B_j$; $c_J$, $F$ and the $\xi_F$ in $\bar f$ are those of Theorem~\ref{mg:thm:lower2}. Put $\mathsf F_8:=8\sum_{k\ge8}N^v_kf(k)$, $\mathsf A_8:=8e^{c_J}\sum_{k\ge8}N^v_ka^{k/2}$,
+$b$ in $Y_j$, with $\bar a$ in place of $a$ in the front weights $a^{k/2}$ of $A_j$, and with $\bar f(4):=1$, $\bar f(k):=f(k)(\bar a/a)^{k-4}$ ($k\ge5$) in place of
+$f$ in $B_j$, where $f$ and $c_J$ are those of the bound at hand (Theorem~\ref{mg:thm:lower2}, or Theorem~\ref{mg:thm:lower4} with its $f(6)$). Let $\eta\in[0,1]$, and
+let $\mathcal S_\eta(p)$ be the sum $\mathcal S(p)$ of Lemma~\ref{mg:lem:jsums3} in which the weight $f(|p'|)$ is multiplied by $\eta$ when $p'$ has the layer of $p$.
+Put $\mathsf F_8:=8\sum_{k\ge8}N^v_kf(k)$, $\mathsf A_8:=8e^{c_J}\sum_{k\ge8}N^v_ka^{k/2}$,
 \[
 M_4:=\Bigl(\Bigl(\frac b{\bar b}\Bigr)^3\Bigl(\frac a{\bar a}\Bigr)^2+\Bigl(\frac b{\bar b}\Bigr)^2\Bigl(\frac a{\bar a}\Bigr)^3\Bigr)\,4P_ve^{4\bar\xi_F}\bigl(\bar\kappa_C\bar Y_2+4(\bar g_C\bar g'_F+\bar g'_C\bar g_F)\bar Y_1+16\bar\kappa_F\bar Y_0\bigr),
 \]
 let $M_3$ be the last term of $\Sigma^{(3)}_4$ (for some $\bar b$ and constants as in Lemma~\ref{mg:lem:jsums3}), and
 \begin{align*}
-\Sigma^{(4)}_4:=\;&(4P_v-4-K_S)\,\varpi\min(b^2,b_2)+12(d-3)\,b^4+2\sum_{n\ge5}(n+1)(2d-3)\binom{4P_v+T_vn}{n}b^n\\
+\Sigma^{(4)}_4:=\;&(4P_v-4-K_S)\,\varpi\min(b^2,b_2)+(10+2\eta)(d-3)\,b^4\\
+&+2\sum_{n\ge5}(n+1)(2d-3)\binom{4P_v+T_vn}{n}b^n\\
 &+K_Sb\bigl(f(6)+f(7)\bigr)+\bigl(4(P_v-1)-2K_S\bigr)bf(8)+2\sum_{n\ge2}\binom{4P_v+T_vn}{n}b^n\sum_{k\ge5}X_{n,k}f(k)\\
 &+4P_vb\bigl(\mathsf F_8\mathsf A+\mathsf F\mathsf A_8+\mathsf F(e^{\mathsf A}-1-\mathsf A)\bigr)+\min(M_3,M_4).
 \end{align*}
-Then the sum $\mathcal S(p)$ of Lemma~\ref{mg:lem:jsums3} is at most $\Sigma^{(4)}_4$.
+Then $\mathcal S_\eta(p)\le\Sigma^{(4)}_4$; in particular $\mathcal S(p)=\mathcal S_1(p)$ is at most $\Sigma^{(4)}_4$ with $\eta=1$.
 \end{lemma}
 
 \begin{proof}
-Split the pairs $(J,p')$ as in the proof of Lemma~\ref{mg:lem:jsums3}.
+Split the pairs $(J,p')$ as in the proof of Lemma~\ref{mg:lem:jsums3}; as $\eta\le1$, the factor $\eta$ may be dropped except for the U-turns.
 \begin{itemize}
 \item \emph{Two front-pairs, $|p'|=4$.} The shifts and jumps are as there, and there are none with three plaquettes. Those with four plaquettes number at most
-$12(d-3)$ (Lemma~\ref{mg:lem:betafour}(i)), and those with $n\ge5$ are counted as there.
+$12(d-3)$, and only the $2(d-3)$ U-turns have $p'$ in the layer of $p$ (Lemma~\ref{mg:lem:betafour}(i)). Those with $n\ge5$ are counted as there.
 \item \emph{Two front-pairs, $|p'|\ge5$.} With one plaquette, Lemma~\ref{mg:lem:betafour}(ii) gives the stated numbers, each pair with the weight $bf(|p'|)$. With
 $n\ge2$ plaquettes the count is as there.
 \item \emph{Three or more front-pairs, one plaquette.} As there, but if there are exactly three front-pairs, one of $p'$ and the third has at least eight edges
 (Lemma~\ref{mg:lem:betafour}(iii)).
-\item \emph{Three or more front-pairs, $n\ge2$ plaquettes.} The bound $M_3$ is the one of Lemma~\ref{mg:lem:jsums3}. For $M_4$: for fixed $F$, $\xi_F$ and $c_J$,
-the weight $f(|p'|)\prod_\psi a^{|\psi|/2}e^{c_J}$ of a pair $(J,p')$ in the proof of Lemma~\ref{mg:lem:jsums3} is a constant times $a^E$, where
-$E:=(|p'|-4)+\sum_\psi|\psi|/2$, the sum over the $\ge1$ further front-pairs $\psi$; so $E\ge2$. If $n=2$, then $E\ge3$: with exactly three front-pairs, either
+\item \emph{Three or more front-pairs, $n\ge2$ plaquettes.} The bound $M_3$ is the one of Lemma~\ref{mg:lem:jsums3}. For $M_4$: the weight
+$f(|p'|)\prod_\psi a^{|\psi|/2}e^{c_J}$ of a pair $(J,p')$ in the proof of Lemma~\ref{mg:lem:jsums3} is $\kappa a^E$, where $E:=(|p'|-4)+\sum_\psi|\psi|/2$, the sum over the
+$\ge1$ further front-pairs $\psi$, and $\kappa:=f(|p'|)a^{4-|p'|}\prod_\psi e^{c_J}$; with the barred weights it is $\kappa\bar a^E$, with the same $\kappa$. So $E\ge2$. If $n=2$, then $E\ge3$: with exactly three front-pairs, either
 $|p'|=4$ and the third has at least six edges (Lemma~\ref{mg:lem:betafour}(iv)), or $|p'|\ge6$ and $E\ge4$; with more front-pairs, $E\ge4$. Hence either $n\ge3$
 and $E\ge2$, or $n=2$ and $E\ge3$, and in both cases, as $b\le\bar b$ and $a\le\bar a$,
 \[
 b^na^E\le\Bigl(\Bigl(\frac b{\bar b}\Bigr)^3\Bigl(\frac a{\bar a}\Bigr)^2+\Bigl(\frac b{\bar b}\Bigr)^2\Bigl(\frac a{\bar a}\Bigr)^3\Bigr)\bar b^n\bar a^E .
 \]
-The sum of the terms $\bar b^n\bar a^E$, times the same constants, is the sum of the proof of Lemma~\ref{mg:lem:jsums}(ii) with $\bar b$ and $\bar a$ in place of $b$ and $a$,
+The sum of the terms $\kappa\bar b^n\bar a^E$ is the sum of the proof of Lemma~\ref{mg:lem:jsums}(ii) with $\bar b$, $\bar a$ and $\bar f$ in place of $b$, $a$ and $f$,
 and the doubly marked tree sums with the barred constants bound it by the last factor of $M_4$.\qedhere
 \end{itemize}
 \end{proof}
@@ -3454,7 +3462,7 @@ Split the pairs $(J,p')$ as in the proof of Lemma~\ref{mg:lem:jsums}(ii), and le
 \begin{itemize}
 \item \emph{Two front-pairs, one plaquette $c$, $|p'|=4$.} By Lemma~\ref{mg:lem:betafour}(ii), with the roles of the two front-pairs exchanged, $p'=(\partial q,\lambda')$ with
 $\lambda'$ the other layer, and $\varphi=\partial q\triangle\partial c$, where $c$ shares a link $e_0$ with $q$. Write $e_0=\{x,x+e_\mu\}$, and let $q$, $c$ be spanned at $x$ by
-$e_\mu$ and $e_\nu$, resp.\ $e_\mu$ and $e_{\nu'}$, with $\nu'\ne\nu$. As all sides are $\ge3$, the only links joining two of the six vertices $x$, $x+e_\mu$, $x+e_\nu$,
+$e_\mu$ and $e_\nu$, resp.\ $e_\mu$ and $e_{\nu'}$, with $\nu'\ne\nu$. As all sides are $\ge4$, the only links joining two of the six vertices $x$, $x+e_\mu$, $x+e_\nu$,
 $x+e_\mu+e_\nu$, $x+e_{\nu'}$, $x+e_\mu+e_{\nu'}$ of $\varphi$ are the six links of $\varphi$ and $e_0$. So $\varphi$ determines $e_0$, and with it the unordered pair $\{q,c\}$: the
 two paths of $\varphi$ between the ends of $e_0$, each closed by $e_0$, are $\partial q$ and $\partial c$. Hence there are at most two such pairs $(J,p')$, each of
 weight $bf(4)=b$.
@@ -3469,112 +3477,145 @@ $6P_v\binom{K_Sn}{n-1}$ clusters $C_0$ with $n$ plaquettes touching $p^*$ give t
 \end{proof}
 
 \begin{theorem}[The third-order term with an effective constant]\label{mg:thm:lower4}
-Suppose all spatial sides are $\ge8$. In Theorem~\ref{mg:thm:lower2} give $f(6)$ a constant of its own, $f(6):=36F_6e^{6\xi_F}a^2$ with $F_6>0$ (the other
-values of $f$ as in Definition~\ref{mg:def:jconst}); replace the hypothesis $\Sigma^{(2)}_4<\bar\Upsilon\delta'$ by $\Sigma^{(4)}_4<\bar\Upsilon\delta'$; and add the hypothesis
+Suppose all spatial sides are $\ge8$. In Theorem~\ref{mg:thm:lower2}, make four changes:
+\begin{itemize}
+\item give $f(6)$ a constant of its own, $f(6):=36F_6e^{6\xi_F}a^2$ with $F_6>0$ (the other values of $f$ as in Definition~\ref{mg:def:jconst});
+\item replace the hypothesis $\Sigma^{(2)}_4<\bar\Upsilon\delta'$ by $\Sigma^{(4)}_4<\bar\Upsilon\delta'$, with $\Sigma^{(4)}_4$ taken at $\eta:=C_\varpi a^4\bigl(2\bar\Upsilon(1+\delta')+\Sigma_4\bigr)/(1-\omega)$;
+\item replace $5$ by $7$ in the second hypothesis;
+\item add the hypothesis $\Sigma^{(6)}<36F_6e^{6\xi_F}\bigl(\bar\Upsilon(1+\delta')-a\bigr)$.
+\end{itemize}
+All quantities are computed with this $f$, and $\bar b,\bar a$ and the barred constants are as in Lemma~\ref{mg:lem:jsums4}. Then the conclusions of
+Theorem~\ref{mg:thm:lower2} hold. As $\beta\downarrow0$ the hypotheses hold with $\varpi:=b^3$, fixed $\bar b,\bar a>0$ depending only on $d$ and $u_1$, and
+$\delta':=(\delta'_4+\varepsilon)\beta^4$ for every $\varepsilon>0$, where
 \[
-\Sigma^{(6)}<36F_6e^{6\xi_F}\bigl(\bar\Upsilon(1+\delta')-a\bigr),
-\]
-all quantities being computed with this $f$, and $\bar b,\bar a$ and the barred constants as in Lemma~\ref{mg:lem:jsums4}. Then the conclusions of
-Theorem~\ref{mg:thm:lower2} hold. As $\beta\downarrow0$ the hypotheses hold with $\varpi:=b^2$, fixed $\bar b,\bar a>0$ depending only on $d$, and every
-$\delta'\ge(\delta'_4+\varepsilon)\beta^4$, $\varepsilon>0$, where
-\[
-\delta'_4:=8\,(4P_v-4-K_S)(2-\iota)N^2u_1^2+192\,(d-3)+8K_Su_1^2,\qquad u_1=\frac{1+\iota}{2N^2}.
+\delta'_4:=160\,(d-3)+8K_Su_1^2,\qquad u_1=\frac{1+\iota}{2N^2}.
 \]
 Hence $m(\mu_\beta)\ge4\log(1/u)-\log\Upsilon-(\delta'_4+o(1))\beta^4$, and the same holds for $m_{\Lambda_s}(\beta)$, uniformly in the periodic spatial lattices with
-all sides $\ge8$. For the fundamental representations, $\delta'_4=18$ ($d=3$) and $262$ ($d=4$) for $SU(2)$, $3.65$ and $206.5$ for $SU(3)$, and $40$ and $344$ for
+all sides $\ge8$. For the fundamental representations, $\delta'_4=2$ ($d=3$) and $166$ ($d=4$) for $SU(2)$, $0.099$ and $160.3$ for $SU(3)$, and $8$ and $184$ for
 $U(1)$.
 \end{theorem}
 
 \begin{proof}
 \emph{The bound.} We follow the proof of Theorem~\ref{mg:thm:lower3}, which is that of Theorem~\ref{mg:thm:lower2}, with Lemma~\ref{mg:lem:jsums4} in place of
 Lemma~\ref{mg:lem:jsums3} for the far junctions of front-pairs with four edges. Lemmas~\ref{mg:lem:treesums}, \ref{mg:lem:marked} and~\ref{mg:lem:jsums} hold for
-every $f\ge0$. The only other change concerns a path front-pair $p$ with $|p|=6$, in the steps (b) and (c) of the proof of Theorem~\ref{mg:thm:lower2}: there the
-sum over the far junction $J'$ and the continuations is at most $E_B(6)+M\Sigma^{(6)}$ by Lemma~\ref{mg:lem:jsums6}, instead of
-$E_B(6)+M\cdot6P_ve^{6\xi_F}(g_CY_1+6g_FY_0)$. Add $36E_Be^{6\xi_F}/(36F_6e^{6\xi_F}(\bar\Upsilon(1+\delta')-a)-\Sigma^{(6)})$ to the maximum that defines $M$. Then in
-step (b), as $E_B(6)\le36E_Be^{6\xi_F}$,
+every $f\ge0$. Three things change.
+\begin{itemize}
+\item \emph{Six-edge front-pairs.} For a path front-pair $p$ with $|p|=6$, in the steps (b) and (c) of the proof of Theorem~\ref{mg:thm:lower2}, the sum over the far
+junction $J'$ and the continuations is at most $E_B(6)+M\Sigma^{(6)}$ by Lemma~\ref{mg:lem:jsums6}, instead of $E_B(6)+M\cdot6P_ve^{6\xi_F}(g_CY_1+6g_FY_0)$. Add
+$36E_Be^{6\xi_F}/(36F_6e^{6\xi_F}(\bar\Upsilon(1+\delta')-a)-\Sigma^{(6)})$ to the maximum that defines $M$. Then in step (b), as $E_B(6)\le36E_Be^{6\xi_F}$,
 \[
 \mathcal V(p,0)\le\frac{a^2\bigl(E_B(6)+M\Sigma^{(6)}\bigr)}{\bar\Upsilon(1+\delta')-a}\le36MF_6e^{6\xi_F}a^2=Mf(6),
 \]
-and step (c) goes through as there, since $\Sigma^{(6)}\le36F_6e^{6\xi_F}\bar\Upsilon(1+\delta')$ and $E_B\le MF_6\bar\Upsilon(1+\delta')$. For $|p|\ge7$ nothing changes.
+and step (c) goes through as there, since $\Sigma^{(6)}\le36F_6e^{6\xi_F}\bar\Upsilon(1+\delta')$ and $E_B\le MF_6\bar\Upsilon(1+\delta')$.
+\item \emph{Larger front-pairs.} For $|p|=k\ge7$ the steps are as there, and $(g_CY_1+g_FkY_0)/k\le g_CY_1/7+g_FY_0$; there are no fronts with five edges.
+\item \emph{Downward exits.} Call a front-pair of a junction at slice $s'$ \emph{downward} if its layer is $s'-1$. For a downward $p$ the first segment of every
+continuation runs through old slices, so step (c) gives the stronger bound $\mathcal V(p,\Delta)\le\eta Mf(|p|)$, and we include it in the induction. In step (a) the far
+junction $J'$, at a new slice $s'$, is reached through a front-pair of layer $s'-1$, and its exits of that layer are downward. So the sum over $J'$ and the
+continuations is at most $E_B(4)+M\mathcal S_\eta(p^*)\le E_B(4)+M\Sigma^{(4)}_4$, $p^*$ the front-pair through which $J'$ is reached (Lemma~\ref{mg:lem:jsums4}).
+\end{itemize}
 
-\emph{Small $\beta$.} Choose $\varpi$, $\xi_F$, $\xi_C$ and $h_J$ as in the proof of Theorem~\ref{mg:thm:lower3}. Choose $\bar b,\bar a>0$, depending only on $d$, so small
-that the conditions at $(\bar b,\bar a)$ hold with room when $c_J=1$ and $F=0$; for small $\beta$ they then hold for the actual $c_J$ and $F$, as $c_J\to1$, $F\to0$, $\bar Y_j$
-converges at $\bar b$, and $\bar A_j$, $\bar B_j$ depend continuously on $c_J$ and $F$. Take for $\bar g$, $\bar\kappa$ the minimal solutions. The last factor of $M_4$ then
-stays bounded, so $M_4=O(b^3a^2+b^2a^3)=O(\beta^5)$. Take $F:=(1+\varepsilon')P_v(g_CY_1/5+g_FY_0)/(\bar\Upsilon(1+\delta')-a)$ with $\varepsilon'>0$; this is consistent for
-small $\beta$, since $g_F$ and $g_C$ depend on $F$ only through terms $O(Fa^2)$. As $\beta\downarrow0$, $Y_0,Y_1\sim b$, $g_F\to N^v_4=P_v$ and $g_C\to8P_v$, so
-$F\sim(1+\varepsilon')\frac{13}5P_v^2b$. Take $F_6:=(1+\varepsilon')\Sigma^{(6)}/(36e^{6\xi_F}(\bar\Upsilon(1+\delta')-a))$. In $\Sigma^{(6)}$ the terms after $2b$ are $O(b^2)$,
-$O(bf(6)+bf(7))=O(\beta^3)$ and $O(a^2b)$, so $\Sigma^{(6)}=2b(1+O(\beta))$ and $F_6\sim(1+\varepsilon')b/18$; this is consistent, since $\Sigma^{(6)}$ depends on $F_6$ only
-through terms $O(bF_6a^2)$. With $b=2\beta(1+O(\beta))$ and $a=u_1\beta(1+O(\beta))$, the terms of $\Sigma^{(4)}_4$ are:
+\emph{Small $\beta$.} Take $\varpi:=b^3$; then $C_\varpi=1+1/b^3$ for small $\beta$, so that $C_\varpi a^4$, $\omega$ and $\eta$ are $O(\beta)$. Take $\xi_F:=2P_vb$,
+$\xi_C:=8P_vb$ and $h_J:=\max_{k\ge4}C_\varpi kP_vY_0a^{k/2}e^{\xi_Fk}$. The maximum is at $k=4$ for small $\beta$, and $h_J=4P_va^2b^{-2}(1+O(\beta))\to P_vu_1^2$, so
+$c_J\to e^{P_vu_1^2}$; $A_j=O(a^2)$ still. So the conditions of Lemma~\ref{mg:lem:jsums} and the six inequalities hold as in the proof of
+Theorem~\ref{mg:thm:lower3}, the third hypothesis as $\omega+\eta=O(\beta)$, and the fourth as $a^4/b^3=O(\beta)$. Choose $\bar b,\bar a>0$, depending only on $d$ and $u_1$, so
+small that the conditions at $(\bar b,\bar a)$ hold with room when $c_J=2e^{P_vu_1^2}$ and $F=F_6=0$. For small $\beta$ they then hold for the actual $c_J$, $F$ and $F_6$: these
+tend to $e^{P_vu_1^2}$, $0$ and $0$, $\bar Y_j$ converges at $\bar b$, and $\bar A_j$, $\bar B_j$ depend continuously on $c_J$, $F$ and $F_6$. Take for $\bar g$, $\bar\kappa$ the minimal
+solutions. The last factor of $M_4$ then stays bounded, so $M_4=O(b^3a^2+b^2a^3)=O(\beta^5)$.
+
+Take $F:=(1+\varepsilon')P_v(g_CY_1/7+g_FY_0)/(\bar\Upsilon(1+\delta')-a)$ with $\varepsilon'>0$; this is consistent for small $\beta$, since $g_F$ and $g_C$ depend on $F$ only
+through terms $O(Fa^3)$. As $\beta\downarrow0$, $Y_0,Y_1\sim b$, $g_F\to N^v_4=P_v$ and $g_C\to8P_v$, so $F=O(b)$. Take
+$F_6:=(1+\varepsilon')\Sigma^{(6)}/(36e^{6\xi_F}(\bar\Upsilon(1+\delta')-a))$. In $\Sigma^{(6)}$ the terms after $2b$ are $O(b^2)$, $O(bf(6)+bf(7))=O(\beta^3)$ and $O(a^2b)$,
+so $\Sigma^{(6)}=2b(1+O(\beta))$ and $F_6\sim(1+\varepsilon')b/18$. This is consistent, since $\Sigma^{(6)}$ depends on $F_6$ only through terms $O(bF_6a^2)$. With
+$b=2\beta(1+O(\beta))$ and $a=u_1\beta(1+O(\beta))$, the terms of $\Sigma^{(4)}_4$ are:
 \begin{itemize}
-\item $\varpi\min(b^2,b_2)=b^2b_2$ for small $\beta$, where $b_2=2(2-\iota)N^2u^2(1+O(\beta))$ (by Lemma~\ref{mg:lem:capelement}(iv), $\sigma_6/u^4=(2-\iota)N^2u^2+O(\beta^7)$),
-which is $<b^2$ for small $\beta$ since $(2-\iota)(1+\iota)^2/(2N^2)<4$; so the first term is $8(4P_v-4-K_S)(2-\iota)N^2u_1^2\beta^4(1+O(\beta))$;
-\item $12(d-3)b^4=192(d-3)\beta^4(1+O(\beta))$;
+\item $\varpi\min(b^2,b_2)\le b^3b_2=O(\beta^5)$, as $b_2=2(2-\iota)N^2u^2(1+O(\beta))$ (by Lemma~\ref{mg:lem:capelement}(iv), $\sigma_6/u^4=(2-\iota)N^2u^2+O(\beta^7)$);
+\item $(10+2\eta)(d-3)b^4=160(d-3)\beta^4(1+O(\beta))$;
 \item the terms with $n\ge5$ in the first line, and with $n\ge2$ in the second, $O(\beta^5)$;
 \item $K_Sbf(6)=36K_SbF_6e^{6\xi_F}a^2\sim(1+\varepsilon')\,2K_Sb^2a^2\sim(1+\varepsilon')\,8K_Su_1^2\beta^4$, while $bf(7)$ and $bf(8)$ are $O(\beta^5)$;
 \item the one-plaquette term, $O(ba^4)$, as $\mathsf F=O(1)$, $\mathsf F_8=O(Fa^4)$, $\mathsf A=O(a^2)$ and $\mathsf A_8=O(a^4)$;
 \item $\min(M_3,M_4)\le M_4=O(\beta^5)$.
 \end{itemize}
-So $\Sigma^{(4)}_4\le(\delta'_4+\varepsilon'')\beta^4$ for small $\beta$, with $\varepsilon''\to0$ as $\varepsilon'\to0$, and $\bar\Upsilon\to1$. The other hypotheses hold as in the
-proof of Theorem~\ref{mg:thm:lower3}. Finally $\log\bar\Upsilon=\log\Upsilon+O(\beta^6)$ (Lemma~\ref{mg:lem:dressed}), $\theta_5=O(\beta^5)$, and the counts $N^v_k$
-of a periodic lattice are bounded uniformly (Lemma~\ref{mg:lem:smallfronts}). The values follow from $P_v=2(d-1)(d-2)$, $K_S=4(2d-5)$ and $u_1=\frac14$,
-$\frac1{18}$, $\frac12$.
+So $\Sigma^{(4)}_4\le(\delta'_4+\varepsilon'')\beta^4$ for small $\beta$, with $\varepsilon''\to0$ as $\varepsilon'\to0$, and $\bar\Upsilon\to1$; with $\delta':=(\delta'_4+\varepsilon)\beta^4$ and $\varepsilon'$ small,
+all hypotheses hold. Finally $\log\bar\Upsilon=\log\Upsilon+O(\beta^6)$ (Lemma~\ref{mg:lem:dressed}), $\theta_5=O(\beta^5)$, and the counts $N^v_k$ of a periodic lattice are
+bounded uniformly (Lemma~\ref{mg:lem:smallfronts}). The values follow from $K_S=4(2d-5)$ and $u_1=\frac14$, $\frac1{18}$, $\frac12$.
 \end{proof}
 
-\begin{remark}[Meaning, numbers and checks]\label{mg:rem:betafour}
-(i) Meaning (Heuristic). The three terms of $\delta'_4$ are moves of the tube, counted at the sup norm:
+\begin{remark}[Meaning, window, numbers and checks]\label{mg:rem:betafour}
+(i) Meaning (Heuristic). The two terms of $\delta'_4=10(d-3)\cdot16+2K_S\cdot4u_1^2$ count the moves of the plaquette state of Section~\ref{mg:sec:fourth}:
 \begin{itemize}
-\item the shifts and jumps, which vanish on the odd sector but are charged $\varpi\min(b^2,b_2)$ through Lemma~\ref{mg:lem:oddslice};
-\item the turns, jumps and U-turns through a unit cube (Lemma~\ref{mg:lem:betafour}(i)), charged $b^4\approx16\beta^4$ each, whereas in characters each costs $u^4$,
-which is $\beta^4/256$ for $SU(2)$;
-\item the bulges and hops: one of the $K_S$ widenings to $\partial q\triangle\partial c$, followed by one of the two narrowings, by $c$ (back to $\partial q$: a bulge) or by $q$
-(to $\partial c$: a hop), charged $b\cdot a^2\cdot b\approx4u_1^2\beta^4$, against $u^4$ in characters.
+\item the $10(d-3)$ turns and jumps through a unit cube (Lemma~\ref{mg:lem:betafour}(i));
+\item the $K_S$ bulges and $K_S$ hops: a widening to $\partial q\triangle\partial c$ followed by one of the two narrowings, by $c$ (a bulge) or by $q$ (a hop).
 \end{itemize}
-Apart from the shifts and jumps, these are the moves of the hopping matrix of Section~\ref{mg:sec:fourth}, and Lemma~\ref{mg:lem:betafour} shows that nothing else
-enters at order $\beta^4$. The lower bound at fourth order would follow from three further steps:
+These are the moves counted by the hopping matrix, whose top is $h_+=2K_S+10(d-3)$ (Lemma~\ref{mg:lem:hopping}). The bound charges them at the sup norm,
+$b^4\approx16\beta^4$ and $b\cdot a^2\cdot b\approx4u_1^2\beta^4$, whereas in characters each costs $u^4=u_1^4\beta^4$; for $SU(2)$ these are factors $4096$ and $64$. The other
+junctions of order $\beta^4$ drop out of the bound:
 \begin{itemize}
-\item the transfer bound by pieces (Lemma~\ref{mg:lem:pieces}) for the junctions of Lemma~\ref{mg:lem:betafour}(i),(ii) and the narrowings, giving $u^4$ per move;
-\item the removal of the shifts and jumps from $\delta'$, as their operators vanish on the odd sector;
+\item the shifts and jumps, through the choice $\varpi=b^3$ (their operators vanish on the odd sector, Lemma~\ref{mg:lem:oddslice});
+\item the U-turns, whose exit runs downward and so costs $\eta=O(\beta)$. They join two tubes and are not moves of $H_C$ (Remark~\ref{mg:rem:processes}).
+\end{itemize}
+A lower bound at fourth order would need at least two further steps:
+\begin{itemize}
+\item the transfer bound by pieces (Lemma~\ref{mg:lem:pieces}) for the junctions of these moves, giving $u^4$ per move in place of $b^4$ and $b^2a^2$;
 \item a recursion that follows the moving tube, in which the moves at a slice are summed by the row sums of $H_C$ (Remark~\ref{mg:rem:fourth}(v)).
 \end{itemize}
 
-(ii) Numbers (Numerical; script \texttt{third\_order\_effective.py}, in the directory of (iii)). The table gives the smallest admissible $\delta'$ of
-Theorem~\ref{mg:thm:lower4} for $SU(2)$, with $\varpi=b^2$ and the best $\bar b,\bar a$ among powers of $2$, and that of Theorem~\ref{mg:thm:lower3}.
+(ii) Window (Theorem). By Theorem~\ref{mg:thm:lower4} and Corollary~\ref{mg:cor:fourthupper}, for $SU(2)$ in $d=4$,
+\[
+-166\le\liminf_{\beta\downarrow0}R(\beta)\le\limsup_{\beta\downarrow0}R(\beta)\le-\frac{17}{128},\qquad R(\beta):=\beta^{-4}\Bigl(m(\mu_\beta)-4\log\frac1u+\log\Upsilon\Bigr),
+\]
+and in $d=3$ both lie in $[-2,-\frac1{32}]$. Conjecture~\ref{mg:conj:fourth} says that the limit exists and equals the upper end.
+
+(iii) Numbers (Numerical; script \texttt{third\_order\_effective.py}, in the directory of (iv)). The table gives, for $SU(2)$, the smallest admissible $\delta'$ of
+Theorem~\ref{mg:thm:lower4}, over $\varpi\in\{b^2,b^3\}$, $\bar b\in\{2^{-3},\dots,2^{-17}\}$ and $\bar a\in\{2^{-2},\dots,2^{-25}\}$, and that of Theorem~\ref{mg:thm:lower3}.
 \begin{center}
 \small
-\begin{tabular}{@{}lcccccc@{}}
+\setlength{\tabcolsep}{4.5pt}
+\begin{tabular}{@{}lcccccccc@{}}
 \toprule
-& \multicolumn{3}{c}{$d=3$} & \multicolumn{3}{c}{$d=4$}\\
-$\delta'/\beta^4$ at $\beta=$ & $10^{-4}$ & $10^{-7}$ & $10^{-9}$ & $10^{-5}$ & $10^{-7}$ & $10^{-9}$\\
+& \multicolumn{4}{c}{$d=3$} & \multicolumn{4}{c}{$d=4$}\\
+$\delta'/\beta^4$ at $\beta=$ & $10^{-5}$ & $10^{-7}$ & $10^{-9}$ & $10^{-12}$ & $10^{-5}$ & $10^{-7}$ & $10^{-9}$ & $10^{-12}$\\
 \midrule
-Theorem~\ref{mg:thm:lower3} & $3.7\cdot10^8$ & $3.35\cdot10^8$ & $3.35\cdot10^8$ & $8.7\cdot10^{10}$ & $8.4\cdot10^{10}$ & $8.4\cdot10^{10}$\\
-Theorem~\ref{mg:thm:lower4} & $4.6\cdot10^7$ & $1.7\cdot10^5$ & $1.7\cdot10^3$ & $3.1\cdot10^9$ & $1.8\cdot10^9$ & $1.8\cdot10^7$\\
+Theorem~\ref{mg:thm:lower3} & $3.4\cdot10^8$ & $3.4\cdot10^8$ & $3.4\cdot10^8$ & $3.4\cdot10^8$ & $8.7\cdot10^{10}$ & $8.4\cdot10^{10}$ & $8.4\cdot10^{10}$ & $8.4\cdot10^{10}$\\
+Theorem~\ref{mg:thm:lower4} & $4.1\cdot10^6$ & $4.1\cdot10^4$ & $428$ & $2.5$ & $1.9\cdot10^9$ & $1.9\cdot10^7$ & $1.9\cdot10^5$ & $417$\\
 \bottomrule
 \end{tabular}
 \end{center}
-As $\beta\downarrow0$ the two rows tend to $3.4\cdot10^8$ and $18$ ($d=3$), and to $8.4\cdot10^{10}$ and $262$ ($d=4$). At practical $\beta$ the terms of order $\beta^5$
-with crude counts dominate: the junctions with five or more plaquettes and the majorant $M_4$, with constants of about $2\cdot10^{13}$ and $2\cdot10^{16}$ in $d=4$. The
-tree sum in $M_4$ includes trees with a single plaquette, which do not occur among the junctions it bounds. It is dominated by the crude counts $N^v_k$, $k\ge7$:
-for instance $N^v_7\le3.9\cdot10^8$ ($d=4$), whereas for sides $\ge8$ a front with seven edges is the union of the boundaries of two plaquettes that share a link,
-as all cycles of length $\le7$ are then even, so $N^v_7=\frac34P_vK_S=108$. So $\delta'/\beta^4$ comes within a factor $2$ of $\delta'_4$ only for $\beta\lesssim10^{-14}$
-($d=4$) and $10^{-11}$ ($d=3$). At larger $\beta$ the minimum in $\min(M_3,M_4)$ is $M_3$, the majorant of Section~\ref{mg:sec:third}; even there the bound improves on
-Theorem~\ref{mg:thm:lower3}, because $Z_{4,4}$ and the one-plaquette exits are now counted. For $SU(2)$ in $d=4$ at $\beta=10^{-7}$ the two bounds give
-$1.249812\cdot10^{-15}\le m(\mu_\beta)-4\log(1/u)\le1.250000\cdot10^{-15}$ (Theorem~\ref{mg:thm:lower3}: $1.2416\cdot10^{-15}$ on the left), so the second-order term
-$\beta^2/8$ is resolved to $1.5$ parts in $10^4$. With Corollary~\ref{mg:cor:fourthupper}, for $SU(2)$ in $d=4$,
-\[
--262\le\liminf_{\beta\downarrow0}R(\beta)\le\limsup_{\beta\downarrow0}R(\beta)\le-\frac{17}{128},\qquad R(\beta):=\beta^{-4}\Bigl(m(\mu_\beta)-4\log\frac1u+\log\Upsilon\Bigr),
-\]
-and in $d=3$ the window is $[-18,-\frac1{32}]$. Conjecture~\ref{mg:conj:fourth} says that the limit exists and equals the upper end.
-
-(iii) Checks (a compass; \texttt{junction\_lemmas\_abcd.py} and \texttt{six\_edge\_narrowings.py} in \texttt{theory/checks/third-order/}). The statements of
-Lemma~\ref{mg:lem:betafour} were checked by exhaustive enumeration in spatial dimensions $2$ and $3$, with fronts of four and six edges:
+With $\varpi=b^2$ the limit is $\delta'_4+8(4P_v-4-K_S)(2-\iota)N^2u_1^2$, i.e.\ $18$ and $230$ for $SU(2)$; $\varpi=b^3$ has the smaller limit but larger terms of order
+$\beta^5$, and gives the smaller $\delta'$ only at $\beta=10^{-12}$ in $d=3$ ($2.5$ against $18.4$; in $d=4$, $694$ against $417$). At practical $\beta$ these terms, with crude counts,
+dominate:
 \begin{itemize}
-\item (i): exactly the $10$ turns and jumps and the $2$ U-turns in $d=4$, and none in $d=3$, as the referee of Section~\ref{mg:sec:third} had found;
-\item (ii): exactly the $K_S$ six-edge exits;
-\item (iii): no junction with one plaquette and three front-pairs of four, four and at most six edges;
-\item (iv): no junction with two plaquettes and three four-edge front-pairs.
+\item the junctions with five or more plaquettes;
+\item the majorant $M_4$. Its tree sum includes trees with a single plaquette, which do not occur among the junctions it bounds. It is dominated by the crude
+counts $N^v_k$, $k\ge7$: for instance $N^v_7\le3.9\cdot10^8$ in $d=4$, whereas for sides $\ge8$ all cycles of length $\le7$ are even, a front with seven edges is the
+union of the boundaries of two plaquettes sharing a link, and $N^v_7=\frac34P_vK_S=108$.
 \end{itemize}
-For Lemma~\ref{mg:lem:jsums6}: of the $132$ six-cycles through a vertex of $\mathbb Z^3$, the $108$ domino boundaries have exactly two narrowings each and the $24$ skew
-hexagons none; in $\mathbb Z^2$ all $12$ are dominos, with two each.
+At larger $\beta$ the minimum in $\min(M_3,M_4)$ is $M_3$, the majorant of Section~\ref{mg:sec:third}; even there the bound improves on Theorem~\ref{mg:thm:lower3},
+because $Z_{4,4}$ and the one-plaquette exits are now counted. For $SU(2)$ in $d=4$ at $\beta=10^{-7}$ the two bounds give
+$1.2499943\cdot10^{-15}\le m(\mu_\beta)-4\log(1/u)\le1.2500000\cdot10^{-15}$ (Theorem~\ref{mg:thm:lower3}: $1.2416\cdot10^{-15}$ on the left), so the second-order term
+$\beta^2/8$ is resolved to $5$ parts in $10^6$.
+
+(iv) Checks (a compass; in \texttt{theory/checks/third-order/}).
+\begin{itemize}
+\item Our enumeration (\texttt{junction\_lemmas\_abcd.py}), in spatial dimensions $2$ and $3$, with fronts of four and six edges:
+\begin{itemize}
+\item (i): exactly the $10$ turns and jumps and the $2$ U-turns in $d=4$, and none in $d=3$;
+\item (ii), for $|p'|\le6$: exactly the cap and the $K_S$ six-edge exits;
+\item (iii), for fronts of $4$, $4$ and at most $6$ edges: none;
+\item (iv): none.
+\end{itemize}
+\item An independent referee (scripts in \texttt{referee-section13/}) used code written from the definitions alone. Fronts there are all connected edge sets of
+minimum degree $\ge2$, found by a Redelmeier search. The referee confirmed the full statements:
+\begin{itemize}
+\item (i), in spatial dimensions $2$, $3$, $4$: $0$, $12$, $24$ junctions, namely $8(d-3)$ turns and $2(d-3)$ jumps in the other layer and $2(d-3)$ U-turns in the same layer;
+\item (ii), for second fronts with up to $10$ edges ($d=3$) and $9$ edges ($d=4$): exactly the cap and $K_S$, $K_S$, $4(P_v-1)-2K_S$ exits with $6$, $7$, $8$ edges, and none with
+$5$, $9$ or $10$;
+\item (iii), for all further fronts with up to $8$ edges ($d=3$, where the only junctions have fronts of $4$, $4$ and $8$ edges) and $7$ edges ($d=4$);
+\item (iv), in spatial dimensions $2$, $3$, $4$.
+\end{itemize}
+The referee also found $N^v_6=12$, $132$, $456$ and $N^v_7=12$, $108$, $360$ for $d=3,4,5$.
+\item Lemma~\ref{mg:lem:jsums6}, by both (\texttt{six\_edge\_narrowings.py}): of the $132$ six-cycles through a vertex of $\mathbb Z^3$, the $108$ domino boundaries have
+exactly two narrowings each and the $24$ skew hexagons none; in $\mathbb Z^2$ all $12$ are dominos, with two each.
+\end{itemize}
 \end{remark}
 
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
@@ -3622,7 +3663,7 @@ Evaluating the cap by characters (Section~\ref{mg:sec:cap}) brings it to $\kappa
 $m=4\log(1/u)-\kappa+O(\beta^2)$. At second order (Section~\ref{mg:sec:second}) the two bounds meet again: $m=4\log(1/u)-\log\Upsilon+O(\beta^3)$, and at third
 order (Section~\ref{mg:sec:third}) $m=4\log(1/u)-\log\Upsilon+O(\beta^4)$. At fourth order (Section~\ref{mg:sec:fourth}) the upper bound is
 $4\log(1/u)-\log\Upsilon-h_Cu^4+o(\beta^4)$, and the conjecture is equality; the lower bound is $4\log(1/u)-\log\Upsilon-(\delta'_4+o(1))\beta^4$
-(Section~\ref{mg:sec:betafour}), with $\delta'_4=262$ for $SU(2)$ in $d=4$.
+(Section~\ref{mg:sec:betafour}), with $\delta'_4=166$ for $SU(2)$ in $d=4$.
 (iii) The hypothesis $L_i\ge4$ cannot be dropped from the sharper finite-volume bounds: if a spatial side equals $3$,
 Theorem~\ref{mg:thm:finite} holds only with $g=3$, and closed strips of three plaquettes per layer around that side (torelons, carrying the
 flux of a Polyakov loop) give states of energy $\approx3\log(1/u(\beta))$. For $\mathbb Z_2$ in $d=3$ on a $3\times3$ spatial torus the transfer
@@ -3712,9 +3753,9 @@ Fourth-order term: $m=4\log(1/u)-\log\Upsilon-h_Cu^4+O(\beta^5)$; for $SU(2)$, $
 Exact $\mathbb Z_2$ and $\mathbb Z_3$ spectra ($d=3$ tori, $d=4$ blocks of cubes, both sectors): every level of the plaquette band follows $H_C$; exhaustive checks of the lemmas & Rem.~\ref{mg:rem:fourth}(ii) & Numerical\\
 Classical series of \cite{Mun81,Seo82} as quoted in \cite{LMP07}: the terms of order $u^4$ agree in four of five channels; for $T_1^{+-}$ of $SU(3)$, $-\frac{99}4u^4$ predicted, $-\frac{98}4u^4$ printed & Rem.~\ref{mg:rem:fourth}(iii) & Cited\\
 Junctions of order $\beta^4$: with four plaquettes and two four-edge fronts only through a unit cube ($Z_{4,4}\le12(d-3)$); one plaquette widens a four-edge front only to $\partial q\triangle\partial c$ or $\partial q\cup\partial c$; three front-pairs force a front of $\ge8$ edges (one plaquette) or $\ge6$ (two); a six-edge front ends at leading order in one of two narrowings & Lem.~\ref{mg:lem:betafour}, \ref{mg:lem:jsums6} & Theorem\\
-Third-order lower bound with an effective constant: $m\ge4\log(1/u)-\log\Upsilon-(\delta'_4+o(1))\beta^4$, $\delta'_4=8(4P_v-4-K_S)(2-\iota)N^2u_1^2+192(d-3)+8K_Su_1^2$; for $SU(2)$, $18$ ($d=3$), $262$ ($d=4$) & Lem.~\ref{mg:lem:jsums4}, Thm.~\ref{mg:thm:lower4} & Theorem\\
-$SU(2)$: $\delta'/\beta^4=1.8\cdot10^7$ at $\beta=10^{-9}$ ($d=4$; Theorem~\ref{mg:thm:lower3}: $8.4\cdot10^{10}$); the $\beta^4$ coefficient of $m-4\log(1/u)+\log\Upsilon$ lies in $[-262,-\frac{17}{128}]$ ($d=4$); enumerations of the junction lemmas and the narrowings & Rem.~\ref{mg:rem:betafour} & Numerical\\
-Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order (the moves by characters, a recursion following the moving tube, the shifts and jumps on the odd sector); the $C$-odd mass; the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\
+Third-order lower bound with an effective constant: $m\ge4\log(1/u)-\log\Upsilon-(\delta'_4+o(1))\beta^4$, $\delta'_4=160(d-3)+8K_Su_1^2$, the moves of $H_C$ at the sup norm (the shifts and jumps and the U-turns drop out); for $SU(2)$, $2$ ($d=3$), $166$ ($d=4$). With Cor.~\ref{mg:cor:fourthupper}: $\liminf$ and $\limsup$ of $\beta^{-4}(m-4\log(1/u)+\log\Upsilon)$ lie in $[-166,-\frac{17}{128}]$ ($SU(2)$, $d=4$) & Lem.~\ref{mg:lem:jsums4}, \ref{mg:lem:jsums6}, Thm.~\ref{mg:thm:lower4}, Rem.~\ref{mg:rem:betafour}(ii) & Theorem\\
+$SU(2)$: admissible $\delta'/\beta^4$ at $\beta=10^{-9}$: $1.9\cdot10^5$ ($d=4$), $428$ ($d=3$) (Theorem~\ref{mg:thm:lower3}: $8.4\cdot10^{10}$, $3.35\cdot10^8$); enumerations of the junction lemmas and the narrowings, with two independent codes & Rem.~\ref{mg:rem:betafour}(iii),(iv) & Numerical\\
+Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order (the moves by characters, a recursion following the moving tube); the $C$-odd mass; the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\
 \bottomrule
 \end{tabular}
 \end{center}

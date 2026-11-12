@@ -1,0 +1,8 @@
+n=3 (d=4): 6630 fronts with <= 9 edges through a vertex  (167.8s)
+  (ii) one plaquette, two front-pairs, |p'| <= 9:
+         1  (4, 'other layer', 'c=q', 'bd q | bd c')
+        12  (6, 'other layer', 'c shares a link', 'bd q ^ bd c')
+        12  (7, 'other layer', 'c shares a link', 'bd q | bd c')
+        20  (8, 'other layer', 'c shares one vertex', 'bd q ^ bd c')
+      expected: cap (4 edges, c=q, bd q, other layer) once; K_S=12 with 6 and with 7 edges; 4(P_v-1)-2K_S=20 with 8
+  (iii) one plaquette, three front-pairs (4, x, y), |x|,|y| <= 4: 68640 pairs tested, junctions found: {} (Lemma: none)  (0s)
