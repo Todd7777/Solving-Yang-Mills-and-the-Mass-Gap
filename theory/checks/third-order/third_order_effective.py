@@ -36,7 +36,10 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
     if volume == 'finite': N[4] = Pv; N[5] = 0
     def Yf(z, p=0): return fsum(m**p*binomial(KS*m, m-1)*(b*exp(z))**m for m in range(1, NMAX))
     cT = mpf(1); xF = mpf(0); xC = mpf(0)
+    if omega >= 1: raise AssertionError('omega >= 1')
     for _ in range(300):
+        if cT > 50 or xF > 50 or xC > 50:          # the decoration constants diverge (e.g. varpi too small for this beta): no admissible delta'
+            raise AssertionError('decoration constants diverge')
         A0 = exp(cT)*fsum(N[k]*a**(mpf(k)/2)*exp(xF*k) for k in range(4, KMAX))
         xF_n = Pv*Yf(xC) + A0; xC_n = 4*Pv*Yf(xC) + 8*A0
         hJ = C*max(a**(mpf(k)/2)*k*Pv*Yf(xC)*exp(xF*k) for k in range(4, 12))
