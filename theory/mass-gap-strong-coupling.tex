@@ -14,6 +14,7 @@
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
@@ -53,7 +54,8 @@ report, and sharper lower bounds added (Sections~\ref{mg:sec:sharp} and~\ref{mg:
 after a referee report, and the lower bound made effective on the whole range, the same day; the first-order constant (Section~\ref{mg:sec:junctions})
 added, 10 November 2026; the cap by characters and the first-order term (Section~\ref{mg:sec:cap}) added the same day, and revised after a referee
 report; the second-order term (Section~\ref{mg:sec:second}) added, 11 November 2026, and revised after a referee report; the third-order term
-(Section~\ref{mg:sec:third}) added the same day; living document}
+(Section~\ref{mg:sec:third}) added the same day, and revised after a referee report; the upper bound to fourth order and the fourth-order
+conjecture (Section~\ref{mg:sec:fourth}) added, 12 November 2026; living document}
 
 \begin{document}
 \maketitle
@@ -100,7 +102,14 @@ is the largest variance of a real unit plaquette function in the span of $\chi_\
 $m(\mu_\beta)=4\log(1/u(\beta))+\beta^2/8+O(\beta^3)$. At third order nothing new enters:
 $m(\mu_\beta)=4\log(1/u(\beta))-\log\Upsilon(\beta)+O(\beta^4)$, so the term of order $\beta^3$ is that of $-\log\Upsilon$, which is $\beta^3/432$ for $SU(3)$,
 $-\beta^3/6000$ for $SU(5)$ (five fundamental fluxes meet at a link), and $0$ for $U(1)$, $SU(2)$, $SU(4)$ and $SU(N)$, $N\ge6$; for $SU(2)$,
-$m(\mu_\beta)=4\log(4/\beta)+\frac7{24}\beta^2+O(\beta^4)$. For $SU(2)$ the two
+$m(\mu_\beta)=4\log(4/\beta)+\frac7{24}\beta^2+O(\beta^4)$. At fourth order the plaquette state moves: it hops to a neighbouring plaquette through a
+front widened to six edges, bulges by a unit cube, and for $d\ge4$ turns or jumps through a unit cube of a time slice, each with relative weight $u^4$.
+Spreading the plaquette function over a finite set of plaquettes and applying the positivity of the transfer matrix to every four- and six-edge front of the
+crossing layer, we prove $\limsup_{\beta\downarrow0}\beta^{-4}(m(\mu_\beta)-4\log(1/u)+\log\Upsilon)\le-h\,u_1^4$ with $h=26d-70$ ($10d-22$ in the $C$-odd sector,
+which carries the gap for $U(1)$) and $u_1=\lim u/\beta$: the term of order $\beta^4$ is negative. We conjecture equality,
+$m(\mu_\beta)=4\log(1/u)-\log\Upsilon-hu^4+O(\beta^5)$. Exact transfer-matrix spectra of $\mathbb Z_2$ and $\mathbb Z_3$ follow the predicted band level by level. For
+$SU(2)$ and $SU(3)$ in $d=4$ the conjecture reproduces the terms of order $u^4$ of the classical strong-coupling series ($-\frac{98}3u^4$ for the $SU(2)$ scalar glueball)
+in four of five channels. For $SU(2)$ the two
 bounds give $-1.3\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
 $-2.5\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$ (a numerical evaluation of the explicit constants).
 The asymptotics
@@ -137,6 +146,10 @@ mass to all orders in $\beta$, whereas the bounds proved here determine it up to
 first lines of the abstract of \cite{OBS85} mention a mass splitting for complex characters. For $SU(3)$ the cap of Section~\ref{mg:sec:cap} gives a
 first-order splitting of the $C$-even and $C$-odd plaquette states, presumably the splitting found in \cite{OBS85}; only the shift of the lowest
 ($C$-even) state is proved here (Corollary~\ref{mg:cor:firstorder2}), that of the $C$-odd state is Heuristic (Remark~\ref{mg:rem:cap}(iii)).
+The strong-coupling series of the glueball masses were computed by Münster \cite{Mun81} and Seo \cite{Seo82}. We know them only as quoted by Langelage,
+Münster and Philipsen \cite{LMP07,LMP08}, which we have read. Their terms through order $u^3$ agree with Corollaries~\ref{mg:cor:second}
+and~\ref{mg:cor:third}, and their terms of order $u^4$ agree with Conjecture~\ref{mg:conj:fourth} in four of five channels
+(Remark~\ref{mg:rem:fourth}(iii)).
 What this article adds for the project is a short self-contained proof, with explicit constants and the explicit range
 $\beta<\beta_0(d)$, for general compact $G$ and for the infinite-volume theory of \cite{II}, together with a covariance bound for all
 bounded local observables.
@@ -196,7 +209,10 @@ $O(\beta^2)$ for $U(1)$ and $SU(2)$ and $\beta/6+O(\beta^2)$ for $SU(3)$ (fundam
 $m(\mu_\beta)=4\log(1/u(\beta))-\log\Upsilon(\beta)+O(\beta^3)$, with $\Upsilon(\beta)$ the largest variance of a real unit plaquette function in the span of
 $\chi_\rho,\overline{\chi_\rho}$ under the weight $w_\beta/c_0$ (Theorems~\ref{mg:thm:upper2} and~\ref{mg:thm:lower2}, Corollary~\ref{mg:cor:second}); for $SU(2)$,
 $m(\mu_\beta)=4\log(1/u(\beta))+\beta^2/8+O(\beta^3)$. At third order, $m(\mu_\beta)=4\log(1/u(\beta))-\log\Upsilon(\beta)+O(\beta^4)$
-(Theorem~\ref{mg:thm:lower3}, Corollary~\ref{mg:cor:third}). The upper bound holds, with a larger explicit bound on $D$, whenever $N\le4$, or
+(Theorem~\ref{mg:thm:lower3}, Corollary~\ref{mg:cor:third}). At fourth order the plaquette state moves, and
+$m(\mu_\beta)\le4\log(1/u(\beta))-\log\Upsilon(\beta)-(26d-70)u(\beta)^4+o(\beta^4)$ for $SU(N)$, $N\le5$ ($10d-22$ in place of $26d-70$ for $U(1)$)
+(Theorem~\ref{mg:thm:upper4}, Corollary~\ref{mg:cor:fourthupper}); equality up to $O(\beta^5)$ is Conjecture~\ref{mg:conj:fourth}. The upper bound holds, with a
+larger explicit bound on $D$, whenever $N\le4$, or
 $N=5$ and $\rho\cong\bar\rho$. Without any restriction on $N$, the
 upper bound holds for all sufficiently small $\beta$, so $m(\mu_\beta)=4\log(1/\beta)+O(1)$ as $\beta\downarrow0$.
 \end{theorem}
@@ -209,7 +225,7 @@ the upper bound on spatial lattices with sides $\ge3$, Corollary~\ref{mg:cor:sha
 Lemma~\ref{mg:lem:frontsrange}) for the sharper lower bound and the asymptotics, Theorem~\ref{mg:thm:junctions} and Corollary~\ref{mg:cor:firstorder}
 for the junctions, Theorems~\ref{mg:thm:caplower} and~\ref{mg:thm:upperchar} and Corollary~\ref{mg:cor:firstorder2} for the first-order term, Theorems~\ref{mg:thm:upper2}
 and~\ref{mg:thm:lower2} and Corollary~\ref{mg:cor:second} for the second-order term, Theorem~\ref{mg:thm:lower3} and Corollary~\ref{mg:cor:third}
-for the third-order term, and the last sentence of Theorem~\ref{mg:thm:upper} for arbitrary $N$. For $SU(2)$ the interval of the last part has length at most $6.1\cdot10^{-4}$ ($d=4$)
+for the third-order term, Theorem~\ref{mg:thm:upper4} and Corollary~\ref{mg:cor:fourthupper} for the fourth-order upper bound, and the last sentence of Theorem~\ref{mg:thm:upper} for arbitrary $N$. For $SU(2)$ the interval of the last part has length at most $6.1\cdot10^{-4}$ ($d=4$)
 and $2.7\cdot10^{-3}$ ($d=3$) on the whole range (Remark~\ref{mg:rem:cap}; Numerical: an evaluation of the explicit constants).
 
 \begin{remark}[Comparison]\label{mg:rem:comparison}
@@ -257,7 +273,12 @@ $u^4\Upsilon(\beta)(1+O(\beta^6))$, the shifts and jumps of the tube vanish (the
 generating function is charged only to the slices that the path reaches first; with the upper bound for the best plaquette function,
 $m(\mu_\beta)=4\log(1/u(\beta))-\log\Upsilon(\beta)+O(\beta^3)$. (11) At third order (Section~\ref{mg:sec:third}) nothing new enters. The factor $\varpi$
 can be taken of order $\beta^2$; there are no junctions with three plaquettes and two four-edge fronts; and a junction with three front-pairs and one
-plaquette has a front of at least five edges. So the lower bound holds with $\delta'=O(\beta^4)$, and $m(\mu_\beta)=4\log(1/u(\beta))-\log\Upsilon(\beta)+O(\beta^4)$.
+plaquette has a front of at least five edges. So the lower bound holds with $\delta'=O(\beta^4)$, and $m(\mu_\beta)=4\log(1/u(\beta))-\log\Upsilon(\beta)+O(\beta^4)$. (12) At fourth order
+(Section~\ref{mg:sec:fourth}) the plaquette state moves: by hops and bulges through six-edge fronts, and by turns and jumps through unit cubes of a slice. For
+a plaquette function spread over a finite set of plaquettes, positivity is applied with one term for every four- and six-edge front of the crossing layer.
+Each term is evaluated exactly on one or two unit cubes. The rest is controlled because a set of plaquettes in which no link lies in exactly one plaquette has
+at least six plaquettes, and six only for a unit cube. This gives $m\le4\log(1/u)-\log\Upsilon-hu^4+o(\beta^4)$, with $h=26d-70$ the top of the spectrum of the
+hopping matrix; the conjecture is equality.
 
 \section{The duplicated system}\label{mg:sec:dup}
 
@@ -2739,7 +2760,8 @@ in characters;
 \end{itemize}
 (Numerical) In the exact $\mathbb Z_n$ spectra in $d=3$ the residual $m-4\log(1/u)+\log\Upsilon_C$ is about $-8u^4$ at momentum $0$ and $O(u^5)$ at momentum
 $(\pi,\pi)$ (Remark~\ref{mg:rem:second}(ii)). (Theorem) By Theorem~\ref{mg:thm:upper2}, whose error is $O(\beta^5)$,
-$\limsup_{\beta\downarrow0}\beta^{-4}\bigl(m(\mu_\beta)-4\log(1/u)+\log\Upsilon\bigr)\le0$ for every $G$ and $\rho$.
+$\limsup_{\beta\downarrow0}\beta^{-4}\bigl(m(\mu_\beta)-4\log(1/u)+\log\Upsilon\bigr)\le0$ for every $G$ and $\rho$; Theorem~\ref{mg:thm:upper4} improves
+this to $\le-h_Cu_1^4$.
 
 The values of Lemma~\ref{mg:lem:Upsilon3} follow a pattern. If $\iota=0$, then exactly $\Upsilon_+=2\partial_t^2K(t,0)$ and $\Upsilon_-=2\partial_s^2K(t,0)$ at $t=\beta/N$,
 where $K(t,s):=\log\langle\exp(t\,\mathrm{Re}\,\chi_\rho+s\,\mathrm{Im}\,\chi_\rho)\rangle$; so $\Upsilon_\pm-1$ are given by the cumulants of
@@ -2786,9 +2808,455 @@ asymptotic. For $SU(2)$ the two bounds now give $1.249966\cdot10^{-15}\le m(\mu_
 $1.2465\cdot10^{-13}\le m(\mu_\beta)-4\log(1/u)\le1.2500\cdot10^{-13}$ at $\beta=10^{-6}$ ($d=3$), and $1.2416\cdot10^{-15}\le m(\mu_\beta)-4\log(1/u)\le1.2500\cdot10^{-15}$
 at $\beta=10^{-7}$ ($d=4$): the second-order term $\beta^2/8$ is resolved there to a few parts in $10^5$, $10^3$ and $10^3$.
 
-(iv) What remains: the fourth-order term, which needs the hopping of (i) and the junctions with four plaquettes by characters (and a proof of the
-counts $Z_{4,4}$); the analyticity of
+(iv) What remains: the fourth-order term, of which Section~\ref{mg:sec:fourth} proves the upper half and conjectures the value; the lower
+half needs the hopping of (i) and the junctions with four plaquettes by characters, and a proof of the counts $Z_{4,4}$
+(Remark~\ref{mg:rem:fourth}(v)); the analyticity of
 $m+4\log u$; the $C$-odd mass; and, near $\beta_0(d)$, the crude counts and $\mathcal T_Q$.
+\end{remark}
+
+\section{The fourth-order term: the plaquette state moves}\label{mg:sec:fourth}
+
+By Corollary~\ref{mg:cor:third}, $m(\mu_\beta)=4\log(1/u)-\log\Upsilon+O(\beta^4)$: up to third order the plaquette state stays on its plaquette, dressed
+by the weight of that plaquette. At fourth order it moves. Three local processes change the tube, each with relative weight $u^4$ for every $G$ and $\rho$
+(Remark~\ref{mg:rem:processes}):
+\begin{itemize}
+\item a \emph{bulge}: for one layer the front $\partial q$ of the tube widens to the six links of $\partial q\triangle\partial c$, where $c$ shares a link with
+$q$, and then narrows back to $\partial q$; the tube acquires the unit cube $c\times[s,s+1]$ on one of its sides;
+\item a \emph{hop}: the same widened layer, narrowed on the other side, so that the tube continues on $c$;
+\item a \emph{turn} or a \emph{jump} ($d\ge4$): at one slice, four faces of a unit cube of the spatial lattice carry the tube from a face $q$ of the cube to
+an adjacent face (a turn) or to the opposite face (a jump).
+\end{itemize}
+They define a translation-invariant matrix $H_C$ on the plaquettes of a time slice, for each sector $C=\pm$ of the plaquette function
+(Definition~\ref{mg:def:hopping}); its spectrum reaches up to $h_+=26d-70$ and $h_-=10d-22$ (Lemma~\ref{mg:lem:hopping}). The prediction
+(Conjecture~\ref{mg:conj:fourth}) is $m(\mu_\beta)=4\log(1/u)-\log\Upsilon-h_Cu^4+O(\beta^5)$, with $C$ the sector of $\Upsilon$; for $SU(2)$ in $d=4$ this
+is $m=-4\log u+2u^2-\frac{98}3u^4+O(u^5)$. We prove the upper half (Theorem~\ref{mg:thm:upper4}): for every finite set $\mathcal W$ of plaquettes of a
+slice and every $a\in\R^{\mathcal W}\setminus\{0\}$,
+\[
+m(\mu_\beta)\ \le\ 4\log\frac1u-\log\Upsilon_C-\log\Bigl(1+u^4\,\frac{a^\top H_{C,\mathcal W}\,a}{a^\top a}\Bigr)+O(\beta^5),
+\]
+with a constant depending on $\mathcal W$ and $a$; hence $\limsup_{\beta\downarrow0}\beta^{-4}\bigl(m(\mu_\beta)-4\log(1/u)+\log\Upsilon_C\bigr)\le-h_Cu_1^4$,
+$u_1=\lim u/\beta$. The proof is that of Theorem~\ref{mg:thm:upper2} for a plaquette function spread over $\mathcal W$. Positivity
+(Lemma~\ref{mg:lem:pos}) is applied with one term for every four-edge front $\partial q$ and every six-edge front $\partial q\triangle\partial c$ in the
+crossing layer. Each term is evaluated exactly by characters on one unit cube or on two cubes glued along a face (Lemma~\ref{mg:lem:twocubes}), and two
+combinatorial lemmas (Lemmas~\ref{mg:lem:sixplaq} and~\ref{mg:lem:slice}) show that everything else is $O(\beta^5)$ relative to the tube. The matching lower
+bound is open (Remark~\ref{mg:rem:fourth}(v)). The evidence for the conjecture is of two kinds (Remark~\ref{mg:rem:fourth}). Exact transfer-matrix
+spectra of $\mathbb Z_2$ and $\mathbb Z_3$ in $d=3$ and $d=4$ follow every level of the predicted band, in both sectors. And the classical strong-coupling
+series of Münster and Seo for $SU(2)$ and $SU(3)$ in $d=4$, as quoted in \cite{LMP07}, agree with it at order $u^4$ in four of five channels.
+
+\begin{definition}[The hopping matrix]\label{mg:def:hopping}
+Let $\Lambda_s$ be $\Z^{d-1}$ or a periodic spatial lattice with all sides $\ge3$. Give each plaquette $q$ its standard orientation, let $\partial q$ be its
+oriented boundary (a $1$-chain), and write $q\sim q'$ if $q\ne q'$ share a link. For $q\sim c$ let $\sigma(q,c)\in\{\pm1\}$ be the sign for which
+$\partial q+\sigma(q,c)\,\partial c$ has six links (the common link cancels). A \emph{unit cube} of $\Lambda_s$ is the set of the six plaquettes bounding a
+unit $3$-cube; fix an orientation of the $3$-cube, and for a face $p$ let $\epsilon_\Gamma(p)=1$ if the standard orientation of $p$ is the induced
+boundary orientation and $\epsilon_\Gamma(p)=-1$ otherwise. For distinct faces $q,q'$ of $\Gamma$ put $\sigma_\Gamma(q,q'):=-\epsilon_\Gamma(q)\epsilon_\Gamma(q')$, which
+does not depend on the orientation chosen. For $C\in\{+,-\}$ put $\mathsf s_C:=[C=-]$ and let $H_C$ be the matrix indexed by the plaquettes with
+\[
+H_C(q,q):=K_S,\qquad H_C(q,q'):=[q\sim q']\,\sigma(q,q')^{\mathsf s_C}+\sum_{\Gamma\ni q,q'}\sigma_\Gamma(q,q')^{\mathsf s_C}\qquad(q\neq q'),
+\]
+the sum over the unit cubes having both $q$ and $q'$ as faces. Here $K_S=4(2d-5)$ is the number of plaquettes sharing a link with a given one. For a
+finite set $\mathcal W$ of plaquettes, $H_{C,\mathcal W}:=(H_C(q,q'))_{q,q'\in\mathcal W}$.
+\end{definition}
+
+After a hop the front $\partial q+\sigma(q,c)\partial c$ is $\sigma(q,c)\,\partial c$ plus the boundary of $q$ and $c$ inserted at the two slices: a tube that
+carries $\rho$ on $q$ in its standard orientation continues on $c$ in the orientation $\sigma(q,c)$, and likewise through a cube with $\sigma_\Gamma$. The
+function $\sqrt2\,\mathrm{Im}\,\chi_\rho$ changes sign with the orientation, $\sqrt2\,\mathrm{Re}\,\chi_\rho$ does not; this is the origin of the exponent
+$\mathsf s_C$.
+
+\begin{lemma}[The hopping matrix]\label{mg:lem:hopping}
+Let $\Lambda_s=\Z^{d-1}$.
+\begin{enumerate}[label=(\roman*)]
+\item Two distinct plaquettes are faces of at most one common unit cube, and of one if and only if they share a link and are perpendicular, or are
+translates of each other by a unit vector perpendicular to their plane. If $q\sim c$ are coplanar, $\sigma(q,c)=1$. For opposite faces of a unit cube
+$\Gamma$, $\sigma_\Gamma(q,q')=1$; for adjacent faces, $\sigma_\Gamma(q,q')=-\sigma(q,q')$.
+\item Hence $H_+=K_S\mathbf 1+A_\parallel+2A_\perp+A_J$ and $H_-=K_S\mathbf 1+A_\parallel+A_J$, where $A_\parallel$, $A_\perp$, $A_J$ are the adjacency
+matrices of the relations ``coplanar and sharing a link'' ($4$ per plaquette), ``perpendicular and sharing a link'' ($8(d-3)$ per plaquette) and
+``opposite faces of a unit cube'' ($2(d-3)$ per plaquette). Every row of $H_C$ sums to
+\[
+h_+:=26d-70,\qquad h_-:=10d-22 .
+\]
+\item $H_C$ is a bounded self-adjoint operator on $\ell^2$ of the plaquettes, and $\sup\spec H_C=h_C$. If $N_L$ is the set of plaquettes of the box
+$[0,L]^{d-1}$, then $\mathbf 1^\top H_{C,N_L}\mathbf 1/|N_L|\to h_C$ as $L\to\infty$.
+\item For $d=4$, on the translation-invariant vectors, which are the functions of the three orientations of the plaquettes, $H_+$ has the eigenvalues
+$34$ (the uniform vector) and $10$ (twice), and $H_-$ the eigenvalue $18$ (three times). Under the cubic group these are the representations $A_1$, $E$
+and $T_1$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) Let $q$ be spanned at $x$ by unit vectors $e,e'$. A unit cube having $q$ as a face is spanned by $e,e'$ and a unit vector $g\perp e,e'$ (on the side of
+$g$); there are $2(d-3)$ of them. Its faces other than $q$ are the translate $q+g$ and the four plaquettes spanned by an edge of $q$ and $g$. The
+plaquettes through an edge of $q$ are $q$, its coplanar neighbour across that edge, and $2(d-3)$ perpendicular ones, one for each $g$. So the faces other
+than $q$ of the cubes through $q$ are exactly the $2(d-3)$ translates $q+g$ and the $8(d-3)$ perpendicular plaquettes sharing a link with $q$, and each
+lies in one such cube only, the one determined by $g$. This proves the first statement. If $c$ is the coplanar neighbour of $q$ across the edge
+$\{x+e,x+e+e'\}$, this edge is traversed in the direction $e'$ by $\partial q$ and in the direction $-e'$ by $\partial c$ (both plaquettes have the
+orientation $e\wedge e'$); likewise for the other three edges, so $\sigma(q,c)=1$. For a unit cube $\Gamma$, $\sum_{p\in\Gamma}\epsilon_\Gamma(p)\partial p=0$
+(the boundary of a boundary). Opposite faces have the same standard orientation and opposite outward normals, so $\epsilon_\Gamma(q)=-\epsilon_\Gamma(q')$ and
+$\sigma_\Gamma(q,q')=1$. If $q,q'$ are adjacent faces with common link $l$, no other face of $\Gamma$ contains $l$, so the coefficients of $l$ satisfy
+$\epsilon_\Gamma(q)\,\partial q(l)+\epsilon_\Gamma(q')\,\partial q'(l)=0$, while $\partial q(l)+\sigma(q,q')\,\partial q'(l)=0$ by definition; as all four numbers are
+$\pm1$, $\sigma(q,q')=\epsilon_\Gamma(q)\epsilon_\Gamma(q')=-\sigma_\Gamma(q,q')$.
+
+(ii) By (i), for $C=+$ a perpendicular neighbour receives $1$ from the hop and $1$ from the turn through the unique common cube, a coplanar neighbour $1$,
+a translate across a cube $1$; for $C=-$ the hop and the turn cancel, and the other two terms are $1$. There are $4$ coplanar neighbours (one across each
+edge), $K_S-4=8(d-3)$ perpendicular ones, and $2(d-3)$ translates. So the row sums are $K_S+4+16(d-3)+2(d-3)=26d-70$ and $K_S+4+2(d-3)=10d-22$.
+
+(iii) By (ii) $H_C$ is symmetric with non-negative entries and constant row sums $h_C$, so $\norm{H_C}\le h_C$ (Schur's test). Every plaquette of $N_L$ at
+distance $\ge2$ from the boundary of the box has all its neighbours for $H_C$ in $N_L$; these are all but $O(L^{d-2})$ of the $|N_L|\ge L^{d-1}$
+plaquettes, so $\mathbf 1^\top H_{C,N_L}\mathbf 1/|N_L|\to h_C$, and $\sup\spec H_C\ge h_C$ by the variational principle.
+
+(iv) By (ii), the plaquettes of the same orientation as $q$ receive $K_S+4+2=18$ in total from $q$, and those of each of the other two orientations $2\cdot4=8$
+for $C=+$ (the $8$ perpendicular neighbours of $q$ split evenly between them) and $0$ for $C=-$. The matrices $18\cdot\mathbf 1+8(J-\mathbf 1)$ and
+$18\cdot\mathbf 1$ on $\R^3$ ($J$ the matrix of ones) have the stated eigenvalues. The uniform vector spans $A_1$ and its orthogonal complement is $E$; the
+$C$-odd vectors change sign with the orientation of the plaquettes and transform as the components of an axial vector, $T_1$.
+\end{proof}
+
+\begin{remark}[The three processes]\label{mg:rem:processes}
+(Heuristic.) Consider the tube on $q$, the four temporal plaquettes over $\partial q$ in every layer, carrying $\rho$. A bulge replaces the temporal plaquette
+over the common link $\ell$ of $q$ and $c$ in one layer by the other five faces of the unit cube $c\times[s,s+1]$: four plaquettes more. A hop uses the six
+temporal plaquettes over $\partial q\triangle\partial c$ in one layer, with $c$ at its lower slice and $q$ at its upper one; this is again four plaquettes more
+than the tube. A turn or a jump uses the four faces of a unit cube $\Gamma$ of a slice other than $q$ and $q'$, again four plaquettes more. In each case every
+link of the surface lies in exactly two of its plaquettes, and the surface is again a tube. By the character integrals of Lemma~\ref{mg:lem:twocubes} it
+costs $u^4$ relative to the plain tube, for every $G$ and $\rho$, with the orientation signs of Definition~\ref{mg:def:hopping}. Per unit of time a
+plaquette state thus has $K_S$ bulges and moves to each of its neighbours in $H_C$ with amplitude $u^4$, and the plaquette band is
+\[
+e^{-m_C(k)}=u^4\,\Upsilon_C\,\bigl(1+u^4\lambda(\hat H_C(k))+O(\beta^5)\bigr),
+\]
+$\lambda(\hat H_C(k))$ the eigenvalues of the symbol of $H_C$ at momentum $k$, a matrix over the $\binom{d-1}2$ orientations. Its bottom, the gap, is at $k=0$,
+where the largest eigenvalue is $h_C$ (Lemma~\ref{mg:lem:hopping}(iii)). Nothing else should enter at relative order $u^4$. By Lemma~\ref{mg:lem:slice},
+at one slice a four-edge front is carried to another four-edge front by fewer than five plaquettes only through a turn or a jump, and a six-edge front is
+closed by fewer than three only as in a bulge or a hop. The two junctions with four plaquettes ``in the same layer'' of the referee's enumeration
+(Remark~\ref{mg:rem:third}(ii)) join two tubes, and enter the propagation of one plaquette state only at order $u^8$.
+\end{remark}
+
+\begin{conjecture}[The fourth-order term]\label{mg:conj:fourth}
+Let $G$ be metrisable and $\rho$ irreducible and non-trivial. As $\beta\downarrow0$,
+\[
+m(\mu_\beta)=\min_C\Bigl(4\log\frac1{u(\beta)}-\log\Upsilon_C(\beta)-h_C\,u(\beta)^4\Bigr)+O(\beta^5),
+\]
+where $C$ runs over $\{+,-\}$ if $\iota=0$, and over $\{+\}$ with $\Upsilon_+:=\Upsilon$ if $\iota=1$. For the fundamental representations in $d=4$:
+\begin{gather*}
+SU(2):\quad m(\mu_\beta)=-4\log u+2u^2-\tfrac{98}3u^4+O(u^5)=4\log\tfrac4\beta+\tfrac7{24}\beta^2-\tfrac{167}{1152}\beta^4+O(\beta^5),\\
+SU(3):\quad m(\mu_\beta)=-4\log u-3u+9u^2-\tfrac{27}2u^3-7u^4+O(u^5),\\
+U(1)\ (C=-):\quad m(\mu_\beta)=-4\log u+\tfrac12u^2-\tfrac{425}{24}u^4+O(u^5);
+\end{gather*}
+in $d=3$, $m+4\log u$ is $2u^2-\frac{20}3u^4$ ($SU(2)$), $-3u+9u^2-\frac{27}2u^3+19u^4$ ($SU(3)$) and $\frac12u^2-\frac{185}{24}u^4$ ($U(1)$), up to $O(u^5)$.
+\end{conjecture}
+
+\begin{lemma}[Six plaquettes]\label{mg:lem:sixplaq}
+Let $\mathcal Y$ be a non-empty finite set of plaquettes of $\Z^n$, $n\ge2$, such that every link of $E(\mathcal Y)$ lies in at least two plaquettes of
+$\mathcal Y$. Then $|\mathcal Y|\ge6$, with equality only if $\mathcal Y$ is a unit cube. The same holds on a periodic lattice with all sides $\ge8$.
+\end{lemma}
+
+\begin{proof}
+Let $p\in\mathcal Y$. Every other plaquette contains at most one link of $p$ (two distinct plaquettes share at most one link, proof of
+Lemma~\ref{mg:lem:five}), and every link of $E(\mathcal Y\setminus\{p\})\setminus E(p)$ lies in two plaquettes of $\mathcal Y\setminus\{p\}$; the links of $p$ lie in
+further plaquettes, so $\mathcal Y\setminus\{p\}\neq\emptyset$, and Lemma~\ref{mg:lem:five} with $\mathcal L=E(p)$ gives $|\mathcal Y\setminus\{p\}|\ge5$.
+
+Let $|\mathcal Y|=6$, and choose a direction $k$ such that some plaquette of $\mathcal Y$ is spanned by $e_k$ and another unit vector. Let $M$ and $m$ be the
+largest and the smallest $k$-th coordinate of a vertex of $\mathcal Y$; then $m<M$. A plaquette with a vertex at height $M$ lies either in the hyperplane
+$\{x_k=M\}$ (a \emph{top} plaquette) or is spanned by $e_k$ and another direction with its upper edge at height $M$ (a \emph{side} plaquette). A link at
+height $M$ is the upper edge of exactly one plaquette spanned by $e_k$ and its own direction, so it lies in at most one side plaquette; as it lies in at least
+two plaquettes of $\mathcal Y$ if it lies in one, it lies in a top plaquette. Some plaquette of $\mathcal Y$ has a link at height $M$, so the set $\mathcal T$ of
+top plaquettes is non-empty; let $t:=|\mathcal T|$, and call a link of $E(\mathcal T)$ \emph{exposed} if it lies in exactly one plaquette of $\mathcal T$.
+Each exposed link is the upper edge of a side plaquette of $\mathcal Y$, distinct for distinct exposed links. By the same argument at height $m$, $\mathcal Y$
+contains a bottom plaquette, which is neither a top nor a side plaquette. So $6\ge t+e_{\mathcal T}+1$, $e_{\mathcal T}$ the number of exposed links. If
+$s_l$ is the number of plaquettes of $\mathcal T$ containing the link $l$, then $\sum_ls_l=4t$ and $\sum_{s_l\ge2}\binom{s_l}2\le\binom t2$, so
+$\sum_{s_l\ge2}s_l\le t(t-1)$ and $e_{\mathcal T}\ge t(5-t)$. For $t=2,3,4$ this gives $t+e_{\mathcal T}+1\ge9$; for $t=5$, $e_{\mathcal T}=0$ would make
+$\mathcal T$ a set as in the lemma with five plaquettes, so $e_{\mathcal T}\ge1$ and $t+e_{\mathcal T}+1\ge7$. Hence $t=1$: the four links of the top
+plaquette $\tau$ are exposed and are the upper edges of four side plaquettes, and these, $\tau$ and the bottom plaquette $b$ are all of $\mathcal Y$. At the
+bottom, the four links of $b$ are the lower edges of four side plaquettes, which must be the same four. A side plaquette spans the heights $M-1$ and $M$, so
+$m=M-1$, and its lower edge is its upper edge translated by $-e_k$; so $b=\tau-e_k$, and $\mathcal Y$ is the unit cube spanned by $\tau$ and $e_k$.
+
+On a periodic lattice with all sides $\ge8$, Lemma~\ref{mg:lem:five} applies as before. If $|\mathcal Y|=6$, every link-connected component of $\mathcal Y$
+satisfies the hypothesis, so $\mathcal Y$ is connected, and it lies in a box of side at most $7$ that does not wrap around. It therefore lifts to $\Z^n$ with
+the hypothesis preserved.
+\end{proof}
+
+\begin{lemma}[Configurations at a slice]\label{mg:lem:slice}
+Let $\Lambda_s$ be $\Z^{d-1}$ or periodic with all sides $\ge8$, $q$ a plaquette, and $F$ either $\partial q$ or $\partial q\triangle\partial c$ for some $c\sim q$,
+as a set of four, respectively six, links. Let $q'$ be a plaquette and $X$ a finite set of plaquettes with $q'\notin X$, such that every link $e$ has
+\[
+n(e):=[e\in F]+[e\in E(q')]+\#\{p\in X:e\in E(p)\}\ \neq1 .
+\]
+\begin{enumerate}[label=(\roman*)]
+\item If $F=\partial q$, then: $q'=q$ and $X=\emptyset$; or $q\notin X$, $q$ and $q'$ are distinct faces of a unit cube $\Gamma$, and $X=\Gamma\setminus\{q,q'\}$; or
+$|X|\ge5$.
+\item If $F=\partial q\triangle\partial c$, then: $q'\in\{q,c\}$ and $X=\{q,c\}\setminus\{q'\}$; or $|X|\ge3$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Distinct plaquettes share at most one link, so a plaquette other than $q$ contains at most one link of $q$.
+
+(i) If $q'=q$ (so $q\notin X$), every link of $E(X)\setminus E(q)$ lies in at least two plaquettes of $X$, so $X=\emptyset$ or $|X|\ge5$ by
+Lemma~\ref{mg:lem:five} with $\mathcal L=E(q)$. If $q'\ne q$ and $q\notin X$, then $\mathcal Y:=X\cup\{q,q'\}$ has $\#\{p\in\mathcal Y:e\in E(p)\}=n(e)$ for every
+link $e$, so it is as in Lemma~\ref{mg:lem:sixplaq}: $|X|\ge4$, with equality only if $\mathcal Y$ is a unit cube. If $q'\ne q$ and $q\in X$, the plaquettes of
+$Y:=(X\setminus\{q\})\cup\{q'\}$ differ from $q$, and every link $e\notin E(q)$ has $\#\{p\in Y:e\in E(p)\}=n(e)$; so $|X|=|Y|\ge5$ by Lemma~\ref{mg:lem:five}
+with $\mathcal L=E(q)$.
+
+(ii) Let $\ell$ be the common link of $q$ and $c$. For $e\ne\ell$, $[e\in F]=[e\in E(q)]+[e\in E(c)]$, and $\ell\notin F$.
+\begin{itemize}
+\item $q'\notin\{q,c\}$ and $q,c\notin X$. Then $\mathcal Y:=X\cup\{q',q,c\}$ is as in Lemma~\ref{mg:lem:sixplaq} (the link $\ell$ lies in $q$ and $c$), so
+$|X|\ge3$.
+\item $q'\notin\{q,c\}$ and $X$ meets $\{q,c\}$. Every link of $q'$ has $n\ge2$, so it lies in $F\subseteq E(q)\cup E(c)$ or in a plaquette of $X$. As $q'$ has at
+most one link in each plaquette boundary, $|X|\le2$ would leave at most three boundaries, those of $q$, $c$ and at most one further plaquette, for its four
+links. So $|X|\ge3$.
+\item $q'=q$ (the case $q'=c$ is symmetric), so $q\notin X$. The links of $E(c)\setminus\{\ell\}$ have $[e\in F]=1$, and $\ell$ has $[\ell\in F]+[\ell\in E(q')]=1$;
+so each of the four links of $c$ lies in a plaquette of $X$. If $c\notin X$, these are four distinct plaquettes, so $|X|\ge4$. If $c\in X$ and
+$X\neq\{c\}$, a plaquette $p\in X\setminus\{c\}$ has at most one link in each of $E(q)$ and $E(c)$. So it has a link outside $E(q)\cup E(c)$, which lies in a
+second plaquette of $X$ other than $c$, and $|X|\ge3$.
+\end{itemize}
+On a periodic lattice with sides $\ge8$ the lemmas used apply.
+\end{proof}
+
+\begin{lemma}[One and two cubes]\label{mg:lem:twocubes}
+For a plaquette $p$ let $U_p$ be its holonomy in the standard orientation; for an irreducible $r$ put $r^+:=r$ and $r^-:=\bar r$. Let $h_p$ be continuous
+class functions with $\sum_rd_r|\hat h_p(r)|<\infty$, where $\hat h_p(r):=\int h_p\overline{\chi_r}\dU$.
+\begin{enumerate}[label=(\roman*)]
+\item Let $\Gamma$ be the set of faces of a unit $3$-cube of the lattice, oriented as its boundary (for an orientation of the $3$-cube), and $\epsilon(p)=1$ or
+$-1$ according as the standard orientation of $p\in\Gamma$ is or is not this orientation. Then
+\[
+\int\prod_{p\in\Gamma}h_p(U_p)\dU=\sum_rd_r^{-4}\prod_{p\in\Gamma}\hat h_p\bigl(r^{\epsilon(p)}\bigr).
+\]
+\item Let $\Gamma_1,\Gamma_2$ be as in (i), with exactly one common face $s$, oriented so that $s$ receives opposite orientations, let
+$\Sigma:=(\Gamma_1\cup\Gamma_2)\setminus\{s\}$, and let $\epsilon(p)$ be as in (i) for $p\in\Sigma$ as a face of $\Gamma_1$ or of $\Gamma_2$. Then
+\[
+\int\prod_{p\in\Sigma}h_p(U_p)\dU=\sum_rd_r^{-8}\prod_{p\in\Sigma}\hat h_p\bigl(r^{\epsilon(p)}\bigr).
+\]
+\end{enumerate}
+In particular, if $h_p=f_\beta$ for all but two faces $p_1,p_2$, the two integrals are
+\[
+\sum_{r\neq0}u_r^k\,\hat h_{p_1}\bigl(r^{\epsilon(p_1)}\bigr)\,\hat h_{p_2}\bigl(r^{\epsilon(p_2)}\bigr),\qquad k=4\text{ and }k=8 .
+\]
+\end{lemma}
+
+\begin{proof}
+(i) Let $V_p$ be the holonomy of $p$ in its boundary orientation. If $\epsilon(p)=1$, $h_p(U_p)=\sum_r\hat h_p(r)\chi_r(V_p)$; if $\epsilon(p)=-1$, $U_p$ is
+conjugate to $V_p^{-1}$ and $h_p(U_p)=\sum_r\hat h_p(r)\chi_{\bar r}(V_p)=\sum_r\hat h_p(\bar r)\chi_r(V_p)$. So in both cases
+$h_p(U_p)=\sum_r\hat h_p(r^{\epsilon(p)})\chi_r(V_p)$. Insert these expansions. The six-fold series converges absolutely, as in the proof of
+Lemma~\ref{mg:lem:char}(ii), and may be integrated term by term. By the identity quoted there, $\int\prod_p\chi_{r_p}(V_p)\dU$ is $d_r^{-4}$ if all the $r_p$
+equal the same $r$ and $0$ otherwise.
+
+(ii) Two unit cubes with exactly one common face share exactly its four links. So we may fix the links of $s$ and integrate separately over the other links
+of $\Gamma_1$ and of $\Gamma_2$, obtaining functions $g_1$ and $g_2$ of the links of $s$. A gauge transformation at the vertices of $s$ acts on the links of $s$
+and on the links of $\Gamma_k$ at these vertices; changing variables in the latter (Haar measure is invariant) shows that $g_k$ is invariant under it. So
+$g_k=G_k(V_k)$ for a class function $G_k$ of the holonomy $V_k$ of $s$ in its orientation in $\Gamma_k$, and $V_2$ is conjugate to $V_1^{-1}$. By (i),
+applied to $\Gamma_k$ with the function $V_k\mapsto\overline{\chi_t(V_k)}=\chi_{\bar t}(V_k)$ on $s$, $\int G_k\overline{\chi_t}=d_t^{-4}c_k(t)$ with
+$c_k(t):=\prod_{p\in\Gamma_k\setminus\{s\}}\hat h_p(\bar t^{\,\epsilon(p)})$. The holonomy $V:=V_1$ of the four links of $s$ is Haar distributed, so
+\[
+\int g_1g_2=\int G_1(V)G_2(V^{-1})\,dV=\sum_{t,t'}d_t^{-4}d_{t'}^{-4}c_1(t)c_2(t')\int\chi_t(V)\overline{\chi_{t'}(V)}\,dV=\sum_td_t^{-8}c_1(t)c_2(t),
+\]
+which is the claim with $r=\bar t$. Finally $\hat f_\beta(r)=d_ru_r$ for $r\neq0$ and $\hat f_\beta(0)=0$, and $f_\beta(U^{-1})=f_\beta(U)$.
+\end{proof}
+
+\begin{theorem}[The upper bound to fourth order]\label{mg:thm:upper4}
+Let $d\ge3$, $G$ metrisable and $\rho$ irreducible and non-trivial. Let $\psi$ be one of the real unit eigenvectors of $\mathsf V$ of
+Lemma~\ref{mg:lem:Upsilon}(i) ($\chi_\rho$ if $\iota=1$; $\sqrt2\,\mathrm{Re}\,\chi_\rho$ or $\sqrt2\,\mathrm{Im}\,\chi_\rho$ if $\iota=0$), $\Upsilon_\psi$ its eigenvalue,
+and $C=+$ if $\psi(U^{-1})=\psi(U)$, $C=-$ if $\psi(U^{-1})=-\psi(U)$. Let $\mathcal W$ be a finite set of plaquettes of the time-zero slice of $\Z^d$ and
+$a\in\R^{\mathcal W}\setminus\{0\}$. Then, as $\beta\downarrow0$,
+\[
+m(\mu_\beta)\ \le\ 4\log\frac1{u(\beta)}-\log\Upsilon_\psi(\beta)-\log\Bigl(1+u(\beta)^4\,\frac{a^\top H_{C,\mathcal W}\,a}{a^\top a}\Bigr)+O(\beta^5),
+\]
+with a constant depending on $d$, $G$, $\rho$, $\mathcal W$ and $a$. The same holds for $m_{\Lambda_s}(\beta)$, uniformly in the periodic spatial lattices whose
+sides all exceed by at least $12$ the side of a box containing $\mathcal W$. Consequently
+\[
+\limsup_{\beta\downarrow0}\ \beta^{-4}\Bigl(m(\mu_\beta)-4\log\frac1{u(\beta)}+\log\Upsilon_\psi(\beta)\Bigr)\ \le\ -h_C\,u_1^4,\qquad
+u_1:=\lim_{\beta\downarrow0}\frac{u(\beta)}\beta=\frac{1+\iota}{2N^2}.
+\]
+\end{theorem}
+
+\begin{proof}
+Write $f=f_\beta$, $u=u(\beta)$, $\Upsilon=\Upsilon_\psi$, $\mathsf s=\mathsf s_C$, $|a|^2=a^\top a$; constants may depend on $d,G,\rho,\mathcal W,a$, and
+$\sum_q|a_q|\le|\mathcal W|^{1/2}|a|$. Let $\Lambda=(\Z/L_0\Z)\times\Lambda_s$ with $L_0\ge3$ and $\Lambda_s$ as in the statement. Let $B^+$ be the box obtained by
+enlarging by $3$ in every direction the smallest box containing the vertices of the plaquettes of $\mathcal W$, and $E_0$ the set of spatial links with both
+endpoints in $B^+$. All bounds below are uniform in $L_0$ and $\Lambda_s$, so, as in the proof of Theorem~\ref{mg:thm:upper}, they hold for the limits
+$L_0\to\infty$ and for $\mu_\beta$.
+
+\emph{Step 1: means, and the spectral inequality.} Put $m_w:=\int\psi(1+f)\dU=\langle f\psi\rangle$, $\tilde\psi:=\psi-m_w$ and $\tilde a:=\tilde\psi(1+f)$, a real
+class function with $\int\tilde a\dU=0$ and absolutely summable character expansion. Since $\mathsf V\psi=P_\rho M_{1+f}\psi-\langle f\psi\rangle P_\rho f$,
+\[
+P_\rho\tilde a=P_\rho M_{1+f}\psi-m_wP_\rho f=\mathsf V\psi=\Upsilon\psi ,
+\]
+and $\norm{(1-P_\rho)\tilde a}_2\le\norm{\psi f}_2+|m_w|(1+\norm f_2)=O(\beta)$. Let $A_q:=\psi(U_q)$ for $q\in\mathcal W$ (time $0$), $A_q(1)$ its translate to
+time $1$, and $\Phi:=\sum_qa_qA_q$. By the proof of Theorem~\ref{mg:thm:upper2}, which uses only $\mathsf V\psi=\Upsilon\psi$,
+$\Var(A_q)\le\Upsilon+O(\beta^5)$ and $|\langle A_q\rangle-m_w|=O(\beta^5)$ for every $q$. As in the proof of Theorem~\ref{mg:thm:upper},
+$m\le\log\bigl(\Var(\Phi)/\Cov(\Phi(0),\Phi(1))\bigr)$ once the covariance is positive.
+
+\emph{Step 2: the variance.} Let $q\ne q'$ in $\mathcal W$. Then $\Cov(A_q,A_{q'})=\langle\tilde\psi(U_q)\tilde\psi(U_{q'})\rangle+O(\beta^{10})$. Let $\mathcal C$ be the
+smallest set of plaquettes of the slice that contains $q,q'$ and every plaquette of the slice with at least two links in $S:=E(\mathcal C)$. It exists, and
+lies in the smallest box containing $q$ and $q'$, because a plaquette with two links in a set of links lies in every box containing them. A temporal plaquette
+contains one link of the slice, so every plaquette outside $\mathcal C$ contains at most one link of $S$. The derivation of~\eqref{mg:eq:local}
+applies, with Lemma~\ref{mg:lem:five} for the components of $X\setminus\mathcal C$ and Lemma~\ref{mg:lem:closed} for the ratios ($\theta_5$ in place of
+$\theta$). It gives $\langle\tilde\psi(U_q)\tilde\psi(U_{q'})\rangle=R\,M+O(\beta^5)$, with $R=1+O(\beta^5)$ and
+\[
+M=\int\tilde\psi(U_q)\tilde\psi(U_{q'})\prod_{p\in\mathcal C}(1+f(U_p))\dU=\sum_X\int\tilde a(U_q)\tilde a(U_{q'})\prod_{p\in X}f(U_p)\dU ,
+\]
+the sum over $X\subseteq\mathcal C\setminus\{q,q'\}$. The functions $\tilde a$ and $f$ have Haar mean zero, so a term vanishes if a link lies in exactly one of
+its factors. Otherwise $X\cup\{q,q'\}$ is as in Lemma~\ref{mg:lem:sixplaq}, so $|X|\ge5$ unless $q,q'$ are faces of a unit cube $\Gamma$ and
+$X=\Gamma\setminus\{q,q'\}$. The terms with $|X|\ge5$ are at most $\epsilon^5\norm{\tilde a}_2^2$, because $U_q$ and $U_{q'}$ are each Haar distributed. The
+term of the cube is, by Lemma~\ref{mg:lem:twocubes}(i), $\sum_{r\ne0}u_r^4\hat{\tilde a}(r^{\epsilon_\Gamma(q)})\hat{\tilde a}(r^{\epsilon_\Gamma(q')})$. Here
+$\hat{\tilde a}(r)=\Upsilon\hat\psi(r)$ for $r\in\{\rho,\bar\rho\}$; $\hat\psi(\bar r)=\overline{\hat\psi(r)}$; and $\sum_r\hat\psi(r)^2$ is $1$ if $C=+$ and $-1$ if
+$C=-$ (for $\psi=\sqrt2\,\mathrm{Im}\,\chi_\rho$, $\hat\psi(\rho)=-i/\sqrt2=-\hat\psi(\bar\rho)$). Hence the terms $r\in\{\rho,\bar\rho\}$ give
+$(-\epsilon_\Gamma(q)\epsilon_\Gamma(q'))^{\mathsf s}u^4\Upsilon^2=\sigma_\Gamma(q,q')^{\mathsf s}u^4\Upsilon^2$, and the others at most
+$\epsilon^4\norm{(1-P_\rho)\tilde a}_2^2=O(\beta^6)$. So
+\begin{gather*}
+\Cov(A_q,A_{q'})=[\exists\,\Gamma\ni q,q']\,\sigma_\Gamma(q,q')^{\mathsf s}u^4\Upsilon^2+O(\beta^5),\\
+\Var(\Phi)\le\Upsilon|a|^2+u^4\Upsilon^2\,a^\top C_{\mathcal W}a+O(\beta^5)|a|^2,
+\end{gather*}
+where $C_{\mathcal W}(q,q'):=\sum_{\Gamma\ni q,q'}\sigma_\Gamma(q,q')^{\mathsf s}$ for $q\ne q'$ and $C_{\mathcal W}(q,q):=0$.
+
+\emph{Step 3: positivity with several fronts.} For $\ell\in E_0$ let $s_\ell$ be the temporal plaquette of layer $0$ based on $\ell$. The proof of
+Lemma~\ref{mg:lem:pos} shows that, for every real $b$, $\langle\Delta\rangle=\sum_{F\subseteq E_0}T_F$ with $\Delta:=(\Phi(0)-b)(\Phi(1)-b)$, $T_F\ge0$, and
+\[
+T_F=\Bigl\langle\Delta\prod_{\ell\in F}\varphi_\beta(U_{s_\ell})\prod_{\ell\in E_0\setminus F}\bigl(1-\varphi_\beta(U_{s_\ell})\bigr)\Bigr\rangle .
+\]
+There only the term $F=E_0$ is written out; for the others the weight $w_\beta$ of $s_\ell$, $\ell\in E_0\setminus F$, is replaced by $c_0=w_\beta(1-\varphi_\beta)$.
+Take $b:=m_w\sum_qa_q$; then $\langle\Delta\rangle=\Cov(\Phi(0),\Phi(1))+(\langle\Phi\rangle-b)^2$ and $|\langle\Phi\rangle-b|=O(\beta^5)|a|$. Let $\mathcal F$ consist
+of the sets of links $\partial q$ ($q\in\mathcal W$) and $\partial q\triangle\partial c$ ($q\in\mathcal W$, $c\sim q$). They lie in $E_0$ and are distinct:
+$\partial q$ determines $q$, and $q$ and $c$ are the only plaquettes with three links in $\partial q\triangle\partial c$ (a plaquette with three links in a six-cycle
+contains three consecutive links of it, and only those of $q$ and of $c$ bound a plaquette). Hence
+\[
+\Cov(\Phi(0),\Phi(1))\ \ge\ \sum_{F\in\mathcal F}T_F-O(\beta^{10})|a|^2 .
+\]
+
+\emph{Step 4: localisation.} Fix $F\in\mathcal F$. Since $w_\beta\varphi_\beta=c_0f$, $w_\beta(1-\varphi_\beta)=c_0$ and $w_\beta=c_0(1+f)$, with
+$\cP':=\cP\setminus\{s_\ell:\ell\in E_0\}$,
+\begin{gather*}
+T_F=\sum_{q',q''\in\mathcal W}a_{q'}a_{q''}T_F(q',q''),\qquad T_F(q',q''):=\frac1{\Xi(\cP)}\int H'\prod_{p\in\cP'}(1+f(U_p))\dU,\\
+H':=\tilde\psi(U_{q'})\,\tilde\psi(U_{q''_1})\prod_{\ell\in F}f(U_{s_\ell}),
+\end{gather*}
+where $q''_1$ is the translate of $q''$ to time $1$. Let $\mathcal C$ be the smallest set of spatial plaquettes of the slices $0$ and $1$ that contains $q'$ and
+$q''_1$ and every spatial plaquette of these slices with at least two links in $S:=E(\mathcal C)\cup\bigcup_{\ell\in F}E(s_\ell)$. Its links lie in the box
+spanned by $E(\mathcal W)$ and $F$, so a temporal plaquette of layer $0$ with two links in $S$ is based on a link of $E_0$, hence not in $\cP'$; and the other
+temporal plaquettes contain at most one link of $S$. So every plaquette of $\cP'\setminus\mathcal C$ contains at most one link of $S$. The proof of
+\IIIref{Lemma}{Loop expansion}{al:lem:loopexp}, with $\cP'$ in place of $\cP$ in the expansion of the product and $S$ in place of $E_C$, writes $T_F(q',q'')$ as
+$\sum_X\Phi_{H'}(X)\,\Xi(\cP'\setminus\overline X)/\Xi(\cP)$. By Lemma~\ref{mg:lem:closed} the ratio lies between $e^{\mp\theta_5(|E_0|+|\overline X|)}$, and the
+derivation of~\eqref{mg:eq:local}, with Lemma~\ref{mg:lem:five} for $X\setminus\mathcal C$, gives
+\[
+T_F(q',q'')=R\,M+O\Bigl(\beta^5\int|H'|\dU\Bigr),\qquad M:=\int H'\prod_{p\in\mathcal C}(1+f(U_p))\dU,\qquad R=1+O(\beta^5).
+\]
+For fixed links of slice $0$ and temporal links, the map from the links $(\ell,1)$, $\ell\in F$, to the holonomies of the $s_\ell$ is a bijection preserving
+Haar measure, and likewise with the links $(\ell,0)$. By the Cauchy--Schwarz inequality, as in the proof of Lemma~\ref{mg:lem:twopoint},
+$\int|H'|\le\norm{\tilde\psi}_2^2(\int|f|)^{|F|}=O(\beta^{|F|})$.
+
+\emph{Step 5: the local integrals.} Since $q',q''_1\in\mathcal C$,
+\[
+M=\sum_{X_0,X_1}M(X_0,X_1),\qquad M(X_0,X_1):=\int\tilde a(U_{q'})\,\tilde a(U_{q''_1})\prod_{\ell\in F}f(U_{s_\ell})\prod_{p\in X_0\cup X_1}f(U_p)\dU,
+\]
+over the sets $X_0$ and $X_1$ of plaquettes of $\mathcal C$ of the slices $0$ and $1$ other than $q'$ and $q''_1$. All these functions have Haar mean zero, so
+$M(X_0,X_1)=0$ if some link lies in exactly one of the plaquettes $q'$, $q''_1$, $s_\ell$ ($\ell\in F$) and those of $X_0\cup X_1$. A link of slice $0$ lies in
+$s_\ell$ if and only if it is $\ell$, and the vertical links lie only in the $s_\ell$ (two each, $F$ being a cycle). So $(q',X_0)$, and $(q'',X_1)$ translated to
+time $0$, satisfy the hypothesis of Lemma~\ref{mg:lem:slice}. Every term is at most $\epsilon^{|X_0|+|X_1|}\norm{\tilde a}_2^2(\int|f|)^{|F|}$, by the
+same change of variables.
+
+(a) $F=\partial q$. By Lemma~\ref{mg:lem:slice}(i) the terms with $|X_0|+|X_1|\ge5$ are $O(\beta^9)$, and the others are of three kinds.
+\begin{itemize}
+\item $q'=q''=q$, $X_0=X_1=\emptyset$. The integral is over the unit cube $q\times[0,1]$, and Lemma~\ref{mg:lem:twocubes}(i) gives
+$\sum_{r\ne0}u_r^4|\hat{\tilde a}(r)|^2\ge u^4\norm{P_\rho\tilde a}_2^2=u^4\Upsilon^2$.
+\item $q''=q$, $X_1=\emptyset$, and $q',q$ faces of a unit cube $\Gamma$ of slice $0$ with $X_0=\Gamma\setminus\{q,q'\}$, or the same at time $1$. This is
+$\sigma_\Gamma(q,q')^{\mathsf s}u^8\Upsilon^2+O(\beta^{10})$, by Lemma~\ref{mg:lem:twocubes}(ii) for $\Gamma$ and $q\times[0,1]$ and the signs below.
+\item A junction at both times: $O(\beta^{12})$.
+\end{itemize}
+
+(b) $F=\partial q\triangle\partial c$. By Lemma~\ref{mg:lem:slice}(ii) the terms with $|X_0|\ge3$ or $|X_1|\ge3$ are $O(\beta^9)$. The others have
+$q',q''\in\{q,c\}$, $X_0=\{q,c\}\setminus\{q'\}$ and $X_1$ the translate of $\{q,c\}\setminus\{q''\}$. Their faces are those of the unit cubes $q\times[0,1]$
+and $c\times[0,1]$ other than $s_\ell$, $\ell$ the common link of $q$ and $c$. By Lemma~\ref{mg:lem:twocubes}(ii) and the signs below they equal
+$\tau(q',q'')^{\mathsf s}u^8\Upsilon^2+O(\beta^{10})$, with $\tau(q,q)=\tau(c,c)=1$ (bulges) and $\tau(q,c)=\tau(c,q)=\sigma(q,c)$ (hops).
+
+\emph{Signs.} In Lemma~\ref{mg:lem:twocubes} let $p_1,p_2$ be the faces carrying $\tilde a$. As in Step~2, the terms $r\in\{\rho,\bar\rho\}$ give
+$(-\epsilon(p_1)\epsilon(p_2))^{\mathsf s}u^k\Upsilon^2$, and the others $O(\beta^{k+2})$. In a unit cube $p\times[0,1]$ the bottom and the top have the same
+standard orientation and opposite outward normals, so $\epsilon(p_1)=-\epsilon(p)$ for the top $p_1$. For $q\times[0,1]$ and $c\times[0,1]$, the link $(\ell,0)$ lies
+only in the faces $q$ and $c$ of $\Sigma$, which traverse it in opposite directions, so $\epsilon(q)\partial q(\ell)+\epsilon(c)\partial c(\ell)=0$ and
+$\epsilon(c)=\sigma(q,c)\epsilon(q)$. A hop from $q$ to $c$ therefore has sign $-\epsilon(q)\cdot(-\epsilon(c))=\sigma(q,c)$, and a bulge $-\epsilon(q)\cdot(-\epsilon(q))=1$.
+For $\Gamma$ and $Q:=q\times[0,1]$, $q$ receives opposite orientations, so in $Q$ the top $q_1$ has $\epsilon(q_1)=\epsilon_\Gamma(q)$. A turn or a jump from
+$q'$ to $q$ has the sign $-\epsilon_\Gamma(q')\epsilon_\Gamma(q)=\sigma_\Gamma(q,q')$.
+
+\emph{Step 6: assembly.} By Step~4, $R\,M$ differs from $M$ by $O(\beta^9)$, and there are finitely many terms. Summing (a) over $q\in\mathcal W$ gives at least
+$u^4\Upsilon^2|a|^2+2u^8\Upsilon^2a^\top C_{\mathcal W}a$. Each unordered pair $\{q,c\}$, $q\sim c$, with $q\in\mathcal W$ or $c\in\mathcal W$, occurs once in
+$\mathcal F$ and gives $u^8\Upsilon^2(a_q^2+a_c^2+2\sigma(q,c)^{\mathsf s}a_qa_c)$, with $a_c:=0$ for $c\notin\mathcal W$. Every $q\in\mathcal W$ has $K_S$
+neighbours $c$, so (b) gives $u^8\Upsilon^2a^\top(K_S\mathbf 1+A_{\mathcal W})a$, where $A_{\mathcal W}(q,c):=[q\sim c]\sigma(q,c)^{\mathsf s}$. Hence
+\[
+\Cov(\Phi(0),\Phi(1))\ \ge\ u^4\Upsilon^2\Bigl(|a|^2+u^4a^\top\bigl(K_S\mathbf 1+A_{\mathcal W}+2C_{\mathcal W}\bigr)a\Bigr)-O(\beta^9)|a|^2 .
+\]
+With Step~2, $\Upsilon=1+O(\beta)$ and $K_S\mathbf 1+A_{\mathcal W}+C_{\mathcal W}=H_{C,\mathcal W}$ (Definition~\ref{mg:def:hopping}),
+\begin{align*}
+\frac{\Cov(\Phi(0),\Phi(1))}{\Var(\Phi)}\ &\ge\ u^4\Upsilon\,\frac{1+u^4a^\top(K_S\mathbf 1+A_{\mathcal W}+2C_{\mathcal W})a/|a|^2-O(\beta^5)}{1+u^4a^\top C_{\mathcal W}a/|a|^2+O(\beta^5)}\\
+&=\ u^4\Upsilon\Bigl(1+u^4\,\frac{a^\top H_{C,\mathcal W}a}{|a|^2}-O(\beta^5)\Bigr),
+\end{align*}
+which is positive for small $\beta$, and Step~1 gives the bound. For the last statement take $\mathcal W=N_L$ and $a=\mathbf 1$
+(Lemma~\ref{mg:lem:hopping}(iii)), use $u/\beta\to u_1$ (Lemma~\ref{mg:lem:char}(iii)) and let $L\to\infty$.
+\end{proof}
+
+\begin{corollary}[The fourth-order term is negative]\label{mg:cor:fourthupper}
+With the fundamental representations, for $SU(N)$, $2\le N\le5$, and for $U(1)$,
+\[
+\limsup_{\beta\downarrow0}\ \beta^{-4}\Bigl(m(\mu_\beta)-4\log\frac1{u(\beta)}+\log\Upsilon(\beta)\Bigr)\ \le\ -h_Cu_1^4,
+\]
+where $h_Cu_1^4=\frac{26d-70}{256}$ for $SU(2)$ ($\frac{17}{128}$ if $d=4$, $\frac1{32}$ if $d=3$), $\frac{26d-70}{16N^8}$ for $SU(N)$ with $3\le N\le5$, and
+$\frac{10d-22}{16}$ for $U(1)$. With Corollary~\ref{mg:cor:third}, $-c\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le-(h_Cu_1^4-o(1))\beta^4$ for some $c$:
+beyond $-\log\Upsilon$ the gap has a negative term of order $\beta^4$, which Conjecture~\ref{mg:conj:fourth} identifies as $-h_Cu^4$. For every $SU(N)$
+the same bound holds with $\Upsilon_+$ in place of $\Upsilon$.
+\end{corollary}
+
+\begin{proof}
+Apply Theorem~\ref{mg:thm:upper4} with $\psi$ the eigenvector of $\Upsilon$. For $SU(2)$, $\iota=1$ and $\psi=\chi_\rho$, so $C=+$. For $SU(N)$ with $3\le N\le5$,
+$\Upsilon=\Upsilon_+>\Upsilon_-$ for small $\beta$ (Lemmas~\ref{mg:lem:Upsilon}(iii) and~\ref{mg:lem:Upsilon3}), so $C=+$. For $U(1)$, $\Upsilon=\Upsilon_-$
+(Lemma~\ref{mg:lem:Upsilon}(iii)), so $C=-$. Finally $u_1=\frac{1+\iota}{2N^2}$ is $\frac14$, $\frac1{2N^2}$ and $\frac12$ in the three cases.
+\end{proof}
+
+\begin{remark}[Evidence, numbers and what remains]\label{mg:rem:fourth}
+(i) Numbers. For $SU(2)$ in $d=4$ the conjectured term of order $\beta^4$ of $m(\mu_\beta)-4\log(4/\beta)$ is $-\frac{167}{1152}=-0.145$; the part $-\log\Upsilon$ and
+the expansion of $4\log(1/u)$ contribute $-\frac7{576}$, and the hopping $-\frac{34}{256}$. In terms of $u$ the term is $-\frac{98}3u^4$, of which $\frac43u^4$
+comes from $-\log\Upsilon$. The lower bound of Theorem~\ref{mg:thm:lower3} still has a constant of about $8.4\cdot10^{10}$ at this order
+(Remark~\ref{mg:rem:third}(iii)).
+
+(ii) Exact spectra (Numerical; \texttt{theory/checks/fourth-order/}, a compass).
+\begin{itemize}
+\item $\mathbb Z_2$ in dual plaquette variables. After subtracting $4\log(1/u)-\log(1-u^2)$, every level $m_i$ of the plaquette band, divided by $u^4$, tends to
+$-\log(1+h_iu^4)/u^4\approx-h_i$, where $h_i$ are the eigenvalues of $H$ for the same geometry, with relative corrections $O(u^2)$. This holds on the $3\times3$
+and $4\times4$ tori ($d=3$; on $4\times4$, $h_i=8,6^4,4^6,2^4,0$: all $16$ levels) and on blocks of $1\times1\times1$, $1\times1\times2$ and $1\times2\times2$ cubes
+with open boundary ($d=4$; all $6$, $11$ and $20$ levels), and for the four lowest levels of the $1\times2\times3$ block ($2^{23}$ states). Without the turns
+and jumps the top value for one cube would be $8$ instead of $13$.
+\item $\mathbb Z_3$, both sectors. The same holds on the $3\times3$ torus and on the $1\times1\times1$ and $1\times1\times2$ blocks. On one cube the $C$-odd levels
+follow the signed matrix (eigenvalues $5,5,5,3,3,3$) and the $C$-even ones the unsigned one ($13,3,3,3,1,1$).
+\item Lemmas~\ref{mg:lem:sixplaq} and~\ref{mg:lem:slice}, by exhaustive enumeration in spatial dimensions $2$, $3$ and $4$; and
+Lemma~\ref{mg:lem:hopping}(ii)--(iv), by building $H_+$ and $H_-$ from the orientations on tori.
+\end{itemize}
+
+(iii) The classical series (Cited). Langelage, Münster and Philipsen \cite[eqs.~(2.14)--(2.18)]{LMP07}, ``recognizing the first orders of the corresponding
+glueball masses'' of \cite{Mun81,Seo82}, give for $d=4$
+\begin{gather*}
+SU(2):\quad m(A_1^{++})=-4\log u+2u^2-\tfrac{98}3u^4-\dots,\\
+m(E^{++})=-4\log u+2u^2-\tfrac{26}3u^4+\dots,\\
+SU(3):\quad m(A_1^{++})=-4\log u-3u+9u^2-\tfrac{27}2u^3-7u^4-\dots,\\
+m(E^{++})=-4\log u-3u+9u^2-\tfrac{27}2u^3+17u^4-\dots,\\
+m(T_1^{+-})=-4\log u+3u+\tfrac92u^3-\tfrac{98}4u^4+\dots
+\end{gather*}
+\cite[eq.~(29)]{LMP08} repeats the $SU(2)$ series. At momentum $0$ the conjecture predicts $-\log\Upsilon_C-hu^4$ with $h=34$ ($A_1^{++}$), $10$ ($E^{++}$) and
+$18$ ($T_1^{+-}$, $C=-$) (Lemma~\ref{mg:lem:hopping}(iv)). With the exact $-\log\Upsilon_C$ this gives $2u^2-\frac{98}3u^4$ and $2u^2-\frac{26}3u^4$ for $SU(2)$, and
+$-3u+9u^2-\frac{27}2u^3-7u^4$, the same with $+17u^4$, and $3u+\frac92u^3-\frac{99}4u^4$ for $SU(3)$ (\texttt{fourth\_order\_values.py}). The first four agree
+with \cite{LMP07} term by term through $u^4$. For $T_1^{+-}$ the terms through $u^3$ agree, and \cite{LMP07} prints $-\frac{98}4u^4$ in both arXiv versions,
+a difference of $u^4/4$. On our side, the series of $\Upsilon_\pm$ for $SU(3)$ agree with Weyl integration to about $10^{-16}$. The value $18$ at $k=0$ is
+forced by Lemma~\ref{mg:lem:hopping}(iv), and on one cube of $\mathbb Z_3$ the $C$-odd levels follow the model. We have not consulted \cite{Mun81,Seo82}
+and cannot resolve the difference. The terms of orders $u$, $u^2$, $u^3$ of all five series are those of $-\log\Upsilon_C$. This is an independent check,
+against the classical series, of Corollaries~\ref{mg:cor:second} and~\ref{mg:cor:third} and of the $C$-odd first-order term of
+Remark~\ref{mg:rem:cap}(iii).
+
+(iv) The $C$-odd mass. For $SU(N)$, where $U\mapsto\bar U$ is an automorphism and the transfer matrix commutes with charge conjugation, the proof of
+Theorem~\ref{mg:thm:upper4} with $\psi=\sqrt2\,\mathrm{Im}\,\chi_\rho$ bounds the lowest mass of the $C$-odd sector by $4\log(1/u)-\log\Upsilon_--h_-u^4+o(\beta^4)$.
+We have not written out the spectral statement for that sector.
+
+(v) What remains: the lower bound at order $\beta^4$. In Theorem~\ref{mg:thm:lower3} the constant $\delta'$ contains, at order $\beta^4$, crude bounds for
+the junctions with one plaquette and fronts of four and six edges (the term $bf(6)$), the junctions with four plaquettes ($Z_{4,4}b^4$), the majorant
+term and the one-plaquette term. A proof of the conjecture would need four things:
+\begin{itemize}
+\item these junctions by characters, with operator norm about $u^2$ for each widening or narrowing junction (so $u^4$ per bulge or hop) and $u^4$ per turn or
+jump;
+\item a recursion that follows the moving tube, in which the sum over paths is bounded by the row sums of $H_C$. For $C=+$ the row sum is sharp, because $H_+$
+has non-negative entries. For the $C$-odd gap of $U(1)$ the signs must be kept, since $|H_-|$ has row sum $h_+>h_-$.
+\item the remaining terms of order $\beta^4$ ($b^2a^2$, $ba^3$) shown to be $O(\beta^5)$ on the odd sector;
+\item a proof of the counts $Z_{4,4}$.
+\end{itemize}
+The terms of order $u^6$ (for $SU(2)$ in $d=4$, $-\frac{20984}{405}u^6$ in \cite{LMP07}) involve the vacuum cubes and pairs of moves.
 \end{remark}
 
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
@@ -2834,7 +3302,8 @@ gives the constant $-4\log(eK)$ relative to $4\log(1/u)$ as $\beta\downarrow0$ (
 when $u_*=u$, and grouping by junctions (Section~\ref{mg:sec:junctions}) brings the $O(\beta)$ to $2\beta(1+O(\beta))$ when $\rho$ has no trivial summand.
 Evaluating the cap by characters (Section~\ref{mg:sec:cap}) brings it to $\kappa(\beta)+O(\beta^2)$, which is also the first-order term of the upper bound:
 $m=4\log(1/u)-\kappa+O(\beta^2)$. At second order (Section~\ref{mg:sec:second}) the two bounds meet again: $m=4\log(1/u)-\log\Upsilon+O(\beta^3)$, and at third
-order (Section~\ref{mg:sec:third}) $m=4\log(1/u)-\log\Upsilon+O(\beta^4)$.
+order (Section~\ref{mg:sec:third}) $m=4\log(1/u)-\log\Upsilon+O(\beta^4)$. At fourth order (Section~\ref{mg:sec:fourth}) the upper bound is
+$4\log(1/u)-\log\Upsilon-h_Cu^4+o(\beta^4)$, and the conjecture is equality.
 (iii) The hypothesis $L_i\ge4$ cannot be dropped from the sharper finite-volume bounds: if a spatial side equals $3$,
 Theorem~\ref{mg:thm:finite} holds only with $g=3$, and closed strips of three plaquettes per layer around that side (torelons, carrying the
 flux of a Polyakov loop) give states of energy $\approx3\log(1/u(\beta))$. For $\mathbb Z_2$ in $d=3$ on a $3\times3$ spatial torus the transfer
@@ -2907,7 +3376,23 @@ Sides $\ge4$ needed for Thm.~\ref{mg:thm:sharp}(i): torelon below the bound on a
 Plaquette variance to third order: $\beta^3$ terms $\frac1{432}$ ($SU(3)$), $-\frac1{6000}$ ($SU(5)$), $0$ ($U(1)$, $SU(2)$, $SU(4)$, $SU(N\ge6)$); no junctions with three plaquettes and two four-edge fronts ($Z_{3,4}=0$); one plaquette and three front-pairs force a front of $\ge5$ edges; junction sums to third order & Lem.~\ref{mg:lem:Upsilon3}--\ref{mg:lem:jsums3} & Theorem\\
 Third-order term: $m=4\log(1/u)-\log\Upsilon+O(\beta^4)$ (infinite volume; finite volume, sides $\ge6$); for $SU(2)$, $m(\mu_\beta)=4\log(4/\beta)+\frac7{24}\beta^2+O(\beta^4)$ & Thm.~\ref{mg:thm:lower3}, Cor.~\ref{mg:cor:third} & Theorem\\
 $SU(2)$: $\delta'/\beta^4\to8.4\cdot10^{10}$ ($d=4$), $3.4\cdot10^8$ ($d=3$); at $\beta=10^{-7}$, $d=3$: $1.249966\cdot10^{-15}\le m-4\log(1/u)\le1.25\cdot10^{-15}$; enumerations, Weyl integration, exact $\mathbb Z_3$, $\mathbb Z_5$ spectra on tori outside the hypotheses (consistent with the third-order claim, residual $\approx-8u^4$) & Rem.~\ref{mg:rem:third} & Numerical\\
-Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the fourth-order term (hopping of the plaquette state, junctions with four plaquettes); the $C$-odd mass for $SU(3)$ & Rem.~\ref{mg:rem:third}(iv) & open\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.6\textwidth}p{0.2\textwidth}l@{}}
+\toprule
+Statement (continued) & Where & Status\\
+\midrule
+Hopping matrix $H_C$ and its signs: $H_+=K_S\mathbf 1+A_\parallel+2A_\perp+A_J$, $H_-=K_S\mathbf 1+A_\parallel+A_J$; $\sup\spec H_+=26d-70$, $\sup\spec H_-=10d-22$; at $k=0$ in $d=4$: $34$ ($A_1$), $10$ ($E$), $18$ ($T_1$) & Def.~\ref{mg:def:hopping}, Lem.~\ref{mg:lem:hopping} & Theorem\\
+A set of plaquettes in which no link lies in exactly one of them has $\ge6$ plaquettes, $6$ only for a unit cube; configurations at a slice; one and two cubes by characters & Lem.~\ref{mg:lem:sixplaq}--\ref{mg:lem:twocubes} & Theorem\\
+Upper bound to fourth order: $m\le4\log(1/u)-\log\Upsilon_C-\log(1+u^4a^\top H_{C,\mathcal W}a/a^\top a)+O(\beta^5)$ for every finite $\mathcal W$; $\limsup\beta^{-4}(m-4\log(1/u)+\log\Upsilon)\le-h_Cu_1^4$, e.g.\ $-\frac{17}{128}$ for $SU(2)$, $d=4$ & Thm.~\ref{mg:thm:upper4}, Cor.~\ref{mg:cor:fourthupper} & Theorem\\
+Fourth-order term: $m=4\log(1/u)-\log\Upsilon-h_Cu^4+O(\beta^5)$; for $SU(2)$, $d=4$: $m=-4\log u+2u^2-\frac{98}3u^4+O(u^5)$ & Conj.~\ref{mg:conj:fourth}, Rem.~\ref{mg:rem:processes} & Conjecture\\
+Exact $\mathbb Z_2$ and $\mathbb Z_3$ spectra ($d=3$ tori, $d=4$ blocks of cubes, both sectors): every level of the plaquette band follows $H_C$; exhaustive checks of the lemmas & Rem.~\ref{mg:rem:fourth}(ii) & Numerical\\
+Classical series of \cite{Mun81,Seo82} as quoted in \cite{LMP07}: the terms of order $u^4$ agree in four of five channels; for $T_1^{+-}$ of $SU(3)$, $-\frac{99}4u^4$ predicted, $-\frac{98}4u^4$ printed & Rem.~\ref{mg:rem:fourth}(iii) & Cited\\
+Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order (junctions by characters, a recursion following the moving tube, the counts $Z_{4,4}$); the $C$-odd mass; the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v) & open\\
 \bottomrule
 \end{tabular}
 \end{center}
@@ -2934,6 +3419,18 @@ Commun.\ Math.\ Phys.\ 83 (1982), 411--454. (verify)
 P.~A.~Faria da Veiga, M.~O'Carroll, On charge conjugation, correlations, Elitzur's theorem and the mass gap problem in lattice
 $SU(N)$ Yang--Mills models in $d=4$ dimensions, arXiv:2509.03513v2 (2026).
 
+\bibitem[LMP07]{LMP07}
+J.~Langelage, G.~Münster, O.~Philipsen, Strong coupling expansion for Yang--Mills theory at finite temperature, PoS(LATTICE 2007) 201;
+arXiv:0710.0512.
+
+\bibitem[LMP08]{LMP08}
+J.~Langelage, G.~Münster, O.~Philipsen, Strong coupling expansion for finite temperature Yang--Mills theory in the confined phase, JHEP 0807 (2008),
+036; arXiv:0805.1163.
+
+\bibitem[Mün81]{Mun81}
+G.~Münster, Strong coupling expansions for the mass gap in lattice gauge theories, Nucl.\ Phys.\ B190 (1981), 439; erratum B205 (1982), 648. (As
+cited in \cite{LMP08}; not consulted.)
+
 \bibitem[OB85]{OB85}
 M.~O'Carroll, W.~D.~Barbosa, Convergent expansions for glueball masses in strongly coupled $3+1$ lattice gauge theories,
 J.\ Math.\ Phys.\ 26 (1985), no.~7. (verify; abstract seen)
@@ -2945,6 +3442,10 @@ theories, Commun.\ Math.\ Phys.\ 97 (1985), 429--442. (verify; title and first l
 \bibitem[OC85]{OC85}
 M.~O'Carroll, Convergent expansions for excited glueball masses in $2+1$ strongly coupled lattice gauge theories,
 J.\ Math.\ Phys.\ 26 (1985), no.~9. (verify; abstract seen)
+
+\bibitem[Seo82]{Seo82}
+K.~Seo, Glueball mass estimate by strong coupling expansion in lattice gauge theories, Nucl.\ Phys.\ B209 (1982), 200. (As cited in \cite{LMP07};
+not consulted.)
 
 \bibitem[Sch83]{Sch83}
 R.~S.~Schor, Existence of glueballs in strongly coupled lattice gauge theories, Nucl.\ Phys.\ B222 (1983), 71--82. (verify)
