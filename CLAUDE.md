@@ -61,9 +61,10 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   Langelage–Münster–Philipsen) at order $u^4$ in four of five channels ($-\frac{98}3u^4$ for the $SU(2)$ scalar; the $SU(3)$ $T_1^{+-}$ differs by $u^4/4$,
   unresolved). Checks in `theory/checks/fourth-order/`; refereed: minor revisions, applied. Section 13 (12 November) identifies the junctions of order
   $\beta^4$: only the shifts and jumps, the turns, jumps and U-turns through unit cubes ($Z_{4,4}\le12(d-3)$, proved via Lemmas 5.4 and 12.5), and the widenings
-  to six-edge fronts. With these counts the third-order lower bound holds with $\delta'=(\delta'_4+o(1))\beta^4$, $\delta'_4$ explicit ($40691$ for $SU(2)$, $d=4$,
-  instead of $8.4\cdot10^{10}$; $1514$ in $d=3$); so the $\beta^4$ coefficient lies in $[-4.07\cdot10^4,-\frac{17}{128}]$. Still asymptotic: the crude $\beta^5$ terms
-  dominate for $\beta\gtrsim10^{-12}$. Checks in `theory/checks/third-order/`; referee pending. Next: the lower bound at fourth order (characters for these
+  to six-edge fronts, which end at leading order in one of two narrowings (Lemma 13.3). With these counts the third-order lower bound holds with
+  $\delta'=(\delta'_4+o(1))\beta^4$, $\delta'_4=8(4P_v-4-K_S)(2-\iota)N^2u_1^2+192(d-3)+8K_Su_1^2$ ($262$ for $SU(2)$, $d=4$, instead of $8.4\cdot10^{10}$; $18$ in $d=3$):
+  the shifts and jumps, the cube moves and the bulges and hops, all at the sup norm. So the $\beta^4$ coefficient lies in $[-262,-\frac{17}{128}]$. Still asymptotic:
+  the crude $\beta^5$ terms dominate for $\beta\gtrsim10^{-14}$ ($d=4$). Checks in `theory/checks/third-order/`; referee pending. Next: the lower bound at fourth order (characters for these
   junctions, an exact count of the narrowings, the shifts and jumps on the odd sector, a recursion following the moving tube), the $u^6$ term, the $C$-odd sector,
   near $\beta_0$ (journal 2026-11-12, Parts 8–9).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
