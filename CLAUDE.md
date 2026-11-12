@@ -82,8 +82,8 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   for $SU(6)$ and $O(\beta^5)$ for $SU(N\ge7)$, so the fourth-order term holds for $SU(N)$, every $N$, every $d\ge3$. The odd sector at fourth order ($U(1)$, $d\ge4$)
   is Conjecture 15.11. The hop/turn cancellation is proved as an operator identity ($Y^0_{\rm turn}=Y_{\rm hop}\mathsf C$, Lemma 15.8) with a partner lemma, but the
   grouping of sets along the path is open. A first draft's proof had major gaps (referee: non-closed grouping, unequal $r_X^2$ factors), which is why it is a
-  conjecture. Checks in `theory/checks/fourth-order/` (`c_odd_pairing.py`, `upsilon_split.py`, `referee-section15/`). Second referee of the revision pending
-  (journal 2026-11-12, Part 11). Next: the odd sector (routes in Remark 15.12), the $u^6$ term, effective constants, near $\beta_0$.
+  conjecture. Checks in `theory/checks/fourth-order/` (`c_odd_pairing.py`, `upsilon_split.py`, `referee-section15/`). Second referee of the revision: minor revisions
+  (a gap in the passage to $\mu_\beta$, repaired by defining the sector gaps spectrally via the ground-state chain), applied (journal 2026-11-12, Part 11). Next: the odd sector (routes in Remark 15.12), the $u^6$ term, effective constants, near $\beta_0$.
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.

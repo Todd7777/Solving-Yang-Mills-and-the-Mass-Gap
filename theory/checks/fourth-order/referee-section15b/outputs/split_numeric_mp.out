@@ -1,0 +1,22 @@
+(b) Toeplitz sum vs Weyl integration, [<e^y>, <cb>_y, <cb^2>_y]:
+  SU(2), beta=3: Toeplitz ['2.63558014493507', '1.13584729861453', '1.72830540277093']
+                 Weyl     ['2.63558014493507e+00', '1.13584729861453e+00', '1.72830540277093e+00']  (imaginary parts 0.0e+00)
+  SU(3), beta=3: Toeplitz ['1.33450963510092', '0.609225150090657', '0.79353247723099']
+                 Weyl     ['1.33450963510092e+00', '6.09225150090657e-01', '7.93532477230990e-01']  (imaginary parts 4.7e-17)
+  SU(3), beta=0.7: Toeplitz ['1.014238950767', '0.123431022860063', '0.131041259913556']
+                 Weyl     ['1.01423895076700e+00', '1.23431022860063e-01', '1.31041259913556e-01']  (imaginary parts 2.1e-17)
+
+(a),(c) Upsilon_+ - Upsilon_- at finite beta vs the exact series (DEG=14):
+  SU(6) beta= 2.0: Ups+ - Ups- = 6.394403739841071e-5 (from Ups+, Ups- separately: 6.394403739841071e-5); series 6.394403739863838e-05; leading 6.430041e-05; ratio to leading 0.9944576696
+  SU(6) beta= 1.0: Ups+ - Ups- = 4.013197426741141e-6 (from Ups+, Ups- separately: 4.013197426741141e-6); series 4.013197426741156e-06; leading 4.018776e-06; ratio to leading 0.9986119421
+  SU(6) beta= 0.5: Ups+ - Ups- = 2.510862825579595e-7 (from Ups+, Ups- separately: 2.510862825579595e-7); series 2.510862825579596e-07; leading 2.511735e-07; ratio to leading 0.9996528298
+  SU(7) beta= 2.0: Ups+ - Ups- = 9.882823925679461e-7 (from Ups+, Ups- separately: 9.882823925679461e-7); series 9.882823925614359e-07; leading 9.916503e-07; ratio to leading 0.9966037303
+  SU(7) beta= 1.0: Ups+ - Ups- = 3.096273062958479e-8 (from Ups+, Ups- separately: 3.096273062958479e-8); series 3.096273062958423e-08; leading 3.098907e-08; ratio to leading 0.9991499783
+  SU(7) beta= 0.5: Ups+ - Ups- = 9.682026505486162e-10 (from Ups+, Ups- separately: 9.682026505486162e-10); series 9.682026505486156e-10; leading 9.684085e-10; ratio to leading 0.9997874349
+  SU(8) beta= 2.0: Ups+ - Ups- = 1.057275225402828e-8 (from Ups+, Ups- separately: 1.057275225402828e-8); series 1.057275225406419e-08; leading 1.059638e-08; ratio to leading 0.9977700841
+  SU(8) beta= 1.0: Ups+ - Ups- = 1.654760876515907e-10 (from Ups+, Ups- separately: 1.654760876515907e-10); series 1.654760876515929e-10; leading 1.655685e-10; ratio to leading 0.9994421035
+  SU(8) beta= 0.5: Ups+ - Ups- = 2.586646263630632e-12 (from Ups+, Ups- separately: 2.586646263630632e-12); series 2.586646263630632e-12; leading 2.587007e-12; ratio to leading 0.9998604998
+
+(d) Monte Carlo compass, SU(6) at beta = 12 (alpha = gamma = 1):
+  Toeplitz: Ups+ - Ups- = 0.06783013257 (Ups+ = 1.031466227, Ups- = 0.9636360946)
+  Monte Carlo (1e7 Haar samples): 0.06330 +- 0.00497 ; also <|chi|^6> = 6.013 (exact 6), <chi^6> = 1.009-0.000i (exact 1)

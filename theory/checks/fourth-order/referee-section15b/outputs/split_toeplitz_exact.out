@@ -1,0 +1,58 @@
+DEG = 12 (total degree of the moments kept); Upsilon series exact through beta^10
+
+(1) moments <chi^a cb^b> of SU(N) from the Toeplitz sum (nonzero ones, a+b <= DEG):
+  SU(2): diagonal <|chi|^2k>, k=0..6: [1, 1, 2, 5, 14, 42, 132]
+         off-diagonal nonzero: [((0, 2), Fraction(1, 1)), ((0, 4), Fraction(2, 1)), ((0, 6), Fraction(5, 1)), ((0, 8), Fraction(14, 1)), ((0, 10), Fraction(42, 1)), ((0, 12), Fraction(132, 1)), ((1, 3), Fraction(2, 1)), ((1, 5), Fraction(5, 1)), ((1, 7), Fraction(14, 1)), ((1, 9), Fraction(42, 1)), ((1, 11), Fraction(132, 1)), ((2, 0), Fraction(1, 1)), ((2, 4), Fraction(5, 1)), ((2, 6), Fraction(14, 1)), ((2, 8), Fraction(42, 1)), ((2, 10), Fraction(132, 1)), ((3, 1), Fraction(2, 1)), ((3, 5), Fraction(14, 1)), ((3, 7), Fraction(42, 1)), ((3, 9), Fraction(132, 1)), ((4, 0), Fraction(2, 1)), ((4, 2), Fraction(5, 1)), ((4, 6), Fraction(42, 1)), ((4, 8), Fraction(132, 1)), ((5, 1), Fraction(5, 1)), ((5, 3), Fraction(14, 1)), ((5, 7), Fraction(132, 1)), ((6, 0), Fraction(5, 1)), ((6, 2), Fraction(14, 1)), ((6, 4), Fraction(42, 1)), ((7, 1), Fraction(14, 1)), ((7, 3), Fraction(42, 1)), ((7, 5), Fraction(132, 1)), ((8, 0), Fraction(14, 1)), ((8, 2), Fraction(42, 1)), ((8, 4), Fraction(132, 1)), ((9, 1), Fraction(42, 1)), ((9, 3), Fraction(132, 1)), ((10, 0), Fraction(42, 1)), ((10, 2), Fraction(132, 1)), ((11, 1), Fraction(132, 1)), ((12, 0), Fraction(132, 1))];  violating the centre rule: none
+  SU(3): diagonal <|chi|^2k>, k=0..6: [1, 1, 2, 6, 23, 103, 513]
+         off-diagonal nonzero: [((0, 3), Fraction(1, 1)), ((0, 6), Fraction(5, 1)), ((0, 9), Fraction(42, 1)), ((0, 12), Fraction(462, 1)), ((1, 4), Fraction(3, 1)), ((1, 7), Fraction(21, 1)), ((1, 10), Fraction(210, 1)), ((2, 5), Fraction(11, 1)), ((2, 8), Fraction(98, 1)), ((3, 0), Fraction(1, 1)), ((3, 6), Fraction(47, 1)), ((3, 9), Fraction(498, 1)), ((4, 1), Fraction(3, 1)), ((4, 7), Fraction(225, 1)), ((5, 2), Fraction(11, 1)), ((6, 0), Fraction(5, 1)), ((6, 3), Fraction(47, 1)), ((7, 1), Fraction(21, 1)), ((7, 4), Fraction(225, 1)), ((8, 2), Fraction(98, 1)), ((9, 0), Fraction(42, 1)), ((9, 3), Fraction(498, 1)), ((10, 1), Fraction(210, 1)), ((12, 0), Fraction(462, 1))];  violating the centre rule: none
+  SU(4): diagonal <|chi|^2k>, k=0..6: [1, 1, 2, 6, 24, 119, 694]
+         off-diagonal nonzero: [((0, 4), Fraction(1, 1)), ((0, 8), Fraction(14, 1)), ((0, 12), Fraction(462, 1)), ((1, 5), Fraction(4, 1)), ((1, 9), Fraction(84, 1)), ((2, 6), Fraction(19, 1)), ((2, 10), Fraction(552, 1)), ((3, 7), Fraction(104, 1)), ((4, 0), Fraction(1, 1)), ((4, 8), Fraction(641, 1)), ((5, 1), Fraction(4, 1)), ((6, 2), Fraction(19, 1)), ((7, 3), Fraction(104, 1)), ((8, 0), Fraction(14, 1)), ((8, 4), Fraction(641, 1)), ((9, 1), Fraction(84, 1)), ((10, 2), Fraction(552, 1)), ((12, 0), Fraction(462, 1))];  violating the centre rule: none
+  SU(5): diagonal <|chi|^2k>, k=0..6: [1, 1, 2, 6, 24, 120, 719]
+         off-diagonal nonzero: [((0, 5), Fraction(1, 1)), ((0, 10), Fraction(42, 1)), ((1, 6), Fraction(5, 1)), ((1, 11), Fraction(330, 1)), ((2, 7), Fraction(29, 1)), ((3, 8), Fraction(191, 1)), ((5, 0), Fraction(1, 1)), ((6, 1), Fraction(5, 1)), ((7, 2), Fraction(29, 1)), ((8, 3), Fraction(191, 1)), ((10, 0), Fraction(42, 1)), ((11, 1), Fraction(330, 1))];  violating the centre rule: none
+  SU(6): diagonal <|chi|^2k>, k=0..6: [1, 1, 2, 6, 24, 120, 720]
+         off-diagonal nonzero: [((0, 6), Fraction(1, 1)), ((0, 12), Fraction(132, 1)), ((1, 7), Fraction(6, 1)), ((2, 8), Fraction(41, 1)), ((3, 9), Fraction(314, 1)), ((6, 0), Fraction(1, 1)), ((7, 1), Fraction(6, 1)), ((8, 2), Fraction(41, 1)), ((9, 3), Fraction(314, 1)), ((12, 0), Fraction(132, 1))];  violating the centre rule: none
+  SU(7): diagonal <|chi|^2k>, k=0..6: [1, 1, 2, 6, 24, 120, 720]
+         off-diagonal nonzero: [((0, 7), Fraction(1, 1)), ((1, 8), Fraction(7, 1)), ((2, 9), Fraction(55, 1)), ((7, 0), Fraction(1, 1)), ((8, 1), Fraction(7, 1)), ((9, 2), Fraction(55, 1))];  violating the centre rule: none
+  SU(8): diagonal <|chi|^2k>, k=0..6: [1, 1, 2, 6, 24, 120, 720]
+         off-diagonal nonzero: [((0, 8), Fraction(1, 1)), ((1, 9), Fraction(8, 1)), ((2, 10), Fraction(71, 1)), ((8, 0), Fraction(1, 1)), ((9, 1), Fraction(8, 1)), ((10, 2), Fraction(71, 1))];  violating the centre rule: none
+  SU(9): diagonal <|chi|^2k>, k=0..6: [1, 1, 2, 6, 24, 120, 720]
+         off-diagonal nonzero: [((0, 9), Fraction(1, 1)), ((1, 10), Fraction(9, 1)), ((9, 0), Fraction(1, 1)), ((10, 1), Fraction(9, 1))];  violating the centre rule: none
+  => checked: centre rule; <|chi|^{2k}> = k! for k <= min(N, DEG/2) (Catalan numbers for SU(2)); <chi^N> = 1.
+
+(2)-(4) exact series in beta (through beta^10):
+  SU(3): Upsilon_+ = 1 + 1/6*b^1 + -5/1296*b^3 + -5/10368*b^4 + 7/311040*b^5 + 413/33592320*b^6 + 97/100776960*b^7 + -67/537477120*b^8 + -3839/121899810816*b^9 + -21439/18284971622400*b^10
+         Upsilon_- = 1 + -1/6*b^1 + 1/1296*b^3 + 1/10368*b^4 + -1/933120*b^5 + -49/33592320*b^6 + -13/100776960*b^7 + 41/4837294080*b^8 + 1667/609499054080*b^9 + 2659/18284971622400*b^10
+         Upsilon_+ - Upsilon_- = 1/3*b^1 + -1/216*b^3 + -1/1728*b^4 + 11/466560*b^5 + 77/5598720*b^6 + 11/10077696*b^7 + -161/1209323520*b^8 + -1159/33861058560*b^9 + -12049/9142485811200*b^10 ;  2(beta/2N)^(N-2)/(N-2)! = 1/3 * b^1
+  SU(4): Upsilon_+ = 1 + 1/128*b^2 + -1/16384*b^4 + -7/47185920*b^6 + 103/37580963840*b^8 + -319/86586540687360*b^10
+         Upsilon_- = 1 + -1/128*b^2 + 1/49152*b^4 + 1/15728640*b^6 + -37/67645734912*b^8 + 97/1298798110310400*b^10
+         Upsilon_+ - Upsilon_- = 1/64*b^2 + -1/12288*b^4 + -1/4718592*b^6 + 139/42278584320*b^8 + -2441/649399055155200*b^10 ;  2(beta/2N)^(N-2)/(N-2)! = 1/64 * b^2
+  SU(5): Upsilon_+ = 1 + 1/6000*b^3 + -7/12000000*b^5 + 1/1400000000*b^7 + -1/19200000000*b^8 + -11/24192000000000*b^9 + 1507/6048000000000000*b^10
+         Upsilon_- = 1 + -1/6000*b^3 + 1/4000000*b^5 + -1/6300000000*b^7 + 1/57600000000*b^8 + 1/17280000000000*b^9 + -121/2016000000000000*b^10
+         Upsilon_+ - Upsilon_- = 1/3000*b^3 + -1/1200000*b^5 + 11/12600000000*b^7 + -1/14400000000*b^8 + -31/60480000000000*b^9 + 187/604800000000000*b^10 ;  2(beta/2N)^(N-2)/(N-2)! = 1/3000 * b^3
+  SU(6): Upsilon_+ = 1 + 1/497664*b^4 + -1/268738560*b^6 + 1/385263599616*b^8 + -253/56171432824012800*b^10
+         Upsilon_- = 1 + -1/497664*b^4 + 1/537477120*b^6 + -13/17336861982720*b^8 + 41/28085716412006400*b^10
+         Upsilon_+ - Upsilon_- = 1/248832*b^4 + -1/179159040*b^6 + 29/8668430991360*b^8 + -67/11234286564802560*b^10 ;  2(beta/2N)^(N-2)/(N-2)! = 1/248832 * b^4
+  SU(7): Upsilon_+ = 1 + 1/64538880*b^5 + -1/59031562240*b^7 + 11/1499496131395584*b^9
+         Upsilon_- = 1 + -1/64538880*b^5 + 1/106256812032*b^7 + -19/7497480656977920*b^9
+         Upsilon_+ - Upsilon_- = 1/32269440*b^5 + -1/37948861440*b^7 + 37/3748740328488960*b^9 ;  2(beta/2N)^(N-2)/(N-2)! = 1/32269440 * b^5
+  SU(8): Upsilon_+ = 1 + 1/12079595520*b^6 + -1/17317308137472*b^8 + 11/664984632478924800*b^10
+         Upsilon_- = 1 + -1/12079595520*b^6 + 1/28862180229120*b^8 + -13/1994953897436774400*b^10
+         Upsilon_+ - Upsilon_- = 1/6039797760*b^6 + -1/10823317585920*b^8 + 23/997476948718387200*b^10 ;  2(beta/2N)^(N-2)/(N-2)! = 1/6039797760 * b^6
+  SU(9): Upsilon_+ = 1 + 1/3085588961280*b^7 + -11/71980619288739840*b^9
+         Upsilon_- = 1 + -1/3085588961280*b^7 + 1/10282945612677120*b^9
+         Upsilon_+ - Upsilon_- = 1/1542794480640*b^7 + -1/3998923293818880*b^9 ;  2(beta/2N)^(N-2)/(N-2)! = 1/1542794480640 * b^7
+
+Lemma mg:lem:split: N=6 coefficient of beta^4 = 1/248832 (claimed 1/248832 = 1/248832); lower orders zero: True
+                    N>=7: beta^0..beta^4 zero: N=7 True, N=8 True
+Remark after the lemma: N=7 beta^5 coefficient = 1/32269440 (claimed 1/32269440 = 1/32269440); N=8 beta^5 = 0, beta^6 = 1/6039797760
+N=6, next term: Upsilon_+ - Upsilon_- = 1/248832*b^4 + -1/179159040*b^6 + 29/8668430991360*b^8 + -67/11234286564802560*b^10
+
+(5) Gaussian cancellation: moments delta_ab a! (all degrees <= DEG), N only enters through y = (beta/N) Re chi:
+  N=6: Upsilon_+ - 1 = 0 ; Upsilon_- - 1 = 0 ; Voff = 0
+  N=7: Upsilon_+ - 1 = 0 ; Upsilon_- - 1 = 0 ; Voff = 0
+
+SU(3): Upsilon_+ through beta^3: 1*b^0 + 1/6*b^1 + -5/1296*b^3 (Lemma Upsilon3: 1 + b/6 - 5 b^3/1296)
+       Upsilon_- through beta^3: 1*b^0 + -1/6*b^1 + 1/1296*b^3 (Lemma Upsilon3: 1 - b/6 + O(b^3))
+       m_- - m_+ = log Ups_+ - log Ups_- + O(b^4) = -b**3/648 + b/3 + O(b^4)  (Corollary mg:cor:sectors(ii): b/3 + O(b^2))
+SU(4): Upsilon_+ - 1 = 1/128*b^2 + -1/16384*b^4 ; SU(5): Upsilon_+ - 1 = 1/6000*b^3 (Lemma Upsilon(iii), Upsilon3: b^2/128, b^3/6000 leading)
+All assertions passed.
