@@ -1,0 +1,2 @@
+d=4 beta=1.7e-6 sum: delta'/beta^4 = 1170  (beta^3/432 = 1362 beta^4)
+d=4 beta=1.7e-6 max: delta'/beta^4 = 438.6  (beta^3/432 = 1362 beta^4)

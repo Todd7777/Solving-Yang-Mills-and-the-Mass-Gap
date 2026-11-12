@@ -1,0 +1,12 @@
+D=2 L=8 n=3 sizes=(4, 4) lam=0: counts (min, max, rnd1, rnd2, rnd3) = [48, 48, 48, 48, 48]; identical: True
+D=2 L=8 n=3 sizes=(4, 4) lam=1: counts (min, max, rnd1, rnd2, rnd3) = [48, 48, 48, 48, 48]; identical: True
+D=2 L=8 n=2 sizes=(4, 6) lam=0: counts (min, max, rnd1, rnd2, rnd3) = [24, 24, 24, 24, 24]; identical: True
+D=2 L=8 n=2 sizes=(4, 6) lam=1: counts (min, max, rnd1, rnd2, rnd3) = [24, 24, 24, 24, 24]; identical: True
+D=2 L=8 n=2 sizes=(4, 7) lam=0: counts (min, max, rnd1, rnd2, rnd3) = [24, 24, 24, 24, 24]; identical: True
+D=2 L=8 n=2 sizes=(4, 7) lam=1: counts (min, max, rnd1, rnd2, rnd3) = [24, 24, 24, 24, 24]; identical: True
+D=3 L=8 n=3 sizes=(4, 4) lam=0: counts (min, max, rnd1, rnd2, rnd3) = [876, 876, 876, 876, 876]; identical: True
+D=3 L=8 n=3 sizes=(4, 4) lam=1: counts (min, max, rnd1, rnd2, rnd3) = [876, 876, 876, 876, 876]; identical: True
+D=3 L=8 n=2 sizes=(4, 6) lam=0: counts (min, max, rnd1, rnd2, rnd3) = [320, 320, 320, 320, 320]; identical: True
+D=3 L=8 n=2 sizes=(4, 6) lam=1: counts (min, max, rnd1, rnd2, rnd3) = [320, 320, 320, 320, 320]; identical: True
+D=3 L=8 n=2 sizes=(4, 7) lam=0: counts (min, max, rnd1, rnd2, rnd3) = [312, 312, 312, 312, 312]; identical: True
+D=3 L=8 n=2 sizes=(4, 7) lam=1: counts (min, max, rnd1, rnd2, rnd3) = [312, 312, 312, 312, 312]; identical: True

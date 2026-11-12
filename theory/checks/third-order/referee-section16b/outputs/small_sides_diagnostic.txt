@@ -1,0 +1,20 @@
+D=3 (d=4) L=7 q in plane (0, 1): P_v=12 K_S=12 J_v=20 nu_2=288 #triples(q,b,c)=576 (2 nu_2 = 576)
+  lam=0 (i)   |P|=3 sizes=(4, 4): search  876, lemma's families  876 (all valid: True), not in lemma 0, lemma-only 0  [0.4s]
+  lam=0 (ii)  |P|=2 sizes=(4, 6): search  320, lemma's families  320 (all valid: True), not in lemma 0, lemma-only 0  [0.7s]
+  lam=0 (iii) |P|=2 sizes=(4, 7): search  312, lemma's families  312 (all valid: True), not in lemma 0, lemma-only 0  [0.7s]
+ALL CHECKS PASSED
+D=3 (d=4) L=6 q in plane (0, 1): P_v=12 K_S=12 J_v=20 nu_2=288 #triples(q,b,c)=576 (2 nu_2 = 576)
+  lam=0 (i)   |P|=3 sizes=(4, 4): search  876, lemma's families  876 (all valid: True), not in lemma 0, lemma-only 0  [0.3s]
+  lam=0 (ii)  |P|=2 sizes=(4, 6): search  320, lemma's families  320 (all valid: True), not in lemma 0, lemma-only 0  [0.7s]
+  lam=0 (iii) |P|=2 sizes=(4, 7): search  312, lemma's families  312 (all valid: True), not in lemma 0, lemma-only 0  [0.6s]
+ALL CHECKS PASSED
+D=3 (d=4) L=5 q in plane (0, 1): P_v=12 K_S=12 J_v=20 nu_2=288 #triples(q,b,c)=576 (2 nu_2 = 576)
+  lam=0 (i)   |P|=3 sizes=(4, 4): search  876, lemma's families  876 (all valid: True), not in lemma 0, lemma-only 0  [0.3s]
+  lam=0 (ii)  |P|=2 sizes=(4, 6): search  320, lemma's families  320 (all valid: True), not in lemma 0, lemma-only 0  [0.6s]
+  lam=0 (iii) |P|=2 sizes=(4, 7): search  312, lemma's families  312 (all valid: True), not in lemma 0, lemma-only 0  [1.4s]
+ALL CHECKS PASSED
+D=3 (d=4) L=4 q in plane (0, 1): P_v=12 K_S=12 J_v=20 nu_2=288 #triples(q,b,c)=576 (2 nu_2 = 576)
+  lam=0 (i)   |P|=3 sizes=(4, 4): search  878, lemma's families  876 (all valid: True), not in lemma 2, lemma-only 0  [0.4s]
+  lam=0 (ii)  |P|=2 sizes=(4, 6): search  372, lemma's families  320 (all valid: True), not in lemma 52, lemma-only 0  [1.3s]
+  lam=0 (iii) |P|=2 sizes=(4, 7): search  364, lemma's families  312 (all valid: True), not in lemma 52, lemma-only 0  [1.0s]
+SOME CHECK FAILED

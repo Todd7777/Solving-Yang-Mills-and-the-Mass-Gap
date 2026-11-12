@@ -1,0 +1,1 @@
+d=4 beta=2.5e-6 max: delta'/beta^4 = 948.6  (beta^3/432 = 925.9 beta^4)

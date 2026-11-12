@@ -1,0 +1,108 @@
+D=2 (d=3) L=16 q in plane (0, 1): P_v=4 K_S=4 J_v=4 nu_2=16 #triples(q,b,c)=32 (2 nu_2 = 32)
+  formulas: N_3 = 3 nu_2 + 12(d-3) = 48,  N_2 = 24,  N'_2 = 24
+  lam=0 (i)   |P|=3 sizes=(4, 4): search   48, lemma's families   48 (all valid: True), not in lemma 0, lemma-only 0  [0.0s]
+        by family: {'caps: p alone': 16, 'caps: p with q2': 32}
+        pairs (J,p') with (n,E)=(3,2), p' in layer of p: 32
+        pairs (J,p') with (n,E)=(3,2), p' in other layer: 64
+  lam=0 (ii)  |P|=2 sizes=(4, 6): search   24, lemma's families   24 (all valid: True), not in lemma 0, lemma-only 0  [0.0s]
+        by family: {'(a) r=q': 4, '(a) r=q_prime': 4, '(b) r=q': 8, '(b) r=q_prime': 8}
+        pairs (J,p') with (n,E)=(2,3), p' in layer of p: 24
+        pairs (J,p') with (n,E)=(2,4), p' in other layer: 24
+  lam=0 (iii) |P|=2 sizes=(4, 7): search   24, lemma's families   24 (all valid: True), not in lemma 0, lemma-only 0  [0.0s]
+        by family: {'(a) r=q': 4, '(a) r=q_prime': 4, '(b) r=q': 8, '(b) r=q_prime': 8}
+        pairs (J,p') with (n,E)=(2,7/2), p' in layer of p: 24
+        pairs (J,p') with (n,E)=(2,5), p' in other layer: 24
+  lam=1 (i)   |P|=3 sizes=(4, 4): search   48, lemma's families   48 (all valid: True), not in lemma 0, lemma-only 0  [0.0s]
+        by family: {'caps: p alone': 16, 'caps: p with q2': 32}
+        pairs (J,p') with (n,E)=(3,2), p' in layer of p: 32
+        pairs (J,p') with (n,E)=(3,2), p' in other layer: 64
+  lam=1 (ii)  |P|=2 sizes=(4, 6): search   24, lemma's families   24 (all valid: True), not in lemma 0, lemma-only 0  [0.0s]
+        by family: {'(a) r=q': 4, '(a) r=q_prime': 4, '(b) r=q': 8, '(b) r=q_prime': 8}
+        pairs (J,p') with (n,E)=(2,3), p' in layer of p: 24
+        pairs (J,p') with (n,E)=(2,4), p' in other layer: 24
+  lam=1 (iii) |P|=2 sizes=(4, 7): search   24, lemma's families   24 (all valid: True), not in lemma 0, lemma-only 0  [0.0s]
+        by family: {'(a) r=q': 4, '(a) r=q_prime': 4, '(b) r=q': 8, '(b) r=q_prime': 8}
+        pairs (J,p') with (n,E)=(2,7/2), p' in layer of p: 24
+        pairs (J,p') with (n,E)=(2,5), p' in other layer: 24
+ALL CHECKS PASSED
+D=3 (d=4) L=12 q in plane (0, 1): P_v=12 K_S=12 J_v=20 nu_2=288 #triples(q,b,c)=576 (2 nu_2 = 576)
+  formulas: N_3 = 3 nu_2 + 12(d-3) = 876,  N_2 = 320,  N'_2 = 312
+  lam=0 (i)   |P|=3 sizes=(4, 4): search  876, lemma's families  876 (all valid: True), not in lemma 0, lemma-only 0  [0.4s]
+        by family: {'caps: p alone': 288, 'caps: p with q2': 576, 'cube: opposite pair in lb': 4, 'cube: q, opp(q) in lam': 8}
+        pairs (J,p') with (n,E)=(3,2), p' in layer of p: 584
+        pairs (J,p') with (n,E)=(3,2), p' in other layer: 1168
+  lam=0 (ii)  |P|=2 sizes=(4, 6): search  320, lemma's families  320 (all valid: True), not in lemma 0, lemma-only 0  [0.7s]
+        by family: {'(a) r=q': 36, '(a) r=q_prime': 36, '(b) r=q': 120, '(b) r=q_prime': 120, '(c) cube': 8}
+        pairs (J,p') with (n,E)=(2,3), p' in layer of p: 320
+        pairs (J,p') with (n,E)=(2,4), p' in other layer: 320
+  lam=0 (iii) |P|=2 sizes=(4, 7): search  312, lemma's families  312 (all valid: True), not in lemma 0, lemma-only 0  [0.7s]
+        by family: {'(a) r=q': 36, '(a) r=q_prime': 36, '(b) r=q': 120, '(b) r=q_prime': 120}
+        pairs (J,p') with (n,E)=(2,7/2), p' in layer of p: 312
+        pairs (J,p') with (n,E)=(2,5), p' in other layer: 312
+  lam=1 (i)   |P|=3 sizes=(4, 4): search  876, lemma's families  876 (all valid: True), not in lemma 0, lemma-only 0  [0.5s]
+        by family: {'caps: p alone': 288, 'caps: p with q2': 576, 'cube: opposite pair in lb': 4, 'cube: q, opp(q) in lam': 8}
+        pairs (J,p') with (n,E)=(3,2), p' in layer of p: 584
+        pairs (J,p') with (n,E)=(3,2), p' in other layer: 1168
+  lam=1 (ii)  |P|=2 sizes=(4, 6): search  320, lemma's families  320 (all valid: True), not in lemma 0, lemma-only 0  [0.9s]
+        by family: {'(a) r=q': 36, '(a) r=q_prime': 36, '(b) r=q': 120, '(b) r=q_prime': 120, '(c) cube': 8}
+        pairs (J,p') with (n,E)=(2,3), p' in layer of p: 320
+        pairs (J,p') with (n,E)=(2,4), p' in other layer: 320
+  lam=1 (iii) |P|=2 sizes=(4, 7): search  312, lemma's families  312 (all valid: True), not in lemma 0, lemma-only 0  [0.6s]
+        by family: {'(a) r=q': 36, '(a) r=q_prime': 36, '(b) r=q': 120, '(b) r=q_prime': 120}
+        pairs (J,p') with (n,E)=(2,7/2), p' in layer of p: 312
+        pairs (J,p') with (n,E)=(2,5), p' in other layer: 312
+ALL CHECKS PASSED
+D=3 (d=4) L=8 q in plane (0, 2): P_v=12 K_S=12 J_v=20 nu_2=288 #triples(q,b,c)=576 (2 nu_2 = 576)
+  formulas: N_3 = 3 nu_2 + 12(d-3) = 876,  N_2 = 320,  N'_2 = 312
+  lam=0 (i)   |P|=3 sizes=(4, 4): search  876, lemma's families  876 (all valid: True), not in lemma 0, lemma-only 0  [0.4s]
+        by family: {'caps: p alone': 288, 'caps: p with q2': 576, 'cube: opposite pair in lb': 4, 'cube: q, opp(q) in lam': 8}
+        pairs (J,p') with (n,E)=(3,2), p' in layer of p: 584
+        pairs (J,p') with (n,E)=(3,2), p' in other layer: 1168
+  lam=0 (ii)  |P|=2 sizes=(4, 6): search  320, lemma's families  320 (all valid: True), not in lemma 0, lemma-only 0  [0.7s]
+        by family: {'(a) r=q': 36, '(a) r=q_prime': 36, '(b) r=q': 120, '(b) r=q_prime': 120, '(c) cube': 8}
+        pairs (J,p') with (n,E)=(2,3), p' in layer of p: 320
+        pairs (J,p') with (n,E)=(2,4), p' in other layer: 320
+  lam=0 (iii) |P|=2 sizes=(4, 7): search  312, lemma's families  312 (all valid: True), not in lemma 0, lemma-only 0  [0.6s]
+        by family: {'(a) r=q': 36, '(a) r=q_prime': 36, '(b) r=q': 120, '(b) r=q_prime': 120}
+        pairs (J,p') with (n,E)=(2,7/2), p' in layer of p: 312
+        pairs (J,p') with (n,E)=(2,5), p' in other layer: 312
+  lam=1 (i)   |P|=3 sizes=(4, 4): search  876, lemma's families  876 (all valid: True), not in lemma 0, lemma-only 0  [0.3s]
+        by family: {'caps: p alone': 288, 'caps: p with q2': 576, 'cube: opposite pair in lb': 4, 'cube: q, opp(q) in lam': 8}
+        pairs (J,p') with (n,E)=(3,2), p' in layer of p: 584
+        pairs (J,p') with (n,E)=(3,2), p' in other layer: 1168
+  lam=1 (ii)  |P|=2 sizes=(4, 6): search  320, lemma's families  320 (all valid: True), not in lemma 0, lemma-only 0  [0.6s]
+        by family: {'(a) r=q': 36, '(a) r=q_prime': 36, '(b) r=q': 120, '(b) r=q_prime': 120, '(c) cube': 8}
+        pairs (J,p') with (n,E)=(2,3), p' in layer of p: 320
+        pairs (J,p') with (n,E)=(2,4), p' in other layer: 320
+  lam=1 (iii) |P|=2 sizes=(4, 7): search  312, lemma's families  312 (all valid: True), not in lemma 0, lemma-only 0  [0.6s]
+        by family: {'(a) r=q': 36, '(a) r=q_prime': 36, '(b) r=q': 120, '(b) r=q_prime': 120}
+        pairs (J,p') with (n,E)=(2,7/2), p' in layer of p: 312
+        pairs (J,p') with (n,E)=(2,5), p' in other layer: 312
+ALL CHECKS PASSED
+D=3 (d=4) L=8 q in plane (1, 2): P_v=12 K_S=12 J_v=20 nu_2=288 #triples(q,b,c)=576 (2 nu_2 = 576)
+  formulas: N_3 = 3 nu_2 + 12(d-3) = 876,  N_2 = 320,  N'_2 = 312
+  lam=0 (i)   |P|=3 sizes=(4, 4): search  876, lemma's families  876 (all valid: True), not in lemma 0, lemma-only 0  [0.4s]
+        by family: {'caps: p alone': 288, 'caps: p with q2': 576, 'cube: opposite pair in lb': 4, 'cube: q, opp(q) in lam': 8}
+        pairs (J,p') with (n,E)=(3,2), p' in layer of p: 584
+        pairs (J,p') with (n,E)=(3,2), p' in other layer: 1168
+  lam=0 (ii)  |P|=2 sizes=(4, 6): search  320, lemma's families  320 (all valid: True), not in lemma 0, lemma-only 0  [0.8s]
+        by family: {'(a) r=q': 36, '(a) r=q_prime': 36, '(b) r=q': 120, '(b) r=q_prime': 120, '(c) cube': 8}
+        pairs (J,p') with (n,E)=(2,3), p' in layer of p: 320
+        pairs (J,p') with (n,E)=(2,4), p' in other layer: 320
+  lam=0 (iii) |P|=2 sizes=(4, 7): search  312, lemma's families  312 (all valid: True), not in lemma 0, lemma-only 0  [0.6s]
+        by family: {'(a) r=q': 36, '(a) r=q_prime': 36, '(b) r=q': 120, '(b) r=q_prime': 120}
+        pairs (J,p') with (n,E)=(2,7/2), p' in layer of p: 312
+        pairs (J,p') with (n,E)=(2,5), p' in other layer: 312
+  lam=1 (i)   |P|=3 sizes=(4, 4): search  876, lemma's families  876 (all valid: True), not in lemma 0, lemma-only 0  [0.3s]
+        by family: {'caps: p alone': 288, 'caps: p with q2': 576, 'cube: opposite pair in lb': 4, 'cube: q, opp(q) in lam': 8}
+        pairs (J,p') with (n,E)=(3,2), p' in layer of p: 584
+        pairs (J,p') with (n,E)=(3,2), p' in other layer: 1168
+  lam=1 (ii)  |P|=2 sizes=(4, 6): search  320, lemma's families  320 (all valid: True), not in lemma 0, lemma-only 0  [0.6s]
+        by family: {'(a) r=q': 36, '(a) r=q_prime': 36, '(b) r=q': 120, '(b) r=q_prime': 120, '(c) cube': 8}
+        pairs (J,p') with (n,E)=(2,3), p' in layer of p: 320
+        pairs (J,p') with (n,E)=(2,4), p' in other layer: 320
+  lam=1 (iii) |P|=2 sizes=(4, 7): search  312, lemma's families  312 (all valid: True), not in lemma 0, lemma-only 0  [0.6s]
+        by family: {'(a) r=q': 36, '(a) r=q_prime': 36, '(b) r=q': 120, '(b) r=q_prime': 120}
+        pairs (J,p') with (n,E)=(2,7/2), p' in layer of p: 312
+        pairs (J,p') with (n,E)=(2,5), p' in other layer: 312
+ALL CHECKS PASSED

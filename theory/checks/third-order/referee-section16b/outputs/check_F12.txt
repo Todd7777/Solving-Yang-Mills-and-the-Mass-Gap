@@ -1,0 +1,10 @@
+D=2 L=8: 12 six-edge fronts through a vertex: {'planar domino': 12}; F1/F2/classification failures: 0
+D=2 L=8: 12 seven-edge fronts through a vertex: {'coplanar pair': 12}; failures: 0
+D=2 L=12: 12 six-edge fronts through a vertex: {'planar domino': 12}; F1/F2/classification failures: 0
+D=2 L=12: 12 seven-edge fronts through a vertex: {'coplanar pair': 12}; failures: 0
+D=3 L=8: 132 six-edge fronts through a vertex: {'bent domino': 72, 'planar domino': 36, 'skew hexagon': 24}; F1/F2/classification failures: 0
+D=3 L=8: 108 seven-edge fronts through a vertex: {'coplanar pair': 36, 'bent pair': 72}; failures: 0
+D=3 L=12: 132 six-edge fronts through a vertex: {'bent domino': 72, 'planar domino': 36, 'skew hexagon': 24}; F1/F2/classification failures: 0
+D=3 L=12: 108 seven-edge fronts through a vertex: {'bent pair': 72, 'coplanar pair': 36}; failures: 0
+D=4 L=8: 456 six-edge fronts through a vertex: {'planar domino': 72, 'bent domino': 288, 'skew hexagon': 96}; F1/F2/classification failures: 0
+D=4 L=8: 360 seven-edge fronts through a vertex: {'bent pair': 288, 'coplanar pair': 72}; failures: 0

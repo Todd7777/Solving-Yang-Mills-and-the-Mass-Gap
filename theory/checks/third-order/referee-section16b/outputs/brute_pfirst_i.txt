@@ -1,0 +1,3 @@
+D=2 L=8 lam=0: 1957 plaquette sets with |T|<=8 (0s); plaquettes-first 48 (0s), deficiency search 48, identical sets: True
+D=2 L=8 lam=1: 1957 plaquette sets with |T|<=8 (0s); plaquettes-first 48 (0s), deficiency search 48, identical sets: True
+D=3 L=8 lam=0: 1177513 plaquette sets with |T|<=8 (16s); plaquettes-first 876 (272s), deficiency search 876, identical sets: True

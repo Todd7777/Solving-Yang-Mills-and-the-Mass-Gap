@@ -1,0 +1,5 @@
+D=3 L=8 n=2 sizes=(4, 6) lam=0: plaquettes-first 320 (115s), deficiency search 320, identical sets: True
+D=3 L=8 n=2 sizes=(4, 7) lam=0: plaquettes-first 312 (189s), deficiency search 312, identical sets: True
+D=3 L=8 n=2 sizes=(4, 4) lam=0: plaquettes-first 0 (7s), deficiency search 0, identical sets: True
+D=3 L=8 n=1 sizes=(4, 6) lam=0: plaquettes-first 0 (1s), deficiency search 0, identical sets: True
+D=3 L=8 n=1 sizes=(4, 7) lam=0: plaquettes-first 0 (1s), deficiency search 0, identical sets: True

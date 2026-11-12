@@ -1,0 +1,49 @@
+D=2 (d=3) L=8 q in plane (0, 1): P_v=4 K_S=4 J_v=4 nu_2=16 #triples(q,b,c)=32 (2 nu_2 = 32)
+  formulas: N_3 = 3 nu_2 + 12(d-3) = 48,  N_2 = 24,  N'_2 = 24
+  lam=0 (i)   |P|=3 sizes=(4, 4): search   48, lemma's families   48 (all valid: True), not in lemma 0, lemma-only 0  [0.0s]
+        by family: {'caps: p alone': 16, 'caps: p with q2': 32}
+        pairs (J,p') with (n,E)=(3,2), p' in layer of p: 32
+        pairs (J,p') with (n,E)=(3,2), p' in other layer: 64
+  lam=0 (ii)  |P|=2 sizes=(4, 6): search   24, lemma's families   24 (all valid: True), not in lemma 0, lemma-only 0  [0.0s]
+        by family: {'(a) r=q': 4, '(a) r=q_prime': 4, '(b) r=q': 8, '(b) r=q_prime': 8}
+        pairs (J,p') with (n,E)=(2,3), p' in layer of p: 24
+        pairs (J,p') with (n,E)=(2,4), p' in other layer: 24
+  lam=0 (iii) |P|=2 sizes=(4, 7): search   24, lemma's families   24 (all valid: True), not in lemma 0, lemma-only 0  [0.0s]
+        by family: {'(a) r=q': 4, '(a) r=q_prime': 4, '(b) r=q': 8, '(b) r=q_prime': 8}
+        pairs (J,p') with (n,E)=(2,7/2), p' in layer of p: 24
+        pairs (J,p') with (n,E)=(2,5), p' in other layer: 24
+  lam=0 |P|=2 other sizes (4, 4): 0 junctions
+  lam=0 |P|=2 other sizes (4, 5): 0 junctions
+  lam=0 |P|=1 other sizes (4, 4): 0 junctions
+  lam=0 |P|=1 other sizes (4, 5): 0 junctions
+  lam=0 |P|=1 other sizes (4, 6): 0 junctions
+  lam=0 |P|=1 other sizes (4, 7): 0 junctions
+  lam=0 |P|=1 other sizes (5, 5): 0 junctions
+  lam=0 |P|=1 other sizes (5, 6): 0 junctions
+  lam=0 |P|=1 other sizes (6, 6): 0 junctions
+  lam=0 |P|=1 other sizes (6, 7): 0 junctions
+  lam=0 |P|=1 other sizes (7, 7): 0 junctions
+  lam=1 (i)   |P|=3 sizes=(4, 4): search   48, lemma's families   48 (all valid: True), not in lemma 0, lemma-only 0  [0.0s]
+        by family: {'caps: p alone': 16, 'caps: p with q2': 32}
+        pairs (J,p') with (n,E)=(3,2), p' in layer of p: 32
+        pairs (J,p') with (n,E)=(3,2), p' in other layer: 64
+  lam=1 (ii)  |P|=2 sizes=(4, 6): search   24, lemma's families   24 (all valid: True), not in lemma 0, lemma-only 0  [0.0s]
+        by family: {'(a) r=q': 4, '(a) r=q_prime': 4, '(b) r=q': 8, '(b) r=q_prime': 8}
+        pairs (J,p') with (n,E)=(2,3), p' in layer of p: 24
+        pairs (J,p') with (n,E)=(2,4), p' in other layer: 24
+  lam=1 (iii) |P|=2 sizes=(4, 7): search   24, lemma's families   24 (all valid: True), not in lemma 0, lemma-only 0  [0.0s]
+        by family: {'(a) r=q': 4, '(a) r=q_prime': 4, '(b) r=q': 8, '(b) r=q_prime': 8}
+        pairs (J,p') with (n,E)=(2,7/2), p' in layer of p: 24
+        pairs (J,p') with (n,E)=(2,5), p' in other layer: 24
+  lam=1 |P|=2 other sizes (4, 4): 0 junctions
+  lam=1 |P|=2 other sizes (4, 5): 0 junctions
+  lam=1 |P|=1 other sizes (4, 4): 0 junctions
+  lam=1 |P|=1 other sizes (4, 5): 0 junctions
+  lam=1 |P|=1 other sizes (4, 6): 0 junctions
+  lam=1 |P|=1 other sizes (4, 7): 0 junctions
+  lam=1 |P|=1 other sizes (5, 5): 0 junctions
+  lam=1 |P|=1 other sizes (5, 6): 0 junctions
+  lam=1 |P|=1 other sizes (6, 6): 0 junctions
+  lam=1 |P|=1 other sizes (6, 7): 0 junctions
+  lam=1 |P|=1 other sizes (7, 7): 0 junctions
+ALL CHECKS PASSED

@@ -30,6 +30,7 @@ def em1x(A):
 #   THETA7: the ratio bound with theta_7 (Lemma mg:lem:theta7) in place of theta_5;  NOVR[d]: exact N^v_k;  ZSMALL[d][n]: exact Z_{n,4}, n = 5, 6, 7;
 #   LOW[d] = (N_3, N_2, N'_2): the exact junctions with three front-pairs of lowest order and the majorant M_5 (Lemmas mg:lem:threelow, mg:lem:jsums5).
 THETA7 = False; ZSMALL = None; NOVR = None; LOW = None
+RMAX = False   # Lemma mg:lem:jsums5: the corner factors of M_4 and R as maxima instead of sums (each remaining pair dominates one corner)
 def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None, abar_grid=None, sharp6=True, uturn=True, seven=True, chars=False):
     K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x)
     if THETA7:                                    # Lemma mg:lem:theta7: theta_7 = 2(d-2) e^6 sigma_6 + x^8/(1-x)
@@ -96,12 +97,12 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
                 if mkb is None: continue
                 gFb, gCb, g2Fb, g2Cb, kFb, kCb = mkb
                 S3 = 4*Pv*exp(4*xFb)*(kCb*Yb[2] + 4*(gCb*g2Fb + g2Cb*gFb)*Yb[1] + 16*kFb*Yb[0])
-                val = ((b/bb)**3*(a/ab)**2 + (b/bb)**2*(a/ab)**3)*S3
+                val = (max if RMAX else (lambda *t: fsum(t)))((b/bb)**3*(a/ab)**2, (b/bb)**2*(a/ab)**3)*S3
                 if best is None or val < best[0]: best = (val, (bb, ab))
                 if LOW is not None:              # M_5 (Lemma mg:lem:jsums5): (n,E) = (3,2), (2,3), (2,7/2) exactly, the majorant from (4,2), (3,3), (2,4)
                     N3, N2, N2p = LOW[d]
                     val5 = exp(cT)*(2*N3*b**3*a**2 + N2*b**2*a**3 + N2p*b**2*a**(mpf(7)/2)) \
-                           + ((b/bb)**4*(a/ab)**2 + (b/bb)**3*(a/ab)**3 + (b/bb)**2*(a/ab)**4)*S3
+                           + (max if RMAX else (lambda *t: fsum(t)))((b/bb)**4*(a/ab)**2, (b/bb)**3*(a/ab)**3, (b/bb)**2*(a/ab)**4)*S3
                     if val5 < best[0]: best = (val5, (bb, ab, 'M5'))
         for bb, tc in tcache11.items():
                 xFb, xCb, Yb, Ab = tc

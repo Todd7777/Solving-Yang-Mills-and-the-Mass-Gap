@@ -1,0 +1,2 @@
+SU(3) d=4 beta=1.7e-6: b=3.4e-06 a=9.44e-08; exact part of M_5 / beta^4 <= 2.22e-04 (of which 2N_3 b^3a^2: 2.21e-04); third-order term beta^3/432 = 1362 beta^4
+SU(3) d=3 beta=1.8e-5: b=3.6e-05 a=1e-06; exact part of M_5 / beta^4 <= 1.29e-04 (of which 2N_3 b^3a^2: 1.28e-04); third-order term beta^3/432 = 128.6 beta^4

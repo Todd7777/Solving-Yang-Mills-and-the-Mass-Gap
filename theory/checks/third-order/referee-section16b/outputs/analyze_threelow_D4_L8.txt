@@ -1,0 +1,49 @@
+D=4 (d=5) L=8 q in plane (0, 1): P_v=24 K_S=20 J_v=52 nu_2=1584 #triples(q,b,c)=3168 (2 nu_2 = 3168)
+  formulas: N_3 = 3 nu_2 + 12(d-3) = 4776,  N_2 = 1256,  N'_2 = 1240
+  lam=0 (i)   |P|=3 sizes=(4, 4): search 4776, lemma's families 4776 (all valid: True), not in lemma 0, lemma-only 0  [2.8s]
+        by family: {'caps: p alone': 1584, 'caps: p with q2': 3168, 'cube: opposite pair in lb': 8, 'cube: q, opp(q) in lam': 16}
+        pairs (J,p') with (n,E)=(3,2), p' in layer of p: 3184
+        pairs (J,p') with (n,E)=(3,2), p' in other layer: 6368
+  lam=0 (ii)  |P|=2 sizes=(4, 6): search 1256, lemma's families 1256 (all valid: True), not in lemma 0, lemma-only 0  [6.4s]
+        by family: {'(a) r=q': 100, '(a) r=q_prime': 100, '(b) r=q': 520, '(b) r=q_prime': 520, '(c) cube': 16}
+        pairs (J,p') with (n,E)=(2,3), p' in layer of p: 1256
+        pairs (J,p') with (n,E)=(2,4), p' in other layer: 1256
+  lam=0 (iii) |P|=2 sizes=(4, 7): search 1240, lemma's families 1240 (all valid: True), not in lemma 0, lemma-only 0  [5.6s]
+        by family: {'(a) r=q': 100, '(a) r=q_prime': 100, '(b) r=q': 520, '(b) r=q_prime': 520}
+        pairs (J,p') with (n,E)=(2,7/2), p' in layer of p: 1240
+        pairs (J,p') with (n,E)=(2,5), p' in other layer: 1240
+  lam=0 |P|=2 other sizes (4, 4): 0 junctions
+  lam=0 |P|=2 other sizes (4, 5): 0 junctions
+  lam=0 |P|=1 other sizes (4, 4): 0 junctions
+  lam=0 |P|=1 other sizes (4, 5): 0 junctions
+  lam=0 |P|=1 other sizes (4, 6): 0 junctions
+  lam=0 |P|=1 other sizes (4, 7): 0 junctions
+  lam=0 |P|=1 other sizes (5, 5): 0 junctions
+  lam=0 |P|=1 other sizes (5, 6): 0 junctions
+  lam=0 |P|=1 other sizes (6, 6): 0 junctions
+  lam=0 |P|=1 other sizes (6, 7): 0 junctions
+  lam=0 |P|=1 other sizes (7, 7): 0 junctions
+  lam=1 (i)   |P|=3 sizes=(4, 4): search 4776, lemma's families 4776 (all valid: True), not in lemma 0, lemma-only 0  [2.4s]
+        by family: {'caps: p alone': 1584, 'caps: p with q2': 3168, 'cube: opposite pair in lb': 8, 'cube: q, opp(q) in lam': 16}
+        pairs (J,p') with (n,E)=(3,2), p' in layer of p: 3184
+        pairs (J,p') with (n,E)=(3,2), p' in other layer: 6368
+  lam=1 (ii)  |P|=2 sizes=(4, 6): search 1256, lemma's families 1256 (all valid: True), not in lemma 0, lemma-only 0  [6.3s]
+        by family: {'(a) r=q': 100, '(a) r=q_prime': 100, '(b) r=q': 520, '(b) r=q_prime': 520, '(c) cube': 16}
+        pairs (J,p') with (n,E)=(2,3), p' in layer of p: 1256
+        pairs (J,p') with (n,E)=(2,4), p' in other layer: 1256
+  lam=1 (iii) |P|=2 sizes=(4, 7): search 1240, lemma's families 1240 (all valid: True), not in lemma 0, lemma-only 0  [5.5s]
+        by family: {'(a) r=q': 100, '(a) r=q_prime': 100, '(b) r=q': 520, '(b) r=q_prime': 520}
+        pairs (J,p') with (n,E)=(2,7/2), p' in layer of p: 1240
+        pairs (J,p') with (n,E)=(2,5), p' in other layer: 1240
+  lam=1 |P|=2 other sizes (4, 4): 0 junctions
+  lam=1 |P|=2 other sizes (4, 5): 0 junctions
+  lam=1 |P|=1 other sizes (4, 4): 0 junctions
+  lam=1 |P|=1 other sizes (4, 5): 0 junctions
+  lam=1 |P|=1 other sizes (4, 6): 0 junctions
+  lam=1 |P|=1 other sizes (4, 7): 0 junctions
+  lam=1 |P|=1 other sizes (5, 5): 0 junctions
+  lam=1 |P|=1 other sizes (5, 6): 0 junctions
+  lam=1 |P|=1 other sizes (6, 6): 0 junctions
+  lam=1 |P|=1 other sizes (6, 7): 0 junctions
+  lam=1 |P|=1 other sizes (7, 7): 0 junctions
+ALL CHECKS PASSED

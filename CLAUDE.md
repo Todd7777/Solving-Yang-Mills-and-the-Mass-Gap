@@ -87,9 +87,10 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   Section 16 (12 November), closed polymers and the third-order term at practical $\beta$. Closed sets of plaquettes have 6 (a unit cube) or $\ge8$ plaquettes
   (Lemma 16.1), so the ratio bound holds with $\theta_7=2(d-2)e^6\sigma_6+x^8/(1-x)=O(\beta^6)$ in every section (Lemma 16.2). The junctions with three front-pairs of
   lowest order are classified (three caps or a unit cube; a widening with a cap, or a cube with a bent domino) and counted exactly in the junction sum (Lemmas 16.3–16.4).
-  With exact $N^v_k$ and $Z_{n,4}$ (enumerations), the lower bound resolves the $SU(3)$ third-order term $\beta^3/432$ for $\beta\le1.7\cdot10^{-6}$ ($d=4$; before
-  $2\cdot10^{-9}$) and $\beta\le1.8\cdot10^{-5}$ ($d=3$) (Remark 16.5, Numerical). Checks in `theory/checks/third-order/` (`three_front_count.py`, `practical_beta.py`, ...).
-  Referees: first (Lemmas 16.1–16.2, Remark 16.5) minor revisions, applied; second (Lemmas 16.3–16.4) pending. Next: the next order of the majorant ($n+E=6$).
+  With exact $N^v_k$ and $Z_{n,4}$ (enumerations), the lower bound resolves the $SU(3)$ third-order term $\beta^3/432$ for $\beta\le2.4\cdot10^{-6}$ ($d=4$; before
+  $2\cdot10^{-9}$) and $\beta\le2.6\cdot10^{-5}$ ($d=3$) (Remark 16.5, Numerical). Checks in `theory/checks/third-order/` (`three_front_count.py`, `practical_beta.py`, ...).
+  Two referees (Lemmas 16.1–16.2 and Remark 16.5; Lemmas 16.3–16.4, with independent searches in $d=3,4,5$): minor revisions, applied. Next: the next order of the
+  majorant ($n+E=6$, with the half-integer corners).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.

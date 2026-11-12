@@ -59,7 +59,7 @@ conjecture (Section~\ref{mg:sec:fourth}) added, 12 November 2026, and revised af
 third-order term with an effective constant (Section~\ref{mg:sec:betafour}) added the same day, and revised after two referee reports; the lower bound to
 fourth order and the fourth-order term (Section~\ref{mg:sec:fourthlower}) added, 12 November 2026; the sectors of charge conjugation and $SU(N)$, $N\ge6$ (Section~\ref{mg:sec:codd}) added the same day,
 after a referee report that found the first draft's proof for the odd sector incomplete; closed polymers and the third-order term at practical $\beta$
-(Section~\ref{mg:sec:practical}) added the same day; living document}
+(Section~\ref{mg:sec:practical}) added the same day, and revised after two referee reports; living document}
 
 \begin{document}
 \maketitle
@@ -126,7 +126,7 @@ turn between perpendicular neighbours cancel up to the cap under the turn, which
 the path is not done. Closed polymers have six plaquettes (a unit cube) or at least eight, which reduces the loss of the ratio bound in the lower bounds of the later sections
 from $O(\beta^5)$ to $O(\beta^6)$ (in infinite volume, and for sides $\ge8$). With
 exact counts of small fronts and junctions, and the junctions with three front-pairs of lowest order classified and counted, the lower bound resolves the third-order term
-of $SU(3)$ for $\beta\le1.7\cdot10^{-6}$ in $d=4$ (instead of $2\cdot10^{-9}$) and for $\beta\le1.8\cdot10^{-5}$ in $d=3$ (a numerical evaluation). For $SU(2)$ the two
+of $SU(3)$ for $\beta\le2.4\cdot10^{-6}$ in $d=4$ (instead of $2\cdot10^{-9}$) and for $\beta\le2.6\cdot10^{-5}$ in $d=3$ (a numerical evaluation). For $SU(2)$ the two
 bounds give $-9.4\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
 $-3.6\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$, in infinite volume (a numerical evaluation of the explicit constants).
 The asymptotics
@@ -4257,31 +4257,37 @@ and every hypothesis there is monotone in $\theta_5$; so they hold with $\theta_
 With $\theta_7$, the largest term of $\delta'$ at practical $\beta$ is the majorant $\min(M_3,M_4)$ of Lemma~\ref{mg:lem:jsums4} for the junctions with three or more
 front-pairs. It bounds their sum by the tree sums at $\bar b\gg b$, $\bar a\gg a$, times $(b/\bar b)^3(a/\bar a)^2+(b/\bar b)^2(a/\bar a)^3$. For the junctions of lowest order, of
 weights $b^3a^2$ and $b^2a^3$, this overestimates their number by many orders of magnitude. Lemma~\ref{mg:lem:threelow} determines these junctions, and Lemma~\ref{mg:lem:jsums5}
-counts them exactly and keeps the majorant only for the higher orders. We use the following facts about a cycle $\Sigma$ with six edges in the slice (all sides $\ge8$). A closed walk of
-length six steps $(2,1)$ or $(1,1,1)$ times each way along two or three directions, so $\Sigma$ is either
+counts them exactly and keeps the majorant only for the higher orders. We use the following facts about a cycle $\Sigma$ with six edges in the slice (all sides $\ge8$). Lift $\Sigma$
+to $\Z^{d-1}$. In each direction it steps as often forwards as backwards, and it does not lie on a line, so it steps $(2,1)$ or $(1,1,1)$ times each way along two or three
+directions.
 \begin{itemize}
-\item a \emph{domino}, $\Sigma=\partial c_1\triangle\partial c_2$ for two plaquettes sharing a link $e$: \emph{planar} if they are coplanar, \emph{bent} otherwise (then they are two faces of a unit
-cube $\Gamma$); or
-\item a \emph{skew hexagon}: six vertices of a unit cube $\Gamma$, the two missing ones antipodal. (If the missing ones are at distance two, their common neighbours have degree one
-in what is left, which has no cycle of length six.)
+\item $(2,1)$: its six vertices are those of a $2\times1$ rectangle, and $\Sigma=\partial c_1\triangle\partial c_2$ for two coplanar plaquettes sharing a link $e$, a \emph{planar domino}.
+\item $(1,1,1)$: its six vertices are six of the eight vertices of a unit cube $\Gamma$. If the two missing vertices are adjacent, $\Sigma=\partial c_1\triangle\partial c_2$ for the two faces
+$c_1,c_2$ of $\Gamma$ avoiding them, which share a link $e$: a \emph{bent domino}. If they are antipodal, $\Sigma$ is a \emph{skew hexagon}. If they are at distance two, their common
+neighbours have degree one in what is left, which then has no cycle of length six.
 \end{itemize}
+Planar and bent dominoes are \emph{dominoes}.
 \begin{itemize}
 \item[(F1)] A plaquette $r$ shares at most three links with $\Sigma$ (a cycle contains no shorter cycle), and exactly three if and only if $\Sigma=\partial r\triangle\partial c$ for a plaquette $c$ sharing a link with $r$.
-Three links of $\partial r$ in $\Sigma$ form a path $u,v,w,x$, which $\Sigma$ closes by a path of length three from $x$ to the neighbour $u$ of $x$. Its steps are $g$, $u-x$, $-g$ with
-$g\perp u-x$, and $g$ is not the direction from $u$ to $v$, since the path avoids $v,w$. So $\Sigma=\partial r\triangle\partial c$, with $c$ the plaquette spanned by $u-x$ and $g$ at $x$.
-\item[(F2)] Two links of $\Sigma$ in a common plaquette are consecutive on $\Sigma$, and then span it, or they are opposite edges of it.
+Three links of $\partial r$ in $\Sigma$ form a path $u,v,w,x$, which $\Sigma$ closes by a path of length three from $x$ to the neighbour $u$ of $x$. Three unit steps with sum $h:=u-x$
+form the multiset $\{h,h,-h\}$ or $\{h,g,-g\}$ with $g\perp h$. Only the order $g,h,-g$ neither reaches $u$ too early nor returns to a vertex, so these are the steps. And $g$ is not the
+direction from $u$ to $v$, since the path avoids $v,w$. So $\Sigma=\partial r\triangle\partial c$, with $c$ the plaquette spanned by $u-x$ and $g$ at $x$.
+\item[(F2)] Two links of $\Sigma$ in a common plaquette are consecutive on $\Sigma$ and perpendicular, and then span it, or they are opposite edges of it (parallel at distance one).
 \begin{itemize}
-\item A planar domino shares at most one link with every plaquette other than $c_1,c_2$.
+\item A planar domino shares at most one link with every plaquette other than $c_1,c_2$. Its perpendicular consecutive pairs are at the four corners and span $c_1$ or $c_2$; at the
+two ends of $e$ the consecutive links are collinear. Its parallel pairs at distance one are opposite edges of $c_1$ or $c_2$.
 \item A bent domino shares two links with exactly two further plaquettes, the two faces of $\Gamma$ perpendicular to $e$. These are opposite faces, each containing an endpoint
-of $e$.
-\item A skew hexagon shares exactly two consecutive links with each face of $\Gamma$, and at most one link with every other plaquette.
+of $e$. At the four vertices of $\Sigma$ off $e$, the consecutive links span $c_1$ or $c_2$; at the two ends of $e$, where $\Sigma$ passes from $c_1$ to $c_2$, they span the face of
+$\Gamma$ perpendicular to $e$ there. The parallel pairs at distance one are opposite edges of $c_1$ or $c_2$; the two links parallel to $e$ are diagonally opposite in $\Gamma$.
+\item A skew hexagon shares exactly two consecutive links with each face of $\Gamma$, and at most one link with every other plaquette. Its six pairs of consecutive links span the six
+faces, and its three pairs of parallel links are diagonally opposite in $\Gamma$.
 \end{itemize}
 \end{itemize}
 
 \begin{lemma}[Three front-pairs of lowest order]\label{mg:lem:threelow}
 Suppose all spatial sides are $\ge8$. Let $p=(\partial q,\lambda)$ be a front-pair candidate at slice $s$ with four edges, and $\bar\lambda$ the other layer. Let $J$ be a junction
-without support at slice $s$ with $p\in\Phi(J)$ and exactly three front-pairs, and $P$ the set of plaquettes of its clusters. Let $K_S$ be the number of plaquettes of the slice sharing
-a link with $q$, and $J_v:=4(P_v-1)-2K_S$ the number sharing exactly one vertex with $q$.
+without support at slice $s$ with $p\in\Phi(J)$ and exactly three front-pairs, and $P$ the set of plaquettes of its clusters. Recall that $K_S$ is the number of plaquettes of the slice sharing
+a link with $q$ ($K_S=4(2d-5)$, Section~\ref{mg:sec:fronts}), and $K_V:=4(P_v-1)-2K_S$ the number sharing exactly one vertex with $q$.
 \begin{enumerate}[label=(\roman*)]
 \item Suppose $|P|=3$ and all three fronts have four edges, $\partial q,\partial q_2,\partial q_3$. Then one of the following holds.
 \begin{itemize}
@@ -4298,9 +4304,9 @@ lies in $\bar\lambda$, and one of the following holds, for $\{r,r'\}=\{q,q'\}$ i
 \item[(c)] $q,q'$ are opposite faces of a unit cube $\Gamma$; $\Sigma=\partial c_1\triangle\partial c_2$ for two faces of $\Gamma$ that share an edge perpendicular to $q$; and $P$ is the set
 of the two remaining faces.
 \end{itemize}
-Given $p$, there are at most $N_2:=K_S^2/2+K_SJ_v+8(d-3)$ such junctions.
+Given $p$, there are at most $N_2:=K_S^2/2+K_SK_V+8(d-3)$ such junctions.
 \item Suppose $|P|=2$ and the fronts have $4$, $4$ and $7$ edges, $\partial q,\partial q'$ and $\Theta$. Then $\partial q'$ lies in $\lambda$ and $\Theta$ in $\bar\lambda$, and (a) or (b) of
-(ii) holds with $\Theta=\partial r\cup\partial c$ in place of $\Sigma=\partial r\triangle\partial c$. Given $p$, there are at most $N'_2:=K_S^2/2+K_SJ_v$ such junctions.
+(ii) holds with $\Theta=\partial r\cup\partial c$ in place of $\Sigma=\partial r\triangle\partial c$. Given $p$, there are at most $N'_2:=K_S^2/2+K_SK_V$ such junctions.
 \end{enumerate}
 In particular $N_3=48$, $N_2=N'_2=24$ for $d=3$ ($\nu_2=16$), and $N_3=876$, $N_2=320$, $N'_2=312$ for $d=4$ ($\nu_2=288$).
 \end{lemma}
@@ -4318,9 +4324,10 @@ Write $A:=E_{s-1}(J)$ and $B:=E_s(J)$, and recall from the proof of Lemma~\ref{m
 one link of $\partial r$. Let $\partial t$ be the double front. A plaquette of $P$ outside $\{r,t\}$ has at least two links outside $A\cup B=\partial r\cup\partial t$. By (b) they lie in a
 further plaquette of $P$, also outside $\{r,t\}$, which then shares two links with the first. So $P\subseteq\{r,t\}$, contradicting $|P|=3$.
 
-So $n_J(e)$ is the number of plaquettes among $q,q_2,q_3$ and those of $P$ that contain $e$. Let $k:=|P\cap\{q,q_2,q_3\}|$.
+So $n_J(e)$ is the number of plaquettes among $q,q_2,q_3$ that contain $e$ plus the number of plaquettes of $P$ that contain $e$ (a plaquette of $P$ that is also some $q_j$ counts
+twice). Let $k:=|P\cap\{q,q_2,q_3\}|$.
 \begin{itemize}
-\item $k=0$: six distinct plaquettes, every link of their union in two of them. By Lemma~\ref{mg:lem:sixplaq} they are the faces of a unit cube, and the two fronts of one layer are
+\item $k=0$: six distinct plaquettes, every link of their union in at least two of them. By Lemma~\ref{mg:lem:sixplaq} they are the faces of a unit cube, and the two fronts of one layer are
 vertex-disjoint, i.e.\ opposite faces.
 \item $k\in\{1,2\}$: a plaquette $c\in P\setminus\{q,q_2,q_3\}$ has at most one link in each front, so a link outside $A\cup B$. By (b) it lies in a second such plaquette $c'$, so $k=1$ and
 $P=\{r,c,c'\}$. Each of $c,c'$ has exactly one link outside $A\cup B$ (two would both lie in the other), hence exactly one link in each front. Let $\partial r_1,\partial r_2$ be the
@@ -4339,8 +4346,9 @@ layer are vertex-disjoint, and $J$ is connected if and only if the third plaquet
 \begin{itemize}
 \item Caps with $p$ alone in its layer: $\nu_2$ junctions.
 \item Caps with $p$ and $(\partial q_2,\lambda)$ in one layer: the pairs $(q_3,q_2)$ with $q_3$ sharing a vertex with $q$ and with $q_2$, and $q_2$ vertex-disjoint from $q$. Count the triples
-$(a,b,c)$ of plaquettes with $a,c$ vertex-disjoint and $b$ sharing a vertex with both. By translation and the lattice symmetries, those with $a=q$ are as many as those with $b=q$, which are
-$2\nu_2$.
+$(a,b,c)$ of plaquettes with $a,c$ vertex-disjoint and $b$ sharing a vertex with both, in a periodic box with equal sides $\ge8$, once by $a$ and once by $b$. The lattice symmetries act
+transitively on the plaquettes, so both counts per plaquette are constant, equal to the local counts of $\Z^{d-1}$. Hence the triples with $a=q$ are as many as those with $b=q$,
+which are $2\nu_2$.
 \item Cubes: the $2(d-3)$ unit cubes of the slice containing $q$. In each, either $q$ and its opposite face lie in $\lambda$ and one of the four other faces in $\bar\lambda$, or two
 opposite faces adjacent to $q$ lie in $\bar\lambda$ (two choices). Conversely each of these six configurations satisfies the conditions, the three remaining faces being one cluster.
 \end{itemize}
@@ -4350,12 +4358,14 @@ since $|A\triangle B|=14$ would follow.
 
 \emph{$\Sigma$ in the layer of $\partial q$, $\partial q'$ in the other.}
 \begin{itemize}
-\item If $q'=q$, then $A\triangle B=\Sigma$. Each of the two plaquettes of $P$ contains three links of $\Sigma$, so by (F1) $\Sigma=\partial c\triangle\partial c'$ with $P=\{c,c'\}$. Then
+\item If $q'=q$, then $A\triangle B=\Sigma$. By (F1) a plaquette contains at most three of its six links, so each of the two plaquettes of $P$ contains three, and
+$\Sigma=\partial c\triangle\partial c'$ with $P=\{c,c'\}$. Then
 $V(P)=V(\Sigma)$ is disjoint from $V(q)$, and $p$ is adjacent to no marker.
 \item If $q'\ne q$, then (a) needs $|\partial q'\cap(\partial q\sqcup\Sigma)|\ge3$, since $|A\triangle B|=14-2|\partial q'\cap(\partial q\sqcup\Sigma)|$.
 \begin{itemize}
 \item If $q'$ shares a link with $q$, both ends of that link lie in $V(q)$. Its links in $\Sigma$ avoid $V(q)$, so there is at most one of them, the opposite edge: too few.
-\item So $|\partial q'\cap\Sigma|=3$, and $\Sigma=\partial q'\triangle\partial c$. Then $E(P)=A\triangle B=\partial q\sqcup\partial c$, so $P=\{q,c\}$. But $q$ shares no vertex with $\Sigma$,
+\item So $|\partial q'\cap\Sigma|=3$, and $\Sigma=\partial q'\triangle\partial c$. Then $E(P)=A\triangle B=\partial q\sqcup\partial c$, so $P=\{q,c\}$ (a plaquette other than $q$, $c$
+contains at most one link of each). But $q$ shares no vertex with $\Sigma$,
 which contains $V(c)$ and $V(q')$, so $J$ is not connected.
 \end{itemize}
 \end{itemize}
@@ -4368,13 +4378,14 @@ below.
 \begin{itemize}
 \item If $|\Sigma\cap\partial r|=2$ and $|\Sigma\cap\partial r'|=1$: $r'\notin P$, as its link in $\Sigma$ lies in $A\cap B$, and then the three links of $\partial r'\setminus\Sigma$ need three
 plaquettes. Impossible.
-\item So $\Sigma=\partial r\triangle\partial c$ by (F1), $\partial r'\cap\Sigma=\emptyset$, and $E(P)=\partial c\sqcup\partial r'$, so $P=\{c,r'\}$. As $r'$ is vertex-disjoint from $r$, $J$ is
+\item So $\Sigma=\partial r\triangle\partial c$ by (F1), $\partial r'\cap\Sigma=\emptyset$, and $E(P)=\partial c\sqcup\partial r'$, so $P=\{c,r'\}$ (as before). As $r'$ is vertex-disjoint from $r$, $J$ is
 connected if and only if $r'$ shares a vertex with $c$. As they share no link, this is exactly one vertex (two common vertices of two plaquettes span a common link), and it is an endpoint
 of $f$, since the endpoints of $e$ lie in $V(r)$: case (b).
 \end{itemize}
-\item $m=4$, $|\Sigma\cap\partial r|=3$. Then $\Sigma=\partial r\triangle\partial c$, and $\partial r'$ shares one link $g$ with $\Sigma$, hence with $c$ (as $e\notin\partial r'$). Further:
+\item $m=4$, $|\Sigma\cap\partial r|=3$. Then $\Sigma=\partial r\triangle\partial c$, and $\partial r'$ shares one link $g$ with $\Sigma$, hence with $c$ (as $r'$ shares no vertex with $r$). Further:
 \begin{itemize}
-\item $A\triangle B=(\partial c\setminus g)\sqcup(\partial r'\setminus g)$, so $P=\{c,r'\}$;
+\item $A\triangle B=(\partial c\setminus g)\sqcup(\partial r'\setminus g)$, so $P=\{c,r'\}$: a plaquette other than $c$ (resp.\ $r'$) contains at most one of the three links of
+$\partial c\setminus g$ (resp.\ $\partial r'\setminus g$), and $|P|=2$;
 \item $g=f$, since $r'$ is vertex-disjoint from $r$.
 \end{itemize}
 This is case (a).
@@ -4395,10 +4406,10 @@ domino perpendicular to $e$, and each of these contains an endpoint of $e\in\par
 Conversely, each configuration (a)--(c) has $n_J\ge2$ on $E(J)$, and its fronts of $\lambda$ are vertex-disjoint (in (a) and (b), $r'$ is automatically vertex-disjoint from $r$). Each is
 connected.
 
-\emph{Counting} (a plaquette has $2d-5$ link-neighbours across each of its links, and $J_v/4=P_v-1-2(2d-5)$ plaquettes share exactly a given vertex with it):
+\emph{Counting} (a plaquette has $2d-5$ link-neighbours across each of its links, and $K_V/4=P_v-1-2(2d-5)$ plaquettes share exactly a given vertex with it):
 \begin{itemize}
 \item (a) with $r=q$: $K_S(2d-5)$ (choose $c$, then $r'\ni f$). With $r=q'$: $4(2d-5)^2$ (choose $f\in\partial q$, then $c\ni f$, then $q'\ni e$). Together $2K_S(2d-5)=K_S^2/2$.
-\item (b) with $r=q$: $K_S\cdot2\cdot J_v/4$. With $r=q'$: $4\cdot(J_v/4)\cdot2(2d-5)$ (choose the common vertex $v$ of $q$ and $c$, then $c$, then $f\ni v$, then $q'$). Together $K_SJ_v$.
+\item (b) with $r=q$: $K_S\cdot2\cdot K_V/4$. With $r=q'$: $4\cdot(K_V/4)\cdot2(2d-5)$ (choose the common vertex $v$ of $q$ and $c$, then $c$, then $f\ni v$, then $q'$). Together $K_SK_V$.
 \item (c): $2(d-3)$ cubes and four edges perpendicular to $q$.
 \end{itemize}
 
@@ -4409,9 +4420,9 @@ $|A\triangle B|\le7$, and the three fronts are not in one layer.
 
 \emph{$\Theta$ in the layer of $\partial q$, $\partial q'$ in the other.} Then $|A\triangle B|=15-2|\partial q'\cap(\partial q\sqcup\Theta)|$ requires $|\partial q'\cap(\partial q\sqcup\Theta)|\ge4$.
 \begin{itemize}
-\item If $q'=q$: then $A\triangle B=\Theta$, so $P=\{r_0,c_0\}$, which shares no vertex with $q$.
+\item If $q'=q$: then $A\triangle B=\Theta$, so $P=\{r_0,c_0\}$ (a plaquette other than these contains at most two of the seven links), which shares no vertex with $q$.
 \item If $q'$ shares a link with $q$: it has at most one link in $\Theta$, as in (ii).
-\item Otherwise $q'\in\{r_0,c_0\}$, and $A\triangle B=\partial q\sqcup(\partial x\setminus e_0)$ for the other one, $x$. So $P=\{q,x\}$, and $q$ shares no vertex with $x$, $\Theta$ or $\partial q'$.
+\item Otherwise $q'\in\{r_0,c_0\}$, and $A\triangle B=\partial q\sqcup(\partial x\setminus e_0)$ for the other one, $x$. So $P=\{q,x\}$ (as in (ii)), and $q$ shares no vertex with $x$, $\Theta$ or $\partial q'$.
 \end{itemize}
 \emph{$\partial q',\Theta$ in $\bar\lambda$.} The same argument applies with $q$ and $q'$ exchanged.
 
@@ -4421,7 +4432,8 @@ $\{r_0,c_0\}$.
 \item Say $\Theta=\partial q\cup\partial c$. Then $q'$ is vertex-disjoint from $q$, so $q'\ne c$ and $|\Theta\cap\partial q'|=|\partial c\cap\partial q'|\le1$.
 \begin{itemize}
 \item If this is $0$: $A\triangle B=(\partial c\setminus e)\sqcup\partial q'$, so $P=\{c,q'\}$, and $J$ is connected if and only if $q'$ shares exactly one vertex with $c$, an endpoint of $f$: (b).
-\item If it is $1$: the common link is $f$, $A\triangle B=(\partial c\setminus\{e,f\})\sqcup(\partial q'\setminus f)$, and $P=\{c,q'\}$: (a).
+\item If it is $1$: the common link is $f$, and $A\triangle B=(\partial c\setminus\{e,f\})\sqcup(\partial q'\setminus f)$. The three links of $\partial q'\setminus f$ force $q'\in P$, and
+the two links of $\partial c\setminus\{e,f\}$ are parallel at distance one, so they lie together only in $c$. So $P=\{c,q'\}$: (a).
 \end{itemize}
 The case $\Theta=\partial q'\cup\partial c$ is the same with $q,q'$ exchanged.
 \item Otherwise both terms are $2$, so $\Theta$ is bent and $q,q'$ are the faces of its cube perpendicular to $e_0$. Then $A\triangle B$ has seven links, among them $e_0$, which must lie in a
@@ -4435,7 +4447,8 @@ The values of $\nu_2$ are direct counts.
 
 An exhaustive search over all candidate junctions containing $p$ (\texttt{three\_front\_count.py}; fronts of at most six edges with at most three plaquettes, and fronts of at most seven edges
 with at most two plaquettes, in $d=3$ and $d=4$) finds exactly these, family by family: $48$ and $876$ junctions of type (i), $24$ and $320$ of type (ii), $24$ and $312$ of
-type (iii). It also confirms
+type (iii). The second referee's independent searches (\texttt{referee-section16b/}) agree, family by family: for $p$ in either layer, on the periodic lattice
+with sides $8$ and larger, with a second algorithm (plaquettes first), and in $d=5$, where $N_3=4776$, $N_2=1256$ and $N'_2=1240$ test the general formulas. The search also confirms
 Lemma~\ref{mg:lem:betafour}(iii),(iv) for fronts of at most seven edges (Numerical).
 
 \begin{lemma}[Junction sums with the junctions of order $\beta^5$]\label{mg:lem:jsums5}
@@ -4445,23 +4458,25 @@ M_5:=e^{c_J}\bigl(2N_3b^3a^2+N_2b^2a^3+N'_2b^2a^{7/2}\bigr)+R\cdot4P_ve^{4\bar\x
 \]
 where
 \[
-R:=\Bigl(\frac b{\bar b}\Bigr)^4\Bigl(\frac a{\bar a}\Bigr)^2+\Bigl(\frac b{\bar b}\Bigr)^3\Bigl(\frac a{\bar a}\Bigr)^3+\Bigl(\frac b{\bar b}\Bigr)^2\Bigl(\frac a{\bar a}\Bigr)^4 .
+R:=\max\Bigl\{\Bigl(\frac b{\bar b}\Bigr)^4\Bigl(\frac a{\bar a}\Bigr)^2,\ \Bigl(\frac b{\bar b}\Bigr)^3\Bigl(\frac a{\bar a}\Bigr)^3,\ \Bigl(\frac b{\bar b}\Bigr)^2\Bigl(\frac a{\bar a}\Bigr)^4\Bigr\} .
 \]
-Then Lemma~\ref{mg:lem:jsums4} holds with $\min(M_3,M_4,M_5)$ in place of $\min(M_3,M_4)$. Hence so do Theorems~\ref{mg:thm:lower4} and~\ref{mg:thm:lower5} and the
+Then Lemma~\ref{mg:lem:jsums4} holds with $\min(M_3,M_4,M_5)$ in place of $\min(M_3,M_4)$, and in $M_4$ the sum of the two terms of the first factor may be replaced by their
+maximum. Hence so do Theorems~\ref{mg:thm:lower4} and~\ref{mg:thm:lower5} and the
 results built on them.
 \end{lemma}
 
 \begin{proof}
 In the proof of Lemma~\ref{mg:lem:jsums4}, the pairs $(J,p')$ with at least three front-pairs and $n\ge2$ plaquettes have weight $\kappa b^na^E$, with $n\ge3$, $E\ge2$ or $n=2$, $E\ge3$. Recall
-$E=(|p'|-4)+\sum_\psi|\psi|/2$ over the further front-pairs $\psi$, each with $|\psi|\ge4$. There are no fronts with five edges, so $E\in\{2,3,\frac72,4,\frac92,\dots\}$: a front with seven
-edges gives a half-integer.
+$E=(|p'|-4)+\sum_\psi|\psi|/2$ over the further front-pairs $\psi$, each with $|\psi|\ge4$. There are no fronts with five edges, so $E\in\{2,3,\frac72,4,\frac92,\dots\}$: every further front-pair with an
+odd number of edges ($7,9,\dots$) gives a half-integer, and the only values below $4$ are $2$, $3$ and $\frac72$.
 \begin{itemize}
 \item $(n,E)=(3,2)$: $|p'|=4$, and there is exactly one further front-pair, with four edges. These junctions are those of Lemma~\ref{mg:lem:threelow}(i); both other front-pairs may be $p'$.
 \item $(n,E)=(2,3)$: $|p'|=4$, and there is exactly one further front-pair, with six edges. These are the junctions of Lemma~\ref{mg:lem:threelow}(ii), with $p'$ the four-edge front-pair.
 \item $(n,E)=(2,\frac72)$: $|p'|=4$, and there is exactly one further front-pair, with seven edges: Lemma~\ref{mg:lem:threelow}(iii), with $p'$ the four-edge front-pair.
 \end{itemize}
-In these cases $\kappa=e^{c_J}$. Every other pair has $n\ge4$ and $E\ge2$, or $n=3$ and $E\ge3$, or $n=2$ and $E\ge4$. So $b^na^E\le R\,\bar b^n\bar a^E$, and the sum of the terms
-$\kappa\bar b^n\bar a^E$ is bounded as in the proof of Lemma~\ref{mg:lem:jsums4}.
+In these cases $\kappa=e^{c_J}$. Every other pair has $n\ge4$ and $E\ge2$, or $n=3$ and $E\ge3$, or $n=2$ and $E\ge4$, so $(n,E)$ dominates one of the corners $(4,2),(3,3),(2,4)$
+componentwise. As $b\le\bar b$ and $a\le\bar a$, $b^na^E\le R\,\bar b^n\bar a^E$, and the sum of the terms $\kappa\bar b^n\bar a^E$ is bounded as in the proof of
+Lemma~\ref{mg:lem:jsums4}. The same argument, with the corners $(3,2),(2,3)$, gives the maximum in $M_4$.
 \end{proof}
 
 \begin{remark}[Numbers at practical $\beta$]\label{mg:rem:practical}
@@ -4487,22 +4502,29 @@ Lemma~\ref{mg:lem:smallfronts} gives $N^v_8\le1.5\cdot10^8$ in $d=3$, and $N^v_7
 front-pairs, given one of them (\texttt{junction\_count.py}): in $d=3$, $Z_{1,4}=1$, $Z_{2,4}=8$ and none with $3$ to $7$ plaquettes; in $d=4$, $Z_{1,4}=1$, $Z_{2,4}=32$,
 $Z_{3,4}=0$, $Z_{4,4}=12$, $Z_{5,4}=26$, $Z_{6,4}=302$, $Z_{7,4}=288$, against $2\binom{4P_v+T_vn}n(n+1)(2d-3)\approx6.7\cdot10^{11}$ for $n=5$ in Lemma~\ref{mg:lem:twofrontcount}. The
 $26$ junctions with five plaquettes are those of Lemma~\ref{mg:lem:betafour}(i) with $q$ or $q'$ added (twelve each) and the tube passing through the five other faces of a
-cube ($2(d-3)$). Junctions with three front-pairs of the lowest orders (Lemma~\ref{mg:lem:threelow}): $N_3=48$, $N_2=24$, $N'_2=24$ in $d=3$, and $N_3=876$, $N_2=320$, $N'_2=312$ in $d=4$.
+cube ($2(d-3)$). Junctions with three front-pairs of the lowest orders (Lemma~\ref{mg:lem:threelow}): $N_3=48$, $N_2=24$, $N'_2=24$ in $d=3$, and $N_3=876$, $N_2=320$, $N'_2=312$ in $d=4$. The second referee's direct counts give $\nu_2=16,288,1584,5248,13200,27936$ for $d=3,\dots,8$, which equal $8(d-2)^2(3d^2-14d+17)$ (fitted on
+$d\le7$, confirmed at $d=8$).
 
 (iii) The third-order term (\texttt{practical\_beta.py}). Take $\theta_7$, the counts of (ii) in place of the general bounds (with the referee's $N^v_9$, $N^v_{10}$), the majorant
-$M_5$ of Lemma~\ref{mg:lem:jsums5}, and the rest of Theorem~\ref{mg:thm:lower5} unchanged. The smallest admissible $\delta'$ for $SU(3)$ is then:
+$M_5$ of Lemma~\ref{mg:lem:jsums5} with $R$ a maximum (and the maximum in $M_4$), and the rest of Theorem~\ref{mg:thm:lower5} unchanged. The smallest admissible $\delta'$ for $SU(3)$
+is then:
 \begin{itemize}
-\item $d=4$: $\delta'/\beta^4=4.1\cdot10^4$, $3.6\cdot10^3$, $1.2\cdot10^3$ and $4.1\cdot10^2$ at $\beta=10^{-5}$, $3\cdot10^{-6}$, $1.7\cdot10^{-6}$ and $10^{-6}$;
-\item $d=3$: $\delta'/\beta^4=3.3\cdot10^3$, $3.0\cdot10^2$, $1.1\cdot10^2$ and $33$ at $\beta=10^{-4}$, $3\cdot10^{-5}$, $1.8\cdot10^{-5}$ and $10^{-5}$.
+\item $d=4$: $\delta'/\beta^4=1.5\cdot10^4$, $1.4\cdot10^3$, $8.7\cdot10^2$ and $1.5\cdot10^2$ at $\beta=10^{-5}$, $3\cdot10^{-6}$, $2.4\cdot10^{-6}$ and $10^{-6}$;
+\item $d=3$: $\delta'/\beta^4=1.2\cdot10^3$, $1.1\cdot10^2$, $84$ and $12$ at $\beta=10^{-4}$, $3\cdot10^{-5}$, $2.6\cdot10^{-5}$ and $10^{-5}$.
 \end{itemize}
-The third-order term of the gap is $\beta^3/432=\beta^4/(432\beta)$: $1.36\cdot10^3\beta^4$ at $\beta=1.7\cdot10^{-6}$, and $1.29\cdot10^2\beta^4$ at $1.8\cdot10^{-5}$. As $\delta'/\beta^4$ increases
-with $\beta$, the lower bound places $m-4\log(1/u)+\log\Upsilon$ above $-\beta^3/432$:
+The third-order term of the gap is $\beta^3/432=\beta^4/(432\beta)$: $9.6\cdot10^2\beta^4$ at $\beta=2.4\cdot10^{-6}$, and $89\beta^4$ at $2.6\cdot10^{-5}$. As $\delta'/\beta^4$ increases with $\beta$,
+the lower bound places $m-4\log(1/u)+\log\Upsilon$ above $-\beta^3/432$:
 \begin{itemize}
-\item for $\beta\le1.7\cdot10^{-6}$ in $d=4$; before this section this needed $\beta\lesssim2\cdot10^{-9}$;
-\item for $\beta\le1.8\cdot10^{-5}$ in $d=3$, about $\beta_0(3)/22$.
+\item for $\beta\le2.4\cdot10^{-6}$ in $d=4$; before this section this needed $\beta\lesssim2\cdot10^{-9}$;
+\item for $\beta\le2.6\cdot10^{-5}$ in $d=3$, about $\beta_0(3)/15$.
 \end{itemize}
-With $\theta_7$ and the exact counts alone, without Lemma~\ref{mg:lem:jsums5}, the threshold is about $10^{-7}$ ($d=4$) and $1.5\cdot10^{-6}$ ($d=3$). With the counts of (ii) for
-$k\le8$ only, Lemma~\ref{mg:lem:jsums5} gives $1.4\cdot10^{-6}$ ($d=4$) and $1.7\cdot10^{-5}$ ($d=3$).
+How the steps contribute:
+\begin{itemize}
+\item With $\theta_7$ and the exact counts alone, without Lemma~\ref{mg:lem:jsums5}, the threshold is about $10^{-7}$ ($d=4$) and $1.5\cdot10^{-6}$ ($d=3$).
+\item With Lemma~\ref{mg:lem:jsums5} and the sum in place of the maximum in $R$, it is $1.7\cdot10^{-6}$ and $1.8\cdot10^{-5}$.
+\item The exact part $e^{c_J}(2N_3b^3a^2+N_2b^2a^3+N'_2b^2a^{7/2})$ of $M_5$ is about $10^{-7}$ of $\delta'$. So the gain of Lemma~\ref{mg:lem:jsums5} comes from the classification, which lets
+the remainder start at the corners $(4,2),(3,3),(2,4)$, and not from the values of $N_3,N_2,N'_2$.
+\end{itemize}
 
 What remains of $\delta'$ is almost entirely the remainder $R\cdot(\dots)$ of $M_5$, of order $\beta^6$. The next order of the majorant ($(n,E)=(4,2),(3,3),(2,4)$, and the half-integer
 $(3,\frac72)$, $(2,\frac92)$) can be counted in the same way. Heuristically each order counted exactly gains a factor of about $b/\bar b\approx10^3\beta$, so this alone will not reach
@@ -4656,7 +4678,7 @@ Hop and turn between perpendicular neighbours as two-slice operators: $Y^0_{\rm 
 The odd sector at fourth order: $m_-=4\log(1/u)-\log\Upsilon_--h_-u^4+o(\beta^4)$; for $U(1)$, $d\ge4$, $R\to-(10d-22)/16$ & Conj.~\ref{mg:conj:codd}, Rem.~\ref{mg:rem:codd} & Conjecture\\
 Closed sets of plaquettes have $6$ (a unit cube) or $\ge8$ plaquettes; ratio bound with $\theta_7=2(d-2)e^6\sigma_6+x^8/(1-x)=O(\beta^6)$ in place of $\theta_5$, in Sections~\ref{mg:sec:sharp}--\ref{mg:sec:codd} (infinite volume; sides $\ge8$) & Lem.~\ref{mg:lem:seven}, \ref{mg:lem:theta7} & Theorem\\
 The junctions with three front-pairs of lowest order: three caps or a unit cube ($N_3=3\nu_2+12(d-3)$); a widening with a cap, or a cube with a bent domino ($N_2$, $N'_2$); counted exactly in the junction sum ($M_5$) & Lem.~\ref{mg:lem:threelow}, \ref{mg:lem:jsums5} & Theorem\\
-Exact $N^v_k$ ($k\le10$, $d=3$; $k\le9$, $d=4$), $Z_{n,4}$ ($n\le7$), $N_3,N_2,N'_2$; $SU(2)$ whole range: $\ge-9.4\cdot10^{-5}$ ($d=4$), $\ge-3.6\cdot10^{-5}$ ($d=3$); $SU(3)$: third-order term resolved for $\beta\le1.7\cdot10^{-6}$ ($d=4$; before $2\cdot10^{-9}$) and $\beta\le1.8\cdot10^{-5}$ ($d=3$) & Rem.~\ref{mg:rem:practical} & Numerical\\
+Exact $N^v_k$ ($k\le10$, $d=3$; $k\le9$, $d=4$), $Z_{n,4}$ ($n\le7$), $N_3,N_2,N'_2$; $SU(2)$ whole range: $\ge-9.4\cdot10^{-5}$ ($d=4$), $\ge-3.6\cdot10^{-5}$ ($d=3$); $SU(3)$: third-order term resolved for $\beta\le2.4\cdot10^{-6}$ ($d=4$; before $2\cdot10^{-9}$) and $\beta\le2.6\cdot10^{-5}$ ($d=3$) & Rem.~\ref{mg:rem:practical} & Numerical\\
 Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order in the $C$-odd sector ($U(1)$, $d\ge4$; Conjecture~\ref{mg:conj:codd}); the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\
 \bottomrule
 \end{tabular}

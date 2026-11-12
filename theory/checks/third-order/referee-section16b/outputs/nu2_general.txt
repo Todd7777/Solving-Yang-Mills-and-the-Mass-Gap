@@ -1,0 +1,7 @@
+d=3: plaquettes sharing a vertex with q: 8 (= 4(P_v-1)-K_S = 8), nu_2 = 16, N_3 = 48, N_2 = 24, N'_2 = 24
+d=4: plaquettes sharing a vertex with q: 32 (= 4(P_v-1)-K_S = 32), nu_2 = 288, N_3 = 876, N_2 = 320, N'_2 = 312
+d=5: plaquettes sharing a vertex with q: 72 (= 4(P_v-1)-K_S = 72), nu_2 = 1584, N_3 = 4776, N_2 = 1256, N'_2 = 1240
+d=6: plaquettes sharing a vertex with q: 128 (= 4(P_v-1)-K_S = 128), nu_2 = 5248, N_3 = 15780, N_2 = 3216, N'_2 = 3192
+d=7: plaquettes sharing a vertex with q: 200 (= 4(P_v-1)-K_S = 200), nu_2 = 13200, N_3 = 39648, N_2 = 6584, N'_2 = 6552
+interpolating polynomial nu_2(d) = (544) d^0 + (-992) d^1 + (680) d^2 + (-208) d^3 + (24) d^4
+d=8 (L=5): nu_2 = 27936; closed form 8(d-2)^2(3d^2-14d+17) = 27936
