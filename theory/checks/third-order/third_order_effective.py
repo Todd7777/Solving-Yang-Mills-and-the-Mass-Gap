@@ -1,0 +1,139 @@
+# Section 13 of Part IV: the constants of Theorem mg:thm:lower4, i.e. Theorem mg:thm:lower3 with the junction sum of Lemma mg:lem:jsums4, built on the
+# junction lemmas of Lemma mg:lem:betafour (A = 13.1(i), D = 13.1(ii), B = 13.1(iii), C = 13.1(iv)):
+#   (A) Z_{4,4} = 12(d-3): the junctions with four plaquettes and two four-edge front-pairs are the turns, jumps and U-turns through unit cubes;
+#   (B) one plaquette, exactly three front-pairs, one of four edges => another has >= 8 edges;
+#   (C) two plaquettes, exactly three front-pairs, two of four edges => the third has >= 6 edges;
+#   (D) one plaquette, two front-pairs, |p| = 4, |p'| >= 5 => p' is bd(q) xor bd(c) (6 edges) or bd(q) u bd(c) (7 edges), c ~ q, in the other layer
+#       (K_S choices each), or has 8 edges and c shares only a vertex with q (4(P_v-1) - 2K_S choices).
+# The junction sum Sigma_4^(3e) of the revised Lemma mg:lem:jsums3:
+#   shifts and jumps (unchanged); 12(d-3) b^4 + crude counts for n >= 5 plaquettes; exits K_S b (f(6)+f(7)) + (4(P_v-1)-2K_S) b f(8) + crude for n >= 2;
+#   one plaquette 4 P_v b (F_8 A + F A_8 + F (e^A - 1 - A));
+#   two or more plaquettes and >= 3 front-pairs: [(b/bbar)^3 (a/abar)^2 + (b/bbar)^2 (a/abar)^3] x (doubly marked tree sum at (bbar, abar)), since by (C)
+#   such a junction has b^n a^E with n >= 2, E >= 2 and n + E >= 5 (E = total power of a in its weight); or, whichever is smaller, the majorant of
+#   Section 11, (b/bbar)^2 x (doubly marked tree sum at bbar, with the actual a). The first is O(beta^5), the second O(beta^4) with a smaller constant.
+# Usage: python3 third_order_effective.py
+import sys, os
+here = os.path.dirname(os.path.abspath(__file__))
+for sub in ('second-order', 'upper-bound', 'lower-bound'): sys.path.insert(0, os.path.join(here, '..', sub))
+sys.path.insert(0, here)
+from mpmath import mp, mpf, e, exp, log, expm1, binomial, fsum
+from second_order_constants import su2, su3, u1, dressed, upper2
+from junction_constants import counts
+from third_order_constants import tree_constants, marked, lower3
+mp.dps = 40
+
+def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None):
+    K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x); lam = exp(2*(K+1)*th5)
+    u = g['u']; a = lam*u; gam = expm1(2*beta) + beta**2*exp(beta); b = lam*gam
+    Ubar, s6 = dressed(beta, g)
+    varpi = b**varpi_pow; C = 1 + max(1/varpi, (1+gam)/Ubar); omega = C*a**4*(1+gam)
+    b2 = lam**2*(2*s6 + s6**2)/u**4
+    Pv, KS, Tv, N = counts(d, volume)
+    if volume == 'finite': N[4] = Pv; N[5] = 0
+    def Yf(z, p=0): return fsum(m**p*binomial(KS*m, m-1)*(b*exp(z))**m for m in range(1, NMAX))
+    cT = mpf(1); xF = mpf(0); xC = mpf(0)
+    for _ in range(300):
+        A0 = exp(cT)*fsum(N[k]*a**(mpf(k)/2)*exp(xF*k) for k in range(4, KMAX))
+        xF_n = Pv*Yf(xC) + A0; xC_n = 4*Pv*Yf(xC) + 8*A0
+        hJ = C*max(a**(mpf(k)/2)*k*Pv*Yf(xC)*exp(xF*k) for k in range(4, 12))
+        cT_n = exp(hJ)/(1-omega)
+        done = abs(xF_n-xF) + abs(xC_n-xC) + abs(cT_n-cT) < mpf(10)**-30
+        xF, xC, cT = xF_n, xC_n, cT_n
+        if done: break
+    A = [exp(cT)*fsum(k**j*N[k]*a**(mpf(k)/2)*exp(xF*k) for k in range(4, KMAX)) for j in range(3)]
+    Y = [Yf(xC, j) for j in range(3)]
+    def X(n, k):
+        if k == 5: return mpf(4*n+4)/5 if (N[5] > 0 and n >= 4) else 0
+        return min(binomial(4*n+4, k), (4*n+4)*N[k])
+    Ak = lambda kmin: 8*exp(cT)*fsum(N[k]*a**(mpf(k)/2) for k in range(kmin, KMAX))
+    Ac = lambda kmin, kmax=KMAX: 16*exp(cT)*fsum(N[k]*(1 + mpf(k)/8)*a**(mpf(k)/2) for k in range(kmin, kmax))
+    if bbar_grid is None: bbar_grid = [mpf(2)**(-j) for j in range(3, 14)]
+    abar_grid = [mpf(2)**(-j) for j in range(2, 12)]
+    tcache = {}
+    for bb in bbar_grid:                      # the tree constants at (bbar, abar) do not depend on F: compute them once
+        if bb < b: continue
+        for ab in abar_grid:
+            if ab < a: continue
+            tc = tree_constants(bb, ab, cT, Pv, KS, N, KMAX, NMAX)
+            if tc is not None: tcache[(bb, ab)] = tc
+    tcache11 = {}
+    for bb in [mpf(2)**(-j) for j in range(3, 16)]:   # Section 11's majorant: bbar for the plaquettes only, the actual a
+        if bb < b: continue
+        tc = tree_constants(bb, a, cT, Pv, KS, N, KMAX, NMAX)
+        if tc is not None: tcache11[bb] = tc
+    def solve(F):
+        f = lambda k: mpf(1) if k == 4 else F*k**2*exp(xF*k)*a**(k-4)
+        gF, gC, g2F, g2C, kF, kC = marked(xF, Y, A, f, Pv, N, KMAX)
+        Fk = lambda kmin: 8*fsum(N[k]*f(k) for k in range(kmin, KMAX))
+        Fc = lambda kmin, kmax=KMAX: 16*fsum(N[k]*(1 + mpf(k)/8)*f(k) for k in range(kmin, kmax))
+        best = None
+        for (bb, ab), tc in tcache.items():
+                xFb, xCb, Yb, Ab = tc
+                fb = lambda k: mpf(1) if k == 4 else F*k**2*exp(xF*k)*ab**(k-4)
+                mkb = marked(xFb, Yb, Ab, fb, Pv, N, KMAX)
+                if mkb is None: continue
+                gFb, gCb, g2Fb, g2Cb, kFb, kCb = mkb
+                S3 = 4*Pv*exp(4*xFb)*(kCb*Yb[2] + 4*(gCb*g2Fb + g2Cb*gFb)*Yb[1] + 16*kFb*Yb[0])
+                val = ((b/bb)**3*(a/ab)**2 + (b/bb)**2*(a/ab)**3)*S3
+                if best is None or val < best[0]: best = (val, (bb, ab))
+        for bb, tc in tcache11.items():
+                xFb, xCb, Yb, Ab = tc
+                mkb = marked(xFb, Yb, Ab, f, Pv, N, KMAX)
+                if mkb is None: continue
+                gFb, gCb, g2Fb, g2Cb, kFb, kCb = mkb
+                S3 = 4*Pv*exp(4*xFb)*(kCb*Yb[2] + 4*(gCb*g2Fb + g2Cb*gFb)*Yb[1] + 16*kFb*Yb[0])
+                val = (b/bb)**2*S3
+                if best is None or val < best[0]: best = (val, (bb, 'a'))
+        parts = dict(two=(4*(Pv-1)-KS)*varpi*min(b**2, b2),
+                     four=12*(d-3)*b**4 + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(5, NMAX)),
+                     exits=KS*b*(f(6) + f(7)) + (4*(Pv-1)-2*KS)*b*f(8)
+                           + fsum(2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(2, NMAX)),
+                     one_plaq=4*Pv*b*(Fk(8)*Ak(4) + Fk(4)*Ak(8) + Fk(4)*(exp(Ak(4))-1-Ak(4))),
+                     multi=best[0])
+        full = b + (4*(Pv-1)-KS)*b**2 + 48*binomial(18, 2)*(d-2)*(2*d-3)*b**3 + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(4, NMAX)) \
+               + fsum(2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(1, NMAX)) \
+               + 4*Pv*exp(4*xF)*(kC*Y[2] + 4*(gC*g2F + g2C*gF)*Y[1] + 16*kF*Y[0])
+        return fsum(parts.values()), parts, Pv*(gC*Y[1]/5 + gF*Y[0]), full, best[1]
+    F = mpf(1)
+    for _ in range(60):
+        S, parts, need, full, bb = solve(F); dl = S/Ubar*(1+mpf(10)**-12)
+        Fn = need/(Ubar*(1+dl)-a)*(1+mpf(10)**-9)
+        done = abs(Fn-F) < mpf(10)**-12*F
+        F = Fn
+        if done: break
+    S, parts, need, full, bb = solve(F); dl = S/Ubar*(1+mpf(10)**-12)
+    hyp = dict(sigma=S < Ubar*dl, exits=need < F*(Ubar*(1+dl)-a), omega=omega < 1,
+               old=omega + C*a**4*(2*Ubar*(1+dl) + full)/(1-omega) <= 1, beyond=a**4*Ubar*(1+dl) <= varpi, growth=a**4*Ubar*(1+dl) <= 1)
+    assert all(hyp.values()), hyp
+    return dict(delta=dl, parts=parts, b=b, a=a, F=F, Ubar=Ubar, bars=bb, loss=8*(K+1)*th5 + log(Ubar) + log(1+dl))
+
+GROUPS = (('SU(2)', su2), ('SU(3)', su3), ('U(1)', u1))
+NIOTA = {'SU(2)': (2, 1), 'SU(3)': (3, 0), 'U(1)': (1, 0)}
+
+def delta4_limit(d, N, iota):
+    """delta'_4 = lim delta'/beta^4 (Theorem of Section 13): shifts and jumps + cube junctions + six-edge exits."""
+    Pv = 2*(d-1)*(d-2); KS = 4*(2*d-5); u1 = mpf(1+iota)/(2*N**2)
+    parts = (8*(4*Pv-4-KS)*(2-iota)*N**2*u1**2, 192*(d-3), mpf(1872)/5*KS*Pv**2*u1**2)
+    return sum(parts), parts
+
+def main():
+    for gname, gf in GROUPS:
+        for d in (3, 4):
+            dl4, p4 = delta4_limit(d, *NIOTA[gname])
+            print(f"{gname}, d={d}:  limit delta'_4 = {float(dl4):.6g} = {' + '.join(f'{float(x):.6g}' for x in p4)}")
+            for beta in (mpf('1e-9'), mpf('1e-7'), mpf('1e-6'), mpf('1e-5'), mpf('1e-4')):
+                if d == 4 and beta > mpf('1.5e-4'): continue
+                g = gf(beta)
+                try:
+                    lo = lower3e(beta, d, g)
+                except AssertionError as err:
+                    print(f"  beta={float(beta):.0e}: hypotheses fail {err}"); continue
+                lo_old = lower3(beta, d, g); up = upper2(beta, d, g)
+                pc = ', '.join(f'{k}={float(v/beta**4):.3g}' for k, v in lo['parts'].items())
+                print(f"  beta={float(beta):.0e}: delta'/beta^4 = {float(lo['delta']/beta**4):.4g} (Section 11: {float(lo_old['delta']/beta**4):.3g});"
+                      f"  window for m - 4log(1/u): [{float(-lo['loss']):+.6e}, {float(up['D2']):+.6e}], -log Ups = {float(-log(g['Ups'])):+.6e}")
+                print(f"     parts/beta^4: {pc};  majorant at (bbar, abar) = {lo['bars'][0]}, {lo['bars'][1]}")
+                sys.stdout.flush()
+
+if __name__ == "__main__":
+    main()
