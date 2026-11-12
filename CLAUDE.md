@@ -76,12 +76,18 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   This is Conjecture 12.4 there, with $o(\beta^4)$ in place of $O(\beta^5)$; for $SU(2)$, $d=4$, the coefficient is $-\frac{98}3u^4$, the classical one. For $U(1)$, $d\ge4$, the
   coefficient lies between $-(26d-70)/16$ and $-(10d-22)/16$, because norms lose the $C$-odd signs. Checks: `theory/checks/fourth-order/moves_by_characters.py`
   ($\mathbb Z_3$, $S_3$, exact), and the referee's own code in `referee-section14/` (five finite groups; the full operator from the definitions for $\mathbb Z_2$,
-  $\mathbb Z_3$). Refereed: minor revisions, applied. Next: the $C$-odd sector ($U(1)$, $d\ge4$), the $u^6$ term, effective
-  constants, near $\beta_0$ (journal 2026-11-12, Parts 8–10).
+  $\mathbb Z_3$). Refereed: minor revisions, applied.
+  Section 15 (12 November), the sectors of charge conjugation. With a charge conjugation ($U(1)$, $U(N)$, $SU(N)$, abelian), $m=\min(m_+,m_-)$, and each sector
+  rate is $4\log(1/u)-\log\Upsilon_C+O(\beta^4)$, the even one to $o(\beta^4)$; for $SU(3)$, $m_--m_+=\beta/3+O(\beta^2)$. Lemma 15.6: $\Upsilon_+-\Upsilon_-=\beta^4/248832+O(\beta^5)$
+  for $SU(6)$ and $O(\beta^5)$ for $SU(N\ge7)$, so the fourth-order term holds for $SU(N)$, every $N$, every $d\ge3$. The odd sector at fourth order ($U(1)$, $d\ge4$)
+  is Conjecture 15.11. The hop/turn cancellation is proved as an operator identity ($Y^0_{\rm turn}=Y_{\rm hop}\mathsf C$, Lemma 15.8) with a partner lemma, but the
+  grouping of sets along the path is open. A first draft's proof had major gaps (referee: non-closed grouping, unequal $r_X^2$ factors), which is why it is a
+  conjecture. Checks in `theory/checks/fourth-order/` (`c_odd_pairing.py`, `upsilon_split.py`, `referee-section15/`). Second referee of the revision pending
+  (journal 2026-11-12, Part 11). Next: the odd sector (routes in Remark 15.12), the $u^6$ term, effective constants, near $\beta_0$.
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant;
+- The newest journal entry is `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
   Part 10: the lower bound to fourth order); `journal/2026-11-11.md` has Parts 6–7 (the second- and
   third-order terms), `journal/2026-11-10.md` has Parts 1–5,
   `journal/2026-11-09b.md` is the first part of session 3 and `journal/2026-11-09.md` is session 2.
