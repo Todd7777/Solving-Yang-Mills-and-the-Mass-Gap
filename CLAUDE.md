@@ -84,11 +84,17 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   grouping of sets along the path is open. A first draft's proof had major gaps (referee: non-closed grouping, unequal $r_X^2$ factors), which is why it is a
   conjecture. Checks in `theory/checks/fourth-order/` (`c_odd_pairing.py`, `upsilon_split.py`, `referee-section15/`). Second referee of the revision: minor revisions
   (a gap in the passage to $\mu_\beta$, repaired by defining the sector gaps spectrally via the ground-state chain), applied (journal 2026-11-12, Part 11). Next: the odd sector (routes in Remark 15.12), the $u^6$ term, effective constants, near $\beta_0$.
+  Section 16 (12 November), closed polymers and the third-order term at practical $\beta$. Closed sets of plaquettes have 6 (a unit cube) or $\ge8$ plaquettes
+  (Lemma 16.1), so the ratio bound holds with $\theta_7=2(d-2)e^6\sigma_6+x^8/(1-x)=O(\beta^6)$ in every section (Lemma 16.2). The junctions with three front-pairs of
+  lowest order are classified (three caps or a unit cube; a widening with a cap, or a cube with a bent domino) and counted exactly in the junction sum (Lemmas 16.3–16.4).
+  With exact $N^v_k$ and $Z_{n,4}$ (enumerations), the lower bound resolves the $SU(3)$ third-order term $\beta^3/432$ for $\beta\le1.4\cdot10^{-6}$ ($d=4$; before
+  $10^{-9}$) and $\beta\le1.7\cdot10^{-5}$ ($d=3$) (Remark 16.5, Numerical). Checks in `theory/checks/third-order/` (`three_front_count.py`, `practical_beta.py`, ...).
+  Referees: pending. Next: the next order of the majorant ($n+E=6$), exact $N^v_9$ in $d=4$.
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
 - The newest journal entry is `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
-  Part 10: the lower bound to fourth order); `journal/2026-11-11.md` has Parts 6–7 (the second- and
+  Part 12: the third-order term at practical $\beta$; Part 10: the lower bound to fourth order); `journal/2026-11-11.md` has Parts 6–7 (the second- and
   third-order terms), `journal/2026-11-10.md` has Parts 1–5,
   `journal/2026-11-09b.md` is the first part of session 3 and `journal/2026-11-09.md` is session 2.
 
