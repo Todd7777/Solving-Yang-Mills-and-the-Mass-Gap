@@ -131,22 +131,22 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
 GROUPS = (('SU(2)', su2), ('SU(3)', su3), ('U(1)', u1))
 NIOTA = {'SU(2)': (2, 1), 'SU(3)': (3, 0), 'U(1)': (1, 0)}
 
-def delta4_limit(d, N, iota, sharp6=True, varpi_pow=3, uturn=True):
+def delta4_limit(d, N, iota, sharp6=True, varpi_pow=mpf(5)/2, uturn=True):
     """delta'_4 = lim delta'/beta^4 (Theorem 13.4): the moves of the tube at the sup norm.
     Shifts and jumps 8(4P_v-4-K_S)(2-iota)N^2u_1^2 if varpi = b^2 (O(beta^5) if varpi = b^3); turns and jumps through cubes 160(d-3)
     (and the U-turns 32(d-3), unless they are charged eta, uturn=True); bulges and hops 8K_S u_1^2 (two narrowings, sharp6=True),
     or (1872/5) K_S P_v^2 u_1^2 with the crude F of the first version."""
     Pv = 2*(d-1)*(d-2); KS = 4*(2*d-5); u1 = mpf(1+iota)/(2*N**2)
-    shifts = 8*(4*Pv-4-KS)*(2-iota)*N**2*u1**2 if varpi_pow == 2 else mpf(0)
+    shifts = 8*(4*Pv-4-KS)*(2-iota)*N**2*u1**2 if varpi_pow <= 2 else mpf(0)      # varpi = b^p with p > 2: the shifts and jumps are o(beta^4)
     cube = (160 if uturn else 192)*(d-3)
     exits = 8*KS*u1**2 if sharp6 else mpf(1872)/5*KS*Pv**2*u1**2
     parts = (shifts, mpf(cube), exits)
     return sum(parts), parts
 
 def best_lower(beta, d, g):
-    """the smaller admissible delta' of varpi = b^2 and varpi = b^3 (both are allowed by Theorem 13.4)"""
+    """the smallest admissible delta' of varpi = b^2, b^(5/2), b^3 (all are allowed by Theorem 13.4)"""
     out = None
-    for vp in (2, 3):
+    for vp in (2, mpf(5)/2, 3):
         try:
             lo = lower3e(beta, d, g, varpi_pow=vp); lo['varpi_pow'] = vp
         except AssertionError:
@@ -160,7 +160,7 @@ def main():
             dl4, p4 = delta4_limit(d, *NIOTA[gname])
             dl42, _ = delta4_limit(d, *NIOTA[gname], varpi_pow=2)
             dl4c, _ = delta4_limit(d, *NIOTA[gname], sharp6=False, varpi_pow=2, uturn=False)
-            print(f"{gname}, d={d}:  limit delta'_4 = {float(dl4):.6g} = {' + '.join(f'{float(x):.6g}' for x in p4)}  (varpi = b^3);"
+            print(f"{gname}, d={d}:  limit delta'_4 = {float(dl4):.6g} = {' + '.join(f'{float(x):.6g}' for x in p4)}  (varpi = b^(5/2) or b^3);"
                   f"  with varpi = b^2: {float(dl42):.6g};  first version (crude F, U-turns at b^4, varpi = b^2): {float(dl4c):.6g}")
             for beta in (mpf('1e-12'), mpf('1e-9'), mpf('1e-7'), mpf('1e-5'), mpf('1e-4')):
                 g = gf(beta)
@@ -169,7 +169,7 @@ def main():
                     print(f"  beta={float(beta):.0e}: hypotheses fail for varpi = b^2 and b^3"); continue
                 lo_old = lower3(beta, d, g); up = upper2(beta, d, g)
                 pc = ', '.join(f'{k}={float(v/beta**4):.3g}' for k, v in lo['parts'].items())
-                print(f"  beta={float(beta):.0e}: delta'/beta^4 = {float(lo['delta']/beta**4):.4g} with varpi = b^{lo['varpi_pow']} (Section 11: {float(lo_old['delta']/beta**4):.3g});"
+                print(f"  beta={float(beta):.0e}: delta'/beta^4 = {float(lo['delta']/beta**4):.4g} with varpi = b^{float(lo['varpi_pow']):g} (Section 11: {float(lo_old['delta']/beta**4):.3g});"
                       f"  window for m - 4log(1/u): [{float(-lo['loss']):+.7e}, {float(up['D2']):+.7e}], -log Ups = {float(-log(g['Ups'])):+.7e}")
                 print(f"     parts/beta^4: {pc};  majorant at (bbar, abar) = {lo['bars'][0]}, {lo['bars'][1]};  Sigma^(6)/b = {float(lo['sig6']/lo['b']):.4g}")
                 sys.stdout.flush()
