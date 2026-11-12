@@ -1,0 +1,13 @@
+(H) SU(3): Remark 16.5(iii) as revised (theta_7, counts of (ii), M_5): threshold points
+  d=4 beta=1.4e-6: delta'/beta^4 = 1.52e+03; (beta^3/432)/beta^4 = 1.65e+03; total loss/(beta^3/432) = 0.922
+     parts/beta^4: two=0.0238, four=0.0026, exits=0.771, one_plaq=175, multi=1.35e+03
+  d=3 beta=1.7e-5: delta'/beta^4 = 113; (beta^3/432)/beta^4 = 136; total loss/(beta^3/432) = 0.893
+     parts/beta^4: two=0.0207, four=0.00055, exits=0.0828, one_plaq=0.103, multi=113
+  d=3 beta=1e-5: delta'/beta^4 = 39.1; (beta^3/432)/beta^4 = 231; total loss/(beta^3/432) = 0.173
+     parts/beta^4: two=0.0159, four=6.58e-05, exits=0.0302, one_plaq=0.0357, multi=39.1
+  d=3 beta=1e-4: delta'/beta^4 = 3.91e+03; (beta^3/432)/beta^4 = 23.1; total loss/(beta^3/432) = 617
+     parts/beta^4: two=0.0503, four=0.663, exits=2.71, one_plaq=3.61, multi=3.91e+03
+
+real	4m55.028s
+user	4m15.409s
+sys	0m0.099s

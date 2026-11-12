@@ -1,0 +1,26 @@
+d=3, case (i): 48 junctions given p; classes {'caps': 48}; states visited 398
+
+real	0m0.209s
+user	0m0.072s
+sys	0m0.004s
+d=3, case (ii): 24 junctions given p; classes {'six-edge front in other layer': 24}; states visited 440
+
+real	0m0.192s
+user	0m0.081s
+sys	0m0.008s
+d=4, case (i): 876 junctions given p; classes {'caps': 864, 'other (cube?)': 12}; states visited 10424
+
+real	0m2.502s
+user	0m1.486s
+sys	0m0.009s
+d=4, case (ii): 320 junctions given p; classes {'six-edge front in other layer': 320}; states visited 17111
+
+real	0m4.098s
+user	0m2.274s
+sys	0m0.009s
+d=4, case (iii): 312 junctions given p; classes {'big front in the other layer': 312}; states visited 14554
+
+real	0m8.882s
+user	0m5.461s
+sys	0m0.008s
+d=3, case (iii): 24 junctions given p; classes {'big front in the other layer': 24}; states visited 463

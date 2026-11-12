@@ -1,0 +1,13 @@
+(B) SU(2): lower bound of Theorem mg:thm:caplower, infinite volume, loss = 8(K+1)theta + log(1+delta_chi)
+  d=4 beta=1.5377e-04: loss with theta_5 1.2803e-04; with theta_7 9.3875e-05 (sigma_6 exact: 9.3875e-05); delta_chi/beta^2 = 3970.4
+  d=4 beta=7.6883e-05: loss with theta_5 6.8316e-06; with theta_7 5.7896e-06 (sigma_6 exact: 5.7896e-06); delta_chi/beta^2 = 979.5
+  d=4 beta=1.0000e-05: loss with theta_5 1.5210e-08; with theta_7 1.5172e-08 (sigma_6 exact: 1.5172e-08); delta_chi/beta^2 = 151.7
+  d=4: with theta_7, loss and b_cap increasing on 20 grid points of (0, beta_0]: True, True; max loss 9.3875e-05
+  d=3 beta=4.0262e-04: loss with theta_5 2.4376e-04; with theta_7 3.5581e-05 (sigma_6 exact: 3.5581e-05); delta_chi/beta^2 = 219.0
+  d=3 beta=2.0131e-04: loss with theta_5 1.0102e-05; with theta_7 3.8415e-06 (sigma_6 exact: 3.8415e-06); delta_chi/beta^2 = 94.8
+  d=3 beta=1.0000e-05: loss with theta_5 3.4485e-09; with theta_7 3.4466e-09 (sigma_6 exact: 3.4466e-09); delta_chi/beta^2 = 34.5
+  d=3: with theta_7, loss and b_cap increasing on 20 grid points of (0, beta_0]: True, True; max loss 3.5581e-05
+
+real	1m8.215s
+user	1m6.309s
+sys	0m0.041s

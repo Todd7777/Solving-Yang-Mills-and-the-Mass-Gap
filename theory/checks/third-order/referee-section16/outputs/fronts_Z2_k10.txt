@@ -1,0 +1,1 @@
+Z^2: fronts through a vertex by number of edges (k <= 10): {4: 4, 6: 12, 7: 12, 8: 70, 9: 160, 10: 634}; of which cycles: {4: 4, 6: 12, 8: 56, 10: 280}; nodes 140281

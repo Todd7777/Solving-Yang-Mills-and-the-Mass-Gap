@@ -1,0 +1,9 @@
+(I) SU(3), d=4: as (H) with also N^v_9 = 4344 (ref_fronts.py), at beta = 1e-5 and 1.4e-6
+  beta=1e-5: delta'/beta^4 = 4.05e+04; total loss/(beta^3/432) = 175
+     parts/beta^4: two=0.0636, four=3.51, exits=37.9, one_plaq=61.7, multi=4.04e+04
+  beta=1.4e-6: delta'/beta^4 = 794; total loss/(beta^3/432) = 0.48
+     parts/beta^4: two=0.0238, four=0.0026, exits=0.771, one_plaq=1.2, multi=792
+
+real	2m31.830s
+user	2m0.943s
+sys	0m0.049s

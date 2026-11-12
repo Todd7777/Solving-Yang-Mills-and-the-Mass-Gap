@@ -1,0 +1,22 @@
+d=3: 289 candidates q', 45 searched
+d=3, n=1: Z_n,4 = 1  (lambda' other layer: 1, same layer: 0); by relation of q' to q0: {('same plaquette', 'other layer'): 1}; nodes 63
+     classes (weighted, both layers): {('other', 'same plaquette'): 1}
+     weight 1: q'=((0, 0), 0, 1) (same plaquette), P=[((0, 0), 0, 1)]: other
+d=3, n=2: Z_n,4 = 8  (lambda' other layer: 8, same layer: 0); by relation of q' to q0: {('share a vertex only', 'other layer'): 4, ('share a link', 'other layer'): 4}; nodes 107
+     classes (weighted, both layers): {('other', 'share a vertex only'): 4, ('other', 'share a link'): 4}
+     weight 4: q'=((-1, -1), 0, 1) (share a vertex only), P=[((-1, -1), 0, 1), ((0, 0), 0, 1)]: other
+     weight 4: q'=((-1, 0), 0, 1) (share a link), P=[((-1, 0), 0, 1), ((0, 0), 0, 1)]: other
+d=3, n=3: Z_n,4 = 0  (lambda' other layer: 0, same layer: 0); by relation of q' to q0: {}; nodes 252
+     classes (weighted, both layers): {}
+d=3, n=4: Z_n,4 = 0  (lambda' other layer: 0, same layer: 0); by relation of q' to q0: {}; nodes 434
+     classes (weighted, both layers): {}
+d=3, n=5: Z_n,4 = 0  (lambda' other layer: 0, same layer: 0); by relation of q' to q0: {}; nodes 676
+     classes (weighted, both layers): {}
+d=3, n=6: Z_n,4 = 0  (lambda' other layer: 0, same layer: 0); by relation of q' to q0: {}; nodes 974
+     classes (weighted, both layers): {}
+d=3, n=7: Z_n,4 = 0  (lambda' other layer: 0, same layer: 0); by relation of q' to q0: {}; nodes 1365
+     classes (weighted, both layers): {}
+
+real	0m0.506s
+user	0m0.378s
+sys	0m0.004s

@@ -1,0 +1,11 @@
+(E) SU(3), d=3: delta' of Theorem mg:thm:lower5 (chars) with theta_7 and the exact counts, against beta^3/432
+  beta=1e-5: delta'/beta^4 = 1.08e+04 (varpi=b^2.5; before: 2.67e+05, total loss before 1.83e+08 beta^4); total loss/(beta^3/432) = 46.474
+     parts/beta^4: two=0.0159, four=6.58e-05, exits=0.0302, one_plaq=0.0357, multi=1.08e+04
+  beta=3e-6: delta'/beta^4 = 3.23e+03 (varpi=b^2.5; before: 8.02e+04, total loss before 5.48e+07 beta^4); total loss/(beta^3/432) = 4.182
+     parts/beta^4: two=0.00871, four=5.33e-07, exits=0.00358, one_plaq=0.00331, multi=3.23e+03
+  beta=1e-6: delta'/beta^4 = 1.08e+03 (varpi=b^2.5; before: 2.67e+04, total loss before 1.83e+07 beta^4); total loss/(beta^3/432) = 0.465
+     parts/beta^4: two=0.00503, four=6.57e-09, exits=0.000717, one_plaq=0.000401, multi=1.08e+03
+
+real	12m30.269s
+user	8m18.348s
+sys	0m0.215s

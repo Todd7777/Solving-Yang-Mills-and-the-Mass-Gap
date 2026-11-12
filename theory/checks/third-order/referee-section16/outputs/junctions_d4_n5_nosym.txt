@@ -1,0 +1,10 @@
+d=4: 5603 candidates q', 5603 searched
+d=4, n=1: Z_n,4 = 1  (lambda' other layer: 1, same layer: 0); by relation of q' to q0: {('same plaquette', 'other layer'): 1}; nodes 5669
+d=4, n=2: Z_n,4 = 32  (lambda' other layer: 32, same layer: 0); by relation of q' to q0: {('share a vertex only', 'other layer'): 20, ('share a link', 'other layer'): 12}; nodes 14123
+d=4, n=3: Z_n,4 = 0  (lambda' other layer: 0, same layer: 0); by relation of q' to q0: {}; nodes 62639
+d=4, n=4: Z_n,4 = 12  (lambda' other layer: 10, same layer: 2); by relation of q' to q0: {('vertex-disjoint', 'other layer'): 2, ('vertex-disjoint', 'same layer'): 2, ('share a link', 'other layer'): 8}; nodes 248869
+d=4, n=5: Z_n,4 = 26  (lambda' other layer: 22, same layer: 4); by relation of q' to q0: {('vertex-disjoint', 'other layer'): 4, ('vertex-disjoint', 'same layer'): 4, ('share a link', 'other layer'): 16, ('same plaquette', 'other layer'): 2}; nodes 696069
+
+real	2m4.581s
+user	1m49.296s
+sys	0m0.052s

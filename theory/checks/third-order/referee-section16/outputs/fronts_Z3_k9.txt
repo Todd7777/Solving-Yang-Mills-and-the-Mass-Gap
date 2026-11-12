@@ -1,0 +1,5 @@
+Z^3: fronts through a vertex by number of edges (k <= 9): {4: 12, 6: 132, 7: 108, 8: 2034, 9: 4344}; of which cycles: {4: 12, 6: 132, 8: 1656}; nodes 4301798
+
+real	0m26.847s
+user	0m26.024s
+sys	0m0.009s

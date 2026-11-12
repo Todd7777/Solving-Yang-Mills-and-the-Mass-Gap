@@ -1,0 +1,34 @@
+Z^3, NMAX=12: closed connected sets containing p0, by size: {6: 2, 10: 10, 11: 11, 12: 24}; search nodes 20594
+  size 6: 2 sets, all unit cubes: True  (2(D-2) = 2)
+  size 10: 10 sets; (number of links, link multiplicities) -> count: {(20, ((2, 20),)): 10}
+Z^4, NMAX=10: closed connected sets containing p0, by size: {6: 4, 10: 60}; search nodes 156354
+  size 6: 4 sets, all unit cubes: True  (2(D-2) = 4)
+  size 10: 60 sets; (number of links, link multiplicities) -> count: {(20, ((2, 20),)): 60}
+Z^5, NMAX=9: closed connected sets containing p0, by size: {6: 6}; search nodes 634034
+  size 6: 6 sets, all unit cubes: True  (2(D-2) = 6)
+(Z/3)^3, NMAX=9: closed connected sets containing p0, by size: {6: 2, 9: 1}; search nodes 1864
+  size 6: 2 sets, all unit cubes: True  (2(D-2) = 2)
+  size 9: 1 sets; (number of links, link multiplicities) -> count: {(18, ((2, 18),)): 1}
+(Z/4)^3, NMAX=9: closed connected sets containing p0, by size: {6: 2}; search nodes 1948
+  size 6: 2 sets, all unit cubes: True  (2(D-2) = 2)
+(Z/5)^3, NMAX=9: closed connected sets containing p0, by size: {6: 2}; search nodes 1941
+  size 6: 2 sets, all unit cubes: True  (2(D-2) = 2)
+(Z/6)^3, NMAX=9: closed connected sets containing p0, by size: {6: 2}; search nodes 1941
+  size 6: 2 sets, all unit cubes: True  (2(D-2) = 2)
+(Z/7)^3, NMAX=9: closed connected sets containing p0, by size: {6: 2}; search nodes 1941
+  size 6: 2 sets, all unit cubes: True  (2(D-2) = 2)
+(Z/8)^3, NMAX=9: closed connected sets containing p0, by size: {6: 2}; search nodes 1941
+  size 6: 2 sets, all unit cubes: True  (2(D-2) = 2)
+(Z/3)^4, NMAX=9: closed connected sets containing p0, by size: {6: 4, 9: 1}; search nodes 54960
+  size 6: 4 sets, all unit cubes: True  (2(D-2) = 4)
+  size 9: 1 sets; (number of links, link multiplicities) -> count: {(18, ((2, 18),)): 1}
+(Z/4)^4, NMAX=9: closed connected sets containing p0, by size: {6: 4}; search nodes 55170
+  size 6: 4 sets, all unit cubes: True  (2(D-2) = 4)
+(Z/5)^4, NMAX=9: closed connected sets containing p0, by size: {6: 4}; search nodes 55145
+  size 6: 4 sets, all unit cubes: True  (2(D-2) = 4)
+(Z/8)^4, NMAX=9: closed connected sets containing p0, by size: {6: 4}; search nodes 55145
+  size 6: 4 sets, all unit cubes: True  (2(D-2) = 4)
+(1) Z^3: max number of links of a unit cube in a plaquette that is not one of its faces: 1
+(1) Z^4: max number of links of a unit cube in a plaquette that is not one of its faces: 1
+(1) Z^5: max number of links of a unit cube in a plaquette that is not one of its faces: 1
+(2) Z^4: two-cube boxes through p0: 60 ({'bent': 40, 'straight': 20})

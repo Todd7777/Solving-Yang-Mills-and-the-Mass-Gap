@@ -1,0 +1,10 @@
+(F) SU(3), d=4: delta' with theta_7, Z_{n,4} and N^v_k for k <= 8 (the counts now listed in (ii)), and threshold with N^v_8, N^v_9
+  beta=1e-5: delta'/beta^4 = 3.94e+06 (varpi=b^2)
+  beta=1e-7: delta'/beta^4 = 3.93e+04 (varpi=b^2.5)
+  with N^v_8, N^v_9 exact, beta=8e-8: delta'/beta^4 = 2.22e+04; total loss/(beta^3/432) = 0.769
+  with N^v_8, N^v_9 exact, beta=9e-8: delta'/beta^4 = 2.5e+04; total loss/(beta^3/432) = 0.973
+  with N^v_8, N^v_9 exact, beta=1e-7: delta'/beta^4 = 2.78e+04; total loss/(beta^3/432) = 1.201
+
+real	9m56.952s
+user	5m57.902s
+sys	0m0.189s

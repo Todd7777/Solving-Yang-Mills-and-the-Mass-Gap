@@ -123,11 +123,12 @@ in place of $O(\beta^5)$, for these groups, for every self-conjugate representat
 even and odd sectors are bounded separately: each is determined to third order, and the even one to fourth order. For $SU(3)$ this proves the first-order
 splitting $\beta/3$ of the two plaquette glueballs. The odd sector at fourth order, which carries the gap of $U(1)$ in $d\ge4$, remains open. There the hop and the
 turn between perpendicular neighbours cancel up to the cap under the turn, which we prove as an identity of two-slice operators, but the grouping of the sets along
-the path is not done. Closed polymers have six plaquettes (a unit cube) or at least eight, which reduces the loss of every lower bound from $O(\beta^5)$ to $O(\beta^6)$. With
+the path is not done. Closed polymers have six plaquettes (a unit cube) or at least eight, which reduces the loss of the ratio bound in the lower bounds of the later sections
+from $O(\beta^5)$ to $O(\beta^6)$ (in infinite volume, and for sides $\ge8$). With
 exact counts of small fronts and junctions, and the junctions with three front-pairs of lowest order classified and counted, the lower bound resolves the third-order term
-of $SU(3)$ for $\beta\le1.4\cdot10^{-6}$ in $d=4$ (instead of $10^{-9}$) and for $\beta\le1.7\cdot10^{-5}$ in $d=3$ (a numerical evaluation). For $SU(2)$ the two
-bounds give $-1.3\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
-$-2.5\cdot10^{-4}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$ (a numerical evaluation of the explicit constants).
+of $SU(3)$ for $\beta\le1.7\cdot10^{-6}$ in $d=4$ (instead of $2\cdot10^{-9}$) and for $\beta\le1.8\cdot10^{-5}$ in $d=3$ (a numerical evaluation). For $SU(2)$ the two
+bounds give $-9.4\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
+$-3.6\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$, in infinite volume (a numerical evaluation of the explicit constants).
 The asymptotics
 itself, indeed the full expansion of the glueball mass, is classical (Schor; O'Carroll et al.); what is new here is a self-contained
 proof with explicit constants on the whole range, for general compact $G$ and the infinite-volume theory of Part~II.
@@ -249,7 +250,8 @@ for the junctions, Theorems~\ref{mg:thm:caplower} and~\ref{mg:thm:upperchar} and
 and~\ref{mg:thm:lower2} and Corollary~\ref{mg:cor:second} for the second-order term, Theorem~\ref{mg:thm:lower3} and Corollary~\ref{mg:cor:third}
 for the third-order term, Theorem~\ref{mg:thm:upper4} and Corollary~\ref{mg:cor:fourthupper} for the fourth-order upper bound, Theorem~\ref{mg:thm:lower5} and
 Corollary~\ref{mg:cor:fourthterm} for the fourth-order term, and the last sentence of Theorem~\ref{mg:thm:upper} for arbitrary $N$. For $SU(2)$ the interval of the last part has length at most $6.1\cdot10^{-4}$ ($d=4$)
-and $2.7\cdot10^{-3}$ ($d=3$) on the whole range (Remark~\ref{mg:rem:cap}; Numerical: an evaluation of the explicit constants).
+and $2.7\cdot10^{-3}$ ($d=3$) on the whole range (Remark~\ref{mg:rem:cap}), and in infinite volume, with Lemma~\ref{mg:lem:theta7}, at most $5.7\cdot10^{-4}$ and $2.4\cdot10^{-3}$
+(Remark~\ref{mg:rem:practical}(i); Numerical: an evaluation of the explicit constants).
 
 \begin{remark}[Comparison]\label{mg:rem:comparison}
 For $d=4$: the bound of Part~II, $\log(1/(18\tanh\beta))$, is $\log(1/\beta)-2.89+O(\beta^2)$; the bound here is
@@ -316,7 +318,7 @@ front does not depend on where the front is. (15) For $SU(N)$, $N\ge6$, the plaq
 $N$. A charge conjugation of $G$ commutes with the transfer operators, so the even and odd sectors can be bounded separately, each with its own $\Upsilon_C$
 (Section~\ref{mg:sec:codd}). In the odd sector the hop and the turn between perpendicular neighbours are, as two-slice operators, equal up to charge conjugation,
 and cancel up to the cap under the turn; grouping the sets so as to use this along the whole path is the step that remains for $U(1)$ in $d\ge4$. (16) Closed polymers have six plaquettes (a unit cube) or at least eight, so the ratio bound loses only $8(K+1)\theta_7=O(\beta^6)$ instead of
-$8(K+1)\theta_5=O(\beta^5)$ (Section~\ref{mg:sec:practical}). The junctions with three front-pairs of lowest order (three caps or a unit cube; a widening with a cap) are
+$8(K+1)\theta_5=O(\beta^5)$, in infinite volume and for sides $\ge8$ (Section~\ref{mg:sec:practical}). The junctions with three front-pairs of lowest order (three caps or a unit cube; a widening with a cap) are
 classified and counted exactly. With exact counts of small fronts and junctions this makes the third-order term visible at larger $\beta$.
 
 \section{The duplicated system}\label{mg:sec:dup}
@@ -3847,11 +3849,13 @@ conjugation in the recursion as the swap is used in Section~\ref{mg:sec:second}.
 lower bound a choice of $\varepsilon'$ that tends to $0$ with $\beta$. (Heuristic: with $\varepsilon'$ of order $\beta^{1/2}$, the proof of Theorem~\ref{mg:thm:lower5} appears to
 leave only terms $O(\beta^{9/2})$ when $\varpi=b^{5/2}$.)
 \item the term of order $u^6$;
-\item effective constants (Section~\ref{mg:sec:practical} removes the loss $8(K+1)\theta_5$, the crude counts of junctions with two front-pairs, and those of the junctions with three
-front-pairs of lowest order). At practical $\beta$ the terms of order $\beta^5$ with crude counts still dominate (Remark~\ref{mg:rem:betafour}(iii)), so the fourth-order term
-is resolved only asymptotically. With the reduced sums and $\varpi=b^{5/2}$ (Numerical; \texttt{third\_order\_effective.py}, option \texttt{chars}), the admissible
+\item effective constants. Section~\ref{mg:sec:practical} reduces the loss $8(K+1)\theta_5$ to $8(K+1)\theta_7=O(\beta^6)$. It replaces by exact counts the crude counts of the junctions with
+two front-pairs and at most seven plaquettes, and of those with three front-pairs of lowest order. Crude counts remain for more plaquettes, for exits with $|p'|\ge5$, in $\Sigma^{(6)}$
+and in the remainder of the majorant, which dominates $\delta'$ at practical $\beta$ (Remark~\ref{mg:rem:practical}). So the fourth-order term is resolved only asymptotically. With the
+reduced sums of Section~\ref{mg:sec:betafour}, $\varpi=b^{5/2}$, $\theta_5$ and the general counts (Numerical; \texttt{third\_order\_effective.py}, option \texttt{chars}), the admissible
 $\delta'/\beta^4$ for $SU(2)$ is $0.44$ at $\beta=10^{-12}$ and $0.035$ at $\beta=10^{-14}$ in $d=3$, where the limit is $\frac1{32}=0.031$; in $d=4$ it is $187$ and $2.0$,
-where the limit is $\frac{17}{128}=0.133$. The loss in $R(\beta)$ also contains $8(K+1)\theta_5/\beta^4$, which is $0.18$ at $\beta=10^{-14}$ in $d=3$.
+where the limit is $\frac{17}{128}=0.133$. The loss in $R(\beta)$ then also contains $8(K+1)\theta_5/\beta^4$, which is $0.18$ at $\beta=10^{-14}$ in $d=3$; with $\theta_7$ it is
+negligible.
 \end{itemize}
 
 (iv) Checks (a compass; \texttt{theory/checks/fourth-order/}).
@@ -4189,18 +4193,19 @@ spectra of Remark~\ref{mg:rem:fourth} follow the band of $H_-$ in the odd sector
 
 Every lower bound of Sections~\ref{mg:sec:sharp}--\ref{mg:sec:codd} loses $8(K+1)\theta_5$ in the gap. The loss comes from the ratio bound of Lemma~\ref{mg:lem:closed}, which charges
 every closed polymer of at least five plaquettes at the sup norm. At practical $\beta$ this loss dominates. For $SU(3)$ in $d=4$ it is about $4\cdot10^7\beta^4$ at $\beta=10^{-7}$,
-about two thousand times the third-order term $\beta^3/432$ of the gap (Corollary~\ref{mg:cor:third}), so the bounds of Sections~\ref{mg:sec:betafour}--\ref{mg:sec:fourthlower}
-resolve that term only for $\beta\lesssim10^{-9}$, far inside the range $\beta<\beta_0(4)\approx1.5\cdot10^{-4}$.
+about $1.6\cdot10^3$ times the third-order term $\beta^3/432$ of the gap (Corollary~\ref{mg:cor:third}), so the bounds of Sections~\ref{mg:sec:betafour}--\ref{mg:sec:fourthlower}
+resolve that term only for $\beta\lesssim2\cdot10^{-9}$, far inside the range $\beta<\beta_0(4)\approx1.5\cdot10^{-4}$.
 
 A closed polymer has at least six plaquettes, six only for a unit cube (Lemma~\ref{mg:lem:sixplaq}), and never seven (Lemma~\ref{mg:lem:seven}). The activity of a cube is known
 exactly, $\sigma_6=\sum_{r\ne0}d_r^2u_r^6$. So $\theta_5$ can be replaced by $\theta_7=2(d-2)e^6\sigma_6+O(x^8)$, which is of order $\beta^6$ (Lemma~\ref{mg:lem:theta7}), and
-every result of Sections~\ref{mg:sec:sharp}--\ref{mg:sec:codd} holds with this smaller loss. The junctions with three front-pairs then dominate. Lemma~\ref{mg:lem:threelow} determines
+every result of Sections~\ref{mg:sec:sharp}--\ref{mg:sec:codd} holds with this smaller loss, in infinite volume and on periodic lattices with all sides $\ge8$. The junctions with three
+front-pairs then dominate. Lemma~\ref{mg:lem:threelow} determines
 those of lowest order, and Lemma~\ref{mg:lem:jsums5} counts them exactly. Remark~\ref{mg:rem:practical} evaluates the third-order bound with $\theta_7$, these counts and exact counts
 of small fronts and junctions.
 
 \begin{lemma}[Seven plaquettes]\label{mg:lem:seven}
 Let $\mathcal Y$ be a non-empty finite set of plaquettes of $\Z^n$, $n\ge2$, such that every link of $E(\mathcal Y)$ lies in at least two plaquettes of $\mathcal Y$. Then
-$|\mathcal Y|\ne7$. The same holds on a periodic lattice with all sides $\ge9$.
+$|\mathcal Y|\ne7$. The same holds on a periodic lattice with all sides $\ge8$.
 \end{lemma}
 
 \begin{proof}
@@ -4220,21 +4225,23 @@ Lemma~\ref{mg:lem:five}). The two remaining plaquettes cannot cover four links u
 and $e_k$, and $\mathcal Y=\Gamma\cup\{p\}$ with $p\notin\Gamma$. Two links of $E(\Gamma)$ that lie in a common plaquette are either perpendicular with a common vertex or opposite
 edges of a face of $\Gamma$; in both cases that plaquette is a face of $\Gamma$. So $p$ has at least three links outside $E(\Gamma)$, which lie in $p$ only.
 \end{itemize}
-Every case is impossible. On a periodic lattice with sides $\ge9$, every link-connected component of $\mathcal Y$ satisfies the hypothesis, so has at least six plaquettes, and
-$\mathcal Y$ is connected; it lies in a box of side at most $8$ that does not wrap around, and lifts to $\Z^n$ with the hypothesis preserved.
+Every case is impossible. On a periodic lattice with sides $\ge8$, every link-connected component of $\mathcal Y$ satisfies the hypothesis, so has at least six plaquettes
+(Lemma~\ref{mg:lem:sixplaq}), and $\mathcal Y$ is link-connected. Lift it to $\Z^n$ plaquette by plaquette, each new plaquette sharing a link with one already lifted. Each step
+extends the range of every coordinate by at most one, so the lift occupies at most $8$ consecutive values of each coordinate. Two lifts of one link differ by a vector whose
+coordinates are multiples of the sides, and they lie in that range, so they coincide. Hence the lift is a set of seven plaquettes of $\Z^n$ satisfying the hypothesis.
 \end{proof}
 
 The bound is not sharp: an exhaustive enumeration in $\Z^3$ and $\Z^4$ (\texttt{theory/checks/third-order/closed\_sets.py}) finds no such sets with $7$, $8$ or $9$
 plaquettes, and the unit cubes are the only ones with at most nine (Numerical). The next ones have ten, for instance the boundary of a $2\times1\times1$ box.
 
 \begin{lemma}[Closed polymers, sharper]\label{mg:lem:theta7}
-Let $\Lambda$ be periodic with all sides $\ge9$, $0<\beta<\beta_0(d)$, $x=x(\beta)$, $\sigma_6=\sigma_6(\beta)$ (Section~\ref{mg:sec:cap}), and
+Let $\Lambda$ be periodic with all sides $\ge8$, $0<\beta<\beta_0(d)$, $x=x(\beta)$, $\sigma_6=\sigma_6(\beta)$ (Section~\ref{mg:sec:cap}), and
 \[
 \theta_7(\beta):=2(d-2)\,e^6\sigma_6(\beta)+\frac{x(\beta)^8}{1-x(\beta)} .
 \]
 Then $\theta_7\le\theta_5$, and Lemma~\ref{mg:lem:closed} holds with $\theta_7$ in place of $\theta_5$. Consequently every statement of
-Sections~\ref{mg:sec:sharp}--\ref{mg:sec:codd} holds with $\theta_7$ in place of $\theta_5$, on periodic lattices with all sides $\ge9$ and in infinite volume. As $\beta\downarrow0$,
-$\theta_7=2(d-2)e^6(2-\iota)N^2u^6+O(\beta^7)$.
+Sections~\ref{mg:sec:sharp}--\ref{mg:sec:codd} holds with $\theta_7$ in place of $\theta_5$, on periodic lattices with all sides $\ge8$ and in infinite volume. If $\rho$ is irreducible,
+then as $\beta\downarrow0$, $\theta_7=2(d-2)e^6(2-\iota)N^2u^6+O(\beta^8)$.
 \end{lemma}
 
 \begin{proof}
@@ -4468,33 +4475,38 @@ in infinite volume,
 \[
 -9.4\cdot10^{-5}\le m(\mu_\beta)-4\log\frac1{u(\beta)}\quad(d=4),\qquad -3.6\cdot10^{-5}\le m(\mu_\beta)-4\log\frac1{u(\beta)}\quad(d=3),
 \]
-with the same monotonicity argument as there, as $\theta_7$ increases with $\beta$.
+with the same monotonicity argument as there: $\theta_7$ increases with $\beta$, since $x$ does and, for $SU(2)$, so does each $u_j=I_{2j+1}(\beta)/I_1(\beta)$. At every practical
+$\beta$ the cube term of $\theta_7$ is negligible: it is $10^{-12}$ of $\theta_7$ at $\beta_0(4)$, and for $SU(2)$ in $d=4$ it dominates only for $\beta\lesssim1.6\cdot10^{-10}$. So the gain
+comes from excluding the polymers with five to seven plaquettes, not from the exact $\sigma_6$.
 
 (ii) Exact counts. Fronts through a vertex (\texttt{fronts\_count.py}): in $\Z^2$ ($d=3$), $N^v_4=4$, $N^v_6=12$, $N^v_7=12$, $N^v_8=70$, $N^v_9=160$; in $\Z^3$ ($d=4$),
-$N^v_4=12$, $N^v_6=132$, $N^v_7=108$, $N^v_8=2034$. The values $132$ and $108$ agree with the referee's enumeration in Remark~\ref{mg:rem:betafour}(iv). The general bound $N^v_k\le(d-1)\binom{(4d-6)k}{k-1}$ of
+$N^v_4=12$, $N^v_6=132$, $N^v_7=108$, $N^v_8=2034$. The values $132$ and $108$ agree with the referee's enumeration in Remark~\ref{mg:rem:betafour}(iv). The referee of this section
+found all of these with a different search, and also $N^v_{10}=634$ ($d=3$) and $N^v_9=4344$ ($d=4$) (\texttt{referee-section16/ref\_fronts.py}); its cycle counts are
+$2k$ times the known numbers of polygons. The general bound $N^v_k\le(d-1)\binom{(4d-6)k}{k-1}$ of
 Lemma~\ref{mg:lem:smallfronts} gives $N^v_8\le1.5\cdot10^8$ in $d=3$, and $N^v_7\le3.9\cdot10^8$, $N^v_8\le9.5\cdot10^9$ in $d=4$. Junctions with two four-edge
 front-pairs, given one of them (\texttt{junction\_count.py}): in $d=3$, $Z_{1,4}=1$, $Z_{2,4}=8$ and none with $3$ to $7$ plaquettes; in $d=4$, $Z_{1,4}=1$, $Z_{2,4}=32$,
-$Z_{3,4}=0$, $Z_{4,4}=12$, $Z_{5,4}=26$, $Z_{6,4}=302$, $Z_{7,4}=288$, against $2\binom{4P_v+T_vn}n(n+1)(2d-3)\approx1.2\cdot10^{11}$ for $n=5$ in Lemma~\ref{mg:lem:twofrontcount}. The
+$Z_{3,4}=0$, $Z_{4,4}=12$, $Z_{5,4}=26$, $Z_{6,4}=302$, $Z_{7,4}=288$, against $2\binom{4P_v+T_vn}n(n+1)(2d-3)\approx6.7\cdot10^{11}$ for $n=5$ in Lemma~\ref{mg:lem:twofrontcount}. The
 $26$ junctions with five plaquettes are those of Lemma~\ref{mg:lem:betafour}(i) with $q$ or $q'$ added (twelve each) and the tube passing through the five other faces of a
 cube ($2(d-3)$). Junctions with three front-pairs of the lowest orders (Lemma~\ref{mg:lem:threelow}): $N_3=48$, $N_2=24$, $N'_2=24$ in $d=3$, and $N_3=876$, $N_2=320$, $N'_2=312$ in $d=4$.
 
-(iii) The third-order term (\texttt{practical\_beta.py}). Take $\theta_7$, the counts of (ii) in place of the general bounds, the majorant $M_5$ of Lemma~\ref{mg:lem:jsums5},
-and the rest of Theorem~\ref{mg:thm:lower5} unchanged. The smallest admissible $\delta'$ for $SU(3)$ is then:
+(iii) The third-order term (\texttt{practical\_beta.py}). Take $\theta_7$, the counts of (ii) in place of the general bounds (with the referee's $N^v_9$, $N^v_{10}$), the majorant
+$M_5$ of Lemma~\ref{mg:lem:jsums5}, and the rest of Theorem~\ref{mg:thm:lower5} unchanged. The smallest admissible $\delta'$ for $SU(3)$ is then:
 \begin{itemize}
-\item $d=4$: $\delta'/\beta^4=7.2\cdot10^4$, $6.8\cdot10^3$, $1.5\cdot10^3$ and $7.9\cdot10^2$ at $\beta=10^{-5}$, $3\cdot10^{-6}$, $1.4\cdot10^{-6}$ and $10^{-6}$;
-\item $d=3$: $\delta'/\beta^4=3.9\cdot10^3$, $3.5\cdot10^2$, $1.6\cdot10^2$, $1.1\cdot10^2$ and $39$ at $\beta=10^{-4}$, $3\cdot10^{-5}$, $2\cdot10^{-5}$, $1.7\cdot10^{-5}$ and $10^{-5}$.
+\item $d=4$: $\delta'/\beta^4=4.1\cdot10^4$, $3.6\cdot10^3$, $1.2\cdot10^3$ and $4.1\cdot10^2$ at $\beta=10^{-5}$, $3\cdot10^{-6}$, $1.7\cdot10^{-6}$ and $10^{-6}$;
+\item $d=3$: $\delta'/\beta^4=3.3\cdot10^3$, $3.0\cdot10^2$, $1.1\cdot10^2$ and $33$ at $\beta=10^{-4}$, $3\cdot10^{-5}$, $1.8\cdot10^{-5}$ and $10^{-5}$.
 \end{itemize}
-The third-order term of the gap is $\beta^3/432=\beta^4/(432\beta)$: $1.65\cdot10^3\beta^4$ at $\beta=1.4\cdot10^{-6}$, and $1.36\cdot10^2\beta^4$ at $1.7\cdot10^{-5}$. As $\delta'/\beta^4$ increases
+The third-order term of the gap is $\beta^3/432=\beta^4/(432\beta)$: $1.36\cdot10^3\beta^4$ at $\beta=1.7\cdot10^{-6}$, and $1.29\cdot10^2\beta^4$ at $1.8\cdot10^{-5}$. As $\delta'/\beta^4$ increases
 with $\beta$, the lower bound places $m-4\log(1/u)+\log\Upsilon$ above $-\beta^3/432$:
 \begin{itemize}
-\item for $\beta\le1.4\cdot10^{-6}$ in $d=4$; before this section this needed $\beta\lesssim10^{-9}$;
-\item for $\beta\le1.7\cdot10^{-5}$ in $d=3$, a twentieth of $\beta_0(3)$.
+\item for $\beta\le1.7\cdot10^{-6}$ in $d=4$; before this section this needed $\beta\lesssim2\cdot10^{-9}$;
+\item for $\beta\le1.8\cdot10^{-5}$ in $d=3$, about $\beta_0(3)/22$.
 \end{itemize}
-With $\theta_7$ and the counts of (ii) alone, without Lemma~\ref{mg:lem:jsums5}, it needs $\beta\lesssim8\cdot10^{-8}$ ($d=4$) and $\beta\lesssim1.5\cdot10^{-6}$ ($d=3$).
+With $\theta_7$ and the exact counts alone, without Lemma~\ref{mg:lem:jsums5}, the threshold is about $10^{-7}$ ($d=4$) and $1.5\cdot10^{-6}$ ($d=3$). With the counts of (ii) for
+$k\le8$ only, Lemma~\ref{mg:lem:jsums5} gives $1.4\cdot10^{-6}$ ($d=4$) and $1.7\cdot10^{-5}$ ($d=3$).
 
-What remains of $\delta'$ is mostly the remainder $R\cdot(\dots)$ of $M_5$, of order $\beta^6$. In $d=4$ the one-plaquette junctions with fronts of nine or more edges, which use the
-crude counts $N^v_k$, $k\ge9$, come next. The next order of the majorant ($(n,E)=(4,2),(3,3),(2,4)$) can be counted in the same way. Heuristically each order counted
-exactly gains a factor of about $b/\bar b\approx10^3\beta$, so this alone will not reach $\beta_0(d)$.
+What remains of $\delta'$ is almost entirely the remainder $R\cdot(\dots)$ of $M_5$, of order $\beta^6$. The next order of the majorant ($(n,E)=(4,2),(3,3),(2,4)$, and the half-integer
+$(3,\frac72)$, $(2,\frac92)$) can be counted in the same way. Heuristically each order counted exactly gains a factor of about $b/\bar b\approx10^3\beta$, so this alone will not reach
+$\beta_0(d)$.
 \end{remark}
 
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
@@ -4595,7 +4607,7 @@ $SU(2)$, all $\beta<\beta_0(d)$: $-5.0\cdot10^{-4}\le m-4\log(1/u)\le1.4\cdot10^
 Cap matrix element: $\kappa=\norm{P_\rho M_fP_\rho}=\frac\beta{N\tau_0}\int(\mathrm{Re}\,\chi_\rho)^3+O(\beta^2)$; $O(\beta^2)$ if the centre acts on $\rho$ by a scalar that is not a cube root of unity ($U(1)$, $SU(N)$ with $N\ne3$, fundamental); $\frac\beta6+O(\beta^2)$ for $SU(3)$ & Lem.~\ref{mg:lem:capelement} & Theorem\\
 Transfer bound by pieces (junctions with their gauge projections); the cap by characters, $\norm{P^JO_JP^J}\le u^4(\kappa+(2-\iota)N^2u^2+O(\beta^3))$ & Lem.~\ref{mg:lem:pieces}, \ref{mg:lem:capchar} & Theorem\\
 First-order term: $m(\mu_\beta)=4\log(1/u(\beta))-\kappa(\beta)+O(\beta^2)$ (also finite volume, sides $\ge4$): $4\log(1/u)+O(\beta^2)$ for $U(1)$ and $SU(N)$, $N\ne3$, and $4\log(1/u)-\beta/6+O(\beta^2)$ for $SU(3)$ (fundamental) & Thm.~\ref{mg:thm:caplower}, \ref{mg:thm:upperchar}, Cor.~\ref{mg:cor:firstorder2} & Theorem\\
-$SU(2)$, all $\beta<\beta_0(d)$: $-1.3\cdot10^{-4}\le m-4\log(1/u)\le4.8\cdot10^{-4}$ ($d=4$), $-2.5\cdot10^{-4}\le m-4\log(1/u)\le2.4\cdot10^{-3}$ ($d=3$); as $\beta\downarrow0$, between $-128.4\beta^2$ and $0.375\beta^2$ ($d=4$) & Rem.~\ref{mg:rem:cap} & Numerical\\
+$SU(2)$, all $\beta<\beta_0(d)$: $-1.3\cdot10^{-4}\le m-4\log(1/u)\le4.8\cdot10^{-4}$ ($d=4$), $-2.5\cdot10^{-4}\le m-4\log(1/u)\le2.4\cdot10^{-3}$ ($d=3$); with $\theta_7$, in infinite volume, lower ends $-9.4\cdot10^{-5}$, $-3.6\cdot10^{-5}$ (Rem.~\ref{mg:rem:practical}); as $\beta\downarrow0$, between $-128.4\beta^2$ and $0.375\beta^2$ ($d=4$) & Rem.~\ref{mg:rem:cap} & Numerical\\
 $\mathbb Z_3$ ($3\times3$ torus, winding zero): $C$-even and $C$-odd plaquette states at $4\log(1/u)\mp u(1+O(u))$ ($\kappa=u$; also on the $4\times4$ torus); $\mathbb Z_2$: no first-order term & Rem.~\ref{mg:rem:cap}(iv) & Numerical\\
 \bottomrule
 \end{tabular}
@@ -4642,9 +4654,9 @@ $SU(N)$, $N\ge6$: $\Upsilon_+-\Upsilon_-=\beta^4/248832+O(\beta^5)$ ($N=6$), $O(
 Sectors of charge conjugation: $m=\min(m_+,m_-)$; $m_C=4\log(1/u)-\log\Upsilon_C+O(\beta^4)$, the even one to $o(\beta^4)$; for $SU(3)$, $m_--m_+=\beta/3+O(\beta^2)$ & Thm.~\ref{mg:thm:sectors}, Cor.~\ref{mg:cor:sectors} & Theorem\\
 Hop and turn between perpendicular neighbours as two-slice operators: $Y^0_{\rm turn}=Y_{\rm hop}\mathsf C$, so they cancel on the odd sector; partners in the presence of the rest & Lem.~\ref{mg:lem:hopturn}, \ref{mg:lem:partners} & Theorem\\
 The odd sector at fourth order: $m_-=4\log(1/u)-\log\Upsilon_--h_-u^4+o(\beta^4)$; for $U(1)$, $d\ge4$, $R\to-(10d-22)/16$ & Conj.~\ref{mg:conj:codd}, Rem.~\ref{mg:rem:codd} & Conjecture\\
-Closed sets of plaquettes have $6$ (a unit cube) or $\ge8$ plaquettes; ratio bound with $\theta_7=2(d-2)e^6\sigma_6+x^8/(1-x)=O(\beta^6)$ in place of $\theta_5$, in every section & Lem.~\ref{mg:lem:seven}, \ref{mg:lem:theta7} & Theorem\\
+Closed sets of plaquettes have $6$ (a unit cube) or $\ge8$ plaquettes; ratio bound with $\theta_7=2(d-2)e^6\sigma_6+x^8/(1-x)=O(\beta^6)$ in place of $\theta_5$, in Sections~\ref{mg:sec:sharp}--\ref{mg:sec:codd} (infinite volume; sides $\ge8$) & Lem.~\ref{mg:lem:seven}, \ref{mg:lem:theta7} & Theorem\\
 The junctions with three front-pairs of lowest order: three caps or a unit cube ($N_3=3\nu_2+12(d-3)$); a widening with a cap, or a cube with a bent domino ($N_2$, $N'_2$); counted exactly in the junction sum ($M_5$) & Lem.~\ref{mg:lem:threelow}, \ref{mg:lem:jsums5} & Theorem\\
-Exact $N^v_k$ ($k\le9$, $d=3$; $k\le8$, $d=4$), $Z_{n,4}$ ($n\le7$), $N_3,N_2,N'_2$; $SU(2)$ whole range: $\ge-9.4\cdot10^{-5}$ ($d=4$), $\ge-3.6\cdot10^{-5}$ ($d=3$); $SU(3)$: third-order term resolved for $\beta\le1.4\cdot10^{-6}$ ($d=4$; before $10^{-9}$) and $\beta\le1.7\cdot10^{-5}$ ($d=3$) & Rem.~\ref{mg:rem:practical} & Numerical\\
+Exact $N^v_k$ ($k\le10$, $d=3$; $k\le9$, $d=4$), $Z_{n,4}$ ($n\le7$), $N_3,N_2,N'_2$; $SU(2)$ whole range: $\ge-9.4\cdot10^{-5}$ ($d=4$), $\ge-3.6\cdot10^{-5}$ ($d=3$); $SU(3)$: third-order term resolved for $\beta\le1.7\cdot10^{-6}$ ($d=4$; before $2\cdot10^{-9}$) and $\beta\le1.8\cdot10^{-5}$ ($d=3$) & Rem.~\ref{mg:rem:practical} & Numerical\\
 Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order in the $C$-odd sector ($U(1)$, $d\ge4$; Conjecture~\ref{mg:conj:codd}); the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\
 \bottomrule
 \end{tabular}

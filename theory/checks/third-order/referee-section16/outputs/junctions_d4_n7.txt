@@ -1,0 +1,32 @@
+d=4: 13039 candidates q', 936 searched
+d=4, n=1: Z_n,4 = 1  (lambda' other layer: 1, same layer: 0); by relation of q' to q0: {('same plaquette', 'other layer'): 1}; nodes 1002
+     classes (weighted, both layers): {('other', 'same plaquette'): 1}
+     weight 1: q'=((0, 0, 0), 0, 1) (same plaquette), P=[((0, 0, 0), 0, 1)]: other
+d=4, n=2: Z_n,4 = 32  (lambda' other layer: 32, same layer: 0); by relation of q' to q0: {('share a vertex only', 'other layer'): 20, ('share a link', 'other layer'): 12}; nodes 1805
+     classes (weighted, both layers): {('other', 'share a vertex only'): 20, ('other', 'share a link'): 12}
+     weight 4: q'=((-1, -1, 0), 0, 1) (share a vertex only), P=[((-1, -1, 0), 0, 1), ((0, 0, 0), 0, 1)]: other
+     weight 16: q'=((-1, 0, -1), 0, 2) (share a vertex only), P=[((-1, 0, -1), 0, 2), ((0, 0, 0), 0, 1)]: other
+     weight 4: q'=((-1, 0, 0), 0, 1) (share a link), P=[((-1, 0, 0), 0, 1), ((0, 0, 0), 0, 1)]: other
+     weight 8: q'=((0, 0, -1), 0, 2) (share a link), P=[((0, 0, -1), 0, 2), ((0, 0, 0), 0, 1)]: other
+d=4, n=3: Z_n,4 = 0  (lambda' other layer: 0, same layer: 0); by relation of q' to q0: {}; nodes 6131
+     classes (weighted, both layers): {}
+d=4, n=4: Z_n,4 = 12  (lambda' other layer: 10, same layer: 2); by relation of q' to q0: {('vertex-disjoint', 'other layer'): 2, ('vertex-disjoint', 'same layer'): 2, ('share a link', 'other layer'): 8}; nodes 21354
+     classes (weighted, both layers): {("P = Gamma minus {q0, q'}", 'vertex-disjoint'): 4, ("P = Gamma minus {q0, q'}", 'share a link'): 8}
+     weight 2: q'=((0, 0, -1), 0, 1) (vertex-disjoint), P=[((0, 0, -1), 0, 2), ((0, 0, -1), 1, 2), ((0, 1, -1), 0, 2), ((1, 0, -1), 1, 2)]: P = Gamma minus {q0, q'}
+     weight 8: q'=((0, 0, -1), 0, 2) (share a link), P=[((0, 0, -1), 0, 1), ((0, 0, -1), 1, 2), ((0, 1, -1), 0, 2), ((1, 0, -1), 1, 2)]: P = Gamma minus {q0, q'}
+d=4, n=5: Z_n,4 = 26  (lambda' other layer: 22, same layer: 4); by relation of q' to q0: {('vertex-disjoint', 'other layer'): 4, ('vertex-disjoint', 'same layer'): 4, ('share a link', 'other layer'): 16, ('same plaquette', 'other layer'): 2}; nodes 56774
+     classes (weighted, both layers): {("P = Gamma minus {q'} (q0 added)", 'vertex-disjoint'): 4, ("P = Gamma minus {q0} (q' added)", 'vertex-disjoint'): 4, ("P = Gamma minus {q'} (q0 added)", 'share a link'): 8, ("P = Gamma minus {q0} (q' added)", 'share a link'): 8, ('tube through the five other faces of a cube', 'same plaquette'): 2}
+     weight 2: q'=((0, 0, -1), 0, 1) (vertex-disjoint), P=[((0, 0, -1), 0, 2), ((0, 0, -1), 1, 2), ((0, 0, 0), 0, 1), ((0, 1, -1), 0, 2), ((1, 0, -1), 1, 2)]: P = Gamma minus {q'} (q0 added)
+     weight 2: q'=((0, 0, -1), 0, 1) (vertex-disjoint), P=[((0, 0, -1), 0, 1), ((0, 0, -1), 0, 2), ((0, 0, -1), 1, 2), ((0, 1, -1), 0, 2), ((1, 0, -1), 1, 2)]: P = Gamma minus {q0} (q' added)
+     weight 8: q'=((0, 0, -1), 0, 2) (share a link), P=[((0, 0, -1), 0, 1), ((0, 0, -1), 1, 2), ((0, 0, 0), 0, 1), ((0, 1, -1), 0, 2), ((1, 0, -1), 1, 2)]: P = Gamma minus {q'} (q0 added)
+     weight 8: q'=((0, 0, -1), 0, 2) (share a link), P=[((0, 0, -1), 0, 1), ((0, 0, -1), 0, 2), ((0, 0, -1), 1, 2), ((0, 1, -1), 0, 2), ((1, 0, -1), 1, 2)]: P = Gamma minus {q0} (q' added)
+     weight 1: q'=((0, 0, 0), 0, 1) (same plaquette), P=[((0, 0, -1), 0, 1), ((0, 0, -1), 0, 2), ((0, 0, -1), 1, 2), ((0, 1, -1), 0, 2), ((1, 0, -1), 1, 2)]: tube through the five other faces of a cube
+     weight 1: q'=((0, 0, 0), 0, 1) (same plaquette), P=[((0, 0, 0), 0, 2), ((0, 0, 0), 1, 2), ((0, 0, 1), 0, 1), ((0, 1, 0), 0, 2), ((1, 0, 0), 1, 2)]: tube through the five other faces of a cube
+d=4, n=6: Z_n,4 = 302  (lambda' other layer: 220, same layer: 82); by relation of q' to q0: {('vertex-disjoint', 'other layer'): 82, ('vertex-disjoint', 'same layer'): 82, ('share a vertex only', 'other layer'): 80, ('share a link', 'other layer'): 40, ('same plaquette', 'other layer'): 18}; nodes 150072
+     classes (weighted, both layers): {('other', 'vertex-disjoint'): 160, ('other', 'share a vertex only'): 80, ('other', 'share a link'): 32, ("P = Gamma minus {q'} (q0 added), P = Gamma minus {q0} (q' added)", 'vertex-disjoint'): 4, ("P = Gamma minus {q'} (q0 added), P = Gamma minus {q0} (q' added)", 'share a link'): 8, ('other', 'same plaquette'): 18}
+d=4, n=7: Z_n,4 = 288  (lambda' other layer: 208, same layer: 80); by relation of q' to q0: {('vertex-disjoint', 'other layer'): 80, ('vertex-disjoint', 'same layer'): 80, ('share a vertex only', 'other layer'): 80, ('share a link', 'other layer'): 32, ('same plaquette', 'other layer'): 16}; nodes 436734
+     classes (weighted, both layers): {('other', 'vertex-disjoint'): 160, ('other', 'share a vertex only'): 80, ('other', 'share a link'): 32, ('other', 'same plaquette'): 16}
+
+real	1m33.159s
+user	1m19.194s
+sys	0m0.025s

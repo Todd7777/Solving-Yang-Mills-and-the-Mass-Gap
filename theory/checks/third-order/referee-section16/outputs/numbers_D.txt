@@ -1,0 +1,13 @@
+(D) threshold: total loss (8(K+1)theta + log Ubar - log Ups + log(1+delta')) against beta^3/432, SU(3), d = 4
+  beta=2e-8: loss = 2.319e-27, beta^3/432 = 1.852e-26, ratio 0.125
+  beta=3e-8: loss = 1.761e-26, beta^3/432 = 6.250e-26, ratio 0.282
+  beta=4e-8: loss = 7.422e-26, beta^3/432 = 1.481e-25, ratio 0.501
+  beta=5e-8: loss = 2.265e-25, beta^3/432 = 2.894e-25, ratio 0.783
+  beta=6e-8: loss = 5.636e-25, beta^3/432 = 5.000e-25, ratio 1.127
+  before (theta_5, general counts), beta=1e-9: loss = 4.022e-31, beta^3/432 = 2.315e-30, ratio 0.174
+  before (theta_5, general counts), beta=2e-9: loss = 1.287e-29, beta^3/432 = 1.852e-29, ratio 0.695
+  before (theta_5, general counts), beta=3e-9: loss = 9.773e-29, beta^3/432 = 6.250e-29, ratio 1.564
+
+real	15m13.523s
+user	10m15.227s
+sys	0m0.357s
