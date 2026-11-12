@@ -59,12 +59,17 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   $\limsup\beta^{-4}(m-4\log(1/u)+\log\Upsilon)\le-hu_1^4$ (e.g. $-\frac{17}{128}$ for $SU(2)$, $d=4$). Conjectured: equality,
   $m=4\log(1/u)-\log\Upsilon-hu^4+O(\beta^5)$. Evidence: exact $\mathbb Z_2$/$\mathbb Z_3$ spectra, and the classical series (Münster, Seo, as quoted by
   Langelage–Münster–Philipsen) at order $u^4$ in four of five channels ($-\frac{98}3u^4$ for the $SU(2)$ scalar; the $SU(3)$ $T_1^{+-}$ differs by $u^4/4$,
-  unresolved). Checks in `theory/checks/fourth-order/`; referee pending. Next: the lower bound at fourth order, the $u^6$ term, the $C$-odd sector, near
-  $\beta_0$ (journal 2026-11-12, Part 8).
+  unresolved). Checks in `theory/checks/fourth-order/`; refereed: minor revisions, applied. Section 13 (12 November) identifies the junctions of order
+  $\beta^4$: only the shifts and jumps, the turns, jumps and U-turns through unit cubes ($Z_{4,4}\le12(d-3)$, proved via Lemmas 5.4 and 12.5), and the widenings
+  to six-edge fronts. With these counts the third-order lower bound holds with $\delta'=(\delta'_4+o(1))\beta^4$, $\delta'_4$ explicit ($40691$ for $SU(2)$, $d=4$,
+  instead of $8.4\cdot10^{10}$; $1514$ in $d=3$); so the $\beta^4$ coefficient lies in $[-4.07\cdot10^4,-\frac{17}{128}]$. Still asymptotic: the crude $\beta^5$ terms
+  dominate for $\beta\gtrsim10^{-12}$. Checks in `theory/checks/third-order/`; referee pending. Next: the lower bound at fourth order (characters for these
+  junctions, an exact count of the narrowings, the shifts and jumps on the odd sector, a recursion following the moving tube), the $u^6$ term, the $C$-odd sector,
+  near $\beta_0$ (journal 2026-11-12, Parts 8–9).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term); `journal/2026-11-11.md` has Parts 6–7 (the second- and
+- The newest journal entry is `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant); `journal/2026-11-11.md` has Parts 6–7 (the second- and
   third-order terms), `journal/2026-11-10.md` has Parts 1–5,
   `journal/2026-11-09b.md` is the first part of session 3 and `journal/2026-11-09.md` is session 2.
 
