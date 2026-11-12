@@ -26,7 +26,7 @@ def em1x(A):
     """e^A - 1 - A without cancellation"""
     return fsum(A**m/factorial(m) for m in range(2, 60)) if A < mpf(1)/2 else exp(A) - 1 - A
 
-def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None, abar_grid=None, sharp6=True, uturn=True, seven=True):
+def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None, abar_grid=None, sharp6=True, uturn=True, seven=True, chars=False):
     K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x); lam = exp(2*(K+1)*th5)
     u = g['u']; a = lam*u; gam = expm1(2*beta) + beta**2*exp(beta); b = lam*gam
     Ubar, s6 = dressed(beta, g)
@@ -103,14 +103,15 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
         # a downward exit (the U-turns: p' in the layer of p) costs eta = C a^4 (2 Ubar (1+delta') + Sigma_4)/(1-omega)  (step (c) of Thm 10.8)
         eta = C*a**4*(2*Ubar*(1+dl) + full)/(1-omega) if uturn else mpf(1)
         parts = dict(two=(4*(Pv-1)-KS)*varpi*min(b**2, b2),
-                     four=(10 + 2*eta)*(d-3)*b**4 + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(5, NMAX)),
-                     exits=KS*b*(f(6) + f(7)) + (4*(Pv-1)-2*KS)*b*f(8)
+                     # chars (Theorem 14.2): the turns and jumps, widenings and narrowings by characters (Lemma 14.1), a in place of b
+                     four=(10*(a**4 if chars else b**4) + 2*eta*b**4)*(d-3) + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(5, NMAX)),
+                     exits=KS*((a if chars else b)*f(6) + b*f(7)) + (4*(Pv-1)-2*KS)*b*f(8)
                            + fsum(2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(2, NMAX)),
                      one_plaq=4*Pv*b*(Fk(8)*Ak(4) + Fk(4)*Ak(8) + Fk(4)*em1x(Ak(4))),
                      multi=best[0])
         # the junction sum at a six-edge front-pair (two narrowings with one plaquette; crude counts for the rest)
         X6 = lambda n, k: 0 if k == 5 else min(binomial(4*n+6, k), (4*n+6)*N[k])
-        sig6 = 2*b + fsum(2*(2*d-3)*(mpf(2*n+3)/2)*binomial(6*Pv+Tv*n, n)*b**n for n in range(2, NMAX)) \
+        sig6 = 2*(a if chars else b) + fsum(2*(2*d-3)*(mpf(2*n+3)/2)*binomial(6*Pv+Tv*n, n)*b**n for n in range(2, NMAX)) \
                + fsum(2*binomial(6*Pv+Tv*n, n)*b**n*fsum(X6(n, k)*f(k) for k in range(5, min(4*n+7, 199))) for n in range(1, NMAX)) \
                + 6*Pv*exp(6*xF)*(kC*Y[2] + 6*(gC*g2F + g2C*gF)*Y[1] + 36*kF*Y[0])
         kmin = 7 if (seven and sharp6) else 5                   # with f(6) separate and no five-edge fronts, the F-condition is needed for k >= 7 only

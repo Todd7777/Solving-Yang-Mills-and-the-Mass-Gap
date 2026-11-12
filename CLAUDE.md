@@ -65,13 +65,19 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   (downward exits, cost $\eta=O(\beta^{3/2})$) too. So the third-order lower bound holds with $\delta'=(\delta'_4+o(1))\beta^4$, $\delta'_4=160(d-3)+8K_Su_1^2$: the moves of the
   hopping matrix ($h_+=2K_S+10(d-3)$) at the sup norm. That is $166$ for $SU(2)$, $d=4$, instead of $8.4\cdot10^{10}$, and $2$ in $d=3$. With Corollary 12.9 the
   $\liminf$ and $\limsup$ of $\beta^{-4}(m-4\log(1/u)+\log\Upsilon)$ lie in $[-166,-\frac{17}{128}]$ (Theorem). Still asymptotic at practical $\beta$: the crude $\beta^5$
-  terms dominate. Checks in `theory/checks/third-order/` (with the referee's independent code in `referee-section13/`); two referees: minor revisions, applied. Next: the
-  lower bound at fourth order (the moves by characters, a recursion following the moving tube), the $u^6$ term, the $C$-odd sector, near $\beta_0$ (journal
-  2026-11-12, Parts 8–9).
+  terms dominate. Checks in `theory/checks/third-order/` (with the referee's independent code in `referee-section13/`); two referees: minor revisions, applied.
+  Section 14 (12 November) evaluates the moves by characters. Their junctions are closed surfaces (each link in exactly two faces), on which the transfer
+  operator is diagonal in the representations with norm exactly $u_*$ per plaquette (Lemma 14.1: $u_*^6$ widening/narrowing, $u_*^8$ turn/jump). So $b\to a$ for them,
+  and $\delta'_4=h_+u_1^4$ (Theorem 14.2); the recursion follows the moving tube by translation invariance (row sums of $|H_C|$). Corollary 14.3, **the fourth-order
+  term**: $m=4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$ for $SU(N)$, $2\le N\le5$, every $d\ge3$ (Conjecture 12.4 for these groups; $SU(2)$, $d=4$: $-\frac{98}3u^4$, the
+  classical coefficient), and $-8u^4$ for $U(1)$ in $d=3$; for $U(1)$, $d\ge4$, between $-(26d-70)/16$ and $-(10d-22)/16$ (the $C$-odd signs are lost by norms). Check
+  `theory/checks/fourth-order/moves_by_characters.py` ($\mathbb Z_3$, $S_3$, exact). Referee pending. Next: the $C$-odd sector ($U(1)$, $d\ge4$), the $u^6$ term, effective
+  constants, near $\beta_0$ (journal 2026-11-12, Parts 8–10).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant); `journal/2026-11-11.md` has Parts 6–7 (the second- and
+- The newest journal entry is `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant;
+  Part 10: the lower bound to fourth order); `journal/2026-11-11.md` has Parts 6–7 (the second- and
   third-order terms), `journal/2026-11-10.md` has Parts 1–5,
   `journal/2026-11-09b.md` is the first part of session 3 and `journal/2026-11-09.md` is session 2.
 

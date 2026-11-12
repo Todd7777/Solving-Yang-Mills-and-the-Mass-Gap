@@ -17,7 +17,8 @@ checked before being relied on in a proof.
 $m=4\log(1/u)-\log\Upsilon(\beta)+O(\beta^3)$, $=4\log(1/u)+\beta^2/8+O(\beta^3)$ for $SU(2)$; to third order nothing new,
 $m=4\log(1/u)-\log\Upsilon(\beta)+O(\beta^4)$; at fourth order the upper bound $m\le4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$ for $SU(N)$,
 $N\le5$, and the conjecture of equality; the lower bound at that order, $m\ge4\log(1/u)-\log\Upsilon-(\delta'_4+o(1))\beta^4$, with $\delta'_4$ explicit, about
-$166$ for $SU(2)$ in $d=4$); glueball mass $-4\log\beta+r(\beta)$, $r$ analytic: Schor 1983–84 (reported in Faria da Veiga–O'Carroll 2025; originals: verify); strong-coupling series of the glueball masses to
+$166$ for $SU(2)$ in $d=4$), and with the moves by characters the fourth-order term $m=4\log(1/u)-\log\Upsilon-(26d-70)u^4+o(\beta^4)$ for $SU(N)$, $2\le N\le5$
+(and $U(1)$ in $d=3$); glueball mass $-4\log\beta+r(\beta)$, $r$ analytic: Schor 1983–84 (reported in Faria da Veiga–O'Carroll 2025; originals: verify); strong-coupling series of the glueball masses to
 $u^8$ for $SU(2)$, $SU(3)$: Münster 1981, Seo 1982, as quoted by Langelage–Münster–Philipsen, PoS LAT2007:201 and JHEP 0807:036 (read; originals not) |
 | Area law for $U(N)$ lattice Yang–Mills for $\beta\lesssim_d N$ (normalisation of the monograph; uniformly in $N$ in the normalisation $\exp(2\beta\,\mathrm{Re}\Tr U_p)$), via the master loop equation | [T] | Cao–Nissim–Sheffield, arXiv:2505.16585 (2025), Thm 1.2 (statement checked by a referee of Part III) |
 | Area law in the 't Hooft regime $\beta\lesssim_d N^2$ (monograph normalisation) for $U(N)$, $SU(N)$, $SO(2N)$, by verifying the Durhuus–Fröhlich $\sigma$-model mass-gap criterion with Bakry–Émery methods | [T] | Cao–Nissim–Sheffield, arXiv:2509.04688 (2025) (threshold $\beta<1/(8(d-1))$ for the action $N\beta\,\mathrm{Re}\Tr$; checked by a referee of Part III) |
