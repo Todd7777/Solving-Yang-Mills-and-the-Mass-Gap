@@ -36,7 +36,11 @@ ZEXITN = None  # {d: {n: {k: Z_(n,k)}}}: exact exits with n >= 3 plaquettes (zex
 ZEXIT = None   # {d: {k: Z_(2,k)}}: exact two-plaquette exits with k >= 5 edges (zexit_count.py), in place of the crude counts
 EXACT = None; CORNERS = None   # the general corner majorant (Section 16): see the M_5 block below
 RMAX = False   # Lemma mg:lem:jsums5: the corner factors of M_4 and R as maxima instead of sums (each remaining pair dominates one corner)
-def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None, abar_grid=None, sharp6=True, uturn=True, seven=True, chars=False):
+def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None, abar_grid=None, sharp6=True, uturn=True, seven=True, chars=False,
+            fixed=None):
+    """the smallest admissible delta' and the deficit; with fixed = dict(varpi, xF, xC, hJ, F, F6, dl), these parameters are used as given (no fixed-point
+    iterations; c_J = e^{h_J}/(1-omega) as in Theorem mg:thm:lower2) and all hypotheses, including the three conditions of Lemma mg:lem:jsums on the
+    decoration constants, are checked (Remark mg:rem:nextorder (vii): the scaling below a computed point)"""
     K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x)
     if THETA7:                                    # Lemma mg:lem:theta7: theta_7 = 2(d-2) e^6 sigma_6 + x^8/(1-x); with CLOSED_FROM = 10 (no closed sets of 8 or 9
         th5 = 2*(d-2)*e**6*dressed(beta, g)[1] + x**CLOSED_FROM/(1-x)   # plaquettes, by exhaustive search: Remark mg:rem:practical) theta_10
@@ -45,7 +49,8 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
     lam = exp(2*(K+1)*th5)
     u = g['u']; a = lam*u; gam = expm1(2*beta) + beta**2*exp(beta); b = lam*gam
     Ubar, s6 = dressed(beta, g)
-    varpi = b**varpi_pow; C = 1 + max(1/varpi, (1+gam)/Ubar); omega = C*a**4*(1+gam)
+    varpi = b**varpi_pow if fixed is None else fixed['varpi']
+    C = 1 + max(1/varpi, (1+gam)/Ubar); omega = C*a**4*(1+gam)
     b2 = lam**2*(2*s6 + s6**2)/u**4
     Pv, KS, Tv, N = counts(d, volume)
     if NOVR and d in NOVR:
@@ -54,7 +59,15 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
     def Yf(z, p=0): return fsum(m**p*binomial(KS*m, m-1)*(b*exp(z))**m for m in range(1, NMAX))
     cT = mpf(1); xF = mpf(0); xC = mpf(0)
     if omega >= 1: raise AssertionError('omega >= 1')
-    for _ in range(300):
+    deco_ok = True
+    hJ = mpf(0)
+    if fixed is not None:                          # the decoration constants as given, c_J = e^{h_J}/(1-omega): check xi_F >= P_v Y_0(xi_C) + A_0,
+        xF, xC, hJ = fixed['xF'], fixed['xC'], fixed['hJ']           # xi_C >= 4 P_v Y_0 + 8 A_0 and h_J >= C_varpi k P_v Y_0 a^{k/2} e^{xi_F k} (k >= 4)
+        cT = exp(hJ)/(1-omega)
+        A0 = exp(cT)*fsum(N[k]*a**(mpf(k)/2)*exp(xF*k) for k in range(4, KMAX))
+        deco_ok = (xF >= Pv*Yf(xC) + A0 and xC >= 4*Pv*Yf(xC) + 8*A0
+                   and hJ >= C*max(a**(mpf(k)/2)*k*Pv*Yf(xC)*exp(xF*k) for k in range(4, 12)))
+    for _ in range(300 if fixed is None else 0):
         if cT > 50 or xF > 50 or xC > 50:          # the decoration constants diverge (e.g. varpi too small for this beta): no admissible delta'
             raise AssertionError('decoration constants diverge')
         A0 = exp(cT)*fsum(N[k]*a**(mpf(k)/2)*exp(xF*k) for k in range(4, KMAX))
@@ -148,7 +161,7 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
         kmin = 7 if (seven and sharp6) else 5                   # with f(6) separate and no five-edge fronts, the F-condition is needed for k >= 7 only
         return fsum(parts.values()), parts, Pv*(gC*Y[1]/kmin + gF*Y[0]), full, best[1], sig6
     F = mpf(1); F6 = mpf(1); dl = mpf(0)
-    for _ in range(100):
+    for _ in range(100 if fixed is None else 0):
         S, parts, need, full, bb, sig6 = solve(F, F6, dl); dln = S/Ubar*(1+mpf(10)**-12)
         Fn = need/(Ubar*(1+dln)-a)*(1+mpf(10)**-9)
         F6n = sig6/(36*exp(6*xF)*(Ubar*(1+dln)-a))*(1+mpf(10)**-9) if sharp6 else F6
@@ -156,12 +169,15 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
         F, F6, dl = Fn, F6n, dln
         if done: break
     dl = dl*(1+mpf(10)**-9)                                      # final delta'; eta is evaluated at this delta'
+    if fixed is not None: F, F6, dl = fixed['F'], fixed['F6'], fixed['dl']
     S, parts, need, full, bb, sig6 = solve(F, F6, dl)
     hyp = dict(sigma=S < Ubar*dl, exits=need < F*(Ubar*(1+dl)-a), omega=omega < 1, F6=F6 > 0,
                six=(sig6 < 36*F6*exp(6*xF)*(Ubar*(1+dl)-a)) if sharp6 else True,
-               old=omega + C*a**4*(2*Ubar*(1+dl) + full)/(1-omega) <= 1, beyond=a**4*Ubar*(1+dl) <= varpi, growth=a**4*Ubar*(1+dl) <= 1)
+               old=omega + C*a**4*(2*Ubar*(1+dl) + full)/(1-omega) <= 1, beyond=a**4*Ubar*(1+dl) <= varpi, growth=a**4*Ubar*(1+dl) <= 1,
+               decorations=deco_ok)
     assert all(hyp.values()), hyp
-    return dict(delta=dl, parts=parts, b=b, a=a, F=F, F6=F6, sig6=sig6, Ubar=Ubar, bars=bb, loss=8*(K+1)*th5 + log(Ubar) + log(1+dl))
+    return dict(delta=dl, parts=parts, b=b, a=a, F=F, F6=F6, sig6=sig6, Ubar=Ubar, bars=bb, loss=8*(K+1)*th5 + log(Ubar) + log(1+dl),
+                varpi=varpi, xF=xF, xC=xC, hJ=hJ, cT=cT)
 
 GROUPS = (('SU(2)', su2), ('SU(3)', su3), ('U(1)', u1))
 NIOTA = {'SU(2)': (2, 1), 'SU(3)': (3, 0), 'U(1)': (1, 0)}

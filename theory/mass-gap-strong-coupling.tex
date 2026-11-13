@@ -60,7 +60,7 @@ third-order term with an effective constant (Section~\ref{mg:sec:betafour}) adde
 fourth order and the fourth-order term (Section~\ref{mg:sec:fourthlower}) added, 12 November 2026; the sectors of charge conjugation and $SU(N)$, $N\ge6$ (Section~\ref{mg:sec:codd}) added the same day,
 after a referee report that found the first draft's proof for the odd sector incomplete; closed polymers and the third-order term at practical $\beta$
 (Section~\ref{mg:sec:practical}) added the same day, and revised after two referee reports; extended by further orders on 13 November, with a
-corrected threshold in $d=3$, and in $d=3$ to the whole range down to $\beta=10^{-12}$; living document}
+corrected threshold in $d=3$, and in $d=3$ to the whole range; living document}
 
 \begin{document}
 \maketitle
@@ -128,8 +128,8 @@ the path is not done. Closed polymers have six plaquettes (a unit cube) or at le
 from $O(\beta^5)$ to $O(\beta^6)$ (in infinite volume, and for sides $\ge8$). With
 exact counts of small fronts and junctions, and the junctions with three front-pairs of lowest order classified and counted, the lower bound resolves the third-order term
 of $SU(3)$ for $\beta\le2.6\cdot10^{-6}$ in $d=4$ (instead of $2\cdot10^{-9}$) and for $\beta\le2.3\cdot10^{-5}$ in $d=3$; with the next order counted by computer, for
-$\beta\le1.2\cdot10^{-5}$ and $\beta\le9\cdot10^{-5}$; and in $d=3$, with three more orders (the last in part), for all $10^{-12}\le\beta<\beta_0(3)$, below which the statement is
-asymptotic (numerical evaluations). For $SU(2)$ the two
+$\beta\le1.2\cdot10^{-5}$ and $\beta\le9\cdot10^{-5}$; and in $d=3$, with three more orders (the last in part) and a scaling of the parameters in $\beta$, on the whole range
+$\beta<\beta_0(3)$ (numerical evaluations). For $SU(2)$ the two
 bounds give $-9.4\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
 $-3.6\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$, in infinite volume (a numerical evaluation of the explicit constants).
 The asymptotics
@@ -323,7 +323,7 @@ $N$. A charge conjugation of $G$ commutes with the transfer operators, so the ev
 and cancel up to the cap under the turn; grouping the sets so as to use this along the whole path is the step that remains for $U(1)$ in $d\ge4$. (16) Closed polymers have six plaquettes (a unit cube) or at least eight, so the ratio bound loses only $8(K+1)\theta_7=O(\beta^6)$ instead of
 $8(K+1)\theta_5=O(\beta^5)$, in infinite volume and for sides $\ge8$ (Section~\ref{mg:sec:practical}). The junctions with three front-pairs of lowest order (three caps or a unit cube; a widening with a cap) are
 classified and counted exactly, and the counting is pushed further by computer, the classes of each order being generated automatically. With exact counts of small fronts and
-junctions this makes the third-order term visible at larger $\beta$: for $SU(3)$ in $d=3$ on the whole range $10^{-12}\le\beta<\beta_0(3)$ (numerically).
+junctions this makes the third-order term visible at larger $\beta$: for $SU(3)$ in $d=3$ on the whole range $\beta<\beta_0(3)$ (numerically).
 
 \section{The duplicated system}\label{mg:sec:dup}
 
@@ -4524,7 +4524,8 @@ the general bounds, the majorant $M_5$ of Lemma~\ref{mg:lem:jsums5} with $R$ a m
 \item $d=4$: $D/\beta^4=1.3\cdot10^4$, $1.2\cdot10^3$, $8.7\cdot10^2$ and $1.3\cdot10^2$ at $\beta=10^{-5}$, $3\cdot10^{-6}$, $2.6\cdot10^{-6}$ and $10^{-6}$;
 \item $d=3$: $D/\beta^4=1.2\cdot10^4$, $1.9\cdot10^2$, $91$ and $13$ at $\beta=10^{-4}$, $3\cdot10^{-5}$, $2.3\cdot10^{-5}$ and $10^{-5}$.
 \end{itemize}
-Against $\beta^3/432=8.9\cdot10^2\beta^4$ at $2.6\cdot10^{-6}$ and $1.0\cdot10^2\beta^4$ at $2.3\cdot10^{-5}$, and as $D/\beta^4$ increases with $\beta$, the lower bound places $m-4\log(1/u)+\log\Upsilon$
+Against $\beta^3/432=8.9\cdot10^2\beta^4$ at $2.6\cdot10^{-6}$ and $1.0\cdot10^2\beta^4$ at $2.3\cdot10^{-5}$, and as $D/\beta^4$ increases with $\beta$ (up to a factor $(1+\beta)^3$, by
+the scaling of Remark~\ref{mg:rem:nextorder}(vii)), the lower bound places $m-4\log(1/u)+\log\Upsilon$
 above $-\beta^3/432$:
 \begin{itemize}
 \item for $\beta\le2.6\cdot10^{-6}$ in $d=4$; before this section this needed $\beta\lesssim2\cdot10^{-9}$;
@@ -4657,15 +4658,33 @@ $\beta^3/(432\beta^4)$ & $19.3$ & $46.3$ & $2.3\cdot10^3$ & $2.3\cdot10^5$ & $2.
 \smallskip
 
 \noindent At $\beta_0(3)$ the majorant is $2.35\beta^4$ of $D$ and the loss $8(K+1)\theta$ is $0.027\beta^4$.
-Between the points of the grid, fix the parameters found at its upper end $\beta_{i+1}$ ($\varpi$, $\bar b$, $\bar a$, $F$, $F_6$ and the decoration constants). Each term of the sums in
-the hypotheses of Theorem~\ref{mg:thm:lower5} and in $\delta'$ is then a product of factors that increase with $\beta$, one of them $a$, $b$ or $b_2$ (of order $\beta^2$); as $a/\beta$, $b/\beta$
-and $b_2/\beta^2$ increase with $\beta$ too, the sums drop at least by the factor $\beta/\beta_{i+1}$. The right sides change only through $\bar\Upsilon\delta'$ and $\bar\Upsilon(1+\delta')-a$, with
-$\bar\Upsilon=1+\beta/6+O(\beta^2)$, which vary far less. So these parameters, with the same $\delta'$, are admissible at every $\beta\le\beta_{i+1}$; and as $8(K+1)\theta$ and $\log(\bar\Upsilon/\Upsilon)$ increase with $\beta$, $D(\beta)\le D(\beta_{i+1})$
-there. On a grid of $22$ points from $10^{-12}$ to $\beta_0(3)$, $D(\beta_{i+1})<\beta_i^3/432$ for every pair of neighbours (the largest ratio is $0.53$, on $[3.8\cdot10^{-4},\beta_0(3)]$).
-So for $SU(3)$ in $d=3$ the lower bound places $m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ above $-\beta^3/432$ for all $10^{-12}\le\beta<\beta_0(3)$ (\texttt{whole\_range\_d3.py}). Below $10^{-12}$
-the statement is asymptotic: by Theorem~\ref{mg:thm:lower5}, $D\le(h_+u_1^4+\varepsilon)\beta^4$ for every $\varepsilon>0$ once $\beta$ is small enough, with $h_+u_1^4=8/18^4\approx7.6\cdot10^{-5}$, and
-along the grid $D/\beta^4$ decreases towards this value. An effective bound for $\beta<10^{-12}$ would need parameters that scale with $\beta$, as in the proof of that theorem, and
-is not done.
+
+\emph{Scaling.} Let the hypotheses of Theorem~\ref{mg:thm:lower5} hold at $\beta_*$ with parameters $\varpi_*=b(\beta_*)^p$, $F_*$, $F_{6*}$, $\xi_F$, $\xi_C$, $h_J$, $\bar b$, $\bar a$ and $\delta'_*$.
+For $\beta=t\beta_*$, $0<t\le1$, and $\kappa:=\beta_*$ take
+\[
+\varpi:=t^p\varpi_*,\qquad F:=(1+\kappa)tF_*,\qquad F_6:=(1+\kappa)tF_{6*},\qquad\delta':=(1+\kappa)^2t^4\delta'_*,
+\]
+and the same $\xi_F$, $\xi_C$, $h_J$, $\bar b$, $\bar a$; then $c_J=e^{h_J}/(1-\omega)$ decreases with $t$. The quantities $a/\beta$, $b/\beta$, $\epsilon/\beta$, $b_2/\beta^2$, $\sigma_6/\beta^6$, $\theta/\beta^6$ and
+$\log(\bar\Upsilon/\Upsilon)/\beta^4$ increase with $\beta$, and $1\le\bar\Upsilon\le1+\kappa$ (checked at $302$ points from $10^{-24}$ to $\beta_0(3)$). So every term has at least the order in $t$ of its
+side:
+\begin{itemize}
+\item in $\Sigma^{(4)}_4$, which is to be compared with $\bar\Upsilon\delta'\sim t^4$: the shifts and jumps $\varpi\min(b^2,b_2)=O(t^{p+2})$; the junctions with two four-edge front-pairs and
+$n\ge4$ plaquettes $O(t^4)$; the exits $O(t^4)$ ($af(6)$, the others less); the one-plaquette junctions $O(t^5)$; the counted pairs and the corner term $O(t^{n+E})$ with $n+E\ge5$;
+\item in the conditions on $F$ and $F_6$, $P_v(g_CY_1/7+g_FY_0)$ and $\Sigma^{(6)}$ are $O(t)$, like the right sides;
+\item $C_\varpi=O(t^{-p})$, so $\omega$ and $C_\varpi a^4$ are $O(t^{4-p})$, and $C_\varpi kP_vY_0a^{k/2}e^{\xi_Fk}=O(t^{3-p})$ stays below $h_J$ ($p\le\frac52$); $a^4\bar\Upsilon(1+\delta')=O(t^4)$
+stays below $\varpi$.
+\end{itemize}
+The values $f(k)$, $k\ge6$, carry the factor $1+\kappa$, which enters each sum at most linearly; it enters the left sides of the conditions on $F$ and $F_6$ only at relative
+order $\beta^3$, so there it absorbs the decrease of $\bar\Upsilon(1+\delta')-a$ on the right sides, and $(1+\kappa)^2$ in $\delta'$ absorbs that of $\bar\Upsilon$. Hence the hypotheses hold at
+every $\beta\le\beta_*$, and $D(\beta)/\beta^4\le(1+\kappa)^3D(\beta_*)/\beta_*^4$ (the third factor covers $\delta'\le(1+\delta')\log(1+\delta')$). (\texttt{scaling\_check.py} checks every hypothesis at $17$ values of $t$ from $1$ to $10^{-20}$, for
+$\beta_*=\beta_0(3)$.) The argument does not use $d$ or the set $S$; it is the monotonicity of $D/\beta^4$ used for the thresholds of Remark~\ref{mg:rem:practical}(iii) and of (iii), (v),
+(vi) above.
+
+With $\beta_*=\beta_0(3)$ it gives $D(\beta)\le2.56\,\beta^4$ for all $\beta\le\beta_0(3)$, while $\beta^3/432\ge5.74\,\beta^4$ there. \emph{So for $SU(3)$ in $d=3$ the lower bound places
+$m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ above $-\beta^3/432$ on the whole range $0<\beta<\beta_0(3)$.} The grid of the table confirms this on $[10^{-12},\beta_0(3)]$ directly
+(\texttt{whole\_range\_d3.py}: with the parameters of $\beta_{i+1}$ fixed, $D(\beta)\le D(\beta_{i+1})$ for $\beta\le\beta_{i+1}$, and $D(\beta_{i+1})<\beta_i^3/432$ for all neighbours, with the
+largest ratio $0.53$, on $[3.8\cdot10^{-4},\beta_0(3)]$). It also shows how far the bound is from sharp at small $\beta$, where $D/\beta^4$ decreases towards $h_+u_1^4=8/18^4\approx7.6\cdot10^{-5}$
+(Theorem~\ref{mg:thm:lower5}).
 
 In $d=4$ the next obstacle besides the majorant is the crude count of the junctions with two four-edge front-pairs and at least eight plaquettes: their term is of order
 $\beta^8$, with a constant large enough that it exceeds $\beta^3/432$ near $2\cdot10^{-5}$.
@@ -4821,7 +4840,7 @@ Closed sets of plaquettes have $6$ (a unit cube) or $\ge8$ plaquettes; ratio bou
 The junctions with three front-pairs of lowest order: three caps or a unit cube ($N_3=3\nu_2+12(d-3)$); a widening with a cap, or a cube with a bent domino ($N_2$, $N'_2$); counted exactly in the junction sum ($M_5$) & Lem.~\ref{mg:lem:threelow}, \ref{mg:lem:jsums5} & Theorem\\
 Exact $N^v_k$ ($k\le10$, $d=3$; $k\le9$, $d=4$), $Z_{n,4}$ ($n\le7$), $N_3,N_2,N'_2$; $SU(2)$ whole range: $\ge-9.4\cdot10^{-5}$ ($d=4$), $\ge-3.6\cdot10^{-5}$ ($d=3$); $SU(3)$: third-order term resolved for $\beta\le2.6\cdot10^{-6}$ ($d=4$; before $2\cdot10^{-9}$) and $\beta\le2.3\cdot10^{-5}$ ($d=3$) & Rem.~\ref{mg:rem:practical} & Numerical\\
 Junction sums by corners: any finite set $S$ of exponents $(n,E)$ counted exactly, the rest from the minimal $(n,E)$ outside $S$ & Lem.~\ref{mg:lem:corners} & Theorem\\
-The next order $S_6$ by exhaustive search; no closed sets of $8$, $9$ plaquettes in $\Z^3,\Z^4$, so $\theta_{10}$; $SU(3)$ third-order term resolved for $\beta\le1.2\cdot10^{-5}$ ($d=4$) and $\beta\le9\cdot10^{-5}$ ($d=3$); in $d=3$ one order more: $\beta\le1.8\cdot10^{-4}$, two: $\beta\le3.2\cdot10^{-4}$, three (in part): all $10^{-12}\le\beta<\beta_0(3)$ & Rem.~\ref{mg:rem:nextorder} & Numerical\\
+The next order $S_6$ by exhaustive search; no closed sets of $8$, $9$ plaquettes in $\Z^3,\Z^4$, so $\theta_{10}$; $SU(3)$ third-order term resolved for $\beta\le1.2\cdot10^{-5}$ ($d=4$) and $\beta\le9\cdot10^{-5}$ ($d=3$); in $d=3$ one order more: $\beta\le1.8\cdot10^{-4}$, two: $\beta\le3.2\cdot10^{-4}$, three (in part), with a scaling of the parameters in $\beta$: the whole range $\beta<\beta_0(3)$ & Rem.~\ref{mg:rem:nextorder} & Numerical\\
 $d=3$: junctions with two four-edge front-pairs have at most two plaquettes (planar boundary argument) & Rem.~\ref{mg:rem:nextorder}(iv) & Theorem\\
 Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order in the $C$-odd sector ($U(1)$, $d\ge4$; Conjecture~\ref{mg:conj:codd}); the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\
 \bottomrule

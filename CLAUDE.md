@@ -94,10 +94,11 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   counted exactly and $Z_{n,4}=0$ for $n\ge3$ (a planar argument), $\beta\le1.8\cdot10^{-4}$; two orders more (classes generated automatically, `order_counts.py`; exact exits
   up to 5 plaquettes; closed sets up to 14), $\beta\le3.2\cdot10^{-4}\approx\beta_0(3)/1.26$ (Numerical). Third referee (13 November; Lemma 16.6, Remark 16.7(i)–(v)): minor revisions, applied. With order 9 in part
   ($S''_9=S(8)\cup\{n+E\le\frac{19}2,\ n\ge4\}$; the twelve classes with such pairs counted, `orders/assemble_d3_s9.py`), **the whole range in $d=3$**: the lower bound resolves the $SU(3)$
-  third-order term for all $10^{-12}\le\beta<\beta_0(3)$ (Remark 16.7(vii), Numerical: 22 grid points and an interpolation argument with the parameters of the upper neighbour
-  fixed, `whole_range_d3.py`; below $10^{-12}$ only asymptotically, by Theorem 14.2). Orders 8–9 are not yet refereed. Checks in `theory/checks/third-order/`
+  third-order term for all $0<\beta<\beta_0(3)$ (Remark 16.7(vii), Numerical: $D\le2.56\beta^4$ at $\beta_0(3)$, and a scaling of the parameters in $\beta$ ($\varpi\propto t^p$, $F,F_6\propto t$,
+  $\delta'\propto t^4$) gives $D(\beta)/\beta^4\le(1+\beta_*)^3D(\beta_*)/\beta_*^4$ below any computed $\beta_*$, `scaling_check.py`; a 22-point grid confirms it, `whole_range_d3.py`). The
+  scaling also justifies the monotonicity of $D/\beta^4$ that the earlier thresholds used. Orders 8–9 and the scaling are not yet refereed. Checks in `theory/checks/third-order/`
   (`three_front_count.py`, `practical_beta.py`, `order_counts.py`, `whole_range_d3.py`, ...). Two referees (Lemmas 16.1–16.2 and Remark 16.5; Lemmas 16.3–16.4, with
-  independent searches in $d=3,4,5$): minor revisions, applied. Next: a referee for Remark 16.7(vi)–(vii); an effective argument below $10^{-12}$; $d=4$ (order 7 is being
+  independent searches in $d=3,4,5$): minor revisions, applied. Next: a referee for Remark 16.7(vi)–(vii) (running); $d=4$ (order 7 is being
   counted; then the junctions with two four-edge front-pairs and $\ge8$ plaquettes).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
