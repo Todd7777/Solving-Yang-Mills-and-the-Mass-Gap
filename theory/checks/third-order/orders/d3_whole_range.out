@@ -1,0 +1,46 @@
+8(K+1)theta and log(Ubar/Ups) increasing on 402 points of [1e-12, beta_0(3)]: True, True
+beta = 1e-12: D/beta^4 = 8.124e-05 (theta 5.31e-26,  ups 0,  delta 8.12e-05,  majorant 6.49e-12),  beta^3/432 = 2.315e+09 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.0009765625'), 'corners')
+beta = 1e-11: D/beta^4 = 9.211e-05 (theta 4.44e-24,  ups 0,  delta 9.21e-05,  majorant 6.49e-11),  beta^3/432 = 2.315e+08 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.0009765625'), 'corners')
+beta = 1e-10: D/beta^4 = 0.0001265 (theta 4.44e-22,  ups 2.62e-16,  delta 0.000127,  majorant 6.49e-10),  beta^3/432 = 2.315e+07 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.0009765625'), 'corners')
+beta = 1e-09: D/beta^4 = 0.0002353 (theta 4.44e-20,  ups 2.62e-14,  delta 0.000235,  majorant 6.49e-09),  beta^3/432 = 2.315e+06 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.0009765625'), 'corners')
+beta = 1e-08: D/beta^4 = 0.0005803 (theta 4.44e-18,  ups 2.62e-12,  delta 0.00058,  majorant 6.49e-08),  beta^3/432 = 2.315e+05 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.0009765625'), 'corners')
+beta = 1e-07: D/beta^4 = 0.001679 (theta 4.44e-16,  ups 2.62e-10,  delta 0.00168,  majorant 6.49e-07),  beta^3/432 = 2.315e+04 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.0009765625'), 'corners')
+beta = 1e-06: D/beta^4 = 0.005232 (theta 4.44e-14,  ups 2.62e-08,  delta 0.00523,  majorant 6.49e-06),  beta^3/432 = 2315 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.0009765625'), 'corners')
+beta = 3e-06: D/beta^4 = 0.00917 (theta 4e-13,  ups 2.36e-07,  delta 0.00917,  majorant 1.95e-05),  beta^3/432 = 771.6 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.0009765625'), 'corners')
+beta = 1e-05: D/beta^4 = 0.01726 (theta 4.44e-12,  ups 2.62e-06,  delta 0.0173,  majorant 6.49e-05),  beta^3/432 = 231.5 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.0009765625'), 'corners')
+beta = 2e-05: D/beta^4 = 0.02514 (theta 1.78e-11,  ups 1.05e-05,  delta 0.0251,  majorant 0.00013),  beta^3/432 = 115.7 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.0009765625'), 'corners')
+beta = 5e-05: D/beta^4 = 0.04217 (theta 1.14e-10,  ups 6.56e-05,  delta 0.0421,  majorant 0.000351),  beta^3/432 = 46.3 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.00048828125'), 'corners')
+beta = 9e-05: D/beta^4 = 0.0602 (theta 2.15e-09,  ups 0.000213,  delta 0.06,  majorant 0.00108),  beta^3/432 = 25.72 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.00048828125'), 'corners')
+beta = 0.00012: D/beta^4 = 0.07342 (theta 4.33e-08,  ups 0.000378,  delta 0.073,  majorant 0.00286),  beta^3/432 = 19.29 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.00048828125'), 'corners')
+beta = 0.00016: D/beta^4 = 0.0951 (theta 1.02e-06,  ups 0.000672,  delta 0.0944,  majorant 0.0103),  beta^3/432 = 14.47 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.00048828125'), 'corners')
+beta = 0.0002: D/beta^4 = 0.1351 (theta 1.2e-05,  ups 0.00105,  delta 0.134,  majorant 0.0365),  beta^3/432 = 11.57 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.00048828125'), 'corners')
+beta = 0.00023: D/beta^4 = 0.192 (theta 5.59e-05,  ups 0.00139,  delta 0.191,  majorant 0.083),  beta^3/432 = 10.06 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.00048828125'), 'corners')
+beta = 0.00026: D/beta^4 = 0.2914 (theta 0.000217,  ups 0.00178,  delta 0.289,  majorant 0.172),  beta^3/432 = 8.903 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.00048828125'), 'corners')
+beta = 0.00029: D/beta^4 = 0.4603 (theta 0.000725,  ups 0.00221,  delta 0.457,  majorant 0.329),  beta^3/432 = 7.982 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.00048828125'), 'corners')
+beta = 0.00032: D/beta^4 = 0.737 (theta 0.00215,  ups 0.00269,  delta 0.732,  majorant 0.594),  beta^3/432 = 7.234 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.00048828125'), 'corners')
+beta = 0.00035: D/beta^4 = 1.174 (theta 0.00581,  ups 0.00322,  delta 1.17,  majorant 1.02),  beta^3/432 = 6.614 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.00048828125'), 'corners')
+beta = 0.00038: D/beta^4 = 1.842 (theta 0.0144,  ups 0.00379,  delta 1.82,  majorant 1.66),  beta^3/432 = 6.092 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.00048828125'), 'corners')
+beta = 0.000402621: D/beta^4 = 2.554 (theta 0.0274,  ups 0.00426,  delta 2.52,  majorant 2.35),  beta^3/432 = 5.749 beta^4,  (bbar, abar) = (mpf('0.0078125'), mpf('0.00048828125'), 'corners')
+  [1e-12, 1e-11]: D(hi)/(lo^3/432) = 3.98e-10
+  [1e-11, 1e-10]: D(hi)/(lo^3/432) = 5.46e-09
+  [1e-10, 1e-09]: D(hi)/(lo^3/432) = 1.02e-07
+  [1e-09, 1e-08]: D(hi)/(lo^3/432) = 2.51e-06
+  [1e-08, 1e-07]: D(hi)/(lo^3/432) = 7.25e-05
+  [1e-07, 1e-06]: D(hi)/(lo^3/432) = 0.00226
+  [1e-06, 3e-06]: D(hi)/(lo^3/432) = 0.000321
+  [3e-06, 1e-05]: D(hi)/(lo^3/432) = 0.00276
+  [1e-05, 2e-05]: D(hi)/(lo^3/432) = 0.00174
+  [2e-05, 5e-05]: D(hi)/(lo^3/432) = 0.0142
+  [5e-05, 9e-05]: D(hi)/(lo^3/432) = 0.0137
+  [9e-05, 0.00012]: D(hi)/(lo^3/432) = 0.00902
+  [0.00012, 0.00016]: D(hi)/(lo^3/432) = 0.0156
+  [0.00016, 0.0002]: D(hi)/(lo^3/432) = 0.0228
+  [0.0002, 0.00023]: D(hi)/(lo^3/432) = 0.029
+  [0.00023, 0.00026]: D(hi)/(lo^3/432) = 0.0473
+  [0.00026, 0.00029]: D(hi)/(lo^3/432) = 0.08
+  [0.00029, 0.00032]: D(hi)/(lo^3/432) = 0.137
+  [0.00032, 0.00035]: D(hi)/(lo^3/432) = 0.232
+  [0.00035, 0.00038]: D(hi)/(lo^3/432) = 0.387
+  [0.00038, 0.000402621]: D(hi)/(lo^3/432) = 0.528
+beta_0(3) = 0.0004026214335; 22 points; D(beta_(i+1)) < beta_i^3/432 for all neighbours: True (largest ratio 0.528)
+D/beta^4 increasing on the grid: True

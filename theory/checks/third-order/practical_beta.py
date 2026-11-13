@@ -57,19 +57,22 @@ def load_terms(d, path, closed=None, closed_from=None):
                                5: {8: 12, 10: 376, 11: 880, 12: 2271, 13: 4096, 14: 8562, 15: 15532, 16: 25227, 17: 33440, 18: 38064, 19: 35740,
                                    20: 28695, 21: 18600, 22: 10212, 23: 3972, 24: 1296}}}     # zexit_count_n.py
 ORDER = 5
+def deficit(d, beta):
+    """the whole deficit D of the lower bound at beta for SU(3) (the smaller delta' of varpi = b^2, b^(5/2)), the evaluation, and the group data"""
+    g = dict(T.GROUPS)['SU(3)'](beta); best = None
+    for vp in (2, mpf(5)/2):
+        try: lo = T.lower3e(beta, d, g, varpi_pow=vp, chars=True)
+        except AssertionError: continue
+        if best is None or lo['delta'] < best['delta']: best = lo
+    return best['loss'] - log(g['Ups']), best, g
 def run(d, betas):
     """The criterion is the whole deficit of the lower bound, D = 8(K+1)theta + log(Ubar/Ups) + log(1+delta'), against beta^3/432: then
     m - 4log(1/u) + log(Ups) >= -D > -beta^3/432."""
     if ORDER == 6: order6(d)
     if ORDER == 7: order7_d3()
     for be in betas:
-        beta = mpf(be); g = dict(T.GROUPS)['SU(3)'](beta); best = None
-        for vp in (2, mpf(5)/2):
-            try: lo = T.lower3e(beta, d, g, varpi_pow=vp, chars=True)
-            except AssertionError: continue
-            if best is None or lo['delta'] < best['delta']: best = lo
+        beta = mpf(be); D, best, g = deficit(d, beta)
         target = beta**3/432
-        D = best['loss'] - log(g['Ups'])
         lth = best['loss'] - log(best['Ubar']) - log(1 + best['delta'])
         parts = sorted(((float(v/beta**4), k) for k, v in best['parts'].items()), reverse=True)[:3]
         print(f"d={d} beta={be}: D/beta^4 = {float(D/beta**4):.4g} = theta-loss {float(lth/beta**4):.3g} + log(Ubar/Ups) {float(log(best['Ubar']/g['Ups'])/beta**4):.2g}"

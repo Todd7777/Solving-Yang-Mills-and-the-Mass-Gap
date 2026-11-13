@@ -92,14 +92,17 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   earlier $2.6\cdot10^{-5}$ for $d=3$ had left out $\theta_7$). Lemma 16.6 (13 November): junction sums by corners, any order; Remark 16.7: the next order by exhaustive
   search, and $\theta_{10}$ (no closed sets of 8, 9 plaquettes), give $\beta\le1.2\cdot10^{-5}$ ($d=4$) and $\beta\le9\cdot10^{-5}$ ($d=3$, about $\beta_0(3)/4.5$); one order more in $d=3$, with the closed sets of 10–12 plaquettes
   counted exactly and $Z_{n,4}=0$ for $n\ge3$ (a planar argument), $\beta\le1.8\cdot10^{-4}$; two orders more (classes generated automatically, `order_counts.py`; exact exits
-  up to 5 plaquettes; closed sets up to 14), $\beta\le3.2\cdot10^{-4}\approx\beta_0(3)/1.26$ (Numerical). Third referee (13 November): minor revisions, applied. Order 9 in $d=3$, which a
-  placeholder test says reaches $\beta_0(3)$, is being counted (`order_counts_par.py`, cache in the scratchpad). Checks in `theory/checks/third-order/` (`three_front_count.py`, `practical_beta.py`, ...).
-  Two referees (Lemmas 16.1–16.2 and Remark 16.5; Lemmas 16.3–16.4, with independent searches in $d=3,4,5$): minor revisions, applied. Lemma 16.6 and Remark 16.7:
-  referee pending. Next: the order after ($S_7$, $\theta_{12}$).
+  up to 5 plaquettes; closed sets up to 14), $\beta\le3.2\cdot10^{-4}\approx\beta_0(3)/1.26$ (Numerical). Third referee (13 November; Lemma 16.6, Remark 16.7(i)–(v)): minor revisions, applied. With order 9 in part
+  ($S''_9=S(8)\cup\{n+E\le\frac{19}2,\ n\ge4\}$; the twelve classes with such pairs counted, `orders/assemble_d3_s9.py`), **the whole range in $d=3$**: the lower bound resolves the $SU(3)$
+  third-order term for all $10^{-12}\le\beta<\beta_0(3)$ (Remark 16.7(vii), Numerical: 22 grid points and an interpolation argument with the parameters of the upper neighbour
+  fixed, `whole_range_d3.py`; below $10^{-12}$ only asymptotically, by Theorem 14.2). Orders 8–9 are not yet refereed. Checks in `theory/checks/third-order/`
+  (`three_front_count.py`, `practical_beta.py`, `order_counts.py`, `whole_range_d3.py`, ...). Two referees (Lemmas 16.1–16.2 and Remark 16.5; Lemmas 16.3–16.4, with
+  independent searches in $d=3,4,5$): minor revisions, applied. Next: a referee for Remark 16.7(vi)–(vii); an effective argument below $10^{-12}$; $d=4$ (order 7 is being
+  counted; then the junctions with two four-edge front-pairs and $\ge8$ plaquettes).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
+- The newest journal entry is `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$; Part 14: further orders in $d=3$, the whole range). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
   Part 12: the third-order term at practical $\beta$; Part 10: the lower bound to fourth order); `journal/2026-11-11.md` has Parts 6–7 (the second- and
   third-order terms), `journal/2026-11-10.md` has Parts 1–5,
   `journal/2026-11-09b.md` is the first part of session 3 and `journal/2026-11-09.md` is session 2.
