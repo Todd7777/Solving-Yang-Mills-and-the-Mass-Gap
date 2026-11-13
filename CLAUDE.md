@@ -102,9 +102,9 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   Remark 16.7(viii)); Lemma 16.8 (Theorem: $\theta_5$ in the tails, exact counts of the admissible sets, the five-face caps by characters, $\sigma_5=\sum d_r^2u_r^5$) and Remark 16.9
   (Numerical: counts by `rel_closed_count.py`, evaluation by `upper_exact.py`) give **for $SU(3)$ in $d=3$: $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.042\beta^4$ for all
   $\beta<\beta_0(3)$**, the third-order term from both sides on the whole range; in $d=4$ the upper side on the whole range ($\le0.21\beta^4$, counts to 10 plaquettes) and both
-  sides for $\beta\le4.3\cdot10^{-5}\approx\beta_0(4)/3.6$ (Remark 16.7(ix): order 7 complete and order 8 for $n\ge4$ in $d=4$, exact $Z_{8,4}=1988$, $Z_{9,4}=406$, $N^v_{11}=147888$, exits with three
+  sides for $\beta\le5\cdot10^{-5}\approx\beta_0(4)/3.1$ (Remark 16.7(ix): order 7 complete and order 8 for $n\ge4$ and at $(3,5)$ in $d=4$, exact $Z_{8,4}=1988$, $Z_{9,4}=406$, $N^v_{11}=147888$, exits with three
   plaquettes; the junction search now has a capacity prune; not yet refereed). Fifth referee (Lemma 16.8, Remark 16.9): minor revisions, no error, applied (`referee-section16e/`). Remark 16.7(iv) now also proves (planar faces) that in $d=3$ pairs with $E=2$ have $n=3$ and pairs with $E\in\{3,\frac72\}$ have $n\le4$.
-  Next: the $d=4$ lower bound beyond $4.3\cdot10^{-5}$ (the rest of order 8, which needs fronts of 12–13 edges; order 9; near $\beta_0(4)$ the shifts and jumps by characters).
+  Next: the $d=4$ lower bound beyond $5\cdot10^{-5}$ (the rest of order 8, which needs fronts of 12–13 edges; order 9; near $\beta_0(4)$ the shifts and jumps by characters).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
