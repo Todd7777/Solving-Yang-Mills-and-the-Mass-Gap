@@ -1,0 +1,19 @@
+beta_* = 0.000153766448: D/beta^4 = 11.3827, varpi = b^2.5, (bbar, abar) = (mpf('0.00390625'), mpf('0.00048828125'), 'corners')
+  t = 1 (beta = 0.0001538): all hypotheses hold; D/beta^4 = 11.3862 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 0.999 (beta = 0.0001536): all hypotheses hold; D/beta^4 = 11.3862 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 0.99 (beta = 0.0001522): all hypotheses hold; D/beta^4 = 11.3862 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 0.95 (beta = 0.0001461): all hypotheses hold; D/beta^4 = 11.3861 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 0.9 (beta = 0.0001384): all hypotheses hold; D/beta^4 = 11.386 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 0.7 (beta = 0.0001076): all hypotheses hold; D/beta^4 = 11.3858 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 0.5 (beta = 7.688e-05): all hypotheses hold; D/beta^4 = 11.3857 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 0.3 (beta = 4.613e-05): all hypotheses hold; D/beta^4 = 11.3856 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 0.1 (beta = 1.538e-05): all hypotheses hold; D/beta^4 = 11.3855 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 0.03 (beta = 4.613e-06): all hypotheses hold; D/beta^4 = 11.3855 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 0.01 (beta = 1.538e-06): all hypotheses hold; D/beta^4 = 11.3855 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 0.001 (beta = 1.538e-07): all hypotheses hold; D/beta^4 = 11.3855 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 0.0001 (beta = 1.538e-08): all hypotheses hold; D/beta^4 = 11.3855 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 1e-06 (beta = 1.538e-10): all hypotheses hold; D/beta^4 = 11.3855 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 1e-08 (beta = 1.538e-12): all hypotheses hold; D/beta^4 = 11.3855 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 1e-12 (beta = 1.538e-16): all hypotheses hold; D/beta^4 = 11.3855 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+  t = 1e-20 (beta = 1.538e-24): all hypotheses hold; D/beta^4 = 11.3855 <= (1+k)^3 D_*/beta_*^4 = 11.3879: True
+all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: True;  then D < beta^3/432 for all beta <= beta_* as long as (1+k)^3 D_*/beta_*^4 = 11.388 < 1/(432 beta_*) = 15.054: True

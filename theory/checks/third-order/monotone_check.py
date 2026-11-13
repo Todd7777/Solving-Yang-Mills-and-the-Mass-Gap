@@ -16,7 +16,8 @@ from constants_upper import beta0
 mp.dps = 220
 su3 = dict(T.GROUPS)['SU(3)']
 CLOSED_D = {3: ({10: 10, 11: 11, 12: 24, 13: 0, 14: 70}, 15),      # the theta of Remark mg:rem:nextorder (vi): closed polymers counted exactly, crude from
-             4: ({10: 60, 11: 66}, 12)}                              # 15 on (d=3); the theta of (ix) in d=4: 10, 11 exactly, crude from 12 on
+             4: ({10: 60, 11: 66, 12: 320, 13: 0, 14: 1316, 15: 2520, 16: 12552}, 17)}   # 15 on (d=3); the theta of (x) in d=4: 10..16 exactly
+                                                                     # (closed_sets.c), crude from 17 on (the theta of (ix), 10, 11 and crude from 12, is also increasing)
 
 def quantities(beta, d=3):
     CLOSED, CF = CLOSED_D[d]

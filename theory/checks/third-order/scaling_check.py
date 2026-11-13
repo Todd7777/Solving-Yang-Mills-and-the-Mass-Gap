@@ -1,5 +1,5 @@
 # Section 16 of Part IV (Remark mg:rem:nextorder (vii)): the scaling of the admissible parameters below a computed point, d=3, S''_9.
-# Usage: python3 scaling_check.py [--d4 TERMS.json] [beta_* [JOBS]]        (default beta_* = beta_0(3); about 10 minutes with 3 jobs)
+# Usage: python3 scaling_check.py [--d4 TERMS.json [--closed n:c,... --closed-from N] [--ix]] [beta_* [JOBS]]   (default beta_* = beta_0(d); ~10 min, 3 jobs)
 """At beta_* the parameters of Theorem mg:thm:lower5 are found as usual (practical_beta.deficit). For beta = t beta_*, 0 < t <= 1, and k := beta_* take
     varpi = t^p varpi_*  (varpi_* = b(beta_*)^p),   F = (1+k) t F_*,   F_6 = (1+k) t F_6*,   delta' = (1+k)^2 t^4 delta'_*,
 and keep xi_F, xi_C, h_J and (bbar, abar) of beta_* (these constants come out of lower3e raised by a relative 1e-15, so that their conditions hold
@@ -17,12 +17,18 @@ sys.path.insert(0, here)
 import practical_beta as PB
 import third_order_effective as T
 
-# the setting: d=3 with S''_9 (default), or d=4 with the set given by --d4 FILE (closed polymers of Z^4 with 10, 11 plaquettes counted exactly)
+# the setting: d=3 with S''_9 (default), or d=4 with the set given by --d4 FILE and the closed polymers of Z^4 counted exactly as given by --closed,
+# --closed-from (default: 10, 11 plaquettes, crude from 12, as in Remark mg:rem:nextorder (ix); (x) uses 10..16, crude from 17)
 if '--ix' in sys.argv: PB.IX_SETTING = True; sys.argv.remove('--ix')     # the d=4 setting of Remark mg:rem:nextorder (ix)
+CLOSED4, CF4 = {10: 60, 11: 66}, 12
+if '--closed' in sys.argv:
+    i = sys.argv.index('--closed'); CLOSED4 = {int(x.split(':')[0]): int(x.split(':')[1]) for x in sys.argv[i + 1].split(',')}; del sys.argv[i:i + 2]
+if '--closed-from' in sys.argv:
+    i = sys.argv.index('--closed-from'); CF4 = int(sys.argv[i + 1]); del sys.argv[i:i + 2]
 if '--d4' in sys.argv:
     i = sys.argv.index('--d4'); D4FILE = sys.argv[i + 1]; del sys.argv[i:i + 2]
     d = 4
-    PB.load_terms(d, D4FILE, {10: 60, 11: 66}, 12)
+    PB.load_terms(d, D4FILE, CLOSED4, CF4)
 else:
     d = 3
     PB.load_terms(d, os.path.join(here, 'orders', 'd3_s9.json'), {10: 10, 11: 11, 12: 24, 13: 0, 14: 70}, 15)

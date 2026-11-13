@@ -46,7 +46,9 @@ def order7_d3():
 # Any order from order_counts.py: --terms FILE.json (terms and corners of S(m)), with --closed n:c,... and --closed-from N for theta (closed
 # polymers of n plaquettes counted exactly, crude from N on); in d=3, Z_(n,4) = 0 for all n >= 3 (Remark mg:rem:nextorder (iv)).
 Z4_D4 = {5: 26, 6: 302, 7: 288, 8: 1988, 9: 406, 10: 3193, 11: 5911, 12: 26956}   # junction_count.py 3 9 (Z_8: 5 min, Z_9: 25 min); junctions.c 3 12 4 (13 s)
-ZEXITN_D4 = {3: {6: 288, 7: 264, 8: 862, 9: 760, 10: 3490, 11: 6596, 12: 14838, 13: 18444, 14: 23672, 15: 15296, 16: 10868}}   # zexit_count_n.py 3 3 (90 s)
+ZEXITN_D4 = {3: {6: 288, 7: 264, 8: 862, 9: 760, 10: 3490, 11: 6596, 12: 14838, 13: 18444, 14: 23672, 15: 15296, 16: 10868},   # zexit_count_n.py 3 3 (90 s)
+             4: {6: 152, 7: 40, 8: 3460, 9: 6164, 10: 19664, 11: 28668, 12: 84115, 13: 159020, 14: 356520, 15: 552112, 16: 828023, 17: 862000,
+                 18: 843880, 19: 479680, 20: 265315}}                # zexits.c 3 4 (3 min; both layers; as the sixth referee)
 NV_D4_EXTRA = {11: 147888, 12: 1121083, 13: 4773186}   # N^v_k of Z^3: fronts_decision.py 3 12 (97 min), fronts_decision.c 3 13 (8 min)
 IX_SETTING = False   # --ix: the d=4 setting of Remark mg:rem:nextorder (ix) (N^v_k exact to 11 and crude beyond, Z_(n,4) exact to 9), to reproduce its numbers
 def load_terms(d, path, closed=None, closed_from=None):
