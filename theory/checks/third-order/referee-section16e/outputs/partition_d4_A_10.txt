@@ -1,0 +1,9 @@
+d=4 (S,C)=(S_A,{p0}): |S|=4 |C|=1 |P_S|=21 J'=20; nmax=10; search nodes 498027, 3.2 s
+  connected admissible sets by size: {5: 4, 6: 32, 9: 60, 10: 506}
+  all admissible sets by size      : {5: 4, 6: 32, 9: 60, 10: 506}  of which with two components: {}
+  caps: 4; five-plaquette sets that are not caps: 0; six-plaquette sets that are unit cubes: 32 of 32
+  N^cap = 4  N_n (non-caps, n = 5..nmax): [0, 32, 0, 0, 60, 506]
+
+real	0m3.229s
+user	0m3.181s
+sys	0m0.012s

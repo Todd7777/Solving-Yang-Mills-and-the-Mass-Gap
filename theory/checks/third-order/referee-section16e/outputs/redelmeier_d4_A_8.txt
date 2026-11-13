@@ -1,0 +1,7 @@
+d=4 kind=A nmax=8 |C|=1 |P_S|=21 J'=20 nodes=168143166 boundary_hit=0
+admissible sets by size: 5:4 6:32
+of which with two components:
+
+real	0m11.825s
+user	0m11.765s
+sys	0m0.004s

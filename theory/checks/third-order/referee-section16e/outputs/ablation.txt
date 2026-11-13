@@ -1,0 +1,5 @@
+paper (theta_5, caps by characters)     : E(beta_0)/beta_0^4 = 0.4039   (beta^3/432 = 5.7494 beta^4)
+caps counted with w^5                   : E(beta_0)/beta_0^4 = 25.92   (beta^3/432 = 5.7494 beta^4)
+theta instead of theta_5                : E(beta_0)/beta_0^4 = 2.286e+05   (beta^3/432 = 5.7494 beta^4)
+cubes by sigma_6, n_0 = 10                : E(beta_0)/beta_0^4 = 0.3627
+cubes by sigma_6, n_0 = 12                : E(beta_0)/beta_0^4 = 0.0002684

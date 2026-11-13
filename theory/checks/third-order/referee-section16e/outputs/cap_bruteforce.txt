@@ -1,0 +1,13 @@
+Z_3   beta=0.3: max|g_brute - f*f*f*f*f| = 1.49e-19; sigma_5 = g(1) = 2.049513e-04; max|g|/sigma_5 = 1.000000; max|f^*5 - sum d_r u_r^5 chi_r| = 5.09e-19; |sigma_5 - sum d_r^2 u_r^5| = 2.71e-20; u_r = [np.float64(1.0), np.float64(0.159266), np.float64(0.159266)]
+Z_3   beta=1.5: max|g_brute - f*f*f*f*f| = 1.67e-16; sigma_5 = g(1) = 4.403693e-01; max|g|/sigma_5 = 1.000000; max|f^*5 - sum d_r u_r^5 chi_r| = 5.55e-16; |sigma_5 - sum d_r^2 u_r^5| = 5.55e-16; u_r = [np.float64(1.0), np.float64(0.738852), np.float64(0.738852)]
+Z_4   beta=0.3: max|g_brute - f*f*f*f*f| = 1.11e-19; sigma_5 = g(1) = 1.463191e-04; max|g|/sigma_5 = 1.000000; max|f^*5 - sum d_r u_r^5 chi_r| = 3.88e-19; |sigma_5 - sum d_r^2 u_r^5| = 5.42e-20; u_r = [np.float64(1.0), np.float64(0.148885), np.float64(0.022167), np.float64(0.148885)]
+Z_4   beta=1.5: max|g_brute - f*f*f*f*f| = 6.77e-17; sigma_5 = g(1) = 2.174166e-01; max|g|/sigma_5 = 1.000000; max|f^*5 - sum d_r u_r^5 chi_r| = 1.54e-16; |sigma_5 - sum d_r^2 u_r^5| = 0.00e+00; u_r = [np.float64(1.0), np.float64(0.635149), np.float64(0.403414), np.float64(0.635149)]
+S_3   beta=0.3: max|g_brute - f*f*f*f*f| = 3.39e-21; sigma_5 = g(1) = 1.357943e-05; max|g|/sigma_5 = 1.000000; max|f^*5 - sum d_r u_r^5 chi_r| = 8.47e-21; |sigma_5 - sum d_r^2 u_r^5| = 8.47e-21; u_r = [np.float64(1.0), np.float64(0.01174), np.float64(0.080568)]
+S_3   beta=1.5: max|g_brute - f*f*f*f*f| = 2.78e-17; sigma_5 = g(1) = 9.952340e-02; max|g|/sigma_5 = 1.000000; max|f^*5 - sum d_r u_r^5 chi_r| = 2.08e-17; |sigma_5 - sum d_r^2 u_r^5| = 1.39e-17; u_r = [np.float64(1.0), np.float64(0.287954), np.float64(0.475804)]
+F_21  beta=0.3: max|g_brute - f*f*f*f*f| = 8.60e-23; sigma_5 = g(1) = 4.376382e-08; max|g|/sigma_5 = 1.000000
+F_21  beta=1.5: max|g_brute - f*f*f*f*f| = 1.84e-18; sigma_5 = g(1) = 1.896728e-03; max|g|/sigma_5 = 1.000000
+all agree to 1e-12 : True
+
+real	0m6.351s
+user	0m5.451s
+sys	0m1.082s

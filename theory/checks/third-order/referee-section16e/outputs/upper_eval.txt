@@ -1,0 +1,19 @@
+beta_0(3) = 4.0262143e-04, beta_0(4) = 1.5376645e-04; beta^3/432 at beta_0(3) = 5.74936 beta^4
+  beta=4.026e-04: u/beta = 0.055557419544 (authors 0.055557419544); Ups+ - 1 = 6.710357e-05 (authors 6.710357e-05); Ups- - 1 = -6.710357e-05; kappa = 6.711258e-05; kappa - 18u^2 = 6.7104e-05
+  beta=1.000e-04: u/beta = 0.055556018519 (authors 0.055556018519); Ups+ - 1 = 1.666667e-05 (authors 1.666667e-05); Ups- - 1 = -1.666667e-05; kappa = 1.666722e-05; kappa - 18u^2 = 1.6667e-05
+  beta=1.000e-06: u/beta = 0.055555560185 (authors 0.055555560185); Ups+ - 1 = 1.666667e-07 (authors 1.666667e-07); Ups- - 1 = -1.666667e-07; kappa = 1.666667e-07; kappa - 18u^2 = 1.6667e-07
+d=3, n0=10, beta_0(3): T'_Q = 1.2317e-03 beta^4 {'cap': 2.3131929785171255e-08, 'sets': 0.00012542855072895546, 'tail': 0.0011062898691794928}; T'_A = 5.0495e-04 beta^4 {'cap': 7.679399558269774e-09, 'sets': 8.328020752074057e-05, 'tail': 0.0004216579704691797}
+   q = 0.02628, sigma_5/u^5 = 18.000000, (eps/u) = 36.0133; exact error = 0.40386 beta^4; E = 0.40392 beta^4; B = 0.40291 beta^4
+d=3, n0=12, beta_0(3): T'_Q = 1.2622e-04 beta^4 {'cap': 2.3131929785171255e-08, 'sets': 0.00012542855072895598, 'tail': 7.639175901109348e-07}; T'_A = 8.3579e-05 beta^4 {'cap': 7.679399558269774e-09, 'sets': 8.328020752074077e-05, 'tail': 2.911641420803987e-07}
+   q = 0.02628, sigma_5/u^5 = 18.000000, (eps/u) = 36.0133; exact error = 0.04146 beta^4; E = 0.04146 beta^4; B = 0.04129 beta^4
+monotone on 91 points of [4.0e-13, beta_0(3)]: E/beta^5 True, u/beta True, sigma5/beta^5 True; Ups >= 1 and kappa > 18u^2 everywhere: True; exact error <= E everywhere: True
+   E(beta)/beta^4 at beta_0(3) = 0.40392;  sup over the grid of error/beta^4 = 0.40392
+d=4, n0=8: error < beta^3/432 for beta <= 8.2614e-05 = beta_0(4)/1.861; at 1.2e-5: error = 1.974e-03 beta^4; at beta_0(4): error = 632.3 beta^4 against beta^3/432 = 15.05 beta^4 (E = 632.4)
+d=4, n0=9: error < beta^3/432 for beta <= 1.5377e-04 (the whole range) = beta_0(4)/1.000; at 1.2e-5: error = 1.834e-04 beta^4; at beta_0(4): error = 10.6 beta^4 against beta^3/432 = 15.05 beta^4 (E = 10.6)
+d=4, n0=10: error < beta^3/432 for beta <= 1.5377e-04 (the whole range) = beta_0(4)/1.000; at 1.2e-5: error = 1.811e-04 beta^4; at beta_0(4): error = 0.2066 beta^4 against beta^3/432 = 15.05 beta^4 (E = 0.2066)
+d=4, n0=9: E/beta^5 increasing on 91 points of [1.5e-13, beta_0(4)]: True; E(beta_0(4)) = 10.6 beta_0^4, so the error is <= 10.6 beta^4 < beta^3/432 (>= 15.05 beta^4) on the whole range: True
+d=4, n0=10: E/beta^5 increasing on 91 points of [1.5e-13, beta_0(4)]: True; E(beta_0(4)) = 0.2066 beta_0^4, so the error is <= 0.2066 beta^4 < beta^3/432 (>= 15.05 beta^4) on the whole range: True
+
+real	0m40.607s
+user	0m40.405s
+sys	0m0.044s

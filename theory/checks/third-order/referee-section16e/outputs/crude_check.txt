@@ -1,0 +1,3 @@
+d=3: crude-tail error reaches beta^3/432 at beta = 2.967e-08; error there = 2.630e+12 beta^5
+d=4: crude-tail error reaches beta^3/432 at beta = 6.706e-09; error there = 5.147e+13 beta^5
+d=3 at beta_0(3): T_Q = 1.381e-04 = 5.255e+09 beta^4, T_p = 5.417e+08 beta^4

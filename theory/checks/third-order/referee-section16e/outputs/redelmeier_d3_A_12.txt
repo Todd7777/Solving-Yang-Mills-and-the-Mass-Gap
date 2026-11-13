@@ -1,0 +1,7 @@
+d=3 kind=A nmax=12 prune=2 |C|=1 |P_S|=13 J'=12 nodes=164173471 boundary_hit=0
+admissible sets by size: 5:2 6:8 9:10 10:47 11:60 12:96
+of which with two components: 12:16
+
+real	1m34.429s
+user	1m34.089s
+sys	0m0.041s

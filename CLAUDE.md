@@ -100,10 +100,10 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   (`three_front_count.py`, `practical_beta.py`, `order_counts.py`, `whole_range_d3.py`, ...). Two referees (Lemmas 16.1–16.2 and Remark 16.5; Lemmas 16.3–16.4, with
   independent searches in $d=3,4,5$): minor revisions, applied. The upper bound (Theorem 10.2) saw the term only for $\beta\le3\cdot10^{-8}$ (crude tails $\mathcal T_Q,\mathcal T_p$ of Lemma `mg:lem:twopoint`,
   Remark 16.7(viii)); Lemma 16.8 (Theorem: $\theta_5$ in the tails, exact counts of the admissible sets, the five-face caps by characters, $\sigma_5=\sum d_r^2u_r^5$) and Remark 16.9
-  (Numerical: counts by `rel_closed_count.py`, evaluation by `upper_exact.py`) give **for $SU(3)$ in $d=3$: $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.41\beta^4$ for all
-  $\beta<\beta_0(3)$**, the third-order term from both sides on the whole range; in $d=4$ from both sides for $\beta\le1.2\cdot10^{-5}$ (the upper side to $8.2\cdot10^{-5}$ with counts to 8
-  plaquettes). Not yet refereed. Remark 16.7(iv) now also proves (planar faces) that in $d=3$ pairs with $E=2$ have $n=3$ and pairs with $E\in\{3,\frac72\}$ have $n\le4$.
-  Next: the referee of Lemma 16.8, Remark 16.9 (running); $d=4$ (order 7 is being
+  (Numerical: counts by `rel_closed_count.py`, evaluation by `upper_exact.py`) give **for $SU(3)$ in $d=3$: $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.042\beta^4$ for all
+  $\beta<\beta_0(3)$**, the third-order term from both sides on the whole range; in $d=4$ the upper side on the whole range ($\le0.21\beta^4$, counts to 10 plaquettes) and both
+  sides for $\beta\le1.2\cdot10^{-5}$ (the lower bound is the limit there). Fifth referee (Lemma 16.8, Remark 16.9): minor revisions, no error, applied (`referee-section16e/`). Remark 16.7(iv) now also proves (planar faces) that in $d=3$ pairs with $E=2$ have $n=3$ and pairs with $E\in\{3,\frac72\}$ have $n\le4$.
+  Next: the $d=4$ lower bound beyond $1.2\cdot10^{-5}$ (the corner majorant at order 7 and beyond, exact $Z_{n,4}$ for $n\ge8$, closed sets of $\mathbb Z^4$ to 12) (order 7 is being
   counted; then the junctions with two four-edge front-pairs and $\ge8$ plaquettes).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same

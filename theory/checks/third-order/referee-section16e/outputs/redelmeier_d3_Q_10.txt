@@ -1,0 +1,7 @@
+d=3 kind=Q nmax=10 |C|=6 |P_S|=30 J'=24 nodes=496632185 boundary_hit=0
+admissible sets by size: 5:6 6:12 9:30 10:93
+of which with two components: 10:3
+
+real	0m28.990s
+user	0m28.866s
+sys	0m0.014s
