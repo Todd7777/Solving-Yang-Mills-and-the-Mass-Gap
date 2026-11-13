@@ -1,0 +1,19 @@
+beta_* = 4.3e-05: D/beta^4 = 48.175, varpi = b^2.5, (bbar, abar) = (mpf('0.001953125'), mpf('0.0001220703125'), 'corners')
+  t = 1 (beta = 4.3e-05): all hypotheses hold; D/beta^4 = 48.1791 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 0.999 (beta = 4.296e-05): all hypotheses hold; D/beta^4 = 48.1791 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 0.99 (beta = 4.257e-05): all hypotheses hold; D/beta^4 = 48.1791 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 0.95 (beta = 4.085e-05): all hypotheses hold; D/beta^4 = 48.1788 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 0.9 (beta = 3.87e-05): all hypotheses hold; D/beta^4 = 48.1786 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 0.7 (beta = 3.01e-05): all hypotheses hold; D/beta^4 = 48.1783 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 0.5 (beta = 2.15e-05): all hypotheses hold; D/beta^4 = 48.1782 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 0.3 (beta = 1.29e-05): all hypotheses hold; D/beta^4 = 48.1782 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 0.1 (beta = 4.3e-06): all hypotheses hold; D/beta^4 = 48.1782 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 0.03 (beta = 1.29e-06): all hypotheses hold; D/beta^4 = 48.1782 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 0.01 (beta = 4.3e-07): all hypotheses hold; D/beta^4 = 48.1782 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 0.001 (beta = 4.3e-08): all hypotheses hold; D/beta^4 = 48.1782 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 0.0001 (beta = 4.3e-09): all hypotheses hold; D/beta^4 = 48.1782 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 1e-06 (beta = 4.3e-11): all hypotheses hold; D/beta^4 = 48.1782 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 1e-08 (beta = 4.3e-13): all hypotheses hold; D/beta^4 = 48.1782 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 1e-12 (beta = 4.3e-17): all hypotheses hold; D/beta^4 = 48.1782 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+  t = 1e-20 (beta = 4.3e-25): all hypotheses hold; D/beta^4 = 48.1782 <= (1+k)^3 D_*/beta_*^4 = 48.1812: True
+all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: True;  then D < beta^3/432 for all beta <= beta_* as long as (1+k)^3 D_*/beta_*^4 = 48.181 < 1/(432 beta_*) = 53.833: True

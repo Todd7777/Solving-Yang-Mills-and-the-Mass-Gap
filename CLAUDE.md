@@ -102,13 +102,13 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   Remark 16.7(viii)); Lemma 16.8 (Theorem: $\theta_5$ in the tails, exact counts of the admissible sets, the five-face caps by characters, $\sigma_5=\sum d_r^2u_r^5$) and Remark 16.9
   (Numerical: counts by `rel_closed_count.py`, evaluation by `upper_exact.py`) give **for $SU(3)$ in $d=3$: $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.042\beta^4$ for all
   $\beta<\beta_0(3)$**, the third-order term from both sides on the whole range; in $d=4$ the upper side on the whole range ($\le0.21\beta^4$, counts to 10 plaquettes) and both
-  sides for $\beta\le1.2\cdot10^{-5}$ (the lower bound is the limit there). Fifth referee (Lemma 16.8, Remark 16.9): minor revisions, no error, applied (`referee-section16e/`). Remark 16.7(iv) now also proves (planar faces) that in $d=3$ pairs with $E=2$ have $n=3$ and pairs with $E\in\{3,\frac72\}$ have $n\le4$.
-  Next: the $d=4$ lower bound beyond $1.2\cdot10^{-5}$ (the corner majorant at order 7 and beyond, exact $Z_{n,4}$ for $n\ge8$, closed sets of $\mathbb Z^4$ to 12) (order 7 is being
-  counted; then the junctions with two four-edge front-pairs and $\ge8$ plaquettes).
+  sides for $\beta\le4.3\cdot10^{-5}\approx\beta_0(4)/3.6$ (Remark 16.7(ix): order 7 complete and order 8 for $n\ge4$ in $d=4$, exact $Z_{8,4}=1988$, $Z_{9,4}=406$, $N^v_{11}=147888$, exits with three
+  plaquettes; the junction search now has a capacity prune; not yet refereed). Fifth referee (Lemma 16.8, Remark 16.9): minor revisions, no error, applied (`referee-section16e/`). Remark 16.7(iv) now also proves (planar faces) that in $d=3$ pairs with $E=2$ have $n=3$ and pairs with $E\in\{3,\frac72\}$ have $n\le4$.
+  Next: the $d=4$ lower bound beyond $4.3\cdot10^{-5}$ (the rest of order 8, which needs fronts of 12–13 edges; order 9; near $\beta_0(4)$ the shifts and jumps by characters).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$; Part 14: further orders in $d=3$, the whole range). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
+- The newest journal entry is `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$; Part 14: further orders in $d=3$, the whole range; Part 15: the upper bound; Part 16: the lower bound in $d=4$). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
   Part 12: the third-order term at practical $\beta$; Part 10: the lower bound to fourth order); `journal/2026-11-11.md` has Parts 6–7 (the second- and
   third-order terms), `journal/2026-11-10.md` has Parts 1–5,
   `journal/2026-11-09b.md` is the first part of session 3 and `journal/2026-11-09.md` is session 2.
