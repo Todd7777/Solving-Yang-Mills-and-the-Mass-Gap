@@ -1,0 +1,6 @@
+(A) at beta = 5e-5: D/beta^4 = 45.565 (target 46.30); multi 41.5; b = 0.0001, a = 2.778e-06, (bbar, abar) = (2^-8, 2^-12)
+   corner factors (b/bbar)^n (a/abar)^E, largest first: (2, 6.0): 1.42e-15, (7, 2.0): 9.33e-16, (6, 3.0): 4.15e-16, (5, 4.0): 1.84e-16, (4, 5.0): 8.19e-17
+(A) at beta = 5.5e-5: D/beta^4 = 66.203 (target 42.09); multi 60.8; b = 0.00011, a = 3.056e-06, (bbar, abar) = (2^-8, 2^-12)
+   corner factors (b/bbar)^n (a/abar)^E, largest first: (2, 6.0): 3.05e-15, (7, 2.0): 2.2e-15, (6, 3.0): 9.78e-16, (5, 4.0): 4.35e-16, (4, 5.0): 1.93e-16
+(A) at beta = 6e-5: D/beta^4 = 93.260 (target 38.58); multi 86.1; b = 0.00012, a = 3.333e-06, (bbar, abar) = (2^-8, 2^-12)
+   corner factors (b/bbar)^n (a/abar)^E, largest first: (2, 6.0): 6.11e-15, (7, 2.0): 4.82e-15, (6, 3.0): 2.14e-15, (5, 4.0): 9.51e-16, (4, 5.0): 4.23e-16

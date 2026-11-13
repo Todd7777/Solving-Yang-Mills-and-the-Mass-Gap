@@ -1,0 +1,12 @@
+D=3 NMAX=9 sizes=4 prune=1: 3 classes loaded (k<=4); N^v by size: 4:12
+  junctions by n: 1:1 2:32 3:0 4:12 5:26 6:302 7:288 8:1988 9:406
+  nodes 150822, duplicates 0, candidates cut by the box 0
+  time 0.503 s
+D=3 NMAX=9 sizes=4 prune=0: 3 classes loaded (k<=4); N^v by size: 4:12
+  junctions by n: 1:1 2:32 3:0 4:12 5:26 6:302 7:288 8:1988 9:406
+  nodes 6262921, duplicates 0, candidates cut by the box 0
+  time 7.416 s
+D=3 NMAX=12 sizes=4 prune=1: 3 classes loaded (k<=4); N^v by size: 4:12
+  junctions by n: 1:1 2:32 3:0 4:12 5:26 6:302 7:288 8:1988 9:406 10:3193 11:5911 12:26956
+  nodes 2578409, duplicates 0, candidates cut by the box 0
+  time 4.808 s

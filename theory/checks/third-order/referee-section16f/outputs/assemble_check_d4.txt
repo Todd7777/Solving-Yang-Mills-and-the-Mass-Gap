@@ -1,0 +1,12 @@
+S(7): classes with a pair in the set: [(4, 4), (4, 4, 4), (4, 4, 6), (4, 4, 7), (4, 6), (4, 7), (4, 8), (4, 9), (4, 10), (4, 11), (6, 6), (6, 7)]
+  pairs not covered by the referee's counts: []
+  21 terms from the referee's counts; equal to orders/d4_m7.json: True
+  corners (minimal exponents outside the set): [(2, 6.0), (3, 5.0), (4, 4.0), (5, 3.0), (6, 2.0)];  file: [[2, 6], [3, 5], [4, 4], [5, 3], [6, 2]]
+S''_8: classes with a pair in the set: [(4, 4), (4, 4, 4), (4, 4, 6), (4, 4, 7), (4, 6), (4, 7), (4, 8), (4, 9), (4, 10), (4, 11), (6, 6), (6, 7)]
+  pairs not covered by the referee's counts: []
+  28 terms from the referee's counts; equal to orders/d4_s8.json: True
+  corners (minimal exponents outside the set): [(2, 6.0), (3, 5.0), (5, 4.0), (6, 3.0), (7, 2.0)];  file: [[2, 6.0], [3, 5.0], [5, 4.0], [6, 3.0], [7, 2.0]]
+S''_8 u {(3,5)}: classes with a pair in the set: [(4, 4), (4, 4, 4), (4, 4, 6), (4, 4, 7), (4, 6), (4, 7), (4, 8), (4, 9), (4, 10), (4, 11), (6, 6), (6, 7)]
+  pairs not covered by the referee's counts: []
+  32 terms from the referee's counts; equal to orders/d4_s8b.json: True
+  corners (minimal exponents outside the set): [(2, 6.0), (3, 5.5), (4, 5.0), (5, 4.0), (6, 3.0), (7, 2.0)];  file: [[2, 6.0], [3, 5.5], [4, 5.0], [5, 4.0], [6, 3.0], [7, 2.0]]

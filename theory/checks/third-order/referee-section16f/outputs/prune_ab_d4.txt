@@ -1,0 +1,43 @@
+D=3 K=(4, 4, 4) n<=3 PRUNE=True: {2: 4, 3: 16}  (1.6 s)
+D=3 K=(4, 4, 4) n<=3 PRUNE=False: {2: 4, 3: 16}  (13.3 s)
+   -> IDENTICAL
+D=3 K=(6, 6) n<=2 PRUNE=True: {2: 64}  (1.5 s)
+D=3 K=(6, 6) n<=2 PRUNE=False: {2: 64}  (18.3 s)
+   -> IDENTICAL
+D=3 K=(6, 7) n<=2 PRUNE=True: {}  (3.8 s)
+D=3 K=(6, 7) n<=2 PRUNE=False: {}  (32.5 s)
+   -> IDENTICAL
+D=3 K=(4, 4, 6) n<=2 PRUNE=True: {}  (2.5 s)
+D=3 K=(4, 4, 6) n<=2 PRUNE=False: {}  (29.2 s)
+   -> IDENTICAL
+D=3 K=(4, 4, 7) n<=2 PRUNE=True: {}  (3.0 s)
+D=3 K=(4, 4, 7) n<=2 PRUNE=False: {}  (27.9 s)
+   -> IDENTICAL
+D=3 K=(4, 6) n<=3 PRUNE=True: {2: 320, 3: 680}  (4.0 s)
+D=3 K=(4, 6) n<=3 PRUNE=False: {2: 320, 3: 680}  (34.3 s)
+   -> IDENTICAL
+D=3 K=(4, 7) n<=3 PRUNE=True: {2: 312, 3: 344}  (4.4 s)
+D=3 K=(4, 7) n<=3 PRUNE=False: {2: 312, 3: 344}  (32.7 s)
+   -> IDENTICAL
+D=3 K=(4, 8) n<=2 PRUNE=True: {1: 36, 2: 992}  (17.5 s)
+D=3 K=(4, 8) n<=2 PRUNE=False: {1: 36, 2: 992}  (145.5 s)
+   -> IDENTICAL
+D=3 K=(4, 9) n<=2 PRUNE=True: {1: 72, 2: 256}  (57.2 s)
+D=3 K=(4, 9) n<=2 PRUNE=False: {1: 72, 2: 256}  (542.4 s)
+   -> IDENTICAL
+D=3 K=(4, 4) n<=5 PRUNE=True: {3: 876, 4: 42, 5: 912}  (6.7 s)
+D=3 K=(4, 4) n<=5 PRUNE=False: {3: 876, 4: 42, 5: 912}  (50.7 s)
+   -> IDENTICAL
+D=3 K=(4, 4, 4) n<=4 PRUNE=True: {2: 4, 3: 16, 4: 24314}  (15.5 s)
+D=3 K=(4, 4, 4) n<=4 PRUNE=False: {2: 4, 3: 16, 4: 24314}  (117.8 s)
+   -> IDENTICAL
+D=3 K=(4, 6) n<=4 PRUNE=True: {2: 320, 3: 680, 4: 18276}  (26.8 s)
+D=3 K=(4, 6) n<=4 PRUNE=False: {2: 320, 3: 680, 4: 18276}  (203.0 s)
+   -> IDENTICAL
+D=3 K=(4, 7) n<=4 PRUNE=True: {2: 312, 3: 344, 4: 17028}  (19.6 s)
+D=3 K=(4, 7) n<=4 PRUNE=False: {2: 312, 3: 344, 4: 17028}  (178.6 s)
+   -> IDENTICAL
+D=3 K=(4, 8) n<=3 PRUNE=True: {1: 36, 2: 992, 3: 9220}  (50.6 s)
+D=3 K=(4, 8) n<=3 PRUNE=False: {1: 36, 2: 992, 3: 9220}  (1069.2 s)
+   -> IDENTICAL
+(stopped by the referee during (4,9) n<=3: the runs above are complete)

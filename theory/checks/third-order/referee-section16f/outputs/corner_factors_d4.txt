@@ -1,0 +1,8 @@
+S''_8 (as in the paper): D/beta^4 = 48.175 (target 53.83); multi 45.5; b = 8.601e-05, a = 2.389e-06, (bbar, abar) = (2^-9, 2^-13)
+   corner factors (b/bbar)^n (a/abar)^E, largest first: (3, 5.0): 2.45e-13, (7, 2.0): 1.23e-13, (2, 6.0): 1.09e-13, (6, 3.0): 5.46e-14, (5, 4.0): 2.43e-14
+(A) S''_8 + (3,5), (3,11/2) counted: D/beta^4 = 25.343 (target 53.83); multi 22.7; b = 8.601e-05, a = 2.389e-06, (bbar, abar) = (2^-8, 2^-12)
+   corner factors (b/bbar)^n (a/abar)^E, largest first: (2, 6.0): 4.25e-16, (7, 2.0): 2.4e-16, (6, 3.0): 1.07e-16, (5, 4.0): 4.74e-17, (4, 5.0): 2.11e-17
+(B) S''_8 + (2,6), (2,13/2) as if empty: D/beta^4 = 48.175 (target 53.83); multi 45.5; b = 8.601e-05, a = 2.389e-06, (bbar, abar) = (2^-9, 2^-13)
+   corner factors (b/bbar)^n (a/abar)^E, largest first: (3, 5.0): 2.45e-13, (7, 2.0): 1.23e-13, (6, 3.0): 5.46e-14, (5, 4.0): 2.43e-14, (2, 7.0): 2.13e-15
+(A)+(B): D/beta^4 = 5.399 (target 53.83); multi 2.77; b = 8.601e-05, a = 2.389e-06, (bbar, abar) = (2^-8, 2^-13)
+   corner factors (b/bbar)^n (a/abar)^E, largest first: (7, 2.0): 9.61e-16, (6, 3.0): 8.54e-16, (5, 4.0): 7.59e-16, (4, 5.0): 6.75e-16, (3, 6.0): 6e-16, (2, 7.0): 5.33e-16

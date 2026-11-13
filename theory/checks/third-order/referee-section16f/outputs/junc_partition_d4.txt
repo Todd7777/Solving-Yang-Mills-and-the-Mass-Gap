@@ -1,0 +1,84 @@
+D=3 NMAX=4 sizes=4,4 prune=1: 3 classes loaded (k<=4); N^v by size: 4:12
+  junctions by n: 1:0 2:0 3:876 4:42
+  nodes 7883, duplicates 0, candidates cut by the box 0
+  time 0.166 s
+D=3 NMAX=3 sizes=4,6 prune=1: 25 classes loaded (k<=6); N^v by size: 4:12 6:132
+  junctions by n: 1:0 2:320 3:680
+  nodes 12007, duplicates 0, candidates cut by the box 0
+  time 0.181 s
+D=3 NMAX=3 sizes=4,7 prune=1: 43 classes loaded (k<=7); N^v by size: 4:12 6:132 7:108
+  junctions by n: 1:0 2:312 3:344
+  nodes 9983, duplicates 0, candidates cut by the box 0
+  time 0.163 s
+D=3 NMAX=2 sizes=4,8 prune=1: 304 classes loaded (k<=8); N^v by size: 4:12 6:132 7:108 8:2034
+  junctions by n: 1:36 2:992
+  nodes 12735, duplicates 0, candidates cut by the box 0
+  time 0.302 s
+D=3 NMAX=2 sizes=4,9 prune=1: 848 classes loaded (k<=9); N^v by size: 4:12 6:132 7:108 8:2034 9:4344
+  junctions by n: 1:72 2:256
+  nodes 17425, duplicates 0, candidates cut by the box 0
+  time 0.401 s
+D=3 NMAX=2 sizes=4,4,4 prune=1: 3 classes loaded (k<=4); N^v by size: 4:12
+  junctions by n: 1:0 2:4
+  nodes 1964, duplicates 0, candidates cut by the box 0
+  time 0.037 s
+D=3 NMAX=2 sizes=6,6 prune=1: 25 classes loaded (k<=6); N^v by size: 4:12 6:132
+  junctions by n: 1:0 2:64
+  nodes 2411, duplicates 0, candidates cut by the box 0
+  time 0.055 s
+D=3 NMAX=2 sizes=6,7 prune=1: 43 classes loaded (k<=7); N^v by size: 4:12 6:132 7:108
+  junctions by n: 1:0 2:0
+  nodes 4621, duplicates 0, candidates cut by the box 0
+  time 0.072 s
+D=3 NMAX=2 sizes=4,4,6 prune=1: 25 classes loaded (k<=6); N^v by size: 4:12 6:132
+  junctions by n: 1:0 2:0
+  nodes 10291, duplicates 0, candidates cut by the box 0
+  time 0.075 s
+D=3 NMAX=2 sizes=4,4,7 prune=1: 43 classes loaded (k<=7); N^v by size: 4:12 6:132 7:108
+  junctions by n: 1:0 2:0
+  nodes 8824, duplicates 0, candidates cut by the box 0
+  time 0.074 s
+D=3 NMAX=3 sizes=4,4,4 prune=1: 3 classes loaded (k<=4); N^v by size: 4:12
+  junctions by n: 1:0 2:4 3:16
+  nodes 7869, duplicates 0, candidates cut by the box 0
+  time 0.059 s
+D=3 NMAX=3 sizes=4,8 prune=1: 304 classes loaded (k<=8); N^v by size: 4:12 6:132 7:108 8:2034
+  junctions by n: 1:36 2:992 3:9220
+  nodes 82016, duplicates 0, candidates cut by the box 0
+  time 0.666 s
+D=3 NMAX=3 sizes=4,9 prune=1: 848 classes loaded (k<=9); N^v by size: 4:12 6:132 7:108 8:2034 9:4344
+  junctions by n: 1:72 2:256 3:15576
+  nodes 143527, duplicates 0, candidates cut by the box 0
+  time 1.355 s
+D=3 NMAX=6 sizes=4,4 prune=1: 3 classes loaded (k<=4); N^v by size: 4:12
+  junctions by n: 1:0 2:0 3:876 4:42 5:912 6:1866
+  nodes 124914, duplicates 0, candidates cut by the box 0
+  time 0.420 s
+D=3 NMAX=5 sizes=4,6 prune=1: 25 classes loaded (k<=6); N^v by size: 4:12 6:132
+  junctions by n: 1:0 2:320 3:680 4:18276 5:11744
+  nodes 383198, duplicates 0, candidates cut by the box 0
+  time 0.951 s
+D=3 NMAX=5 sizes=4,7 prune=1: 43 classes loaded (k<=7); N^v by size: 4:12 6:132 7:108
+  junctions by n: 1:0 2:312 3:344 4:17028 5:3440
+  nodes 314523, duplicates 0, candidates cut by the box 0
+  time 0.742 s
+D=3 NMAX=2 sizes=4,10 prune=1: 5450 classes loaded (k<=10); N^v by size: 4:12 6:132 7:108 8:2034 9:4344 10:43650
+  junctions by n: 1:276 2:2260
+  nodes 60431, duplicates 0, candidates cut by the box 0
+  time 5.415 s
+D=3 NMAX=2 sizes=4,11 prune=1: 20348 classes loaded (k<=11); N^v by size: 4:12 6:132 7:108 8:2034 9:4344 10:43650 11:147888
+  junctions by n: 1:240 2:4636
+  nodes 115140, duplicates 0, candidates cut by the box 0
+  time 20.502 s
+D=3 NMAX=4 sizes=4,8 prune=1: 304 classes loaded (k<=8); N^v by size: 4:12 6:132 7:108 8:2034
+  junctions by n: 1:36 2:992 3:9220 4:56960
+  nodes 709992, duplicates 0, candidates cut by the box 0
+  time 1.714 s
+D=3 NMAX=4 sizes=4,9 prune=1: 848 classes loaded (k<=9); N^v by size: 4:12 6:132 7:108 8:2034 9:4344
+  junctions by n: 1:72 2:256 3:15576 4:50920
+  nodes 1061174, duplicates 0, candidates cut by the box 0
+  time 4.014 s
+D=3 NMAX=4 sizes=4,4,4 prune=1: 3 classes loaded (k<=4); N^v by size: 4:12
+  junctions by n: 1:0 2:4 3:16 4:24314
+  nodes 120245, duplicates 0, candidates cut by the box 0
+  time 0.276 s

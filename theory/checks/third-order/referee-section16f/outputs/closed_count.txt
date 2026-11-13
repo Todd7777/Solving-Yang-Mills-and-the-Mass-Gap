@@ -1,0 +1,4 @@
+d=3, n<=12: closed link-connected sets through a plaquette, by size: {6: 2, 10: 10, 11: 11, 12: 24}  (duplicates: 0)
+  time 0.343 s
+d=4, n<=11: closed link-connected sets through a plaquette, by size: {6: 4, 10: 60, 11: 66}  (duplicates: 0)
+  time 2.938 s

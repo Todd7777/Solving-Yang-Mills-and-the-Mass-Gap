@@ -1,0 +1,13 @@
+SU(3), d=4, beta = 4.3e-05
+baseline (as in the paper)                                 D/beta^4 =    48.175  (target 53.83: resolved);  theta-loss 0.000884, multi 45.5, one_plaq 1.99, exits 0.332, four 0.174, two 0.13
+theta crude from 10 plaquettes (no exact 10, 11)           D/beta^4 =    53.649  (target 53.83: resolved);  theta-loss 5.47, multi 45.5, one_plaq 1.99, exits 0.332, four 0.174, two 0.13
+theta: 10 exact, crude from 11                             D/beta^4 =    48.244  (target 53.83: resolved);  theta-loss 0.0696, multi 45.5, one_plaq 1.99, exits 0.332, four 0.174, two 0.13
+theta: 10, 11 counted 1000x, crude from 12                 D/beta^4 =    48.175  (target 53.83: resolved);  theta-loss 0.000884, multi 45.5, one_plaq 1.99, exits 0.332, four 0.174, two 0.13
+Z_(9,4) crude                                              D/beta^4 =    61.001  (target 53.83: NOT resolved);  theta-loss 0.000884, multi 45.5, one_plaq 1.99, exits 0.332, four 13, two 0.13
+Z_(8,4), Z_(9,4) crude                                     D/beta^4 =  1254.836  (target 53.83: NOT resolved);  theta-loss 0.000884, multi 45.5, one_plaq 1.99, exits 0.332, four 1.21e+03, two 0.13
+N^v_11 crude                                               D/beta^4 =   107.055  (target 53.83: NOT resolved);  theta-loss 0.000884, multi 61.8, one_plaq 44.7, exits 0.332, four 0.174, two 0.13
+Z_(3,k) crude                                              D/beta^4 =    62.499  (target 53.83: NOT resolved);  theta-loss 0.000884, multi 45.5, one_plaq 1.99, exits 14.7, four 0.174, two 0.13
+S(7) instead of S''_8 (corners (2,6),(3,5),(4,4),(5,3),(6,2)) D/beta^4 =   128.041  (target 53.83: NOT resolved);  theta-loss 0.000884, multi 125, one_plaq 1.99, exits 0.332, four 0.174, two 0.13
+all exact pair counts x 100                                D/beta^4 =    48.678  (target 53.83: resolved);  theta-loss 0.000884, multi 46, one_plaq 1.99, exits 0.332, four 0.174, two 0.13
+all exact pair counts x 1e6                                D/beta^4 =  5133.042  (target 53.83: NOT resolved);  theta-loss 0.000884, multi 5.13e+03, one_plaq 1.99, exits 0.332, four 0.174, two 0.13
+Z_8, Z_9, N^v_11, Z_(3,k) all x 1000                       D/beta^4 =    48.176  (target 53.83: resolved);  theta-loss 0.000884, multi 45.5, one_plaq 1.99, exits 0.333, four 0.174, two 0.13

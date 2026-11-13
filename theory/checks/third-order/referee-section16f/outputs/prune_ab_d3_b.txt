@@ -1,0 +1,84 @@
+D=2 K=(4, 8) n<=4 PRUNE=True: {1: 4, 2: 48, 3: 252, 4: 604}  (0.9 s)
+D=2 K=(4, 8) n<=4 PRUNE=False: {1: 4, 2: 48, 3: 252, 4: 604}  (2.4 s)
+   -> IDENTICAL
+D=2 K=(4, 9) n<=4 PRUNE=True: {1: 8, 2: 16, 3: 424, 4: 704}  (2.2 s)
+D=2 K=(4, 9) n<=4 PRUNE=False: {1: 8, 2: 16, 3: 424, 4: 704}  (6.4 s)
+   -> IDENTICAL
+D=2 K=(4, 10) n<=3 PRUNE=True: {1: 20, 2: 100, 3: 732}  (3.1 s)
+D=2 K=(4, 10) n<=3 PRUNE=False: {1: 20, 2: 100, 3: 732}  (13.8 s)
+   -> IDENTICAL
+D=2 K=(4, 11) n<=3 PRUNE=True: {1: 16, 2: 212, 3: 856}  (10.6 s)
+D=2 K=(4, 11) n<=3 PRUNE=False: {1: 16, 2: 212, 3: 856}  (65.2 s)
+   -> IDENTICAL
+D=2 K=(4, 12) n<=2 PRUNE=True: {1: 12, 2: 380}  (19.2 s)
+D=2 K=(4, 12) n<=2 PRUNE=False: {1: 12, 2: 380}  (147.2 s)
+   -> IDENTICAL
+D=2 K=(4, 13) n<=2 PRUNE=True: {2: 412}  (68.4 s)
+D=2 K=(4, 13) n<=2 PRUNE=False: {2: 412}  (1196.9 s)
+   -> IDENTICAL
+D=2 K=(6, 8) n<=2 PRUNE=True: {2: 48}  (0.3 s)
+D=2 K=(6, 8) n<=2 PRUNE=False: {2: 48}  (1.0 s)
+   -> IDENTICAL
+D=2 K=(6, 9) n<=2 PRUNE=True: {2: 60}  (0.6 s)
+D=2 K=(6, 9) n<=2 PRUNE=False: {2: 60}  (2.3 s)
+   -> IDENTICAL
+D=2 K=(7, 7) n<=2 PRUNE=True: {}  (0.1 s)
+D=2 K=(7, 7) n<=2 PRUNE=False: {}  (0.1 s)
+   -> IDENTICAL
+D=2 K=(4, 4, 6) n<=3 PRUNE=True: {3: 168}  (0.6 s)
+D=2 K=(4, 4, 6) n<=3 PRUNE=False: {3: 168}  (1.5 s)
+   -> IDENTICAL
+D=2 K=(4, 4, 7) n<=3 PRUNE=True: {3: 168}  (0.5 s)
+D=2 K=(4, 4, 7) n<=3 PRUNE=False: {3: 168}  (1.2 s)
+   -> IDENTICAL
+D=2 K=(4, 4, 8) n<=2 PRUNE=True: {}  (0.3 s)
+D=2 K=(4, 4, 8) n<=2 PRUNE=False: {}  (1.1 s)
+   -> IDENTICAL
+D=2 K=(4, 4, 9) n<=2 PRUNE=True: {}  (0.6 s)
+D=2 K=(4, 4, 9) n<=2 PRUNE=False: {}  (4.0 s)
+   -> IDENTICAL
+D=2 K=(4, 6, 6) n<=2 PRUNE=True: {2: 20}  (0.1 s)
+D=2 K=(4, 6, 6) n<=2 PRUNE=False: {2: 20}  (0.5 s)
+   -> IDENTICAL
+D=2 K=(4, 6, 7) n<=2 PRUNE=True: {2: 40}  (0.3 s)
+D=2 K=(4, 6, 7) n<=2 PRUNE=False: {2: 40}  (1.4 s)
+   -> IDENTICAL
+D=2 K=(4, 4, 4, 4) n<=2 PRUNE=True: {}  (0.0 s)
+D=2 K=(4, 4, 4, 4) n<=2 PRUNE=False: {}  (0.1 s)
+   -> IDENTICAL
+D=2 K=(4, 4) n<=8 PRUNE=True: {3: 48}  (0.4 s)
+D=2 K=(4, 4) n<=8 PRUNE=False: {3: 48}  (0.7 s)
+   -> IDENTICAL
+D=2 K=(4, 6) n<=6 PRUNE=True: {2: 24, 3: 24, 4: 276}  (0.9 s)
+D=2 K=(4, 6) n<=6 PRUNE=False: {2: 24, 3: 24, 4: 276}  (2.1 s)
+   -> IDENTICAL
+D=2 K=(4, 7) n<=6 PRUNE=True: {2: 24, 3: 24, 4: 276}  (1.0 s)
+D=2 K=(4, 7) n<=6 PRUNE=False: {2: 24, 3: 24, 4: 276}  (2.1 s)
+   -> IDENTICAL
+D=2 K=(4, 4, 4) n<=5 PRUNE=True: {4: 292, 5: 4}  (0.5 s)
+D=2 K=(4, 4, 4) n<=5 PRUNE=False: {4: 292, 5: 4}  (1.1 s)
+   -> IDENTICAL
+D=2 K=(6, 6) n<=4 PRUNE=True: {3: 64, 4: 64}  (0.2 s)
+D=2 K=(6, 6) n<=4 PRUNE=False: {3: 64, 4: 64}  (0.7 s)
+   -> IDENTICAL
+D=2 K=(6, 7) n<=4 PRUNE=True: {3: 128, 4: 128}  (0.5 s)
+D=2 K=(6, 7) n<=4 PRUNE=False: {3: 128, 4: 128}  (1.7 s)
+   -> IDENTICAL
+D=2 K=(4, 8) n<=5 PRUNE=True: {1: 4, 2: 48, 3: 252, 4: 604, 5: 1152}  (2.3 s)
+D=2 K=(4, 8) n<=5 PRUNE=False: {1: 4, 2: 48, 3: 252, 4: 604, 5: 1152}  (7.1 s)
+   -> IDENTICAL
+D=2 K=(4, 9) n<=5 PRUNE=True: {1: 8, 2: 16, 3: 424, 4: 704, 5: 2288}  (6.2 s)
+D=2 K=(4, 9) n<=5 PRUNE=False: {1: 8, 2: 16, 3: 424, 4: 704, 5: 2288}  (18.8 s)
+   -> IDENTICAL
+D=2 K=(4, 10) n<=4 PRUNE=True: {1: 20, 2: 100, 3: 732, 4: 2432}  (8.5 s)
+D=2 K=(4, 10) n<=4 PRUNE=False: {1: 20, 2: 100, 3: 732, 4: 2432}  (45.8 s)
+   -> IDENTICAL
+D=2 K=(4, 11) n<=4 PRUNE=True: {1: 16, 2: 212, 3: 856, 4: 4556}  (27.7 s)
+D=2 K=(4, 11) n<=4 PRUNE=False: {1: 16, 2: 212, 3: 856, 4: 4556}  (210.8 s)
+   -> IDENTICAL
+D=2 K=(4, 4, 6) n<=4 PRUNE=True: {3: 168, 4: 168}  (1.2 s)
+D=2 K=(4, 4, 6) n<=4 PRUNE=False: {3: 168, 4: 168}  (4.2 s)
+   -> IDENTICAL
+D=2 K=(4, 4, 7) n<=4 PRUNE=True: {3: 168, 4: 168}  (1.4 s)
+D=2 K=(4, 4, 7) n<=4 PRUNE=False: {3: 168, 4: 168}  (4.1 s)
+   -> IDENTICAL

@@ -2,7 +2,8 @@
 """The smallest admissible delta' of Theorem mg:thm:lower5 (by characters, varpi = b^2 or b^(5/2)) for SU(3), with
   - theta_7 in place of theta_5 (Lemma mg:lem:theta7);
   - the exact counts of Remark mg:rem:practical (ii): N^v_k (fronts_count.py, d=3: k <= 9, d=4: k <= 8; the referee's ref_fronts.py: N^v_10 = 634
-    in d=3, N^v_9 = 4344 in d=4), Z_{n,4} for n = 5, 6, 7 (junction_count.py);
+    in d=3, N^v_9 = 4344 in d=4; fronts_decision.py beyond), Z_{n,4} for n = 5, 6, 7 (junction_count.py); with --terms in d=4 (Remark
+    mg:rem:nextorder (ix)) also Z_{8,4}, Z_{9,4}, N^v_11 and the exits with three plaquettes (Z4_D4, NV_D4_EXTRA, ZEXITN_D4 below);
   - the junctions with three front-pairs of lowest order counted exactly, M_5 of Lemma mg:lem:jsums5 (N_3, N_2, N'_2 of Lemma mg:lem:threelow,
     three_front_count.py), with the corner factors of M_4 and R as maxima (the second referee's improvement).
 It prints the whole deficit D of the lower bound (8(K+1)theta + log(Ubar/Ups) + log(1+delta')) over beta^4 against the third-order term
