@@ -36,6 +36,20 @@ ZEXITN = None  # {d: {n: {k: Z_(n,k)}}}: exact exits with n >= 3 plaquettes (zex
 ZEXIT = None   # {d: {k: Z_(2,k)}}: exact two-plaquette exits with k >= 5 edges (zexit_count.py), in place of the crude counts
 EXACT = None; CORNERS = None   # the general corner majorant (Section 16): see the M_5 block below
 RMAX = False   # Lemma mg:lem:jsums5: the corner factors of M_4 and R as maxima instead of sums (each remaining pair dominates one corner)
+NV_DECISION = False   # N^v_k beyond the exact values by the decision-tree bound (Lemma mg:lem:frontsdecision) instead of (d-1) binom((4d-6)k, k-1)
+_DEC = {}
+def decision_bound(D, k, grid=400):
+    """min over s of ((1+s)^{2D} - 1 - 2Ds) (y/s)^k, y = max((1+s)^{2D-1} - 1, (1+s)^{D-1}): an upper bound for the number of fronts of k edges through
+    a vertex of Z^D (the decision search with the potential y^{min(deg, 2)} per open vertex and weight s/y per edge)"""
+    if (D, k) not in _DEC:
+        best = None
+        for i in range(1, grid):
+            s_ = mpf(i)/grid
+            y = max((1 + s_)**(2*D - 1) - 1, (1 + s_)**(D - 1))
+            v = ((1 + s_)**(2*D) - 1 - 2*D*s_)*(y/s_)**k
+            if best is None or v < best: best = v
+        _DEC[(D, k)] = best
+    return _DEC[(D, k)]
 def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None, abar_grid=None, sharp6=True, uturn=True, seven=True, chars=False,
             fixed=None):
     """the smallest admissible delta' and the deficit; with fixed = dict(varpi, xF, xC, hJ, F, F6, dl), these parameters are used as given (no fixed-point
@@ -55,6 +69,9 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
     Pv, KS, Tv, N = counts(d, volume)
     if NOVR and d in NOVR:
         for k, v in NOVR[d].items(): N[k] = mpf(v)
+    if NV_DECISION:
+        for k in N:
+            if k >= 6 and not (NOVR and d in NOVR and k in NOVR[d]): N[k] = min(N[k], decision_bound(d - 1, k))
     if volume == 'finite': N[4] = Pv; N[5] = 0
     def Yf(z, p=0): return fsum(m**p*binomial(KS*m, m-1)*(b*exp(z))**m for m in range(1, NMAX))
     cT = mpf(1); xF = mpf(0); xC = mpf(0)

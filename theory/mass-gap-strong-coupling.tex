@@ -4808,6 +4808,34 @@ $\beta\le5\cdot10^{-5}$, where the lower bound of Remark~\ref{mg:rem:nextorder}(
 \end{remark}
 
 
+\begin{lemma}[Fronts counted by decisions]\label{mg:lem:frontsdecision}
+Let $D\ge2$, $s>0$ and $y:=\max\{(1+s)^{2D-1}-1,\ (1+s)^{D-1}\}$. Then the fronts of $\Z^D$ (connected sets of edges in which every vertex has degree at least $2$)
+through a given vertex $v$ satisfy
+\[
+\sum_{\varphi\ni v}\Bigl(\frac sy\Bigr)^{|\varphi|}\ \le\ (1+s)^{2D}-1-2Ds,\qquad\text{so}\qquad N^v_k\le\bigl((1+s)^{2D}-1-2Ds\bigr)\Bigl(\frac ys\Bigr)^k\quad(k\ge4).
+\]
+For $D=3$ and $s=0.194$ this is $N^v_k\le0.734\cdot7.355^k$; for $D=2$ and $s=0.325$, $N^v_k\le0.783\cdot4.081^k$. (The bound of Definition~\ref{mg:def:jconst},
+$(d-1)\binom{(4d-6)k}{k-1}$, grows like $25.8^k$ for $D=3$.)
+\end{lemma}
+
+\begin{proof}
+Generate the fronts through $v$ by decisions. A state is a set $S$ of chosen edges, a set $X$ of excluded edges and a set of decided vertices. First $v$ is
+decided: each of its $2D$ edges is put into $S$ or into $X$, at least two into $S$. Then, as long as some vertex of $S$ is undecided, one such vertex $w$,
+chosen by a fixed rule from the state, is decided: each edge at $w$ not yet in $S\cup X$ is put into $S$ or into $X$, so that $w$ gets degree at least
+$2$ in $S$. Every edge is added at a vertex of $S$, so $S$ stays connected; when all vertices of $S$ are decided, every vertex of $S$ has all its edges decided
+and degree at least $2$, so $S$ is a front through $v$; and a front $\varphi\ni v$ is reached in exactly one way, by the decisions that $\varphi$ dictates.
+
+Call the undecided vertices of $S$ open and put $\Phi:=\prod_{w\text{ open}}y^{\min(\deg_Sw,2)}$. For a state let $Z_N$ be the sum, over the ways to complete
+it in at most $N$ steps, of $(s/y)^m$, $m$ the number of edges added. We show $Z_N\le\Phi$ by induction on $N$; the sum over all completions is $\lim_NZ_N$. For
+$N=0$, $Z_0=1=\Phi$ if no vertex is open and $Z_0=0$ otherwise. Deciding an open vertex $w$ removes its factor and adds a set $T$ of edges at $w$. Each edge of $T$ leads to a vertex that was not in $S$ (a new
+factor $y$), or was open with degree one (its factor goes from $y$ to $y^2$), or was open with degree at least two (factor unchanged); the other endpoints are
+distinct, and a decided vertex has no undecided edge. So each edge of $T$ multiplies $\Phi$ by at most $y$, which with its weight $s/y$ gives at most $s$.
+If $\deg_Sw=1$, then $T\ne\emptyset$ and $w$ has at most $2D-1$ undecided edges, so the sum over $T$ is at most $(1+s)^{2D-1}-1\le y$, the factor of $w$; if
+$\deg_Sw\ge2$, it has at most $2D-2$ undecided edges and the sum is at most $(1+s)^{2D-2}\le y^2$, the factor of $w$. So $Z_N\le\sum_T(s/y)^{|T|}\Phi'\le\Phi$,
+$\Phi'$ the value after the step, which is the induction step. The first
+step, at $v$, gives $\sum_{|T|\ge2}s^{|T|}=(1+s)^{2D}-1-2Ds$, as each of its edges leads to a new open vertex of degree one.
+\end{proof}
+
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
 
 \begin{proposition}[Two dimensions]\label{mg:prop:2d}

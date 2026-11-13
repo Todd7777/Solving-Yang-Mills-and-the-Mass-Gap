@@ -18,6 +18,7 @@ import practical_beta as PB
 import third_order_effective as T
 
 # the setting: d=3 with S''_9 (default), or d=4 with the set given by --d4 FILE (closed polymers of Z^4 with 10, 11 plaquettes counted exactly)
+if '--ix' in sys.argv: PB.IX_SETTING = True; sys.argv.remove('--ix')     # the d=4 setting of Remark mg:rem:nextorder (ix)
 if '--d4' in sys.argv:
     i = sys.argv.index('--d4'); D4FILE = sys.argv[i + 1]; del sys.argv[i:i + 2]
     d = 4
