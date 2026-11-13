@@ -30,6 +30,7 @@ def em1x(A):
 #   THETA7: the ratio bound with theta_7 (Lemma mg:lem:theta7) in place of theta_5;  NOVR[d]: exact N^v_k;  ZSMALL[d][n]: exact Z_{n,4}, n = 5, 6, 7;
 #   LOW[d] = (N_3, N_2, N'_2): the exact junctions with three front-pairs of lowest order and the majorant M_5 (Lemmas mg:lem:threelow, mg:lem:jsums5).
 THETA7 = False; ZSMALL = None; NOVR = None; LOW = None
+CLOSED_EXACT = None   # {d: {n: number of closed polymers of n plaquettes through a plaquette}}, for 10 <= n < CLOSED_FROM
 CLOSED_FROM = 8   # the smallest size of a closed polymer other than a cube used in theta (8: Lemma mg:lem:seven; 10: no closed sets of 8, 9 plaquettes)
 ZEXIT = None   # {d: {k: Z_(2,k)}}: exact two-plaquette exits with k >= 5 edges (zexit_count.py), in place of the crude counts
 EXACT = None; CORNERS = None   # the general corner majorant (Section 16): see the M_5 block below
@@ -38,6 +39,8 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
     K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x)
     if THETA7:                                    # Lemma mg:lem:theta7: theta_7 = 2(d-2) e^6 sigma_6 + x^8/(1-x); with CLOSED_FROM = 10 (no closed sets of 8 or 9
         th5 = 2*(d-2)*e**6*dressed(beta, g)[1] + x**CLOSED_FROM/(1-x)   # plaquettes, by exhaustive search: Remark mg:rem:practical) theta_10
+        if CLOSED_EXACT and d in CLOSED_EXACT:    # closed polymers of n plaquettes through a plaquette counted exactly (activity at most eps^n)
+            th5 += fsum(c*(e*eps)**n for n, c in CLOSED_EXACT[d].items())
     lam = exp(2*(K+1)*th5)
     u = g['u']; a = lam*u; gam = expm1(2*beta) + beta**2*exp(beta); b = lam*gam
     Ubar, s6 = dressed(beta, g)
@@ -127,8 +130,8 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
         eta = C*a**4*(2*Ubar*(1+dl) + full)/(1-omega) if uturn else mpf(1)
         parts = dict(two=(4*(Pv-1)-KS)*varpi*min(b**2, b2),
                      # chars (Theorem 14.2): the turns and jumps, widenings and narrowings by characters (Lemma 14.1), a in place of b
-                     four=(10*(a**4 if chars else b**4) + 2*eta*b**4)*(d-3) + (fsum(ZSMALL[d][n]*b**n for n in (5, 6, 7))
-                          + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(8, NMAX)) if ZSMALL
+                     four=(10*(a**4 if chars else b**4) + 2*eta*b**4)*(d-3) + (fsum(ZSMALL[d][n]*b**n for n in ZSMALL[d])
+                          + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(max(ZSMALL[d]) + 1, NMAX)) if ZSMALL
                           else fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(5, NMAX))),
                      exits=KS*((a if chars else b)*f(6) + b*f(7)) + (4*(Pv-1)-2*KS)*b*f(8)
                            + (b**2*fsum(ZEXIT[d][k]*f(k) for k in ZEXIT[d]) if ZEXIT else fsum(2*binomial(4*Pv+Tv*2, 2)*b**2*X(2, k)*f(k) for k in range(5, 13)))

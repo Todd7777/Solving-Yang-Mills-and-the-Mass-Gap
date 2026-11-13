@@ -29,11 +29,25 @@ T.ZSMALL = {4: {5: 26, 6: 302, 7: 288}, 3: {5: 0, 6: 0, 7: 0}}
 T.LOW = {4: (876, 320, 312), 3: (48, 24, 24)}
 T.RMAX = True      # the corner factors as maxima (Lemma mg:lem:jsums5)
 DEFAULT = {4: ('1e-5', '3e-6', '2.6e-6', '1e-6'), 3: ('1e-4', '3e-5', '2.3e-5', '1e-5')}
+# The order after in d=3 (Remark mg:rem:nextorder (v)): S_7' = S_6 u {(5,2),(4,3),(4,7/2),(3,4),(3,9/2),(2,5),(2,11/2)}, counts by next_order_count.py;
+# theta with the closed sets of 10, 11, 12 plaquettes counted exactly (10, 11, 24 through a plaquette of Z^3: closed_sets_ext.py) and x^13/(1-x) beyond;
+# Z_(n,4) = 0 for 3 <= n <= 13 in d=3 (junction_count.py; the planar argument of the remark).
+def order7_d3():
+    d = 3; h = mpf(1)/2
+    order6(d)
+    N3, N2, N2p = T.LOW[d]; N4, N36, N37, N28, N2444, N29 = NEXT[d]
+    T.EXACT[d] = list(T.EXACT[d]) + [(0, 5, 2, 4, 1), (276, 4, 3, 4, 1), (276, 4, 3 + h, 4, 1), (252, 3, 4, 4, 1), (0, 3, 4, 4, 2), (N36, 3, 4, 6, 1),
+                                     (424, 3, 4 + h, 4, 1), (100, 2, 5, 4, 1), (0, 2, 5, 4, 2), (0, 2, 5, 6, 1), (N2p, 2, 5, 7, 1),
+                                     (212, 2, 5 + h, 4, 1), (0, 2, 5 + h, 4, 2), (0, 2, 5 + h, 6, 1)]
+    T.CORNERS[d] = [(6, 2), (5, 3), (4, 4), (3, 5), (2, 6)]
+    T.CLOSED_FROM = 13; T.CLOSED_EXACT = {3: {10: 10, 11: 11, 12: 24}}
+    T.ZSMALL = {4: {5: 26, 6: 302, 7: 288}, 3: {n: 0 for n in range(5, 14)}}
 ORDER = 5
 def run(d, betas):
     """The criterion is the whole deficit of the lower bound, D = 8(K+1)theta + log(Ubar/Ups) + log(1+delta'), against beta^3/432: then
     m - 4log(1/u) + log(Ups) >= -D > -beta^3/432."""
     if ORDER == 6: order6(d)
+    if ORDER == 7: order7_d3()
     for be in betas:
         beta = mpf(be); g = dict(T.GROUPS)['SU(3)'](beta); best = None
         for vp in (2, mpf(5)/2):
@@ -55,6 +69,8 @@ if __name__ == "__main__":
     args = sys.argv[1:]
     if '--next' in args: ORDER = 6; T.CLOSED_FROM = 10; args.remove('--next')
     elif '--next-theta7' in args: ORDER = 6; args.remove('--next-theta7')
+    elif '--next2' in args: ORDER = 7; args.remove('--next2')     # d=3 only
     else: ORDER = 5
     ds = [int(args[0])] if args else [4, 3]
-    for d in ds: run(d, args[1:] if len(args) > 1 else (DEFAULT if ORDER == 5 else DEFAULT6)[d])
+    if ORDER == 7: ds = [3]
+    for d in ds: run(d, args[1:] if len(args) > 1 else {5: DEFAULT, 6: DEFAULT6, 7: {3: ('2e-4', '1.8e-4', '1e-4')}}[ORDER][d])
