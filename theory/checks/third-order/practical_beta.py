@@ -44,7 +44,7 @@ def order7_d3():
     T.ZSMALL = {4: {5: 26, 6: 302, 7: 288}, 3: {n: 0 for n in range(5, 14)}}
 # Any order from order_counts.py: --terms FILE.json (terms and corners of S(m)), with --closed n:c,... and --closed-from N for theta (closed
 # polymers of n plaquettes counted exactly, crude from N on); in d=3, Z_(n,4) = 0 for all n >= 3 (Remark mg:rem:nextorder (iv)).
-Z4_D4 = {5: 26, 6: 302, 7: 288, 8: 1988}        # junction_count.py 3 8 (Z_8: 5 min)
+Z4_D4 = {5: 26, 6: 302, 7: 288, 8: 1988, 9: 406}        # junction_count.py 3 9 (Z_8: 5 min, Z_9: 25 min)
 NV_D4_EXTRA = {}                                 # N^v_11, N^v_12 of Z^3 when counted
 def load_terms(d, path, closed=None, closed_from=None):
     import json

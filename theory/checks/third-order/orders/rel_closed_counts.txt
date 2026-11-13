@@ -1,10 +1,12 @@
 D=3, (S, C) = (S_A, {p0}): |S| = 4, |C| = 1, |P_S minus C| = J' = 12
-connected sets by size: {5: 2, 6: 8, 9: 10, 10: 47}
-all sets Y by size (N_n): {5: 2, 6: 8, 9: 10, 10: 47}
+connected sets by size: {5: 2, 6: 8, 9: 10, 10: 47, 11: 60, 12: 80}
+sets with two components by size: {12: 16}
+all sets Y by size (N_n): {5: 2, 6: 8, 9: 10, 10: 47, 11: 60, 12: 96}
 five-plaquette sets: 2, of which caps (a unit cube minus a face in C): 2
 D=3, (S, C) = (S_Q, Q): |S| = 12, |C| = 6, |P_S minus C| = J' = 24
-connected sets by size: {5: 6, 6: 12, 9: 30, 10: 90}
-all sets Y by size (N_n): {5: 6, 6: 12, 9: 30, 10: 93}
+connected sets by size: {5: 6, 6: 12, 9: 30, 10: 90, 11: 96, 12: 120}
+sets with two components by size: {10: 3, 11: 48, 12: 42}
+all sets Y by size (N_n): {5: 6, 6: 12, 9: 30, 10: 93, 11: 144, 12: 162}
 five-plaquette sets: 6, of which caps (a unit cube minus a face in C): 6
 D=4, (S, C) = (S_A, {p0}): |S| = 4, |C| = 1, |P_S minus C| = J' = 20
 connected sets by size: {5: 4, 6: 32}
