@@ -4604,6 +4604,15 @@ such sets also qualify; they have at least $L_1L_2-2$ plaquettes.) In the plane 
 $\partial q\cup\partial q'$, which is $\emptyset$, $\partial q$, $\partial q'$ or $\partial q\triangle\partial q'$. A finite set of plaquettes of $\Z^2$ is determined by its boundary modulo $2$,
 so $P\subseteq\{q,q'\}$. (The search \texttt{junction\_count.py} agrees for $n\le13$.)
 
+The same argument bounds the junctions with three front-pairs whose fronts have $4,4,4$, or $4,4,6$, or $4,4,7$ edges (a remark of the fourth referee). By (b), every link of
+$E(P)$ outside $W:=A\cup B$ lies in two plaquettes of $P$, so $P$ is a union of bounded faces of $W$. In the plane the fronts are the boundaries of unit squares (four edges), of a
+domino (six edges), or of two squares sharing a link, with that link (seven edges); call these squares the front squares. Each front square, and the domino, is a bounded face of
+$W$. Any other bounded face $F$ has, beyond its topmost row, its lowest row, its leftmost and its rightmost column, a front square across each of those edges of $F$, since the
+edges lie in $W$; these four front squares are distinct, and no two of them share a link. Three front squares, or four of which two share a link, contain no such four. So
+$|P|\le3$ for the fronts $4,4,4$ and $|P|\le4$ for $4,4,6$ and $4,4,7$: \emph{in $d=3$, in infinite volume, every pair $(J,p')$ with $E=2$ has $n=3$, and every pair with
+$E\in\{3,\frac72\}$ has $n\le4$} (Theorem; $E=2$ forces the fronts $4,4,4$, and $E\in\{3,\frac72\}$ the fronts $4,4,6$ or $4,4,7$ with $p'$ of four edges). The searches below
+agree.
+
 (v) The order after, in $d=3$. Take $S'_7:=S_6\cup\{(5,2),(4,3),(4,\frac72),(3,4),(3,\frac92),(2,5),(2,\frac{11}2)\}$, with corners $(6,2),(5,3),(4,4),(3,5),(2,6)$. Its new
 junctions (\texttt{next\_order\_count.py}; the same kinds as in $S_6$, with the further fronts listed) number:
 \begin{itemize}
@@ -4641,7 +4650,7 @@ whose corners are $(2,7),(3,6),(5,5),(6,4),(7,3),(8,2)$. Its new pairs (\texttt{
 \item at $(4,5)$: $2432$ junctions with fronts of $4,4,10$ edges; $168$ with $4,4,4,6$ (two pairs each); $64$ with $4,6,6$ (two pairs each, $p'$ of six edges); $276$ with $4,4,7$ ($p'$ of seven edges);
 \item at $(4,\frac{11}2)$: $4556$ with $4,4,11$; $168$ with $4,4,4,7$ (two pairs each); $128$ with $4,6,7$ ($p'$ of six edges);
 \item at $(5,4)$: $1152$ with $4,4,8$, $4$ with $4,4,4,4$ (three pairs each), and none with $4,4,6$ ($p'$ of six edges); at $(5,\frac92)$: $2288$ with $4,4,9$;
-\item none at $(6,3)$, $(6,\frac72)$, $(7,2)$.
+\item none at $(6,3)$, $(6,\frac72)$, $(7,2)$, by (iv).
 \end{itemize}
 With $S''_9$, the closed polymers of up to $14$ plaquettes in $\theta$ and the exact exits of (vi), $D/\beta^4$ for $SU(3)$ is:
 
@@ -4662,8 +4671,8 @@ $\beta^3/(432\beta^4)$ & $19.3$ & $46.3$ & $2.3\cdot10^3$ & $2.3\cdot10^5$ & $2.
 \smallskip
 
 \noindent At $\beta_0(3)$ the majorant is $2.35\beta^4$ of $D$ and the loss $8(K+1)\theta$ is $0.027\beta^4$. What matters is where the corners lie: the counted
-pairs of order $9$ add only $10^{-17}\beta^4$ to $D$, and with $S(8)$ and just the three empty kinds $(6,3)$, $(6,\frac72)$, $(7,2)$ added, $D=4.70\beta^4$, already below $5.75\beta^4$ (fourth
-referee). The closed polymers matter too: counted crudely from $13$ plaquettes instead of $15$, $D=7.90\beta^4$, so the absence of closed sets of $13$ plaquettes (two independent
+pairs of order $9$ add only $10^{-17}\beta^4$ to $D$, and with $S(8)$ and just the three empty kinds $(6,3)$, $(6,\frac72)$, $(7,2)$ added, which (iv) proves empty, $D=4.70\beta^4$, already below $5.75\beta^4$
+(fourth referee). The closed polymers matter too: counted crudely from $13$ plaquettes instead of $15$, $D=7.90\beta^4$, so the absence of closed sets of $13$ plaquettes (two independent
 searches) is needed.
 
 \emph{Scaling.} Let the hypotheses of Theorem~\ref{mg:thm:lower5} hold at $\beta_*$ with parameters $\varpi_*=b(\beta_*)^p$, $F_*$, $F_{6*}$, $\xi_F$, $\xi_C$, $h_J$, $\bar b$, $\bar a$ and $\delta'_*$.
@@ -4914,7 +4923,7 @@ The junctions with three front-pairs of lowest order: three caps or a unit cube 
 Exact $N^v_k$ ($k\le10$, $d=3$; $k\le9$, $d=4$), $Z_{n,4}$ ($n\le7$), $N_3,N_2,N'_2$; $SU(2)$ whole range: $\ge-9.4\cdot10^{-5}$ ($d=4$), $\ge-3.6\cdot10^{-5}$ ($d=3$); $SU(3)$: third-order term resolved for $\beta\le2.6\cdot10^{-6}$ ($d=4$; before $2\cdot10^{-9}$) and $\beta\le2.3\cdot10^{-5}$ ($d=3$) & Rem.~\ref{mg:rem:practical} & Numerical\\
 Junction sums by corners: any finite set $S$ of exponents $(n,E)$ counted exactly, the rest from the minimal $(n,E)$ outside $S$ & Lem.~\ref{mg:lem:corners} & Theorem\\
 The next order $S_6$ by exhaustive search; no closed sets of $8$, $9$ plaquettes in $\Z^3,\Z^4$, so $\theta_{10}$; $SU(3)$ third-order term resolved for $\beta\le1.2\cdot10^{-5}$ ($d=4$) and $\beta\le9\cdot10^{-5}$ ($d=3$); in $d=3$ one order more: $\beta\le1.8\cdot10^{-4}$, two: $\beta\le3.2\cdot10^{-4}$, three (in part), with a scaling of the parameters in $\beta$: the whole range $\beta<\beta_0(3)$ & Rem.~\ref{mg:rem:nextorder} & Numerical\\
-$d=3$: junctions with two four-edge front-pairs have at most two plaquettes (planar boundary argument) & Rem.~\ref{mg:rem:nextorder}(iv) & Theorem\\
+$d=3$: junctions with two four-edge front-pairs have at most two plaquettes, with three front-pairs of $4,4,4$ edges at most three, of $4,4,6$ or $4,4,7$ edges at most four (planar boundary argument) & Rem.~\ref{mg:rem:nextorder}(iv) & Theorem\\
 Tails of the upper bound with exact counts of the sets of Lemma~\ref{mg:lem:five}, the five-face caps by characters ($\sigma_5=\sum d_r^2u_r^5$), and $\theta_5$ & Lem.~\ref{mg:lem:uppertails} & Theorem\\
 $SU(3)$, $d=3$: $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.41\beta^4$ for all $\beta<\beta_0(3)$, the third-order term from both sides; $d=4$: from both sides for $\beta\le1.2\cdot10^{-5}$ & Rem.~\ref{mg:rem:upperexact} & Numerical\\
 Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order in the $C$-odd sector ($U(1)$, $d\ge4$; Conjecture~\ref{mg:conj:codd}); the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\

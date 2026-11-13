@@ -102,7 +102,8 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   Remark 16.7(viii)); Lemma 16.8 (Theorem: $\theta_5$ in the tails, exact counts of the admissible sets, the five-face caps by characters, $\sigma_5=\sum d_r^2u_r^5$) and Remark 16.9
   (Numerical: counts by `rel_closed_count.py`, evaluation by `upper_exact.py`) give **for $SU(3)$ in $d=3$: $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.41\beta^4$ for all
   $\beta<\beta_0(3)$**, the third-order term from both sides on the whole range; in $d=4$ from both sides for $\beta\le1.2\cdot10^{-5}$ (the upper side to $8.2\cdot10^{-5}$ with counts to 8
-  plaquettes). Not yet refereed. Next: the referee of Lemma 16.8, Remark 16.9 (running); a planar proof of the three empty kinds of order 9; $d=4$ (order 7 is being
+  plaquettes). Not yet refereed. Remark 16.7(iv) now also proves (planar faces) that in $d=3$ pairs with $E=2$ have $n=3$ and pairs with $E\in\{3,\frac72\}$ have $n\le4$.
+  Next: the referee of Lemma 16.8, Remark 16.9 (running); $d=4$ (order 7 is being
   counted; then the junctions with two four-edge front-pairs and $\ge8$ plaquettes).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
