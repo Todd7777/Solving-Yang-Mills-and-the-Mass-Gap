@@ -60,7 +60,7 @@ third-order term with an effective constant (Section~\ref{mg:sec:betafour}) adde
 fourth order and the fourth-order term (Section~\ref{mg:sec:fourthlower}) added, 12 November 2026; the sectors of charge conjugation and $SU(N)$, $N\ge6$ (Section~\ref{mg:sec:codd}) added the same day,
 after a referee report that found the first draft's proof for the odd sector incomplete; closed polymers and the third-order term at practical $\beta$
 (Section~\ref{mg:sec:practical}) added the same day, and revised after two referee reports; extended by further orders on 13 November, with a
-corrected threshold in $d=3$, and in $d=3$ to the whole range; living document}
+corrected threshold in $d=3$, and in $d=3$ to the whole range, from both sides; living document}
 
 \begin{document}
 \maketitle
@@ -129,7 +129,9 @@ from $O(\beta^5)$ to $O(\beta^6)$ (in infinite volume, and for sides $\ge8$). Wi
 exact counts of small fronts and junctions, and the junctions with three front-pairs of lowest order classified and counted, the lower bound resolves the third-order term
 of $SU(3)$ for $\beta\le2.6\cdot10^{-6}$ in $d=4$ (instead of $2\cdot10^{-9}$) and for $\beta\le2.3\cdot10^{-5}$ in $d=3$; with the next order counted by computer, for
 $\beta\le1.2\cdot10^{-5}$ and $\beta\le9\cdot10^{-5}$; and in $d=3$, with three more orders (the last in part) and a scaling of the parameters in $\beta$, on the whole range
-$\beta<\beta_0(3)$ (numerical evaluations). The upper bound, whose polymer tails are still counted crudely, does so only for $\beta\lesssim3\cdot10^{-8}$. For $SU(2)$ the two
+$\beta<\beta_0(3)$ (numerical evaluations). With the polymer tails of the upper bound counted the same way, and its five-face caps evaluated by characters, the upper
+bound does so too: for $SU(3)$ in $d=3$, $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)\le0.41\beta^4$ for all $\beta<\beta_0(3)$, so the third-order term $\beta^3/432$ is
+determined from both sides on the whole range (numerical evaluations; in $d=4$ for $\beta\le1.2\cdot10^{-5}$). For $SU(2)$ the two
 bounds give $-9.4\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
 $-3.6\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$, in infinite volume (a numerical evaluation of the explicit constants).
 The asymptotics
@@ -323,7 +325,8 @@ $N$. A charge conjugation of $G$ commutes with the transfer operators, so the ev
 and cancel up to the cap under the turn; grouping the sets so as to use this along the whole path is the step that remains for $U(1)$ in $d\ge4$. (16) Closed polymers have six plaquettes (a unit cube) or at least eight, so the ratio bound loses only $8(K+1)\theta_7=O(\beta^6)$ instead of
 $8(K+1)\theta_5=O(\beta^5)$, in infinite volume and for sides $\ge8$ (Section~\ref{mg:sec:practical}). The junctions with three front-pairs of lowest order (three caps or a unit cube; a widening with a cap) are
 classified and counted exactly, and the counting is pushed further by computer, the classes of each order being generated automatically. With exact counts of small fronts and
-junctions this makes the third-order term visible at larger $\beta$: for $SU(3)$ in $d=3$ on the whole range $\beta<\beta_0(3)$ (numerically).
+junctions this makes the third-order term visible at larger $\beta$, and with the tails of the upper bound counted in the same way it is determined from both sides, for
+$SU(3)$ in $d=3$ on the whole range $\beta<\beta_0(3)$ (numerically).
 
 \section{The duplicated system}\label{mg:sec:dup}
 
@@ -4691,10 +4694,66 @@ $\beta^8$, with a constant large enough that it exceeds $\beta^3/432$ near $2\cd
 
 (viii) The upper bound. All of the above concerns the lower bound. The upper bound of Theorem~\ref{mg:thm:upper2}, whose error $D_2+\log\Upsilon$ is $O(\beta^5)$, places
 $m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ below $\beta^3/432$ only for $\beta\le3.0\cdot10^{-8}$ in $d=3$ and $\beta\le6.7\cdot10^{-9}$ in $d=4$ (Numerical; the error is $2.6\cdot10^{12}\beta^5$ and
-$5.2\cdot10^{13}\beta^5$ there). So at practical $\beta$ the third-order term is seen from below only. The error comes from the tails $\mathcal T_Q$ and $\mathcal T_p$ of
-Lemma~\ref{mg:lem:twopoint}, which count the sets $Y$ of Lemma~\ref{mg:lem:five} crudely, by $(1+\frac1K)^{J'}(eK)^n$, with activity $\epsilon^n$: at $\beta_0(3)$, $\mathcal T_Q=1.4\cdot10^{-4}$,
-about $5\cdot10^9\beta^4$. Determining the term from both sides at practical $\beta$ needs the analogue of (ii) and of Remark~\ref{mg:rem:practical}(ii) for these sets: exact counts
-of the sets of up to about ten plaquettes, and the five-face caps evaluated by characters (activity of order $u^5$ instead of $\epsilon^5$).
+$5.2\cdot10^{13}\beta^5$ there). The error comes from the tails $\mathcal T_Q$ and $\mathcal T_p$ of Lemma~\ref{mg:lem:twopoint}, which count the sets $Y$ of Lemma~\ref{mg:lem:five} crudely,
+by $(1+\frac1K)^{J'}(eK)^n$, with activity $\epsilon^n$ and the ratio bound with $\theta$: at $\beta_0(3)$, $\mathcal T_Q=1.4\cdot10^{-4}$, about $5\cdot10^9\beta^4$. Lemma~\ref{mg:lem:uppertails} and
+Remark~\ref{mg:rem:upperexact} treat these tails as this section treats the lower bound.
+\end{remark}
+
+\begin{lemma}[The tails of the upper bound by exact counts]\label{mg:lem:uppertails}
+Let $\Lambda$ be periodic with all sides $\ge3$, $0<\beta<\beta_0(d)$, and let $(S,\mathcal C)$ be $(S_Q,\mathcal Q)$ or $(S_A,\{p_0\})$ as in the proof of Lemma~\ref{mg:lem:twopoint}, with
+$J':=|\cP_S\setminus\mathcal C|$. Call a set $Y$ of plaquettes \emph{admissible} if $Y\cap\mathcal C=\emptyset$, every link of $E(Y)\setminus S$ lies in at least two plaquettes of $Y$, and every
+component of $Y$ contains a plaquette of $\cP_S\setminus\mathcal C$ (these are the sets $Y=X\setminus\mathcal C$ of that proof). A \emph{cap} is an admissible set formed by the five faces other
+than $F$ of a unit cube with a face $F\in\mathcal C$. Let $N^{\rm cap}$ be the number of caps, $n_0\ge5$, and for $5\le n\le n_0$ let $N_n$ be at least the number of admissible sets
+with $n$ plaquettes that are not caps. With $\theta_5$ as in Lemma~\ref{mg:lem:closed}, put
+\[
+w:=\epsilon e^{(K+1)\theta_5},\qquad q:=eKw,\qquad\sigma_5:=\sum_{r\ne0}d_r^2u_r^5,
+\]
+\[
+\mathcal T'_S:=(1+\epsilon)^{|\mathcal C|}e^{\theta_5|\cP_S|}\Bigl(N^{\rm cap}\sigma_5e^{5(K+1)\theta_5}+\sum_{n=5}^{n_0}N_nw^n+\Bigl(1+\frac1K\Bigr)^{J'}\frac{q^{n_0+1}}{1-q}\Bigr).
+\]
+Then \eqref{mg:eq:local} holds with $\mathcal T'_{S_Q}$ and $\mathcal T'_{S_A}$ in place of $\mathcal T_Q$ and $\mathcal T_p$; hence so do Lemma~\ref{mg:lem:twopoint} and Theorems~\ref{mg:thm:upper}
+and~\ref{mg:thm:upper2}. Moreover $\sigma_5\le(2-\iota)N^2u^5+u_2^4(e^\beta-1)$.
+\end{lemma}
+
+\begin{proof}
+In the proof of Lemma~\ref{mg:lem:twopoint}, $r_X\le e^{\theta_5|\overline X|}$ by Lemma~\ref{mg:lem:closed}, so $\theta$ may be replaced by $\theta_5$ throughout, also in $q_*$. The admissible
+sets with at most $n_0$ plaquettes are then counted by $N^{\rm cap}$ and the $N_n$, and the others by the rooted count, as there. Let $Y$ be a cap on $F\in\mathcal C$, and $X$ with
+$X\setminus\mathcal C=Y$. The eight links of $E(Y)\setminus S$ lie in no plaquette of $X$ outside $Y$, since the plaquettes of $\mathcal C$ have all their links in $S$; integrate them
+first. The result $g$ is invariant under gauge transformations at the vertices of $F$, so it is a class function of the holonomy $V$ of $\partial F$; and for every continuous class
+function $a$, $\int a(V)g(V)\,dV=\sum_{r\ne0}\hat a_r d_ru_r^5$ (up to $r\leftrightarrow\bar r$, by the orientation), by the computation in the proof of Lemma~\ref{mg:lem:char}(ii) with
+$a$ on $F$ and $f_\beta=\sum_{r\ne0}d_ru_r\chi_r$ on the other five faces: $(d_ru_r)^5d_r^{-4}$. So $g=\sum_{r\ne0}d_ru_r^5\chi_{r'}$ with $r'\in\{r,\bar r\}$, and $|g|\le\sigma_5$, as
+$|\chi_r|\le d_r$. Hence $|\Phi_H(X)|\le\sigma_5\epsilon^{|X\cap\mathcal C|}\int|H|\dU$, which replaces $\epsilon^{|X|}\int|H|\dU$ for the caps. The bound on $\sigma_5$ is that of
+Lemma~\ref{mg:lem:capelement}(iv) with the fifth power: the terms $r\in\{\rho,\bar\rho\}$ contribute $(2-\iota)N^2u^5$, the others at most $u_2^4\sum_{r\ne0}d_r^2u_r\le u_2^4(e^\beta-1)$.
+\end{proof}
+
+\begin{remark}[The upper bound at practical $\beta$]\label{mg:rem:upperexact}
+(Numerical. The counts come from exhaustive searches, by \texttt{rel\_closed\_count.py}; the evaluations are by \texttt{upper\_exact.py}.)
+
+(i) The admissible sets in $\Z^3$. For $(S_A,\{p_0\})$: $N^{\rm cap}=2$, and $8,0,0,10,47$ further sets with $6,\dots,10$ plaquettes. For $(S_Q,\mathcal Q)$: $N^{\rm cap}=6$, and
+$12,0,0,30,93$. The sets of six plaquettes are the unit cubes that share a link with $p_0$ (an edge with $Q$) without containing it; those of nine are the boxes $2\times1\times1$ with a
+face in $\mathcal C$, without it; three of the $93$ have two components, caps on opposite faces of $Q$. On a periodic lattice with all sides $\ge12$ an admissible set of at most
+$10$ plaquettes lifts to $\Z^3$, so these counts hold there too, and in the infinite-volume limit of Theorem~\ref{mg:thm:upper}(i). Against them the rooted count gives
+$(1+\frac1K)^{J'}(eK)^n$, e.g.\ $2.5\cdot10^8$ for $n=5$ and $(S_Q,\mathcal Q)$.
+
+(ii) The third-order term from above, $SU(3)$, $d=3$. With $n_0=10$ and Lemma~\ref{mg:lem:uppertails}, at $\beta_0(3)$: $\mathcal T'_{S_Q}=1.2\cdot10^{-3}\beta^4$, $\mathcal T'_{S_A}=5\cdot10^{-4}\beta^4$
+(before: $5.2\cdot10^9\beta^4$ and $5.4\cdot10^8\beta^4$), almost all from the term $q^{n_0+1}$ ($q=0.026$), then the cubes ($N_6w^6$); the caps contribute $2\cdot10^{-8}\beta^4$ ($\sigma_5=18.0\,u^5$ against $\epsilon^5=(36u)^5$). The error of Theorem~\ref{mg:thm:upper2} is then at most
+\[
+E(\beta):=\mathcal T'_{S_A}(2+3a+3a^2)+\frac B{1-B},\qquad B:=\mathcal T'_{S_Q}+\epsilon^6+2a(1+a)\mathcal T'_{S_A}+\bigl(1+a'^2\bigr)e^{16\beta}\frac{N^4}{\tau_0^2}\mathcal T'_{S_Q},
+\]
+with $a:=\sqrt{2-\iota}\,Nu\ge a_1$ and $a':=(1+\mathcal T'_{S_A})a+\mathcal T'_{S_A}\ge a_2$: indeed $V_2\le\Upsilon(1+\mathcal T'_{S_A})+\mathcal T'_{S_A}(1+3a_1+3a_1^2)$, $L_2\ge\Upsilon^2(1-B)$ (using
+$(1-z)^2\ge1-2z$ and $1-\prod(1-z_i)\le\sum z_i$), and $\Upsilon\ge\Upsilon_+=1+\kappa-18u^2\ge1$ on the range (Lemmas~\ref{mg:lem:Upsilon}(i), \ref{mg:lem:capelement}(ii) and
+\ref{mg:lem:char}(iii)). Every term of $E$ is $\beta^5$ times a function that increases with $\beta$ ($\sigma_5/\beta^5$, $w/\beta$, $q/\beta$, $\epsilon/\beta$, $u$, $\theta_5$ do), so
+$E(\beta)\le(\beta/\beta_0)^5E(\beta_0)$ for $\beta\le\beta_0=\beta_0(3)$, and $E(\beta_0)=0.404\,\beta_0^4$.
+
+(iii) So, for $SU(3)$ in $d=3$, with (vii) of Remark~\ref{mg:rem:nextorder},
+\[
+-2.56\,\beta^4\ \le\ m(\mu_\beta)-4\log\frac1{u(\beta)}+\log\Upsilon(\beta)\ \le\ 0.41\,\beta^4\qquad\text{for all }0<\beta<\beta_0(3),
+\]
+while the third-order term is $\beta^3/432\ge5.75\,\beta^4$ there: it is determined from both sides on the whole range: the residual is at most $2.56\,\beta^4$ in absolute value, which is $45\%$ of the term
+at $\beta_0(3)$, $11\%$ at $10^{-4}$ and $1.1\%$ at $10^{-5}$. The lower bound is the weaker side.
+
+(iv) In $\Z^4$: for $(S_A,\{p_0\})$, $N^{\rm cap}=4$ and $32,0,0$ further sets with $6,7,8$ plaquettes; for $(S_Q,\mathcal Q)$, $N^{\rm cap}=18$ and $60,0,24$ (the search, at most $8$ plaquettes). With $n_0=8$ the error of the upper bound is
+below $\beta^3/432$ for $\beta\le8.2\cdot10^{-5}$, about $\beta_0(4)/1.9$ (it is $2\cdot10^{-3}\beta^4$ at $1.2\cdot10^{-5}$; reaching $\beta_0(4)$ would need the sets of nine and ten plaquettes); so in $d=4$ the third-order term is determined from both sides for $\beta\le1.2\cdot10^{-5}$, where the lower bound of Remark~\ref{mg:rem:nextorder}(iii) resolves it.
 \end{remark}
 
 
@@ -4849,6 +4908,8 @@ Exact $N^v_k$ ($k\le10$, $d=3$; $k\le9$, $d=4$), $Z_{n,4}$ ($n\le7$), $N_3,N_2,N
 Junction sums by corners: any finite set $S$ of exponents $(n,E)$ counted exactly, the rest from the minimal $(n,E)$ outside $S$ & Lem.~\ref{mg:lem:corners} & Theorem\\
 The next order $S_6$ by exhaustive search; no closed sets of $8$, $9$ plaquettes in $\Z^3,\Z^4$, so $\theta_{10}$; $SU(3)$ third-order term resolved for $\beta\le1.2\cdot10^{-5}$ ($d=4$) and $\beta\le9\cdot10^{-5}$ ($d=3$); in $d=3$ one order more: $\beta\le1.8\cdot10^{-4}$, two: $\beta\le3.2\cdot10^{-4}$, three (in part), with a scaling of the parameters in $\beta$: the whole range $\beta<\beta_0(3)$ & Rem.~\ref{mg:rem:nextorder} & Numerical\\
 $d=3$: junctions with two four-edge front-pairs have at most two plaquettes (planar boundary argument) & Rem.~\ref{mg:rem:nextorder}(iv) & Theorem\\
+Tails of the upper bound with exact counts of the sets of Lemma~\ref{mg:lem:five}, the five-face caps by characters ($\sigma_5=\sum d_r^2u_r^5$), and $\theta_5$ & Lem.~\ref{mg:lem:uppertails} & Theorem\\
+$SU(3)$, $d=3$: $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.41\beta^4$ for all $\beta<\beta_0(3)$, the third-order term from both sides; $d=4$: from both sides for $\beta\le1.2\cdot10^{-5}$ & Rem.~\ref{mg:rem:upperexact} & Numerical\\
 Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order in the $C$-odd sector ($U(1)$, $d\ge4$; Conjecture~\ref{mg:conj:codd}); the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\
 \bottomrule
 \end{tabular}
