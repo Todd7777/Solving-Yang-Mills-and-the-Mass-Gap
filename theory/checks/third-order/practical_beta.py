@@ -45,7 +45,8 @@ def order7_d3():
 # Any order from order_counts.py: --terms FILE.json (terms and corners of S(m)), with --closed n:c,... and --closed-from N for theta (closed
 # polymers of n plaquettes counted exactly, crude from N on); in d=3, Z_(n,4) = 0 for all n >= 3 (Remark mg:rem:nextorder (iv)).
 Z4_D4 = {5: 26, 6: 302, 7: 288, 8: 1988, 9: 406}        # junction_count.py 3 9 (Z_8: 5 min, Z_9: 25 min)
-NV_D4_EXTRA = {}                                 # N^v_11, N^v_12 of Z^3 when counted
+ZEXITN_D4 = {3: {6: 288, 7: 264, 8: 862, 9: 760, 10: 3490, 11: 6596, 12: 14838, 13: 18444, 14: 23672, 15: 15296, 16: 10868}}   # zexit_count_n.py 3 3 (90 s)
+NV_D4_EXTRA = {11: 147888}                       # N^v_11 of Z^3 (fronts_decision.py 3 11, 14 min); N^v_12 when counted
 def load_terms(d, path, closed=None, closed_from=None):
     import json
     J = json.load(open(path))
@@ -56,7 +57,8 @@ def load_terms(d, path, closed=None, closed_from=None):
     if d == 3: T.ZSMALL = {4: {5: 26, 6: 302, 7: 288}, 3: {n: 0 for n in range(5, 40)}}
     if d == 4:                     # exact Z_(n,4) in d=4 (junction_count.py 3 NMAX), crude beyond; exact N^v_k beyond 10 where counted (fronts_decision.py 3 K)
         T.ZSMALL = {4: dict(Z4_D4), 3: {5: 0, 6: 0, 7: 0}}
-        T.NOVR = {4: dict(T.NOVR[4], **NV_D4_EXTRA), 3: T.NOVR[3]}
+        T.NOVR = {4: {**T.NOVR[4], **NV_D4_EXTRA}, 3: T.NOVR[3]}
+        T.ZEXITN = {4: dict(ZEXITN_D4)}
     if d == 3: T.ZEXITN = {3: {3: {6: 20, 7: 20, 8: 46, 9: 52, 10: 150, 11: 260, 12: 382, 13: 360, 14: 288, 15: 144, 16: 76},
                                4: {8: 76, 9: 148, 10: 328, 11: 484, 12: 1143, 13: 2020, 14: 3114, 15: 3672, 16: 3651, 17: 2760, 18: 1780, 19: 780, 20: 315},
                                5: {8: 12, 10: 376, 11: 880, 12: 2271, 13: 4096, 14: 8562, 15: 15532, 16: 25227, 17: 33440, 18: 38064, 19: 35740,
