@@ -1,0 +1,3 @@
+MODE=next2 d=3 beta=1.6e-4: varpi=b^2.5; D/beta^4 = 5.2086 [theta-loss 0.001265, log(Ubar/Ups) 0.000672, log(1+delta') 5.2067];  beta^3/432 = 14.468 beta^4 -> resolved
+   parts/beta^4: two 0.06364, four 5.79e-12, exits 0.09568, one_plaq 0.009029, multi 5.038
+   majorant used: (mpf('0.0078125'), mpf('0.000244140625'), 'corners'); convergence at the selected point: {'bbar': 0.0078125, 'abar': 0.000244140625, 'xiF_bar': 0.03949767751410847, 'xiC_bar': 0.1579937560587285, 'Y_ratio': 0.08675250978056004, 'A_ratio': 0.2426784039620591}

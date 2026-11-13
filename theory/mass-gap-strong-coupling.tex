@@ -4500,7 +4500,7 @@ comes from excluding the polymers with five to seven plaquettes, not from the ex
 (ii) Exact counts. Fronts through a vertex (\texttt{fronts\_count.py}): in $\Z^2$ ($d=3$), $N^v_4=4$, $N^v_6=12$, $N^v_7=12$, $N^v_8=70$, $N^v_9=160$; in $\Z^3$ ($d=4$),
 $N^v_4=12$, $N^v_6=132$, $N^v_7=108$, $N^v_8=2034$. The values $132$ and $108$ agree with the referee's enumeration in Remark~\ref{mg:rem:betafour}(iv). The referee of this section
 found all of these with a different search, and also $N^v_{10}=634$ ($d=3$) and $N^v_9=4344$ ($d=4$) (\texttt{referee-section16/ref\_fronts.py}); its cycle counts are
-$2k$ times the known numbers of polygons. A second decision search of ours (\texttt{fronts\_decision.py}) agrees with all of these and gives $N^v_{10}=43650$ ($d=4$),
+$k$ times the known numbers of polygons with $k$ edges. A second decision search of ours (\texttt{fronts\_decision.py}) agrees with all of these and gives $N^v_{10}=43650$ ($d=4$),
 $N^v_{11}=1728$ and $N^v_{12}=6369$ ($d=3$). The junctions with two front-pairs, two plaquettes and an exit of $k\ge5$ edges (\texttt{zexit\_count.py}; by
 Lemma~\ref{mg:lem:twofront}(i) the exit lies in $\partial q\cup E(P)$, so $k\le12$): $Z_{2,k}=4,4,22,36,42,24,18$ ($d=3$) and $20,12,182,296,606,456,458$ ($d=4$) for
 $k=6,\dots,12$, none with $k=5$. In Lemma~\ref{mg:lem:jsums4} they replace the crude counts $2\binom{4P_v+2T_v}2X_{2,k}$, e.g.\ $1.7\cdot10^7$ for $k=6$ in $d=4$. The general bound $N^v_k\le(d-1)\binom{(4d-6)k}{k-1}$ of
@@ -4511,11 +4511,13 @@ $26$ junctions with five plaquettes are those of Lemma~\ref{mg:lem:betafour}(i) 
 cube ($2(d-3)$). Junctions with three front-pairs of the lowest orders (Lemma~\ref{mg:lem:threelow}): $N_3=48$, $N_2=24$, $N'_2=24$ in $d=3$, and $N_3=876$, $N_2=320$, $N'_2=312$ in $d=4$. The second referee's direct counts give $\nu_2=16,288,1584,5248,13200,27936$ for $d=3,\dots,8$, which equal $8(d-2)^2(3d^2-14d+17)$ (fitted on
 $d\le7$, confirmed at $d=8$).
 
-(iii) The third-order term (\texttt{practical\_beta.py}). The lower bound gives $m-4\log(1/u)+\log\Upsilon\ge-D$ with
+(iii) The third-order term (\texttt{practical\_beta.py}). Here and in Remark~\ref{mg:rem:nextorder} the counts are those of the infinite lattice, so the statements are about
+$m(\mu_\beta)$. The lower bound gives $m(\mu_\beta)-4\log(1/u)+\log\Upsilon\ge-D$ with
 \[
 D:=8(K+1)\theta_7+\log(\bar\Upsilon/\Upsilon)+\log(1+\delta'),
 \]
-and the third-order term is resolved where $D<\beta^3/432$. Here $\log(\bar\Upsilon/\Upsilon)=O(\beta^6)$ is negligible ($\le3\cdot10^{-4}\beta^4$). Take $\theta_7$, the counts of (ii) in place of
+and the third-order term is resolved where $D<\beta^3/432$. Here $\log(\bar\Upsilon/\Upsilon)=O(\beta^6)$ is negligible ($\le3\cdot10^{-4}\beta^4$ for $\beta\le10^{-4}$, $\le1.1\cdot10^{-3}\beta^4$ for
+$\beta\le2\cdot10^{-4}$). Take $\theta_7$, the counts of (ii) in place of
 the general bounds, the majorant $M_5$ of Lemma~\ref{mg:lem:jsums5} with $R$ a maximum (and the maximum in $M_4$), and the rest of Theorem~\ref{mg:thm:lower5} unchanged. For $SU(3)$:
 \begin{itemize}
 \item $d=4$: $D/\beta^4=1.3\cdot10^4$, $1.2\cdot10^3$, $8.7\cdot10^2$ and $1.3\cdot10^2$ at $\beta=10^{-5}$, $3\cdot10^{-6}$, $2.6\cdot10^{-6}$ and $10^{-6}$;
@@ -4530,7 +4532,7 @@ above $-\beta^3/432$:
 In $d=3$ the loss $8(K+1)\theta_7$ is $29\beta^4$ of the $91\beta^4$ at $2.3\cdot10^{-5}$, and alone exceeds $\beta^3/432$ for $\beta\gtrsim2.9\cdot10^{-5}$; in $d=4$ it does so for $\beta\gtrsim1.2\cdot10^{-5}$.
 (It grows like $\beta^8$, the term $\beta^3/432$ only like $\beta^3$.) How the steps contribute:
 \begin{itemize}
-\item With $\theta_7$ and the exact counts alone, without Lemma~\ref{mg:lem:jsums5}, the threshold is about $10^{-7}$ ($d=4$) and $1.5\cdot10^{-6}$ ($d=3$).
+\item With $\theta_7$ and the exact counts alone, without Lemma~\ref{mg:lem:jsums5} and with the sum in $M_4$, the threshold is about $10^{-7}$ ($d=4$) and $1.8\cdot10^{-6}$ ($d=3$).
 \item The exact part $e^{c_J}(2N_3b^3a^2+N_2b^2a^3+N'_2b^2a^{7/2})$ of $M_5$ is about $10^{-7}$ of $\delta'$. So the gain of Lemma~\ref{mg:lem:jsums5} comes from the classification, which lets
 the remainder start at the corners $(4,2),(3,3),(2,4)$, and not from the values of $N_3,N_2,N'_2$.
 \end{itemize}
@@ -4541,12 +4543,13 @@ The proof of Lemma~\ref{mg:lem:jsums5} does not use which pairs $(n,E)$ are coun
 
 \begin{lemma}[Junction sums by corners]\label{mg:lem:corners}
 In the setting of Lemma~\ref{mg:lem:jsums4}, let $\mathcal E$ be the set of pairs $(n,E)$ with $n\ge2$ an integer, $E\in\{2,3,\frac72,4,\frac92,5,\dots\}$, and $E\ge3$ if $n=2$, ordered
-componentwise. Let $S\subseteq\mathcal E$ be finite and closed downwards in $\mathcal E$, and $C$ the (finite) set of minimal elements of $\mathcal E\setminus S$. For $(n,E)\in S$ let $W_{n,E}\ge0$ be
+componentwise. Let $S\subseteq\mathcal E$ be finite, and $C$ the (finite) set of minimal elements of $\mathcal E\setminus S$. For $(n,E)\in S$ let $W_{n,E}\ge0$ be
 at least the sum of $\kappa$ over the pairs $(J,p')$ of the proof of Lemma~\ref{mg:lem:jsums4} with at least three front-pairs, $n$ plaquettes and exponent $E$. Put
 \[
 M_S:=\sum_{(n,E)\in S}W_{n,E}\,b^na^E+\max_{(n,E)\in C}\Bigl(\frac b{\bar b}\Bigr)^n\Bigl(\frac a{\bar a}\Bigr)^E\cdot4P_ve^{4\bar\xi_F}\bigl(\bar\kappa_C\bar Y_2+4(\bar g_C\bar g'_F+\bar g'_C\bar g_F)\bar Y_1+16\bar\kappa_F\bar Y_0\bigr).
 \]
-Then Lemma~\ref{mg:lem:jsums4} holds with $\min(M_3,M_4,M_S)$ in place of $\min(M_3,M_4)$. Lemma~\ref{mg:lem:jsums5} is the case $S=\{(3,2),(2,3),(2,\frac72)\}$, $C=\{(4,2),(3,3),(2,4)\}$,
+Then Lemma~\ref{mg:lem:jsums4} holds with $\min(M_3,M_4,M_S)$ in place of $\min(M_3,M_4)$, and hence so do Theorems~\ref{mg:thm:lower4} and~\ref{mg:thm:lower5} and the
+results built on them. Lemma~\ref{mg:lem:jsums5} is the case $S=\{(3,2),(2,3),(2,\frac72)\}$, $C=\{(4,2),(3,3),(2,4)\}$,
 $W_{3,2}=2N_3e^{c_J}$, $W_{2,3}=N_2e^{c_J}$, $W_{2,7/2}=N'_2e^{c_J}$.
 \end{lemma}
 
@@ -4577,7 +4580,9 @@ $2\times1\times1$ box). With this, the proof of Lemma~\ref{mg:lem:theta7} gives 
 \[
 \theta_{10}:=2(d-2)\,e^6\sigma_6+\frac{x^{10}}{1-x}\qquad(d=3,4),
 \]
-whose loss is negligible below: $8(K+1)\theta_{10}\le1.8\beta^4$ for $\beta\le9\cdot10^{-5}$ in $d=3$, and $\le3\cdot10^{-3}\beta^4$ for $\beta\le1.2\cdot10^{-5}$ in $d=4$.
+whose loss is small below: $8(K+1)\theta_{10}\le1.8\beta^4$ for $\beta\le9\cdot10^{-5}$ in $d=3$ (about $7\%$ of $\beta^3/432$ there), and $\le3\cdot10^{-3}\beta^4$ for $\beta\le1.2\cdot10^{-5}$ in
+$d=4$. These counts are those of $\Z^3$ and $\Z^4$; on a torus a closed set that winds around a period $L$ crosses each of the $L$ slabs of that direction with at least two
+plaquettes, so it has at least $2L$ of them, and the closed sets with fewer than twice the smallest side lift to the infinite lattice.
 
 (iii) With Lemma~\ref{mg:lem:corners} for $S_6$, the counts of Remark~\ref{mg:rem:practical}(ii) and of (i), and $\theta_{10}$, the deficit $D$ of Remark~\ref{mg:rem:practical}(iii) is for $SU(3)$:
 \begin{itemize}
@@ -4586,10 +4591,10 @@ at $1.2\cdot10^{-5}$;
 \item $d=3$: $D/\beta^4=0.85$, $24$, $29$ and $34$ at $\beta=3\cdot10^{-5}$, $9\cdot10^{-5}$, $9.5\cdot10^{-5}$ and $10^{-4}$, against $\beta^3/432=26\beta^4$ at $9\cdot10^{-5}$.
 \end{itemize}
 So the third-order term is resolved for $\beta\le1.2\cdot10^{-5}$ in $d=4$, about $\beta_0(4)/13$, and for $\beta\le9\cdot10^{-5}$ in $d=3$, about $\beta_0(3)/4.5$. With $S_6$ but $\theta_7$, the
-thresholds are $10^{-5}$ and $2.8\cdot10^{-5}$: in $d=3$ the gain needs both.
+thresholds are $10^{-5}$ and $2.9\cdot10^{-5}$ (where $8(K+1)\theta_7$ alone reaches $\beta^3/432$ in $d=3$): in $d=3$ the gain needs both.
 
 (iv) In $d=3$, in infinite volume, the junctions with two four-edge front-pairs have at most two plaquettes: $Z_{n,4}=0$ for $n\ge3$. (On a torus the complements of
-such sets also qualify; they have at least $L^2-2$ plaquettes.) In the plane a link lies in exactly two plaquettes, so by
+such sets also qualify; they have at least $L_1L_2-2$ plaquettes.) In the plane a link lies in exactly two plaquettes, so by
 (b) of the proof of Lemma~\ref{mg:lem:threelow} the links lying in exactly one plaquette of $P$ lie in $\partial q\cup\partial q'$. They form the boundary of $P$ modulo $2$, a cycle in
 $\partial q\cup\partial q'$, which is $\emptyset$, $\partial q$, $\partial q'$ or $\partial q\triangle\partial q'$. A finite set of plaquettes of $\Z^2$ is determined by its boundary modulo $2$,
 so $P\subseteq\{q,q'\}$. (The search \texttt{junction\_count.py} agrees for $n\le13$.)
@@ -4603,8 +4608,8 @@ junctions (\texttt{next\_order\_count.py}; the same kinds as in $S_6$, with the 
 \item $100$, $0$ and $0$ with two plaquettes and fronts of $4,4,10$, of $4,4,4,6$ and of $4,6,6$ edges, and $212$, $0$, $0$ with $4,4,11$, $4,4,4,7$ and $4,6,7$ edges.
 \end{itemize}
 The junctions of $S_6$ with $p'$ the six-edge front-pair (at $(3,4)$) and those of Lemma~\ref{mg:lem:threelow}(iii) with $p'$ the seven-edge one (at $(2,5)$) also enter. Count the closed
-polymers of $10$, $11$ and $12$ plaquettes exactly in $\theta$ (there are $10$, $11$ and $24$ through a plaquette of $\Z^3$: \texttt{closed\_sets\_ext.py}, and the referee's
-\texttt{ref\_closed.py}), each with activity at most $\epsilon^n$, and crudely from $13$ on. Use $Z_{n,4}=0$ ($3\le n\le13$). Then for $SU(3)$, $D/\beta^4=5.2$, $8.3$ and $12.6$ at $\beta=1.6\cdot10^{-4}$,
+polymers of $10$, $11$ and $12$ plaquettes exactly in $\theta$ (there are $10$, $11$ and $24$ through a plaquette of $\Z^3$, and none with $13$: \texttt{closed\_sets\_ext.py} and
+the referees' \texttt{ref\_closed.py}, \texttt{closed\_search.py}), each with activity at most $\epsilon^n$, and crudely from $13$ on. Use $Z_{n,4}=0$ ($3\le n\le13$). Then for $SU(3)$, $D/\beta^4=5.2$, $8.3$ and $12.6$ at $\beta=1.6\cdot10^{-4}$,
 $1.8\cdot10^{-4}$ and $2\cdot10^{-4}$, against $\beta^3/432=14.5\beta^4$, $12.9\beta^4$ and $11.6\beta^4$. So the third-order term is resolved for $\beta\le1.8\cdot10^{-4}$ in $d=3$, about $\beta_0(3)/2.2$
 (\texttt{practical\_beta.py --next2}).
 

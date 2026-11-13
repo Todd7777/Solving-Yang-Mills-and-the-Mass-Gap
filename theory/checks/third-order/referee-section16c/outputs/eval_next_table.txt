@@ -1,0 +1,20 @@
+MODE=next d=4 beta=3e-6: varpi=b^2.5; D/beta^4 = 2.9452 [theta-loss 6.236e-07, log(Ubar/Ups) 2.36e-07, log(1+delta') 2.9452];  beta^3/432 = 771.6 beta^4 -> resolved
+   parts/beta^4: two 0.03484, four 0.03088, exits 0.01651, one_plaq 0.07602, multi 2.787
+   majorant used: (mpf('0.00390625'), mpf('0.0001220703125'), 'corners'); convergence at the selected point: {'bbar': 0.00390625, 'abar': 0.0001220703125, 'xiF_bar': 0.071385718580183, 'xiC_bar': 0.2855468886630048, 'Y_ratio': 0.16241528127788996, 'A_ratio': 0.306284392574368}
+   a = 1.66667e-07, b = 6.00003e-06, F = 0.001854, F6 = 4.546e-07
+MODE=next d=4 beta=1e-5: varpi=b^2.5; D/beta^4 = 108.21 [theta-loss 0.0008573, log(Ubar/Ups) 2.62e-06, log(1+delta') 108.21];  beta^3/432 = 231.48 beta^4 -> resolved
+   parts/beta^4: two 0.06361, four 3.508, exits 0.218, one_plaq 1.202, multi 103.2
+   majorant used: (mpf('0.00390625'), mpf('0.0001220703125'), 'corners'); convergence at the selected point: {'bbar': 0.00390625, 'abar': 0.0001220703125, 'xiF_bar': 0.07138571872923678, 'xiC_bar': 0.2855468895613258, 'Y_ratio': 0.162415281423791, 'A_ratio': 0.30628439262002083}
+   a = 5.55556e-07, b = 2.00003e-05, F = 0.006197, F6 = 4.984e-06
+MODE=next d=3 beta=3e-5: varpi=b^2.5; D/beta^4 = 0.84932 [theta-loss 0.002345, log(Ubar/Ups) 2.36e-05, log(1+delta') 0.84695];  beta^3/432 = 77.16 beta^4 -> resolved
+   parts/beta^4: two 0.02754, four 0.005337, exits 0.002735, one_plaq 0.001556, multi 0.8098
+   majorant used: (mpf('0.0078125'), mpf('0.000244140625'), 'corners'); convergence at the selected point: {'bbar': 0.0078125, 'abar': 0.000244140625, 'xiF_bar': 0.039497677376774225, 'xiC_bar': 0.15799375512011743, 'Y_ratio': 0.08675250969913317, 'A_ratio': 0.24267840392873105}
+   a = 1.66667e-06, b = 6.00027e-05, F = 0.002066, F6 = 2.464e-06
+MODE=next d=3 beta=1e-4: varpi=b^2.5; D/beta^4 = 34.009 [theta-loss 3.26, log(Ubar/Ups) 0.000263, log(1+delta') 30.749];  beta^3/432 = 23.148 beta^4 -> NOT resolved
+   parts/beta^4: two 0.0503, four 0.6625, exits 0.02759, one_plaq 0.005325, multi 30
+   majorant used: (mpf('0.0078125'), mpf('0.000244140625'), 'corners'); convergence at the selected point: {'bbar': 0.0078125, 'abar': 0.000244140625, 'xiF_bar': 0.03949767746286996, 'xiC_bar': 0.15799375570853885, 'Y_ratio': 0.0867525097501802, 'A_ratio': 0.24267840394962464}
+   a = 5.5556e-06, b = 0.00020003, F = 0.006952, F6 = 2.671e-05
+
+real	1m43.789s
+user	1m42.397s
+sys	0m0.108s

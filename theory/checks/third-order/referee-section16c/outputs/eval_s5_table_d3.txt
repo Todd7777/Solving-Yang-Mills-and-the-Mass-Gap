@@ -1,0 +1,12 @@
+MODE=s5 d=3 beta=1e-4: varpi=b^2.5; D/beta^4 = 11537 [theta-loss 1.036e+04, log(Ubar/Ups) 0.000263, log(1+delta') 1172.5];  beta^3/432 = 23.148 beta^4 -> NOT resolved
+   parts/beta^4: two 0.0503, four 0.6625, exits 0.02759, one_plaq 0.005325, multi 1172
+   majorant used: (mpf('0.0078125'), mpf('0.000244140625'), 'M5'); convergence at the selected point: {'bbar': 0.0078125, 'abar': 0.000244140625, 'xiF_bar': 0.03949767746286996, 'xiC_bar': 0.15799375570853885, 'Y_ratio': 0.0867525097501802, 'A_ratio': 0.24267840394962464}
+   a = 5.5556e-06, b = 0.00020003, F = 0.006952, F6 = 2.671e-05
+MODE=s5 d=3 beta=3e-5: varpi=b^2.5; D/beta^4 = 188.31 [theta-loss 82.86, log(Ubar/Ups) 2.36e-05, log(1+delta') 105.45];  beta^3/432 = 77.16 beta^4 -> NOT resolved
+   parts/beta^4: two 0.02754, four 0.005337, exits 0.002735, one_plaq 0.001556, multi 105.4
+   majorant used: (mpf('0.0078125'), mpf('0.000244140625'), 'M5'); convergence at the selected point: {'bbar': 0.0078125, 'abar': 0.000244140625, 'xiF_bar': 0.039497677376774225, 'xiC_bar': 0.15799375512011743, 'Y_ratio': 0.08675250969913317, 'A_ratio': 0.24267840392873105}
+   a = 1.66667e-06, b = 6.00027e-05, F = 0.002066, F6 = 2.464e-06
+MODE=s5 d=3 beta=1e-5: varpi=b^2.5; D/beta^4 = 12.747 [theta-loss 1.019, log(Ubar/Ups) 2.62e-06, log(1+delta') 11.728];  beta^3/432 = 231.48 beta^4 -> resolved
+   parts/beta^4: two 0.0159, four 6.578e-05, exits 0.0007956, one_plaq 0.0005179, multi 11.71
+   majorant used: (mpf('0.0078125'), mpf('0.000244140625'), 'M5'); convergence at the selected point: {'bbar': 0.0078125, 'abar': 0.000244140625, 'xiF_bar': 0.03949767733314913, 'xiC_bar': 0.15799375482196165, 'Y_ratio': 0.0867525096732674, 'A_ratio': 0.2426784039181442}
+   a = 5.55556e-07, b = 2.00003e-05, F = 0.0006867, F6 = 2.941e-07

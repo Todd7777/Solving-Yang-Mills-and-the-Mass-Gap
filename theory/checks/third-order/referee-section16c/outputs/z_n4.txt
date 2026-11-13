@@ -1,0 +1,14 @@
+D=3 n=6 sizes=(4,): 302 junctions  {((4, 'other'),): 220, ((4, 'same'),): 82}  (46937 states, 0.3 s)
+D=3 n=7 sizes=(4,): 288 junctions  {((4, 'other'),): 208, ((4, 'same'),): 80}  (151758 states, 1.2 s)
+D=2 n=3 sizes=(4,): 0 junctions  {}  (191 states, 0.0 s)
+D=2 n=4 sizes=(4,): 0 junctions  {}  (340 states, 0.0 s)
+D=2 n=5 sizes=(4,): 0 junctions  {}  (462 states, 0.0 s)
+D=2 n=6 sizes=(4,): 0 junctions  {}  (569 states, 0.0 s)
+D=2 n=7 sizes=(4,): 0 junctions  {}  (775 states, 0.0 s)
+D=2 n=8 sizes=(4,): 0 junctions  {}  (982 states, 0.0 s)
+D=2 n=9 sizes=(4,): 0 junctions  {}  (1101 states, 0.0 s)
+D=2 n=10 sizes=(4,): 0 junctions  {}  (1359 states, 0.0 s)
+
+real	0m2.095s
+user	0m2.054s
+sys	0m0.049s

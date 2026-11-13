@@ -1,10 +1,14 @@
 # Section 16 of Part IV (Remark mg:rem:nextorder): closed sets of plaquettes up to NMAX, also those containing a closed proper subset.
-# Usage: python3 closed_sets_ext.py D NMAX
+# Usage: python3 closed_sets_ext.py D NMAX [lean]
 """Connected sets Y of plaquettes of Z^D containing a fixed plaquette p0, |Y| <= NMAX, in which every link of E(Y) lies in at least two plaquettes of
 Y ("closed"). Deficiency-driven search as in closed_sets.py (at the smallest link lying in exactly one plaquette, branch over the further plaquettes
 through it), and in addition, at every closed state S with |S| < NMAX, each plaquette sharing a link with S is added and the search continued: a
 closed Y of at most 11 plaquettes is link-connected (two closed components would need 12), so it contains a plaquette sharing a link with any closed
-proper subset. Closed sets are counted once (a set of found closed sets)."""
+proper subset. Closed sets are counted once: only the closed sets are remembered, and below a closed set the search restarts without exclusions
+(an earlier version also remembered every intermediate set, keyed on the set alone although the branching carries exclusions; the referee of
+Remark mg:rem:nextorder pointed out that this is not covered by the completeness argument, and it needed far more memory).  The option 'lean' is
+accepted and ignored.
+Results: D=3, NMAX=12: {6: 2, 10: 10, 11: 11, 12: 24} (21 s), as the referees' ref_closed.py and closed_search.py find; NMAX=14: see the README."""
 import sys, itertools
 from collections import Counter
 D = int(sys.argv[1]); NMAX = int(sys.argv[2])
@@ -21,13 +25,12 @@ def plaqs_through(l):
         out.append((x, i, j)); out.append((add(x, tuple(-c for c in E[m])), i, j))
     return out
 p0 = (tuple([0] * D), 0, 1)
-found = set(); seen_states = set()
+found = set()
 def rec(S, cnt, excl):
     key = frozenset(S)
-    if key in seen_states: return
-    seen_states.add(key)
     defi = [l for l, c in cnt.items() if c == 1]
     if not defi:
+        if key in found: return              # only closed sets are remembered: below them the search restarts without exclusions
         found.add(key)
         if len(S) < NMAX:
             nb = {p for q in S for l in links(q) for p in plaqs_through(l) if p not in S}
@@ -46,4 +49,4 @@ def rec(S, cnt, excl):
                 for ll in links(p): cnt2[ll] += 1
             rec(S | set(T), cnt2, excl | frozenset(c for c in cands if c not in T))
 rec({p0}, Counter(links(p0)), frozenset())
-print(f"D={D}, NMAX={NMAX}: closed sets containing p0 by size: {dict(sorted(Counter(len(Y) for Y in found).items()))}; states {len(seen_states)}")
+print(f"D={D}, NMAX={NMAX}: closed sets containing p0 by size: {dict(sorted(Counter(len(Y) for Y in found).items()))}")

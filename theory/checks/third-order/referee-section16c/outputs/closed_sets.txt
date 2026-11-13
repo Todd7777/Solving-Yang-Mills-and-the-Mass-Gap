@@ -1,0 +1,9 @@
+Z^3, NMAX=12: closed link-connected sets through p0 by size: {6: 2, 10: 10, 11: 11, 12: 24}  (13452 states)
+Z^3, NMAX=13: closed link-connected sets through p0 by size: {6: 2, 10: 10, 11: 11, 12: 24}  (30647 states)
+Z^4, NMAX=10: closed link-connected sets through p0 by size: {6: 4, 10: 60}  (38346 states)
+Z^4, NMAX=11: closed link-connected sets through p0 by size: {6: 4, 10: 60, 11: 66}  (151011 states)
+Z^5, NMAX=9: closed link-connected sets through p0 by size: {6: 6}  (60427 states)
+
+real	0m1.944s
+user	0m1.822s
+sys	0m0.115s

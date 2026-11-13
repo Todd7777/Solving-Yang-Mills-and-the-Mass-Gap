@@ -42,6 +42,16 @@ def order7_d3():
     T.CORNERS[d] = [(6, 2), (5, 3), (4, 4), (3, 5), (2, 6)]
     T.CLOSED_FROM = 13; T.CLOSED_EXACT = {3: {10: 10, 11: 11, 12: 24}}
     T.ZSMALL = {4: {5: 26, 6: 302, 7: 288}, 3: {n: 0 for n in range(5, 14)}}
+# Any order from order_counts.py: --terms FILE.json (terms and corners of S(m)), with --closed n:c,... and --closed-from N for theta (closed
+# polymers of n plaquettes counted exactly, crude from N on); in d=3, Z_(n,4) = 0 for all n >= 3 (Remark mg:rem:nextorder (iv)).
+def load_terms(d, path, closed=None, closed_from=None):
+    import json
+    J = json.load(open(path))
+    T.EXACT = {d: [tuple(t) for t in J['terms']]}
+    T.CORNERS = {d: [tuple(c) for c in J['corners']]}
+    if closed: T.CLOSED_EXACT = {d: closed}
+    if closed_from: T.CLOSED_FROM = closed_from
+    if d == 3: T.ZSMALL = {4: {5: 26, 6: 302, 7: 288}, 3: {n: 0 for n in range(5, 40)}}
 ORDER = 5
 def run(d, betas):
     """The criterion is the whole deficit of the lower bound, D = 8(K+1)theta + log(Ubar/Ups) + log(1+delta'), against beta^3/432: then
@@ -70,7 +80,15 @@ if __name__ == "__main__":
     if '--next' in args: ORDER = 6; T.CLOSED_FROM = 10; args.remove('--next')
     elif '--next-theta7' in args: ORDER = 6; args.remove('--next-theta7')
     elif '--next2' in args: ORDER = 7; args.remove('--next2')     # d=3 only
+    elif '--terms' in args:
+        i = args.index('--terms'); path = args[i + 1]; del args[i:i + 2]
+        closed = None; cf = None
+        if '--closed' in args:
+            i = args.index('--closed'); closed = {int(x.split(':')[0]): int(x.split(':')[1]) for x in args[i + 1].split(',')}; del args[i:i + 2]
+        if '--closed-from' in args:
+            i = args.index('--closed-from'); cf = int(args[i + 1]); del args[i:i + 2]
+        ORDER = 0; load_terms(int(args[0]), path, closed, cf)
     else: ORDER = 5
     ds = [int(args[0])] if args else [4, 3]
     if ORDER == 7: ds = [3]
-    for d in ds: run(d, args[1:] if len(args) > 1 else {5: DEFAULT, 6: DEFAULT6, 7: {3: ('2e-4', '1.8e-4', '1e-4')}}[ORDER][d])
+    for d in ds: run(d, args[1:] if len(args) > 1 else {5: DEFAULT, 6: DEFAULT6, 7: {3: ('2e-4', '1.8e-4', '1e-4')}, 0: {3: ('3e-4',), 4: ('1e-5',)}}[ORDER][d])

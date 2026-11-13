@@ -1,0 +1,25 @@
+  fronts of size 4: 4 through a vertex, 2 through a link of direction 0
+D=2 n=4 sizes=(4, 4): 0 junctions  {}  (1752 states, 0.0 s)
+  fronts of size 4: 4 through a vertex, 2 through a link of direction 0
+  fronts of size 6: 12 through a vertex, 6 through a link of direction 0
+  fronts of size 7: 12 through a vertex, 7 through a link of direction 0
+D=2 n=3 sizes=(4, 6): 24 junctions  {((4, 'same'), (6, 'other')): 24}  (2574 states, 0.0 s)
+D=2 n=3 sizes=(4, 7): 24 junctions  {((4, 'same'), (7, 'other')): 24}  (2966 states, 0.0 s)
+  fronts of size 8: 70 through a vertex, 36 through a link of direction 0
+  fronts of size 9: 160 through a vertex, 90 through a link of direction 0
+  fronts of size 4: 4 through a vertex, 2 through a link of direction 0
+D=2 n=2 sizes=(4, 8): 48 junctions  {((4, 'same'), (8, 'other')): 48}  (3426 states, 0.1 s)
+D=2 n=2 sizes=(4, 4, 4): 0 junctions  {}  (272 states, 0.0 s)
+D=2 n=2 sizes=(4, 9): 16 junctions  {((4, 'same'), (9, 'other')): 16}  (7517 states, 0.2 s)
+  fronts of size 8: 70 through a vertex, 36 through a link of direction 0
+  fronts of size 9: 160 through a vertex, 90 through a link of direction 0
+  fronts of size 6: 12 through a vertex, 6 through a link of direction 0
+  fronts of size 7: 12 through a vertex, 7 through a link of direction 0
+D=2 n=2 sizes=(6,): 4 junctions  {((6, 'other'),): 4}  (162 states, 0.0 s)
+D=2 n=2 sizes=(7,): 4 junctions  {((7, 'other'),): 4}  (169 states, 0.0 s)
+D=2 n=2 sizes=(8,): 22 junctions  {((8, 'other'),): 22}  (743 states, 0.0 s)
+D=2 n=2 sizes=(9,): 36 junctions  {((9, 'other'),): 36}  (1691 states, 0.0 s)
+
+real	0m0.606s
+user	0m0.569s
+sys	0m0.024s

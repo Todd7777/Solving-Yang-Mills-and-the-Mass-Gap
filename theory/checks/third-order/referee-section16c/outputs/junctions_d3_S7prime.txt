@@ -1,0 +1,16 @@
+D=2 n=5 sizes=(4, 4): 0 junctions  {}  (3084 states, 0.0 s)
+D=2 n=4 sizes=(4, 6): 276 junctions  {((4, 'other'), (6, 'other')): 76, ((4, 'other'), (6, 'same')): 76, ((4, 'same'), (6, 'other')): 124}  (6493 states, 0.1 s)
+D=2 n=4 sizes=(4, 7): 276 junctions  {((4, 'other'), (7, 'other')): 76, ((4, 'other'), (7, 'same')): 76, ((4, 'same'), (7, 'other')): 124}  (7048 states, 0.1 s)
+D=2 n=3 sizes=(4, 8): 252 junctions  {((4, 'same'), (8, 'other')): 252}  (12003 states, 0.2 s)
+D=2 n=3 sizes=(4, 4, 4): 0 junctions  {}  (1457 states, 0.0 s)
+D=2 n=3 sizes=(4, 9): 424 junctions  {((4, 'same'), (9, 'other')): 424}  (25530 states, 0.6 s)
+D=2 n=2 sizes=(4, 10): 100 junctions  {((4, 'same'), (10, 'other')): 100}  (27236 states, 0.8 s)
+D=2 n=2 sizes=(4, 4, 6): 0 junctions  {}  (1574 states, 0.1 s)
+D=2 n=2 sizes=(6, 6): 0 junctions  {}  (625 states, 0.0 s)
+D=2 n=2 sizes=(4, 11): 212 junctions  {((4, 'same'), (11, 'other')): 212}  (71444 states, 2.6 s)
+D=2 n=2 sizes=(4, 4, 7): 0 junctions  {}  (1749 states, 0.2 s)
+D=2 n=2 sizes=(6, 7): 0 junctions  {}  (1417 states, 0.0 s)
+
+real	0m5.270s
+user	0m5.115s
+sys	0m0.083s

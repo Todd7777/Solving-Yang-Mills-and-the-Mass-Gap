@@ -1,0 +1,8 @@
+MODE=noM5sum d=4 beta=1e-7: varpi=b^2.5; D/beta^4 = 23760 [theta-loss 9.784e-07, log(Ubar/Ups) 2.62e-10, log(1+delta') 23760];  beta^3/432 = 23148 beta^4 -> NOT resolved
+   parts/beta^4: two 0.00636, four 0.0001785, exits 0.0006078, one_plaq 0.0006985, multi 2.376e+04
+MODE=noM5sum d=3 beta=1.5e-6: varpi=b^2.5; D/beta^4 = 1081.2 [theta-loss 0.0005151, log(Ubar/Ups) 5.9e-08, log(1+delta') 1081.2];  beta^3/432 = 1543.2 beta^4 -> resolved
+   parts/beta^4: two 0.006158, four 3.328e-08, exits 0.0001808, one_plaq 7.765e-05, multi 1081
+
+real	1m12.978s
+user	1m11.977s
+sys	0m0.059s
