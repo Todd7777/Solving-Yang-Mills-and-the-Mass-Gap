@@ -129,7 +129,7 @@ from $O(\beta^5)$ to $O(\beta^6)$ (in infinite volume, and for sides $\ge8$). Wi
 exact counts of small fronts and junctions, and the junctions with three front-pairs of lowest order classified and counted, the lower bound resolves the third-order term
 of $SU(3)$ for $\beta\le2.6\cdot10^{-6}$ in $d=4$ (instead of $2\cdot10^{-9}$) and for $\beta\le2.3\cdot10^{-5}$ in $d=3$; with the next order counted by computer, for
 $\beta\le1.2\cdot10^{-5}$ and $\beta\le9\cdot10^{-5}$; and in $d=3$, with three more orders (the last in part) and a scaling of the parameters in $\beta$, on the whole range
-$\beta<\beta_0(3)$ (numerical evaluations). For $SU(2)$ the two
+$\beta<\beta_0(3)$ (numerical evaluations). The upper bound, whose polymer tails are still counted crudely, does so only for $\beta\lesssim3\cdot10^{-8}$. For $SU(2)$ the two
 bounds give $-9.4\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
 $-3.6\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$, in infinite volume (a numerical evaluation of the explicit constants).
 The asymptotics
@@ -4688,6 +4688,13 @@ largest ratio $0.53$, on $[3.8\cdot10^{-4},\beta_0(3)]$). It also shows how far 
 
 In $d=4$ the next obstacle besides the majorant is the crude count of the junctions with two four-edge front-pairs and at least eight plaquettes: their term is of order
 $\beta^8$, with a constant large enough that it exceeds $\beta^3/432$ near $2\cdot10^{-5}$.
+
+(viii) The upper bound. All of the above concerns the lower bound. The upper bound of Theorem~\ref{mg:thm:upper2}, whose error $D_2+\log\Upsilon$ is $O(\beta^5)$, places
+$m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ below $\beta^3/432$ only for $\beta\le3.0\cdot10^{-8}$ in $d=3$ and $\beta\le6.7\cdot10^{-9}$ in $d=4$ (Numerical; the error is $2.6\cdot10^{12}\beta^5$ and
+$5.2\cdot10^{13}\beta^5$ there). So at practical $\beta$ the third-order term is seen from below only. The error comes from the tails $\mathcal T_Q$ and $\mathcal T_p$ of
+Lemma~\ref{mg:lem:twopoint}, which count the sets $Y$ of Lemma~\ref{mg:lem:five} crudely, by $(1+\frac1K)^{J'}(eK)^n$, with activity $\epsilon^n$: at $\beta_0(3)$, $\mathcal T_Q=1.4\cdot10^{-4}$,
+about $5\cdot10^9\beta^4$. Determining the term from both sides at practical $\beta$ needs the analogue of (ii) and of Remark~\ref{mg:rem:practical}(ii) for these sets: exact counts
+of the sets of up to about ten plaquettes, and the five-face caps evaluated by characters (activity of order $u^5$ instead of $\epsilon^5$).
 \end{remark}
 
 

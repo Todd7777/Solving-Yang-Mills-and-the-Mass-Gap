@@ -98,7 +98,9 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   $\delta'\propto t^4$) gives $D(\beta)/\beta^4\le(1+\beta_*)^3D(\beta_*)/\beta_*^4$ below any computed $\beta_*$, `scaling_check.py`; a 22-point grid confirms it, `whole_range_d3.py`). The
   scaling also justifies the monotonicity of $D/\beta^4$ that the earlier thresholds used. Orders 8–9 and the scaling are not yet refereed. Checks in `theory/checks/third-order/`
   (`three_front_count.py`, `practical_beta.py`, `order_counts.py`, `whole_range_d3.py`, ...). Two referees (Lemmas 16.1–16.2 and Remark 16.5; Lemmas 16.3–16.4, with
-  independent searches in $d=3,4,5$): minor revisions, applied. Next: a referee for Remark 16.7(vi)–(vii) (running); $d=4$ (order 7 is being
+  independent searches in $d=3,4,5$): minor revisions, applied. The upper bound (Theorem 10.2, error $\sim2.6\cdot10^{12}\beta^5$ from the crude tails $\mathcal T_Q,\mathcal T_p$ of Lemma
+  `mg:lem:twopoint`) sees the term only for $\beta\le3\cdot10^{-8}$ ($d=3$), so at practical $\beta$ it is seen from below only (Remark 16.7(viii)). Next: a referee for Remark
+  16.7(vi)–(vii) (running); the upper bound at practical $\beta$ (exact counts of the relatively closed sets of Lemma `mg:lem:five`, caps by characters); $d=4$ (order 7 is being
   counted; then the junctions with two four-edge front-pairs and $\ge8$ plaquettes).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
