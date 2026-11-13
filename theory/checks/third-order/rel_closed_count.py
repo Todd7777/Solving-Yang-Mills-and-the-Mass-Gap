@@ -10,7 +10,7 @@ Each component satisfies (2) and (3) itself and has at least five plaquettes (Le
 Search: from each plaquette r of P_S minus C, a deficiency-driven search over connected sets containing r (at the smallest link outside S that lies in
 exactly one plaquette, branch over the nonempty sets of further plaquettes through it), extended at every closed state by each plaquette sharing a
 link with it (a connected Y contains one with any closed proper subset), as in closed_sets_ext.py; the sets found are kept in one set, so each Y is
-counted once.  Sets with two components (n >= 10) are counted from the pairs of five-plaquette components that share no link.
+counted once.  Sets with two components (n >= 10) are counted from the pairs of connected sets that share no link (for NMAX <= 14; three components need 15).
 Also printed: the five-plaquette sets that are 'caps' (the five faces other than one face F of a unit cube, with F in C)."""
 import sys, itertools
 from collections import Counter
@@ -64,11 +64,14 @@ for r in PS:
 conn = Counter(len(Y) for Y in found)
 total = Counter(conn)
 fives = [Y for Y in found if len(Y) == 5]
-if NMAX >= 10:                            # two components of five plaquettes each, sharing no link
-    two = 0
-    for Y1, Y2 in itertools.combinations(fives, 2):
-        if not ({l for p in Y1 for l in links(p)} & {l for p in Y2 for l in links(p)}): two += 1
-    total[10] += two
+# sets with two components (each has >= 5 plaquettes, so three need >= 15): unordered pairs of connected sets sharing no link, |Y1| + |Y2| <= NMAX
+two = Counter()
+small = [Y for Y in found if len(Y) <= NMAX - 5]
+lk = {Y: {l for p in Y for l in links(p)} for Y in small}
+for Y1, Y2 in itertools.combinations(small, 2):
+    if len(Y1) + len(Y2) <= NMAX and not (lk[Y1] & lk[Y2]): two[len(Y1) + len(Y2)] += 1
+total.update(two)
+assert NMAX < 15, 'three components would be possible'
 def is_cap(Y):
     for F in C:                            # Y and F are the six faces of a unit cube
         Z = set(Y) | {F}
@@ -76,5 +79,6 @@ def is_cap(Y):
         if all(c == 2 for c in cnt.values()) and len(cnt) == 12: return True
     return False
 print(f"connected sets by size: {dict(sorted(conn.items()))}")
+print(f"sets with two components by size: {dict(sorted(two.items()))}")
 print(f"all sets Y by size (N_n): {dict(sorted(total.items()))}")
 print(f"five-plaquette sets: {len(fives)}, of which caps (a unit cube minus a face in C): {sum(is_cap(Y) for Y in fives)}")

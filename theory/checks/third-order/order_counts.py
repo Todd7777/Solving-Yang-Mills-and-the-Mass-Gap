@@ -9,6 +9,7 @@ from collections import Counter, defaultdict
 from fractions import Fraction
 from fronts_decision import fronts_through_origin, make
 
+PRUNE = True   # the capacity prune: a necessary condition (links covered once need a later element through them), so it changes no count
 def count_junctions(D, NMAX, SIZES, front_cache={}):
     """number of candidate junctions with n <= NMAX plaquettes and further fronts of exactly the sizes SIZES, by n"""
     SIZES = tuple(sorted(SIZES))
@@ -82,9 +83,13 @@ def count_junctions(D, NMAX, SIZES, front_cache={}):
         for a, b in itertools.combinations(range(len(nodes)), 2):
             if nodes[a] & nodes[b]: par[f2(a)] = f2(b)
         if len({f2(a) for a in range(len(nodes))}) == 1: found.add((P, F))
+    def capacity(P, rem):
+        # every link covered once must be covered again: by a later plaquette (at most 4 links each) or a later front (at most its size)
+        return 4*(NMAX - len(P)) + sum(k*c for k, c in rem.items() if c > 0)
     def rec(cnt, P, F, excl):
         rem = remaining(F)
         defi = [l for l, c in cnt.items() if c == 1]
+        if PRUNE and len(defi) > capacity(P, rem): return
         if not defi:
             key = (P, F)
             if key in seen: return
@@ -92,6 +97,8 @@ def count_junctions(D, NMAX, SIZES, front_cache={}):
             finish(P, F)
             V = set().union(*[fverts(G) for G, lam in F]) | (set().union(*[pverts(c) for c in P]) if P else set())
             seeds = set()
+            U = set(cnt)
+            capf = capacity(P, rem)
             for v in V:
                 if len(P) < NMAX:
                     for c in plaqs_at(v):
@@ -100,6 +107,7 @@ def count_junctions(D, NMAX, SIZES, front_cache={}):
                     for G in FV:
                         if rem[len(G)] <= 0: continue
                         H = translate(G, v)
+                        if PRUNE and len(H - U) > capf - len(H): continue     # the new links of H could not all be covered again
                         for lam in (-1, 1):
                             if can_add(F, H, lam): seeds.add(('f', (H, lam)))
             for kind, obj in seeds:
@@ -116,11 +124,14 @@ def count_junctions(D, NMAX, SIZES, front_cache={}):
         layers_with_l = {lam for G, lam in F if l in G}
         cfr = []
         if sum(rem.values()) > 0:
+            U = set(cnt); D1 = set(defi); capf = capacity(P, rem)
             for lam in (-1, 1):
                 if lam in layers_with_l: continue
                 for G in FL.get(l[1], []):
                     if rem[len(G)] <= 0: continue
                     H = translate(G, l[0])
+                    # links covered once after adding H: the old ones not in H and the new ones of H; each needs a later element
+                    if PRUNE and len(D1) - len(H & D1) + len(H - U) > capf - len(H): continue
                     if can_add(F, H, lam): cfr.append((H, lam))
         room = NMAX - len(P)
         fopts = [()] + [(x,) for x in cfr]
