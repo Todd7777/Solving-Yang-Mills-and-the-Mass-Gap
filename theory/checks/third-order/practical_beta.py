@@ -52,6 +52,10 @@ def load_terms(d, path, closed=None, closed_from=None):
     if closed: T.CLOSED_EXACT = {d: closed}
     if closed_from: T.CLOSED_FROM = closed_from
     if d == 3: T.ZSMALL = {4: {5: 26, 6: 302, 7: 288}, 3: {n: 0 for n in range(5, 40)}}
+    if d == 3: T.ZEXITN = {3: {3: {6: 20, 7: 20, 8: 46, 9: 52, 10: 150, 11: 260, 12: 382, 13: 360, 14: 288, 15: 144, 16: 76},
+                               4: {8: 76, 9: 148, 10: 328, 11: 484, 12: 1143, 13: 2020, 14: 3114, 15: 3672, 16: 3651, 17: 2760, 18: 1780, 19: 780, 20: 315},
+                               5: {8: 12, 10: 376, 11: 880, 12: 2271, 13: 4096, 14: 8562, 15: 15532, 16: 25227, 17: 33440, 18: 38064, 19: 35740,
+                                   20: 28695, 21: 18600, 22: 10212, 23: 3972, 24: 1296}}}     # zexit_count_n.py
 ORDER = 5
 def run(d, betas):
     """The criterion is the whole deficit of the lower bound, D = 8(K+1)theta + log(Ubar/Ups) + log(1+delta'), against beta^3/432: then

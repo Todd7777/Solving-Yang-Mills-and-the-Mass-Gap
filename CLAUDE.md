@@ -91,7 +91,9 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   $2\cdot10^{-9}$) and $\beta\le2.3\cdot10^{-5}$ ($d=3$) (Remark 16.5, Numerical; the criterion is the whole deficit $8(K+1)\theta+\log(\bar\Upsilon/\Upsilon)+\log(1+\delta')$, and an
   earlier $2.6\cdot10^{-5}$ for $d=3$ had left out $\theta_7$). Lemma 16.6 (13 November): junction sums by corners, any order; Remark 16.7: the next order by exhaustive
   search, and $\theta_{10}$ (no closed sets of 8, 9 plaquettes), give $\beta\le1.2\cdot10^{-5}$ ($d=4$) and $\beta\le9\cdot10^{-5}$ ($d=3$, about $\beta_0(3)/4.5$); one order more in $d=3$, with the closed sets of 10–12 plaquettes
-  counted exactly and $Z_{n,4}=0$ for $n\ge3$ (a planar argument), $\beta\le1.8\cdot10^{-4}$, about $\beta_0(3)/2$ (Numerical). Checks in `theory/checks/third-order/` (`three_front_count.py`, `practical_beta.py`, ...).
+  counted exactly and $Z_{n,4}=0$ for $n\ge3$ (a planar argument), $\beta\le1.8\cdot10^{-4}$; two orders more (classes generated automatically, `order_counts.py`; exact exits
+  up to 5 plaquettes; closed sets up to 14), $\beta\le3.2\cdot10^{-4}\approx\beta_0(3)/1.26$ (Numerical). Third referee (13 November): minor revisions, applied. Order 9 in $d=3$, which a
+  placeholder test says reaches $\beta_0(3)$, is being counted (`order_counts_par.py`, cache in the scratchpad). Checks in `theory/checks/third-order/` (`three_front_count.py`, `practical_beta.py`, ...).
   Two referees (Lemmas 16.1–16.2 and Remark 16.5; Lemmas 16.3–16.4, with independent searches in $d=3,4,5$): minor revisions, applied. Lemma 16.6 and Remark 16.7:
   referee pending. Next: the order after ($S_7$, $\theta_{12}$).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only

@@ -32,6 +32,7 @@ def em1x(A):
 THETA7 = False; ZSMALL = None; NOVR = None; LOW = None
 CLOSED_EXACT = None   # {d: {n: number of closed polymers of n plaquettes through a plaquette}}, for 10 <= n < CLOSED_FROM
 CLOSED_FROM = 8   # the smallest size of a closed polymer other than a cube used in theta (8: Lemma mg:lem:seven; 10: no closed sets of 8, 9 plaquettes)
+ZEXITN = None  # {d: {n: {k: Z_(n,k)}}}: exact exits with n >= 3 plaquettes (zexit_count_n.py), in place of the crude counts
 ZEXIT = None   # {d: {k: Z_(2,k)}}: exact two-plaquette exits with k >= 5 edges (zexit_count.py), in place of the crude counts
 EXACT = None; CORNERS = None   # the general corner majorant (Section 16): see the M_5 block below
 RMAX = False   # Lemma mg:lem:jsums5: the corner factors of M_4 and R as maxima instead of sums (each remaining pair dominates one corner)
@@ -135,7 +136,8 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
                           else fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(5, NMAX))),
                      exits=KS*((a if chars else b)*f(6) + b*f(7)) + (4*(Pv-1)-2*KS)*b*f(8)
                            + (b**2*fsum(ZEXIT[d][k]*f(k) for k in ZEXIT[d]) if ZEXIT else fsum(2*binomial(4*Pv+Tv*2, 2)*b**2*X(2, k)*f(k) for k in range(5, 13)))
-                           + fsum(2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(3, NMAX)),
+                           + fsum((b**n*fsum(c*f(k) for k, c in ZEXITN[d][n].items()) if (ZEXITN and d in ZEXITN and n in ZEXITN[d])
+                                   else 2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199)))) for n in range(3, NMAX)),
                      one_plaq=4*Pv*b*(Fk(8)*Ak(4) + Fk(4)*Ak(8) + Fk(4)*em1x(Ak(4))),
                      multi=best[0])
         # the junction sum at a six-edge front-pair (two narrowings with one plaquette; crude counts for the rest)

@@ -128,7 +128,7 @@ the path is not done. Closed polymers have six plaquettes (a unit cube) or at le
 from $O(\beta^5)$ to $O(\beta^6)$ (in infinite volume, and for sides $\ge8$). With
 exact counts of small fronts and junctions, and the junctions with three front-pairs of lowest order classified and counted, the lower bound resolves the third-order term
 of $SU(3)$ for $\beta\le2.6\cdot10^{-6}$ in $d=4$ (instead of $2\cdot10^{-9}$) and for $\beta\le2.3\cdot10^{-5}$ in $d=3$; with the next order counted by computer, for
-$\beta\le1.2\cdot10^{-5}$ and $\beta\le9\cdot10^{-5}$, and with one more order in $d=3$ for $\beta\le1.8\cdot10^{-4}$, about $\beta_0(3)/2$ (numerical evaluations). For $SU(2)$ the two
+$\beta\le1.2\cdot10^{-5}$ and $\beta\le9\cdot10^{-5}$, and with two more orders in $d=3$ for $\beta\le3.2\cdot10^{-4}$, about $\beta_0(3)/1.26$ (numerical evaluations). For $SU(2)$ the two
 bounds give $-9.4\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
 $-3.6\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$, in infinite volume (a numerical evaluation of the explicit constants).
 The asymptotics
@@ -4613,8 +4613,21 @@ the referees' \texttt{ref\_closed.py}, \texttt{closed\_search.py}), each with ac
 $1.8\cdot10^{-4}$ and $2\cdot10^{-4}$, against $\beta^3/432=14.5\beta^4$, $12.9\beta^4$ and $11.6\beta^4$. So the third-order term is resolved for $\beta\le1.8\cdot10^{-4}$ in $d=3$, about $\beta_0(3)/2.2$
 (\texttt{practical\_beta.py --next2}).
 
-(vi) Again almost all of $\delta'$ is the remainder of the majorant. Heuristic: each further order gains less, since $b/\bar b$ and $a/\bar a$ grow with $\beta$; perhaps two more orders
-would reach $\beta_0(3)$, where the other crude terms of $\delta'$ (two front-pairs with $n\ge3$ and a large exit, one-plaquette junctions with large fronts) would also need exact counts.
+(vi) Higher orders in $d=3$. Let $S(m):=\{(n,E)\in\mathcal E:\ n+E\le m+\frac12\}$, so that $S(5)=S_5$, $S(6)=S_6$, $S(7)=S'_7$; its corners are $(n,m+1-n)$. The classes of
+junctions with a pair in $S(m)$ (number of plaquettes, sizes of the further fronts) are generated automatically and counted by the search of (i)
+(\texttt{order\_counts.py}; for $m\le7$ it reproduces (i) and (v)). For $m=8$ there are $22$ classes and $34$ kinds of pairs. Two more counts are used:
+\begin{itemize}
+\item the exits of two front-pairs with $3$, $4$ and $5$ plaquettes (\texttt{zexit\_count\_n.py}, as for $Z_{2,k}$ in Remark~\ref{mg:rem:practical}(ii)): $Z_{n,k}\le382$, $3672$,
+$38064$ for $n=3,4,5$, in place of the crude counts;
+\item the closed polymers of up to $14$ plaquettes in $\theta$: $2$, $10$, $11$, $24$, $0$, $70$ through a plaquette of $\Z^3$ with $6$, $10$, $11$, $12$, $13$, $14$ plaquettes
+(\texttt{closed\_sets\_ext.py}), crude from $15$ on.
+\end{itemize}
+With $m=8$, $D/\beta^4=6.8$ at $\beta=3.2\cdot10^{-4}$ against $\beta^3/432=7.2\beta^4$, and $7.9$ against $7.0$ at $3.3\cdot10^{-4}$: the third-order term is resolved for
+$\beta\le3.2\cdot10^{-4}$, about $\beta_0(3)/1.26$ (\texttt{practical\_beta.py --terms}).
+
+(vii) Heuristic: one more order ($m=9$, $36$ classes) would reach $\beta_0(3)$. With placeholder counts $10^8$ for all its new pairs, $D/\beta^4=2.4$ against $5.75$ at $\beta=4.026\cdot10^{-4}$, just
+below $\beta_0(3)=4.0262\cdot10^{-4}$. Its counts are being computed. In $d=4$ the next obstacle besides the majorant is the crude count of junctions with two four-edge front-pairs and
+at least eight plaquettes, which grows like $\beta^4$ relative to $\beta^4$ and exceeds $\beta^3/432$ near $2\cdot10^{-5}$.
 \end{remark}
 
 
@@ -4767,7 +4780,7 @@ Closed sets of plaquettes have $6$ (a unit cube) or $\ge8$ plaquettes; ratio bou
 The junctions with three front-pairs of lowest order: three caps or a unit cube ($N_3=3\nu_2+12(d-3)$); a widening with a cap, or a cube with a bent domino ($N_2$, $N'_2$); counted exactly in the junction sum ($M_5$) & Lem.~\ref{mg:lem:threelow}, \ref{mg:lem:jsums5} & Theorem\\
 Exact $N^v_k$ ($k\le10$, $d=3$; $k\le9$, $d=4$), $Z_{n,4}$ ($n\le7$), $N_3,N_2,N'_2$; $SU(2)$ whole range: $\ge-9.4\cdot10^{-5}$ ($d=4$), $\ge-3.6\cdot10^{-5}$ ($d=3$); $SU(3)$: third-order term resolved for $\beta\le2.6\cdot10^{-6}$ ($d=4$; before $2\cdot10^{-9}$) and $\beta\le2.3\cdot10^{-5}$ ($d=3$) & Rem.~\ref{mg:rem:practical} & Numerical\\
 Junction sums by corners: any finite down-closed set $S$ of exponents $(n,E)$ counted exactly, the rest from the minimal $(n,E)$ outside $S$ & Lem.~\ref{mg:lem:corners} & Theorem\\
-The next order $S_6$ by exhaustive search; no closed sets of $8$, $9$ plaquettes in $\Z^3,\Z^4$, so $\theta_{10}$; $SU(3)$ third-order term resolved for $\beta\le1.2\cdot10^{-5}$ ($d=4$) and $\beta\le9\cdot10^{-5}$ ($d=3$); one order more in $d=3$: $\beta\le1.8\cdot10^{-4}$ & Rem.~\ref{mg:rem:nextorder} & Numerical\\
+The next order $S_6$ by exhaustive search; no closed sets of $8$, $9$ plaquettes in $\Z^3,\Z^4$, so $\theta_{10}$; $SU(3)$ third-order term resolved for $\beta\le1.2\cdot10^{-5}$ ($d=4$) and $\beta\le9\cdot10^{-5}$ ($d=3$); in $d=3$ one order more: $\beta\le1.8\cdot10^{-4}$, two: $\beta\le3.2\cdot10^{-4}$ & Rem.~\ref{mg:rem:nextorder} & Numerical\\
 $d=3$: junctions with two four-edge front-pairs have at most two plaquettes (planar boundary argument) & Rem.~\ref{mg:rem:nextorder}(iv) & Theorem\\
 Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order in the $C$-odd sector ($U(1)$, $d\ge4$; Conjecture~\ref{mg:conj:codd}); the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\
 \bottomrule
