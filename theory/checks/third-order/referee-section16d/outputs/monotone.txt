@@ -1,0 +1,9 @@
+a_b   : strictly increasing on 400 points of [1e-24, beta_0(3)]: True;  from 5.555556e-02 to 5.555742e-02
+b_b   : strictly increasing on 400 points of [1e-24, beta_0(3)]: True;  from 2.000000e+00 to 2.001208e+00
+eps_b : strictly increasing on 400 points of [1e-24, beta_0(3)]: True;  from 2.000000e+00 to 2.000805e+00
+b2_b2 : strictly increasing on 400 points of [1e-24, beta_0(3)]: True;  from 1.111111e-01 to 1.111186e-01
+s6_b6 : strictly increasing on 400 points of [1e-24, beta_0(3)]: True;  from 5.292215e-07 to 5.293280e-07
+th_b6 : strictly increasing on 400 points of [1e-24, beta_0(3)]: True;  from 4.270064e-04 to 1.625111e+03
+lu_b4 : strictly increasing on 400 points of [1e-24, beta_0(3)]: True;  from 2.624400e-44 to 4.258834e-03
+u_b   : strictly increasing on 400 points of [1e-24, beta_0(3)]: True;  from 5.555556e-02 to 5.555742e-02
+1 <= Ubar <= 1 + kappa: True;  Ubar(beta_0) - 1 = 6.710357e-05 = 0.1667 kappa;  Ubar increasing: True

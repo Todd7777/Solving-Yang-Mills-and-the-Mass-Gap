@@ -1,0 +1,7 @@
+S(8): 22 classes (multisets K), 43 (n, K) pairs of class and size
+  terms: 34 kinds of pairs; (n, K) not counted by the referee: []
+  equal to orders/d3_m8.json: True
+S''_9: classes with a pair outside S(8): [(4, 4), (4, 4, 4), (4, 4, 6), (4, 4, 7), (4, 6), (4, 7), (4, 8), (4, 9), (4, 10), (4, 11), (6, 6), (6, 7)] (12 multisets)
+  terms: 44; (n, K) not counted by the referee: []
+  equal to orders/d3_s9.json: True
+S(9): 36 classes (multisets K)

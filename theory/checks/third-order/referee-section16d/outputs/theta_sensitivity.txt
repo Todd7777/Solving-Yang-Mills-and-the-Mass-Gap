@@ -1,0 +1,3 @@
+closed polymers exact below 15, crude from 15: D/beta^4 = 2.5543 (8(K+1)theta 0.0274) against 5.7494
+closed polymers exact below 14, crude from 14: D/beta^4 = 2.9105 (8(K+1)theta 0.3836) against 5.7494
+closed polymers exact below 13, crude from 13: D/beta^4 = 7.8968 (8(K+1)theta 5.3699) against 5.7494

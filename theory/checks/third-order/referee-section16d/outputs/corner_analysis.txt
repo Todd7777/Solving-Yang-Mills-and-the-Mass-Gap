@@ -1,0 +1,17 @@
+beta_0(3) = 0.00040262143: b = 8.05729e-04, a = 2.23686e-05, bbar = 0.0078125, abar = 0.00048828125, b/bbar = 0.1031, a/abar = 0.0458
+  delta'/beta^4 = 2.5227; parts/beta^4: two 0.1011, four 0, exits 0.02996, one_plaq 0.03979, multi 2.352
+  corners of S''_9 (from the JSON) and (b/bbar)^n (a/abar)^E: (2, 7): 4.504e-12, (3, 6): 1.014e-11, (5, 5): 2.354e-12, (6, 4): 5.300e-12, (7, 3): 1.193e-11, (8, 2): 2.686e-11
+  exact terms in all: 2.6182e-03 beta^4;  those with n + E >= 9 (order 9): 1.144e-17 beta^4
+     (96, 3, 2.0, 4, 1): 2.6000e-03 beta^4
+     (24, 2, 3.0, 4, 1): 1.8046e-05 beta^4
+     (24, 2, 3.5, 4, 1): 8.5347e-08 beta^4
+     (24, 3, 3.0, 4, 1): 1.4540e-08 beta^4
+     (48, 2, 4.0, 4, 1): 8.0731e-10 beta^4
+     (276, 4, 3.0, 4, 1): 1.3472e-10 beta^4
+  corner term 2.3494 beta^4 = max corner factor 2.6862e-11 x S3 = 2.2984e-03
+  S(8) (as in (vi)): corners [(2, '7'), (3, '6'), (4, '5'), (5, '4'), (6, '3'), (7, '2')]; largest at (7, '2'): corner term 22.780 beta^4, D/beta^4 ~ 22.984  (beta^3/432 = 5.749 beta^4)
+  S''_9 (as in (vii)): corners [(2, '7'), (3, '6'), (5, '5'), (6, '4'), (7, '3'), (8, '2')]; largest at (8, '2'): corner term 2.349 beta^4, D/beta^4 ~ 2.554  (beta^3/432 = 5.749 beta^4)
+  S(8) + the zero pairs (6,3),(6,7/2),(7,2): corners [(2, '7'), (3, '6'), (4, '5'), (5, '4'), (7, '3'), (8, '2')]; largest at (5, '4'): corner term 4.495 beta^4, D/beta^4 ~ 4.699  (beta^3/432 = 5.749 beta^4)
+  S(8) + zeros + (5,4),(5,9/2): corners [(2, '7'), (3, '6'), (4, '5'), (6, '4'), (7, '3'), (8, '2')]; largest at (8, '2'): corner term 2.349 beta^4, D/beta^4 ~ 2.554  (beta^3/432 = 5.749 beta^4)
+  S(8) + zeros + (4,5),(4,11/2): corners [(2, '7'), (3, '6'), (5, '4'), (7, '3'), (8, '2')]; largest at (5, '4'): corner term 4.495 beta^4, D/beta^4 ~ 4.699  (beta^3/432 = 5.749 beta^4)
+  corners of S''_9 recomputed from the definition: [(2, '7'), (3, '6'), (5, '5'), (6, '4'), (7, '3'), (8, '2')]  JSON: [(2, 7), (3, 6), (5, 5), (6, 4), (7, 3), (8, 2)]

@@ -1,0 +1,18 @@
+d=4, Remark practical (iii) [M_5, theta_7]: beta_* = 2.6e-06, D_*/beta_*^4 = 871.391, p = 2.5, majorant (mpf('0.001953125'), mpf('0.00006103515625'), 'M5')
+   t =      1: all hypotheses hold; D/beta^4 = 871.395 <= (1+k)^3 D_*/beta_*^4 = 871.397: True
+   t =    0.9: all hypotheses hold; D/beta^4 = 871.241 <= (1+k)^3 D_*/beta_*^4 = 871.397: True
+   t =    0.5: all hypotheses hold; D/beta^4 = 870.976 <= (1+k)^3 D_*/beta_*^4 = 871.397: True
+   t =    0.1: all hypotheses hold; D/beta^4 = 870.948 <= (1+k)^3 D_*/beta_*^4 = 871.397: True
+   t =   1e-3: all hypotheses hold; D/beta^4 = 870.948 <= (1+k)^3 D_*/beta_*^4 = 871.397: True
+   t =   1e-6: all hypotheses hold; D/beta^4 = 870.948 <= (1+k)^3 D_*/beta_*^4 = 871.397: True
+   t =  1e-12: all hypotheses hold; D/beta^4 = 870.948 <= (1+k)^3 D_*/beta_*^4 = 871.397: True
+   t =  1e-20: all hypotheses hold; D/beta^4 = 870.948 <= (1+k)^3 D_*/beta_*^4 = 871.397: True
+d=4, Remark nextorder (iii) [S_6, theta_10]: beta_* = 1.2e-05, D_*/beta_*^4 = 187.944, p = 2.5, majorant (mpf('0.00390625'), mpf('0.0001220703125'), 'corners')
+   t =      1: all hypotheses hold; D/beta^4 = 187.949 <= (1+k)^3 D_*/beta_*^4 = 187.951: True
+   t =    0.9: all hypotheses hold; D/beta^4 = 187.947 <= (1+k)^3 D_*/beta_*^4 = 187.951: True
+   t =    0.5: all hypotheses hold; D/beta^4 = 187.946 <= (1+k)^3 D_*/beta_*^4 = 187.951: True
+   t =    0.1: all hypotheses hold; D/beta^4 = 187.946 <= (1+k)^3 D_*/beta_*^4 = 187.951: True
+   t =   1e-3: all hypotheses hold; D/beta^4 = 187.946 <= (1+k)^3 D_*/beta_*^4 = 187.951: True
+   t =   1e-6: all hypotheses hold; D/beta^4 = 187.946 <= (1+k)^3 D_*/beta_*^4 = 187.951: True
+   t =  1e-12: all hypotheses hold; D/beta^4 = 187.946 <= (1+k)^3 D_*/beta_*^4 = 187.951: True
+   t =  1e-20: all hypotheses hold; D/beta^4 = 187.946 <= (1+k)^3 D_*/beta_*^4 = 187.951: True

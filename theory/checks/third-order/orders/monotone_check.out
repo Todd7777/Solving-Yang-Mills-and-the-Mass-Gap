@@ -1,0 +1,12 @@
+a             increasing on 400 points of [1e-24, beta_0(3)]: True;  from 0.05555555556 to 0.05555741954
+b             increasing on 400 points of [1e-24, beta_0(3)]: True;  from 2 to 2.001208243
+eps           increasing on 400 points of [1e-24, beta_0(3)]: True;  from 2 to 2.000805459
+gam           increasing on 400 points of [1e-24, beta_0(3)]: True;  from 2 to 2.001208243
+b2            increasing on 400 points of [1e-24, beta_0(3)]: True;  from 0.1111111111 to 0.1111185672
+s5            increasing on 400 points of [1e-24, beta_0(3)]: True;  from 9.525986892e-06 to 9.52758507e-06
+s6            increasing on 400 points of [1e-24, beta_0(3)]: True;  from 5.29221494e-07 to 5.293280409e-07
+th            increasing on 400 points of [1e-24, beta_0(3)]: True;  from 0.0004270063776 to 1625.110585
+ups           increasing on 400 points of [1e-24, beta_0(3)]: True;  from 2.6244e-44 to 0.004258834005
+Ubar_minus_a  increasing on 400 points of [1e-24, beta_0(3)]: True;  from 1 to 1.000044735
+Ubar - a >= 1 everywhere: True;  Ups >= 1 everywhere: True;  Ubar(beta_0) - 1 = 6.71036e-05 = 0.1666666660 beta_0 (<= kappa/5 with kappa = beta_0: True)
+all facts hold: True

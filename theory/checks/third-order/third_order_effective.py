@@ -77,6 +77,10 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
         done = abs(xF_n-xF) + abs(xC_n-xC) + abs(cT_n-cT) < mpf(10)**-30
         xF, xC, cT = xF_n, xC_n, cT_n
         if done: break
+    if fixed is None:                          # raise the decoration constants by a relative 1e-15: their conditions then hold strictly (the fixed point
+        from third_order_constants import INFLATE   # is approached from below, and the series are truncated)
+        xF, xC, hJ = INFLATE*xF, INFLATE*xC, INFLATE*hJ
+        cT = exp(hJ)/(1-omega)
     A = [exp(cT)*fsum(k**j*N[k]*a**(mpf(k)/2)*exp(xF*k) for k in range(4, KMAX)) for j in range(3)]
     Y = [Yf(xC, j) for j in range(3)]
     def X(n, k):

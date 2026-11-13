@@ -1,0 +1,2 @@
+d=3 beta=3.2e-4: D/beta^4 = 6.761 = theta-loss 0.00215 + log(Ubar/Ups) 0.0027 + log(1+delta') 6.756;  beta^3/432 = 7.234 beta^4 (resolved);  largest parts of delta': multi 6.62, two 0.0901, one_plaq 0.025
+d=3 beta=3.3e-4: D/beta^4 = 7.867 = theta-loss 0.00303 + log(Ubar/Ups) 0.0029 + log(1+delta') 7.861;  beta^3/432 = 7.015 beta^4 (not resolved);  largest parts of delta': multi 7.72, two 0.0915, one_plaq 0.0265

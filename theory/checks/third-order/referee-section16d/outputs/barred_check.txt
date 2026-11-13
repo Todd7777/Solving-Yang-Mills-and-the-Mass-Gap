@@ -1,0 +1,10 @@
+beta_0(3): (bbar, abar) = (0.0078125, 0.00048828125), c_J = 1.00036179; xibar_F = 0.0395011, xibar_C = 0.158017
+  xi_F: lhs 3.9501145493e-02  rhs 3.9501145493e-02  relative margin -3.191e-28
+  xi_C: lhs 1.5801745792e-01  rhs 1.5801745792e-01  relative margin -6.374e-28
+  six_1: lhs 6.6111490929e+00  rhs 6.6111490929e+00  relative margin -7.609e-28
+  six_2: lhs 4.5183726768e+01  rhs 4.5183726768e+01  relative margin -8.907e-28
+  six_3: lhs 4.5427163168e-06  rhs 4.5427163168e-06  relative margin -2.769e-24
+  six_4: lhs 3.1047076682e-05  rhs 3.1047076682e-05  relative margin -3.241e-24
+  six_5: lhs 3.8731622064e-04  rhs 3.8731622064e-04  relative margin -1.303e-23
+  six_6: lhs 3.5577617044e-03  rhs 3.5577617044e-03  relative margin -1.135e-23
+  ratio to the radius of convergence: Ybar 0.087, Abar (with the crude N^v_k of the tail) 0.343

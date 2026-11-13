@@ -2,7 +2,8 @@
 # Usage: python3 scaling_check.py [beta_* [JOBS]]        (default beta_* = beta_0(3); about 10 minutes with 3 jobs)
 """At beta_* the parameters of Theorem mg:thm:lower5 are found as usual (practical_beta.deficit). For beta = t beta_*, 0 < t <= 1, and k := beta_* take
     varpi = t^p varpi_*  (varpi_* = b(beta_*)^p),   F = (1+k) t F_*,   F_6 = (1+k) t F_6*,   delta' = (1+k)^2 t^4 delta'_*,
-and keep xi_F, xi_C, h_J and (bbar, abar) of beta_* (c_J = e^{h_J}/(1 - omega) decreases with t). Every term of the sums in the hypotheses then has at
+and keep xi_F, xi_C, h_J and (bbar, abar) of beta_* (these constants come out of lower3e raised by a relative 1e-15, so that their conditions hold
+strictly; c_J = e^{h_J}/(1 - omega) is at most its value at beta_*, as omega = O(t^(4-p))). Every term of the sums in the hypotheses then has at
 least the order in t of its side: t^4 in Sigma_4^(4) (two: varpi b_2 ~ t^(p+2); exits: a f(6) ~ t^4 and more; one plaquette ~ t^5; the majorant ~ t^9),
 t in the conditions on F and F_6 (need, Sigma^(6) ~ t), and the decoration conditions improve (C_varpi a^{k/2} Y_0 ~ t^(3-p)). The factors 1 + k absorb
 the decrease of Ubar = 1 + beta/6 + ... on the right sides. As 8(K+1)theta/beta^6 and log(Ubar/Ups)/beta^4 increase with beta, then
@@ -35,8 +36,7 @@ def params(beta_s):
 def scaled(args):
     beta_s, P, t = args
     k = beta_s; beta = t*beta_s; g = su3(beta)
-    r = 1 + mpf(10)**-15              # xi_F, xi_C, h_J raised by 1e-15 (relative), which absorbs the rounding of their fixed point at t = 1
-    fixed = dict(varpi=P['varpi']*t**P['p'], xF=r*P['xF'], xC=r*P['xC'], hJ=r*P['hJ'], F=(1+k)*t*P['F'], F6=(1+k)*t*P['F6'], dl=(1+k)**2*t**4*P['delta'])
+    fixed = dict(varpi=P['varpi']*t**P['p'], xF=P['xF'], xC=P['xC'], hJ=P['hJ'], F=(1+k)*t*P['F'], F6=(1+k)*t*P['F6'], dl=(1+k)**2*t**4*P['delta'])
     try:
         lo = T.lower3e(beta, d, g, chars=True, fixed=fixed, bbar_grid=[P['bars'][0]], abar_grid=[P['bars'][1]])
     except AssertionError as err:

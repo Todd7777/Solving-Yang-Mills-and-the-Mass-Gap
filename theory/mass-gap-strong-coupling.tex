@@ -129,8 +129,8 @@ from $O(\beta^5)$ to $O(\beta^6)$ (in infinite volume, and for sides $\ge8$). Wi
 exact counts of small fronts and junctions, and the junctions with three front-pairs of lowest order classified and counted, the lower bound resolves the third-order term
 of $SU(3)$ for $\beta\le2.6\cdot10^{-6}$ in $d=4$ (instead of $2\cdot10^{-9}$) and for $\beta\le2.3\cdot10^{-5}$ in $d=3$; with the next order counted by computer, for
 $\beta\le1.2\cdot10^{-5}$ and $\beta\le9\cdot10^{-5}$; and in $d=3$, with three more orders (the last in part) and a scaling of the parameters in $\beta$, on the whole range
-$\beta<\beta_0(3)$ (numerical evaluations). With the polymer tails of the upper bound counted the same way, and its five-face caps evaluated by characters, the upper
-bound does so too: for $SU(3)$ in $d=3$, $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)\le0.41\beta^4$ for all $\beta<\beta_0(3)$, so the third-order term $\beta^3/432$ is
+$\beta<\beta_0(3)$ (numerical evaluations, in infinite volume). With the polymer tails of the upper bound counted the same way, and its five-face caps evaluated by characters, the upper
+bound does so too: for $SU(3)$ in $d=3$, in infinite volume, $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)\le0.41\beta^4$ for all $\beta<\beta_0(3)$, so the third-order term $\beta^3/432$ is
 determined from both sides on the whole range (numerical evaluations; in $d=4$ for $\beta\le1.2\cdot10^{-5}$). For $SU(2)$ the two
 bounds give $-9.4\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
 $-3.6\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$, in infinite volume (a numerical evaluation of the explicit constants).
@@ -4527,8 +4527,8 @@ the general bounds, the majorant $M_5$ of Lemma~\ref{mg:lem:jsums5} with $R$ a m
 \item $d=4$: $D/\beta^4=1.3\cdot10^4$, $1.2\cdot10^3$, $8.7\cdot10^2$ and $1.3\cdot10^2$ at $\beta=10^{-5}$, $3\cdot10^{-6}$, $2.6\cdot10^{-6}$ and $10^{-6}$;
 \item $d=3$: $D/\beta^4=1.2\cdot10^4$, $1.9\cdot10^2$, $91$ and $13$ at $\beta=10^{-4}$, $3\cdot10^{-5}$, $2.3\cdot10^{-5}$ and $10^{-5}$.
 \end{itemize}
-Against $\beta^3/432=8.9\cdot10^2\beta^4$ at $2.6\cdot10^{-6}$ and $1.0\cdot10^2\beta^4$ at $2.3\cdot10^{-5}$, and as $D/\beta^4$ increases with $\beta$ (up to a factor $(1+\beta)^3$, by
-the scaling of Remark~\ref{mg:rem:nextorder}(vii)), the lower bound places $m-4\log(1/u)+\log\Upsilon$
+Against $\beta^3/432=8.9\cdot10^2\beta^4$ at $2.6\cdot10^{-6}$ and $1.0\cdot10^2\beta^4$ at $2.3\cdot10^{-5}$, and as $D/\beta^4$ increases with $\beta$ (up to a factor $(1+\beta_*)^3$, $\beta_*$ the point of the
+evaluation, by the scaling of Remark~\ref{mg:rem:nextorder}(vii)), the lower bound places $m-4\log(1/u)+\log\Upsilon$
 above $-\beta^3/432$:
 \begin{itemize}
 \item for $\beta\le2.6\cdot10^{-6}$ in $d=4$; before this section this needed $\beta\lesssim2\cdot10^{-9}$;
@@ -4620,7 +4620,7 @@ $1.8\cdot10^{-4}$ and $2\cdot10^{-4}$, against $\beta^3/432=14.5\beta^4$, $12.9\
 
 (vi) Higher orders in $d=3$. Let $S(m):=\{(n,E)\in\mathcal E:\ n+E\le m+\frac12\}$, so that $S(5)=S_5$, $S(6)=S_6$, $S(7)=S'_7$; its corners are $(n,m+1-n)$. The classes of
 junctions with a pair in $S(m)$ (number of plaquettes, sizes of the further fronts) are generated automatically and counted by the search of (i)
-(\texttt{order\_counts.py}; for $m\le7$ it reproduces (i) and (v)). For $m=8$ there are $22$ classes and $34$ kinds of pairs. Two more counts are used:
+(\texttt{order\_counts.py}; for $m\le7$ it reproduces (i) and (v)). For $m=8$ there are $43$ classes, with $22$ multisets of sizes of further fronts, and $34$ kinds of pairs. Two more counts are used:
 \begin{itemize}
 \item the exits of two front-pairs with $3$, $4$ and $5$ plaquettes (\texttt{zexit\_count\_n.py}, as for $Z_{2,k}$ in Remark~\ref{mg:rem:practical}(ii)): $Z_{n,k}\le382$, $3672$,
 $38064$ for $n=3,4,5$, in place of the crude counts;
@@ -4630,16 +4630,17 @@ $38064$ for $n=3,4,5$, in place of the crude counts;
 With $m=8$, $D/\beta^4=6.8$ at $\beta=3.2\cdot10^{-4}$ against $\beta^3/432=7.2\beta^4$, and $7.9$ against $7.0$ at $3.3\cdot10^{-4}$: the third-order term is resolved for
 $\beta\le3.2\cdot10^{-4}$, about $\beta_0(3)/1.26$ (\texttt{practical\_beta.py --terms}).
 
-(vii) The whole range in $d=3$. Of the $36$ classes of order $m=9$, those that give pairs with two or three plaquettes include fronts of up to $15$ edges and are slow to count.
+(vii) The whole range in $d=3$. Of the $36$ multisets of sizes of further fronts of order $m=9$, those that give pairs with two or three plaquettes include fronts of up to $15$
+edges and are slow to count.
 Lemma~\ref{mg:lem:corners} allows these pairs to be left out, so take
 \[
 S''_9:=S(8)\cup\bigl\{(n,E)\in\mathcal E:\ n+E\le\tfrac{19}2,\ n\ge4\bigr\},
 \]
-whose corners are $(2,7),(3,6),(5,5),(6,4),(7,3),(8,2)$. Its new pairs (\texttt{order\_counts.py}; \texttt{orders/assemble\_d3\_s9.py} checks that the twelve classes counted are all that have such a pair) are:
+whose corners are $(2,7),(3,6),(5,5),(6,4),(7,3),(8,2)$. Its new pairs (\texttt{order\_counts.py}; \texttt{orders/assemble\_d3\_s9.py} checks that the twelve multisets counted are all that have such a pair) are:
 \begin{itemize}
 \item at $(4,5)$: $2432$ junctions with fronts of $4,4,10$ edges; $168$ with $4,4,4,6$ (two pairs each); $64$ with $4,6,6$ (two pairs each, $p'$ of six edges); $276$ with $4,4,7$ ($p'$ of seven edges);
 \item at $(4,\frac{11}2)$: $4556$ with $4,4,11$; $168$ with $4,4,4,7$ (two pairs each); $128$ with $4,6,7$ ($p'$ of six edges);
-\item at $(5,4)$: $1152$ with $4,4,8$, and $4$ with $4,4,4,4$ (three pairs each); at $(5,\frac92)$: $2288$ with $4,4,9$;
+\item at $(5,4)$: $1152$ with $4,4,8$, $4$ with $4,4,4,4$ (three pairs each), and none with $4,4,6$ ($p'$ of six edges); at $(5,\frac92)$: $2288$ with $4,4,9$;
 \item none at $(6,3)$, $(6,\frac72)$, $(7,2)$.
 \end{itemize}
 With $S''_9$, the closed polymers of up to $14$ plaquettes in $\theta$ and the exact exits of (vi), $D/\beta^4$ for $SU(3)$ is:
@@ -4660,16 +4661,21 @@ $\beta^3/(432\beta^4)$ & $19.3$ & $46.3$ & $2.3\cdot10^3$ & $2.3\cdot10^5$ & $2.
 \end{center}
 \smallskip
 
-\noindent At $\beta_0(3)$ the majorant is $2.35\beta^4$ of $D$ and the loss $8(K+1)\theta$ is $0.027\beta^4$.
+\noindent At $\beta_0(3)$ the majorant is $2.35\beta^4$ of $D$ and the loss $8(K+1)\theta$ is $0.027\beta^4$. What matters is where the corners lie: the counted
+pairs of order $9$ add only $10^{-17}\beta^4$ to $D$, and with $S(8)$ and just the three empty kinds $(6,3)$, $(6,\frac72)$, $(7,2)$ added, $D=4.70\beta^4$, already below $5.75\beta^4$ (fourth
+referee). The closed polymers matter too: counted crudely from $13$ plaquettes instead of $15$, $D=7.90\beta^4$, so the absence of closed sets of $13$ plaquettes (two independent
+searches) is needed.
 
 \emph{Scaling.} Let the hypotheses of Theorem~\ref{mg:thm:lower5} hold at $\beta_*$ with parameters $\varpi_*=b(\beta_*)^p$, $F_*$, $F_{6*}$, $\xi_F$, $\xi_C$, $h_J$, $\bar b$, $\bar a$ and $\delta'_*$.
 For $\beta=t\beta_*$, $0<t\le1$, and $\kappa:=\beta_*$ take
 \[
 \varpi:=t^p\varpi_*,\qquad F:=(1+\kappa)tF_*,\qquad F_6:=(1+\kappa)tF_{6*},\qquad\delta':=(1+\kappa)^2t^4\delta'_*,
 \]
-and the same $\xi_F$, $\xi_C$, $h_J$, $\bar b$, $\bar a$; then $c_J=e^{h_J}/(1-\omega)$ decreases with $t$. The quantities $a/\beta$, $b/\beta$, $\epsilon/\beta$, $b_2/\beta^2$, $\sigma_6/\beta^6$, $\theta/\beta^6$ and
-$\log(\bar\Upsilon/\Upsilon)/\beta^4$ increase with $\beta$, and $1\le\bar\Upsilon\le1+\kappa$ (checked at $302$ points from $10^{-24}$ to $\beta_0(3)$). So every term has at least the order in $t$ of its
-side:
+and the same $\xi_F$, $\xi_C$, $h_J$, $\bar b$, $\bar a$. (In all evaluations the constants defined by fixed points or by truncated series, $\xi_F$, $\xi_C$, $h_J$, the barred
+constants and the solutions of the six inequalities of Definition~\ref{mg:def:jconst}, are raised by a relative $10^{-15}$, which makes their defining inequalities strict; the fixed
+points are approached from below.) Then $c_J=e^{h_J}/(1-\omega)$ is at most its value at $\beta_*$, as $\omega=O(t^{4-p})$. The quantities $a/\beta$, $b/\beta$, $\epsilon/\beta$, $b_2/\beta^2$,
+$\sigma_6/\beta^6$, $\theta/\beta^6$ and $\log(\bar\Upsilon/\Upsilon)/\beta^4$ increase with $\beta$; so does $\bar\Upsilon-a=1+\beta/9+O(\beta^2)$, which is therefore $\ge1$; and $\bar\Upsilon(\beta_*)-1\le\kappa/5$ (checked
+at $400$ points from $10^{-24}$ to $\beta_0(3)$ at $220$ digits, \texttt{monotone\_check.py}). So every term has at least the order in $t$ of its side:
 \begin{itemize}
 \item in $\Sigma^{(4)}_4$, which is to be compared with $\bar\Upsilon\delta'\sim t^4$: the shifts and jumps $\varpi\min(b^2,b_2)=O(t^{p+2})$; the junctions with two four-edge front-pairs and
 $n\ge4$ plaquettes $O(t^4)$; the exits $O(t^4)$ ($af(6)$, the others less); the one-plaquette junctions $O(t^5)$; the counted pairs and the corner term $O(t^{n+E})$ with $n+E\ge5$;
@@ -4677,16 +4683,17 @@ $n\ge4$ plaquettes $O(t^4)$; the exits $O(t^4)$ ($af(6)$, the others less); the 
 \item $C_\varpi=O(t^{-p})$, so $\omega$ and $C_\varpi a^4$ are $O(t^{4-p})$, and $C_\varpi kP_vY_0a^{k/2}e^{\xi_Fk}=O(t^{3-p})$ stays below $h_J$ ($p\le\frac52$); $a^4\bar\Upsilon(1+\delta')=O(t^4)$
 stays below $\varpi$.
 \end{itemize}
-The values $f(k)$, $k\ge6$, carry the factor $1+\kappa$, which enters each sum at most linearly; it enters the left sides of the conditions on $F$ and $F_6$ only at relative
-order $\beta^3$, so there it absorbs the decrease of $\bar\Upsilon(1+\delta')-a$ on the right sides, and $(1+\kappa)^2$ in $\delta'$ absorbs that of $\bar\Upsilon$. Hence the hypotheses hold at
+The values $f(k)$, $k\ge6$, carry the factor $1+\kappa$, which enters each sum at most linearly. It enters the left sides of the conditions on $F$ and $F_6$ only at relative
+order $\beta^3$, while on their right sides $\bar\Upsilon(1+\delta')-a$ is $\ge1$ at every $t$ and at most $1+\kappa/5+\delta'_*$ at $t=1$; so there the factor $1+\kappa$ absorbs its decrease, with room
+of about $4\kappa/5$. Likewise $(1+\kappa)^2$ in $\delta'$ absorbs the decrease of $\bar\Upsilon\in[1,1+\kappa/5]$. Hence the hypotheses hold at
 every $\beta\le\beta_*$, and $D(\beta)/\beta^4\le(1+\kappa)^3D(\beta_*)/\beta_*^4$ (the third factor covers $\delta'\le(1+\delta')\log(1+\delta')$). (\texttt{scaling\_check.py} checks every hypothesis at $17$ values of $t$ from $1$ to $10^{-20}$, for
-$\beta_*=\beta_0(3)$.) The argument does not use $d$ or the set $S$; it is the monotonicity of $D/\beta^4$ used for the thresholds of Remark~\ref{mg:rem:practical}(iii) and of (iii), (v),
-(vi) above.
+$\beta_*=\beta_0(3)$; the fourth referee checked the same with an evaluator of their own, and with the authors' in the two $d=4$ settings of Remark~\ref{mg:rem:practical}(iii) and (iii)
+above.) The argument does not use $d$ or the set $S$; it is the monotonicity of $D/\beta^4$ used for the thresholds of Remark~\ref{mg:rem:practical}(iii) and of (iii), (v), (vi) above.
 
 With $\beta_*=\beta_0(3)$ it gives $D(\beta)\le2.56\,\beta^4$ for all $\beta\le\beta_0(3)$, while $\beta^3/432\ge5.74\,\beta^4$ there. \emph{So for $SU(3)$ in $d=3$ the lower bound places
-$m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ above $-\beta^3/432$ on the whole range $0<\beta<\beta_0(3)$.} The grid of the table confirms this on $[10^{-12},\beta_0(3)]$ directly
-(\texttt{whole\_range\_d3.py}: with the parameters of $\beta_{i+1}$ fixed, $D(\beta)\le D(\beta_{i+1})$ for $\beta\le\beta_{i+1}$, and $D(\beta_{i+1})<\beta_i^3/432$ for all neighbours, with the
-largest ratio $0.53$, on $[3.8\cdot10^{-4},\beta_0(3)]$). It also shows how far the bound is from sharp at small $\beta$, where $D/\beta^4$ decreases towards $h_+u_1^4=8/18^4\approx7.6\cdot10^{-5}$
+$m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ above $-\beta^3/432$ on the whole range $0<\beta<\beta_0(3)$.} The grid of the table confirms this at its points
+(\texttt{whole\_range\_d3.py}; $D(\beta_{i+1})<\beta_i^3/432$ for all neighbours, with the largest ratio $0.53$, on $[3.8\cdot10^{-4},\beta_0(3)]$; on that interval the fourth referee also checked every
+hypothesis with all parameters of $\beta_0(3)$ frozen, $c_J$ included, which is admissible as the proofs use $c_J$ only as an upper bound). It also shows how far the bound is from sharp at small $\beta$, where $D/\beta^4$ decreases towards $h_+u_1^4=8/18^4\approx7.6\cdot10^{-5}$
 (Theorem~\ref{mg:thm:lower5}).
 
 In $d=4$ the next obstacle besides the majorant is the crude count of the junctions with two four-edge front-pairs and at least eight plaquettes: their term is of order

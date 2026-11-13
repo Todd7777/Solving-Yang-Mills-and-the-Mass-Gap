@@ -15,6 +15,8 @@ from constants_upper import beta0
 from junction_constants import counts
 mp.dps = 40
 
+INFLATE = 1 + mpf(10)**-15   # constants defined by fixed points or by truncated series are raised by this factor, which makes their defining inequalities
+                             # strict (the referee of Remark mg:rem:nextorder (vi)-(vii) found them to hold only up to 1e-28 to 1e-32 otherwise)
 def tree_constants(bc, a, cT, Pv, KS, N, KMAX, NMAX):
     """xi_F, xi_C, Y_j(bc), A_j for cluster weight bc (decoration factor e^{c_J} fixed)."""
     def Yf(z, p=0): return fsum(m**p*binomial(KS*m, m-1)*(bc*exp(z))**m for m in range(1, NMAX))
@@ -28,6 +30,7 @@ def tree_constants(bc, a, cT, Pv, KS, N, KMAX, NMAX):
         if done: break
     else:
         return None
+    xF, xC = xF*INFLATE, xC*INFLATE      # the fixed point is approached from below and the series are truncated: raise by a relative 1e-15
     A = [exp(cT)*fsum(k**j*N[k]*a**(mpf(k)/2)*exp(xF*k) for k in range(4, KMAX)) for j in range(3)]
     Y = [Yf(xC, j) for j in range(3)]
     return xF, xC, Y, A
@@ -43,7 +46,7 @@ def marked(xF, Y, A, f, Pv, N, KMAX):
     g2F = (A0*(1-4*Pv*Y1) + Pv*Y1*8*A0)/det; g2C = ((1-A1)*8*A0 + 8*A1*A0)/det
     r1 = gC*g2C + 8*(g2F*B1 + gF*A1); r2 = gF*g2F + g2F*B1 + gF*A1
     kC = (r1*(1-A2) + 8*A2*r2)/dt; kF = ((1-4*Pv*Y2)*r2 + Pv*Y2*r1)/dt
-    return gF, gC, g2F, g2C, kF, kC
+    return tuple(INFLATE*v for v in (gF, gC, g2F, g2C, kF, kC))     # strict inequalities despite the truncated sums B_j, A_j, Y_j
 
 def lower3(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None):
     K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x); lam = exp(2*(K+1)*th5)
