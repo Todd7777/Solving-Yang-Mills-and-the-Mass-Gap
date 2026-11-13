@@ -5,29 +5,56 @@
     in d=3, N^v_9 = 4344 in d=4), Z_{n,4} for n = 5, 6, 7 (junction_count.py);
   - the junctions with three front-pairs of lowest order counted exactly, M_5 of Lemma mg:lem:jsums5 (N_3, N_2, N'_2 of Lemma mg:lem:threelow,
     three_front_count.py), with the corner factors of M_4 and R as maxima (the second referee's improvement).
-It prints delta'/beta^4 against the third-order term beta^3/432 = beta^4/(432 beta) of SU(3), and the three largest parts of delta'/beta^4.
+It prints the whole deficit D of the lower bound (8(K+1)theta + log(Ubar/Ups) + log(1+delta')) over beta^4 against the third-order term
+beta^3/432 = beta^4/(432 beta) of SU(3), and the three largest parts of delta'/beta^4.
 Each beta takes a few minutes (the tree constants on the grid of (bbar, abar))."""
 import sys
 import third_order_effective as T
-from mpmath import mpf
+from mpmath import mpf, log
 T.THETA7 = True
-T.NOVR = {4: {6: 132, 7: 108, 8: 2034, 9: 4344}, 3: {6: 12, 7: 12, 8: 70, 9: 160, 10: 634}}   # k = 9 (d=4), 10 (d=3): referee-section16/ref_fronts.py
+T.NOVR = {4: {6: 132, 7: 108, 8: 2034, 9: 4344, 10: 43650}, 3: {6: 12, 7: 12, 8: 70, 9: 160, 10: 634, 11: 1728, 12: 6369}}   # fronts_decision.py
+# The next order (Lemma mg:lem:corners with S_6): counts of the pairs (J,p') by exhaustive search (next_order_count.py), as (count, n, E, |p'|, m):
+# weight count b^n a^E e^{m c_J} (f(|p'|) a^{4-|p'|} if |p'| > 4).  NEXT[d] = (N_4, N_{3,6}, N_{3,7}, N_{2,8}, N_{2,444}, N_{2,9}).
+NEXT = {4: (42, 680, 344, 992, 4, 256), 3: (0, 24, 24, 48, 0, 16)}
+# exact Z_(2,k), k >= 5 (zexit_count.py), in place of the crude counts of two-plaquette exits
+T.ZEXIT = {4: {6: 20, 7: 12, 8: 182, 9: 296, 10: 606, 11: 456, 12: 458}, 3: {6: 4, 7: 4, 8: 22, 9: 36, 10: 42, 11: 24, 12: 18}}
+def order6(d):
+    N3, N2, N2p = T.LOW[d]; N4, N36, N37, N28, N2444, N29 = NEXT[d]
+    h = mpf(1)/2
+    T.EXACT = {d: [(2*N3, 3, 2, 4, 1), (N2, 2, 3, 4, 1), (N2p, 2, 3 + h, 4, 1),
+                   (2*N4, 4, 2, 4, 1), (N36, 3, 3, 4, 1), (N37, 3, 3 + h, 4, 1),
+                   (N28, 2, 4, 4, 1), (3*N2444, 2, 4, 4, 2), (N2, 2, 4, 6, 1), (N29, 2, 4 + h, 4, 1)]}
+    T.CORNERS = {d: [(5, 2), (4, 3), (3, 4), (2, 5)]}
 T.ZSMALL = {4: {5: 26, 6: 302, 7: 288}, 3: {5: 0, 6: 0, 7: 0}}
 T.LOW = {4: (876, 320, 312), 3: (48, 24, 24)}
 T.RMAX = True      # the corner factors as maxima (Lemma mg:lem:jsums5)
-DEFAULT = {4: ('1e-5', '3e-6', '2.4e-6', '1e-6'), 3: ('1e-4', '3e-5', '2.6e-5', '1e-5')}
+DEFAULT = {4: ('1e-5', '3e-6', '2.6e-6', '1e-6'), 3: ('1e-4', '3e-5', '2.3e-5', '1e-5')}
+ORDER = 5
 def run(d, betas):
+    """The criterion is the whole deficit of the lower bound, D = 8(K+1)theta + log(Ubar/Ups) + log(1+delta'), against beta^3/432: then
+    m - 4log(1/u) + log(Ups) >= -D > -beta^3/432."""
+    if ORDER == 6: order6(d)
     for be in betas:
         beta = mpf(be); g = dict(T.GROUPS)['SU(3)'](beta); best = None
         for vp in (2, mpf(5)/2):
             try: lo = T.lower3e(beta, d, g, varpi_pow=vp, chars=True)
             except AssertionError: continue
             if best is None or lo['delta'] < best['delta']: best = lo
-        target = 1/(432*beta)
+        target = beta**3/432
+        D = best['loss'] - log(g['Ups'])
+        lth = best['loss'] - log(best['Ubar']) - log(1 + best['delta'])
         parts = sorted(((float(v/beta**4), k) for k, v in best['parts'].items()), reverse=True)[:3]
-        print(f"d={d} beta={be}: delta'/beta^4 = {float(best['delta']/beta**4):.3g}, beta^3/432 = {float(target):.3g} beta^4 "
-              f"({'resolved' if best['delta']/beta**4 < target else 'not resolved'});  largest parts: " + ', '.join(f'{k} {a:.3g}' for a, k in parts))
+        print(f"d={d} beta={be}: D/beta^4 = {float(D/beta**4):.4g} = theta-loss {float(lth/beta**4):.3g} + log(Ubar/Ups) {float(log(best['Ubar']/g['Ups'])/beta**4):.2g}"
+              f" + log(1+delta') {float(log(1+best['delta'])/beta**4):.4g};  beta^3/432 = {float(target/beta**4):.4g} beta^4 ({'resolved' if D < target else 'not resolved'});"
+              f"  largest parts of delta': " + ', '.join(f'{k} {a:.3g}' for a, k in parts))
         sys.stdout.flush()
+DEFAULT6 = {4: ('1.3e-5', '1.2e-5', '1e-5', '3e-6'), 3: ('1e-4', '9.5e-5', '9e-5', '3e-5')}
 if __name__ == "__main__":
-    ds = [int(sys.argv[1])] if len(sys.argv) > 1 else [4, 3]
-    for d in ds: run(d, sys.argv[2:] if len(sys.argv) > 2 else DEFAULT[d])
+    # default: Remark mg:rem:practical(iii) (Lemma mg:lem:jsums5, theta_7);  --next: the next order S_6 of Lemma mg:lem:corners with theta_10;
+    # --next-theta7: S_6 with theta_7
+    args = sys.argv[1:]
+    if '--next' in args: ORDER = 6; T.CLOSED_FROM = 10; args.remove('--next')
+    elif '--next-theta7' in args: ORDER = 6; args.remove('--next-theta7')
+    else: ORDER = 5
+    ds = [int(args[0])] if args else [4, 3]
+    for d in ds: run(d, args[1:] if len(args) > 1 else (DEFAULT if ORDER == 5 else DEFAULT6)[d])

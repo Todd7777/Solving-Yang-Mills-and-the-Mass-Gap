@@ -35,7 +35,7 @@ cd theory && for f in lattice-foundations infinite-volume-strong-coupling area-l
 
 The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.tex` source changes.
 
-## State on 2026-11-12
+## State on 2026-11-13
 
 - `theory/` holds four monographs: the foundations [F] (`lattice-foundations.tex`, errata 2026-11-09); Part II
   (`infinite-volume-strong-coupling.tex`, the infinite-volume theory, milestone T1.1; refereed and revised 2026-11-09);
@@ -87,14 +87,16 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   Section 16 (12 November), closed polymers and the third-order term at practical $\beta$. Closed sets of plaquettes have 6 (a unit cube) or $\ge8$ plaquettes
   (Lemma 16.1), so the ratio bound holds with $\theta_7=2(d-2)e^6\sigma_6+x^8/(1-x)=O(\beta^6)$ in every section (Lemma 16.2). The junctions with three front-pairs of
   lowest order are classified (three caps or a unit cube; a widening with a cap, or a cube with a bent domino) and counted exactly in the junction sum (Lemmas 16.3–16.4).
-  With exact $N^v_k$ and $Z_{n,4}$ (enumerations), the lower bound resolves the $SU(3)$ third-order term $\beta^3/432$ for $\beta\le2.4\cdot10^{-6}$ ($d=4$; before
-  $2\cdot10^{-9}$) and $\beta\le2.6\cdot10^{-5}$ ($d=3$) (Remark 16.5, Numerical). Checks in `theory/checks/third-order/` (`three_front_count.py`, `practical_beta.py`, ...).
-  Two referees (Lemmas 16.1–16.2 and Remark 16.5; Lemmas 16.3–16.4, with independent searches in $d=3,4,5$): minor revisions, applied. Next: the next order of the
-  majorant ($n+E=6$, with the half-integer corners).
+  With exact $N^v_k$, $Z_{n,4}$, $Z_{2,k}$ (enumerations), the lower bound resolves the $SU(3)$ third-order term $\beta^3/432$ for $\beta\le2.6\cdot10^{-6}$ ($d=4$; before
+  $2\cdot10^{-9}$) and $\beta\le2.3\cdot10^{-5}$ ($d=3$) (Remark 16.5, Numerical; the criterion is the whole deficit $8(K+1)\theta+\log(\bar\Upsilon/\Upsilon)+\log(1+\delta')$, and an
+  earlier $2.6\cdot10^{-5}$ for $d=3$ had left out $\theta_7$). Lemma 16.6 (13 November): junction sums by corners, any order; Remark 16.7: the next order by exhaustive
+  search, and $\theta_{10}$ (no closed sets of 8, 9 plaquettes), give $\beta\le1.2\cdot10^{-5}$ ($d=4$) and $\beta\le9\cdot10^{-5}$ ($d=3$, about $\beta_0(3)/4.5$) (Numerical). Checks in `theory/checks/third-order/` (`three_front_count.py`, `practical_beta.py`, ...).
+  Two referees (Lemmas 16.1–16.2 and Remark 16.5; Lemmas 16.3–16.4, with independent searches in $d=3,4,5$): minor revisions, applied. Lemma 16.6 and Remark 16.7:
+  referee pending. Next: the order after ($S_7$, $\theta_{12}$).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
+- The newest journal entry is `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
   Part 12: the third-order term at practical $\beta$; Part 10: the lower bound to fourth order); `journal/2026-11-11.md` has Parts 6–7 (the second- and
   third-order terms), `journal/2026-11-10.md` has Parts 1–5,
   `journal/2026-11-09b.md` is the first part of session 3 and `journal/2026-11-09.md` is session 2.

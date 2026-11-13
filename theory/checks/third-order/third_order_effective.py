@@ -30,11 +30,14 @@ def em1x(A):
 #   THETA7: the ratio bound with theta_7 (Lemma mg:lem:theta7) in place of theta_5;  NOVR[d]: exact N^v_k;  ZSMALL[d][n]: exact Z_{n,4}, n = 5, 6, 7;
 #   LOW[d] = (N_3, N_2, N'_2): the exact junctions with three front-pairs of lowest order and the majorant M_5 (Lemmas mg:lem:threelow, mg:lem:jsums5).
 THETA7 = False; ZSMALL = None; NOVR = None; LOW = None
+CLOSED_FROM = 8   # the smallest size of a closed polymer other than a cube used in theta (8: Lemma mg:lem:seven; 10: no closed sets of 8, 9 plaquettes)
+ZEXIT = None   # {d: {k: Z_(2,k)}}: exact two-plaquette exits with k >= 5 edges (zexit_count.py), in place of the crude counts
+EXACT = None; CORNERS = None   # the general corner majorant (Section 16): see the M_5 block below
 RMAX = False   # Lemma mg:lem:jsums5: the corner factors of M_4 and R as maxima instead of sums (each remaining pair dominates one corner)
 def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None, abar_grid=None, sharp6=True, uturn=True, seven=True, chars=False):
     K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x)
-    if THETA7:                                    # Lemma mg:lem:theta7: theta_7 = 2(d-2) e^6 sigma_6 + x^8/(1-x)
-        th5 = 2*(d-2)*e**6*dressed(beta, g)[1] + x**8/(1-x)
+    if THETA7:                                    # Lemma mg:lem:theta7: theta_7 = 2(d-2) e^6 sigma_6 + x^8/(1-x); with CLOSED_FROM = 10 (no closed sets of 8 or 9
+        th5 = 2*(d-2)*e**6*dressed(beta, g)[1] + x**CLOSED_FROM/(1-x)   # plaquettes, by exhaustive search: Remark mg:rem:practical) theta_10
     lam = exp(2*(K+1)*th5)
     u = g['u']; a = lam*u; gam = expm1(2*beta) + beta**2*exp(beta); b = lam*gam
     Ubar, s6 = dressed(beta, g)
@@ -104,6 +107,11 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
                     val5 = exp(cT)*(2*N3*b**3*a**2 + N2*b**2*a**3 + N2p*b**2*a**(mpf(7)/2)) \
                            + (max if RMAX else (lambda *t: fsum(t)))((b/bb)**4*(a/ab)**2, (b/bb)**3*(a/ab)**3, (b/bb)**2*(a/ab)**4)*S3
                     if val5 < best[0]: best = (val5, (bb, ab, 'M5'))
+                if EXACT is not None:            # the general corner majorant: exact (or upper-bound) counts of the pairs (J,p') in a down-closed set of (n,E),
+                    # each term (count, n, E, |p'|, m) with weight count b^n a^E e^{m c_J} (f(|p'|) a^{4-|p'|} if |p'| > 4); the rest from the corners of the complement
+                    vx = fsum(c*b**n*a**E*exp(m*cT)*(f(kp)/a**(kp-4) if kp > 4 else 1) for (c, n, E, kp, m) in EXACT[d]) \
+                         + max((b/bb)**cn*(a/ab)**ce for (cn, ce) in CORNERS[d])*S3
+                    if vx < best[0]: best = (vx, (bb, ab, 'corners'))
         for bb, tc in tcache11.items():
                 xFb, xCb, Yb, Ab = tc
                 mkb = marked(xFb, Yb, Ab, f, Pv, N, KMAX)
@@ -123,7 +131,8 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
                           + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(8, NMAX)) if ZSMALL
                           else fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(5, NMAX))),
                      exits=KS*((a if chars else b)*f(6) + b*f(7)) + (4*(Pv-1)-2*KS)*b*f(8)
-                           + fsum(2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(2, NMAX)),
+                           + (b**2*fsum(ZEXIT[d][k]*f(k) for k in ZEXIT[d]) if ZEXIT else fsum(2*binomial(4*Pv+Tv*2, 2)*b**2*X(2, k)*f(k) for k in range(5, 13)))
+                           + fsum(2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(3, NMAX)),
                      one_plaq=4*Pv*b*(Fk(8)*Ak(4) + Fk(4)*Ak(8) + Fk(4)*em1x(Ak(4))),
                      multi=best[0])
         # the junction sum at a six-edge front-pair (two narrowings with one plaquette; crude counts for the rest)
