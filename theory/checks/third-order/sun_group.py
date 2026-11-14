@@ -60,14 +60,15 @@ def coeffs(N, KMAX):
     return out
 
 def u2_bound(N, beta):
-    """an upper bound for u_2 = sup_{r not in {0, rho, rho-bar}} u_r (SU(N), N >= 3): with t = beta/N and Z >= 1 (Jensen),
+    """an upper bound for u_2 = sup_{r not in {0, rho, rho-bar}} u_r (SU(N), N >= 3; Lemma mg:lem:u2sun): with t = beta/N and Z >= 1 (Jensen),
     d_r u_r <= sum_{a,b} (t/2)^{a+b} m_r(a,b)/(a! b!), m_r(a,b) the multiplicity of r in rho^a (x) rho-bar^b, at most N^{a+b}/d_r. The irreps with
     m_r(a,b) > 0 for some a + b = 2 are Sym^2, Lambda^2 (Lambda^2 = rho-bar for N = 3), the adjoint and their conjugates, with m = 1 at (2,0), (2,0), (1,1);
-    the tail a + b >= 3 is at most R/d_r, R = e^beta - 1 - beta - beta^2/2; every other r has d_r >= N and u_r <= R/d_r^2."""
+    for N = 4, Lambda^2 is self-conjugate and also has m = 1 at (0,2), so its term is doubled (the eighth referee). The tail a + b >= 3 is at most R/d_r,
+    R = e^beta - 1 - beta - beta^2/2; every other r has u_r <= R/d_r^2 <= R."""
     beta = mpf(beta); t = beta/N; R = mp.expm1(beta) - beta - beta**2/2
     cands = [(t**2/8, mpf(N*(N + 1))/2), (t**2/4, mpf(N*N - 1))]          # Sym^2, adjoint
-    if N >= 4: cands.append((t**2/8, mpf(N*(N - 1))/2))                     # Lambda^2
-    return max([(low + R/dr)/dr for low, dr in cands] + [R/N**2])
+    if N >= 4: cands.append(((t**2/4 if N == 4 else t**2/8), mpf(N*(N - 1))/2))   # Lambda^2 (self-conjugate for N = 4)
+    return max([(low + R/dr)/dr for low, dr in cands] + [R])
 
 def sun(N, KMAX=40, sharp_u2=False):
     """the group data of SU(N) at beta, as second_order_constants.su3 (u, Ups, psi1, N, iota, Upm)"""

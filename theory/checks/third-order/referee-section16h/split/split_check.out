@@ -1,0 +1,6 @@
+Z^4 A nmax=8: unsplit {5: 4, 6: 32} (two comp. {}, boundary_hit 0); J=2: sum of pieces equal: True; J=3: sum of pieces equal: True; J=4: sum of pieces equal: True
+Z^4 Q nmax=8: unsplit {5: 18, 6: 60, 8: 24} (two comp. {}, boundary_hit 0); J=2: sum of pieces equal: True; J=3: sum of pieces equal: True; J=16: sum of pieces equal: True
+Z^4 A nmax=9: unsplit {5: 4, 6: 32, 9: 60} (two comp. {}, boundary_hit 0); J=2: sum of pieces equal: True; J=3: sum of pieces equal: True; J=4: sum of pieces equal: True
+Z^4 Q nmax=9: unsplit {5: 18, 6: 60, 8: 24, 9: 262} (two comp. {}, boundary_hit 0); J=2: sum of pieces equal: True; J=3: sum of pieces equal: True; J=16: sum of pieces equal: True
+Z^4 A nmax=10: unsplit {5: 4, 6: 32, 9: 60, 10: 506} (two comp. {}, boundary_hit 0); J=4: sum of pieces equal: True
+Z^4 Q nmax=10: unsplit {5: 18, 6: 60, 8: 24, 9: 262, 10: 1143} (two comp. {10: 27}, boundary_hit 0); J=16: sum of pieces equal: True

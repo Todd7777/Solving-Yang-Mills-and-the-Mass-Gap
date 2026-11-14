@@ -1,0 +1,46 @@
+SU(4), grid 40^3 = 64000 points: mean Weyl weight = 1.000000000000000;  <|chi|^2> = 1.000000000000,  <chi^N> = 1.000000000000
+35 irreps with parts <= 4: max |<chi_a, chi_b> - delta_ab| = 5.35e-16
+order-2 multiplicities m_r(2,0), m_r(1,1), m_r(0,2) (nonzero only):
+   r = ()             (dim 1, conj ()):  [0, 1, 0]
+   r = (1, 1)         (dim 6, conj (1, 1)):  [1, 0, 1]
+   r = (2,)           (dim 10, conj (2, 2, 2)):  [1, 0, 0]
+   r = (2, 1, 1)      (dim 15, conj (2, 1, 1)):  [0, 1, 0]
+   r = (2, 2, 2)      (dim 10, conj (2,)):  [0, 0, 1]
+beta=0.001: c0=1.000000015625000  u=3.125000008137151e-05 (u_rho from c_rho: 3.125000008137151e-05)  U+ - 1 = +7.812500e-09  U- - 1 = -7.812500e-09  [max Im c_r 1.0e-16]
+      u_2 = max over r not in {0,rho,rhobar} (parts <= 4) = 2.604167e-09 at r = (1, 1) (dim 6);  Lemma 16.11 bound = 1.306714e-09;  ratio bound/u_2 = 0.501778;  e^b-1-b = 5.002e-07
+beta=0.01: c0=1.000001562501424  u=3.125000813801595e-04 (u_rho from c_rho: 3.125000813801568e-04)  U+ - 1 = +7.812494e-07  U- - 1 = -7.812498e-07  [max Im c_r 9.9e-17]
+      u_2 = max over r not in {0,rho,rhobar} (parts <= 4) = 2.604167e-07 at r = (1, 1) (dim 6);  Lemma 16.11 bound = 1.348496e-07;  ratio bound/u_2 = 0.517822;  e^b-1-b = 5.017e-05
+         u_r = 2.604167e-07  r = (1, 1) (dim 6)
+         u_r = 1.041667e-07  r = (2, 1, 1) (dim 15)
+         u_r = 7.812504e-08  r = (2,) (dim 10)
+         u_r = 7.812504e-08  r = (2, 2, 2) (dim 10)
+         u_r = 8.138022e-11  r = (2, 1) (dim 20)
+         u_r = 8.138022e-11  r = (2, 2, 1) (dim 20)
+         u_r = 2.712675e-11  r = (3, 1, 1) (dim 36)
+         u_r = 2.712675e-11  r = (3, 2, 2) (dim 36)
+beta=0.05: c0=1.000039063390110  u=1.562510172406826e-03 (u_rho from c_rho: 1.562510172406824e-03)  U+ - 1 = +1.953087e-05  U- - 1 = -1.953112e-05  [max Im c_r 9.9e-17]
+      u_2 = max over r not in {0,rho,rhobar} (parts <= 4) = 6.510417e-06 at r = (1, 1) (dim 6);  Lemma 16.11 bound = 3.841219e-06;  ratio bound/u_2 = 0.590011;  e^b-1-b = 1.271e-03
+beta=0.1: c0=1.000156264242427  u=3.125081376393557e-03 (u_rho from c_rho: 3.125081376393560e-03)  U+ - 1 = +7.811890e-05  U- - 1 = -7.812297e-05  [max Im c_r 9.6e-17]
+      u_2 = max over r not in {0,rho,rhobar} (parts <= 4) = 2.604167e-05 at r = (1, 1) (dim 6);  Lemma 16.11 bound = 1.776856e-05;  ratio bound/u_2 = 0.682313;  e^b-1-b = 5.171e-03
+beta=0.3: c0=1.001407404213602  u=9.377196338508902e-03 (u_rho from c_rho: 9.377196338508906e-03)  U+ - 1 = +7.026305e-04  U- - 1 = -7.029602e-04  [max Im c_r 1.0e-16]
+      u_2 = max over r not in {0,rho,rhobar} (parts <= 4) = 2.343750e-04 at r = (1, 1) (dim 6);  Lemma 16.11 bound = 3.036755e-04;  ratio bound/u_2 = 1.295682;  e^b-1-b = 4.986e-02
+beta=0.5: c0=1.003915164884058  u=1.563516059995727e-02 (u_rho from c_rho: 1.563516059995727e-02)  U+ - 1 = +1.949308e-03  U- - 1 = -1.951852e-03  [max Im c_r 1.1e-16]
+      u_2 = max over r not in {0,rho,rhobar} (parts <= 4) = 6.510411e-04 at r = (1, 1) (dim 6);  Lemma 16.11 bound = 1.482579e-03;  ratio bound/u_2 = 2.277244;  e^b-1-b = 1.487e-01
+         u_r = 6.510411e-04  r = (1, 1) (dim 6)
+         u_r = 2.606706e-04  r = (2, 1, 1) (dim 15)
+         u_r = 1.955666e-04  r = (2,) (dim 10)
+         u_r = 1.955666e-04  r = (2, 2, 2) (dim 10)
+         u_r = 1.017450e-05  r = (2, 1) (dim 20)
+         u_r = 1.017450e-05  r = (2, 2, 1) (dim 20)
+         u_r = 3.395472e-06  r = (3, 1, 1) (dim 36)
+         u_r = 3.395472e-06  r = (3, 2, 2) (dim 36)
+beta=1: c0=1.015768309573006  u=3.133099808583877e-02 (u_rho from c_rho: 3.133099808583877e-02)  U+ - 1 = +7.751319e-03  U- - 1 = -7.792092e-03  [max Im c_r 1.1e-16]
+      u_2 = max over r not in {0,rho,rhobar} (parts <= 4) = 2.604130e-03 at r = (1, 1) (dim 6);  Lemma 16.11 bound = 1.364261e-02;  ratio bound/u_2 = 5.238838;  e^b-1-b = 7.183e-01
+beta=2: c0=1.064836676072653  u=6.313875471389974e-02 (u_rho from c_rho: 6.313875471389974e-02)  U+ - 1 = +3.026464e-02  U- - 1 = -3.092055e-02  [max Im c_r 1.2e-16]
+      u_2 = max over r not in {0,rho,rhobar} (parts <= 4) = 1.041431e-02 at r = (1, 1) (dim 6);  Lemma 16.11 bound = 1.493160e-01;  ratio bound/u_2 = 14.337574;  e^b-1-b = 4.389e+00
+beta=5: c0=1.495295606381897  u=1.651965691445388e-01 (u_rho from c_rho: 1.651965691445388e-01)  U+ - 1 = +1.558659e-01  U- - 1 = -1.818137e-01  [max Im c_r 3.0e-16]
+      u_2 = max over r not in {0,rho,rhobar} (parts <= 4) = 6.456188e-02 at r = (1, 1) (dim 6);  Lemma 16.11 bound = 8.119572e+00;  ratio bound/u_2 = 125.764192;  e^b-1-b = 1.424e+02
+
+real	0m1.024s
+user	0m0.910s
+sys	0m0.036s

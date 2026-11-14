@@ -1,0 +1,3 @@
+d=3 kind=A nmax=12 |C|=1 J'=12 nodes=213552 closed_hits=882 connected_sets=207 boundary=0
+admissible sets by size: 5:2 6:8 9:10 10:47 11:60 12:96
+of which with two components: 12:16

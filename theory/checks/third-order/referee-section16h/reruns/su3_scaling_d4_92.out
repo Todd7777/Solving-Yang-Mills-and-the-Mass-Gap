@@ -1,0 +1,24 @@
+# /home/user/Solving-Yang-Mills-and-the-Mass-Gap/theory/checks/third-order/scaling_check.py --d4 /home/user/Solving-Yang-Mills-and-the-Mass-Gap/theory/checks/third-order/orders/d4_s10x_92.json --closed 10:60,11:66,12:320,13:0,14:1316,15:2520,16:12552 --closed-from 17 0.00015376644804254827379 1
+beta_* = 0.000153766448: D/beta^4 = 3.93203, varpi = b^2.5, (bbar, abar) = (mpf('0.00390625'), mpf('0.001953125'), 'corners')
+  t = 1 (beta = 0.0001538): all hypotheses hold; D/beta^4 = 3.93324 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 0.999 (beta = 0.0001536): all hypotheses hold; D/beta^4 = 3.93323 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 0.99 (beta = 0.0001522): all hypotheses hold; D/beta^4 = 3.93322 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 0.95 (beta = 0.0001461): all hypotheses hold; D/beta^4 = 3.93317 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 0.9 (beta = 0.0001384): all hypotheses hold; D/beta^4 = 3.93311 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 0.7 (beta = 0.0001076): all hypotheses hold; D/beta^4 = 3.93291 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 0.5 (beta = 7.688e-05): all hypotheses hold; D/beta^4 = 3.93277 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 0.3 (beta = 4.613e-05): all hypotheses hold; D/beta^4 = 3.93267 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 0.1 (beta = 1.538e-05): all hypotheses hold; D/beta^4 = 3.93262 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 0.03 (beta = 4.613e-06): all hypotheses hold; D/beta^4 = 3.93261 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 0.01 (beta = 1.538e-06): all hypotheses hold; D/beta^4 = 3.93261 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 0.001 (beta = 1.538e-07): all hypotheses hold; D/beta^4 = 3.93261 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 0.0001 (beta = 1.538e-08): all hypotheses hold; D/beta^4 = 3.93261 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 1e-06 (beta = 1.538e-10): all hypotheses hold; D/beta^4 = 3.93261 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 1e-08 (beta = 1.538e-12): all hypotheses hold; D/beta^4 = 3.93261 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 1e-12 (beta = 1.538e-16): all hypotheses hold; D/beta^4 = 3.93261 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+  t = 1e-20 (beta = 1.538e-24): all hypotheses hold; D/beta^4 = 3.93261 <= (1+k)^3 D_*/beta_*^4 = 3.93384: True
+all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: True;  then D < beta^3/432 for all beta <= beta_* as long as (1+k)^3 D_*/beta_*^4 = 3.9338 < 1/(432 beta_*) = 15.054: True
+
+real	0m53.087s
+user	0m52.460s
+sys	0m0.031s

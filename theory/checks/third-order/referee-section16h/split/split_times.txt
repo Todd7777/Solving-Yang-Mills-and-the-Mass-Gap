@@ -1,0 +1,22 @@
+unsplit A 8: 5 s
+split A 8 J=2 done
+split A 8 J=3 done
+split A 8 J=4 done
+unsplit Q 8: 21 s
+split Q 8 J=2 done
+split Q 8 J=3 done
+split Q 8 J=16 done
+unsplit A 9: 13 s
+split A 9 J=2 done
+split A 9 J=3 done
+split A 9 J=4 done
+unsplit Q 9: 64 s
+split Q 9 J=2 done
+split Q 9 J=3 done
+split Q 9 J=16 done
+SPLIT_DONE
+unsplit A 10: 180 s
+split A 10 J=4 done: 173 s
+unsplit Q 10: 1117 s
+split Q 10 J=16 done (parallel)
+SPLIT10_DONE

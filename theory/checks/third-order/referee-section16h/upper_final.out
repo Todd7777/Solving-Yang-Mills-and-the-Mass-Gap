@@ -1,0 +1,4 @@
+SU(5), d=4, counts to 10: E(beta_0(4)) = 1.58722 beta^4 against beta^3*0.0001667 = 1.0839 beta^4; E/beta^5 increasing on 401 points: True
+SU(5), d=4, counts to 11 (760, 2616): E(beta_0(4)) = 0.251095 beta^4 against beta^3*0.0001667 = 1.0839 beta^4; E/beta^5 increasing on 401 points: True
+SU(3), d=4, counts to 10: E(beta_0(4)) = 0.206589 beta^4 against beta^3*0.002315 = 15.054 beta^4; E/beta^5 increasing on 401 points: True
+SU(3), d=4, counts to 11 (760, 2616): E(beta_0(4)) = 0.0327273 beta^4 against beta^3*0.002315 = 15.054 beta^4; E/beta^5 increasing on 401 points: True

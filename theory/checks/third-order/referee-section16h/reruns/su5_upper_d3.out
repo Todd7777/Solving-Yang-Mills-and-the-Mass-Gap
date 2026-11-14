@@ -1,0 +1,13 @@
+# /home/user/Solving-Yang-Mills-and-the-Mass-Gap/theory/checks/third-order/upper_exact.py --group 5 3
+d=3, n0=8: at beta_0: T'_Q = 1.602 beta^4, T'_p = 0.6107 beta^4, error 4034 beta^4; E(beta_0) = 4034 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 4034 beta^4 on the whole range, against beta^3/6000 >= 0.414 beta^4: False
+     E(beta) < beta^3/6000 for beta <= 8.748e-05
+d=3, n0=9: at beta_0: T'_Q = 0.04223 beta^4, T'_p = 0.01613 beta^4, error 106.3 beta^4; E(beta_0) = 106.3 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 106.3 beta^4 on the whole range, against beta^3/6000 >= 0.414 beta^4: False
+     E(beta) < beta^3/6000 for beta <= 0.0001811
+d=3, n0=10: at beta_0: T'_Q = 0.001232 beta^4, T'_p = 0.0005049 beta^4, error 3.101 beta^4; E(beta_0) = 3.101 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 3.101 beta^4 on the whole range, against beta^3/6000 >= 0.414 beta^4: False
+     E(beta) < beta^3/6000 for beta <= 0.0003026
+d=3, n0=11: at beta_0: T'_Q = 0.0001545 beta^4, T'_p = 9.436e-05 beta^4, error 0.3891 beta^4; E(beta_0) = 0.3891 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 0.3891 beta^4 on the whole range, against beta^3/6000 >= 0.414 beta^4: True
+d=3, n0=12: at beta_0: T'_Q = 0.0001262 beta^4, T'_p = 8.357e-05 beta^4, error 0.3178 beta^4; E(beta_0) = 0.3178 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 0.3178 beta^4 on the whole range, against beta^3/6000 >= 0.414 beta^4: True
+
+real	0m5.751s
+user	0m5.432s
+sys	0m0.008s

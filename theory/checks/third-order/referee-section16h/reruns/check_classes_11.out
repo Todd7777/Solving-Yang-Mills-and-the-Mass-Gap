@@ -1,0 +1,13 @@
+# python3 order_counts.py --check-classes 11
+m=4: 0 classes, pruned == unpruned: True
+m=5: 3 classes, pruned == unpruned: True
+m=6: 6 classes, pruned == unpruned: True
+m=7: 12 classes, pruned == unpruned: True
+m=8: 22 classes, pruned == unpruned: True
+m=9: 36 classes, pruned == unpruned: True
+m=10: 59 classes, pruned == unpruned: True
+m=11: 92 classes, pruned == unpruned: True
+
+real	2m4.114s
+user	2m2.937s
+sys	0m0.000s

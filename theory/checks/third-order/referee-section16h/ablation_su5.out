@@ -1,0 +1,16 @@
+SU(5), d=4, S^x_10 u {(9,2)} with the (9,2) count x 0: D/beta^4 = 0.518721  (majorant part 0.08618; bars (mpf('0.00390625'), mpf('0.0009765625'), 'corners'))
+SU(5), d=4, S^x_10 u {(9,2)} with the (9,2) count x 1: D/beta^4 = 0.518721  (majorant part 0.08618; bars (mpf('0.00390625'), mpf('0.0009765625'), 'corners'))
+SU(5), d=4, S^x_10 u {(9,2)} with the (9,2) count x 1e+09: D/beta^4 = 0.518721  (majorant part 0.08618; bars (mpf('0.00390625'), mpf('0.0009765625'), 'corners'))
+SU(5), d=4, S^x_10 u {(9,2)} with the (9,2) count x 1e+20: D/beta^4 = 0.552489  (majorant part 0.1199; bars (mpf('0.00390625'), mpf('0.0009765625'), 'corners'))
+SU(3), d=4, S^x_10 u {(9,2)} with the (9,2) count x 0: D/beta^4 = 3.93203  (majorant part 0.6937; bars (mpf('0.00390625'), mpf('0.001953125'), 'corners'))
+SU(3), d=4, S^x_10 u {(9,2)} with the (9,2) count x 1: D/beta^4 = 3.93203  (majorant part 0.6937; bars (mpf('0.00390625'), mpf('0.001953125'), 'corners'))
+SU(3), d=4, S^x_10 u {(9,2)} with the (9,2) count x 1e+09: D/beta^4 = 3.93203  (majorant part 0.6937; bars (mpf('0.00390625'), mpf('0.001953125'), 'corners'))
+SU(3), d=4, S^x_10 u {(9,2)} with the (9,2) count x 1e+20: D/beta^4 = 4.19273  (majorant part 0.9544; bars (mpf('0.00390625'), mpf('0.001953125'), 'corners'))
+SU(5), d=3: with Lemma 16.11: D/beta^4 = 0.344936, log(Ubar/Ups)/beta^4 = 2.56e-13;  with u_2 <= e^b-1-b: D/beta^4 = 0.598564, log(Ubar/Ups)/beta^4 = 0.2536;  target beta^3/6000 = 0.414 beta^4
+   parts of delta'/beta^4 (Lemma 16.11): multi 0.2793, two 0.03638, exits 0.001463, one_plaq 0.0003748, four 0
+SU(5), d=4: with Lemma 16.11: D/beta^4 = 0.518721, log(Ubar/Ups)/beta^4 = 3.72e-14;  with u_2 <= e^b-1-b: D/beta^4 = 0.555684, log(Ubar/Ups)/beta^4 = 0.03696;  target beta^3/6000 = 1.084 beta^4
+   parts of delta'/beta^4 (Lemma 16.11): exits 0.1801, four 0.1448, two 0.08984, multi 0.08618, one_plaq 0.01779
+
+real	4m41.661s
+user	4m13.688s
+sys	0m0.060s

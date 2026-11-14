@@ -1,0 +1,6 @@
+# python3 upper_exact.py 4   (SU(3), d=4; n0 = 11 uses the admissible sets of 11 plaquettes, orders/admissible_d4_n11.out)
+d=4, n0=8: at beta_0: T'_Q = 1.938 beta^4, T'_p = 0.4936 beta^4, error 632.3 beta^4; E(beta_0) = 632.4 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 632.4 beta^4 on the whole range, against beta^3/432 >= 15.05 beta^4: False
+     E(beta) < beta^3/432 for beta <= 8.261e-05
+d=4, n0=9: at beta_0: T'_Q = 0.0325 beta^4, T'_p = 0.008302 beta^4, error 10.6 beta^4; E(beta_0) = 10.6 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 10.6 beta^4 on the whole range, against beta^3/432 >= 15.05 beta^4: True
+d=4, n0=10: at beta_0: T'_Q = 0.000633 beta^4, T'_p = 0.0001865 beta^4, error 0.2066 beta^4; E(beta_0) = 0.2066 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 0.2066 beta^4 on the whole range, against beta^3/432 >= 15.05 beta^4: True
+d=4, n0=11: at beta_0: T'_Q = 0.0001001 beta^4, T'_p = 5.08e-05 beta^4, error 0.03273 beta^4; E(beta_0) = 0.03273 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 0.03273 beta^4 on the whole range, against beta^3/432 >= 15.05 beta^4: True

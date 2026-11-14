@@ -1,0 +1,21 @@
+# /home/user/Solving-Yang-Mills-and-the-Mass-Gap/theory/checks/third-order/sun_group.py
+moments E[|chi|^2k], SU(5), k <= 6: [1, 1, 2, 6, 24, 120, 719] ; E[chi^5] = 1 ; E[chi^3] (SU(3)) = 1
+SU(2) beta=1e-6: |u/u_ref - 1| = 2.3e-41, |Ups/Ups_ref - 1| = 2.3e-41, sector + vs +
+SU(2) beta=1e-4: |u/u_ref - 1| = 2.3e-41, |Ups/Ups_ref - 1| = 0.0e+00, sector + vs +
+SU(2) beta=4e-4: |u/u_ref - 1| = 0.0e+00, |Ups/Ups_ref - 1| = 0.0e+00, sector + vs +
+SU(2) beta=0.01: |u/u_ref - 1| = 2.3e-41, |Ups/Ups_ref - 1| = 0.0e+00, sector + vs +
+SU(2) beta=0.1: |u/u_ref - 1| = 0.0e+00, |Ups/Ups_ref - 1| = 0.0e+00, sector + vs +
+SU(3) beta=1e-6: |u/u_ref - 1| = 1.3e-37, |Ups/Ups_ref - 1| = 2.3e-41, sector + vs +
+SU(3) beta=1e-4: |u/u_ref - 1| = 9.6e-39, |Ups/Ups_ref - 1| = 0.0e+00, sector + vs +
+SU(3) beta=4e-4: |u/u_ref - 1| = 1.2e-38, |Ups/Ups_ref - 1| = 2.3e-41, sector + vs +
+SU(3) beta=0.01: |u/u_ref - 1| = 5.1e-40, |Ups/Ups_ref - 1| = 0.0e+00, sector + vs +
+SU(3) beta=0.1: |u/u_ref - 1| = 4.6e-41, |Ups/Ups_ref - 1| = 0.0e+00, sector + vs +
+SU(2): -log Ups = 0.125 b^2 + -0.00520833333333 b^4 + 0.000238715277778 b^6
+SU(3): -log U+ = -0.166666666667 b^1 + 0.0138888888889 b^2 + 0.00231481481481 b^3 + 3.21502057613e-5 b^4 + -2.14334705075e-5 b^5 + -1.99450350556e-6 b^6;  -log U- = 0.166666666667 b^1 + 0.0138888888889 b^2 + 0.000771604938272 b^3 + -3.21502057613e-5 b^4 + -1.07167352538e-5 b^5 + -7.44217725956e-7 b^6
+SU(4): -log U+ = -0.0078125 b^2 + 9.1552734375e-5 b^4 + -4.87433539497e-7 b^6;  -log U- = 0.0078125 b^2 + 1.01725260417e-5 b^4 + -6.35782877604e-8 b^6
+SU(5): -log U+ = -0.000166666666667 b^3 + 5.83333333333e-7 b^5 + 1.38888888889e-8 b^6;  -log U- = 0.000166666666667 b^3 + -2.5e-7 b^5 + 1.38888888889e-8 b^6
+SU(6): -log U+ = -2.00938786008e-6 b^4 + 3.72108862978e-9 b^6;  -log U- = 2.00938786008e-6 b^4 + -1.86054431489e-9 b^6
+
+real	0m1.480s
+user	0m1.275s
+sys	0m0.020s

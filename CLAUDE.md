@@ -110,14 +110,15 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   plaquettes ($320,0,1316,2520,12552$ for $12..16$); $D\le11.39\beta^4$ for all $\beta\le\beta_0(4)$ by the scaling from $\beta_0(4)$: **$-11.4\beta^4\le m-4\log(1/u)+\log\Upsilon\le0.21\beta^4$, $SU(3)$, $d=4$**
   (Numerical). Robust (the referee's ablation, rechecked by `ablation_x_recheck.py`): beyond $S(8)$ only $(6,3),(7,2),(8,2)$ are needed ($S(8)\cup\{(6,3),(7,2),(8,2)\}$: $11.84\beta^4$,
   the scaling passes), and the order-9/10 counts $\times10^9$ change nothing; needed are Lemma 16.10, $Z_{10..12,4}$, the four-plaquette exits, the 12-plaquette closed polymers. `practical_beta.py --ix` reproduces (ix). Fifth referee (Lemma 16.8, Remark 16.9): minor revisions, no error, applied (`referee-section16e/`). Remark 16.7(iv) now also proves (planar faces) that in $d=3$ pairs with $E=2$ have $n=3$ and pairs with $E\in\{3,\frac72\}$ have $n\le4$.
-  **$SU(5)$** (Lemma 16.11 and Remark 16.12, 14 November, not yet refereed): the only other $SU(N)$ with a third-order term ($-\beta^3/6000$, Corollary 11.6). Group data from exact
+  **$SU(5)$** (Lemma 16.11 and Remark 16.12, 14 November; eighth referee: minor revisions, applied, incl. an error in Lemma 16.11 for $N=4$ ($\Lambda^2$ self-conjugate), fixed, no effect on $SU(5)$; `referee-section16h/`): the only other $SU(N)$ with a third-order term ($-\beta^3/6000$, Corollary 11.6). Group data from exact
   Haar moments (`sun_group.py`, Schur–Weyl; agrees with the $SU(2)$, $SU(3)$ code to 40 digits); Lemma 16.11 (Theorem) bounds $u_2$ by the exact order-2 multiplicities,
   $u_2\le\beta^2/2000+R/100$ for $SU(5)$ instead of $e^\beta-1-\beta$ (needed in $d=3$: otherwise $\log(\bar\Upsilon/\Upsilon)=0.254\beta^4$). Lower bound: $d=3$ with $S''_9$, $D\le0.3454\beta^4$
   by the scaling; $d=4$ with $S^\times_{10}\cup\{(9,2)\}$ (class $4,4,4$ with nine plaquettes: $148894$, two methods), $D\le0.519\beta^4$. Upper bound: $E=0.318\beta^4$ ($d=3$); $0.2511\beta^4$ ($d=4$), with
   the admissible sets of 11 plaquettes in $\mathbb Z^4$ ($760$ for $S_A$, $2616$ for $S_Q$; `admissible_split.c`, the fifth referee's enumeration in resumable pieces,
   `run_admissible_pieces.sh`, about 1 hour on 4 cores; `orders/admissible_d4_n11.out`). **For $SU(5)$: $-0.346\beta^4\le m-4\log(1/u)+\log\Upsilon\le0.318\beta^4$ ($d=3$), $-0.519\beta^4\le\dots\le0.252\beta^4$ ($d=4$), whole range**
   (Numerical); the `--group 5` option of `practical_beta.py`, `scaling_check.py`, `monotone_check.py`, `upper_exact.py`. The corner $(9,2)$ and the sets of 11 plaquettes also give $SU(3)$, $d=4$: $-3.94\beta^4\le m-4\log(1/u)+\log\Upsilon\le0.033\beta^4$ (was $-11.4$, $0.21$).
-  Next: a referee for Lemma 16.11 and Remark 16.12; then $d\ge5$, or the $C$-odd sector at fourth order (Conjecture 15.11).
+  The $d=4$ upper half does not rest on the enumeration: the binomial bound of Lemma 5.5's proof as $N_{11}$ already gives $0.360\beta^4$ (the referee).
+  Next: $d\ge5$, or the $C$-odd sector at fourth order (Conjecture 15.11).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.

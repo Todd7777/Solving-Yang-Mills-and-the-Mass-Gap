@@ -1,0 +1,11 @@
+# /home/user/Solving-Yang-Mills-and-the-Mass-Gap/theory/checks/third-order/upper_exact.py --group 5 4
+d=4, n0=8: at beta_0: T'_Q = 1.938 beta^4, T'_p = 0.4936 beta^4, error 4860 beta^4; E(beta_0) = 4860 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 4860 beta^4 on the whole range, against beta^3/6000 >= 1.084 beta^4: False
+     E(beta) < beta^3/6000 for beta <= 3.795e-05
+d=4, n0=9: at beta_0: T'_Q = 0.0325 beta^4, T'_p = 0.008302 beta^4, error 81.49 beta^4; E(beta_0) = 81.49 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 81.49 beta^4 on the whole range, against beta^3/6000 >= 1.084 beta^4: False
+     E(beta) < beta^3/6000 for beta <= 8.272e-05
+d=4, n0=10: at beta_0: T'_Q = 0.0006329 beta^4, T'_p = 0.0001865 beta^4, error 1.587 beta^4; E(beta_0) = 1.587 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 1.587 beta^4 on the whole range, against beta^3/6000 >= 1.084 beta^4: False
+     E(beta) < beta^3/6000 for beta <= 0.0001458
+
+real	0m3.781s
+user	0m3.685s
+sys	0m0.012s

@@ -1,0 +1,6 @@
+# /home/user/Solving-Yang-Mills-and-the-Mass-Gap/theory/checks/third-order/practical_beta.py --group 5 --terms /home/user/Solving-Yang-Mills-and-the-Mass-Gap/theory/checks/third-order/orders/d3_s9.json --closed 10:10,11:11,12:24,13:0,14:70 --closed-from 15 3 0.00040262143352281974401
+d=3 beta=0.00040262143352281974401: D/beta^4 = 0.3449 = theta-loss 0.0274 + log(Ubar/Ups) 2.6e-13 + log(1+delta') 0.3175;  beta^3/6000 = 0.414 beta^4 (resolved);  largest parts of delta': multi 0.279, two 0.0364, exits 0.00146
+
+real	0m20.613s
+user	0m19.984s
+sys	0m0.024s

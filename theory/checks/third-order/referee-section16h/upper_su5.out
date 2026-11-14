@@ -1,0 +1,22 @@
+d=3, beta_0 = 0.0004026214335, beta^3/6000 = 0.41395 beta^4; n0 = 12
+   T'_Q = 0.00012619 beta^4 = caps 3.89e-10 + exact 0.0001254 + crude tail 7.639e-7  (beta^4)
+   T'_A = 8.3572e-5 beta^4 = caps 1.29e-10 + exact 8.328e-5 + crude tail 2.912e-7  (beta^4)
+   E(beta_0) = 0.317825 beta^4;  actual D_2 + log Ups = 0.317825 beta^4;  Ups - 1 = 1.08778e-14
+   E/beta^5 increasing on 401 points of [1e-30, beta_0]: True
+d=4, beta_0 = 0.000153766448, beta^3/6000 = 1.0839 beta^4; n0 = 10
+   T'_Q = 0.00063293 beta^4 = caps 4.44e-10 + exact 9.105e-5 + crude tail 0.0005419  (beta^4)
+   T'_A = 0.0001865 beta^4 = caps 9.85e-11 + exact 4.848e-5 + crude tail 0.000138  (beta^4)
+   E(beta_0) = 1.58722 beta^4;  actual D_2 + log Ups = 1.58722 beta^4;  Ups - 1 = 6.05945e-16
+   E/beta^5 increasing on 401 points of [1e-30, beta_0]: True
+   with N_11 = (0e+00, 0e+00) for (S_Q, S_A): E(beta_0) = 0.251095 beta^4 (crude tail of T'_Q now 9.06e-6 beta^4); E/beta^5 increasing: True;  < beta^3/6000: True
+   with N_11 = (1e+06, 1e+06) for (S_Q, S_A): E(beta_0) = 0.251095 beta^4 (crude tail of T'_Q now 9.06e-6 beta^4); E/beta^5 increasing: True;  < beta^3/6000: True
+   with N_11 = (1e+09, 1e+09) for (S_Q, S_A): E(beta_0) = 0.251095 beta^4 (crude tail of T'_Q now 9.06e-6 beta^4); E/beta^5 increasing: True;  < beta^3/6000: True
+   with N_11 = (1e+12, 1e+12) for (S_Q, S_A): E(beta_0) = 0.251095 beta^4 (crude tail of T'_Q now 9.06e-6 beta^4); E/beta^5 increasing: True;  < beta^3/6000: True
+   with N_11 = (1e+15, 1e+15) for (S_Q, S_A): E(beta_0) = 0.251105 beta^4 (crude tail of T'_Q now 9.06e-6 beta^4); E/beta^5 increasing: True;  < beta^3/6000: True
+   threshold (both): E(beta_0(4)) < beta^3/6000 as long as N_11 <= 7.945e+19; the rooted bounds (1+1/K)^J' (eK)^11 are 1.275e+20 (S_Q) and 3.254e+19 (S_A)
+   threshold (Q): E(beta_0(4)) < beta^3/6000 as long as N_11 <= 7.951e+19; the rooted bounds (1+1/K)^J' (eK)^11 are 1.275e+20 (S_Q) and 3.254e+19 (S_A)
+   with N_11 := C(J'+11K, 11) = 1.042e+19 (S_Q), 3.021e+18 (S_A), the proved rooted bound: E(beta_0(4)) = 0.360293 beta^4 < beta^3/6000 = 1.0839 beta^4: True;  E/beta^5 increasing: True
+
+real	0m2.233s
+user	0m2.041s
+sys	0m0.136s

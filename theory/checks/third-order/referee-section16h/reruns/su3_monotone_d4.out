@@ -1,0 +1,17 @@
+# /home/user/Solving-Yang-Mills-and-the-Mass-Gap/theory/checks/third-order/monotone_check.py --d4
+d=4, SU(3): a             increasing on 400 points of [1e-24, beta_0(d)]: True;  from 0.05555555556 to 0.05555626744
+d=4, SU(3): b             increasing on 400 points of [1e-24, beta_0(d)]: True;  from 2 to 2.000461355
+d=4, SU(3): eps           increasing on 400 points of [1e-24, beta_0(d)]: True;  from 2 to 2.000307564
+d=4, SU(3): gam           increasing on 400 points of [1e-24, beta_0(d)]: True;  from 2 to 2.000461355
+d=4, SU(3): b2            increasing on 400 points of [1e-24, beta_0(d)]: True;  from 0.1111111111 to 0.1111139587
+d=4, SU(3): s5            increasing on 400 points of [1e-24, beta_0(d)]: True;  from 9.525986892e-06 to 9.526597232e-06
+d=4, SU(3): s6            increasing on 400 points of [1e-24, beta_0(d)]: True;  from 5.29221494e-07 to 5.292621836e-07
+d=4, SU(3): th            increasing on 400 points of [1e-24, beta_0(d)]: True;  from 0.0008540127553 to 1.197177466
+d=4, SU(3): ups           increasing on 400 points of [1e-24, beta_0(d)]: True;  from 2.6244e-44 to 0.000620770995
+d=4, SU(3): Ubar_minus_a  increasing on 400 points of [1e-24, beta_0(d)]: True;  from 1 to 1.000017085
+Ubar - a >= 1 everywhere: True;  Ups >= 1 everywhere: True;  Ubar(beta_0) - 1 = 2.56277e-05 = 0.1666666666 beta_0 (<= kappa/5 with kappa = beta_0: True)
+all facts hold: True
+
+real	2m40.050s
+user	2m38.111s
+sys	0m0.031s

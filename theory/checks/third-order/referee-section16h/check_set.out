@@ -1,0 +1,11 @@
+S^x_10: 22 classes with a pair in S; not counted far enough: none
+   73 terms (file d4_s10x.json: 73), identical: True;  corners [(2, 7.0), (3, 6.5), (4, 6.0), (5, 5.5), (6, 5.0), (7, 4.0), (8, 3.0), (9, 2.0)] (file: [(2, 7.0), (3, 6.5), (4, 6.0), (5, 5.5), (6, 5.0), (7, 4.0), (8, 3.0), (9, 2.0)]), identical: True
+   classes with a pair of exponent E = 2: [(4, 4)]; needed to n = [8]
+S^x_10 u {(9,2)}: 22 classes with a pair in S; not counted far enough: none
+   74 terms (file d4_s10x_92.json: 74), identical: True;  corners [(2, 7.0), (3, 6.5), (4, 6.0), (5, 5.5), (6, 5.0), (7, 4.0), (8, 3.0), (10, 2.0)] (file: [(2, 7.0), (3, 6.5), (4, 6.0), (5, 5.5), (6, 5.0), (7, 4.0), (8, 3.0), (10, 2.0)]), identical: True
+   classes with a pair of exponent E = 2: [(4, 4)]; needed to n = [9]
+multisets K (|K| <= 6, sizes <= 24) with some E(K,k) = 2: [(4, 4)]
+
+real	0m4.349s
+user	0m4.176s
+sys	0m0.000s

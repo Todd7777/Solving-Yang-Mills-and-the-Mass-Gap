@@ -60,7 +60,8 @@ third-order term with an effective constant (Section~\ref{mg:sec:betafour}) adde
 fourth order and the fourth-order term (Section~\ref{mg:sec:fourthlower}) added, 12 November 2026; the sectors of charge conjugation and $SU(N)$, $N\ge6$ (Section~\ref{mg:sec:codd}) added the same day,
 after a referee report that found the first draft's proof for the odd sector incomplete; closed polymers and the third-order term at practical $\beta$
 (Section~\ref{mg:sec:practical}) added the same day, and revised after two referee reports; extended by further orders on 13 November, with a
-corrected threshold in $d=3$, and to the whole range, from both sides, in $d=3$ and in $d=4$; revised after five further referee reports, the last on 14 November; living document}
+corrected threshold in $d=3$, and to the whole range, from both sides, in $d=3$ and in $d=4$; revised after five further referee reports, the last on 14 November; the third-order term of $SU(5)$
+(Lemma~\ref{mg:lem:u2sun}, Remark~\ref{mg:rem:su5}) added on 14 November, and revised after a referee report; living document}
 
 \begin{document}
 \maketitle
@@ -132,8 +133,8 @@ $\beta\le1.2\cdot10^{-5}$ and $\beta\le9\cdot10^{-5}$; and in $d=3$, with three 
 $\beta<\beta_0(3)$; and in $d=4$, with order $8$ and parts of orders $9$ and $10$ (counted by searches in C), a bound for fronts by decisions and the closed polymers of up to $16$ plaquettes, on the
 whole range $\beta<\beta_0(4)$ as well (numerical evaluations, in infinite volume). With the polymer tails of the upper bound treated the same way (the ratio bound by closed polymers, exact counts, and the five-face caps evaluated by
 characters), the upper bound does so too: for $SU(3)$ in $d=3$, in infinite volume, $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)\le0.042\beta^4$ for all $\beta<\beta_0(3)$, so the
-third-order term $\beta^3/432$ is determined from both sides on the whole range; in $d=4$, $-11.4\beta^4\le m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)\le0.21\beta^4$ for all $\beta<\beta_0(4)$, so the
-term is determined from both sides on the whole range there as well (numerical evaluations). The only other $SU(N)$ with a third-order term is $SU(5)$, where it is
+third-order term $\beta^3/432$ is determined from both sides on the whole range; in $d=4$, $-11.4\beta^4\le m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)\le0.21\beta^4$ for all $\beta<\beta_0(4)$ (sharpened to $-3.94\beta^4$ and $0.033\beta^4$ by
+one more junction class and more admissible sets), so the term is determined from both sides on the whole range there as well (numerical evaluations). The only other $SU(N)$ with a third-order term is $SU(5)$, where it is
 $-\beta^3/6000$; with its group data from exact Haar moments and a sharper bound for its second character coefficient, $-0.346\beta^4\le m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)\le0.318\beta^4$
 for all $\beta<\beta_0(3)$ in $d=3$ and $-0.519\beta^4\le\dots\le0.252\beta^4$ for all $\beta<\beta_0(4)$ in $d=4$, so it too is determined from both sides on the whole range
 (numerical evaluations). For $SU(2)$ the two
@@ -4778,7 +4779,7 @@ above $-\beta^3/432$ on the whole range $0<\beta<\beta_0(4)$; with Remark~\ref{m
 -11.4\,\beta^4\ \le\ m(\mu_\beta)-4\log(1/u)+\log\Upsilon\ \le\ 0.21\,\beta^4\qquad(0<\beta<\beta_0(4)),
 \]
 and the third-order term is determined from both sides on the whole range} (numerical evaluations, in infinite volume). At $\beta_0(4)$ the residual of the lower bound is $76\%$ of
-$\beta^3/432$. (Evaluated by \texttt{practical\_beta.py} with \texttt{orders/d4\_s10x.json} and the closed polymers above; the command is in the README of the checks, and
+$\beta^3/432$; Remark~\ref{mg:rem:su5}(vi) lowers it to $26\%$ ($-3.94\,\beta^4$), with one more junction class. (Evaluated by \texttt{practical\_beta.py} with \texttt{orders/d4\_s10x.json} and the closed polymers above; the command is in the README of the checks, and
 \texttt{--ix} gives the setting of (ix).)
 
 What carries the result, by ablation at $\beta_0(4)$: the seventh referee's, by \texttt{ablation\_x.py} and \texttt{essential\_x.py} in \texttt{referee-section16g/} (we reran the
@@ -4866,7 +4867,8 @@ at $\beta_0(3)$, $11\%$ at $10^{-4}$ and $1.1\%$ at $10^{-5}$. The lower bound i
 (iv) In $\Z^4$: for $(S_A,\{p_0\})$, $N^{\rm cap}=4$ and $32,0,0,60,506$ further sets with $6,\dots,10$ plaquettes; for $(S_Q,\mathcal Q)$, $N^{\rm cap}=18$ and $60,0,24,262,1143$ ($27$
 with two components); the counts to $8$ plaquettes are also ours. They hold on periodic lattices with all sides $\ge n_0+2$, as in (i). With $n_0=8$ the error of the upper bound is
 below $\beta^3/432$ only for $\beta\le8.3\cdot10^{-5}$; with $n_0=9$, $E(\beta_0(4))=10.6\,\beta_0^4$, and with $n_0=10$, $E(\beta_0(4))=0.21\,\beta_0^4$, against $\beta^3/432\ge15.05\,\beta^4$. So in $d=4$ the
-upper bound places $m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ below $0.21\,\beta^4$ on the whole range $\beta<\beta_0(4)$. With the lower bound of Remark~\ref{mg:rem:nextorder}(x), the third-order term is
+upper bound places $m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ below $0.21\,\beta^4$ on the whole range $\beta<\beta_0(4)$ (below $0.033\,\beta^4$ with the sets of $11$ plaquettes,
+Remark~\ref{mg:rem:su5}(vi)). With the lower bound of Remark~\ref{mg:rem:nextorder}(x), the third-order term is
 determined from both sides on the whole range $\beta<\beta_0(4)$ as well (before, with (ix), for $\beta\le5\cdot10^{-5}$).
 \end{remark}
 
@@ -4904,16 +4906,17 @@ Section~\ref{mg:sec:fronts}, a periodic lattice with all sides $\ge3$, on which 
 \end{proof}
 
 In the lower bounds $u_2$ enters through $\bar\Upsilon$ (Lemma~\ref{mg:lem:dressed}), by $n_B\approx(u_2/u)^2\epsilon$, and it is bounded there by $e^\beta-1-\beta$
-(Lemma~\ref{mg:lem:capelement}(iv)). For $SU(N)$ this bound loses a factor of about $N^2d_r$ against the true coefficients. This matters for $N=5$, where the third-order term is
-small. The series of the proof of Corollary~\ref{mg:cor:window} gives a sharper bound.
+(Lemma~\ref{mg:lem:capelement}(iv)). For $SU(N)$ this bound loses a factor of about $4N^2d_\Lambda$ against the true coefficient of $\Lambda^2\rho$ ($2N^2d_A$ for the adjoint), which is $1000$ for $SU(5)$.
+This matters for $N=5$, where the third-order term is small. The series of the proof of Corollary~\ref{mg:cor:window} gives a sharper bound.
 
 \begin{lemma}[The second character coefficient of $SU(N)$]\label{mg:lem:u2sun}
 Let $G=SU(N)$ with $N\ge3$, $\rho$ the fundamental representation, $R:=e^\beta-1-\beta-\frac{\beta^2}2$, and $d_S:=\frac{N(N+1)}2$, $d_A:=N^2-1$, $d_\Lambda:=\frac{N(N-1)}2$. Then
 \[
-u_2(\beta)\ \le\ \max\Bigl\{\frac1{d_S}\Bigl(\frac{\beta^2}{8N^2}+\frac R{d_S}\Bigr),\ \frac1{d_A}\Bigl(\frac{\beta^2}{4N^2}+\frac R{d_A}\Bigr),\ \frac1{d_\Lambda}\Bigl(\frac{\beta^2}{8N^2}+\frac R{d_\Lambda}\Bigr),\
-\frac R{N^2}\Bigr\},
+u_2(\beta)\ \le\ \max\Bigl\{\frac1{d_S}\Bigl(\frac{\beta^2}{8N^2}+\frac R{d_S}\Bigr),\ \frac1{d_A}\Bigl(\frac{\beta^2}{4N^2}+\frac R{d_A}\Bigr),\ \frac1{d_\Lambda}\Bigl(\frac{c_\Lambda\beta^2}{8N^2}+\frac R{d_\Lambda}\Bigr),\
+R\Bigr\},
 \]
-the third entry only for $N\ge4$. For $SU(5)$ and $\beta\le\frac1{20}$ this is $u_2\le\frac{\beta^2}{2000}+\frac R{100}$, about $10^{-3}$ times $e^\beta-1-\beta$.
+the third entry only for $N\ge4$, with $c_\Lambda=2$ for $N=4$ and $c_\Lambda=1$ for $N\ge5$. For $SU(5)$ and $\beta\le\frac1{400}$ this is $u_2\le\frac{\beta^2}{2000}+\frac R{100}$, about $10^{-3}$ times
+$e^\beta-1-\beta$.
 \end{lemma}
 
 \begin{proof}
@@ -4921,10 +4924,12 @@ With $t=\beta/(2N)$, $w_\beta=e^{t(\chi_\rho+\overline{\chi_\rho})}=\sum_{a,b\ge
 $m_r(a,b)$ is the multiplicity of $r$ in $\rho^{\otimes a}\otimes\bar\rho^{\otimes b}$; and $c_0\ge e^{\int(\beta/N)\mathrm{Re}\,\chi_\rho}=1$ by Jensen's inequality. So
 $d_ru_r\le\sum_{a,b}\frac{t^{a+b}}{a!\,b!}m_r(a,b)$. Let $r\notin\{0,\rho,\bar\rho\}$. Then $m_r(a,b)=0$ for $a+b\le1$. Also $d_rm_r(a,b)\le N^{a+b}$, so the terms with $a+b=k\ge3$
 give at most $\frac{(2Nt)^k}{k!\,d_r}$, as $\sum_{a+b=k}\frac1{a!\,b!}=\frac{2^k}{k!}$; together at most $R/d_r$. For $a+b=2$, $\rho\otimes\rho=\mathrm{Sym}^2\rho\oplus\Lambda^2\rho$ and
-$\rho\otimes\bar\rho=\mathbf1\oplus\mathrm{ad}$, both multiplicity-free, and $\bar\rho\otimes\bar\rho$ is the conjugate of $\rho\otimes\rho$; for $N=3$, $\Lambda^2\rho\cong\bar\rho$. So the term with $a+b=2$ is
-$\frac{t^2}2=\frac{\beta^2}{8N^2}$ for $\mathrm{Sym}^2\rho$, $\Lambda^2\rho$ and their conjugates, $t^2=\frac{\beta^2}{4N^2}$ for $\mathrm{ad}$, and $0$ for every other $r$. These have dimensions $d_S$,
-$d_\Lambda$, $d_A$. Every other $r\ne0$ has $d_r\ge N$, so $u_r\le R/d_r^2\le R/N^2$. For $N=5$, $(d_S,d_A,d_\Lambda)=(15,24,10)$, and the entry of $\Lambda^2$ is the largest when
-$\beta\le\frac1{20}$: it exceeds the first two termwise, and $\frac R{25}$ when $R\le\frac{\beta^2}{60}$, which holds as $R\le\frac{\beta^3e^\beta}6\le\frac{\beta^3}5\le\frac{\beta^2}{100}$.
+$\rho\otimes\bar\rho=\mathbf1\oplus\mathrm{ad}$, both multiplicity-free, and $\bar\rho\otimes\bar\rho$ is the conjugate of $\rho\otimes\rho$; for $N=3$, $\Lambda^2\rho\cong\bar\rho$. The highest weights are
+$2\omega_1$ for $\mathrm{Sym}^2\rho$ against $2\omega_{N-1}$ for its conjugate, and $\omega_2$ for $\Lambda^2\rho$ against $\omega_{N-2}$. So $\mathrm{Sym}^2\rho$ is never self-conjugate, and $\Lambda^2\rho$ is
+self-conjugate exactly for $N=4$, when it occurs both in $\rho\otimes\rho$ and in $\bar\rho\otimes\bar\rho$; $\mathrm{ad}$ occurs only in $\rho\otimes\bar\rho$. So the term with $a+b=2$ is
+$\frac{t^2}2=\frac{\beta^2}{8N^2}$ for $\mathrm{Sym}^2\rho$, its conjugate, and (for $N\ge5$) $\Lambda^2\rho$ and its conjugate; $t^2=\frac{\beta^2}{4N^2}$ for $\Lambda^2\rho$ when $N=4$ and for $\mathrm{ad}$; and $0$
+for every other $r$. These have dimensions $d_S$, $d_\Lambda$, $d_A$. Every other $r$ has $u_r\le R/d_r^2\le R$. For $N=5$, $(d_S,d_A,d_\Lambda)=(15,24,10)$, and the entry of $\Lambda^2$ is the largest
+when $\beta\le\frac1{400}$: it exceeds the first two termwise, and $R$ when $R\le\frac{\beta^2}{1980}$, which holds as $R\le\frac{\beta^3e^\beta}6$.
 \end{proof}
 
 \begin{remark}[The third-order term of $SU(5)$]\label{mg:rem:su5}
@@ -4933,9 +4938,11 @@ $u$, $\Upsilon$ and $u_2$ are known, since the counts do not depend on the group
 
 (i) The group data. By Schur--Weyl duality the Haar moments $\int\chi_\rho^a\overline{\chi_\rho}^{\,b}\dU$ of $SU(N)$ are $\sum f^\lambda f^\mu$ over the partitions $\lambda$ of $a$ and $\mu$ of $b$ with at
 most $N$ rows that give the same representation of $SU(N)$ (that is, $\lambda_i-\mu_i$ does not depend on $i$), $f^\lambda$ the number of standard tableaux. So $u$, $U_\pm$ (the variances of
-$\sqrt2\,\mathrm{Re}\,\chi_\rho$ and $\sqrt2\,\mathrm{Im}\,\chi_\rho$ under $w_\beta/c_0$) and $\Upsilon=\max(U_+,U_-)$ are power series in $\beta$ with exact rational coefficients, here truncated at total
+$\sqrt2\,\mathrm{Re}\,\chi_\rho$ and $\sqrt2\,\mathrm{Im}\,\chi_\rho$ under $w_\beta/c_0$) and $\Upsilon=\max(U_+,U_-)$ are quotients of power series in $\beta$ with exact rational coefficients, here truncated at total
 degree $40$ (the rest is below $10^{-180}$ at $\beta_0(3)$). They agree with the Weyl integration for $SU(3)$ and the Bessel functions for $SU(2)$ to $40$ digits, and reproduce the terms of
-Corollary~\ref{mg:cor:third}; for $SU(5)$, $\Upsilon=U_+$ and $-\log\Upsilon=-\beta^3/6000+O(\beta^5)$. Then $u_*=u$ (Corollary~\ref{mg:cor:window}), $\bar\Upsilon$ is taken with $u_2$ of
+Corollary~\ref{mg:cor:third}; for $SU(5)$, $\Upsilon=U_+$ and $-\log\Upsilon=-\beta^3/6000+O(\beta^5)$. In particular $\Upsilon\ge1$, which Remark~\ref{mg:rem:upperexact}(ii) uses: for $SU(3)$ this
+was shown there, while for $SU(5)$ the terms of $U_+-1$ cancel to second order and $U_+-1=\frac{\beta^3}{6000}-\frac{7\beta^5}{1.2\cdot10^7}+O(\beta^6)$, which is positive on the whole range
+(and $\Upsilon\ge1$ at the $400$ points of \texttt{monotone\_check.py --group 5}). Then $u_*=u$ (Corollary~\ref{mg:cor:window}), $\bar\Upsilon$ is taken with $u_2$ of
 Lemma~\ref{mg:lem:u2sun}, and $N^4/\tau_0^2=2500$ in Theorem~\ref{mg:thm:upper2} (it is $324$ for $SU(3)$).
 
 (ii) The lower bound in $d=3$, with $S''_9$ and $\theta$ as in (vii) of Remark~\ref{mg:rem:nextorder}: $D(\beta_0(3))=0.345\,\beta^4$, against $\beta^3/6000=0.414\,\beta^4$ there. Of it, the majorant is $0.279\,\beta^4$, the
@@ -4950,26 +4957,29 @@ $148894$ junctions (by \texttt{junctions.c}, and by the sixth referee's partitio
 $(7,4)$, $(8,3)$, $(10,2)$ (\texttt{orders/d4\_s10x\_92.json}). Then $D(\beta_0(4))=0.519\,\beta^4$, against $\beta^3/6000=1.084\,\beta^4$. The exits give $0.18\,\beta^4$, the two four-edge front-pairs $0.145\,\beta^4$,
 the shifts and jumps $0.09\,\beta^4$ and the majorant $0.086\,\beta^4$. With $S^\times_{10}$ alone, $D=1.48\,\beta^4$, and the corner $(9,2)$ binds. The scaling from $\beta_0(4)$ passes: $D(\beta)\le0.519\,\beta^4$ for all $\beta\le\beta_0(4)$.
 
-(iv) The upper bound, as in Remark~\ref{mg:rem:upperexact}, with $E(\beta)/\beta^5$ increasing (checked on $401$ points). In $d=3$, with the counts to $12$ plaquettes, $E(\beta_0(3))=0.3178\,\beta^4<0.414\,\beta^4$.
+(iv) The upper bound, as in Remark~\ref{mg:rem:upperexact}. Given $\Upsilon\ge1$, the argument of its item (ii) shows that $E(\beta)/\beta^5$ increases (checked as well on $401$ points). In $d=3$, with the counts to $12$ plaquettes, $E(\beta_0(3))=0.3178\,\beta^4<0.414\,\beta^4$.
 In $d=4$, with the counts to $10$, $E(\beta_0(4))=1.59\,\beta^4$: the crude tail beyond $10$ plaquettes is $5.4\cdot10^{-4}\beta^4$ of $\mathcal T'_{S_Q}$ and is multiplied by $2500$. The admissible sets of $11$
 plaquettes number $760$ for $(S_A,\{p_0\})$ and $2616$ for $(S_Q,\mathcal Q)$ ($624$ of them with two components). They were counted by the fifth referee's enumeration, split into $4$
 and $16$ independent branches whose counts reproduce all those to $10$ plaquettes (\texttt{admissible\_split.c}, \texttt{run\_admissible\_pieces.sh},
 \texttt{orders/admissible\_d4\_n11.out}). With them $E(\beta_0(4))=0.2511\,\beta^4<1.084\,\beta^4$, and $E/\beta^5$ increases. The values hardly matter: the same holds with counts up to $10^9$;
-what matters is that the crude tail starts at $12$.
+what matters is that the crude tail starts at $12$. In fact the bound $\binom{J'+Kn}n$ of the proof of Lemma~\ref{mg:lem:twopoint} ($1.04\cdot10^{19}$ and $3.0\cdot10^{18}$ for
+$n=11$) already gives $E(\beta_0(4))=0.360\,\beta^4<1.084\,\beta^4$, with $E/\beta^5$ increasing (the eighth referee), so the upper half in $d=4$ does not rest on the enumeration; the counts
+sharpen $0.360$ to $0.2511$.
 
 (v) \emph{So for $SU(5)$, in infinite volume,
 \begin{gather*}
 -0.346\,\beta^4\le m(\mu_\beta)-4\log\frac1u+\log\Upsilon\le0.318\,\beta^4\qquad(d=3,\ \beta<\beta_0(3)),\\
 -0.519\,\beta^4\le m(\mu_\beta)-4\log\frac1u+\log\Upsilon\le0.252\,\beta^4\qquad(d=4,\ \beta<\beta_0(4)),
 \end{gather*}
-and the third-order term $-\beta^3/6000$ is determined from both sides on the whole range} (numerical evaluations). With Remarks~\ref{mg:rem:nextorder}(vii), (x)
-and~\ref{mg:rem:upperexact}, this holds for both groups $SU(N)$ that have a third-order term, in $d=3$ and $d=4$.
+and the third-order term $-\beta^3/6000$ is determined from both sides on the whole range} (numerical evaluations). Since the term is negative, it is the upper bound that shows it
+is there: $m(\mu_\beta)-4\log(1/u)<0$ on the whole range. With Remarks~\ref{mg:rem:nextorder}(vii), (x) and~\ref{mg:rem:upperexact}, the third-order term is determined for both
+groups $SU(N)$ that have one, in $d=3$ and $d=4$.
 
 (vi) The corner $(9,2)$ also helps $SU(3)$ in $d=4$. With $S^\times_{10}\cup\{(9,2)\}$, $D(\beta_0(4))=3.93\,\beta^4$ instead of $11.38\,\beta^4$: the majorant drops from $8.1\,\beta^4$ to $0.69\,\beta^4$, and the exits
 ($1.8\,\beta^4$) and the one-plaquette junctions ($1.1\,\beta^4$) are now the largest parts. The scaling passes, and $D(\beta)\le3.94\,\beta^4$ for all $\beta\le\beta_0(4)$. So for $SU(3)$ in $d=4$ the residual of
 the lower bound is at most $26\%$ of $\beta^3/432$, instead of $76\%$. The counts of $11$ plaquettes of (iv) lower the upper side for $SU(3)$ in $d=4$ from $0.21\,\beta^4$ to
-$E(\beta_0(4))=0.033\,\beta^4$ (\texttt{upper\_exact.py 4}). So $-3.94\,\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.033\,\beta^4$ for $SU(3)$, $d=4$, $\beta<\beta_0(4)$. (Outputs in \texttt{orders/su5\_d3\_scaling.out}, \texttt{orders/su5\_d4\_scaling.out}, \texttt{orders/d4\_x92\_scaling.out},
-\texttt{orders/su5\_upper.out}.)
+$E(\beta_0(4))=0.033\,\beta^4$. So $-3.94\,\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.033\,\beta^4$ for $SU(3)$, $d=4$, $\beta<\beta_0(4)$. (Outputs in \texttt{orders/}:
+\texttt{su5\_d3\_scaling.out}, \texttt{su5\_d4\_scaling.out}, \texttt{d4\_x92\_scaling.out}, \texttt{su5\_upper.out}, \texttt{upper\_exact\_d4.out}.)
 \end{remark}
 
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
@@ -5124,10 +5134,10 @@ Junction sums by corners: any finite set $S$ of exponents $(n,E)$ counted exactl
 The next order $S_6$ by exhaustive search; no closed sets of $8$, $9$ plaquettes in $\Z^3,\Z^4$, so $\theta_{10}$; $SU(3)$ third-order term resolved for $\beta\le1.2\cdot10^{-5}$ ($d=4$) and $\beta\le9\cdot10^{-5}$ ($d=3$); in $d=3$ one order more: $\beta\le1.8\cdot10^{-4}$, two: $\beta\le3.2\cdot10^{-4}$, three (in part), with a scaling of the parameters in $\beta$: the whole range $\beta<\beta_0(3)$ & Rem.~\ref{mg:rem:nextorder} & Numerical\\
 $d=3$: junctions with two four-edge front-pairs have at most two plaquettes, with three front-pairs of $4,4,4$ edges at most three, of $4,4,6$ or $4,4,7$ edges at most four (planar boundary argument) & Rem.~\ref{mg:rem:nextorder}(iv) & Theorem\\
 Tails of the upper bound with exact counts of the admissible sets (the sets of the proof of Lemma~\ref{mg:lem:twopoint}), the five-face caps by characters ($\sigma_5=\sum d_r^2u_r^5$), and $\theta_5$ & Lem.~\ref{mg:lem:uppertails} & Theorem\\
-$SU(3)$, $d=3$: $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.042\beta^4$ for all $\beta<\beta_0(3)$, the third-order term from both sides; $d=4$: from above on the whole range ($\le0.21\beta^4$), from both sides with Rem.~\ref{mg:rem:nextorder}(x) & Rem.~\ref{mg:rem:upperexact} & Numerical\\
+$SU(3)$, $d=3$: $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.042\beta^4$ for all $\beta<\beta_0(3)$, the third-order term from both sides; $d=4$: from above on the whole range ($\le0.21\beta^4$; $\le0.033\beta^4$ by Rem.~\ref{mg:rem:su5}(vi)), from both sides with Rem.~\ref{mg:rem:nextorder}(x) & Rem.~\ref{mg:rem:upperexact} & Numerical\\
 $d=4$, lower bound: order 7, the pairs of order 8 with $n\ge4$ and at $(3,5)$, exact $Z_{8,4},Z_{9,4}$, $N^v_{11}$, exits with three plaquettes and closed polymers of $10$, $11$ plaquettes: $SU(3)$ third-order term resolved for $\beta\le5\cdot10^{-5}$ (before $1.2\cdot10^{-5}$) & Rem.~\ref{mg:rem:nextorder}(ix) & Numerical\\
 Fronts counted by decisions: $N^v_k\le((1+s)^{2D}-1-2Ds)(y/s)^k$, e.g.\ $N^v_k\le0.734\cdot7.355^k$ in $\Z^3$ & Lem.~\ref{mg:lem:frontsdecision} & Theorem\\
-$d=4$, lower bound on the whole range: $S(8)$, order 9 with $n\ge4$, $(3,6)$, order 10 with $n\ge5$ (searches in C), Lemma~\ref{mg:lem:frontsdecision}, $Z_{n,4}$ to 12, exits with four plaquettes, closed polymers to 16: $-11.4\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ for all $\beta<\beta_0(4)$; with the upper bound, $SU(3)$ third-order term from both sides on the whole range & Rem.~\ref{mg:rem:nextorder}(x) & Numerical\\
+$d=4$, lower bound on the whole range: $S(8)$, order 9 with $n\ge4$, $(3,6)$, order 10 with $n\ge5$ (searches in C), Lemma~\ref{mg:lem:frontsdecision}, $Z_{n,4}$ to 12, exits with four plaquettes, closed polymers to 16: $-11.4\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ for all $\beta<\beta_0(4)$ ($-3.94\beta^4$ by Rem.~\ref{mg:rem:su5}(vi)); with the upper bound, $SU(3)$ third-order term from both sides on the whole range & Rem.~\ref{mg:rem:nextorder}(x) & Numerical\\
 $SU(N)$, $N\ge3$: $u_2\le\max$ over $\mathrm{Sym}^2$, $\Lambda^2$, $\mathrm{ad}$ of $d_r^{-1}(\text{exact order-2 coefficient}+R/d_r)$ and $R/N^2$; $u_2\le\beta^2/2000+R/100$ for $SU(5)$ & Lem.~\ref{mg:lem:u2sun} & Theorem\\
 $SU(5)$: $-0.346\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.318\beta^4$ ($d=3$), $-0.519\beta^4\le\dots\le0.252\beta^4$ ($d=4$) for all $\beta<\beta_0(d)$: the third-order term $-\beta^3/6000$ from both sides on the whole range; $SU(3)$, $d=4$, with $(9,2)$ and the sets of 11 plaquettes: $-3.94\beta^4\le\dots\le0.033\beta^4$ & Rem.~\ref{mg:rem:su5} & Numerical\\
 Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order in the $C$-odd sector ($U(1)$, $d\ge4$; Conjecture~\ref{mg:conj:codd}); the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\

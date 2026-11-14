@@ -1,0 +1,33 @@
+(a) double-precision Weyl integration vs sun_group.sun(5):
+  beta=0.001: |u/u_auth - 1| = 6.3e-13;  |U+ - U+_auth| = 2.2e-16;  |U- - U-_auth| = 5.6e-16;  U+ - 1 = 1.665335e-13 (auth 1.666667e-13);  Ups = U+: True
+  beta=0.01: |u/u_auth - 1| = 7.0e-14;  |U+ - U+_auth| = 0.0e+00;  |U- - U-_auth| = 4.4e-16;  U+ - 1 = 1.666667e-10 (auth 1.666666e-10);  Ups = U+: True
+  beta=0.05: |u/u_auth - 1| = 1.6e-14;  |U+ - U+_auth| = 2.2e-16;  |U- - U-_auth| = 4.4e-16;  U+ - 1 = 2.083315e-08 (auth 2.083315e-08);  Ups = U+: True
+  beta=0.1: |u/u_auth - 1| = 6.8e-15;  |U+ - U+_auth| = 0.0e+00;  |U- - U-_auth| = 3.3e-16;  U+ - 1 = 1.666608e-07 (auth 1.666608e-07);  Ups = U+: True
+  beta=0.3: |u/u_auth - 1| = 2.4e-15;  |U+ - U+_auth| = 0.0e+00;  |U- - U-_auth| = 6.7e-16;  U+ - 1 = 4.498583e-06 (auth 4.498583e-06);  Ups = U+: True
+  beta=0.5: |u/u_auth - 1| = 1.6e-15;  |U+ - U+_auth| = 4.4e-16;  |U- - U-_auth| = 6.7e-16;  U+ - 1 = 2.081511e-05 (auth 2.081511e-05);  Ups = U+: True
+  beta=1: |u/u_auth - 1| = 5.6e-16;  |U+ - U+_auth| = 2.2e-16;  |U- - U-_auth| = 3.3e-16;  U+ - 1 = 1.660840e-04 (auth 1.660840e-04);  Ups = U+: True
+  beta=2: |u/u_auth - 1| = 2.2e-16;  |U+ - U+_auth| = 0.0e+00;  |U- - U-_auth| = 5.6e-16;  U+ - 1 = 1.314745e-03 (auth 1.314745e-03);  Ups = U+: True
+  beta=5: |u/u_auth - 1| = 2.2e-16;  |U+ - U+_auth| = 2.2e-16;  |U- - U-_auth| = 5.6e-16;  U+ - 1 = 1.904732e-02 (auth 1.904732e-02);  Ups = U+: True
+(b) exact series (degree 17, referee) vs sun_group.sun(5) (degree 40), 60 digits:
+  beta=1.0e-12: rel.err u 0.0;  (U+ - 1) series 1.66666666667e-40, auth 1.66666666667e-40, rel.diff 0.0;  rel.diff (U- - 1) 0.0;  (U+ - 1)/(beta^3/6000) = 1.0
+  beta=1.0e-8: rel.err u 0.0;  (U+ - 1) series 1.66666666667e-28, auth 1.66666666667e-28, rel.diff 0.0;  rel.diff (U- - 1) 0.0;  (U+ - 1)/(beta^3/6000) = 1.0
+  beta=1.0e-6: rel.err u 1.6e-61;  (U+ - 1) series 1.66666666667e-22, auth 1.66666666667e-22, rel.diff 0.0;  rel.diff (U- - 1) 0.0;  (U+ - 1)/(beta^3/6000) = 1.0
+  beta=1.0e-5: rel.err u 0.0;  (U+ - 1) series 1.66666666667e-19, auth 1.66666666667e-19, rel.diff 0.0;  rel.diff (U- - 1) 0.0;  (U+ - 1)/(beta^3/6000) = 1.0
+  beta=0.0001: rel.err u 0.0;  (U+ - 1) series 1.66666666661e-16, auth 1.66666666661e-16, rel.diff 0.0;  rel.diff (U- - 1) 0.0;  (U+ - 1)/(beta^3/6000) = 0.999999999965
+  beta=0.000153766: rel.err u 7.8e-62;  (U+ - 1) series 6.05945405464e-16, auth 6.05945405464e-16, rel.diff 0.0;  rel.diff (U- - 1) 0.0;  (U+ - 1)/(beta^3/6000) = 0.999999999917
+  beta=0.0002: rel.err u 0.0;  (U+ - 1) series 1.33333333315e-15, auth 1.33333333315e-15, rel.diff 0.0;  rel.diff (U- - 1) 0.0;  (U+ - 1)/(beta^3/6000) = 0.99999999986
+  beta=0.000402621: rel.err u 0.0;  (U+ - 1) series 1.08777587274e-14, auth 1.08777587274e-14, rel.diff 0.0;  rel.diff (U- - 1) 0.0;  (U+ - 1)/(beta^3/6000) = 0.999999999433
+  beta=0.001: rel.err u 0.0;  (U+ - 1) series 1.66666666083e-13, auth 1.66666666083e-13, rel.diff 0.0;  rel.diff (U- - 1) 0.0;  (U+ - 1)/(beta^3/6000) = 0.9999999965
+  beta=0.01: rel.err u 1.3e-57;  (U+ - 1) series 1.66666608333e-10, auth 1.66666608333e-10, rel.diff 1.3e-50;  rel.diff (U- - 1) 2.3e-51;  (U+ - 1)/(beta^3/6000) = 0.99999965
+(c) sun_group.u2_bound(5, beta) vs Lemma 16.11 as stated (referee's transcription) and vs beta^2/2000 + R/100:
+  beta=1.0e-6: u2_bound = 5.00001666667e-16, lemma = 5.000016656166e-16, beta^2/2000 + R/100 = 5.00001666667e-16
+  beta=0.000153766: u2_bound = 1.18281199588e-11, lemma = 1.182811995876e-11, beta^2/2000 + R/100 = 1.18281199588e-11
+  beta=0.000402621: u2_bound = 8.11607979033e-11, lemma = 8.116079790339e-11, beta^2/2000 + R/100 = 8.11607979033e-11
+  beta=0.001: u2_bound = 5.01667083417e-10, lemma = 5.016670834164e-10, beta^2/2000 + R/100 = 5.01667083417e-10
+  beta=0.05: u2_bound = 1.46096376024e-6, lemma = 1.460963760240e-06, beta^2/2000 + R/100 = 1.46096376024e-6
+  beta=0.5: u2_bound = 0.000948850828005, lemma = 9.488508280051e-04, beta^2/2000 + R/100 = 0.000362212707001
+  beta=2.0: u2_bound = 0.0955622439572, lemma = 9.556224395723e-02, beta^2/2000 + R/100 = 0.0258905609893
+
+real	0m1.572s
+user	0m1.297s
+sys	0m0.182s
