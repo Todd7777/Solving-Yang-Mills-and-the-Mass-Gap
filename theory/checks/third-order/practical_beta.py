@@ -1,4 +1,4 @@
-# Section 16 of Part IV (Remark mg:rem:practical (iii)): the third-order lower bound at practical beta.  Usage: python3 practical_beta.py [d [beta ...]]
+# Section 16 of Part IV (Remark mg:rem:practical (iii)): the third-order lower bound at practical beta.  Usage: python3 practical_beta.py [--group N] [d [beta ...]]
 """The smallest admissible delta' of Theorem mg:thm:lower5 (by characters, varpi = b^2 or b^(5/2)) for SU(3), with
   - theta_7 in place of theta_5 (Lemma mg:lem:theta7);
   - the exact counts of Remark mg:rem:practical (ii): N^v_k (fronts_count.py, d=3: k <= 9, d=4: k <= 8; the referee's ref_fronts.py: N^v_10 = 634
@@ -74,9 +74,17 @@ def load_terms(d, path, closed=None, closed_from=None):
                                5: {8: 12, 10: 376, 11: 880, 12: 2271, 13: 4096, 14: 8562, 15: 15532, 16: 25227, 17: 33440, 18: 38064, 19: 35740,
                                    20: 28695, 21: 18600, 22: 10212, 23: 3972, 24: 1296}}}     # zexit_count_n.py
 ORDER = 5
+# the group: SU(3) (default; second_order_constants.su3, as refereed) or SU(N) with --group N (sun_group.sun: exact Haar moments, and u_2 by sun_group.u2_bound
+# in Lemma mg:lem:dressed); TERM[N] is the size of the third-order term of the gap, |beta^3 coefficient of -log Upsilon| (Corollary mg:cor:third)
+GROUP = 3
+TERM = {3: mpf(1)/432, 5: mpf(1)/6000}
+def group_data():
+    if GROUP == 3: return dict(T.GROUPS)['SU(3)']
+    from sun_group import sun
+    return sun(GROUP, sharp_u2=True)
 def deficit(d, beta):
-    """the whole deficit D of the lower bound at beta for SU(3) (the smaller delta' of varpi = b^2, b^(5/2)), the evaluation, and the group data"""
-    g = dict(T.GROUPS)['SU(3)'](beta); best = None
+    """the whole deficit D of the lower bound at beta for the group (the smaller delta' of varpi = b^2, b^(5/2)), the evaluation, and the group data"""
+    g = group_data()(beta); best = None
     for vp in (2, mpf(5)/2):
         try: lo = T.lower3e(beta, d, g, varpi_pow=vp, chars=True)
         except AssertionError: continue
@@ -89,11 +97,11 @@ def run(d, betas):
     if ORDER == 7: order7_d3()
     for be in betas:
         beta = mpf(be); D, best, g = deficit(d, beta)
-        target = beta**3/432
+        target = TERM[GROUP]*beta**3
         lth = best['loss'] - log(best['Ubar']) - log(1 + best['delta'])
         parts = sorted(((float(v/beta**4), k) for k, v in best['parts'].items()), reverse=True)[:3]
         print(f"d={d} beta={be}: D/beta^4 = {float(D/beta**4):.4g} = theta-loss {float(lth/beta**4):.3g} + log(Ubar/Ups) {float(log(best['Ubar']/g['Ups'])/beta**4):.2g}"
-              f" + log(1+delta') {float(log(1+best['delta'])/beta**4):.4g};  beta^3/432 = {float(target/beta**4):.4g} beta^4 ({'resolved' if D < target else 'not resolved'});"
+              f" + log(1+delta') {float(log(1+best['delta'])/beta**4):.4g};  beta^3/{int(round(float(1/TERM[GROUP])))} = {float(target/beta**4):.4g} beta^4 ({'resolved' if D < target else 'not resolved'});"
               f"  largest parts of delta': " + ', '.join(f'{k} {a:.3g}' for a, k in parts))
         sys.stdout.flush()
 DEFAULT6 = {4: ('1.3e-5', '1.2e-5', '1e-5', '3e-6'), 3: ('1e-4', '9.5e-5', '9e-5', '3e-5')}
@@ -101,6 +109,7 @@ if __name__ == "__main__":
     # default: Remark mg:rem:practical(iii) (Lemma mg:lem:jsums5, theta_7);  --next: the next order S_6 of Lemma mg:lem:corners with theta_10;
     # --next-theta7: S_6 with theta_7
     args = sys.argv[1:]
+    if '--group' in args: i = args.index('--group'); GROUP = int(args[i + 1]); del args[i:i + 2]
     if '--ix' in args: IX_SETTING = True; args.remove('--ix')
     if '--next' in args: ORDER = 6; T.CLOSED_FROM = 10; args.remove('--next')
     elif '--next-theta7' in args: ORDER = 6; args.remove('--next-theta7')

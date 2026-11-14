@@ -58,7 +58,7 @@ def upper2(beta, d, g):
 def dressed(beta, g):
     """Upsilon-bar of Lemma mg:lem:dressed."""
     N, iota, u, Ups = g['N'], g['iota'], g['u'], g['Ups']
-    eps = expm1(2*beta); u2 = expm1(beta)-beta; gam = expm1(2*beta) + beta**2*exp(beta)
+    eps = expm1(2*beta); u2 = g.get('u2', expm1(beta)-beta); gam = expm1(2*beta) + beta**2*exp(beta)   # u2: a sharper bound if the group data give one
     s6 = (2-iota)*N**2*u**6 + u2**5*expm1(beta)
     nB = (u2/u)**2*eps + sqrt(2-iota)*(N/u)*sqrt(u2**5*expm1(beta))
     c2 = (u2/u)**4*exp(beta); assert Ups > c2

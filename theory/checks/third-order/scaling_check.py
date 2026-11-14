@@ -1,5 +1,5 @@
 # Section 16 of Part IV (Remark mg:rem:nextorder (vii)): the scaling of the admissible parameters below a computed point, d=3, S''_9.
-# Usage: python3 scaling_check.py [--d4 TERMS.json [--closed n:c,... --closed-from N] [--ix]] [beta_* [JOBS]]   (default beta_* = beta_0(d); ~10 min, 3 jobs)
+# Usage: python3 scaling_check.py [--group N] [--d4 TERMS.json [--closed n:c,... --closed-from N] [--ix]] [beta_* [JOBS]]   (default beta_* = beta_0(d); ~10 min, 3 jobs)
 """At beta_* the parameters of Theorem mg:thm:lower5 are found as usual (practical_beta.deficit). For beta = t beta_*, 0 < t <= 1, and k := beta_* take
     varpi = t^p varpi_*  (varpi_* = b(beta_*)^p),   F = (1+k) t F_*,   F_6 = (1+k) t F_6*,   delta' = (1+k)^2 t^4 delta'_*,
 and keep xi_F, xi_C, h_J and (bbar, abar) of beta_* (these constants come out of lower3e raised by a relative 1e-15, so that their conditions hold
@@ -20,6 +20,8 @@ import third_order_effective as T
 # the setting: d=3 with S''_9 (default), or d=4 with the set given by --d4 FILE and the closed polymers of Z^4 counted exactly as given by --closed,
 # --closed-from (default: 10, 11 plaquettes, crude from 12, as in Remark mg:rem:nextorder (ix); (x) uses 10..16, crude from 17)
 if '--ix' in sys.argv: PB.IX_SETTING = True; sys.argv.remove('--ix')     # the d=4 setting of Remark mg:rem:nextorder (ix)
+if '--group' in sys.argv:                                                # SU(N) (practical_beta.group_data); default SU(3)
+    i = sys.argv.index('--group'); PB.GROUP = int(sys.argv[i + 1]); del sys.argv[i:i + 2]
 CLOSED4, CF4 = {10: 60, 11: 66}, 12
 if '--closed' in sys.argv:
     i = sys.argv.index('--closed'); CLOSED4 = {int(x.split(':')[0]): int(x.split(':')[1]) for x in sys.argv[i + 1].split(',')}; del sys.argv[i:i + 2]
@@ -34,7 +36,7 @@ else:
     PB.load_terms(d, os.path.join(here, 'orders', 'd3_s9.json'), {10: 10, 11: 11, 12: 24, 13: 0, 14: 70}, 15)
 sys.path.insert(0, os.path.join(here, '..', 'upper-bound'))
 from constants_upper import beta0
-su3 = dict(T.GROUPS)['SU(3)']
+su3 = PB.group_data()                # the group (SU(3) unless --group)
 
 def params(beta_s):
     """the admissible parameters at beta_* (the smaller delta' of varpi = b^2, b^(5/2)) and its deficit"""
@@ -73,5 +75,6 @@ if __name__ == "__main__":
         ok = ok and good
         print(f"  t = {float(t):.3g} (beta = {float(t*beta_s):.4g}): " + (f"all hypotheses hold; D/beta^4 = {float(r):.6g} <= (1+k)^3 D_*/beta_*^4 = {float(bound):.6g}: {good}"
                                                                     if err is None else f"FAILS: {err}"))
-    print(f"all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: {ok};  then D < beta^3/432 for all beta <= beta_* as long as "
-          f"(1+k)^3 D_*/beta_*^4 = {float((1+k)**3*Ds):.5g} < 1/(432 beta_*) = {float(1/(432*beta_s)):.5g}: {(1+k)**3*Ds < 1/(432*beta_s)}")
+    c = PB.TERM[PB.GROUP]; q = int(round(float(1/c)))
+    print(f"all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: {ok};  then D < beta^3/{q} for all beta <= beta_* as long as "
+          f"(1+k)^3 D_*/beta_*^4 = {float((1+k)**3*Ds):.5g} < 1/({q} beta_*) = {float(c/beta_s):.5g}: {(1+k)**3*Ds < c/beta_s}")

@@ -1,5 +1,5 @@
 # Part IV, the upper bound at practical beta: the tails T_Q, T_p of Lemma mg:lem:twopoint with the sets Y of its proof counted exactly
-# (rel_closed_count.py) and the five-face caps bounded by characters.  Usage: python3 upper_exact.py [d [beta ...]]
+# (rel_closed_count.py) and the five-face caps bounded by characters.  Usage: python3 upper_exact.py [--group N] [d [beta ...]]
 """T'_S := (1+eps)^|C| e^{theta |P_S|} [ N^cap sigma_5 e^{5(K+1)theta} + sum_{n=5}^{n0} (N_n - [n=5] N^cap) w^n + (1+1/K)^J' sum_{n>n0} q_*^n ],
 w = eps e^{(K+1)theta}, q_* = eK w, with theta the constant of the ratio bound: x/(1-x) as in Lemma mg:lem:twopoint ('crude'), theta_5 =
 x^5/(1-x) (Lemma mg:lem:closed: any periodic lattice with sides >= 3), or the theta of Remark mg:rem:nextorder (vi) ('closed': infinite volume, d = 3,
@@ -70,7 +70,13 @@ def E2(beta, d, g, kind='theta5', counts=COUNTS):
     return Tp*(2 + 3*a + 3*a**2) + B/(1 - B)
 
 if __name__ == "__main__":
-    d = int(sys.argv[1]) if len(sys.argv) > 1 else 3
+    args = sys.argv[1:]; c3 = mpf(1)/432
+    if '--group' in args:                 # SU(N) by sun_group.sun (exact Haar moments), against its third-order term (beta^3/6000 for SU(5))
+        i = args.index('--group'); Ng = int(args[i + 1]); del args[i:i + 2]
+        from sun_group import sun
+        su3 = sun(Ng); c3 = {3: mpf(1)/432, 5: mpf(1)/6000}[Ng]
+    q = int(round(float(1/c3)))
+    d = int(args[0]) if args else 3
     b0 = beta0(d)
     for n0 in sorted({n for S in COUNTS[d] for n in COUNTS[d][S][0] if n >= 8}):
         cn = {d: counts_to(d, n0)}
@@ -80,11 +86,11 @@ if __name__ == "__main__":
         mono = all(x <= y for x, y in zip(vals, vals[1:]))
         print(f"d={d}, n0={n0}: at beta_0: T'_Q = {float(TQ/b0**4):.4g} beta^4, T'_p = {float(Tp/b0**4):.4g} beta^4, error {float(err/b0**4):.4g} beta^4; "
               f"E(beta_0) = {float(E/b0**4):.4g} beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: {mono}; "
-              f"so the error is <= {float(E/b0**4):.4g} beta^4 on the whole range, against beta^3/432 >= {float(1/(432*b0)):.4g} beta^4: {E/b0**4 < 1/(432*b0)}")
-        if E/b0**4 >= 1/(432*b0):
+              f"so the error is <= {float(E/b0**4):.4g} beta^4 on the whole range, against beta^3/{q} >= {float(c3/b0):.4g} beta^4: {E/b0**4 < c3/b0}")
+        if E/b0**4 >= c3/b0:
             lo, hi = mpf('1e-7'), b0
             for _ in range(60):
                 mid = sqrt(lo*hi)
-                if E2(mid, d, su3(mid), counts=cn) < mid**3/432: lo = mid
+                if E2(mid, d, su3(mid), counts=cn) < c3*mid**3: lo = mid
                 else: hi = mid
-            print(f"     E(beta) < beta^3/432 for beta <= {float(lo):.4g}")
+            print(f"     E(beta) < beta^3/{q} for beta <= {float(lo):.4g}")

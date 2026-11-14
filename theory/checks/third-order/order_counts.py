@@ -160,6 +160,28 @@ def classes(m):
     lim = Fraction(2 * m + 1, 2)
     sizes = [4] + list(range(6, 2 * m + 1))
     out = defaultdict(int)                 # K -> largest n needed
+    # the multisets K (non-decreasing, 2 <= |K| <= m - 1) are generated with a prune: E_of(K, K[0]) = K[0] - 4 + (sum K - K[0])/2 only grows as sizes
+    # are appended (each adds at least 2 to the sum), and a class needs n + Emin <= lim with n >= 2, so a prefix with K[0] - 4 + (sum - K[0])/2 > lim - 2 is
+    # dropped with all its extensions (classes_naive below is the unpruned version; the two agree, see the __main__ check with --check-classes)
+    def rec(K, total):
+        if len(K) >= 2:
+            Emin = E_of(tuple(K), K[0])
+            for n in range(2, m):
+                if n + Emin <= lim and (n > 2 or Emin >= 3): out[tuple(K)] = max(out[tuple(K)], n)
+        if len(K) == m - 1: return
+        for sz in sizes:
+            if K and sz < K[-1]: continue
+            k0 = K[0] if K else sz
+            if k0 - 4 + Fraction(total + sz - k0, 2) > lim - 2: break
+            K.append(sz); rec(K, total + sz); K.pop()
+    rec([], 0)
+    return out
+
+def classes_naive(m):
+    """the unpruned enumeration of classes (the first version)"""
+    lim = Fraction(2 * m + 1, 2)
+    sizes = [4] + list(range(6, 2 * m + 1))
+    out = defaultdict(int)
     for r in range(2, m):
         for K in itertools.combinations_with_replacement(sizes, r):
             Emin = E_of(K, K[0])
@@ -168,6 +190,11 @@ def classes(m):
     return out
 
 if __name__ == "__main__":
+    if sys.argv[1] == '--check-classes':           # the pruned generator against the unpruned one, m = 4..int(argv[2])
+        for m in range(4, int(sys.argv[2]) + 1):
+            a, b = classes(m), classes_naive(m)
+            print(f"m={m}: {len(a)} classes, pruned == unpruned: {dict(a) == dict(b)}"); sys.stdout.flush()
+        sys.exit(0)
     D, m = int(sys.argv[1]), int(sys.argv[2])
     lim = Fraction(2 * m + 1, 2)
     terms = []; table = []
