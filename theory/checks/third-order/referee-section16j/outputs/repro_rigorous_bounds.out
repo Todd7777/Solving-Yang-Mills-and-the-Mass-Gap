@@ -1,0 +1,22 @@
+# python3 rigorous_bounds.py
+SU(3), d=3, beta_0 = 0.000402621: ubar/beta = 0.05557793, u_low/beta = 0.05553319, u2bar/beta^2 = 0.00347327, Delta/beta^4 = 1.011e-11, Ubar in [0.99919508, 1.00040270]
+SU(3), d=4, beta_0 = 0.000153766: ubar/beta = 0.05556410, u_low/beta = 0.05554701, u2bar/beta^2 = 0.00347262, Delta/beta^4 = 1.471e-12, Ubar in [0.99969251, 1.00015378]
+SU(5), d=3, beta_0 = 0.000402621: ubar/beta = 0.02000806, u_low/beta = 0.01999195, u2bar/beta^2 = 0.000500671, Delta/beta^4 = 2.565e-13, Ubar in [0.99919508, 1.00040270]
+SU(5), d=4, beta_0 = 0.000153766: ubar/beta = 0.02000308, u_low/beta = 0.01999692, u2bar/beta^2 = 0.000500256, Delta/beta^4 = 3.722e-14, Ubar in [0.99969251, 1.00015378]
+SU(5): U_+ - 1 = P(t)/Z^2 with P = 1/48 t^3 + ...; on (0, 4.03e-4/5]: 0.0208333 - 5.58e-11 - 7.16e-126 = 0.0208333 > 0: True  (so Upsilon >= U_+ >= 1 on (0, 4.03e-4], which contains (0, beta_0(3)] and (0, beta_0(4)])
+SU(3): -log U_+ = (-1/6) beta^1 + (1/72) beta^2 + (1/432) beta^3 + (1/31104) beta^4 + (-1/46656) beta^5 + (-67/33592320) beta^6 + O(beta^7)
+SU(3): -log U_- = (1/6) beta^1 + (1/72) beta^2 + (1/1296) beta^3 + (-1/31104) beta^4 + (-1/93312) beta^5 + (-5/6718464) beta^6 + O(beta^7)
+SU(3): log(U_+/U_-) = (1/3) beta^1 + (-1/648) beta^3 + (-1/15552) beta^4 + (1/93312) beta^5 + (7/5598720) beta^6 + O(beta^7)
+SU(4): -log U_+ = (-1/128) beta^2 + (3/32768) beta^4 + (-23/47185920) beta^6 + O(beta^7)
+SU(4): -log U_- = (1/128) beta^2 + (1/98304) beta^4 + (-1/15728640) beta^6 + O(beta^7)
+SU(4): log(U_+/U_-) = (1/64) beta^2 + (-1/12288) beta^4 + (1/2359296) beta^6 + O(beta^7)
+SU(5): -log U_+ = (-1/6000) beta^3 + (7/12000000) beta^5 + (1/72000000) beta^6 + O(beta^7)
+SU(5): -log U_- = (1/6000) beta^3 + (-1/4000000) beta^5 + (1/72000000) beta^6 + O(beta^7)
+SU(5): log(U_+/U_-) = (1/3000) beta^3 + (-1/1200000) beta^5 + O(beta^7)
+SU(3): U_+ - U_- = 2Q/Z^2, Q = 1/2 t^1 + ...; on (0, beta_0(3)/3]: Q >= t^1 (0.5 - 3.38e-09 - 2.72e-133) = t^1 0.499999997 > 0: True;  so log(U_+/U_-) >= 2 e^(-3 beta) Q >= e^(-3 beta) beta^1 0.333333331  (1/3.000000)
+SU(4): U_+ - U_- = 2Q/Z^2, Q = 1/8 t^2 + ...; on (0, beta_0(3)/4]: Q >= t^2 (0.125 - 5.28e-10 - 2.24e-130) = t^2 0.124999999 > 0: True;  so log(U_+/U_-) >= 2 e^(-3 beta) Q >= e^(-3 beta) beta^2 0.0156249999  (1/64.000000)
+SU(5): U_+ - U_- = 2Q/Z^2, Q = 1/48 t^3 + ...; on (0, beta_0(3)/5]: Q >= t^3 (0.0208333 - 5.91e-11 - 6.71e-126) = t^3 0.0208333333 > 0: True;  so log(U_+/U_-) >= 2 e^(-3 beta) Q >= e^(-3 beta) beta^3 0.000333333332  (1/3000.000009)
+
+real	0m0.240s
+user	0m0.578s
+sys	0m0.008s

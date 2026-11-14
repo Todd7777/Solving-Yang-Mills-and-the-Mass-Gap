@@ -1,0 +1,29 @@
+# python3 arb_eval_cor.py 3 4 x92 3.937
+SU(3), d=4, set d4_s10x_92.json, (bbar, abar) = (0.00390625, 0.001953125); beta_* = 0.000153766448042548 (checked >= beta_0(d) in Arb); 400-bit balls, sums to 200/110 plus rigorous remainders:
+    deco xi_F                                            holds   (room 9.848e-16)
+    deco xi_C                                            holds   (room 9.848e-16)
+    deco h_J (k=4, the maximum)                          holds   (room 9.697e-16)
+    barred xi_F                                          holds   (room 6.702e-16)
+    barred xi_C                                          holds   (room 6.703e-16)
+    six inequalities (actual)                            holds
+    six inequalities (barred)                            holds
+    Sigma^(4)_4 < Ubar delta'                            holds   (room 1.001e-9)
+    F-condition                                          holds   (room 1.000e-9)
+    F_6-condition                                        holds   (room 1.000e-9)
+    third hypothesis (omega)                             holds   (room 1.000)
+    a^4 Ubar (1+delta') <= varpi                         holds   (room 1.000)
+    stronger: F-condition, e^{-2b*} - a                  holds   (room 1.000e-9)
+    stronger: F_6-condition, e^{-2b*} - a                holds   (room 1.000e-9)
+    stronger: third hypothesis <= 1/(1+kappa)            holds   (room 1.000)
+    stronger: a^4 Ubar (1+delta') <= varpi/(1+kappa)     holds   (room 1.000)
+    delta'_* <= kappa                                    holds   (room 1.000)
+    majorant/beta^4                                      0.67572082
+    exact pairs/beta^4                                   0.018204304
+    Sigma4^(4)/beta^4                                    3.9338569
+    parts/beta^4: two, four, exits, one-plaquette, multi 0.249938, 0.144892, 1.78251, 1.06259, 0.693925
+  D(beta_*)/beta_*^4 = 3.93507158992645 (authors: 3.93507158993);  (1+kappa)^3 D/beta_*^4 <= 3.936887115 <= 3.937: True
+  all certified: True
+
+real	0m8.463s
+user	0m4.982s
+sys	0m0.024s

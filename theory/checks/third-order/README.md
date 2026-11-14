@@ -2,8 +2,9 @@
 
 Numerical checks of `theory/mass-gap-strong-coupling.tex`, Section 11 ("The third-order term") and Section 13 ("Junctions of order $\beta^4$; the
 third-order term with an effective constant"), and Section 16. Most scripts are a compass, not part of the proofs. The exceptions are the scripts of the computer-assisted
-Theorem 16.18 (`rigorous_bounds.py`, `--bounds --certified`, `error_budget.py`, `certify_upper.py`, `run_cap.sh`, with the enumerations they use): together with the ninth referee's
-ball-arithmetic evaluation (`referee-section16i/arb_eval.py`, `upper_arb.py`) they are part of that proof.
+Theorem 16.18 and Corollary 16.20 (`rigorous_bounds.py`, `--bounds --certified`, `error_budget.py`, `certify_upper.py`, `sector_upper.py`, `run_cap.sh`, with the enumerations they use):
+together with the referees' ball-arithmetic evaluations (`referee-section16i/arb_eval.py`, `upper_arb.py` for the theorem; `referee-section16j/arb_eval_cor.py`, `upper_arb_sectors.py`,
+`split_check_arb.py` for the corollary) they are part of those proofs. `scaling_check.py` prints its final bound rounded up (the tenth referee).
 Run with `python3 <script>` from this directory (needs `numpy`, `scipy`, `mpmath`; the scripts import helpers from `../lower-bound/`,
 `../upper-bound/` and `../second-order/`).
 

@@ -1,0 +1,44 @@
+# python3 series_check.py
+Haar moments of SU(N) from Toeplitz determinants (exact):
+  SU(3): m(1,1)=1, m(2,2)=2, m(3,3)=6, m(N,0)=m(0,N)=1: True;  all moments with a+b <= 10 equal to sun_group.moment: True;  e.g. m(4,4) = 23, m(5,5) = 103, m(4,1) = 3, m(6,0) = 5
+  SU(4): m(1,1)=1, m(2,2)=2, m(3,3)=6, m(N,0)=m(0,N)=1: True;  all moments with a+b <= 10 equal to sun_group.moment: True;  e.g. m(4,4) = 24, m(5,5) = 119, m(5,1) = 4, m(8,0) = 14
+  SU(5): m(1,1)=1, m(2,2)=2, m(3,3)=6, m(N,0)=m(0,N)=1: True;  all moments with a+b <= 10 equal to sun_group.moment: True;  e.g. m(4,4) = 24, m(5,5) = 120, m(6,1) = 5, m(10,0) = 42
+
+SU(3) (moments to total degree 12; series exact to beta^10):
+  -log U_+     = (-1/6) b^1 + (1/72) b^2 + (1/432) b^3 + (1/31104) b^4 + (-1/46656) b^5 + (-67/33592320) b^6 + (53/705438720) b^7 + ...
+  -log U_-     = (1/6) b^1 + (1/72) b^2 + (1/1296) b^3 + (-1/31104) b^4 + (-1/93312) b^5 + (-5/6718464) b^6 + (31/705438720) b^7 + ...
+  log(U_+/U_-) = (1/3) b^1 + (-1/648) b^3 + (-1/15552) b^4 + (1/93312) b^5 + (7/5598720) b^6 + (-11/352719360) b^7 + ...
+  the authors' sector_series agrees to beta^6: True
+  Q = Z_2 Z - Z_1^2 - Z_im Z: first non-zero coefficient q_1 = 1/2 (t^1, t = beta/N); coefficients equal to the authors' to t^10: True
+  Q coefficients (t^k): 0, 1/2, 0, 3/16, 7/384, 131/3840, 97/15360, 67/15360, 79/73728, 4657/10321920, 12527/103219200
+  Z_im coefficients (t^k): 1/2, -1/4, 1/8, -1/32, 7/768, -11/7680, 31/92160, -1/30720  (signs: +-+-+-+-+-+)
+
+SU(4) (moments to total degree 12; series exact to beta^10):
+  -log U_+     = (-1/128) b^2 + (3/32768) b^4 + (-23/47185920) b^6 + ...
+  -log U_-     = (1/128) b^2 + (1/98304) b^4 + (-1/15728640) b^6 + ...
+  log(U_+/U_-) = (1/64) b^2 + (-1/12288) b^4 + (1/2359296) b^6 + ...
+  the authors' sector_series agrees to beta^6: True
+  Q = Z_2 Z - Z_1^2 - Z_im Z: first non-zero coefficient q_2 = 1/8 (t^2, t = beta/N); coefficients equal to the authors' to t^10: True
+  Q coefficients (t^k): 0, 0, 1/8, 0, 5/96, 0, 13/1152, 0, 431/258048, 0, 233399/1238630400
+  Z_im coefficients (t^k): 1/2, 0, 1/16, 0, 1/192, 0, 1/3072, 0  (signs: +0+0+0+0+0+)
+
+SU(5) (moments to total degree 12; series exact to beta^10):
+  -log U_+     = (-1/6000) b^3 + (7/12000000) b^5 + (1/72000000) b^6 + (-1/1400000000) b^7 + ...
+  -log U_-     = (1/6000) b^3 + (-1/4000000) b^5 + (1/72000000) b^6 + (1/6300000000) b^7 + ...
+  log(U_+/U_-) = (1/3000) b^3 + (-1/1200000) b^5 + (11/12600000000) b^7 + ...
+  the authors' sector_series agrees to beta^6: True
+  Q = Z_2 Z - Z_1^2 - Z_im Z: first non-zero coefficient q_3 = 1/48 (t^3, t = beta/N); coefficients equal to the authors' to t^10: True
+  Q coefficients (t^k): 0, 0, 0, 1/48, 0, 7/768, 0, 641/322560, 1/122880, 3565/12386304, 137/41287680
+  Z_im coefficients (t^k): 1/2, 0, 1/8, -1/96, 1/64, -1/512, 1/768, -29/161280  (signs: +0+-+-+-+-+)
+
+Leading term of log(U_+/U_-) against 2 (beta/2N)^(N-2)/(N-2)!:
+  SU(3): first non-zero term (1/3) beta^1; predicted (1/3) beta^1: True;  q_N = 1/2 = 2^-(N-2)/(N-2)! = 1/2: True
+  SU(4): first non-zero term (1/64) beta^2; predicted (1/64) beta^2: True;  q_N = 1/8 = 2^-(N-2)/(N-2)! = 1/8: True
+  SU(5): first non-zero term (1/3000) beta^3; predicted (1/3000) beta^3: True;  q_N = 1/48 = 2^-(N-2)/(N-2)! = 1/48: True
+  SU(6): first non-zero term (1/248832) beta^4; predicted (1/248832) beta^4: True;  q_N = 1/384 = 2^-(N-2)/(N-2)! = 1/384: True
+  SU(7): first non-zero term (1/32269440) beta^5; predicted (1/32269440) beta^5: True;  q_N = 1/3840 = 2^-(N-2)/(N-2)! = 1/3840: True
+  SU(8): first non-zero term (1/6039797760) beta^6; predicted (1/6039797760) beta^6: True;  q_N = 1/46080 = 2^-(N-2)/(N-2)! = 1/46080: True
+
+real	0m4.796s
+user	0m4.735s
+sys	0m0.008s

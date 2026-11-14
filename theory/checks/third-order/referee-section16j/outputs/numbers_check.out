@@ -1,0 +1,55 @@
+# python3 numbers_check.py
+c'_- SU(3) d=3 (table)                                    quoted 0.6        computed 0.5993437096   upper bound        ok
+proof: D <= 0.59934 beta^4, SU(3) d=3                     quoted 0.59934    computed 0.5993437096   upper bound        DIFFERS
+  authors' scaling output SU(3) d=3 (printed)             quoted 0.599344   computed 0.5993437096   value (6 digits)   ok
+c'_- SU(4) d=3 (table)                                    quoted 0.134      computed 0.1332401769   upper bound        ok
+proof: D <= 0.13324 beta^4, SU(4) d=3                     quoted 0.13324    computed 0.1332401769   upper bound        DIFFERS
+  authors' scaling output SU(4) d=3 (printed)             quoted 0.13324    computed 0.1332401769   value (5 digits)   ok
+c'_- SU(5) d=3 (table)                                    quoted 0.073      computed 0.07288809269  upper bound        ok
+proof: D <= 0.072888 beta^4, SU(5) d=3                    quoted 0.072888   computed 0.07288809269  upper bound        DIFFERS
+  authors' scaling output SU(5) d=3 (printed)             quoted 0.0728881  computed 0.07288809269  value (6 digits)   ok
+c'_- SU(4) d=4 (table)                                    quoted 1.083      computed 1.082154131    upper bound        ok
+proof: D <= 1.0822 beta^4, SU(4) d=4                      quoted 1.0822     computed 1.082154131    upper bound        ok
+  authors' scaling output SU(4) d=4 (printed)             quoted 1.08215    computed 1.082154131    value (6 digits)   ok
+c'_- SU(3) d=4 (table)                                    quoted 3.937      computed 3.936887115    upper bound        ok
+  authors' scaling output SU(3) d=4 (printed)             quoted 3.93689    computed 3.936887115    value (6 digits)   ok
+c'_- SU(5) d=4 (table)                                    quoted 0.52       computed 0.519411098    upper bound        ok
+  authors' scaling output SU(5) d=4 (printed)             quoted 0.519411   computed 0.519411098    value (6 digits)   ok
+proof: majorant M_S SU(3) d=3 set s9                      quoted 2.354      computed 2.35378        value (4 digits)   ok
+proof: majorant M_S SU(3) d=3 set s9z                     quoted 0.399      computed 0.399421       value (3 digits)   ok
+proof: majorant M_S SU(5) d=3 set s9                      quoted 0.28       computed 0.279548       value (2 digits)   ok
+proof: majorant M_S SU(5) d=3 set s9z                     quoted 0.007      computed 0.00700058     value (1 digits)   ok
+c'_+ SU(3) d=3 (table), both sectors                      quoted 0.042      computed 0.04152838154  upper bound        ok
+proof: E_C(beta_0)/beta_0^4 SU(3) d=3                     quoted 0.04153    computed 0.04152838154  value (4 digits)   ok
+c'_+ SU(3) d=4 (table), both sectors                      quoted 0.047      computed 0.04696794112  upper bound        ok
+proof: E_C(beta_0)/beta_0^4 SU(3) d=4                     quoted 0.04697    computed 0.04696794112  value (4 digits)   ok
+c'_+ SU(4) d=3 (table), both sectors                      quoted 0.131      computed 0.1305720694   upper bound        ok
+proof: E_C(beta_0)/beta_0^4 SU(4) d=3                     quoted 0.13057    computed 0.1305720694   value (5 digits)   ok
+c'_+ SU(4) d=4 (table), both sectors                      quoted 0.148      computed 0.1478297027   upper bound        ok
+proof: E_C(beta_0)/beta_0^4 SU(4) d=4                     quoted 0.14783    computed 0.1478297027   value (5 digits)   ok
+c'_+ SU(5) d=3 (table), both sectors                      quoted 0.319      computed 0.3183366296   upper bound        ok
+proof: E_C(beta_0)/beta_0^4 SU(5) d=3                     quoted 0.31834    computed 0.3183366296   value (5 digits)   ok
+c'_+ SU(5) d=4 (table), both sectors                      quoted 0.361      computed 0.3605147849   upper bound        ok
+proof: E_C(beta_0)/beta_0^4 SU(5) d=4                     quoted 0.36051    computed 0.3605147849   value (5 digits)   ok
+proof: e^{-3b}(1-1e-8)/3000 at beta_0(3)                  quoted 0.0003329  computed 0.00033293     value (4 digits)   ok
+proof: (c'_-+c'_+) beta_0(3), SU(5)                       quoted 0.000158   computed 0.00015783     value (3 digits)   ok
+proof: e^{-3b}(1-1e-8)/3000 at beta_0(4)                  quoted 0.0003332  computed 0.00033318     value (4 digits)   ok
+proof: (c'_-+c'_+) beta_0(4), SU(5)                       quoted 0.000136   computed 0.00013547     value (3 digits)   DIFFERS
+after the proof: margin factor d=3 (as a lower bound)     quoted 2.1        computed 2.109          lower bound        ok
+after the proof: margin factor d=3                        quoted 2.1        computed 2.109          value (2 digits)   ok
+after the proof: margin factor d=4 (as a lower bound)     quoted 2.4        computed 2.459          lower bound        ok
+after the proof: margin factor d=4                        quoted 2.4        computed 2.459          value (2 digits)   DIFFERS
+proof: 1/(648 beta_0(3))                                  quoted 3.83       computed 3.8329         value (3 digits)   ok
+proof: 1/(648 beta_0(4))                                  quoted 10.04      computed 10.036         value (4 digits)   ok
+(i): beta^3/1296 >= 1.91 beta^4 (d=3)                     quoted 1.91       computed 1.9165         lower bound        ok
+(i): beta^3/1296 >= 5.01 beta^4 (d=4)                     quoted 5.01       computed 5.018          lower bound        ok
+proof: Q >= q_N t^(N-2) (1 - 1e-8), SU(3): relative loss  quoted 1e-08      computed 6.75e-09       upper bound        ok
+proof: Q >= q_N t^(N-2) (1 - 1e-8), SU(4): relative loss  quoted 1e-08      computed 4.22e-09       upper bound        ok
+proof: Q >= q_N t^(N-2) (1 - 1e-8), SU(5): relative loss  quoted 1e-08      computed 2.84e-09       upper bound        ok
+proof: tails at most 3e-27 of their sums (new cases)      quoted 3e-27      computed 2.76e-27       upper bound        ok
+proof: room at least 2.8e-16 (new cases)                  quoted 2.8e-16    computed 2.84e-16       lower bound        ok
+49 numbers, 5 flagged
+
+real	0m0.028s
+user	0m0.019s
+sys	0m0.008s

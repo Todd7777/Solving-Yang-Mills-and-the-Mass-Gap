@@ -1,0 +1,29 @@
+# python3 arb_eval_cor.py 4 4 x92 1.083
+SU(4), d=4, set d4_s10x_92.json, (bbar, abar) = (0.00390625, 0.0009765625); beta_* = 0.000153766448042548 (checked >= beta_0(d) in Arb); 400-bit balls, sums to 200/110 plus rigorous remainders:
+    deco xi_F                                            holds   (room 9.848e-16)
+    deco xi_C                                            holds   (room 9.848e-16)
+    deco h_J (k=4, the maximum)                          holds   (room 9.697e-16)
+    barred xi_F                                          holds   (room 6.720e-16)
+    barred xi_C                                          holds   (room 6.721e-16)
+    six inequalities (actual)                            holds
+    six inequalities (barred)                            holds
+    Sigma^(4)_4 < Ubar delta'                            holds   (room 1.001e-9)
+    F-condition                                          holds   (room 1.000e-9)
+    F_6-condition                                        holds   (room 1.000e-9)
+    third hypothesis (omega)                             holds   (room 1.000)
+    a^4 Ubar (1+delta') <= varpi                         holds   (room 1.000)
+    stronger: F-condition, e^{-2b*} - a                  holds   (room 1.000e-9)
+    stronger: F_6-condition, e^{-2b*} - a                holds   (room 1.000e-9)
+    stronger: third hypothesis <= 1/(1+kappa)            holds   (room 1.000)
+    stronger: a^4 Ubar (1+delta') <= varpi/(1+kappa)     holds   (room 1.000)
+    delta'_* <= kappa                                    holds   (room 1.000)
+    majorant/beta^4                                      0.20474734
+    exact pairs/beta^4                                   0.0057445291
+    Sigma4^(4)/beta^4                                    1.0813177
+    parts/beta^4: two, four, exits, one-plaquette, multi 0.140590, 0.144806, 0.479223, 0.106207, 0.210492
+  D(beta_*)/beta_*^4 = 1.08165508729163 (authors: 1.08165508729);  (1+kappa)^3 D/beta_*^4 <= 1.082154131 <= 1.083: True
+  all certified: True
+
+real	0m8.676s
+user	0m4.945s
+sys	0m0.012s

@@ -1,0 +1,16 @@
+# python3 corners_check.py
+(a) corners of S''_9:       [(2, 7.0), (3, 6.0), (5, 5.0), (6, 4.0), (7, 3.0), (8, 2.0)]
+    corners of S''_9 u Z:   [(2, 7.0), (3, 6.0), (5, 5.0), (6, 4.0), (41, 2.0)]
+    d3_s9.json corners:     [[2, 7], [3, 6], [5, 5], [6, 4], [7, 3], [8, 2]]  agree: True
+    d3_s9z.json corners:    [[2, 7.0], [3, 6.0], [5, 5.0], [6, 4.0], [41, 2.0]]  agree: True
+    window: n <= 60, E <= 30; beyond it every exponent dominates (41,2) or (2,7): True
+    terms of d3_s9z.json equal those of d3_s9.json: True
+(b) terms of S''_9 at an exponent of Z: []  (none expected: Lemma mg:lem:planar(ii))
+    every term lies in S''_9 and in the exponent set: True
+    exponents with E = 2 that carry pairs: [(3, 2.0)];  with E in (3, 7/2): [(2, 3.0), (2, 3.5), (3, 3.0), (3, 3.5), (4, 3.0), (4, 3.5)]
+(c) placements checked: 4096 (4,4,4), 8192 (4,4,6), 8192 (4,4,7); every bounded face is a front square or the domino: True;
+    largest union of all bounded faces: 3 plaquettes (4,4,4; Lemma: <= 3), 4 (4,4,6; <= 4), 4 (4,4,7; <= 4)
+
+real	0m2.907s
+user	0m2.886s
+sys	0m0.008s

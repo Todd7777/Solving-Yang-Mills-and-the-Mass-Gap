@@ -17,4 +17,4 @@ beta_* = 0.000153766448: D/beta^4 = 1.08166, varpi = b^2.5, (bbar, abar) = (mpf(
   t = 1e-08 (beta = 1.538e-12): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
   t = 1e-12 (beta = 1.538e-16): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
   t = 1e-20 (beta = 1.538e-24): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
-all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: True;  so D <= 1.0822 beta^4 for all beta <= beta_* (SU(4) has no third-order term)
+all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: True;  so D <= 1.08216 beta^4 for all beta <= beta_* (rounded up; no third-order term for GROUP = 4)

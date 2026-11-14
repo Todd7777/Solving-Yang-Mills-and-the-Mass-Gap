@@ -17,4 +17,4 @@ beta_* = 0.0004026214335: D/beta^4 = 0.0728001, varpi = b^2.5, (bbar, abar) = (m
   t = 1e-08 (beta = 4.026e-12): all hypotheses hold; D/beta^4 = 0.0454393 <= (1+k)^3 D_*/beta_*^4 = 0.0728881: True
   t = 1e-12 (beta = 4.026e-16): all hypotheses hold; D/beta^4 = 0.0454393 <= (1+k)^3 D_*/beta_*^4 = 0.0728881: True
   t = 1e-20 (beta = 4.026e-24): all hypotheses hold; D/beta^4 = 0.0454393 <= (1+k)^3 D_*/beta_*^4 = 0.0728881: True
-all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: True;  then D < beta^3/6000 for all beta <= beta_* as long as (1+k)^3 D_*/beta_*^4 = 0.072888 < 1/(6000 beta_*) = 0.41395: True
+all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: True;  then D < beta^3/6000 for all beta <= beta_* as long as (1+k)^3 D_*/beta_*^4 <= 0.0728881 < 1/(6000 beta_*) = 0.41395: True  (bounds rounded up)

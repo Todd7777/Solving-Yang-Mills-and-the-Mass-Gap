@@ -54,6 +54,12 @@ def params(beta_s):
     best['D'] = best['D_bound'] if PB.BOUNDS else best['loss'] - log(g['Ups'])
     return best
 
+def up(x, sig=6):
+    """x rounded UP to sig significant digits (a printed bound must not be below the true one; the tenth referee)"""
+    from mpmath import mpf, floor, ceil, log10
+    x = mpf(x); e = int(floor(log10(x))) - sig + 1
+    return float(ceil(x/mpf(10)**e)*mpf(10)**e)
+
 def scaled(args):
     beta_s, P, t = args
     k = beta_s; beta = t*beta_s; g = su3(beta)
@@ -84,7 +90,7 @@ if __name__ == "__main__":
     if PB.GROUP in PB.TERM:
         c = PB.TERM[PB.GROUP]; q = int(round(float(1/c)))
         print(f"all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: {ok};  then D < beta^3/{q} for all beta <= beta_* as long as "
-              f"(1+k)^3 D_*/beta_*^4 = {float((1+k)**3*Ds):.5g} < 1/({q} beta_*) = {float(c/beta_s):.5g}: {(1+k)**3*Ds < c/beta_s}")
+              f"(1+k)^3 D_*/beta_*^4 <= {up((1+k)**3*Ds):.6g} < 1/({q} beta_*) = {float(c/beta_s):.5g}: {(1+k)**3*Ds < c/beta_s}  (bounds rounded up)")
     else:                            # no third-order term (e.g. SU(4)): the bound itself
-        print(f"all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: {ok};  so D <= {float((1+k)**3*Ds):.5g} beta^4 for all beta <= beta_* "
-              f"(SU({PB.GROUP}) has no third-order term)")
+        print(f"all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: {ok};  so D <= {up((1+k)**3*Ds):.6g} beta^4 for all beta <= beta_* "
+              f"(rounded up; no third-order term for GROUP = {PB.GROUP})")

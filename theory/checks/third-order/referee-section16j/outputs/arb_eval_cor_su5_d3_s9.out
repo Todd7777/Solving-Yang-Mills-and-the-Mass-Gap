@@ -1,0 +1,29 @@
+# python3 arb_eval_cor.py 5 3 s9 0.346
+SU(5), d=3, set d3_s9.json, (bbar, abar) = (0.0078125, 0.000244140625); beta_* = 0.00040262143352282 (checked >= beta_0(d) in Arb); 400-bit balls, sums to 200/110 plus rigorous remainders:
+    deco xi_F                                            holds   (room 9.868e-16)
+    deco xi_C                                            holds   (room 9.868e-16)
+    deco h_J (k=4, the maximum)                          holds   (room 9.736e-16)
+    barred xi_F                                          holds   (room 8.295e-16)
+    barred xi_C                                          holds   (room 8.295e-16)
+    six inequalities (actual)                            holds
+    six inequalities (barred)                            holds
+    Sigma^(4)_4 < Ubar delta'                            holds   (room 1.001e-9)
+    F-condition                                          holds   (room 1.000e-9)
+    F_6-condition                                        holds   (room 1.000e-9)
+    third hypothesis (omega)                             holds   (room 1.000)
+    a^4 Ubar (1+delta') <= varpi                         holds   (room 1.000)
+    stronger: F-condition, e^{-2b*} - a                  holds   (room 1.000e-9)
+    stronger: F_6-condition, e^{-2b*} - a                holds   (room 1.000e-9)
+    stronger: third hypothesis <= 1/(1+kappa)            holds   (room 1.000)
+    stronger: a^4 Ubar (1+delta') <= varpi/(1+kappa)     holds   (room 1.000)
+    delta'_* <= kappa                                    holds   (room 1.000)
+    majorant/beta^4                                      0.27921007
+    exact pairs/beta^4                                   0.00033795412
+    Sigma4^(4)/beta^4                                    0.31791359
+    parts/beta^4: two, four, exits, one-plaquette, multi 0.0365240, 0, 0.00146617, 0.000375435, 0.279548
+  D(beta_*)/beta_*^4 = 0.345567127982764 (authors: 0.345567127983);  (1+kappa)^3 D/beta_*^4 <= 0.3459846943 <= 0.346: True
+  all certified: True
+
+real	0m6.729s
+user	0m3.354s
+sys	0m0.008s

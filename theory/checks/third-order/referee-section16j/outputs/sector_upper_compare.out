@@ -1,0 +1,18 @@
+# python3 sector_upper_compare.py
+SU(3) d=3 C=+: authors 0.0415283815382883, referee (Arb) 0.0415283815382883, relative difference 9.58e-41
+SU(3) d=3 C=-: authors 0.0415283493984084, referee (Arb) 0.0415283493984084, relative difference 1.2e-40
+SU(4) d=3 C=+: authors 0.130572069382898, referee (Arb) 0.130572069382898, relative difference 1.65e-40
+SU(4) d=3 C=-: authors 0.130572044898898, referee (Arb) 0.130572044898898, relative difference 2.71e-40
+SU(5) d=3 C=+: authors 0.318336629617839, referee (Arb) 0.318336629617839, relative difference 4.15e-41
+SU(5) d=3 C=-: authors 0.318336609527557, referee (Arb) 0.318336609527557, relative difference 1.57e-40
+SU(3) d=4 C=+: authors 0.0469679411233137, referee (Arb) 0.0469679411233137, relative difference 4.79e-41
+SU(3) d=4 C=-: authors 0.0469679318661797, referee (Arb) 0.0469679318661797, relative difference 5.03e-41
+SU(4) d=4 C=+: authors 0.14782970271251, referee (Arb) 0.147829702712510, relative difference 1.96e-41
+SU(4) d=4 C=-: authors 0.147829695707269, referee (Arb) 0.147829695707269, relative difference 2.87e-40
+SU(5) d=4 C=+: authors 0.360514784864147, referee (Arb) 0.360514784864147, relative difference 7.96e-41
+SU(5) d=4 C=-: authors 0.360514779176878, referee (Arb) 0.360514779176878, relative difference 5.4e-41
+largest relative difference: 2.87e-40
+
+real	0m0.129s
+user	0m0.327s
+sys	0m0.016s
