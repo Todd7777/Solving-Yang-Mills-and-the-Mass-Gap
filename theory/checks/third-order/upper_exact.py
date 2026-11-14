@@ -17,8 +17,9 @@ mp.dps = 60
 su3 = dict(T.GROUPS)['SU(3)']
 # N_n(S) for n = 5..n0 (rel_closed_count.py), and the number of caps among the five-plaquette sets
 COUNTS = {3: {'Q': ({5: 6, 6: 12, 7: 0, 8: 0, 9: 30, 10: 93, 11: 144, 12: 162}, 6), 'A': ({5: 2, 6: 8, 7: 0, 8: 0, 9: 10, 10: 47, 11: 60, 12: 96}, 2)},
-          4: {'Q': ({5: 18, 6: 60, 7: 0, 8: 24, 9: 262, 10: 1143}, 18), 'A': ({5: 4, 6: 32, 7: 0, 8: 0, 9: 60, 10: 506}, 4)}}
-# Z^3 to 10 and Z^4 to 8: rel_closed_count.py; Z^3 11-12 and Z^4 9-10: the fifth referee, by two methods (referee-section16e/), and rel_closed_count.py where it finished
+          4: {'Q': ({5: 18, 6: 60, 7: 0, 8: 24, 9: 262, 10: 1143, 11: 2616}, 18), 'A': ({5: 4, 6: 32, 7: 0, 8: 0, 9: 60, 10: 506, 11: 760}, 4)}}
+# Z^3 to 10 and Z^4 to 8: rel_closed_count.py; Z^3 11-12 and Z^4 9-10: the fifth referee, by two methods (referee-section16e/), and rel_closed_count.py where it finished;
+# Z^4 11: admissible_split.c (the fifth referee's Redelmeier code in independent pieces, run_admissible_pieces.sh; orders/admissible_d4_n11.out)
 def counts_to(d, n0):
     return {S: ({n: c for n, c in Nn.items() if n <= n0}, ncap) for S, (Nn, ncap) in COUNTS[d].items()}
 

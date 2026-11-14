@@ -1,4 +1,4 @@
-# python3 upper_exact.py --group 5 3   (d=4: after the count of 11 plaquettes, run_admissible_pieces.sh)
+# python3 upper_exact.py --group 5 3
 d=3, n0=8: at beta_0: T'_Q = 1.602 beta^4, T'_p = 0.6107 beta^4, error 4034 beta^4; E(beta_0) = 4034 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 4034 beta^4 on the whole range, against beta^3/6000 >= 0.414 beta^4: False
      E(beta) < beta^3/6000 for beta <= 8.748e-05
 d=3, n0=9: at beta_0: T'_Q = 0.04223 beta^4, T'_p = 0.01613 beta^4, error 106.3 beta^4; E(beta_0) = 106.3 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 106.3 beta^4 on the whole range, against beta^3/6000 >= 0.414 beta^4: False
@@ -7,3 +7,11 @@ d=3, n0=10: at beta_0: T'_Q = 0.001232 beta^4, T'_p = 0.0005049 beta^4, error 3.
      E(beta) < beta^3/6000 for beta <= 0.0003026
 d=3, n0=11: at beta_0: T'_Q = 0.0001545 beta^4, T'_p = 9.436e-05 beta^4, error 0.3891 beta^4; E(beta_0) = 0.3891 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 0.3891 beta^4 on the whole range, against beta^3/6000 >= 0.414 beta^4: True
 d=3, n0=12: at beta_0: T'_Q = 0.0001262 beta^4, T'_p = 8.357e-05 beta^4, error 0.3178 beta^4; E(beta_0) = 0.3178 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 0.3178 beta^4 on the whole range, against beta^3/6000 >= 0.414 beta^4: True
+# python3 upper_exact.py --group 5 4
+d=4, n0=8: at beta_0: T'_Q = 1.938 beta^4, T'_p = 0.4936 beta^4, error 4860 beta^4; E(beta_0) = 4860 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 4860 beta^4 on the whole range, against beta^3/6000 >= 1.084 beta^4: False
+     E(beta) < beta^3/6000 for beta <= 3.795e-05
+d=4, n0=9: at beta_0: T'_Q = 0.0325 beta^4, T'_p = 0.008302 beta^4, error 81.49 beta^4; E(beta_0) = 81.49 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 81.49 beta^4 on the whole range, against beta^3/6000 >= 1.084 beta^4: False
+     E(beta) < beta^3/6000 for beta <= 8.272e-05
+d=4, n0=10: at beta_0: T'_Q = 0.0006329 beta^4, T'_p = 0.0001865 beta^4, error 1.587 beta^4; E(beta_0) = 1.587 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 1.587 beta^4 on the whole range, against beta^3/6000 >= 1.084 beta^4: False
+     E(beta) < beta^3/6000 for beta <= 0.0001458
+d=4, n0=11: at beta_0: T'_Q = 0.0001001 beta^4, T'_p = 5.079e-05 beta^4, error 0.2511 beta^4; E(beta_0) = 0.2511 beta_0^4 (with ubar); E/beta^5 increasing on 401 points of [1e-30, beta_0]: True; so the error is <= 0.2511 beta^4 on the whole range, against beta^3/6000 >= 1.084 beta^4: True

@@ -113,10 +113,10 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   **$SU(5)$** (Lemma 16.11 and Remark 16.12, 14 November, not yet refereed): the only other $SU(N)$ with a third-order term ($-\beta^3/6000$, Corollary 11.6). Group data from exact
   Haar moments (`sun_group.py`, Schur–Weyl; agrees with the $SU(2)$, $SU(3)$ code to 40 digits); Lemma 16.11 (Theorem) bounds $u_2$ by the exact order-2 multiplicities,
   $u_2\le\beta^2/2000+R/100$ for $SU(5)$ instead of $e^\beta-1-\beta$ (needed in $d=3$: otherwise $\log(\bar\Upsilon/\Upsilon)=0.254\beta^4$). Lower bound: $d=3$ with $S''_9$, $D\le0.3454\beta^4$
-  by the scaling; $d=4$ with $S^\times_{10}\cup\{(9,2)\}$ (class $4,4,4$ with nine plaquettes: $148894$, two methods), $D\le0.519\beta^4$. Upper bound: $E=0.318\beta^4$ ($d=3$); in $d=4$ $0.2511\beta^4$ once
-  the admissible sets of 11 plaquettes in $\mathbb Z^4$ are counted (any counts up to $10^9$ do; the count was running at the last commit; to redo it, run
-  `theory/checks/third-order/run_admissible_pieces.sh OUTDIR` (resumable pieces, about 1–2 hours on 4 cores) and `sum_admissible_pieces.py OUTDIR`). **For $SU(5)$: $-0.346\beta^4\le m-4\log(1/u)+\log\Upsilon\le0.318\beta^4$ ($d=3$, whole range); $-0.519\beta^4\le\dots$ ($d=4$), upper half pending**
-  (Numerical); the `--group 5` option of `practical_beta.py`, `scaling_check.py`, `monotone_check.py`, `upper_exact.py`. The corner $(9,2)$ also gives $SU(3)$, $d=4$: $D\le3.94\beta^4$ (was $11.39$).
+  by the scaling; $d=4$ with $S^\times_{10}\cup\{(9,2)\}$ (class $4,4,4$ with nine plaquettes: $148894$, two methods), $D\le0.519\beta^4$. Upper bound: $E=0.318\beta^4$ ($d=3$); $0.2511\beta^4$ ($d=4$), with
+  the admissible sets of 11 plaquettes in $\mathbb Z^4$ ($760$ for $S_A$, $2616$ for $S_Q$; `admissible_split.c`, the fifth referee's enumeration in resumable pieces,
+  `run_admissible_pieces.sh`, about 1 hour on 4 cores; `orders/admissible_d4_n11.out`). **For $SU(5)$: $-0.346\beta^4\le m-4\log(1/u)+\log\Upsilon\le0.318\beta^4$ ($d=3$), $-0.519\beta^4\le\dots\le0.252\beta^4$ ($d=4$), whole range**
+  (Numerical); the `--group 5` option of `practical_beta.py`, `scaling_check.py`, `monotone_check.py`, `upper_exact.py`. The corner $(9,2)$ and the sets of 11 plaquettes also give $SU(3)$, $d=4$: $-3.94\beta^4\le m-4\log(1/u)+\log\Upsilon\le0.033\beta^4$ (was $-11.4$, $0.21$).
   Next: a referee for Lemma 16.11 and Remark 16.12; then $d\ge5$, or the $C$-odd sector at fourth order (Conjecture 15.11).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same

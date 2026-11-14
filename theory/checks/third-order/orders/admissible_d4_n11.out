@@ -1,0 +1,105 @@
+# Remark mg:rem:su5(iv): the admissible sets of 11 plaquettes in Z^4 (Lemma mg:lem:uppertails), by admissible_split.c in pieces (run_admissible_pieces.sh);
+# (S_A,{p0}) in 4 pieces, (S_Q,Q) in 16; sum by sum_admissible_pieces.py. Every piece: boundary_hit=0.
+A: 4/4 pieces; admissible sets by size {5: 4, 6: 32, 9: 60, 10: 506, 11: 760}; two components {}
+Q: 16/16 pieces; admissible sets by size {5: 18, 6: 60, 8: 24, 9: 262, 10: 1143, 11: 2616}; two components {10: 27, 11: 624}
+# pieces:
+## A_0_4.txt
+d=4 kind=A nmax=11 prune=2 |C|=1 |P_S|=21 J'=20 nodes=395670045 boundary_hit=0
+admissible sets by size: 5:1 6:8 9:14 10:121 11:183
+of which with two components:
+real	4m54.087s
+## A_1_4.txt
+d=4 kind=A nmax=11 prune=2 |C|=1 |P_S|=21 J'=20 nodes=439924425 boundary_hit=0
+admissible sets by size: 6:8 9:4 10:112 11:112
+of which with two components:
+real	5m16.367s
+## A_2_4.txt
+d=4 kind=A nmax=11 prune=2 |C|=1 |P_S|=21 J'=20 nodes=477713681 boundary_hit=0
+admissible sets by size: 5:1 6:8 9:14 10:131 11:193
+of which with two components:
+real	5m42.952s
+## A_3_4.txt
+d=4 kind=A nmax=11 prune=2 |C|=1 |P_S|=21 J'=20 nodes=510006127 boundary_hit=0
+admissible sets by size: 5:2 6:8 9:28 10:142 11:272
+of which with two components:
+real	6m13.017s
+## Q_0_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=412592911 boundary_hit=0
+admissible sets by size:
+of which with two components:
+real	4m12.095s
+## Q_1_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=411389914 boundary_hit=0
+admissible sets by size: 6:3 10:42 11:45
+of which with two components: 11:9
+real	4m5.487s
+## Q_2_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=439682142 boundary_hit=0
+admissible sets by size: 6:6 10:70 11:91
+of which with two components: 11:14
+real	4m17.017s
+## Q_3_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=469931867 boundary_hit=0
+admissible sets by size: 6:6 10:76 11:97
+of which with two components: 11:14
+real	4m36.199s
+## Q_4_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=496793000 boundary_hit=0
+admissible sets by size: 9:3
+of which with two components:
+real	6m31.144s
+## Q_5_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=526541913 boundary_hit=0
+admissible sets by size: 5:1 6:3 9:14 10:61 11:141
+of which with two components: 11:39
+real	7m4.280s
+## Q_6_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=551726305 boundary_hit=0
+admissible sets by size: 5:1 6:6 8:2 9:12 10:91 11:178
+of which with two components: 11:36
+real	7m18.635s
+## Q_7_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=597318981 boundary_hit=0
+admissible sets by size: 5:1 6:6 8:2 9:12 10:98 11:188
+of which with two components: 11:36
+real	8m37.111s
+## Q_8_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=641098669 boundary_hit=0
+admissible sets by size: 5:1 9:14 10:21 11:101
+of which with two components: 11:35
+real	9m29.807s
+## Q_9_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=699600853 boundary_hit=0
+admissible sets by size: 6:3 9:3 10:43 11:48
+of which with two components: 11:12
+real	11m21.980s
+## Q_10_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=719612554 boundary_hit=0
+admissible sets by size: 5:1 6:6 8:4 9:17 10:95 11:197
+of which with two components: 11:47
+real	11m20.673s
+## Q_11_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=755422528 boundary_hit=0
+admissible sets by size: 5:1 6:6 8:4 9:17 10:102 11:207
+of which with two components: 11:47
+real	13m19.660s
+## Q_12_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=749408094 boundary_hit=0
+admissible sets by size: 5:1 9:23 10:24 11:106
+of which with two components: 10:3 11:40
+real	12m41.532s
+## Q_13_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=889465852 boundary_hit=0
+admissible sets by size: 5:3 6:3 9:45 10:98 11:309
+of which with two components: 10:6 11:75
+real	12m54.745s
+## Q_14_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=907521595 boundary_hit=0
+admissible sets by size: 5:4 6:6 8:6 9:51 10:155 11:443
+of which with two components: 10:9 11:110
+real	12m33.506s
+## Q_15_16.txt
+d=4 kind=Q nmax=11 prune=2 |C|=6 |P_S|=54 J'=48 nodes=963935512 boundary_hit=0
+admissible sets by size: 5:4 6:6 8:6 9:51 10:167 11:465
+of which with two components: 10:9 11:110
+real	11m0.911s

@@ -135,8 +135,8 @@ characters), the upper bound does so too: for $SU(3)$ in $d=3$, in infinite volu
 third-order term $\beta^3/432$ is determined from both sides on the whole range; in $d=4$, $-11.4\beta^4\le m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)\le0.21\beta^4$ for all $\beta<\beta_0(4)$, so the
 term is determined from both sides on the whole range there as well (numerical evaluations). The only other $SU(N)$ with a third-order term is $SU(5)$, where it is
 $-\beta^3/6000$; with its group data from exact Haar moments and a sharper bound for its second character coefficient, $-0.346\beta^4\le m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)\le0.318\beta^4$
-for all $\beta<\beta_0(3)$ in $d=3$, so it too is determined from both sides on the whole range there; in $d=4$ the lower bound gives $-0.519\beta^4$ on the whole range,
-and the upper half awaits a count now running (numerical evaluations). For $SU(2)$ the two
+for all $\beta<\beta_0(3)$ in $d=3$ and $-0.519\beta^4\le\dots\le0.252\beta^4$ for all $\beta<\beta_0(4)$ in $d=4$, so it too is determined from both sides on the whole range
+(numerical evaluations). For $SU(2)$ the two
 bounds give $-9.4\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
 $-3.6\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$, in infinite volume (a numerical evaluation of the explicit constants).
 The asymptotics
@@ -4951,21 +4951,24 @@ $(7,4)$, $(8,3)$, $(10,2)$ (\texttt{orders/d4\_s10x\_92.json}). Then $D(\beta_0(
 the shifts and jumps $0.09\,\beta^4$ and the majorant $0.086\,\beta^4$. With $S^\times_{10}$ alone, $D=1.48\,\beta^4$, and the corner $(9,2)$ binds. The scaling from $\beta_0(4)$ passes: $D(\beta)\le0.519\,\beta^4$ for all $\beta\le\beta_0(4)$.
 
 (iv) The upper bound, as in Remark~\ref{mg:rem:upperexact}, with $E(\beta)/\beta^5$ increasing (checked on $401$ points). In $d=3$, with the counts to $12$ plaquettes, $E(\beta_0(3))=0.3178\,\beta^4<0.414\,\beta^4$.
-In $d=4$, with the counts to $10$, $E(\beta_0(4))=1.59\,\beta^4$: the crude tail beyond $10$ plaquettes is $5.4\cdot10^{-4}\beta^4$ of $\mathcal T'_{S_Q}$ and is multiplied by $2500$. With the admissible sets of $11$
-plaquettes counted, $E(\beta_0(4))=0.2511\,\beta^4<1.084\,\beta^4$ for any values of these counts up to $10^9$: what matters is that the crude tail starts at $12$. This count (the fifth
-referee's enumeration, split into independent branches: \texttt{admissible\_split.c}, \texttt{run\_admissible\_pieces.sh}) is running; until it is complete, the upper half in $d=4$ is open.
+In $d=4$, with the counts to $10$, $E(\beta_0(4))=1.59\,\beta^4$: the crude tail beyond $10$ plaquettes is $5.4\cdot10^{-4}\beta^4$ of $\mathcal T'_{S_Q}$ and is multiplied by $2500$. The admissible sets of $11$
+plaquettes number $760$ for $(S_A,\{p_0\})$ and $2616$ for $(S_Q,\mathcal Q)$ ($624$ of them with two components). They were counted by the fifth referee's enumeration, split into $4$
+and $16$ independent branches whose counts reproduce all those to $10$ plaquettes (\texttt{admissible\_split.c}, \texttt{run\_admissible\_pieces.sh},
+\texttt{orders/admissible\_d4\_n11.out}). With them $E(\beta_0(4))=0.2511\,\beta^4<1.084\,\beta^4$, and $E/\beta^5$ increases. The values hardly matter: the same holds with counts up to $10^9$;
+what matters is that the crude tail starts at $12$.
 
 (v) \emph{So for $SU(5)$, in infinite volume,
 \begin{gather*}
 -0.346\,\beta^4\le m(\mu_\beta)-4\log\frac1u+\log\Upsilon\le0.318\,\beta^4\qquad(d=3,\ \beta<\beta_0(3)),\\
--0.519\,\beta^4\le m(\mu_\beta)-4\log\frac1u+\log\Upsilon\qquad(d=4,\ \beta<\beta_0(4)),
+-0.519\,\beta^4\le m(\mu_\beta)-4\log\frac1u+\log\Upsilon\le0.252\,\beta^4\qquad(d=4,\ \beta<\beta_0(4)),
 \end{gather*}
-so in $d=3$ the third-order term $-\beta^3/6000$ is determined from both sides on the whole range, and in $d=4$ from below} (numerical evaluations). In $d=4$ the upper half,
-$\le0.252\,\beta^4$, follows once the count of (iv) is complete.
+and the third-order term $-\beta^3/6000$ is determined from both sides on the whole range} (numerical evaluations). With Remarks~\ref{mg:rem:nextorder}(vii), (x)
+and~\ref{mg:rem:upperexact}, this holds for both groups $SU(N)$ that have a third-order term, in $d=3$ and $d=4$.
 
 (vi) The corner $(9,2)$ also helps $SU(3)$ in $d=4$. With $S^\times_{10}\cup\{(9,2)\}$, $D(\beta_0(4))=3.93\,\beta^4$ instead of $11.38\,\beta^4$: the majorant drops from $8.1\,\beta^4$ to $0.69\,\beta^4$, and the exits
 ($1.8\,\beta^4$) and the one-plaquette junctions ($1.1\,\beta^4$) are now the largest parts. The scaling passes, and $D(\beta)\le3.94\,\beta^4$ for all $\beta\le\beta_0(4)$. So for $SU(3)$ in $d=4$ the residual of
-the lower bound is at most $26\%$ of $\beta^3/432$, instead of $76\%$. (Outputs in \texttt{orders/su5\_d3\_scaling.out}, \texttt{orders/su5\_d4\_scaling.out}, \texttt{orders/d4\_x92\_scaling.out},
+the lower bound is at most $26\%$ of $\beta^3/432$, instead of $76\%$. The counts of $11$ plaquettes of (iv) lower the upper side for $SU(3)$ in $d=4$ from $0.21\,\beta^4$ to
+$E(\beta_0(4))=0.033\,\beta^4$ (\texttt{upper\_exact.py 4}). So $-3.94\,\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.033\,\beta^4$ for $SU(3)$, $d=4$, $\beta<\beta_0(4)$. (Outputs in \texttt{orders/su5\_d3\_scaling.out}, \texttt{orders/su5\_d4\_scaling.out}, \texttt{orders/d4\_x92\_scaling.out},
 \texttt{orders/su5\_upper.out}.)
 \end{remark}
 
@@ -5126,7 +5129,7 @@ $d=4$, lower bound: order 7, the pairs of order 8 with $n\ge4$ and at $(3,5)$, e
 Fronts counted by decisions: $N^v_k\le((1+s)^{2D}-1-2Ds)(y/s)^k$, e.g.\ $N^v_k\le0.734\cdot7.355^k$ in $\Z^3$ & Lem.~\ref{mg:lem:frontsdecision} & Theorem\\
 $d=4$, lower bound on the whole range: $S(8)$, order 9 with $n\ge4$, $(3,6)$, order 10 with $n\ge5$ (searches in C), Lemma~\ref{mg:lem:frontsdecision}, $Z_{n,4}$ to 12, exits with four plaquettes, closed polymers to 16: $-11.4\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ for all $\beta<\beta_0(4)$; with the upper bound, $SU(3)$ third-order term from both sides on the whole range & Rem.~\ref{mg:rem:nextorder}(x) & Numerical\\
 $SU(N)$, $N\ge3$: $u_2\le\max$ over $\mathrm{Sym}^2$, $\Lambda^2$, $\mathrm{ad}$ of $d_r^{-1}(\text{exact order-2 coefficient}+R/d_r)$ and $R/N^2$; $u_2\le\beta^2/2000+R/100$ for $SU(5)$ & Lem.~\ref{mg:lem:u2sun} & Theorem\\
-$SU(5)$: $-0.346\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.318\beta^4$ ($d=3$) and $-0.519\beta^4\le\dots$ ($d=4$; upper half pending a count) for all $\beta<\beta_0(d)$: the third-order term $-\beta^3/6000$ from both sides on the whole range in $d=3$; $SU(3)$, $d=4$, with $(9,2)$: $D\le3.94\beta^4$ & Rem.~\ref{mg:rem:su5} & Numerical\\
+$SU(5)$: $-0.346\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.318\beta^4$ ($d=3$), $-0.519\beta^4\le\dots\le0.252\beta^4$ ($d=4$) for all $\beta<\beta_0(d)$: the third-order term $-\beta^3/6000$ from both sides on the whole range; $SU(3)$, $d=4$, with $(9,2)$ and the sets of 11 plaquettes: $-3.94\beta^4\le\dots\le0.033\beta^4$ & Rem.~\ref{mg:rem:su5} & Numerical\\
 Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order in the $C$-odd sector ($U(1)$, $d\ge4$; Conjecture~\ref{mg:conj:codd}); the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\
 \bottomrule
 \end{tabular}
