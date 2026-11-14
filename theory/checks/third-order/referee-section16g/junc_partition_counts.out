@@ -1,0 +1,111 @@
+D=3 NMAX=12 sizes=4 prune=1: 3 classes loaded (k<=4); N^v by size: 4:12
+  junctions by n: 1:1 2:32 3:0 4:12 5:26 6:302 7:288 8:1988 9:406 10:3193 11:5911 12:26956
+  nodes 2576181, duplicates 0, candidates cut by the box 0
+D=3 NMAX=3 sizes=4,12 prune=1: 120349 classes loaded (k<=12); N^v by size: 4:12 6:132 7:108 8:2034 9:4344 10:43650 11:147888 12:1121083
+hash set full
+  time 28.297934106 s
+D=3 NMAX=2 sizes=4,13 prune=1: 523612 classes loaded (k<=13); N^v by size: 4:12 6:132 7:108 8:2034 9:4344 10:43650 11:147888 12:1121083 13:4773186
+hash set full
+  time 4.382322115 s
+D=3 NMAX=3 sizes=6,8 prune=1: 304 classes loaded (k<=8); N^v by size: 4:12 6:132 7:108 8:2034
+  junctions by n: 1:0 2:1872 3:20616
+  nodes 229219, duplicates 0, candidates cut by the box 0
+  time 3.775265129 s
+D=3 NMAX=2 sizes=6,9 prune=1: 848 classes loaded (k<=9); N^v by size: 4:12 6:132 7:108 8:2034 9:4344
+  junctions by n: 1:0 2:2076
+  nodes 45770, duplicates 0, candidates cut by the box 0
+  time 2.350738644 s
+D=3 NMAX=2 sizes=7,7 prune=1: 43 classes loaded (k<=7); N^v by size: 4:12 6:132 7:108
+  junctions by n: 1:0 2:0
+  nodes 2522, duplicates 0, candidates cut by the box 0
+  time 1.016263038 s
+D=3 NMAX=3 sizes=4,6,6 prune=1: 25 classes loaded (k<=6); N^v by size: 4:12 6:132
+  junctions by n: 1:0 2:820 3:6112
+  nodes 261150, duplicates 0, candidates cut by the box 0
+  time 2.114435880 s
+D=3 NMAX=2 sizes=4,6,7 prune=1: 43 classes loaded (k<=7); N^v by size: 4:12 6:132 7:108
+  junctions by n: 1:0 2:1608
+  nodes 64372, duplicates 0, candidates cut by the box 0
+  time 1.318669894 s
+D=3 NMAX=3 sizes=4,4,8 prune=1: 304 classes loaded (k<=8); N^v by size: 4:12 6:132 7:108 8:2034
+  junctions by n: 1:0 2:0 3:29664
+  nodes 691182, duplicates 0, candidates cut by the box 0
+  time 5.810925435 s
+D=3 NMAX=2 sizes=4,4,9 prune=1: 848 classes loaded (k<=9); N^v by size: 4:12 6:132 7:108 8:2034 9:4344
+  junctions by n: 1:0 2:0
+  nodes 95352, duplicates 0, candidates cut by the box 0
+  time 1.998289884 s
+D=3 NMAX=3 sizes=4,4,4,4 prune=1: 3 classes loaded (k<=4); N^v by size: 4:12
+  junctions by n: 1:0 2:0 3:0
+  nodes 60428, duplicates 0, candidates cut by the box 0
+  time 1.002442618 s
+D=3 NMAX=3 sizes=4,11 prune=1: 20348 classes loaded (k<=11); N^v by size: 4:12 6:132 7:108 8:2034 9:4344 10:43650 11:147888
+  junctions by n: 1:240 2:4636 3:51640
+  nodes 1856118, duplicates 0, candidates cut by the box 0
+  time 60.307857950 s
+D=3 NMAX=3 sizes=6,7 prune=1: 43 classes loaded (k<=7); N^v by size: 4:12 6:132 7:108
+  junctions by n: 1:0 2:0 3:5712
+  nodes 41233, duplicates 0, candidates cut by the box 0
+  time 1.294135071 s
+D=3 NMAX=3 sizes=4,4,6 prune=1: 25 classes loaded (k<=6); N^v by size: 4:12 6:132
+  junctions by n: 1:0 2:0 3:9768
+  nodes 122172, duplicates 0, candidates cut by the box 0
+  time 1.447359759 s
+D=3 NMAX=3 sizes=4,4,7 prune=1: 43 classes loaded (k<=7); N^v by size: 4:12 6:132 7:108
+  junctions by n: 1:0 2:0 3:9600
+  nodes 111852, duplicates 0, candidates cut by the box 0
+  time 1.378874180 s
+DONE
+D=3 NMAX=8 sizes=4,4 prune=1: 3 classes loaded (k<=4); N^v by size: 4:12
+  junctions by n: 1:0 2:0 3:876 4:42 5:912 6:1866 7:21552 8:22038
+  nodes 1080114, duplicates 0, candidates cut by the box 0
+  time 2.842876661 s
+D=3 NMAX=6 sizes=4,4,4 prune=1: 3 classes loaded (k<=4); N^v by size: 4:12
+  junctions by n: 1:0 2:4 3:16 4:24314 5:1928 6:43742
+  nodes 1717546, duplicates 0, candidates cut by the box 0
+  time 2.776269433 s
+D=3 NMAX=5 sizes=6,6 prune=1: 25 classes loaded (k<=6); N^v by size: 4:12 6:132
+  junctions by n: 1:0 2:64 3:3028 4:7524 5:95900
+  nodes 1074905, duplicates 0, candidates cut by the box 0
+  time 3.537325732 s
+D=3 NMAX=7 sizes=4,6 prune=1: 25 classes loaded (k<=6); N^v by size: 4:12 6:132
+  junctions by n: 1:0 2:320 3:680 4:18276 5:11744 6:41848 7:60272
+  nodes 5317837, duplicates 0, candidates cut by the box 0
+  time 10.019226067 s
+D=3 NMAX=7 sizes=4,7 prune=1: 43 classes loaded (k<=7); N^v by size: 4:12 6:132 7:108
+  junctions by n: 1:0 2:312 3:344 4:17028 5:3440 6:24992 7:80632
+  nodes 4475270, duplicates 0, candidates cut by the box 0
+  time 8.867128979 s
+D=3 NMAX=5 sizes=4,4,6 prune=1: 25 classes loaded (k<=6); N^v by size: 4:12 6:132
+  junctions by n: 1:0 2:0 3:9768 4:23352 5:831600
+  nodes 5755274, duplicates 0, candidates cut by the box 0
+  time 13.039029222 s
+D=3 NMAX=6 sizes=4,8 prune=1: 304 classes loaded (k<=8); N^v by size: 4:12 6:132 7:108 8:2034
+  junctions by n: 1:36 2:992 3:9220 4:56960 5:258944 6:336752
+  nodes 13768324, duplicates 0, candidates cut by the box 0
+  time 14.882470083 s
+D=3 NMAX=6 sizes=4,9 prune=1: 848 classes loaded (k<=9); N^v by size: 4:12 6:132 7:108 8:2034 9:4344
+  junctions by n: 1:72 2:256 3:15576 4:50920 5:459880 6:415216
+  nodes 24876230, duplicates 0, candidates cut by the box 0
+  time 33.122189392 s
+D=3 NMAX=5 sizes=4,10 prune=1: 5450 classes loaded (k<=10); N^v by size: 4:12 6:132 7:108 8:2034 9:4344 10:43650
+  junctions by n: 1:276 2:2260 3:45700 4:266876 5:1616240
+  nodes 33098185, duplicates 0, candidates cut by the box 0
+  time 140.464583389 s
+DONE
+D=3 NMAX=5 sizes=6,7 prune=1: 43 classes loaded (k<=7); N^v by size: 4:12 6:132 7:108
+  junctions by n: 1:0 2:0 3:5712 4:11208 5:172856
+  nodes 1916389, duplicates 0, candidates cut by the box 0
+  time 5.408785890 s
+D=3 NMAX=5 sizes=4,4,7 prune=1: 43 classes loaded (k<=7); N^v by size: 4:12 6:132 7:108
+  junctions by n: 1:0 2:0 3:9600 4:10800 5:778488
+  nodes 5229952, duplicates 0, candidates cut by the box 0
+  time 12.132203328 s
+D=3 NMAX=4 sizes=4,11 prune=1: 20348 classes loaded (k<=11); N^v by size: 4:12 6:132 7:108 8:2034 9:4344 10:43650 11:147888
+  junctions by n: 1:240 2:4636 3:51640 4:536716
+  nodes 12619634, duplicates 0, candidates cut by the box 0
+  time 200.208062824 s
+DONE
+D=3 NMAX=2 sizes=4,13 prune=1: 523612 classes loaded (k<=13); N^v by size: 4:12 6:132 7:108 8:2034 9:4344 10:43650 11:147888 12:1121083 13:4773186
+  (stopped by the referee after 17 min: too slow with fronts of 13 edges; counted by junc_bigfront.py instead)
+DONE

@@ -1,0 +1,4 @@
+d=4 NMAX=16 (partition search, box side 37): closed link-connected sets through a plaquette by size: 6:4 10:60 11:66 12:320 14:1316 15:2520 16:12552
+  duplicates 0, nodes 17893414
+d=3 NMAX=14 (partition search, box side 33): closed link-connected sets through a plaquette by size: 6:2 10:10 11:11 12:24 14:70
+  duplicates 0, nodes 25285

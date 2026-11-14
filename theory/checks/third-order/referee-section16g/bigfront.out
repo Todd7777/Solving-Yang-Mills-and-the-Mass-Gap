@@ -1,0 +1,44 @@
+# junc_bigfront.py, first version (all pairs P of candidates), k = 10..13 (k = 13 run with the second version):
+k = 10: 4602 classes of fronts loaded
+  placements with n <= 2 done: n=1: 276, n=2: 2260
+k = 10: junctions with further fronts 4, 10 by n: 1: 276, 2: 2260
+
+real	1m18.059s
+user	1m17.788s
+sys	0m0.032s
+k = 11: 14898 classes of fronts loaded
+  placements with n <= 2 done: n=1: 240, n=2: 4636
+k = 11: junctions with further fronts 4, 11 by n: 1: 240, 2: 4636
+
+real	1m19.830s
+user	1m19.404s
+sys	0m0.066s
+k = 12: 100001 classes of fronts loaded
+  placements with n <= 2 done: n=1: 300, n=2: 14096
+k = 12: junctions with further fronts 4, 12 by n: 1: 300, 2: 14096
+
+real	10m31.236s
+user	10m27.246s
+sys	0m0.181s
+k = 13: 403263 classes of fronts loaded
+  placements with n <= 2 done: n=1: 0, n=2: 19644
+k = 13: junctions with further fronts 4, 13 by n: 1: 0, 2: 19644
+
+real	5m11.153s
+user	5m9.673s
+sys	0m0.388s
+DONE
+
+# second version (P through the smallest link of A xor B), validation on k = 9..12:
+k = 9: junctions with further fronts 4, 9 by n: 1: 72, 2: 256
+k = 10: junctions with further fronts 4, 10 by n: 1: 276, 2: 2260
+k = 11: junctions with further fronts 4, 11 by n: 1: 240, 2: 4636
+
+real	0m48.439s
+user	0m48.157s
+sys	0m0.073s
+k = 12: junctions with further fronts 4, 12 by n: 1: 300, 2: 14096
+
+real	2m42.630s
+user	2m42.105s
+sys	0m0.116s

@@ -1,0 +1,16 @@
+baseline: D/beta^4 = 11.383 (below 15.054);  parts: multi 8.14, exits 1.78, one_plaq 1.06, two 0.25, four 0.145
+min_set: D/beta^4 = 11.835 (below 15.054);  parts: multi 8.6, exits 1.78, one_plaq 1.06, two 0.25, four 0.145
+binomial_beyond_13: D/beta^4 = 46.454 (ABOVE 15.054);  parts: multi 42.8, exits 1.78, one_plaq 1.49, two 0.25, four 0.145
+decision_from_12: D/beta^4 = 11.385 (below 15.054);  parts: multi 8.15, exits 1.78, one_plaq 1.06, two 0.25, four 0.145
+Z4_crude_10_12: D/beta^4 = 309.78 (ABOVE 15.054);  parts: four 299, multi 8.14, exits 1.78, one_plaq 1.06, two 0.25
+exits4_crude: D/beta^4 = 39.16 (ABOVE 15.054);  parts: exits 29.6, multi 8.14, one_plaq 1.06, two 0.25, four 0.145
+theta_crude_from_12: D/beta^4 = 35.873 (ABOVE 15.054);  parts: multi 8.14, exits 1.78, one_plaq 1.06, two 0.25, four 0.145
+theta_crude_from_13: D/beta^4 = 12.496 (below 15.054);  parts: multi 8.14, exits 1.78, one_plaq 1.06, two 0.25, four 0.145
+theta_crude_from_14: D/beta^4 = 11.433 (below 15.054);  parts: multi 8.14, exits 1.78, one_plaq 1.06, two 0.25, four 0.145
+orders9_10_x1e9: D/beta^4 = 11.383 (below 15.054);  parts: multi 8.14, exits 1.78, one_plaq 1.06, two 0.25, four 0.145
+nE_ge_11_2_x1e6: D/beta^4 = 11.976 (below 15.054);  parts: multi 8.74, exits 1.78, one_plaq 1.06, two 0.25, four 0.145
+all_pairs_x1e3: D/beta^4 = 29.563 (ABOVE 15.054);  parts: multi 26.3, exits 1.78, one_plaq 1.06, two 0.25, four 0.145
+
+real	1m54.235s
+user	3m43.766s
+sys	0m0.132s

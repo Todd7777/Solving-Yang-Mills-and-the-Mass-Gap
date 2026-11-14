@@ -1,0 +1,6 @@
+SU(3), d=4, beta = 0.000153766448; target 1/(432 beta) = 15.0541
+order-9 and order-10 classes x 10^9                            D/b^4 =    11.383 (ok vs 15.05); multi 8.14, exits 1.78, one_plaq 1.06, four 0.145, two 0.25, theta 4.8e-06; bars (2^-8, 2^-11, corners)  max corner (9, 2.0) (3.6e-14; next (8, 3.0) 7.9e-
+set: S(8) u {(7,2), (8,2)} (L9, L10 reduced to the class 4,4 at n = 7, 8) D/b^4 =    75.654 (FAILS vs 15.05); multi 72.4, exits 1.78, one_plaq 1.06, four 0.145, two 0.25, theta 4.8e-06; bars (2^-8, 2^-8, corners)  max corner (6, 3.0) (2.5e-15; next (
+set: S(8) u {(6,3), (7,2), (8,2)}                              D/b^4 =    11.835 (ok vs 15.05); multi 8.6, exits 1.78, one_plaq 1.06, four 0.145, two 0.25, theta 4.8e-06; bars (2^-8, 2^-9, corners)  max corner (9, 2.0) (2.2e-15; next (7, 3.0) 1.6e-15
+SU(3), d=4, beta = 0.000153766448; target 1/(432 beta) = 15.0541
+exact pairs with n + E >= 11/2 x 10^6 (all but the lowest order, Lemma 16.3) D/b^4 =    11.976 (ok vs 15.05); multi 8.74, exits 1.78, one_plaq 1.06, four 0.145, two 0.25, theta 4.8e-06; bars (2^-8, 2^-11, corners)  max corner (9, 2.0) (3.6e-14; next 

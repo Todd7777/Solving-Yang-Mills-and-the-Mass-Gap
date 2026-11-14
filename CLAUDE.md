@@ -35,7 +35,7 @@ cd theory && for f in lattice-foundations infinite-volume-strong-coupling area-l
 
 The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.tex` source changes.
 
-## State on 2026-11-13
+## State on 2026-11-14
 
 - `theory/` holds four monographs: the foundations [F] (`lattice-foundations.tex`, errata 2026-11-09); Part II
   (`infinite-volume-strong-coupling.tex`, the infinite-volume theory, milestone T1.1; refereed and revised 2026-11-09);
@@ -104,16 +104,18 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   $\beta<\beta_0(3)$**, the third-order term from both sides on the whole range; in $d=4$ the upper side on the whole range ($\le0.21\beta^4$, counts to 10 plaquettes) and both
   sides for $\beta\le5\cdot10^{-5}\approx\beta_0(4)/3.1$ (Remark 16.7(ix): order 7 complete and order 8 for $n\ge4$ and at $(3,5)$ in $d=4$, exact $Z_{8,4}=1988$, $Z_{9,4}=406$, $N^v_{11}=147888$, exits with three
   plaquettes; the junction search now has a capacity prune; sixth referee: minor revisions, no error, applied, `referee-section16f/`). **Then both sides on the whole range in $d=4$ too**
-  (Remark 16.7(x), 13 November, not yet refereed): Lemma 16.10 (Theorem, fronts counted by decisions: $N^v_k\le0.734\cdot7.355^k$ in $\mathbb Z^3$, against $25.8^k$; the crude $N^v_k$ had
+  (Remark 16.7(x), 13 November; seventh referee: minor revisions, no error, applied, `referee-section16g/`): Lemma 16.10 (Theorem, fronts counted by decisions: $N^v_k\le0.734\cdot7.355^k$ in $\mathbb Z^3$, against $25.8^k$; the crude $N^v_k$ had
   dominated the majorant, as the sixth referee found), searches in C (`junctions.c`, `zexits.c`, `closed_sets.c`, `fronts_decision.c`; `junctions_validate.py` reruns 37 Python counts),
   $S(8)$, order 9 with $n\ge4$, $(3,6)$, order 10 with $n\ge5$ (`orders/d4_s10x.json`, `orders/assemble_set.py`), $Z_{n,4}$ to 12, exits with four plaquettes, closed polymers of $\mathbb Z^4$ to 16
   plaquettes ($320,0,1316,2520,12552$ for $12..16$); $D\le11.39\beta^4$ for all $\beta\le\beta_0(4)$ by the scaling from $\beta_0(4)$: **$-11.4\beta^4\le m-4\log(1/u)+\log\Upsilon\le0.21\beta^4$, $SU(3)$, $d=4$**
-  (Numerical). `practical_beta.py --ix` reproduces (ix). Fifth referee (Lemma 16.8, Remark 16.9): minor revisions, no error, applied (`referee-section16e/`). Remark 16.7(iv) now also proves (planar faces) that in $d=3$ pairs with $E=2$ have $n=3$ and pairs with $E\in\{3,\frac72\}$ have $n\le4$.
-  Next: a referee for Lemma 16.10 and Remark 16.7(x); then the third-order term of other groups (e.g. $SU(5)$, $-\beta^3/6000$) or $d\ge5$; the $C$-odd sector at fourth order.
+  (Numerical). Robust (the referee's ablation, rechecked by `ablation_x_recheck.py`): beyond $S(8)$ only $(6,3),(7,2),(8,2)$ are needed ($S(8)\cup\{(6,3),(7,2),(8,2)\}$: $11.84\beta^4$,
+  the scaling passes), and the order-9/10 counts $\times10^9$ change nothing; needed are Lemma 16.10, $Z_{10..12,4}$, the four-plaquette exits, the 12-plaquette closed polymers. `practical_beta.py --ix` reproduces (ix). Fifth referee (Lemma 16.8, Remark 16.9): minor revisions, no error, applied (`referee-section16e/`). Remark 16.7(iv) now also proves (planar faces) that in $d=3$ pairs with $E=2$ have $n=3$ and pairs with $E\in\{3,\frac72\}$ have $n\le4$.
+  Next: the third-order term of other groups (e.g. $SU(5)$, $-\beta^3/6000$) or $d\ge5$; the $C$-odd sector at fourth order. (More margin in $d=4$, not needed, lies in the corner $(9,2)$
+  and the five-plaquette exits.)
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$; Part 14: further orders in $d=3$, the whole range; Part 15: the upper bound; Part 16: the lower bound in $d=4$; Part 17: the whole range in $d=4$). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
+- The newest journal entry is `journal/2026-11-14.md` (Part 18: the seventh referee, on Lemma 16.10 and Remark 16.7(x)). Before it, `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$; Part 14: further orders in $d=3$, the whole range; Part 15: the upper bound; Part 16: the lower bound in $d=4$; Part 17: the whole range in $d=4$). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
   Part 12: the third-order term at practical $\beta$; Part 10: the lower bound to fourth order); `journal/2026-11-11.md` has Parts 6–7 (the second- and
   third-order terms), `journal/2026-11-10.md` has Parts 1–5,
   `journal/2026-11-09b.md` is the first part of session 3 and `journal/2026-11-09.md` is session 2.

@@ -1,0 +1,26 @@
+S^x_10 has 38 exponents; testing those with n + E >= 8 one at a time
+  without (2, 6): D/beta^4 =   11.475  not needed
+  without (3, 5): D/beta^4 =   11.835  not needed
+  without (4, 4): D/beta^4 =   28.789  needed
+  without (5, 3): D/beta^4 =  922.636  needed
+  without (6, 2): D/beta^4 = 16536.710  needed
+  without (2, 13/2): D/beta^4 =   11.383  not needed
+  without (3, 11/2): D/beta^4 =   11.475  not needed
+  without (4, 9/2): D/beta^4 =   11.835  not needed
+  without (5, 7/2): D/beta^4 =   46.251  needed
+  without (3, 6): D/beta^4 =   11.383  not needed
+  without (4, 5): D/beta^4 =   11.475  not needed
+  without (5, 4): D/beta^4 =   11.835  not needed
+  without (6, 3): D/beta^4 =   75.654  needed
+  without (7, 2): D/beta^4 = 1305.209  needed
+  without (4, 11/2): D/beta^4 =   11.383  not needed
+  without (5, 9/2): D/beta^4 =   11.475  not needed
+  without (6, 7/2): D/beta^4 =   11.835  not needed
+  without (5, 5): D/beta^4 =   11.383  not needed
+  without (6, 4): D/beta^4 =   11.383  not needed
+  without (7, 3): D/beta^4 =   11.835  not needed
+  without (8, 2): D/beta^4 =  105.986  needed
+  without (6, 9/2): D/beta^4 =   11.383  not needed
+  without (7, 7/2): D/beta^4 =   11.383  not needed
+  class [4, 4] at n = [7, 8]: counts may be multiplied by up to ~10^8.9 before D reaches the term
+  (class-by-class bisection stopped by the referee after the first class; see ablation_x for all order-9 and order-10 classes x 10^9)

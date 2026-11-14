@@ -1,0 +1,22 @@
+beta = 0.000153766: D/beta^4 = 11.3827; a = 8.5427e-06 (0.05556 beta), b = 3.0760e-04, F = 0.1012, F_6 = 0.001196, xi_F = 0.00378, c_J = 1.00067, varpi = b^2.5
+parts of delta' (beta^4): {'two': 0.2496, 'four': 0.1449, 'exits': 1.7813, 'one_plaq': 1.062, 'multi': 8.1446}
+exits: one plaquette 0.6104 (K_S a f(6) 0.5894, K_S b f(7) 0.0210, b f(8) 0.0000)
+       Z_(2,k) exact 0.0109
+       Z_(3,k) exact 0.0000
+       Z_(4,k) exact 0.0000
+       n = 5 crude 1.114
+       n = 6 crude 0.04399
+       n = 7 crude 0.001717
+       n = 8 crude 6.641e-05
+       n >= 5 crude, total 1.16
+two four-edge front-pairs: exact n <= 12: 0.1285; crude n > 12: 0.01626; cubes 10a^4 (d-3): 9.526e-05
+majorant at (bbar, abar) = (2^-8, 2^-11):
+   corner (2, 7.0): (b/bbar)^n (a/abar)^E = 3.111e-15
+   corner (3, 6.5): (b/bbar)^n (a/abar)^E = 1.852e-15
+   corner (4, 6.0): (b/bbar)^n (a/abar)^E = 1.103e-15
+   corner (5, 5.5): (b/bbar)^n (a/abar)^E = 6.565e-16
+   corner (6, 5.0): (b/bbar)^n (a/abar)^E = 3.909e-16
+   corner (7, 4.0): (b/bbar)^n (a/abar)^E = 1.759e-15
+   corner (8, 3.0): (b/bbar)^n (a/abar)^E = 7.918e-15
+   corner (9, 2.0): (b/bbar)^n (a/abar)^E = 3.564e-14
+exact terms of M_S by n + E (beta^4): {5.0: '1.82e-02', 5.5: '2.62e-07', 6.0: '3.30e-07', 6.5: '9.06e-11', 7.0: '2.29e-09', 7.5: '1.39e-12', 8.0: '1.28e-12', 8.5: '1.20e-16', 9.0: '4.12e-15', 9.5: '2.87e-19', 10.0: '1.32e-18', 10.5: '2.13e-22'}

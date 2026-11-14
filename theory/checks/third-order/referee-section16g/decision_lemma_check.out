@@ -1,0 +1,12 @@
+D=3, s=0.194: C = 0.733517 (quoted 0.734: ok), y = 1.426731, y/s = 7.354283 (quoted 7.355: ok)
+   min over s of y/s: 7.352836 at s = 0.1939
+D=2, s=0.325: C = 0.782219 (quoted 0.783: ok), y = 1.326203, y/s = 4.080625 (quoted 4.081: ok)
+   min over s of y/s: 4.079766 at s = 0.3247
+D=3: exact N^v_k <= bound for all listed k: True; sum_k N^v_k (s/y)^k over the listed k = 0.0056 <= C = 0.7335; exact/bound: 4:5.6e-03, 6:1.1e-03, 7:1.3e-04, 8:3.2e-04, 9:9.4e-05, 10:1.3e-04, 11:5.9e-05, 12:6.1e-05, 13:3.5e-05, 14:3.1e-05
+D=2: exact N^v_k <= bound for all listed k: True; sum_k N^v_k (s/y)^k over the listed k = 0.0209 <= C = 0.7822; exact/bound: 4:1.8e-02, 6:3.3e-03, 7:8.1e-04, 8:1.2e-03, 9:6.5e-04, 10:6.3e-04, 11:4.2e-04, 12:3.8e-04, 13:2.7e-04, 14:2.3e-04, 15:1.8e-04, 16:1.5e-04
+D=3, s=0.194: max over (deg, u) of sum_T s^|T| / y^min(deg,2) = 1.000000 (<= 1 up to rounding: True)
+D=2, s=0.325: max over (deg, u) of sum_T s^|T| / y^min(deg,2) = 1.000000 (<= 1 up to rounding: True)
+D=3, s=0.05: max over (deg, u) of sum_T s^|T| / y^min(deg,2) = 1.000000 (<= 1 up to rounding: True)
+D=3, s=0.5: max over (deg, u) of sum_T s^|T| / y^min(deg,2) = 1.000000 (<= 1 up to rounding: True)
+D=4, s=0.15: max over (deg, u) of sum_T s^|T| / y^min(deg,2) = 1.000000 (<= 1 up to rounding: True)
+abar = 2^-11: sqrt(abar) = 0.02210;  7.355 sqrt(abar) = 0.1625;  25.81 sqrt(abar) = 0.5703;  binom(10k,k-1)^(1/k) at k = 60: 23.703
