@@ -90,9 +90,14 @@ TERM = {3: mpf(1)/432, 5: mpf(1)/6000}
 BOUNDS = False      # --bounds: the group data replaced by proven bounds (rigorous_bounds.bound_group; Theorem mg:thm:thirdcap), D by its bound D_bound
 CERTIFIED = False   # --certified: only counts made by two independent programs; in d=3 the exits with 4, 5 plaquettes and k >= 17 edges (one program) become crude
 def group_data():
+    """GROUP = N >= 2 for SU(N) (the fundamental representation; iota = 1 for N = 2) or 1 for U(1) (d_rho = 1, iota = 0)"""
     if BOUNDS:
         from rigorous_bounds import bound_group
+        if GROUP == 1: return bound_group(1, 0, sharp_u2=False)        # U(1): u_2 <= e^beta - 1 - beta (Lemma mg:lem:capelement(iv))
+        if GROUP == 2: return bound_group(2, 1, sharp_u2=False)        # SU(2): iota = 1, the same u_2 bound
         return bound_group(GROUP, 0, sharp_u2=True)
+    if GROUP == 1: return dict(T.GROUPS)['U(1)']
+    if GROUP == 2: return dict(T.GROUPS)['SU(2)']
     if GROUP == 3: return dict(T.GROUPS)['SU(3)']
     from sun_group import sun
     return sun(GROUP, sharp_u2=True)

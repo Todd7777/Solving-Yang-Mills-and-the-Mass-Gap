@@ -35,8 +35,9 @@ def tail_clusters(KS, y, p, M=NMAX):
     r = e*KS*y
     return geom(e*y*M**p*r**(M - 1), (1 + mpf(1)/M)**p*r)
 
-def tail_fronts(D, w, j, K=KMAX):
-    """sum_{k >= K} k^j N^v_k w^k with N^v_k <= C Y^k"""
+def tail_fronts(D, w, j, K=None):
+    """sum_{k >= K} k^j N^v_k w^k with N^v_k <= C Y^k (K = KMAX by default, set by --kmax)"""
+    if K is None: K = KMAX
     C, Y = DEC[D]; r = Y*w
     return geom(C*K**j*r**K, (1 + mpf(1)/K)**j*r)
 
@@ -130,6 +131,7 @@ def budget(group, d, terms, closed, cf, tag):
     rel_det = min(det, dt)
     tau = max(rel.values())
     slack = dict(deco_xF=s1, deco_xC=s2, deco_hJ=s3, bar_xF=s4, bar_xC=s5)
+    for k, v in best['strong'].items(): slack[f'strong_{k}'] = v      # the stronger form that Lemma mg:lem:scaling needs at beta_* (no truncated series in these)
     # the six inequalities of Definition mg:def:jconst, actual (Sigma_4) and barred (the corner majorant), every sum raised by its tail (the ninth referee)
     for lab, rooms in (('jc', six_rooms(xF, xF, a, b, xC, cT, F, F6, Pv, KS, N, Dd)), ('jc_bar', six_rooms(xF, xFb, ab, bb, xCb, cT, F, F6, Pv, KS, N, Dd))):
         for i, r in enumerate(rooms): slack[f'{lab}{i + 1}'] = r
@@ -147,11 +149,16 @@ if __name__ == "__main__":
     DIMS = (3, 4)                                             # --dims 3: only d = 3
     if '--dims' in sys.argv:
         i = sys.argv.index('--dims'); DIMS = tuple(int(x) for x in sys.argv[i + 1].split(',')); del sys.argv[i:i + 2]
-    GROUPS = (3, 5)                                           # --groups 3,4,5
+    GROUPS = (3, 5)                                           # --groups 3,4,5 (1: U(1), 2: SU(2))
+    if '--kmax' in sys.argv:                                  # the truncation of the front sums, here and in the evaluation (third_order_effective.KMAX_DEFAULT)
+        i = sys.argv.index('--kmax'); KMAX = int(sys.argv[i + 1]); T.KMAX_DEFAULT = KMAX; del sys.argv[i:i + 2]
+    if '--f-raise' in sys.argv:                               # the relative raise of F, F_6 (third_order_effective.F_RAISE)
+        i = sys.argv.index('--f-raise'); T.F_RAISE = mpf(sys.argv[i + 1]); del sys.argv[i:i + 2]
     if '--groups' in sys.argv:
         i = sys.argv.index('--groups'); GROUPS = tuple(int(x) for x in sys.argv[i + 1].split(',')); del sys.argv[i:i + 2]
     out = []; PB.CERTIFIED = True     # only counts made by two programs (practical_beta.CERTIFIED)
     for group in GROUPS:
-        if 3 in DIMS: out.append(budget(group, 3, D3FILE, *CL3, f"SU({group}), d=3 ({os.path.basename(D3FILE)})"))
-        if 4 in DIMS: out.append(budget(group, 4, os.path.join(here, 'orders', 'd4_s10x_92.json'), *CL4, f"SU({group}), d=4"))
+        gname = 'U(1)' if group == 1 else f'SU({group})'
+        if 3 in DIMS: out.append(budget(group, 3, D3FILE, *CL3, f"{gname}, d=3 ({os.path.basename(D3FILE)})"))
+        if 4 in DIMS: out.append(budget(group, 4, os.path.join(here, 'orders', 'd4_s10x_92.json'), *CL4, f"{gname}, d=4"))
     print("all cases: largest tau", float(max(t for t, _ in out)), "; smallest room", float(min(min(s.values()) for _, s in out)))

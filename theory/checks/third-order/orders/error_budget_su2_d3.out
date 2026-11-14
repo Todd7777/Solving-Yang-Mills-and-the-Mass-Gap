@@ -1,0 +1,3 @@
+# python3 error_budget.py --d3 orders/d3_s9z.json --groups 2 --dims 3
+SU(2), d=3 (d3_s9z.json): D/beta^4 = 1964.7;  largest relative tail tau = 2.98e-36 (Y_2 (bbar));  room with the tails included: deco_xF 9.87e-16, deco_xC 9.87e-16, deco_hJ 9.74e-16, bar_xF 8.29e-16, bar_xC 8.29e-16, strong_F 9.48e-10, strong_F6 9.48e-10, strong_old 1, strong_beyond 1, strong_delta 0.000403, jc1 9.74e-16, jc2 9.87e-16, jc3 9.74e-16, jc4 9.87e-16, jc5 9.54e-16, jc6 9.87e-16, jc_bar1 7.08e-16, jc_bar2 8.29e-16, jc_bar3 7.08e-16, jc_bar4 8.29e-16, jc_bar5 5.81e-16, jc_bar6 7.98e-16;  all > 0: True;  marked systems: min det 0.797268
+all cases: largest tau 2.9767552771142863e-36 ; smallest room 5.814284692489895e-16

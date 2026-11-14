@@ -36,6 +36,9 @@ ZEXITN = None  # {d: {n: {k: Z_(n,k)}}}: exact exits with n >= 3 plaquettes (zex
 ZEXIT = None   # {d: {k: Z_(2,k)}}: exact two-plaquette exits with k >= 5 edges (zexit_count.py), in place of the crude counts
 EXACT = None; CORNERS = None   # the general corner majorant (Section 16): see the M_5 block below
 RMAX = False   # Lemma mg:lem:jsums5: the corner factors of M_4 and R as maxima instead of sums (each remaining pair dominates one corner)
+KMAX_DEFAULT = 60      # fronts are summed to KMAX - 1 edges (--kmax; 100 for SU(2), U(1) in d=4, where the optimal abar = 2^-8 makes the barred front sums converge slowly)
+F_RAISE = mpf(10)**-9   # F and F_6 are raised by this relative amount above their smallest admissible values; Lemma mg:lem:scaling needs it above delta'
+                        # (its stronger form at beta_*), which for U(1) in d=3 (delta' ~ 5e-9) needs 1e-7 (--f-raise)
 NV_DECISION = False   # N^v_k beyond the exact values by the decision-tree bound (Lemma mg:lem:frontsdecision) instead of (d-1) binom((4d-6)k, k-1)
 _DEC = {}
 def decision_bound(D, k, grid=400):
@@ -50,11 +53,12 @@ def decision_bound(D, k, grid=400):
             if best is None or v < best: best = v
         _DEC[(D, k)] = best
     return _DEC[(D, k)]
-def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None, abar_grid=None, sharp6=True, uturn=True, seven=True, chars=False,
+def lower3e(beta, d, g, volume='infinite', KMAX=None, NMAX=40, varpi_pow=2, bbar_grid=None, abar_grid=None, sharp6=True, uturn=True, seven=True, chars=False,
             fixed=None):
     """the smallest admissible delta' and the deficit; with fixed = dict(varpi, xF, xC, hJ, F, F6, dl), these parameters are used as given (no fixed-point
     iterations; c_J = e^{h_J}/(1-omega) as in Theorem mg:thm:lower2) and all hypotheses, including the three conditions of Lemma mg:lem:jsums on the
     decoration constants, are checked (Remark mg:rem:nextorder (vii): the scaling below a computed point)"""
+    if KMAX is None: KMAX = KMAX_DEFAULT
     K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x)
     if THETA7:                                    # Lemma mg:lem:theta7: theta_7 = 2(d-2) e^6 sigma_6 + x^8/(1-x); with CLOSED_FROM = 10 (no closed sets of 8 or 9
         th5 = 2*(d-2)*e**6*(g['s6'] if g.get('bounds') else dressed(beta, g)[1]) + x**CLOSED_FROM/(1-x)   # plaquettes, by exhaustive search: Remark mg:rem:practical) theta_10
@@ -187,8 +191,8 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
     F = mpf(1); F6 = mpf(1); dl = mpf(0)
     for _ in range(100 if fixed is None else 0):
         S, parts, need, full, bb, sig6 = solve(F, F6, dl); dln = S/Ubar_lo*(1+mpf(10)**-12)
-        Fn = need/(Ubar_lo*(1+dln)-a)*(1+mpf(10)**-9)
-        F6n = sig6/(36*exp(6*xF)*(Ubar_lo*(1+dln)-a))*(1+mpf(10)**-9) if sharp6 else F6
+        Fn = need/(Ubar_lo*(1+dln)-a)*(1+F_RAISE)
+        F6n = sig6/(36*exp(6*xF)*(Ubar_lo*(1+dln)-a))*(1+F_RAISE) if sharp6 else F6
         done = abs(Fn-F) < mpf(10)**-12*F and abs(F6n-F6) < mpf(10)**-12*F6 and abs(dln-dl) < mpf(10)**-12*dln
         F, F6, dl = Fn, F6n, dln
         if done: break
@@ -201,8 +205,13 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
                decorations=deco_ok)
     assert all(hyp.values()), hyp
     out_D = (8*(K+1)*th5 + exp(2*beta)*g['Delta'] + log1p(dl)) if g.get('bounds') else None   # bound mode: D <= 8(K+1)theta + e^{2beta} Delta + log(1+delta')
+    # the rooms of the stronger form of the hypotheses that Lemma mg:lem:scaling needs at its base point (kappa = beta): the conditions on F and F_6 with
+    # Ubar_lo - a in place of Ubar_lo (1 + delta') - a, and the third and fourth hypotheses with a factor 1 + kappa to spare
+    strong = dict(F=1 - need/(F*(Ubar_lo - a)), F6=(1 - sig6/(36*F6*exp(6*xF)*(Ubar_lo - a))) if sharp6 else mpf(1),
+                  old=1 - (1 + beta)*(omega + C*a**4*(2*Ubar_hi*(1+dl) + full)/(1-omega)), beyond=1 - (1 + beta)*a**4*Ubar_hi*(1+dl)/varpi,
+                  delta=beta - dl)
     return dict(delta=dl, parts=parts, b=b, a=a, F=F, F6=F6, sig6=sig6, Ubar=Ubar_hi, bars=bb, loss=8*(K+1)*th5 + log(Ubar_hi) + log1p(dl), D_bound=out_D,
-                varpi=varpi, xF=xF, xC=xC, hJ=hJ, cT=cT)
+                varpi=varpi, xF=xF, xC=xC, hJ=hJ, cT=cT, strong=strong)
 
 GROUPS = (('SU(2)', su2), ('SU(3)', su3), ('U(1)', u1))
 NIOTA = {'SU(2)': (2, 1), 'SU(3)': (3, 0), 'U(1)': (1, 0)}

@@ -5,9 +5,15 @@ SU(4) d=3 sector +: E_C(beta_0)/beta^4 = 0.13057  (no third-order term);  E/beta
 SU(4) d=3 sector -: E_C(beta_0)/beta^4 = 0.13057  (no third-order term);  E/beta^5 increasing: True
 SU(5) d=3 sector +: E_C(beta_0)/beta^4 = 0.31834  (term/beta^4 >= 0.4140);  E/beta^5 increasing: True
 SU(5) d=3 sector -: E_C(beta_0)/beta^4 = 0.31834  (term/beta^4 >= 0.4140);  E/beta^5 increasing: True
+SU(2) d=3: E_C(beta_0)/beta^4 = 0.00251  (no third-order term);  E/beta^5 increasing: True
+U(1) d=3 sector +: E_C(beta_0)/beta^4 = 0.00168  (no third-order term);  E/beta^5 increasing: True
+U(1) d=3 sector -: E_C(beta_0)/beta^4 = 0.00168  (no third-order term);  E/beta^5 increasing: True
 SU(3) d=4 sector +: E_C(beta_0)/beta^4 = 0.04697  (term/beta^4 >= 15.0541);  E/beta^5 increasing: True
 SU(3) d=4 sector -: E_C(beta_0)/beta^4 = 0.04697  (term/beta^4 >= 5.0180);  E/beta^5 increasing: True
 SU(4) d=4 sector +: E_C(beta_0)/beta^4 = 0.14783  (no third-order term);  E/beta^5 increasing: True
 SU(4) d=4 sector -: E_C(beta_0)/beta^4 = 0.14783  (no third-order term);  E/beta^5 increasing: True
 SU(5) d=4 sector +: E_C(beta_0)/beta^4 = 0.36051  (term/beta^4 >= 1.0839);  E/beta^5 increasing: True
 SU(5) d=4 sector -: E_C(beta_0)/beta^4 = 0.36051  (term/beta^4 >= 1.0839);  E/beta^5 increasing: True
+SU(2) d=4: E_C(beta_0)/beta^4 = 0.00277  (no third-order term);  E/beta^5 increasing: True
+U(1) d=4 sector +: E_C(beta_0)/beta^4 = 0.00179  (no third-order term);  E/beta^5 increasing: True
+U(1) d=4 sector -: E_C(beta_0)/beta^4 = 0.00179  (no third-order term);  E/beta^5 increasing: True

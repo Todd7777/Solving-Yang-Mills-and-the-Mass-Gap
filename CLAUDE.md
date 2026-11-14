@@ -136,11 +136,16 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   (`sector_series`, `split_lower`), `orders/d3_s9z.json`.
   Theorem 15.5(iii) now states the fixed-$\beta$ sector bound, and the proof of Theorem 10.2 notes that any eigenvector of $\mathsf V$ may be used. For $SU(N)$, $N\ge6$, $d\ge4$, the glueballs split
   at order $\beta^4$ through the hopping too ($h_+\ne h_-$), so "order $\beta^{N-2}$" is claimed only for $N\le5$.
-  Next: $d\ge5$ (a crude probe gives $D\approx3\cdot10^{11}\beta^4$ at $\beta_0(5)$: the whole counting programme again), or the $C$-odd sector at fourth order (Conjecture 15.11).
+  **$SU(2)$ and $U(1)$** (Corollary 16.21, 14 November, not yet refereed; computer-assisted): their gaps have no third-order term ($\Upsilon$, $\Upsilon_\pm$ even in $\beta$), and
+  $m_{(C)}-4\log(1/u)+\log\Upsilon_{(C)}=O(\beta^4)$ on the whole range with $(c_-,c_+)=(1968,0.0026)$, $(570,0.0028)$ [$SU(2)$, $d=3,4$], $(1.772\cdot10^5,0.0017)$, $(8043,0.0018)$ [$U(1)$, both
+  sectors]; so the second-order terms ($\beta^2/8$ for $SU(2)$; $\frac38\beta^2$, $\frac18\beta^2$ and the splitting $\beta^2/4$ for $U(1)$, the odd glueball lighter) are determined there.
+  The earlier whole-range $SU(2)$ bounds ($-9.4\cdot10^{-5}\le m-4\log(1/u)\le4.8\cdot10^{-4}$ in $d=4$) did not see $\beta^2/8$. The constants are large because $u=\beta/4$, $\beta/2$
+  enters the junction sums as $a^E$. Options `--group 1/2`, `--f-raise`, `--kmax` (`run_cap.sh 2 classic`).
+  Next: a referee for Corollary 16.21; then $d\ge5$ (a crude probe gives $D\approx3\cdot10^{11}\beta^4$ at $\beta_0(5)$: the whole counting programme again), or the $C$-odd sector at fourth order (Conjecture 15.11).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-14.md` (Part 18: the seventh referee, on Lemma 16.10 and Remark 16.7(x); Part 19: the third-order term of $SU(5)$; Part 20: the computer-assisted proof; Part 21: the ninth referee; Part 22: the two plaquette glueballs; Part 23: the tenth referee). Before it, `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$; Part 14: further orders in $d=3$, the whole range; Part 15: the upper bound; Part 16: the lower bound in $d=4$; Part 17: the whole range in $d=4$). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
+- The newest journal entry is `journal/2026-11-14.md` (Part 18: the seventh referee, on Lemma 16.10 and Remark 16.7(x); Part 19: the third-order term of $SU(5)$; Part 20: the computer-assisted proof; Part 21: the ninth referee; Part 22: the two plaquette glueballs; Part 23: the tenth referee; Part 24: $SU(2)$ and $U(1)$). Before it, `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$; Part 14: further orders in $d=3$, the whole range; Part 15: the upper bound; Part 16: the lower bound in $d=4$; Part 17: the whole range in $d=4$). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
   Part 12: the third-order term at practical $\beta$; Part 10: the lower bound to fourth order); `journal/2026-11-11.md` has Parts 6–7 (the second- and
   third-order terms), `journal/2026-11-10.md` has Parts 1–5,
   `journal/2026-11-09b.md` is the first part of session 3 and `journal/2026-11-09.md` is session 2.

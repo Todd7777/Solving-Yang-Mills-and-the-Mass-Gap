@@ -25,19 +25,23 @@ def E_sector(beta, d, N, iota, C, counts):
 
 if __name__ == "__main__":
     mp.dps = 60
-    # the third-order terms of the two glueballs (Corollary mg:cor:sectorscap(i); none for SU(4), whose -log U_+- are even in beta)
+    # the third-order terms of the two glueballs (Corollary mg:cor:sectorscap(i)); none for SU(4), SU(2), U(1), whose -log U are even in beta
     TERMS = {(3, '+'): mpf(1)/432, (3, '-'): mpf(1)/1296, (5, '+'): mpf(1)/6000, (5, '-'): mpf(1)/6000}
+    CASES = [('SU(3)', 3, 0, '+-'), ('SU(4)', 4, 0, '+-'), ('SU(5)', 5, 0, '+-'),     # Corollary mg:cor:sectorscap
+             ('SU(2)', 2, 1, '+'), ('U(1)', 1, 0, '+-')]                            # Corollary mg:cor:classic (iota = 1: the one plaquette state, C = +)
+    if len(sys.argv) > 1: CASES = [c for c in CASES if c[0] in sys.argv[1:]]
     for d in (3, 4):
         b0 = beta0(d); K = 4*(2*d - 3)
         if d == 3: cn = {3: UE.counts_to(3, 12)}
         else:
             cn = {4: {'Q': ({**{n: c for n, c in UE.COUNTS[4]['Q'][0].items() if n <= 10}, 11: binomial(48 + 11*K, 11)}, 18),
                       'A': ({**{n: c for n, c in UE.COUNTS[4]['A'][0].items() if n <= 10}, 11: binomial(20 + 11*K, 11)}, 4)}}
-        for N in (3, 4, 5):
-            for C in ('+', '-'):
-                E = E_sector(b0, d, N, 0, C, cn)
+        for name, N, iota, sectors in CASES:
+            for C in sectors:
+                E = E_sector(b0, d, N, iota, C, cn)
                 pts = sorted([mpf(10)**(-30 + j*(30 + mp.log10(b0))/400) for j in range(401)]); pts[-1] = b0
-                vals = [E_sector(p, d, N, 0, C, cn)/p**5 for p in pts]
+                vals = [E_sector(p, d, N, iota, C, cn)/p**5 for p in pts]
                 mono = all(x <= y for x, y in zip(vals, vals[1:]))
                 cmp = f"(term/beta^4 >= {float(TERMS[(N, C)]/b0):.4f})" if (N, C) in TERMS else "(no third-order term)"
-                print(f"SU({N}) d={d} sector {C}: E_C(beta_0)/beta^4 = {float(E/b0**4):.5f}  {cmp};  E/beta^5 increasing: {mono}")
+                lab = f"{name} d={d} sector {C}" if sectors != '+' else f"{name} d={d}"
+                print(f"{lab}: E_C(beta_0)/beta^4 = {float(E/b0**4):.5f}  {cmp};  E/beta^5 increasing: {mono}")

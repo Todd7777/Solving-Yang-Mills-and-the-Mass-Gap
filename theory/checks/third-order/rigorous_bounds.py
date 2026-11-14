@@ -141,6 +141,57 @@ def sector_series(N, K=6):
     tob = lambda L: [c/Fraction(N)**k for k, c in enumerate(L)]          # coefficients of t^k -> of beta^k
     return dict(neglog_plus=tob(lp), neglog_minus=tob(lm), log_ratio=tob([b - a for a, b in zip(lp, lm)]))
 
+def classic_series(K=8):
+    """the exact Taylor coefficients in beta, to order K, of -log Upsilon for SU(2) (iota = 1: Upsilon = Var(chi) under e^{(beta/2) chi}, with the Haar moments
+    int chi^{2k} = Catalan(k)), and of -log U_+, -log U_-, log(U_-/U_+) for U(1) (U_+ = Var(sqrt2 cos), U_- = Var(sqrt2 sin) under e^{beta cos}, with
+    int cos^{2k} = binom(2k,k)/4^k): Corollary mg:cor:classic."""
+    from math import comb, factorial
+    F = Fraction
+    def mul(A, B): return [sum(A[i]*B[k - i] for i in range(k + 1)) for k in range(K + 1)]
+    def inv(A):
+        out = [F(1)/A[0]]
+        for k in range(1, K + 1): out.append(-sum(A[i]*out[k - i] for i in range(1, k + 1))/A[0])
+        return out
+    def neglog(A):
+        x = [F(0)] + A[1:]; out = [F(0)]*(K + 1); pw = [F(1)] + [F(0)]*K
+        for j in range(1, K + 1):
+            pw = mul(pw, x); out = [o - F((-1)**(j + 1), j)*q for o, q in zip(out, pw)]
+        return out
+    cat = lambda k: F(comb(2*k, k), k + 1)
+    # SU(2): moments m_j = int chi^j (0 for j odd); Z_i = sum_j (beta/2)^j m_{j+i}/j!
+    m = lambda j: cat(j//2) if j % 2 == 0 else F(0)
+    Zs = [[F(1, 2**j)*m(j + i)/factorial(j) for j in range(K + 1)] for i in range(3)]
+    iZ = inv(Zs[0]); Ups = [a - b for a, b in zip(mul(Zs[2], iZ), mul(mul(Zs[1], iZ), mul(Zs[1], iZ)))]
+    su2 = neglog(Ups)
+    # U(1): moments c_j = int cos^j (0 for j odd), Z_i = sum_j beta^j c_{j+i}/j!;  E cos^2 = Z_2/Z, E cos = Z_1/Z
+    c = lambda j: F(comb(j, j//2), 2**j) if j % 2 == 0 else F(0)
+    W = [[c(j + i)/factorial(j) for j in range(K + 1)] for i in range(3)]
+    iW = inv(W[0]); Ec = mul(W[1], iW); Ec2 = mul(W[2], iW)
+    Up = [2*(a - b) for a, b in zip(Ec2, mul(Ec, Ec))]
+    Um = [2*(F(1) if k == 0 else F(0)) - 2*a for k, a in enumerate(Ec2)]
+    lp, lm = neglog(Up), neglog(Um)
+    return dict(su2=su2, u1_plus=lp, u1_minus=lm, u1_log_ratio=[a - b for a, b in zip(lp, lm)])       # log(U_-/U_+) = (-log U_+) - (-log U_-)
+
+def u1_split_lower(beta_max, K=30):
+    """U(1): U_- - U_+ = 2 (I_1^2 - I_0 I_2)/I_0^2. The series P := I_1^2 - I_0 I_2 = sum_k p_k (beta/2)^{2k+2} is computed exactly to k = K; the rest is at most
+    the part of degree > K of the products of the majorant series sum_k (beta/2)^{2k+nu}/(k!(k+nu)!) (non-negative), so P >= (beta/2)^2 (p_0 - sum_{0<k<=K} |p_k| x^k
+    - tail/(beta/2)^2) with x = (beta_max/2)^2. Then log(U_-/U_+) >= (U_- - U_+)/U_- >= 2 e^{-3beta} P (I_0^2 <= e^{2beta}, U_- <= e^beta)."""
+    from math import factorial
+    F = Fraction
+    def I(nu): return [F(1, factorial(k)*factorial(k + nu)) for k in range(K + 1)]          # coefficients of (beta/2)^{2k+nu}
+    def mul(A, B): return [sum(A[i]*B[k - i] for i in range(k + 1)) for k in range(K + 1)]
+    P = [a - b for a, b in zip(mul(I(1), I(1)), mul(I(0), I(2)))]                             # coefficients of (beta/2)^{2k+2}
+    assert P[0] == F(1, 2), P[0]
+    x = (mpf(beta_max)/2)**2*(1 + mpf(10)**-20)
+    def full(nu, kmax=K + 60): return [mpf(1)/(factorial(k)*factorial(k + nu)) for k in range(kmax)]
+    def tailprod(nu1, nu2):        # the part of degree > K (in x) of the product of the two non-negative series, at x
+        A, B = full(nu1), full(nu2)
+        return sum(A[i]*B[j]*x**(i + j) for i in range(len(A)) for j in range(len(B)) if i + j > K)
+    T = tailprod(1, 1) + tailprod(0, 2)
+    rest = sum(abs(mpf(p.numerator)/p.denominator)*x**k for k, p in enumerate(P) if k > 0)
+    margin = mpf(1)/2 - rest - T
+    return dict(lead=P[0], rest=rest, tail=T, margin=margin, ok=margin > 0)
+
 if __name__ == "__main__":
     from constants_upper import beta0
     mp.dps = 60
@@ -157,6 +208,12 @@ if __name__ == "__main__":
         S = sector_series(N)
         for key, lab in (('neglog_plus', '-log U_+'), ('neglog_minus', '-log U_-'), ('log_ratio', 'log(U_+/U_-)')):
             print(f"SU({N}): {lab} = " + ' + '.join(f"({c}) beta^{k}" for k, c in enumerate(S[key]) if c != 0) + " + O(beta^7)")
+    S = classic_series()              # Corollary mg:cor:classic: SU(2) and U(1)
+    for key, lab in (('su2', 'SU(2): -log Upsilon'), ('u1_plus', 'U(1): -log U_+'), ('u1_minus', 'U(1): -log U_-'), ('u1_log_ratio', 'U(1): log(U_-/U_+)')):
+        print(f"{lab} = " + ' + '.join(f"({c}) beta^{k}" for k, c in enumerate(S[key]) if c != 0) + " + O(beta^9)")
+    r = u1_split_lower(mpf('4.03e-4'))
+    print(f"U(1): U_- - U_+ = 2(I_1^2 - I_0 I_2)/I_0^2, I_1^2 - I_0 I_2 = (beta/2)^2 ({r['lead']} + ...); on (0, 4.03e-4]: >= (beta/2)^2 ({float(r['lead']):.6g} - {float(r['rest']):.3g}"
+          f" - {float(r['tail']):.3g}) = (beta/2)^2 {float(r['margin']):.12g} > 0: {r['ok']};  so log(U_-/U_+) >= 2 e^(-3beta) (I_1^2 - I_0 I_2) >= e^(-3beta) beta^2 {float(r['margin']/2):.12g}")
     for N in (3, 4, 5):               # the splitting of the two plaquette glueballs (Corollary mg:cor:sectorscap(ii))
         r = split_lower(N, beta0(3)); k0 = r['k0']
         print(f"SU({N}): U_+ - U_- = 2Q/Z^2, Q = {r['lead']} t^{k0} + ...; on (0, beta_0(3)/{N}]: Q >= t^{k0} ({float(r['lead']):.6g} - {float(r['rest']):.3g}"
