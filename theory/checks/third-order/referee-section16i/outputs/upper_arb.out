@@ -1,0 +1,5 @@
+SU(3), d=3: E/beta^4 at beta = beta_0(d)(1+1e-30) (exact, above beta_0): [0.04146196821 +/- 1.28e-12]  <  c_+ = 0.042: True
+SU(3), d=4: E/beta^4 at beta = beta_0(d)(1+1e-30) (exact, above beta_0): [0.04693920709 +/- 1.94e-12]  <  c_+ = 0.047: True
+SU(5), d=3: E/beta^4 at beta = beta_0(d)(1+1e-30) (exact, above beta_0): [0.3178247824 +/- 4.15e-11]  <  c_+ = 0.318: True
+SU(5), d=4: E/beta^4 at beta = beta_0(d)(1+1e-30) (exact, above beta_0): [0.3602932591 +/- 1.26e-11]  <  c_+ = 0.361: True
+all certified (with E(beta)/beta^5 increasing, Remark mg:rem:upperexact(ii)): True

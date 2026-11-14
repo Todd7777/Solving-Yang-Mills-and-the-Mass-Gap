@@ -1,0 +1,9 @@
+SU(3), d=3: D/beta^4 = 2.5546;  largest relative tail tau = 2.94e-36 (Y_2 (bbar));  room with the tails included: deco_xF 9.87e-16, deco_xC 9.87e-16, deco_hJ 9.74e-16, bar_xF 8.29e-16, bar_xC 8.29e-16;  all > 0: True;  marked systems: min det 0.802214
+SU(3), d=4: D/beta^4 = 3.9351;  largest relative tail tau = 1.4e-21 (A_2 (abar));  room with the tails included: deco_xF 9.85e-16, deco_xC 9.85e-16, deco_hJ 9.7e-16, bar_xF 6.7e-16, bar_xC 6.7e-16;  all > 0: True;  marked systems: min det 0.569584
+SU(5), d=3: D/beta^4 = 0.34557;  largest relative tail tau = 2.94e-36 (Y_2 (bbar));  room with the tails included: deco_xF 9.87e-16, deco_xC 9.87e-16, deco_hJ 9.74e-16, bar_xF 8.29e-16, bar_xC 8.29e-16;  all > 0: True;  marked systems: min det 0.802302
+SU(5), d=4: D/beta^4 = 0.51917;  largest relative tail tau = 2.76e-27 (Y_2 (bbar));  room with the tails included: deco_xF 9.85e-16, deco_xC 9.85e-16, deco_hJ 9.7e-16, bar_xF 6.72e-16, bar_xC 6.72e-16;  all > 0: True;  marked systems: min det 0.574051
+all cases: largest tau 1.401203678997737e-21 ; smallest room 6.702426272914306e-16
+
+real	1m18.883s
+user	1m17.833s
+sys	0m0.028s

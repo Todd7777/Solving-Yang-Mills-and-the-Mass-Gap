@@ -1,0 +1,9 @@
+SU(5): Upsilon >= U_+ >= 1 on (0, beta_0(3)]: True (leading coefficient 1/48 of t^3, room 0.0208333)
+SU(3), d=3 (counts to 12): E(beta_0) = 0.041462 beta^4 against 5.7494 beta^4: True; E/beta^5 increasing on 401 points: True
+SU(3), d=4 (counts to 10, binomial at 11): E(beta_0) = 0.0469392 beta^4 against 15.054 beta^4: True; E/beta^5 increasing on 401 points: True
+SU(5), d=3 (counts to 12): E(beta_0) = 0.317825 beta^4 against 0.41395 beta^4: True; E/beta^5 increasing on 401 points: True
+SU(5), d=4 (counts to 10, binomial at 11): E(beta_0) = 0.360293 beta^4 against 1.0839 beta^4: True; E/beta^5 increasing on 401 points: True
+
+real	2m36.820s
+user	2m32.405s
+sys	0m0.049s

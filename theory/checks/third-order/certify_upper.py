@@ -14,8 +14,8 @@ from constants_upper import beta0
 
 if __name__ == "__main__":
     mp.dps = 60
-    r = prove_upsilon_ge_1(5, beta0(3))
-    print(f"SU(5): Upsilon >= U_+ >= 1 on (0, beta_0(3)]: {r['ok']} (leading coefficient {r['lead']} of t^{r['k0']}, room {float(r['margin']):.6g})")
+    r = prove_upsilon_ge_1(5, mpf('4.03e-4'))
+    print(f"SU(5): Upsilon >= U_+ >= 1 on (0, 4.03e-4], which contains (0, beta_0(3)]: {r['ok']} (leading coefficient {r['lead']} of t^{r['k0']}, room {float(r['margin']):.6g})")
     TERM = {3: mpf(1)/432, 5: mpf(1)/6000}
     for N, gfun in ((3, dict(T.GROUPS)['SU(3)']), (5, sun(5))):
         for d in (3, 4):

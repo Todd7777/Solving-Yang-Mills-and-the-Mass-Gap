@@ -1,0 +1,15 @@
+U(1)   beta =  0.01: c_0 =       1.000025 in [1, e^beta]; Upsilon = 0.9999875002, e^(-2beta) =   0.980199, e^beta =    1.01005: True
+U(1)   beta =   0.3: c_0 =    1.022626879 in [1, e^beta]; Upsilon = 0.9889161796, e^(-2beta) =   0.548812, e^beta =    1.34986: True
+U(1)   beta =     1: c_0 =    1.266065878 in [1, e^beta]; Upsilon = 0.8927799318, e^(-2beta) =   0.135335, e^beta =    2.71828: True
+U(1)   beta =     3: c_0 =    4.880792586 in [1, e^beta]; Upsilon =  0.539990196, e^(-2beta) = 0.00247875, e^beta =    20.0855: True
+U(1)   beta =    10: c_0 =    2815.716628 in [1, e^beta]; Upsilon = 0.1897199652, e^(-2beta) = 2.06115e-9, e^beta =    22026.5: True
+SU(2)  beta =  0.01: c_0 =      1.0000125 in [1, e^beta]; Upsilon = 0.9999875001, e^(-2beta) =   0.980199, e^beta =    1.01005: True
+SU(2)  beta =   0.3: c_0 =    1.011292267 in [1, e^beta]; Upsilon = 0.9888545897, e^(-2beta) =   0.548812, e^beta =    1.34986: True
+SU(2)  beta =     1: c_0 =    1.130318208 in [1, e^beta]; Upsilon = 0.8869032136, e^(-2beta) =   0.135335, e^beta =    2.71828: True
+SU(2)  beta =     3: c_0 =    2.635580145 in [1, e^beta]; Upsilon =  0.438156317, e^(-2beta) = 0.00247875, e^beta =    20.0855: True
+SU(2)  beta =    10: c_0 =    534.1976607 in [1, e^beta]; Upsilon = 0.05644746619, e^(-2beta) = 2.06115e-9, e^beta =    22026.5: True
+SU(3)  beta =  0.01: c_0 =    1.000002779 in [1, e^beta]; Upsilon =  1.001666663, e^(-2beta) =   0.980199, e^beta =    1.01005: True
+SU(3)  beta =   0.3: c_0 =    1.002544873 in [1, e^beta]; Upsilon =  1.049891991, e^(-2beta) =   0.548812, e^beta =    1.34986: True
+SU(3)  beta =     1: c_0 =    1.029743169 in [1, e^beta]; Upsilon =  1.162361994, e^(-2beta) =   0.135335, e^beta =    2.71828: True
+SU(3)  beta =     3: c_0 =    1.334509635 in [1, e^beta]; Upsilon =  1.371905455, e^(-2beta) = 0.00247875, e^beta =    20.0855: True
+all within the bounds of Lemma mg:lem:upsbounds(i): True

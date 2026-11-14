@@ -118,12 +118,16 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   `run_admissible_pieces.sh`, about 1 hour on 4 cores; `orders/admissible_d4_n11.out`). **For $SU(5)$: $-0.346\beta^4\le m-4\log(1/u)+\log\Upsilon\le0.318\beta^4$ ($d=3$), $-0.519\beta^4\le\dots\le0.252\beta^4$ ($d=4$), whole range**
   (Numerical); the `--group 5` option of `practical_beta.py`, `scaling_check.py`, `monotone_check.py`, `upper_exact.py`. The corner $(9,2)$ and the sets of 11 plaquettes also give $SU(3)$, $d=4$: $-3.94\beta^4\le m-4\log(1/u)+\log\Upsilon\le0.033\beta^4$ (was $-11.4$, $0.21$).
   The $d=4$ upper half does not rest on the enumeration: the binomial bound of Lemma 5.5's proof as $N_{11}$ already gives $0.360\beta^4$ (the referee).
-  **Computer-assisted proof** (Lemma 16.13, Theorem 16.14, 14 November, not yet refereed): with the group data replaced by proven bounds ($\bar u$, $u_{\rm low}$, $u_2$ of Lemma 16.11,
-  $e^{-2\beta}\le\Upsilon\le e^\beta$, $\bar\Upsilon\le\Upsilon+\Delta$; `rigorous_bounds.py`, `--bounds`), every monotonicity fact of the scaling holds by inspection (no grid checks); the
-  truncation tails at $\beta_*=\beta_0(d)(1+10^{-30})$ are $\le1.4\cdot10^{-21}$ against room $\ge6.7\cdot10^{-16}$ (`error_budget.py`); only counts made by two programs (`--certified`);
-  $\Upsilon\ge1$ for $SU(5)$ by an exact series (Lemma 16.13(ii)). **Theorem 16.14: for $SU(3)$ and $SU(5)$, $d=3,4$, $-c_-\beta^4\le m-4\log(1/u)+\log\Upsilon\le c_+\beta^4$ for all
+  **Computer-assisted proof** (Lemmas 16.13–16.17, Theorem 16.18, Remark 16.19, 14 November): with the group data replaced by proven bounds ($\bar u$, $u_{\rm low}$, $u_2$ of Lemma 16.11,
+  $e^{-2\beta}\le\Upsilon\le e^\beta$, $\bar\Upsilon\le\Upsilon+\Delta$; Lemma 16.14 "bound mode", `rigorous_bounds.py`, `--bounds`), every monotonicity fact of the scaling holds by inspection
+  (Lemma 16.15, no grid checks); the planar argument in $d=3$ is Lemma 16.16, the upper bound with exact counts Lemma 16.17; only counts made by two programs (`--certified`);
+  $\Upsilon\ge1$ for $SU(5)$ by an exact series (Lemma 16.13(ii)). **Theorem 16.18: for $SU(3)$ and $SU(5)$, $d=3,4$, $-c_-\beta^4\le m-4\log(1/u)+\log\Upsilon\le c_+\beta^4$ for all
   $\beta<\beta_0(d)$, $(c_-,c_+)=(2.558,0.042)$, $(3.937,0.047)$, $(0.346,0.318)$, $(0.520,0.361)$**: the third-order term from both sides on the whole range, proved (computer-assisted).
-  Next: a referee for Lemma 16.13 and Theorem 16.14; then $d\ge5$, or the $C$-odd sector at fourth order (Conjecture 15.11).
+  The evaluation at $\beta_*=\beta_0(d)(1+10^{-30})$ is done twice: ours (mpmath, 60 digits, tails $\le1.4\cdot10^{-21}$ against room $\ge2.8\cdot10^{-16}$, `error_budget.py`) and the ninth referee's in
+  Arb ball arithmetic with rigorous remainders (`referee-section16i/arb_eval.py`, `upper_arb.py`). Ninth referee: minor revisions, applied; one error (the marked constants were all raised by one
+  factor, leaving the two quadratic inequalities of Definition 8.9 short by $\sim10^{-16}$; fixed in `third_order_constants.marked`, now checked explicitly, no constant changes); the arguments
+  that sat in Remarks became Lemmas 16.14–16.17; `run_cap.sh` reruns everything. The summary table of Part IV is now a longtable (its last part had been cut off in the PDF).
+  Next: the two plaquette glueballs (both sectors of charge conjugation) on the whole range; then $d\ge5$, or the $C$-odd sector at fourth order (Conjecture 15.11).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.

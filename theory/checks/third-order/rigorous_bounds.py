@@ -1,6 +1,7 @@
 # Part IV, Section 16 (Lemma mg:lem:upsbounds, Theorem mg:thm:thirdcap): the group data replaced by proven bounds, each beta^k times an increasing function,
 # for the computer-assisted version of the third-order term at practical beta.
-# Usage: python3 rigorous_bounds.py        (the bounds at beta_0(3), beta_0(4) for SU(3), SU(5), and the proof of Upsilon >= 1 for SU(5))
+# Usage: python3 rigorous_bounds.py        (the bounds at beta_0(3), beta_0(4) for SU(3), SU(5), the proof of Upsilon >= 1 for SU(5), and the lower bounds for
+#                                           U_+ - U_- of Corollary mg:cor:sectorscap(ii))
 """In "bound mode" the evaluation of Theorem mg:thm:lower5 uses, in place of the exact u, Upsilon, Ubar of the group:
     u      <= ubar   := ((1+iota) beta + beta^2 e^beta)/(2N^2)          (Lemma mg:lem:char(iii)), in every term where u enters increasingly,
     u      >= u_low  := (1+iota) beta e^{-beta}/(2N^2)                   (Lemma mg:lem:char(iii)), where 1/u enters (n_B, c_2, b_2),
@@ -80,6 +81,66 @@ def prove_upsilon_ge_1(N, beta_max, K=30):
     margin = lead - rest - T/tm**k0
     return dict(k0=k0, lead=P[k0], t_max=tm, rest=rest, tail=T/tm**k0, margin=margin, ok=margin > 0)
 
+def split_lower(N, beta_max, K=30):
+    """a lower bound for U_+ - U_- (Corollary mg:cor:sectorscap(ii)). With t = beta/N, Z, Z_1, Z_2 as above and Z_im := int (Im chi)^2 e^{t Re chi} dU
+    (= -(G(2,0) - 2G(1,1) + G(0,2))/4 with G(i,j) := int chi^i chibar^j e^{t Re chi} dU): U_+ = 2(Z_2 Z - Z_1^2)/Z^2 and U_- = 2 Z_im Z/Z^2, so
+    U_+ - U_- = 2Q/Z^2 with Q := Z_2 Z - Z_1^2 - Z_im Z. The coefficients of Q are exact to degree K; the coefficients of Z_im may have either sign, so every
+    product's part of degree > K is bounded with absolute values: |coefficient of t^k| <= N^k/k!, N^{k+1}/k!, N^{k+2}/k!, N^{k+2}/k! for Z, Z_1, Z_2, Z_im
+    (|Re chi|, |Im chi| <= N). With k0 the first k with q_k != 0 (it must be > 0): Q(t) >= t^k0 margin on (0, t_max], margin := q_k0 - sum_{k0<k<=K} |q_k|
+    t_max^(k-k0) - tail(t_max)/t_max^k0. Then, as Z <= e^beta and U_+ <= e^beta (Lemma mg:lem:upsbounds(i)), log(U_+/U_-) >= (U_+ - U_-)/U_+ >= 2 e^{-3 beta} Q."""
+    from sun_group import coeffs
+    from math import factorial
+    C = coeffs(N, K)
+    Z = C[(0, 0)]
+    Z1 = [(x + y)/2 for x, y in zip(C[(1, 0)], C[(0, 1)])]
+    Z2 = [(x + 2*y + z)/4 for x, y, z in zip(C[(2, 0)], C[(1, 1)], C[(0, 2)])]
+    Zi = [-(x - 2*y + z)/4 for x, y, z in zip(C[(2, 0)], C[(1, 1)], C[(0, 2)])]
+    def mul(A, B): return [sum(A[i]*B[k - i] for i in range(k + 1)) for k in range(K + 1)]
+    Q = [a - b - c for a, b, c in zip(mul(Z2, Z), mul(Z1, Z1), mul(Zi, Z))]
+    k0 = next(k for k, q in enumerate(Q) if q != 0)
+    assert Q[k0] > 0, f'the first coefficient of U_+ - U_- is negative ({Q[k0]})'
+    tm = mpf(beta_max)/N*(1 + mpf(10)**-20)
+    def fr(c): return mpf(c.numerator)/c.denominator
+    def tail(cN, tt): return mpf(cN)*sum((N*tt)**k/factorial(k) for k in range(K + 1, K + 80))*(1 + mpf(10)**-20)
+    def absval(A, tt): return sum(abs(fr(c))*tt**k for k, c in enumerate(A))
+    def prod_tail(A, cA, B, cB, tt):     # |degree > K part of AB| <= sum_k |[A_K B_K]_k| tt^k + |A_K| tail(B) + tail(A) |B_K| + tail(A) tail(B)
+        hi = sum(abs(fr(sum(A[i]*B[k - i] for i in range(k - K, K + 1))))*tt**k for k in range(K + 1, 2*K + 1))
+        tA, tB = tail(cA, tt), tail(cB, tt)
+        return hi + absval(A, tt)*tB + tA*absval(B, tt) + tA*tB
+    T = prod_tail(Z2, N**2, Z, 1, tm) + prod_tail(Z1, N, Z1, N, tm) + prod_tail(Zi, N**2, Z, 1, tm)
+    lead = fr(Q[k0])
+    rest = sum(abs(fr(q))*tm**(k - k0) for k, q in enumerate(Q) if k > k0)
+    margin = lead - rest - T/tm**k0
+    return dict(k0=k0, lead=Q[k0], t_max=tm, rest=rest, tail=T/tm**k0, margin=margin, ok=margin > 0)
+
+def sector_series(N, K=6):
+    """the exact Taylor coefficients in beta, to order K, of -log U_+, -log U_- and log(U_+/U_-) (Fractions; U_+ = 2(Z_2 Z - Z_1^2)/Z^2, U_- = 2 Z_im Z/Z^2 as in
+    split_lower, with t = beta/N): the series of Corollary mg:cor:sectorscap(i), (ii)."""
+    from sun_group import coeffs
+    C = coeffs(N, K + 2)
+    Z = C[(0, 0)][:K + 1]
+    Z1 = [(x + y)/2 for x, y in zip(C[(1, 0)], C[(0, 1)])][:K + 1]
+    Z2 = [(x + 2*y + z)/4 for x, y, z in zip(C[(2, 0)], C[(1, 1)], C[(0, 2)])][:K + 1]
+    Zi = [-(x - 2*y + z)/4 for x, y, z in zip(C[(2, 0)], C[(1, 1)], C[(0, 2)])][:K + 1]
+    def mul(A, B): return [sum(A[i]*B[k - i] for i in range(k + 1)) for k in range(K + 1)]
+    def inv(A):
+        out = [Fraction(1)/A[0]]
+        for k in range(1, K + 1): out.append(-sum(A[i]*out[k - i] for i in range(1, k + 1))/A[0])
+        return out
+    def neglog(A):                    # -log A for A(0) = 1: -sum_{j>=1} (-1)^{j+1} (A-1)^j / j
+        assert A[0] == 1, A[0]
+        x = [Fraction(0)] + A[1:]; out = [Fraction(0)]*(K + 1); pw = [Fraction(1)] + [Fraction(0)]*K
+        for j in range(1, K + 1):
+            pw = mul(pw, x)
+            out = [o - Fraction((-1)**(j + 1), j)*q for o, q in zip(out, pw)]
+        return out
+    iZ2 = mul(inv(Z), inv(Z))
+    Up = [2*c for c in mul([a - b for a, b in zip(mul(Z2, Z), mul(Z1, Z1))], iZ2)]
+    Um = [2*c for c in mul(mul(Zi, Z), iZ2)]
+    lp, lm = neglog(Up), neglog(Um)
+    tob = lambda L: [c/Fraction(N)**k for k, c in enumerate(L)]          # coefficients of t^k -> of beta^k
+    return dict(neglog_plus=tob(lp), neglog_minus=tob(lm), log_ratio=tob([b - a for a, b in zip(lp, lm)]))
+
 if __name__ == "__main__":
     from constants_upper import beta0
     mp.dps = 60
@@ -89,6 +150,15 @@ if __name__ == "__main__":
             print(f"SU({N}), d={d}, beta_0 = {float(b0):.6g}: ubar/beta = {float(g['u']/b0):.8f}, u_low/beta = {float(g['u_low']/b0):.8f}, u2bar/beta^2 = {float(g['u2']/b0**2):.6g},"
                   f" Delta/beta^4 = {float(g['Delta']/b0**4):.4g}, Ubar in [{float(g['Ubar_low']):.8f}, {float(g['Ubar_up']):.8f}]")
     mp.dps = 120
-    r = prove_upsilon_ge_1(5, beta0(3))
-    print(f"SU(5): U_+ - 1 = P(t)/Z^2 with P = {r['lead']} t^{r['k0']} + ...; on (0, beta_0(3)/5]: {float(r['lead']):.6g} - {float(r['rest']):.3g} - {float(r['tail']):.3g}"
-          f" = {float(r['margin']):.6g} > 0: {r['ok']}  (so Upsilon >= U_+ >= 1 on (0, beta_0(3)], hence on (0, beta_0(4)])")
+    r = prove_upsilon_ge_1(5, mpf('4.03e-4'))         # the range of Lemma mg:lem:upsbounds(ii), which contains (0, beta_0(3)] (the ninth referee)
+    print(f"SU(5): U_+ - 1 = P(t)/Z^2 with P = {r['lead']} t^{r['k0']} + ...; on (0, 4.03e-4/5]: {float(r['lead']):.6g} - {float(r['rest']):.3g} - {float(r['tail']):.3g}"
+          f" = {float(r['margin']):.6g} > 0: {r['ok']}  (so Upsilon >= U_+ >= 1 on (0, 4.03e-4], which contains (0, beta_0(3)] and (0, beta_0(4)])")
+    for N in (3, 4, 5):               # the exact series of Corollary mg:cor:sectorscap(i), (ii)
+        S = sector_series(N)
+        for key, lab in (('neglog_plus', '-log U_+'), ('neglog_minus', '-log U_-'), ('log_ratio', 'log(U_+/U_-)')):
+            print(f"SU({N}): {lab} = " + ' + '.join(f"({c}) beta^{k}" for k, c in enumerate(S[key]) if c != 0) + " + O(beta^7)")
+    for N in (3, 4, 5):               # the splitting of the two plaquette glueballs (Corollary mg:cor:sectorscap(ii))
+        r = split_lower(N, beta0(3)); k0 = r['k0']
+        print(f"SU({N}): U_+ - U_- = 2Q/Z^2, Q = {r['lead']} t^{k0} + ...; on (0, beta_0(3)/{N}]: Q >= t^{k0} ({float(r['lead']):.6g} - {float(r['rest']):.3g}"
+              f" - {float(r['tail']):.3g}) = t^{k0} {float(r['margin']):.9g} > 0: {r['ok']};  so log(U_+/U_-) >= 2 e^(-3 beta) Q >= e^(-3 beta) beta^{k0}"
+              f" {float(2*r['margin']/mpf(N)**k0):.9g}  (1/{float(mpf(N)**k0/(2*r['margin'])):.6f})")

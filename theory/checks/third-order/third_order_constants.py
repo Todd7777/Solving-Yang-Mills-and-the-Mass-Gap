@@ -44,9 +44,10 @@ def marked(xF, Y, A, f, Pv, N, KMAX):
     if det <= 0 or dt <= 0 or A1 >= 1 or 4*Pv*Y1 >= 1 or A2 >= 1 or 4*Pv*Y2 >= 1: return None
     gF = (B0*(1-4*Pv*Y1) + Pv*Y1*8*B0)/det; gC = ((1-A1)*8*B0 + 8*A1*B0)/det
     g2F = (A0*(1-4*Pv*Y1) + Pv*Y1*8*A0)/det; g2C = ((1-A1)*8*A0 + 8*A1*A0)/det
-    r1 = gC*g2C + 8*(g2F*B1 + gF*A1); r2 = gF*g2F + g2F*B1 + gF*A1
+    gF, gC, g2F, g2C = (INFLATE*v for v in (gF, gC, g2F, g2C))      # raised first: the last two inequalities are quadratic in these
+    r1 = gC*g2C + 8*(g2F*B1 + gF*A1); r2 = gF*g2F + g2F*B1 + gF*A1     # sources of the kappa system, from the raised g's
     kC = (r1*(1-A2) + 8*A2*r2)/dt; kF = ((1-4*Pv*Y2)*r2 + Pv*Y2*r1)/dt
-    return tuple(INFLATE*v for v in (gF, gC, g2F, g2C, kF, kC))     # strict inequalities despite the truncated sums B_j, A_j, Y_j
+    return gF, gC, g2F, g2C, INFLATE*kF, INFLATE*kC     # all six inequalities strict, with relative room ~1e-15 (beyond the truncated tails of B_j, A_j, Y_j)
 
 def lower3(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_grid=None):
     K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x); lam = exp(2*(K+1)*th5)

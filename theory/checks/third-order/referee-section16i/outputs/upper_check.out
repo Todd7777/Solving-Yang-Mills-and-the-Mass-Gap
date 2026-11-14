@@ -1,0 +1,9 @@
+binom(48 + 11*20, 11) = 1.04235e+19 ; binom(20 + 11*20, 11) = 3.02105e+18 (Remark mg:rem:su5(iv): 1.04e19 and 3.0e18)
+SU(3), d=3: E(beta_0)/beta_0^4 = 0.041461968 (at beta_0(1+1e-30): 0.041461968); quoted 0.0415, constant c_+ = 0.042: True
+SU(3), d=4: E(beta_0)/beta_0^4 = 0.046939207 (at beta_0(1+1e-30): 0.046939207); quoted 0.0469, constant c_+ = 0.047: True
+SU(5), d=3: E(beta_0)/beta_0^4 = 0.31782478 (at beta_0(1+1e-30): 0.31782478); quoted 0.3178, constant c_+ = 0.318: True
+SU(5), d=4: E(beta_0)/beta_0^4 = 0.36029326 (at beta_0(1+1e-30): 0.36029326); quoted 0.3603, constant c_+ = 0.361: True
+SU(3), d=3: Taylor coefficients of E/beta^5 near 0 (orders 0..8): 0.01861, 2.507e+5, 8.483e+6, 1.443e+8, 1.645e+9, 3.243e+11, 4.744e+18, 1.026e+21, 8.627e+26; all >= 0: True
+SU(3), d=4: Taylor coefficients of E/beta^5 near 0 (orders 0..8): 0.0558, 1.252e+6, 4.241e+7, 7.232e+8, 8.315e+9, 2.008e+13, 6.951e+24, 9.516e+27, 1.38e+30; all >= 0: True
+SU(5), d=3: Taylor coefficients of E/beta^5 near 0 (orders 0..8): 0.002402, 1.922e+6, 6.53e+7, 1.112e+9, 1.268e+10, 1.497e+11, 3.64e+19, 7.874e+21, 6.625e+27; all >= 0: True
+SU(5), d=4: Taylor coefficients of E/beta^5 near 0 (orders 0..8): 0.007204, 9.608e+6, 3.265e+8, 5.575e+9, 6.411e+10, 3.149e+12, 5.341e+25, 7.313e+28, 1.061e+31; all >= 0: True

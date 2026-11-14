@@ -1,0 +1,60 @@
+SU(3), d=3, beta_* = 0.00040262143352282 (checked >= beta_0(d) in Arb); 400-bit balls, sums to 200/110 plus rigorous remainders:
+    deco xi_F                              holds   (room 9.868e-16)
+    deco xi_C                              holds   (room 9.868e-16)
+    deco h_J (k=4, the maximum)            holds   (room 9.736e-16)
+    barred xi_F                            holds   (room 8.294e-16)
+    barred xi_C                            holds   (room 8.294e-16)
+    six inequalities (actual)              holds
+    six inequalities (barred)              holds
+    Sigma^(4)_4 < Ubar delta'              holds   (room 1.001e-9)
+    F-condition                            holds   (room 1.000e-9)
+    F_6-condition                          holds   (room 1.000e-9)
+    third hypothesis (omega)               holds   (room 1.000)
+    a^4 Ubar (1+delta') <= varpi           holds   (room 1.000)
+  D(beta_*)/beta_*^4 = 2.55455230173986 (relative radius of the ball 2.8e-120);  (1+kappa)^3 D/beta_*^4 <= 2.557639097 <= c_- = 2.558: True
+  all certified: True
+SU(5), d=3, beta_* = 0.00040262143352282 (checked >= beta_0(d) in Arb); 400-bit balls, sums to 200/110 plus rigorous remainders:
+    deco xi_F                              holds   (room 9.868e-16)
+    deco xi_C                              holds   (room 9.868e-16)
+    deco h_J (k=4, the maximum)            holds   (room 9.736e-16)
+    barred xi_F                            holds   (room 8.295e-16)
+    barred xi_C                            holds   (room 8.295e-16)
+    six inequalities (actual)              holds
+    six inequalities (barred)              holds
+    Sigma^(4)_4 < Ubar delta'              holds   (room 1.001e-9)
+    F-condition                            holds   (room 1.000e-9)
+    F_6-condition                          holds   (room 1.000e-9)
+    third hypothesis (omega)               holds   (room 1.000)
+    a^4 Ubar (1+delta') <= varpi           holds   (room 1.000)
+  D(beta_*)/beta_*^4 = 0.345567127982763 (relative radius of the ball 6.1e-120);  (1+kappa)^3 D/beta_*^4 <= 0.3459846943 <= c_- = 0.346: True
+  all certified: True
+SU(3), d=4, beta_* = 0.000153766448042548 (checked >= beta_0(d) in Arb); 400-bit balls, sums to 200/110 plus rigorous remainders:
+    deco xi_F                              holds   (room 9.848e-16)
+    deco xi_C                              holds   (room 9.848e-16)
+    deco h_J (k=4, the maximum)            holds   (room 9.697e-16)
+    barred xi_F                            holds   (room 6.702e-16)
+    barred xi_C                            holds   (room 6.703e-16)
+    six inequalities (actual)              holds
+    six inequalities (barred)              holds
+    Sigma^(4)_4 < Ubar delta'              holds   (room 1.001e-9)
+    F-condition                            holds   (room 1.000e-9)
+    F_6-condition                          holds   (room 1.000e-9)
+    third hypothesis (omega)               holds   (room 1.000)
+    a^4 Ubar (1+delta') <= varpi           holds   (room 1.000)
+  D(beta_*)/beta_*^4 = 3.93507158992645 (relative radius of the ball 1.8e-120);  (1+kappa)^3 D/beta_*^4 <= 3.936887115 <= c_- = 3.937: True
+  all certified: True
+SU(5), d=4, beta_* = 0.000153766448042548 (checked >= beta_0(d) in Arb); 400-bit balls, sums to 200/110 plus rigorous remainders:
+    deco xi_F                              holds   (room 9.848e-16)
+    deco xi_C                              holds   (room 9.848e-16)
+    deco h_J (k=4, the maximum)            holds   (room 9.697e-16)
+    barred xi_F                            holds   (room 6.720e-16)
+    barred xi_C                            holds   (room 6.721e-16)
+    six inequalities (actual)              holds
+    six inequalities (barred)              holds
+    Sigma^(4)_4 < Ubar delta'              holds   (room 1.001e-9)
+    F-condition                            holds   (room 1.000e-9)
+    F_6-condition                          holds   (room 1.000e-9)
+    third hypothesis (omega)               holds   (room 1.000)
+    a^4 Ubar (1+delta') <= varpi           holds   (room 1.000)
+  D(beta_*)/beta_*^4 = 0.519171567637896 (relative radius of the ball 2.1e-120);  (1+kappa)^3 D/beta_*^4 <= 0.5194110980 <= c_- = 0.520: True
+  all certified: True

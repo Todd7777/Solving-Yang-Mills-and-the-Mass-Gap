@@ -16,7 +16,7 @@ import sys, os
 here = os.path.dirname(os.path.abspath(__file__))
 for sub in ('second-order', 'upper-bound', 'lower-bound'): sys.path.insert(0, os.path.join(here, '..', sub))
 sys.path.insert(0, here)
-from mpmath import mp, mpf, e, exp, log, expm1, binomial, fsum, factorial
+from mpmath import mp, mpf, e, exp, log, log1p, expm1, binomial, fsum, factorial
 from second_order_constants import su2, su3, u1, dressed, upper2
 from junction_constants import counts
 from third_order_constants import tree_constants, marked, lower3
@@ -200,8 +200,8 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
                old=omega + C*a**4*(2*Ubar_hi*(1+dl) + full)/(1-omega) <= 1, beyond=a**4*Ubar_hi*(1+dl) <= varpi, growth=a**4*Ubar_hi*(1+dl) <= 1,
                decorations=deco_ok)
     assert all(hyp.values()), hyp
-    out_D = (8*(K+1)*th5 + exp(2*beta)*g['Delta'] + log(1+dl)) if g.get('bounds') else None   # bound mode: D <= 8(K+1)theta + e^{2beta} Delta + log(1+delta')
-    return dict(delta=dl, parts=parts, b=b, a=a, F=F, F6=F6, sig6=sig6, Ubar=Ubar_hi, bars=bb, loss=8*(K+1)*th5 + log(Ubar_hi) + log(1+dl), D_bound=out_D,
+    out_D = (8*(K+1)*th5 + exp(2*beta)*g['Delta'] + log1p(dl)) if g.get('bounds') else None   # bound mode: D <= 8(K+1)theta + e^{2beta} Delta + log(1+delta')
+    return dict(delta=dl, parts=parts, b=b, a=a, F=F, F6=F6, sig6=sig6, Ubar=Ubar_hi, bars=bb, loss=8*(K+1)*th5 + log(Ubar_hi) + log1p(dl), D_bound=out_D,
                 varpi=varpi, xF=xF, xC=xC, hJ=hJ, cT=cT)
 
 GROUPS = (('SU(2)', su2), ('SU(3)', su3), ('U(1)', u1))

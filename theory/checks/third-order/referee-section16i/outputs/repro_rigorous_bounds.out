@@ -1,0 +1,10 @@
+SU(3), d=3, beta_0 = 0.000402621: ubar/beta = 0.05557793, u_low/beta = 0.05553319, u2bar/beta^2 = 0.00347327, Delta/beta^4 = 1.011e-11, Ubar in [0.99919508, 1.00040270]
+SU(3), d=4, beta_0 = 0.000153766: ubar/beta = 0.05556410, u_low/beta = 0.05554701, u2bar/beta^2 = 0.00347262, Delta/beta^4 = 1.471e-12, Ubar in [0.99969251, 1.00015378]
+SU(5), d=3, beta_0 = 0.000402621: ubar/beta = 0.02000806, u_low/beta = 0.01999195, u2bar/beta^2 = 0.000500671, Delta/beta^4 = 2.565e-13, Ubar in [0.99919508, 1.00040270]
+SU(5), d=4, beta_0 = 0.000153766: ubar/beta = 0.02000308, u_low/beta = 0.01999692, u2bar/beta^2 = 0.000500256, Delta/beta^4 = 3.722e-14, Ubar in [0.99969251, 1.00015378]
+SU(5): U_+ - 1 = P(t)/Z^2 with P = 1/48 t^3 + ...; on (0, beta_0(3)/5]: 0.0208333 - 5.57e-11 - 6.97e-126 = 0.0208333 > 0: True  (so Upsilon >= U_+ >= 1 on (0, beta_0(3)], hence on (0, beta_0(4)])
+
+real	0m0.252s
+user	0m0.430s
+sys	0m0.023s
+authors prove_upsilon_ge_1 with beta_max = 4.03e-4: True 0.02083333327750524 5.582809382379192e-11

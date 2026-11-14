@@ -11,7 +11,7 @@ beta^3/432 = beta^4/(432 beta) of SU(3), and the three largest parts of delta'/b
 Each beta takes a few minutes (the tree constants on the grid of (bbar, abar))."""
 import sys
 import third_order_effective as T
-from mpmath import mpf, log, exp
+from mpmath import mpf, log, log1p, exp
 T.THETA7 = True
 T.NOVR = {4: {6: 132, 7: 108, 8: 2034, 9: 4344, 10: 43650}, 3: {6: 12, 7: 12, 8: 70, 9: 160, 10: 634, 11: 1728, 12: 6369}}   # fronts_decision.py
 # The next order (Lemma mg:lem:corners with S_6): counts of the pairs (J,p') by exhaustive search (next_order_count.py), as (count, n, E, |p'|, m):
@@ -113,11 +113,11 @@ def run(d, betas):
     for be in betas:
         beta = mpf(be); D, best, g = deficit(d, beta)
         target = TERM[GROUP]*beta**3
-        lth = best['loss'] - log(best['Ubar']) - log(1 + best['delta'])
+        lth = best['loss'] - log(best['Ubar']) - log1p(best['delta'])
         if BOUNDS: g = dict(g, Ups=best['Ubar']/(1 + exp(2*beta)*g['Delta']/best['Ubar']))   # for the printout only: log(Ubar/Ups) -> the bound e^{2beta} Delta
         parts = sorted(((float(v/beta**4), k) for k, v in best['parts'].items()), reverse=True)[:3]
         print(f"d={d} beta={be}: D/beta^4 = {float(D/beta**4):.4g} = theta-loss {float(lth/beta**4):.3g} + log(Ubar/Ups) {float(log(best['Ubar']/g['Ups'])/beta**4):.2g}"
-              f" + log(1+delta') {float(log(1+best['delta'])/beta**4):.4g};  beta^3/{int(round(float(1/TERM[GROUP])))} = {float(target/beta**4):.4g} beta^4 ({'resolved' if D < target else 'not resolved'});"
+              f" + log(1+delta') {float(log1p(best['delta'])/beta**4):.4g};  beta^3/{int(round(float(1/TERM[GROUP])))} = {float(target/beta**4):.4g} beta^4 ({'resolved' if D < target else 'not resolved'});"
               f"  largest parts of delta': " + ', '.join(f'{k} {a:.3g}' for a, k in parts))
         sys.stdout.flush()
 DEFAULT6 = {4: ('1.3e-5', '1.2e-5', '1e-5', '3e-6'), 3: ('1e-4', '9.5e-5', '9e-5', '3e-5')}

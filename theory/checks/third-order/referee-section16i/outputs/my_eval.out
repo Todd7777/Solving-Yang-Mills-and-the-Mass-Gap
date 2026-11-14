@@ -1,0 +1,56 @@
+SU(3), d=3, beta_* = 0.000402621433523; parameters of the authors: varpi = b^(5/2), (bbar, abar) = (0.0078125, 0.00048828125)
+  group bounds: ubar/beta = 0.05557793242, ulow/beta = 0.0555331922, u2bar/beta^2 = 0.0034732708, Delta/beta^4 = 1.01102e-11, Ubar in [0.9991950813, 1.000402702]
+  D/beta^4: mine 2.554552302, authors 2.554552302
+  parts of Sigma^(4)_4 / beta^4, mine vs authors: two 0.10145546 / 0.10145546, four 2.7283536e-49 / 0.0, exits 0.030016309 / 0.030016309, one_plaq 0.039869994 / 0.039869994, multi 2.3537789 / 2.3537789
+  Sigma^(6)/b: mine 19.7600903963, authors 19.7600903963
+  rooms (1 - lhs/rhs) of the hypotheses with my constants and extended sums: deco_xF 9.868e-16, deco_xC 9.868e-16, deco_hJ 9.736e-16, bar_xF 8.294e-16, bar_xC 8.294e-16, H_sigma 1.001e-9, H_exits 1.0e-9, H_six 1.0e-9, H_old 1.0, H_beyond 1.0, H_growth 1.0
+  six inequalities, authors' marked constants, actual, extended sums: (1) gF 9.739e-16, (2) gC 9.868e-16, (3) g'F 9.739e-16, (4) g'C 9.868e-16, (5) kF -1.085e-16, (6) kC -4.933e-16
+  six inequalities, authors' marked constants, actual, their own truncated sums: (1) gF 9.739e-16, (2) gC 9.868e-16, (3) g'F 9.739e-16, (4) g'C 9.868e-16, (5) kF -1.085e-16, (6) kC -4.933e-16
+  six inequalities, authors' marked constants, barred, extended sums: (1) gF 7.086e-16, (2) gC 8.294e-16, (3) g'F 7.086e-16, (4) g'C 8.294e-16, (5) kF -7.754e-17, (6) kC -3.943e-16
+  six inequalities, authors' marked constants, barred, their own truncated sums: (1) gF 7.086e-16, (2) gC 8.294e-16, (3) g'F 7.086e-16, (4) g'C 8.294e-16, (5) kF -7.754e-17, (6) kC -3.943e-16
+  six inequalities, my marked constants, actual: (1) gF 9.739e-31, (2) gC 9.868e-31, (3) g'F 9.739e-31, (4) g'C 9.868e-31, (5) kF 9.54e-31, (6) kC 9.866e-31
+  six inequalities, my marked constants, barred: (1) gF 7.086e-31, (2) gC 8.294e-31, (3) g'F 7.086e-31, (4) g'C 8.294e-31, (5) kF 5.459e-31, (6) kC 8.022e-31
+  (5), (6) in the form of Lemma mg:lem:marked (G_1 G_2 in place of g g'), the authors' marked constants, extended sums: actual 1.029e-16, 4.803e-16; barred 3.235e-17, 2.598e-16
+
+SU(5), d=3, beta_* = 0.000402621433523; parameters of the authors: varpi = b^(5/2), (bbar, abar) = (0.0078125, 0.000244140625)
+  group bounds: ubar/beta = 0.02000805567, ulow/beta = 0.01999194919, u2bar/beta^2 = 0.0005006711, Delta/beta^4 = 2.56513e-13, Ubar in [0.9991950813, 1.000402702]
+  D/beta^4: mine 0.345567128, authors 0.345567128
+  parts of Sigma^(4)_4 / beta^4, mine vs authors: two 0.036523964 / 0.036523964, four 2.7283536e-49 / 0.0, exits 0.0014661675 / 0.0014661675, one_plaq 0.00037543525 / 0.00037543525, multi 0.27954802 / 0.27954802
+  Sigma^(6)/b: mine 19.7242570036, authors 19.7242570036
+  rooms (1 - lhs/rhs) of the hypotheses with my constants and extended sums: deco_xF 9.868e-16, deco_xC 9.868e-16, deco_hJ 9.736e-16, bar_xF 8.295e-16, bar_xC 8.295e-16, H_sigma 1.001e-9, H_exits 1.0e-9, H_six 1.0e-9, H_old 1.0, H_beyond 1.0, H_growth 1.0
+  six inequalities, authors' marked constants, actual, extended sums: (1) gF 9.739e-16, (2) gC 9.868e-16, (3) g'F 9.739e-16, (4) g'C 9.868e-16, (5) kF -1.085e-16, (6) kC -4.933e-16
+  six inequalities, authors' marked constants, actual, their own truncated sums: (1) gF 9.739e-16, (2) gC 9.868e-16, (3) g'F 9.739e-16, (4) g'C 9.868e-16, (5) kF -1.085e-16, (6) kC -4.933e-16
+  six inequalities, authors' marked constants, barred, extended sums: (1) gF 7.086e-16, (2) gC 8.295e-16, (3) g'F 7.086e-16, (4) g'C 8.295e-16, (5) kF -8.088e-17, (6) kC -4.065e-16
+  six inequalities, authors' marked constants, barred, their own truncated sums: (1) gF 7.086e-16, (2) gC 8.295e-16, (3) g'F 7.086e-16, (4) g'C 8.295e-16, (5) kF -8.088e-17, (6) kC -4.065e-16
+  six inequalities, my marked constants, actual: (1) gF 9.739e-31, (2) gC 9.868e-31, (3) g'F 9.739e-31, (4) g'C 9.868e-31, (5) kF 9.54e-31, (6) kC 9.866e-31
+  six inequalities, my marked constants, barred: (1) gF 7.086e-31, (2) gC 8.295e-31, (3) g'F 7.086e-31, (4) g'C 8.295e-31, (5) kF 5.407e-31, (6) kC 8.023e-31
+  (5), (6) in the form of Lemma mg:lem:marked (G_1 G_2 in place of g g'), the authors' marked constants, extended sums: actual 1.029e-16, 4.803e-16; barred 3.375e-17, 2.679e-16
+
+SU(3), d=4, beta_* = 0.000153766448043; parameters of the authors: varpi = b^(5/2), (bbar, abar) = (0.00390625, 0.001953125)
+  group bounds: ubar/beta = 0.05556409945, ulow/beta = 0.05554701363, u2bar/beta^2 = 0.0034726227, Delta/beta^4 = 1.47063e-12, Ubar in [0.9996925144, 1.000153778]
+  D/beta^4: mine 3.93507159, authors 3.93507159
+  parts of Sigma^(4)_4 / beta^4, mine vs authors: two 0.24993755 / 0.24993755, four 0.1448921 / 0.1448921, exits 1.7825118 / 1.7825118, one_plaq 1.0625903 / 1.0625903, multi 0.69392513 / 0.69392513
+  Sigma^(6)/b: mine 143.195090514, authors 143.195090514
+  rooms (1 - lhs/rhs) of the hypotheses with my constants and extended sums: deco_xF 9.848e-16, deco_xC 9.848e-16, deco_hJ 9.697e-16, bar_xF 6.702e-16, bar_xC 6.703e-16, H_sigma 1.001e-9, H_exits 1.0e-9, H_six 1.0e-9, H_old 1.0, H_beyond 1.0, H_growth 1.0
+  six inequalities, authors' marked constants, actual, extended sums: (1) gF 9.7e-16, (2) gC 9.848e-16, (3) g'F 9.7e-16, (4) g'C 9.848e-16, (5) kF -1.081e-16, (6) kC -4.923e-16
+  six inequalities, authors' marked constants, actual, their own truncated sums: (1) gF 9.7e-16, (2) gC 9.848e-16, (3) g'F 9.7e-16, (4) g'C 9.848e-16, (5) kF -1.081e-16, (6) kC -4.923e-16
+  six inequalities, authors' marked constants, barred, extended sums: (1) gF 5.05e-16, (2) gC 6.708e-16, (3) g'F 5.05e-16, (4) g'C 6.708e-16, (5) kF -5.533e-17, (6) kC -2.992e-16
+  six inequalities, authors' marked constants, barred, their own truncated sums: (1) gF 5.05e-16, (2) gC 6.708e-16, (3) g'F 5.05e-16, (4) g'C 6.708e-16, (5) kF -5.533e-17, (6) kC -2.992e-16
+  six inequalities, my marked constants, actual: (1) gF 9.7e-31, (2) gC 9.848e-31, (3) g'F 9.7e-31, (4) g'C 9.848e-31, (5) kF 9.473e-31, (6) kC 9.846e-31
+  six inequalities, my marked constants, barred: (1) gF 5.05e-31, (2) gC 6.708e-31, (3) g'F 5.05e-31, (4) g'C 6.708e-31, (5) kF 2.826e-31, (6) kC 5.703e-31
+  (5), (6) in the form of Lemma mg:lem:marked (G_1 G_2 in place of g g'), the authors' marked constants, extended sums: actual 1.017e-16, 4.773e-16; barred 5.551e-19, 1.022e-16
+
+SU(5), d=4, beta_* = 0.000153766448043; parameters of the authors: varpi = b^(5/2), (bbar, abar) = (0.00390625, 0.0009765625)
+  group bounds: ubar/beta = 0.0200030758, ulow/beta = 0.01999692491, u2bar/beta^2 = 0.00050025629, Delta/beta^4 = 3.72169e-14, Ubar in [0.9996925144, 1.000153778]
+  D/beta^4: mine 0.5191715676, authors 0.5191715676
+  parts of Sigma^(4)_4 / beta^4, mine vs authors: two 0.089977517 / 0.089977517, four 0.14479838 / 0.14479838, exits 0.18022192 / 0.18022192, one_plaq 0.017805224 / 0.017805224, multi 0.086204134 / 0.086204134
+  Sigma^(6)/b: mine 143.158392998, authors 143.158392998
+  rooms (1 - lhs/rhs) of the hypotheses with my constants and extended sums: deco_xF 9.848e-16, deco_xC 9.848e-16, deco_hJ 9.697e-16, bar_xF 6.72e-16, bar_xC 6.721e-16, H_sigma 1.001e-9, H_exits 1.0e-9, H_six 1.0e-9, H_old 1.0, H_beyond 1.0, H_growth 1.0
+  six inequalities, authors' marked constants, actual, extended sums: (1) gF 9.7e-16, (2) gC 9.848e-16, (3) g'F 9.7e-16, (4) g'C 9.848e-16, (5) kF -1.081e-16, (6) kC -4.923e-16
+  six inequalities, authors' marked constants, actual, their own truncated sums: (1) gF 9.7e-16, (2) gC 9.848e-16, (3) g'F 9.7e-16, (4) g'C 9.848e-16, (5) kF -1.081e-16, (6) kC -4.923e-16
+  six inequalities, authors' marked constants, barred, extended sums: (1) gF 5.063e-16, (2) gC 6.722e-16, (3) g'F 5.063e-16, (4) g'C 6.722e-16, (5) kF -5.614e-17, (6) kC -3.029e-16
+  six inequalities, authors' marked constants, barred, their own truncated sums: (1) gF 5.063e-16, (2) gC 6.722e-16, (3) g'F 5.063e-16, (4) g'C 6.722e-16, (5) kF -5.614e-17, (6) kC -3.029e-16
+  six inequalities, my marked constants, actual: (1) gF 9.7e-31, (2) gC 9.848e-31, (3) g'F 9.7e-31, (4) g'C 9.848e-31, (5) kF 9.473e-31, (6) kC 9.846e-31
+  six inequalities, my marked constants, barred: (1) gF 5.063e-31, (2) gC 6.722e-31, (3) g'F 5.063e-31, (4) g'C 6.722e-31, (5) kF 2.843e-31, (6) kC 5.742e-31
+  (5), (6) in the form of Lemma mg:lem:marked (G_1 G_2 in place of g g'), the authors' marked constants, extended sums: actual 1.017e-16, 4.773e-16; barred 7.076e-19, 1.043e-16
+

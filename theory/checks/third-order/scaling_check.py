@@ -1,5 +1,6 @@
 # Section 16 of Part IV (Remark mg:rem:nextorder (vii)): the scaling of the admissible parameters below a computed point, d=3, S''_9.
-# Usage: python3 scaling_check.py [--bounds] [--group N] [--d4 TERMS.json [--closed n:c,... --closed-from N] [--ix]] [beta_* [JOBS]]   (default beta_* = beta_0(d); ~10 min, 3 jobs)
+# Usage: python3 scaling_check.py [--bounds] [--certified] [--group N] [--d3 TERMS.json | --d4 TERMS.json [--closed n:c,... --closed-from N] [--ix]] [beta_* [JOBS]]
+#        (default beta_* = beta_0(d); ~10 min, 3 jobs)
 """At beta_* the parameters of Theorem mg:thm:lower5 are found as usual (practical_beta.deficit). For beta = t beta_*, 0 < t <= 1, and k := beta_* take
     varpi = t^p varpi_*  (varpi_* = b(beta_*)^p),   F = (1+k) t F_*,   F_6 = (1+k) t F_6*,   delta' = (1+k)^2 t^4 delta'_*,
 and keep xi_F, xi_C, h_J and (bbar, abar) of beta_* (these constants come out of lower3e raised by a relative 1e-15, so that their conditions hold
@@ -35,7 +36,10 @@ if '--d4' in sys.argv:
     PB.load_terms(d, D4FILE, CLOSED4, CF4)
 else:
     d = 3
-    PB.load_terms(d, os.path.join(here, 'orders', 'd3_s9.json'), {10: 10, 11: 11, 12: 24, 13: 0, 14: 70}, 15)
+    D3FILE = os.path.join(here, 'orders', 'd3_s9.json')          # S''_9; --d3 orders/d3_s9z.json adds the empty exponents (Corollary mg:cor:sectorscap)
+    if '--d3' in sys.argv:
+        i = sys.argv.index('--d3'); D3FILE = sys.argv[i + 1]; del sys.argv[i:i + 2]
+    PB.load_terms(d, D3FILE, {10: 10, 11: 11, 12: 24, 13: 0, 14: 70}, 15)
 sys.path.insert(0, os.path.join(here, '..', 'upper-bound'))
 from constants_upper import beta0
 su3 = PB.group_data()                # the group (SU(3) unless --group)
@@ -77,6 +81,10 @@ if __name__ == "__main__":
         ok = ok and good
         print(f"  t = {float(t):.3g} (beta = {float(t*beta_s):.4g}): " + (f"all hypotheses hold; D/beta^4 = {float(r):.6g} <= (1+k)^3 D_*/beta_*^4 = {float(bound):.6g}: {good}"
                                                                     if err is None else f"FAILS: {err}"))
-    c = PB.TERM[PB.GROUP]; q = int(round(float(1/c)))
-    print(f"all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: {ok};  then D < beta^3/{q} for all beta <= beta_* as long as "
-          f"(1+k)^3 D_*/beta_*^4 = {float((1+k)**3*Ds):.5g} < 1/({q} beta_*) = {float(c/beta_s):.5g}: {(1+k)**3*Ds < c/beta_s}")
+    if PB.GROUP in PB.TERM:
+        c = PB.TERM[PB.GROUP]; q = int(round(float(1/c)))
+        print(f"all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: {ok};  then D < beta^3/{q} for all beta <= beta_* as long as "
+              f"(1+k)^3 D_*/beta_*^4 = {float((1+k)**3*Ds):.5g} < 1/({q} beta_*) = {float(c/beta_s):.5g}: {(1+k)**3*Ds < c/beta_s}")
+    else:                            # no third-order term (e.g. SU(4)): the bound itself
+        print(f"all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: {ok};  so D <= {float((1+k)**3*Ds):.5g} beta^4 for all beta <= beta_* "
+              f"(SU({PB.GROUP}) has no third-order term)")

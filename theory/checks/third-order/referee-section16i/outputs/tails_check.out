@@ -1,0 +1,110 @@
+SU(3), d=3, beta_* = 0.0004026214335: relative truncation tails of every series of lower3e (bound mode, certified counts):
+    Y_2 (bbar) [EB]                            1.16e-39
+    Y_1 (bbar) [EB]                            3.36e-41
+    Y_0 (bbar) [EB]                            9.05e-43
+    A_2 (abar) [EB]                            2.25e-54
+    exits: crude, n>=6 [EB]                    1.12e-54
+    A_1 (abar) [EB]                            2.09e-55
+    A_0 (abar) [EB]                            1.57e-56
+    full: crude Z_(n,4), n>=4                  8.67e-58
+    Sigma^(6): four-edge fronts, n>=2          8.9e-61
+    full: crude exits, n>=1                    8.12e-62
+    Sigma^(6): exits, n>=1 [EB]                3.13e-62
+    Y_2 (actual b)                             1.64e-80
+    Y_1 (actual b)                             4.16e-82
+    Y_0 (actual b) [EB]                        1.05e-83
+    one-plaquette A(k>=8)                      1.5e-87
+    A_2 (actual a)                             1.48e-92
+    A_1 (actual a)                             9.86e-94
+    A_0 (actual a) [EB]                        6.57e-95
+    one-plaquette A(k>=4)                      5.47e-95
+    B_1 (barred) [EB, via k^4]                 5.57e-146
+    B_0 (barred) [EB, via k^4]                 3.71e-147
+    one-plaquette F(k>=8)                      5.08e-206
+    B_1 (actual) [EB, via k^4]                 7.72e-222
+    B_0 (actual) [EB, via k^4]                 5.15e-223
+    one-plaquette F(k>=4)                      4.28e-223
+  largest: 1.16e-39 (Y_2 (bbar) [EB]); largest among those error_budget.py does not list: 8.67e-58
+SU(5), d=3, beta_* = 0.0004026214335: relative truncation tails of every series of lower3e (bound mode, certified counts):
+    Y_2 (bbar) [EB]                            1.16e-39
+    Y_1 (bbar) [EB]                            3.36e-41
+    Y_0 (bbar) [EB]                            9.04e-43
+    exits: crude, n>=6 [EB]                    1.12e-54
+    full: crude Z_(n,4), n>=4                  8.67e-58
+    Sigma^(6): four-edge fronts, n>=2          8.9e-61
+    full: crude exits, n>=1                    8.12e-62
+    Sigma^(6): exits, n>=1 [EB]                3.13e-62
+    A_2 (abar) [EB]                            1.32e-62
+    A_1 (abar) [EB]                            8.95e-64
+    A_0 (abar) [EB]                            6.0e-65
+    Y_2 (actual b)                             1.64e-80
+    Y_1 (actual b)                             4.16e-82
+    Y_0 (actual b) [EB]                        1.05e-83
+    one-plaquette A(k>=8)                      1.45e-98
+    A_2 (actual a)                             5.53e-105
+    A_1 (actual a)                             3.69e-106
+    A_0 (actual a) [EB]                        2.46e-107
+    one-plaquette A(k>=4)                      2.05e-107
+    B_1 (barred) [EB, via k^4]                 7.72e-163
+    B_0 (barred) [EB, via k^4]                 5.15e-164
+    one-plaquette F(k>=8)                      4.3e-229
+    B_1 (actual) [EB, via k^4]                 1.1e-246
+    B_0 (actual) [EB, via k^4]                 7.32e-248
+    one-plaquette F(k>=4)                      6.09e-248
+  largest: 1.16e-39 (Y_2 (bbar) [EB]); largest among those error_budget.py does not list: 8.67e-58
+SU(3), d=4, beta_* = 0.000153766448: relative truncation tails of every series of lower3e (bound mode, certified counts):
+    A_2 (abar) [EB]                            1.39e-21
+    A_1 (abar) [EB]                            1.0e-22
+    A_0 (abar) [EB]                            6.84e-24
+    Y_2 (bbar) [EB]                            3.73e-29
+    Y_1 (bbar) [EB]                            1.21e-30
+    Y_0 (bbar) [EB]                            3.44e-32
+    four: crude Z_(n,4), n>=13 [EB]            2.39e-39
+    exits: crude, n>=5 [EB]                    1.14e-50
+    full: crude Z_(n,4), n>=4                  4.56e-52
+    Sigma^(6): four-edge fronts, n>=2          8.5e-55
+    full: crude exits, n>=1                    6.92e-55
+    Sigma^(6): exits, n>=1 [EB]                2.01e-55
+    Y_2 (actual b)                             1.13e-76
+    Y_1 (actual b)                             2.86e-78
+    Y_0 (actual b) [EB]                        7.21e-80
+    one-plaquette A(k>=8)                      6.01e-84
+    A_2 (actual a)                             2.08e-89
+    A_1 (actual a)                             1.39e-90
+    A_0 (actual a) [EB]                        9.25e-92
+    one-plaquette A(k>=4)                      7.49e-92
+    B_1 (barred) [EB, via k^4]                 4.44e-96
+    B_0 (barred) [EB, via k^4]                 2.96e-97
+    one-plaquette F(k>=8)                      6.78e-214
+    B_1 (actual) [EB, via k^4]                 7.57e-230
+    B_0 (actual) [EB, via k^4]                 5.05e-231
+    one-plaquette F(k>=4)                      4.09e-231
+  largest: 1.39e-21 (A_2 (abar) [EB]); largest among those error_budget.py does not list: 4.56e-52
+SU(5), d=4, beta_* = 0.000153766448: relative truncation tails of every series of lower3e (bound mode, certified counts):
+    Y_2 (bbar) [EB]                            3.52e-29
+    A_2 (abar) [EB]                            4.95e-30
+    Y_1 (bbar) [EB]                            1.14e-30
+    A_1 (abar) [EB]                            3.32e-31
+    Y_0 (bbar) [EB]                            3.24e-32
+    A_0 (abar) [EB]                            2.22e-32
+    four: crude Z_(n,4), n>=13 [EB]            2.39e-39
+    exits: crude, n>=5 [EB]                    1.14e-50
+    full: crude Z_(n,4), n>=4                  4.56e-52
+    Sigma^(6): four-edge fronts, n>=2          8.5e-55
+    full: crude exits, n>=1                    6.92e-55
+    Sigma^(6): exits, n>=1 [EB]                2.01e-55
+    Y_2 (actual b)                             1.13e-76
+    Y_1 (actual b)                             2.86e-78
+    Y_0 (actual b) [EB]                        7.21e-80
+    one-plaquette A(k>=8)                      1.74e-95
+    A_2 (actual a)                             7.79e-102
+    A_1 (actual a)                             5.19e-103
+    A_0 (actual a) [EB]                        3.46e-104
+    one-plaquette A(k>=4)                      2.8e-104
+    B_1 (barred) [EB, via k^4]                 6.02e-113
+    B_0 (barred) [EB, via k^4]                 4.01e-114
+    one-plaquette F(k>=8)                      5.74e-237
+    B_1 (actual) [EB, via k^4]                 1.08e-254
+    B_0 (actual) [EB, via k^4]                 7.18e-256
+    one-plaquette F(k>=4)                      5.81e-256
+  largest: 3.52e-29 (Y_2 (bbar) [EB]); largest among those error_budget.py does not list: 4.56e-52

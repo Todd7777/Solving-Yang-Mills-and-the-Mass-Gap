@@ -1,3 +1,4 @@
+# python3 scaling_check.py --bounds --certified --group 5 0.00040262143352281974401285396895067832618294529962141 2
 beta_* = 0.0004026214335: D/beta^4 = 0.345567, varpi = b^2.5, (bbar, abar) = (mpf('0.0078125'), mpf('0.000244140625'), 'corners')
   t = 1 (beta = 0.0004026): all hypotheses hold; D/beta^4 = 0.345823 <= (1+k)^3 D_*/beta_*^4 = 0.345985: True
   t = 0.999 (beta = 0.0004022): all hypotheses hold; D/beta^4 = 0.345521 <= (1+k)^3 D_*/beta_*^4 = 0.345985: True

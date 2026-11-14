@@ -1,5 +1,5 @@
 # Part IV, Section 16 (Theorem mg:thm:thirdcap): the error budget of the evaluation at beta_* in bound mode.
-# Usage: python3 error_budget.py        (the four cases SU(3), SU(5) x d = 3, 4; about 10 minutes)
+# Usage: python3 error_budget.py [--d3 TERMS.json] [--dims 3,4] [--groups 3,5]     (default: the four cases SU(3), SU(5) x d = 3, 4; about 10 minutes)
 """The evaluation of Theorem mg:thm:lower5 at beta_* (third_order_effective.lower3e, bound mode) truncates its infinite series: the fronts at k < KMAX = 60, the clusters and
 polymers at m, n < NMAX = 40. Every series has non-negative terms, so truncation only lowers the computed sums. This script bounds each omitted tail by a geometric series,
 with majorants that hold for every k, m, n beyond the truncation:
@@ -8,15 +8,17 @@ with majorants that hold for every k, m, n beyond the truncation:
   polymers:   binom(c + T n, n) <= (e (T + c/n))^n,  sum_k binom(4n+4, k) k^2 z^k <= (4n+4)^2 (1+z)^(4n+4);
 and reports, for each family, the tail relative to the computed sum (tau). Then it checks, with every sum raised by its tail, the inequalities that hold with the least room:
 the decoration constants (xi_F >= P_v Y_0(xi_C) + A_0, xi_C >= 4 P_v Y_0 + 8 A_0, h_J >= C_varpi k P_v Y_0 a^{k/2} e^{xi_F k}, the maximum being at k = 4) and the barred tree
-constants at (bbar, abar) (the same two inequalities); these were raised by a relative 1e-15 above their fixed points (INFLATE). The marked constants solve monotone linear
-systems whose coefficients the tails raise by a relative <= tau; their solutions rise by at most tau times the condition factor 1/det, also reported. All other hypotheses
-have room >= 1e-12 (delta' and F are raised by 1e-12, 1e-9). Rounding: the evaluation runs at >= 40 digits."""
+constants at (bbar, abar) (the same two inequalities); these were raised by a relative 1e-15 above their fixed points (INFLATE). And the six inequalities of Definition
+mg:def:jconst for the marked constants, actual and barred (jc1..jc6, jc_bar1..jc_bar6): g_F, g_C, g'_F, g'_C solve the first four with equality and are raised by 1e-15,
+then kappa_F, kappa_C solve the last two (quadratic in the g's) with equality and are raised by 1e-15 (third_order_constants.marked; the ninth referee found that raising
+all six at once left the last two short by ~1e-16). All other hypotheses have room >= 1e-12 (delta' and F are raised by 1e-12, 1e-9). Rounding: the evaluation runs at
+>= 40 digits."""
 import os, sys
 here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, here)
 from mpmath import mp, mpf, e, exp, binomial, fsum, log
 import practical_beta as PB
 import third_order_effective as T
-from third_order_constants import tree_constants
+from third_order_constants import tree_constants, marked
 from junction_constants import counts
 sys.path.insert(0, os.path.join(here, '..', 'upper-bound'))
 from constants_upper import beta0
@@ -42,6 +44,26 @@ def tail_polymers(c, Tv, b, q_first, q_ratio, M=NMAX):
     """sum_{n >= M} binom(c + Tv n, n) b^n q_n with q_{n+1}/q_n <= q_ratio: first term (e(Tv + c/M) b)^M q_M, ratio e (Tv + c/M) b q_ratio"""
     r = e*(Tv + mpf(c)/M)*b
     return geom(r**M*q_first, r*q_ratio)
+
+def six_rooms(xf, xs, aa, bc, xc, cT, F, F6, Pv, KS, N, Dd):
+    """The six inequalities of Definition mg:def:jconst for the marked constants that the evaluation uses (third_order_constants.marked, from the truncated sums),
+    checked with every sum raised by its tail: Y_j at cluster weight bc e^{xc}, A_j = e^{c_J} sum_k k^j N_k aa^{k/2} e^{xs k}, B_j = sum_k k^j N_k f(k) e^{xs k} with
+    f(k) = F k^2 e^{xf k} aa^{k-4} (k >= 7, and k = 5), f(6) = 36 F6 e^{6 xf} aa^2, f(4) = 1 (xf the actual xi_F, xs = xi_F or its barred value). Returns the rooms 1 - lhs/rhs."""
+    def f(k):
+        if k == 4: return mpf(1)
+        if k == 6: return 36*F6*exp(6*xf)*aa**2
+        return F*k**2*exp(xf*k)*aa**(k - 4)
+    Y = [fsum(m**p*binomial(KS*m, m - 1)*(bc*exp(xc))**m for m in range(1, NMAX)) for p in range(3)]
+    A = [exp(cT)*fsum(k**j*N[k]*aa**(mpf(k)/2)*exp(xs*k) for k in range(4, KMAX)) for j in range(3)]
+    gF, gC, g2F, g2C, kF, kC = marked(xs, Y, A, f, Pv, N, KMAX)
+    B = [fsum(k**j*N[k]*f(k)*exp(xs*k) for k in range(4, KMAX)) for j in range(2)]
+    Y = [Y[p] + tail_clusters(KS, bc*exp(xc), p) for p in range(3)]
+    A = [A[j] + exp(cT)*tail_fronts(Dd, aa**mpf(0.5)*exp(xs), j) for j in range(3)]
+    B = [B[j] + F*aa**-4*tail_fronts(Dd, exp(xf + xs)*aa, j + 2) for j in range(2)]
+    (Y0, Y1, Y2), (A0, A1, A2), (B0, B1) = Y, A, B
+    lhs = [Pv*gC*Y1 + B0 + gF*A1, 4*Pv*gC*Y1 + 8*B0 + 8*gF*A1, Pv*g2C*Y1 + A0 + g2F*A1, 4*Pv*g2C*Y1 + 8*A0 + 8*g2F*A1,
+           gF*g2F + Pv*kC*Y2 + g2F*B1 + gF*A1 + kF*A2, gC*g2C + 4*Pv*kC*Y2 + 8*(g2F*B1 + gF*A1 + kF*A2)]
+    return [1 - l/r for l, r in zip(lhs, (gF, gC, g2F, g2C, kF, kC))]
 
 def budget(group, d, terms, closed, cf, tag):
     PB.GROUP = group; PB.BOUNDS = True
@@ -108,6 +130,9 @@ def budget(group, d, terms, closed, cf, tag):
     rel_det = min(det, dt)
     tau = max(rel.values())
     slack = dict(deco_xF=s1, deco_xC=s2, deco_hJ=s3, bar_xF=s4, bar_xC=s5)
+    # the six inequalities of Definition mg:def:jconst, actual (Sigma_4) and barred (the corner majorant), every sum raised by its tail (the ninth referee)
+    for lab, rooms in (('jc', six_rooms(xF, xF, a, b, xC, cT, F, F6, Pv, KS, N, Dd)), ('jc_bar', six_rooms(xF, xFb, ab, bb, xCb, cT, F, F6, Pv, KS, N, Dd))):
+        for i, r in enumerate(rooms): slack[f'{lab}{i + 1}'] = r
     print(f"{tag}: D/beta^4 = {float(D/b0**4):.5g};  largest relative tail tau = {float(tau):.3g} ({max(rel, key=rel.get)});  room with the tails included: "
           + ', '.join(f'{k} {float(v):.3g}' for k, v in slack.items()) + f";  all > 0: {all(v > 0 for v in slack.values())};  marked systems: min det {float(rel_det):.6f}")
     return tau, slack
@@ -116,8 +141,17 @@ if __name__ == "__main__":
     mp.dps = 50
     CL3 = ({10: 10, 11: 11, 12: 24, 13: 0, 14: 70}, 15)
     CL4 = ({10: 60, 11: 66, 12: 320, 13: 0, 14: 1316, 15: 2520, 16: 12552}, 17)
+    D3FILE = os.path.join(here, 'orders', 'd3_s9.json')       # --d3 orders/d3_s9z.json: S''_9 with the empty exponents (Corollary mg:cor:sectorscap)
+    if '--d3' in sys.argv:
+        i = sys.argv.index('--d3'); D3FILE = sys.argv[i + 1]; del sys.argv[i:i + 2]
+    DIMS = (3, 4)                                             # --dims 3: only d = 3
+    if '--dims' in sys.argv:
+        i = sys.argv.index('--dims'); DIMS = tuple(int(x) for x in sys.argv[i + 1].split(',')); del sys.argv[i:i + 2]
+    GROUPS = (3, 5)                                           # --groups 3,4,5
+    if '--groups' in sys.argv:
+        i = sys.argv.index('--groups'); GROUPS = tuple(int(x) for x in sys.argv[i + 1].split(',')); del sys.argv[i:i + 2]
     out = []; PB.CERTIFIED = True     # only counts made by two programs (practical_beta.CERTIFIED)
-    for group in (3, 5):
-        out.append(budget(group, 3, os.path.join(here, 'orders', 'd3_s9.json'), *CL3, f"SU({group}), d=3"))
-        out.append(budget(group, 4, os.path.join(here, 'orders', 'd4_s10x_92.json'), *CL4, f"SU({group}), d=4"))
+    for group in GROUPS:
+        if 3 in DIMS: out.append(budget(group, 3, D3FILE, *CL3, f"SU({group}), d=3 ({os.path.basename(D3FILE)})"))
+        if 4 in DIMS: out.append(budget(group, 4, os.path.join(here, 'orders', 'd4_s10x_92.json'), *CL4, f"SU({group}), d=4"))
     print("all cases: largest tau", float(max(t for t, _ in out)), "; smallest room", float(min(min(s.values()) for _, s in out)))

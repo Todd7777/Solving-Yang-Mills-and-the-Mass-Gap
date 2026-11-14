@@ -1,0 +1,40 @@
+SU(3), d=3: D(beta_*)/beta_*^4 = 2.554552302, (1+k)^3 D_*/beta_*^4 = 2.557639097
+  t =    1.0: smallest room of the hypotheses 8.294e-16 (bar_xC), of my six inequalities 5.46e-31; D/beta^4 = 2.556587685 <= 2.557639097: True
+  t =    0.9: smallest room of the hypotheses 8.294e-16 (bar_xC), of my six inequalities 5.46e-31; D/beta^4 = 2.537717047 <= 2.557639097: True
+  t =    0.5: smallest room of the hypotheses 8.294e-16 (bar_xC), of my six inequalities 5.46e-31; D/beta^4 = 2.529203086 <= 2.557639097: True
+  t =    0.1: smallest room of the hypotheses 8.294e-16 (bar_xC), of my six inequalities 5.46e-31; D/beta^4 = 2.529190241 <= 2.557639097: True
+  t =  0.001: smallest room of the hypotheses 8.294e-16 (bar_xC), of my six inequalities 5.46e-31; D/beta^4 = 2.529190241 <= 2.557639097: True
+  t = 1.0e-6: smallest room of the hypotheses 8.294e-16 (bar_xC), of my six inequalities 5.46e-31; D/beta^4 = 2.529190241 <= 2.557639097: True
+  t = 1.0e-12: smallest room of the hypotheses 8.294e-16 (bar_xC), of my six inequalities 5.46e-31; D/beta^4 = 2.529190241 <= 2.557639097: True
+  t = 1.0e-20: smallest room of the hypotheses 8.294e-16 (bar_xC), of my six inequalities 5.46e-31; D/beta^4 = 2.529190241 <= 2.557639097: True
+  all scaled points pass with the referee's evaluator: True
+SU(5), d=3: D(beta_*)/beta_*^4 = 0.345567128, (1+k)^3 D_*/beta_*^4 = 0.3459846943
+  t =    1.0: smallest room of the hypotheses 8.295e-16 (bar_xF), of my six inequalities 5.41e-31; D/beta^4 = 0.3458233834 <= 0.3459846943: True
+  t =    0.9: smallest room of the hypotheses 8.295e-16 (bar_xF), of my six inequalities 5.41e-31; D/beta^4 = 0.326952747 <= 0.3459846943: True
+  t =    0.5: smallest room of the hypotheses 8.295e-16 (bar_xF), of my six inequalities 5.41e-31; D/beta^4 = 0.3184387903 <= 0.3459846943: True
+  t =    0.1: smallest room of the hypotheses 8.295e-16 (bar_xF), of my six inequalities 5.41e-31; D/beta^4 = 0.3184259471 <= 0.3459846943: True
+  t =  0.001: smallest room of the hypotheses 8.295e-16 (bar_xF), of my six inequalities 5.41e-31; D/beta^4 = 0.3184259471 <= 0.3459846943: True
+  t = 1.0e-6: smallest room of the hypotheses 8.295e-16 (bar_xF), of my six inequalities 5.41e-31; D/beta^4 = 0.3184259471 <= 0.3459846943: True
+  t = 1.0e-12: smallest room of the hypotheses 8.295e-16 (bar_xF), of my six inequalities 5.41e-31; D/beta^4 = 0.3184259471 <= 0.3459846943: True
+  t = 1.0e-20: smallest room of the hypotheses 8.295e-16 (bar_xF), of my six inequalities 5.41e-31; D/beta^4 = 0.3184259471 <= 0.3459846943: True
+  all scaled points pass with the referee's evaluator: True
+SU(3), d=4: D(beta_*)/beta_*^4 = 3.93507159, (1+k)^3 D_*/beta_*^4 = 3.936887115
+  t =    1.0: smallest room of the hypotheses 6.702e-16 (bar_xF), of my six inequalities 2.83e-31; D/beta^4 = 3.936281845 <= 3.936887115: True
+  t =    0.9: smallest room of the hypotheses 6.702e-16 (bar_xF), of my six inequalities 2.83e-31; D/beta^4 = 3.936278295 <= 3.936887115: True
+  t =    0.5: smallest room of the hypotheses 6.702e-16 (bar_xF), of my six inequalities 2.83e-31; D/beta^4 = 3.936277091 <= 3.936887115: True
+  t =    0.1: smallest room of the hypotheses 6.702e-16 (bar_xF), of my six inequalities 2.83e-31; D/beta^4 = 3.93627709 <= 3.936887115: True
+  t =  0.001: smallest room of the hypotheses 6.702e-16 (bar_xF), of my six inequalities 2.83e-31; D/beta^4 = 3.93627709 <= 3.936887115: True
+  t = 1.0e-6: smallest room of the hypotheses 6.702e-16 (bar_xF), of my six inequalities 2.83e-31; D/beta^4 = 3.93627709 <= 3.936887115: True
+  t = 1.0e-12: smallest room of the hypotheses 6.702e-16 (bar_xF), of my six inequalities 2.83e-31; D/beta^4 = 3.93627709 <= 3.936887115: True
+  t = 1.0e-20: smallest room of the hypotheses 6.702e-16 (bar_xF), of my six inequalities 2.83e-31; D/beta^4 = 3.93627709 <= 3.936887115: True
+  all scaled points pass with the referee's evaluator: True
+SU(5), d=4: D(beta_*)/beta_*^4 = 0.5191715676, (1+k)^3 D_*/beta_*^4 = 0.519411098
+  t =    1.0: smallest room of the hypotheses 6.72e-16 (bar_xF), of my six inequalities 2.84e-31; D/beta^4 = 0.5193312408 <= 0.519411098: True
+  t =    0.9: smallest room of the hypotheses 6.72e-16 (bar_xF), of my six inequalities 2.84e-31; D/beta^4 = 0.5193276906 <= 0.519411098: True
+  t =    0.5: smallest room of the hypotheses 6.72e-16 (bar_xF), of my six inequalities 2.84e-31; D/beta^4 = 0.5193264893 <= 0.519411098: True
+  t =    0.1: smallest room of the hypotheses 6.72e-16 (bar_xF), of my six inequalities 2.84e-31; D/beta^4 = 0.5193264887 <= 0.519411098: True
+  t =  0.001: smallest room of the hypotheses 6.72e-16 (bar_xF), of my six inequalities 2.84e-31; D/beta^4 = 0.5193264887 <= 0.519411098: True
+  t = 1.0e-6: smallest room of the hypotheses 6.72e-16 (bar_xF), of my six inequalities 2.84e-31; D/beta^4 = 0.5193264887 <= 0.519411098: True
+  t = 1.0e-12: smallest room of the hypotheses 6.72e-16 (bar_xF), of my six inequalities 2.84e-31; D/beta^4 = 0.5193264887 <= 0.519411098: True
+  t = 1.0e-20: smallest room of the hypotheses 6.72e-16 (bar_xF), of my six inequalities 2.84e-31; D/beta^4 = 0.5193264887 <= 0.519411098: True
+  all scaled points pass with the referee's evaluator: True

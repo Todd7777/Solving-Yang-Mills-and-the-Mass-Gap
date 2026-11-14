@@ -1,0 +1,8 @@
+SU(5): Z(t) = 1 t^0 + 1/4 t^2 + 1/32 t^4 + 1/1920 t^5 + 1/384 t^6 + 1/9216 t^7 + ...
+  Haar moments m_k = k! z_k: [Fraction(1, 1), Fraction(0, 1), Fraction(1, 2), Fraction(0, 1), Fraction(3, 4), Fraction(1, 16), Fraction(15, 8), Fraction(35, 64), Fraction(105, 16), Fraction(261, 64), Fraction(7581, 256)]
+  P(t) = 2Z''Z - 2Z'^2 - Z^2, first coefficients: ['0', '0', '0', '1/48', '0', '11/1280', '0', '47/26880', '1/737280']
+  first non-zero coefficient: p_3 = 1/48
+  equal to the authors' P (Schur-Weyl) for every degree <= 30: True
+  on (0, beta_max], beta_max = 403/1000000 = 0.000403 (t_max = beta_max/5):
+    p_3 = 0.0208333333333, sum_(n>3) |p_n| t^(n-3) = 5.58281e-11, tail/t^3 = 4.27e-130
+    margin (exact rational) = 0.0208333332775 > 0: True   =>  U_+ - 1 = P/Z^2 >= 0 on (0, beta_max]
