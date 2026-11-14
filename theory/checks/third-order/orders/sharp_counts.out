@@ -1,0 +1,34 @@
+# python3 sharp_counts.py
+Z^2, root q: S_1..S_6 = [9, 68, 500, 3630, 26182, 188136] (Redelmeier) == [9, 68, 500, 3630, 26182, 188136] (reverse search): True
+Z^2, root flat: S_1..S_5 = [12, 104, 820, 6214, 46136] (Redelmeier) == [12, 104, 820, 6214, 46136] (reverse search): True
+Z^2: six-edge root, the largest over the shapes: {'1': 12, '2': 104, '3': 820, '4': 6214, '5': 46136}
+Z^3, root q: S_1..S_5 = [33, 1104, 38048, 1338976, 47813302] (Redelmeier) == [33, 1104, 38048, 1338976, 47813302] (reverse search): True
+Z^3, root flat: S_1..S_4 = [46, 1799, 67752, 2523519] (Redelmeier) == [46, 1799, 67752, 2523519] (reverse search): True
+Z^3, root bent: S_1..S_4 = [46, 1765, 65366, 2403307] (Redelmeier) == [46, 1765, 65366, 2403307] (reverse search): True
+Z^3, root skew: S_1..S_4 = [48, 1872, 69934, 2585154] (Redelmeier) == [48, 1872, 69934, 2585154] (reverse search): True
+Z^3: six-edge root, the largest over the shapes: {'1': 48, '2': 1872, '3': 69934, '4': 2585154}
+d=3, one plaquette, further fronts (4, 4): 0 (order_counts) == 0 (junctions.c): True
+d=3, one plaquette, further fronts (4, 6): 0 (order_counts) == 0 (junctions.c): True
+d=3, one plaquette, further fronts (4, 7): 0 (order_counts) == 0 (junctions.c): True
+d=3, one plaquette, further fronts (6, 6): 0 (order_counts) == 0 (junctions.c): True
+d=3, one plaquette, further fronts (4, 8): 4 (order_counts) == 4 (junctions.c): True
+d=3, one plaquette, further fronts (4, 9): 8 (order_counts) == 8 (junctions.c): True
+d=3, one plaquette, further fronts (4, 10): 20 (order_counts) == 20 (junctions.c): True
+d=3, one plaquette, further fronts (4, 4, 4): 0 (order_counts) == 0 (junctions.c): True
+d=3, one plaquette, further fronts (4, 4, 6): 0 (order_counts) == 0 (junctions.c): True
+d=3, one plaquette, further fronts (4, 4, 7): 0 (order_counts) == 0 (junctions.c): True
+d=3, one plaquette, further fronts (4, 4, 8): 0 (order_counts) == 0 (junctions.c): True
+d=3, one plaquette, further fronts (4, 6, 6): 0 (order_counts) == 0 (junctions.c): True
+d=4, one plaquette, further fronts (4, 4): 0 (order_counts) == 0 (junctions.c): True
+d=4, one plaquette, further fronts (4, 6): 0 (order_counts) == 0 (junctions.c): True
+d=4, one plaquette, further fronts (4, 7): 0 (order_counts) == 0 (junctions.c): True
+d=4, one plaquette, further fronts (6, 6): 0 (order_counts) == 0 (junctions.c): True
+d=4, one plaquette, further fronts (4, 8): 36 (order_counts) == 36 (junctions.c): True
+d=4, one plaquette, further fronts (4, 9): 72 (order_counts) == 72 (junctions.c): True
+d=4, one plaquette, further fronts (4, 10): 276 (order_counts) == 276 (junctions.c): True
+d=4, one plaquette, further fronts (4, 4, 4): 0 (order_counts) == 0 (junctions.c): True
+d=4, one plaquette, further fronts (4, 4, 6): 0 (order_counts) == 0 (junctions.c): True
+d=4, one plaquette, further fronts (4, 4, 7): 0 (order_counts) == 0 (junctions.c): True
+d=4, one plaquette, further fronts (4, 4, 8): 0 (order_counts) == 0 (junctions.c): True
+d=4, one plaquette, further fronts (4, 6, 6): 0 (order_counts) == 0 (junctions.c): True
+all counts made by two programs agree; written to orders/sharp_counts.json

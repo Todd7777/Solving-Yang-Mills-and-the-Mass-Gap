@@ -151,6 +151,9 @@ if __name__ == "__main__":
         i = sys.argv.index('--dims'); DIMS = tuple(int(x) for x in sys.argv[i + 1].split(',')); del sys.argv[i:i + 2]
     GROUPS = (3, 5)                                           # --groups 3,4,5 (1: U(1), 2: SU(2))
     if '--nv-decision-d3' in sys.argv: PB.NV_DECISION_D3 = True; sys.argv.remove('--nv-decision-d3')   # Lemma mg:lem:frontsdecision in d=3
+    if '--sharp' in sys.argv: PB.SHARP = True; sys.argv.remove('--sharp')   # Lemma mg:lem:smallcounts (Corollary mg:cor:sharp)
+    if '--pmax' in sys.argv:
+        i = sys.argv.index('--pmax'); PB.PMAX = mpf(sys.argv[i + 1]); del sys.argv[i:i + 2]
     if '--kmax' in sys.argv:                                  # the truncation of the front sums, here and in the evaluation (third_order_effective.KMAX_DEFAULT)
         i = sys.argv.index('--kmax'); KMAX = int(sys.argv[i + 1]); T.KMAX_DEFAULT = KMAX; del sys.argv[i:i + 2]
     if '--f-raise' in sys.argv:                               # the relative raise of F, F_6 (third_order_effective.F_RAISE)

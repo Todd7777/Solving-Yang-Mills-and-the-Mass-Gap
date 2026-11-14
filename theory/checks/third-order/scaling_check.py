@@ -1,5 +1,5 @@
 # Section 16 of Part IV (Remark mg:rem:nextorder (vii)): the scaling of the admissible parameters below a computed point, d=3, S''_9.
-# Usage: python3 scaling_check.py [--bounds] [--certified] [--group N] [--f-raise X] [--kmax K] [--nv-decision-d3] [--d3 TERMS.json | --d4 TERMS.json [--closed n:c,... --closed-from N] [--ix]] [beta_* [JOBS]]
+# Usage: python3 scaling_check.py [--bounds] [--certified] [--sharp] [--pmax 3] [--group N] [--f-raise X] [--kmax K] [--nv-decision-d3] [--d3 TERMS.json | --d4 TERMS.json [--closed n:c,... --closed-from N] [--ix]] [beta_* [JOBS]]
 #        (--group 1 is U(1), --group 2 SU(2))
 #        (default beta_* = beta_0(d); ~10 min, 3 jobs)
 """At beta_* the parameters of Theorem mg:thm:lower5 are found as usual (practical_beta.deficit). For beta = t beta_*, 0 < t <= 1, and k := beta_* take
@@ -31,6 +31,9 @@ if '--kmax' in sys.argv:                                                 # the t
 if '--f-raise' in sys.argv:                                              # the relative raise of F, F_6 (third_order_effective.F_RAISE; default 1e-9)
     i = sys.argv.index('--f-raise'); T.F_RAISE = mpf(sys.argv[i + 1]); del sys.argv[i:i + 2]
 if '--certified' in sys.argv: PB.CERTIFIED = True; sys.argv.remove('--certified')   # only counts made by two programs (practical_beta.CERTIFIED)
+if '--sharp' in sys.argv: PB.SHARP = True; sys.argv.remove('--sharp')         # Lemma mg:lem:smallcounts (practical_beta.SHARP; Corollary mg:cor:sharp)
+if '--pmax' in sys.argv:                                                  # varpi = b^p, p up to PMAX (2 <= p <= 3, Lemma mg:lem:scaling)
+    i = sys.argv.index('--pmax'); PB.PMAX = mpf(sys.argv[i + 1]); del sys.argv[i:i + 2]
 CLOSED4, CF4 = {10: 60, 11: 66}, 12
 if '--closed' in sys.argv:
     i = sys.argv.index('--closed'); CLOSED4 = {int(x.split(':')[0]): int(x.split(':')[1]) for x in sys.argv[i + 1].split(',')}; del sys.argv[i:i + 2]
@@ -53,7 +56,7 @@ su3 = PB.group_data()                # the group (SU(3) unless --group)
 def params(beta_s):
     """the admissible parameters at beta_* (the smaller delta' of varpi = b^2, b^(5/2)) and its deficit"""
     g = su3(beta_s); best = None
-    for vp in (2, mpf(5)/2):
+    for vp in PB.p_values():
         try: lo = T.lower3e(beta_s, d, g, varpi_pow=vp, chars=True)
         except AssertionError: continue
         if best is None or lo['delta'] < best['delta']: best = lo; best['p'] = vp

@@ -144,9 +144,9 @@ for all $\beta<\beta_0(3)$ in $d=3$ and $-0.519\beta^4\le\dots\le0.252\beta^4$ f
 computer-assisted theorem, with slightly weaker constants in $d=4$: for $SU(3)$ and $SU(5)$ in $d=3,4$, $-c_-\beta^4\le m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)\le c_+\beta^4$ for all $\beta<\beta_0(d)$,
 with explicit $c_\pm$ below the third-order term on the whole range. Bounds of the same form hold for each sector of charge conjugation: for $SU(3)$, $SU(4)$ and $SU(5)$ in $d=3,4$
 both plaquette glueballs are determined to third order on the whole range (the odd glueball of $SU(3)$ has the third-order term $\beta^3/1296$), and so is their splitting, which
-is $2(\beta/2N)^{N-2}/(N-2)!$ to leading order, with the even glueball the lighter one; in $d=3$, junction kinds that a planar argument shows to be empty, and a better count of large fronts,
-lower $c_-$ to $0.185$ for $SU(3)$ and $0.067$ for $SU(5)$. For $SU(2)$ and $U(1)$, whose gap has no third-order term, the same computer-assisted evaluation gives $m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)=O(\beta^4)$, and the same
-for both glueballs of $U(1)$, with explicit constants on the whole range (for $SU(2)$ in $d=4$, between $-570\beta^4$ and $0.0028\beta^4$); so their second-order terms, $\beta^2/8$ for $SU(2)$, are
+is $2(\beta/2N)^{N-2}/(N-2)!$ to leading order, with the even glueball the lighter one; in $d=3$, junction kinds that a planar argument shows to be empty, a better count of large fronts, and exact counts of small sets of plaquettes, of the junctions with one
+plaquette and of closed polymers lower $c_-$ to $0.0121$ for $SU(3)$ and $0.00177$ for $SU(5)$, and in $d=4$ to $0.987$ and $0.24$. For $SU(2)$ and $U(1)$, whose gap has no third-order term, the same computer-assisted evaluation gives $m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)=O(\beta^4)$, and the same
+for both glueballs of $U(1)$, with explicit constants on the whole range (for $SU(2)$ in $d=4$, between $-53.3\beta^4$ and $0.0028\beta^4$); so their second-order terms, $\beta^2/8$ for $SU(2)$, are
 determined there, where the earlier whole-range bounds for $SU(2)$, such as $-9.4\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ in $d=4$ (numerical evaluations), did not see them.
 The asymptotics
 itself, indeed the full expansion of the glueball mass, is classical (Schor; O'Carroll et al.); what is new here is a self-contained
@@ -4700,7 +4700,7 @@ at $400$ points from $10^{-24}$ to $\beta_0(3)$ at $220$ digits, \texttt{monoton
 \item in $\Sigma^{(4)}_4$, which is to be compared with $\bar\Upsilon\delta'\sim t^4$: the shifts and jumps $\varpi\min(b^2,b_2)=O(t^{p+2})$; the junctions with two four-edge front-pairs and
 $n\ge4$ plaquettes $O(t^4)$; the exits $O(t^4)$ ($af(6)$, the others less); the one-plaquette junctions $O(t^5)$; the counted pairs and the corner term $O(t^{n+E})$ with $n+E\ge5$;
 \item in the conditions on $F$ and $F_6$, $P_v(g_CY_1/7+g_FY_0)$ and $\Sigma^{(6)}$ are $O(t)$, like the right sides;
-\item $C_\varpi=O(t^{-p})$, so $\omega$ and $C_\varpi a^4$ are $O(t^{4-p})$, and $C_\varpi kP_vY_0a^{k/2}e^{\xi_Fk}=O(t^{3-p})$ stays below $h_J$ ($p\le\frac52$); $a^4\bar\Upsilon(1+\delta')=O(t^4)$
+\item $C_\varpi=O(t^{-p})$, so $\omega$ and $C_\varpi a^4$ are $O(t^{4-p})$, and $C_\varpi kP_vY_0a^{k/2}e^{\xi_Fk}=O(t^{3-p})$ stays below $h_J$ ($p\le3$); $a^4\bar\Upsilon(1+\delta')=O(t^4)$
 stays below $\varpi$.
 \end{itemize}
 The values $f(k)$, $k\ge6$, carry the factor $1+\kappa$, which enters each sum at most linearly. It enters the left sides of the conditions on $F$ and $F_6$ only at relative
@@ -5064,7 +5064,7 @@ $\log\bar\Upsilon'-\log\Upsilon=\log(1+\Delta/\Upsilon)\le\Delta/\Upsilon\le e^{
 
 \begin{lemma}[Scaling]\label{mg:lem:scaling}
 In the setting of Lemma~\ref{mg:lem:boundmode}, with $\bar u_2$ of Lemma~\ref{mg:lem:u2sun} or $e^\beta-1-\beta$, let $\beta_*>0$ and $\kappa:=\beta_*$. Suppose that at $\beta_*$ the hypotheses of
-Lemma~\ref{mg:lem:boundmode} hold in bound mode with parameters $\varpi_*=\hat b(\beta_*)^p$, $2\le p\le\frac52$, $F_*$, $F_{6*}$, $\xi_F$, $\xi_C$, $h_J$, $\bar b$, $\bar a$, $\delta'_*\le\kappa$, the marked constants and
+Lemma~\ref{mg:lem:boundmode} hold in bound mode with parameters $\varpi_*=\hat b(\beta_*)^p$, $2\le p\le3$, $F_*$, $F_{6*}$, $\xi_F$, $\xi_C$, $h_J$, $\bar b$, $\bar a$, $\delta'_*\le\kappa$, the marked constants and
 the barred ones being the minimal solutions of their six inequalities, in the following stronger form: the conditions on $F$ and $F_6$ hold with $e^{-2\beta_*}-\hat a(\beta_*)$ in place of
 $e^{-2\beta_*}(1+\delta'_*)-\hat a(\beta_*)$, the third hypothesis with $1/(1+\kappa)$ in place of $1$, and the fourth with $\varpi_*/(1+\kappa)$ in place of $\varpi_*$. For $\beta=t\beta_*$,
 $0<t\le1$, put
@@ -5085,7 +5085,7 @@ $1+\delta'\le(1+\kappa)(1+\delta'_*)$.
 \begin{enumerate}[label=(\alph*)]
 \item $C_\varpi=1+\max(t^{-p}/\varpi_*,(1+\gamma_2)e^{2\beta})\le t^{-p}C_{\varpi*}$, so $\omega=C_\varpi\hat a^4(1+\gamma_2)\le t^{4-p}\omega_*\le\omega_*$ and $c_J=e^{h_J}/(1-\omega)\le c_{J*}$.
 \item Every term of $Y_j$ has a factor $\hat b^m$, $m\ge1$, so $Y_j\le tY_{j*}$; every term of $A_j$ a factor $\hat a^{k/2}$, $k\ge4$, so $A_j\le t^2A_{j*}$. So the first two conditions of
-Lemma~\ref{mg:lem:jsums} hold, and $C_\varpi kP_vY_0\hat a^{k/2}e^{\xi_Fk}\le t^{1+k/2-p}(C_\varpi kP_vY_0\hat a^{k/2}e^{\xi_Fk})_*\le h_J$, as $p\le\frac52$. The barred conditions depend on $\beta$ only
+Lemma~\ref{mg:lem:jsums} hold, and $C_\varpi kP_vY_0\hat a^{k/2}e^{\xi_Fk}\le t^{1+k/2-p}(C_\varpi kP_vY_0\hat a^{k/2}e^{\xi_Fk})_*\le h_J$, as $p\le3$ and $k\ge4$. The barred conditions depend on $\beta$ only
 through $c_J$ and hold.
 \item $f(4)=1$, $f(6)=36F_6e^{6\xi_F}\hat a^2\le(1+\kappa)t^3f_*(6)$ and $f(k)=Fk^2e^{\xi_Fk}\hat a^{k-4}\le(1+\kappa)t^{k-3}f_*(k)$ for $k\ge7$; the barred $\bar f(k)$ are at most $(1+\kappa)\bar f_*(k)$. So
 $B_j\le(1+\kappa)B_{j*}$. The six inequalities have coefficients ($Y_j$, $A_j$) that do not increase, and sources that grow at most by the factor $1+\kappa$: $B_0$ for $g_F,g_C$; $A_0$, which does
@@ -5404,6 +5404,94 @@ the statement, are $c_\pm\beta_0(d)^2$ and $c'_\pm\beta_0(d)^2$ over $\frac18$; 
 arithmetic by the eleventh referee. The series follow exactly from the moments, and the bound on $I_1^2-I_0I_2$ is a Theorem.
 \end{proof}
 
+\subsection*{Sharper constants}
+
+Two bounds that were left crude carry much of the lower constants. The sets of plaquettes in the rooted counting of Lemmas~\ref{mg:lem:twofrontcount}
+and~\ref{mg:lem:jsums6} were counted by $\binom{4P_v+T_vn}n$ and $\binom{6P_v+T_vn}n$; through this count, the exits with five plaquettes were $1.1\beta^4$ of
+$D=3.9\beta^4$ for $SU(3)$ in $d=4$, and the six-edge sum $\Sigma^{(6)}$, through $F_6$, another $0.5\beta^4$. The junctions with one plaquette and three or more
+front-pairs were bounded by the tree sum $4P_vb(\mathsf F_8\mathsf A+\mathsf F\mathsf A_8+\mathsf F(e^{\mathsf A}-1-\mathsf A))$ of Lemma~\ref{mg:lem:jsums4}: $1.06\beta^4$ for
+$SU(3)$ in $d=4$, and most of $D$ for $SU(2)$ and $U(1)$. Both can be counted exactly at the orders that matter. Once they are, in $d=3$ the closed polymers
+beyond the $14$ plaquettes counted in Remark~\ref{mg:rem:nextorder} dominate, through $8(K+1)\bar\theta$ ($0.027\beta^4$, the same for every group); they too can be counted further. With
+these counts, and the range $2\le p\le3$ of Lemma~\ref{mg:lem:scaling}, every lower constant falls, by a factor between 2.1 and 37.
+
+\begin{lemma}[Exact counts at small orders]\label{mg:lem:smallcounts}
+(Computer-assisted: each count made by two programs.) In infinite volume:
+\begin{enumerate}[label=(\roman*)]
+\item Let $S_n(\varphi)$ be the number of sets of $n$ plaquettes of a slice in which every plaquette is joined to $V(\varphi)$ by a chain of plaquettes of the set
+sharing vertices. For $\varphi$ a plaquette boundary,
+\begin{gather*}
+S_1,\dots,S_6=9,\ 68,\ 500,\ 3630,\ 26182,\ 188136\quad(d=3),\\
+S_1,\dots,S_5=33,\ 1104,\ 38048,\ 1338976,\ 47813302\quad(d=4),
+\end{gather*}
+and for $\varphi$ a front of six edges, $S_n\le12,\ 104,\ 820,\ 6214,\ 46136$ ($n\le5$, $d=3$) and $S_n\le48,\ 1872,\ 69934,\ 2585154$ ($n\le4$, $d=4$). The bounds of
+Lemmas~\ref{mg:lem:twofrontcount} and~\ref{mg:lem:jsums6}, and the sums built on them, hold with these numbers in place of $\binom{4P_v+T_vn}n$ and
+$\binom{6P_v+T_vn}n$, also on tori with sides $\ge8$.
+\item Let $p$ be a front-pair of four edges. Among the pairs $(J,p')$ of Lemma~\ref{mg:lem:jsums3} with $J$ of one plaquette and three or more front-pairs, those of
+$a$-exponent $E:=(|p'|-4)+\sum_\psi|\psi|/2\le5$, the sum over the front-pairs $\psi\ne p,p'$ of $J$, all have $|p'|=4$ and exactly one $\psi$, of $8$, $9$ or $10$ edges;
+there are $W_8,W_9,W_{10}=4,\ 8,\ 20$ of them in $d=3$ and $36,\ 72,\ 276$ in $d=4$. So in Lemma~\ref{mg:lem:jsums4} the one-plaquette term
+$4P_vb(\mathsf F_8\mathsf A+\mathsf F\mathsf A_8+\mathsf F(e^{\mathsf A}-1-\mathsf A))$ may be replaced by
+\begin{multline*}
+b\,e^{c_J}\bigl(W_8a^4+W_9a^{9/2}+W_{10}a^5\bigr)+4P_vb\Bigl(\mathsf F_8\mathsf A+\mathsf F\mathsf A_8+\mathsf F(e^{\mathsf A}-1-\mathsf A)\\
+-\mathsf F_4\bigl(\mathsf A_{(8)}+\mathsf A_{(9)}+\mathsf A_{(10)}+\tfrac12\mathsf A_{(4)}^2+\mathsf A_{(4)}\mathsf A_{(6)}\bigr)\Bigr),
+\end{multline*}
+where $\mathsf F_4:=8N^v_4$ and $\mathsf A_{(k)}:=8e^{c_J}N^v_ka^{k/2}$.
+\item In $d=3$ the closed polymers of Lemma~\ref{mg:lem:theta7} containing a given plaquette, with $15$ and $16$ plaquettes, number $150$ and $352$; so $\bar\theta$ may be
+computed with the exact counts up to $16$ plaquettes and the bound $x^n$ from $17$ on.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) The proofs of the two lemmas count the sets of $n$ plaquettes that are connected, together with the root front $\varphi$, in the graph in which $\varphi$ is joined to the
+plaquettes with a vertex in $V(\varphi)$ and two plaquettes sharing a vertex are joined; these are the sets counted by $S_n(\varphi)$. In $\Z^2$ the fronts of six edges are the
+boundaries of dominoes; in $\Z^3$ they are those of flat and of bent dominoes and the skew hexagons, and the largest of the three counts is used. The counts were made by
+Redelmeier's method (\texttt{rooted\_sets.c}) and by reverse search (\texttt{rooted\_rs.c}: the parent of a set is the set without its largest removable plaquette), with equal
+results. Such a set spans at most $1+n$ lattice units in every direction ($2+n$ for a domino), at most $7$ for the sizes listed, so on tori with sides $\ge8$ the counts are the same.
+
+(ii) In the proof of Lemma~\ref{mg:lem:jsums3}, the one-plaquette term is a sum over the classes $(k';K)$, $k':=|p'|$ and $K$ the multiset of the sizes of the front-pairs
+$\psi$, and the class $(k';K)$ contributes at most $4P_vb\cdot8N^v_{k'}f(k')\prod_{k\in K}\mathsf A_{(k)}$, divided by the factorials of the multiplicities in $K$. A pair of
+the class has weight $b\kappa a^E$ with $\kappa$ free of $a$, as in the proof of Lemma~\ref{mg:lem:jsums4}. With exactly three front-pairs one of $p'$ and $\psi$ has at
+least eight edges (Lemma~\ref{mg:lem:betafour}(iii)), and there are no fronts of five edges. So $E\ge6$ when $k'\ge6$, and the classes with $E\le5$ are $(4;8)$, $(4;9)$,
+$(4;10)$, $(4;4,4)$ and $(4;4,6)$, whose terms in the tree sum are those subtracted above, each at most the corresponding part of the tree sum. The candidate junctions of
+these classes, those satisfying the conditions of Lemma~\ref{mg:lem:junction}, were enumerated exhaustively by the search of Remark~\ref{mg:rem:nextorder} with one plaquette
+(\texttt{order\_counts.py}) and by its C version (\texttt{junctions.c}), with equal results: $W_8,W_9,W_{10}$ junctions in the first three classes and none in the last two. A junction of the class $(4;k)$ gives one pair with $|p'|=4$, of weight $b\,a^{k/2}e^{c_J}$; its pair with $|p'|=k$ has
+$E\ge6$ and stays in the tree sum. The classes $(4;4)$, $(4;6)$, $(4;7)$, $(6;6)$, $(4;4,7)$, $(4;4,8)$ and $(4;6,6)$ were found empty as well, the first three as
+Lemma~\ref{mg:lem:betafour}(iii) requires (\texttt{sharp\_counts.py}).
+
+(iii) By the C version (\texttt{closed\_sets.c}) of the search of Remark~\ref{mg:rem:nextorder} for closed sets; it reproduces the counts $10$, $11$, $24$, $0$, $70$ for $10$
+to $14$ plaquettes used there, which were made by two programs. The second count for $15$ and $16$ plaquettes is the Python search (\texttt{closed\_sets\_ext.py}), run by
+\texttt{sharp\_counts.py}; it takes about two hours.
+\end{proof}
+
+\begin{corollary}[Sharper constants]\label{mg:cor:sharp}
+(Computer-assisted.) In Theorem~\ref{mg:thm:thirdcap} and in Corollaries~\ref{mg:cor:sectorscap} and~\ref{mg:cor:classic}, for the gap and for each sector of charge
+conjugation, the lower constants $c_-$, $c'_-$ may be replaced by
+\[
+\begin{array}{lcc}
+ & d=3 & d=4\\
+SU(2) & 1.57 & 53.3\\
+SU(3) & 0.0121 & 0.987\\
+SU(4) & 0.00359 & 0.383\\
+SU(5) & 0.00177 & 0.24\\
+U(1) & 16.8 & 437
+\end{array}
+\]
+(for $SU(2)$, the gap); the upper constants are unchanged. In particular, at $\beta_0(4)$ the residual is at most $20\%$ of the third-order term $\beta^3/1296$ of the odd
+glueball of $SU(3)$ (before, $78\%$) and $23\%$ of $\beta^3/6000$ for $SU(5)$ (before, $48\%$); at $\beta_0(3)$, at most $0.7\%$ and $0.5\%$.
+\end{corollary}
+
+\begin{proof}
+As in the proofs of Theorem~\ref{mg:thm:thirdcap} and Corollaries~\ref{mg:cor:sectorscap} and~\ref{mg:cor:classic}, in the same settings (in $d=3$ the set of
+Corollary~\ref{mg:cor:sectorscap} with Lemma~\ref{mg:lem:frontsdecision} for $\Z^2$), with four changes: the counts of Lemma~\ref{mg:lem:smallcounts}(i) in place of the
+binomial counts of the sets of plaquettes, for the sizes listed there; the one-plaquette term of Lemma~\ref{mg:lem:smallcounts}(ii); in $d=3$ the closed polymers of
+Lemma~\ref{mg:lem:smallcounts}(iii); and $\varpi=\hat b^p$ with $p$ the best of $2$, $\frac52$ and $3$, Lemma~\ref{mg:lem:scaling} holding for $2\le p\le3$. The monotonicity
+facts that Lemma~\ref{mg:lem:scaling} uses are unchanged, as the counts enter $\bar\theta$ and the sums as fixed non-negative coefficients. Lemma~\ref{mg:lem:scaling} applies from $\beta_*=\beta_0(d)(1+10^{-30})$, the stronger form of
+its hypotheses checked at $\beta_*$, and all $17$ scaled points of the check pass; $p=3$ is the best except for $SU(2)$ in $d=4$ and for $U(1)$ (where $p=\frac52$). The error budget of
+the proof of Theorem~\ref{mg:thm:thirdcap}(a) holds with tails at most $2\cdot10^{-21}$ of their sums and room at least $2.4\cdot10^{-16}$ (\texttt{run\_cap.sh}, part \texttt{sharp}). The upper
+bounds and the splitting are those of the earlier proofs, with the new $c'_-$ where they enter: for $SU(5)$, $(c'_-+c'_+)\beta$ at $\beta_0(d)$ is $1.30\cdot10^{-4}$ ($d=3$) and $9.25\cdot10^{-5}$ ($d=4$) against
+$3.329\cdot10^{-4}$, and for $U(1)$, $(c'_-+c'_+)\beta^2$ is $2.8\cdot10^{-6}$ and $1.1\cdot10^{-5}$ against $0.2496$. The counts of
+Lemma~\ref{mg:lem:smallcounts} are made by two programs each; the evaluations remain to be certified in ball arithmetic.
+\end{proof}
+
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
 
 \begin{proposition}[Two dimensions]\label{mg:prop:2d}
@@ -5545,6 +5633,7 @@ pairs with $E=2$ have $n=3$, with $E\in\{3,\frac72\}$ $n\le4$); the upper bound 
 $SU(3)$, $SU(5)$, $d=3,4$: $-c_-\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le c_+\beta^4$ for all $\beta<\beta_0(d)$, $(c_-,c_+)=(2.558,0.042)$, $(3.937,0.047)$, $(0.346,0.318)$, $(0.520,0.361)$: the third-order term from both sides on the whole range & Thm.~\ref{mg:thm:thirdcap} & Theorem (computer-assisted)\\
 $SU(3)$, $SU(4)$, $SU(5)$, $d=3,4$, both sectors $C=\pm$: $-c'_-\beta^4\le m_C(\mu_\beta)-4\log(1/u)+\log\Upsilon_C\le c'_+\beta^4$ for all $\beta<\beta_0(d)$; third-order terms of both glueballs ($\beta^3/432$, $\beta^3/1296$ for $SU(3)$; $\mp\beta^3/6000$ for $SU(5)$) and the splitting $m_--m_+$ ($\frac\beta3-\frac{\beta^3}{648}$, $\frac{\beta^2}{64}$, $\frac{\beta^3}{3000}$; the even glueball lighter) on the whole range; $(c'_-,c'_+)=(0.185,0.042)$, $(3.937,0.047)$, $(0.094,0.131)$, $(1.083,0.148)$, $(0.067,0.319)$, $(0.520,0.361)$; $c_-=0.185$, $0.067$ in $d=3$ for the gap & Cor.~\ref{mg:cor:sectorscap} & Theorem (computer-assisted)\\
 $SU(2)$, $U(1)$ (both sectors), $d=3,4$: $m_{(C)}-4\log(1/u)+\log\Upsilon_{(C)}$ between $-c_-\beta^4$ and $c_+\beta^4$ on the whole range, $(c_-,c_+)=(12.7,0.0026)$, $(570,0.0028)$ for $SU(2)$, $(c'_-,c'_+)=(181,0.0017)$, $(8043,0.0018)$ for $U(1)$; the second-order terms $\beta^2/8$ ($SU(2)$), $\frac38\beta^2$, $\frac18\beta^2$ and the splitting $\beta^2/4$ ($U(1)$, the odd glueball lighter) determined there; no third-order terms & Cor.~\ref{mg:cor:classic} & Theorem (computer-assisted)\\
+Sharper lower constants for Thm.~\ref{mg:thm:thirdcap} and Cors.~\ref{mg:cor:sectorscap}, \ref{mg:cor:classic}: exact counts of the small rooted sets of plaquettes and of the one-plaquette junctions (two programs each), $\varpi=b^p$ with $p\le3$; $c_-$, $c'_-$ ($d=3$, $d=4$): $SU(2)$ $1.57$, $53.3$; $SU(3)$ $0.0121$, $0.987$; $SU(4)$ $0.00359$, $0.383$; $SU(5)$ $0.00177$, $0.24$; $U(1)$ $16.8$, $437$ & Lem.~\ref{mg:lem:smallcounts}, Cor.~\ref{mg:cor:sharp} & Theorem (computer-assisted)\\
 Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order in the $C$-odd sector ($U(1)$, $d\ge4$; Conjecture~\ref{mg:conj:codd}); the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\
 \end{longtable}
 \endgroup

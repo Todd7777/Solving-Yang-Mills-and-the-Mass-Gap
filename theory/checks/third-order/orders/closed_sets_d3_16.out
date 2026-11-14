@@ -1,0 +1,2 @@
+# ./closed_sets 3 16   (closed_sets.c; the counts 15, 16 enter orders/sharp_counts.json under 'closed'; the second count is closed_sets_ext.py, run by sharp_counts.py)
+d=3, NMAX=16: closed link-connected sets through a plaquette by size: 6:2 10:10 11:11 12:24 14:70 15:150 16:352

@@ -9,8 +9,9 @@
 It prints the whole deficit D of the lower bound (8(K+1)theta + log(Ubar/Ups) + log(1+delta')) over beta^4 against the third-order term
 beta^3/432 = beta^4/(432 beta) of SU(3), and the three largest parts of delta'/beta^4.
 Each beta takes a few minutes (the tree constants on the grid of (bbar, abar))."""
-import sys
+import sys, os
 import third_order_effective as T
+here = os.path.dirname(os.path.abspath(__file__))
 from mpmath import mpf, log, log1p, exp
 T.THETA7 = True
 T.NOVR = {4: {6: 132, 7: 108, 8: 2034, 9: 4344, 10: 43650}, 3: {6: 12, 7: 12, 8: 70, 9: 160, 10: 634, 11: 1728, 12: 6369}}   # fronts_decision.py
@@ -75,6 +76,13 @@ def load_terms(d, path, closed=None, closed_from=None):
                                4: {8: 76, 9: 148, 10: 328, 11: 484, 12: 1143, 13: 2020, 14: 3114, 15: 3672, 16: 3651, 17: 2760, 18: 1780, 19: 780, 20: 315},
                                5: {8: 12, 10: 376, 11: 880, 12: 2271, 13: 4096, 14: 8562, 15: 15532, 16: 25227, 17: 33440, 18: 38064, 19: 35740,
                                    20: 28695, 21: 18600, 22: 10212, 23: 3972, 24: 1296}}}     # zexit_count_n.py
+    if SHARP:                      # Lemma mg:lem:smallcounts: exact rooted sets (two programs) and one-plaquette classes (two programs)
+        R, O, C = sharp_counts(d); T.ROOTED = {d: R}; T.ONEPLAQ = {d: O}
+        if C:                      # closed polymers through a plaquette counted further (Lemma mg:lem:smallcounts(iii)); crude beyond
+            T.CLOSED_EXACT = {d: {**(T.CLOSED_EXACT or {}).get(d, {}), **{n: c for n, c in C.items() if n >= 10}}}
+            T.CLOSED_FROM = max(C) + 1
+    else:
+        T.ROOTED = None; T.ONEPLAQ = None
     if d == 3 and CERTIFIED:       # the counts with n = 4, 5 and k >= 17 (one program) -> crude 2 binom(4P_v + T_v n, n) X(n,k) (Theorem mg:thm:thirdcap)
         from junction_constants import counts
         from mpmath import binomial
@@ -92,6 +100,17 @@ TERM = {3: mpf(1)/432, 5: mpf(1)/6000}
 BOUNDS = False      # --bounds: the group data replaced by proven bounds (rigorous_bounds.bound_group; Theorem mg:thm:thirdcap), D by its bound D_bound
 NV_DECISION_D3 = False   # --nv-decision-d3: Lemma mg:lem:frontsdecision for the fronts of Z^2 beyond the exact counts (Corollaries mg:cor:sectorscap, mg:cor:classic in d=3)
 CERTIFIED = False   # --certified: only counts made by two independent programs; in d=3 the exits with 4, 5 plaquettes and k >= 17 edges (one program) become crude
+PMAX = mpf(5)/2   # --pmax 3: varpi = b^p with p in {2, 5/2, 3} (Lemma mg:lem:scaling holds for 2 <= p <= 3; Corollary mg:cor:sharp); default p in {2, 5/2}
+SHARP = False     # --sharp: the exact rooted sets and one-plaquette classes of Lemma mg:lem:smallcounts (orders/sharp_counts.json; Corollary mg:cor:sharp)
+def p_values(): return (2, mpf(5)/2) + ((mpf(3),) if PMAX >= 3 else ())
+def sharp_counts(d):
+    """the counts of Lemma mg:lem:smallcounts for d (rooted sets in Z^(d-1), one-plaquette pairs with E <= 5), from orders/sharp_counts.json"""
+    import json
+    J = json.load(open(os.path.join(here, 'orders', 'sharp_counts.json')))
+    R = {int(r): {int(n): c for n, c in v.items()} for r, v in J['rooted'][str(d)].items()}
+    O = J['oneplaq'][str(d)]
+    C = {int(n): c for n, c in J.get('closed', {}).get(str(d), {}).items()}
+    return R, (O['E0'], [(c, mpf(twoE)/2, kp, m) for (c, twoE, kp, m) in O['terms']]), C
 def group_data():
     """GROUP = N >= 2 for SU(N) (the fundamental representation; iota = 1 for N = 2) or 1 for U(1) (d_rho = 1, iota = 0)"""
     if BOUNDS:
@@ -107,7 +126,7 @@ def group_data():
 def deficit(d, beta):
     """the whole deficit D of the lower bound at beta for the group (the smaller delta' of varpi = b^2, b^(5/2)), the evaluation, and the group data"""
     g = group_data()(beta); best = None
-    for vp in (2, mpf(5)/2):
+    for vp in p_values():
         try: lo = T.lower3e(beta, d, g, varpi_pow=vp, chars=True)
         except AssertionError: continue
         if best is None or lo['delta'] < best['delta']: best = lo

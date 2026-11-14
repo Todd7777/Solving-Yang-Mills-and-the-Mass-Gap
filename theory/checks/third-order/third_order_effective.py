@@ -40,6 +40,12 @@ KMAX_DEFAULT = 60      # fronts are summed to KMAX - 1 edges (--kmax; 100 for SU
 F_RAISE = mpf(10)**-9   # F and F_6 are raised by this relative amount above their smallest admissible values; Lemma mg:lem:scaling needs it above delta'
                         # (its stronger form at beta_*), which for U(1) in d=3 (delta' ~ 5e-9) needs 1e-7 (--f-raise)
 NV_DECISION = False   # N^v_k beyond the exact values by the decision-tree bound (Lemma mg:lem:frontsdecision) instead of (d-1) binom((4d-6)k, k-1)
+ROOTED = None  # {d: {4: {n: S_n}, 6: {n: S6_n}}}: the exact numbers of the rooted sets of the proofs of Lemmas mg:lem:twofrontcount (root a four-edge
+               # front) and mg:lem:jsums6 (root a six-edge front; the largest over its shapes) in infinite volume (rooted_sets.c), in place of
+               # binom(4P_v+T_v n, n) and binom(6P_v+T_v n, n) where given (off by default: Theorem mg:thm:thirdcap as refereed)
+ONEPLAQ = None # {d: (E0, [(count, E, k', m), ...])}: the one-plaquette pairs (J, p') with three or more front-pairs and a-exponent E <= E0, counted exactly
+               # (order_counts.count_junctions and junctions.c with NMAX = 1); they replace the terms of the tree bound 4P_v b (F_8 A + F A_8 + F(e^A-1-A)) of
+               # Lemma mg:lem:jsums4 (Lemma mg:lem:smallcounts(ii)) with E <= E0 (E0 = 5: (k'; K) = (4; 8), (4; 9), (4; 10), (4; 4,4), (4; 4,6)), whose sum tree_low is subtracted
 _DEC = {}
 def decision_bound(D, k, grid=400):
     """min over s of ((1+s)^{2D} - 1 - 2Ds) (y/s)^k, y = max((1+s)^{2D-1} - 1, (1+s)^{D-1}): an upper bound for the number of fronts of k edges through
@@ -74,6 +80,8 @@ def lower3e(beta, d, g, volume='infinite', KMAX=None, NMAX=40, varpi_pow=2, bbar
     C = 1 + max(1/varpi, (1+gam)/Ubar_lo); omega = C*a**4*(1+gam)
     b2 = lam**2*(2*s6 + s6**2)/ulow**4
     Pv, KS, Tv, N = counts(d, volume)
+    def R4(n): return mpf(ROOTED[d][4][n]) if (ROOTED and d in ROOTED and n in ROOTED[d].get(4, {})) else binomial(4*Pv+Tv*n, n)
+    def R6(n): return mpf(ROOTED[d][6][n]) if (ROOTED and d in ROOTED and n in ROOTED[d].get(6, {})) else binomial(6*Pv+Tv*n, n)
     if NOVR and d in NOVR:
         for k, v in NOVR[d].items(): N[k] = mpf(v)
     if NV_DECISION:
@@ -134,6 +142,19 @@ def lower3e(beta, d, g, volume='infinite', KMAX=None, NMAX=40, varpi_pow=2, bbar
         gF, gC, g2F, g2C, kF, kC = marked(xF, Y, A, f, Pv, N, KMAX)
         Fk = lambda kmin: 8*fsum(N[k]*f(k) for k in range(kmin, KMAX))
         Fc = lambda kmin, kmax=KMAX: 16*fsum(N[k]*(1 + mpf(k)/8)*f(k) for k in range(kmin, kmax))
+        def one_plaq_classes():
+            """the one-plaquette part with the classes of a-exponent E <= E0 exact (ONEPLAQ) and the tree bound for the rest: the tree bound is a sum over
+            the classes (k'; K), each at most 4 P_v b 8N_k' f(k') prod_{k in K} 8 e^{c_J} N_k a^{k/2} / (multiplicities)!, so its terms with E <= E0 (k' = 4:
+            K = (8), (9), (10), (4,4), (4,6) for E0 = 5) may be replaced by the exact pairs"""
+            E0, terms = ONEPLAQ[d]
+            assert E0 == 5, 'the subtracted classes are those of E0 = 5'
+            Akk = lambda k: 8*exp(cT)*N[k]*a**(mpf(k)/2)
+            F4 = 8*N[4]*f(4)
+            tree = 4*Pv*b*(Fk(8)*Ak(4) + Fk(4)*Ak(8) + Fk(4)*em1x(Ak(4)))
+            low = 4*Pv*b*F4*(Akk(8) + Akk(9) + Akk(10) + Akk(4)**2/2 + Akk(4)*Akk(6))
+            exact = fsum(c*b*a**E*exp(m*cT)*(f(kp)/a**(kp-4) if kp > 4 else 1) for (c, E, kp, m) in terms)
+            assert tree >= low
+            return exact + tree - low
         best = None
         for (bb, ab), tc in tcache.items():
                 xFb, xCb, Yb, Ab = tc
@@ -165,26 +186,26 @@ def lower3e(beta, d, g, volume='infinite', KMAX=None, NMAX=40, varpi_pow=2, bbar
                 S3 = 4*Pv*exp(4*xFb)*(kCb*Yb[2] + 4*(gCb*g2Fb + g2Cb*gFb)*Yb[1] + 16*kFb*Yb[0])
                 val = (b/bb)**2*S3
                 if best is None or val < best[0]: best = (val, (bb, 'a'))
-        full = b + (4*(Pv-1)-KS)*b**2 + 48*binomial(18, 2)*(d-2)*(2*d-3)*b**3 + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(4, NMAX)) \
-               + fsum(2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(1, NMAX)) \
+        full = b + (4*(Pv-1)-KS)*b**2 + 48*binomial(18, 2)*(d-2)*(2*d-3)*b**3 + fsum(2*R4(n)*(n+1)*(2*d-3)*b**n for n in range(4, NMAX)) \
+               + fsum(2*R4(n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(1, NMAX)) \
                + 4*Pv*exp(4*xF)*(kC*Y[2] + 4*(gC*g2F + g2C*gF)*Y[1] + 16*kF*Y[0])
         # a downward exit (the U-turns: p' in the layer of p) costs eta = C a^4 (2 Ubar (1+delta') + Sigma_4)/(1-omega)  (step (c) of Thm 10.8)
         eta = C*a**4*(2*Ubar_hi*(1+dl) + full)/(1-omega) if uturn else mpf(1)
         parts = dict(two=(4*(Pv-1)-KS)*varpi*min(b**2, b2),
                      # chars (Theorem 14.2): the turns and jumps, widenings and narrowings by characters (Lemma 14.1), a in place of b
                      four=(10*(a**4 if chars else b**4) + 2*eta*b**4)*(d-3) + (fsum(ZSMALL[d][n]*b**n for n in ZSMALL[d])
-                          + fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(max(ZSMALL[d]) + 1, NMAX)) if ZSMALL
-                          else fsum(2*binomial(4*Pv+Tv*n, n)*(n+1)*(2*d-3)*b**n for n in range(5, NMAX))),
+                          + fsum(2*R4(n)*(n+1)*(2*d-3)*b**n for n in range(max(ZSMALL[d]) + 1, NMAX)) if ZSMALL
+                          else fsum(2*R4(n)*(n+1)*(2*d-3)*b**n for n in range(5, NMAX))),
                      exits=KS*((a if chars else b)*f(6) + b*f(7)) + (4*(Pv-1)-2*KS)*b*f(8)
-                           + (b**2*fsum(ZEXIT[d][k]*f(k) for k in ZEXIT[d]) if ZEXIT else fsum(2*binomial(4*Pv+Tv*2, 2)*b**2*X(2, k)*f(k) for k in range(5, 13)))
+                           + (b**2*fsum(ZEXIT[d][k]*f(k) for k in ZEXIT[d]) if ZEXIT else fsum(2*R4(2)*b**2*X(2, k)*f(k) for k in range(5, 13)))
                            + fsum((b**n*fsum(c*f(k) for k, c in ZEXITN[d][n].items()) if (ZEXITN and d in ZEXITN and n in ZEXITN[d])
-                                   else 2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199)))) for n in range(3, NMAX)),
-                     one_plaq=4*Pv*b*(Fk(8)*Ak(4) + Fk(4)*Ak(8) + Fk(4)*em1x(Ak(4))),
+                                   else 2*R4(n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199)))) for n in range(3, NMAX)),
+                     one_plaq=(4*Pv*b*(Fk(8)*Ak(4) + Fk(4)*Ak(8) + Fk(4)*em1x(Ak(4))) if not (ONEPLAQ and d in ONEPLAQ) else one_plaq_classes()),
                      multi=best[0])
         # the junction sum at a six-edge front-pair (two narrowings with one plaquette; crude counts for the rest)
         X6 = lambda n, k: 0 if k == 5 else min(binomial(4*n+6, k), (4*n+6)*N[k])
-        sig6 = 2*(a if chars else b) + fsum(2*(2*d-3)*(mpf(2*n+3)/2)*binomial(6*Pv+Tv*n, n)*b**n for n in range(2, NMAX)) \
-               + fsum(2*binomial(6*Pv+Tv*n, n)*b**n*fsum(X6(n, k)*f(k) for k in range(5, min(4*n+7, 199))) for n in range(1, NMAX)) \
+        sig6 = 2*(a if chars else b) + fsum(2*(2*d-3)*(mpf(2*n+3)/2)*R6(n)*b**n for n in range(2, NMAX)) \
+               + fsum(2*R6(n)*b**n*fsum(X6(n, k)*f(k) for k in range(5, min(4*n+7, 199))) for n in range(1, NMAX)) \
                + 6*Pv*exp(6*xF)*(kC*Y[2] + 6*(gC*g2F + g2C*gF)*Y[1] + 36*kF*Y[0])
         kmin = 7 if (seven and sharp6) else 5                   # with f(6) separate and no five-edge fronts, the F-condition is needed for k >= 7 only
         return fsum(parts.values()), parts, Pv*(gC*Y[1]/kmin + gF*Y[0]), full, best[1], sig6
