@@ -1,0 +1,35 @@
+# python3 arb_eval_classic.py 1 4 8043
+U(1) (N = 1, iota = 0), d=4, set d4_s10x_92.json, varpi = b^2, (bbar, abar) = (0.00390625, 0.00390625), KMAX = 100, F_RAISE = 1.0e-9; beta_* = 0.000153766448042548 (checked >= beta_0(d) in Arb); 400-bit balls, sums to 300 edges / 110 plaquettes plus rigorous remainders:
+    varpi = bhat(beta_*)^p, p = 2                                holds
+    deco xi_F                                                    holds   (room 9.848e-16)
+    deco xi_C                                                    holds   (room 9.848e-16)
+    deco h_J (k=4, the maximum)                                  holds   (room 9.697e-16)
+    barred xi_F                                                  holds   (room 6.576e-16)
+    barred xi_C                                                  holds   (room 6.558e-16)
+    (info) barred xi_F with fronts truncated at 60 edges: room   6.2991442e-16
+    six inequalities (actual)                                    holds
+    six inequalities (barred)                                    holds
+    Sigma^(4)_4 < Ubar delta'                                    holds   (room 1.001e-9)
+    F-condition                                                  holds   (room 1.000e-9)
+    F_6-condition                                                holds   (room 1.000e-9)
+    third hypothesis (omega)                                     holds   (room 1.000)
+    a^4 Ubar (1+delta') <= varpi                                 holds   (room 1.000)
+    a^4 Ubar (1+delta') <= 1                                     holds   (room 1.000)
+    stronger: F-condition, e^{-2b*} - a                          holds   (room 9.955e-10)
+    stronger: F_6-condition, e^{-2b*} - a                        holds   (room 9.955e-10)
+    stronger: third hypothesis <= 1/(1+kappa)                    holds   (room 1.000)
+    stronger: a^4 Ubar (1+delta') <= varpi/(1+kappa)             holds   (room 1.000)
+    delta'_* <= kappa                                            holds   (room 1.000)
+    delta'_*                                                     4.4938599e-12
+    majorant/beta^4 (corner (8, 3.0))                            327.54245
+    exact pairs/beta^4                                           1.5351331
+    Sigma4^(4)/beta^4                                            8035.9947
+    parts/beta^4: two, four, exits, one-plaquette, multi         128.256, 0.770181, 542.882, 7035.01, 329.078
+    D parts/beta^4: 8(K+1)theta, e^{2b}Delta, log(1+delta')      0.000205250, 9.62220e-8, 8038.47
+  authors' stronger-form rooms (mpmath): F 9.955e-10, F6 9.955e-10, old 1.0, beyond 1.0, delta 0.0001538
+  D(beta_*)/beta_*^4 = 8038.46664119593 (authors: 8038.4666412);  (1+kappa)^3 D/beta_*^4 <= 8042.175351 <= 8043: True
+  all certified: True
+
+real	0m10.735s
+user	0m10.394s
+sys	0m0.036s

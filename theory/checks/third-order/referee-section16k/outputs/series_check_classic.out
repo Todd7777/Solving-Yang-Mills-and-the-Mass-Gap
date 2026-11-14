@@ -1,0 +1,31 @@
+# python3 series_check_classic.py
+(a) exact series from the Bessel closed forms (to beta^10):
+  SU(2): -log Upsilon = (1/8) beta^2 + (-1/192) beta^4 + (11/46080) beta^6 + (-17/1474560) beta^8 + (37/61931520) beta^10 + O(beta^12)
+  U(1): -log U_+ = (3/8) beta^2 + (-13/384) beta^4 + (11/3072) beta^6 + (-329/737280) beta^8 + (109/1769472) beta^10 + O(beta^12)
+  U(1): -log U_- = (1/8) beta^2 + (-5/384) beta^4 + (5/3072) beta^6 + (-161/737280) beta^8 + (271/8847360) beta^10 + O(beta^12)
+  U(1): log(U_-/U_+) = (1/4) beta^2 + (-1/48) beta^4 + (1/512) beta^6 + (-7/30720) beta^8 + (137/4423680) beta^10 + O(beta^12)
+  su2: odd coefficients all zero: True;  beta^2 = 1/8 (claimed 1/8): True;  beta^4 = -1/192 (claimed -1/192): True
+  u1_plus: odd coefficients all zero: True;  beta^2 = 3/8 (claimed 3/8): True;  beta^4 = -13/384 (claimed -13/384): True
+  u1_minus: odd coefficients all zero: True;  beta^2 = 1/8 (claimed 1/8): True;  beta^4 = -5/384 (claimed -5/384): True
+  u1_log_ratio: odd coefficients all zero: True;  beta^2 = 1/4 (claimed 1/4): True;  beta^4 = -1/48 (claimed -1/48): True
+  identical to rigorous_bounds.classic_series to beta^8: True
+
+(b) high-precision numerics (mpmath besseli, 80 digits): (exact - series to beta^8)/beta^10 should stay bounded:
+  beta = 1e-1: su2 5.97103e-7, u1_plus 6.15114e-5, u1_minus 3.05863e-5, u1_log_ratio 3.09251e-5
+  beta = 3e-2: su2 5.97404e-7, u1_plus 6.15923e-5, u1_minus 3.06266e-5, u1_log_ratio 3.09657e-5
+  beta = 1e-2: su2 5.97431e-7, u1_plus 6.15994e-5, u1_minus 3.06302e-5, u1_log_ratio 3.09692e-5
+  beta = 4.0262143352282e-4: su2 5.97434e-7, u1_plus 6.16003e-5, u1_minus 3.06306e-5, u1_log_ratio 3.09697e-5
+  beta = 1e-4: su2 5.97434e-7, u1_plus 6.16003e-5, u1_minus 3.06306e-5, u1_log_ratio 3.09697e-5
+
+(c) P = I_1^2 - I_0 I_2 = sum_k p_k (beta/2)^{2k+2}:
+  p_0..p_5 = ['1/2', '1/3', '5/48', '7/360', '7/2880', '11/50400'];  all p_k > 0 for k <= 60: True
+  p_k = (2k+2)!/(k!(k+2)!((k+1)!)^2(k+2)) for all k <= 60: True  (so I_1^2 - I_0 I_2 >= (beta/2)^2/2 for all beta > 0, by the product formula)
+  on (0, 4.03e-4], authors' route: P >= (beta/2)^2 (1/2 - 1.353e-8 - 7.71e-378) = (beta/2)^2 * 0.499999986465916 = (beta/2)^2 (1/2)(1 - 2.707e-8);  >= (1/2)(1 - 3e-8): True
+  (since p_0 > 0 and p_k > 0 for the computed k, P >= (beta/2)^2/2 on (0, inf) would follow from positivity of all p_k, which I only checked to k = 60)
+
+(d) the chain log(U_-/U_+) >= (U_- - U_+)/U_- >= 2 e^{-3 beta} P >= e^{-3beta}(1 - 1e-7) beta^2/4, at 2000 points of (0, 4.03e-4] (Numerical):
+  all hold: True;  min over the grid of log(U_-/U_+)/(beta^2/4) = 0.999999986466
+
+real	0m0.634s
+user	0m0.604s
+sys	0m0.012s

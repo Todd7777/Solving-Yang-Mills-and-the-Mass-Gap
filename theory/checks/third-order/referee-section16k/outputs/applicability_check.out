@@ -1,0 +1,14 @@
+# python3 applicability_check.py
+SU(2), beta = 0.000402621: all hold: True;  u/beta = 0.2499999983 in [0.2498993649, 0.2500503479], u_2/beta^2 = 0.0416667 <= 0.500067, sigma_6/s6bar = 0.998792, Ups = 0.999999979737, Delta/beta^4 = 1.041e-5
+SU(2), beta = 0.000153766: all hold: True;  u/beta = 0.2499999998 in [0.2499615613, 0.2500192238], u_2/beta^2 = 0.0416667 <= 0.500026, sigma_6/s6bar = 0.999539, Ups = 0.999999997044, Delta/beta^4 = 1.515e-6
+SU(2), beta = 0.0001: all hold: True;  u/beta = 0.2499999999 in [0.2499750012, 0.2500125013], u_2/beta^2 = 0.0416667 <= 0.500017, sigma_6/s6bar = 0.9997, Ups = 0.99999999875, Delta/beta^4 = 6.406e-7
+SU(2), beta = 1.0e-6: all hold: True;  u/beta = 0.25 in [0.24999975, 0.250000125], u_2/beta^2 = 0.0416667 <= 0.5, sigma_6/s6bar = 0.999997, Ups = 1.0, Delta/beta^4 = 6.4e-11
+U(1), beta = 0.000402621: all hold: True;  u/beta = 0.4999999899 in [0.4997987298, 0.5002013918], u_2/beta^2 = 0.125 <= 0.500067, sigma_6/s6bar = 0.997587, Ups+ = 0.999999939211, Ups- = 0.999999979737, Delta/beta^4 = 6.61e-7
+U(1), beta = 0.000153766: all hold: True;  u/beta = 0.4999999985 in [0.4999231227, 0.500076895], u_2/beta^2 = 0.125 <= 0.500026, sigma_6/s6bar = 0.999078, Ups+ = 0.999999991133, Ups- = 0.999999997044, Delta/beta^4 = 9.619e-8
+U(1), beta = 0.0001: all hold: True;  u/beta = 0.4999999994 in [0.4999500025, 0.500050005], u_2/beta^2 = 0.125 <= 0.500017, sigma_6/s6bar = 0.9994, Ups+ = 0.99999999625, Ups- = 0.99999999875, Delta/beta^4 = 4.066e-8
+U(1), beta = 1.0e-6: all hold: True;  u/beta = 0.5 in [0.4999995, 0.5000005], u_2/beta^2 = 0.125 <= 0.5, sigma_6/s6bar = 0.999994, Ups+ = 1.0, Ups- = 1.0, Delta/beta^4 = 4.063e-12
+all hold: True
+
+real	0m0.649s
+user	0m0.947s
+sys	0m0.038s

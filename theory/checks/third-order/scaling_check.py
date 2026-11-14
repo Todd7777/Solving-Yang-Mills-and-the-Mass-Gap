@@ -1,5 +1,5 @@
 # Section 16 of Part IV (Remark mg:rem:nextorder (vii)): the scaling of the admissible parameters below a computed point, d=3, S''_9.
-# Usage: python3 scaling_check.py [--bounds] [--certified] [--group N] [--f-raise X] [--kmax K] [--d3 TERMS.json | --d4 TERMS.json [--closed n:c,... --closed-from N] [--ix]] [beta_* [JOBS]]
+# Usage: python3 scaling_check.py [--bounds] [--certified] [--group N] [--f-raise X] [--kmax K] [--nv-decision-d3] [--d3 TERMS.json | --d4 TERMS.json [--closed n:c,... --closed-from N] [--ix]] [beta_* [JOBS]]
 #        (--group 1 is U(1), --group 2 SU(2))
 #        (default beta_* = beta_0(d); ~10 min, 3 jobs)
 """At beta_* the parameters of Theorem mg:thm:lower5 are found as usual (practical_beta.deficit). For beta = t beta_*, 0 < t <= 1, and k := beta_* take
@@ -25,6 +25,7 @@ if '--ix' in sys.argv: PB.IX_SETTING = True; sys.argv.remove('--ix')     # the d
 if '--group' in sys.argv:                                                # SU(N) (practical_beta.group_data); default SU(3)
     i = sys.argv.index('--group'); PB.GROUP = int(sys.argv[i + 1]); del sys.argv[i:i + 2]
 if '--bounds' in sys.argv: PB.BOUNDS = True; sys.argv.remove('--bounds')     # bound mode (rigorous_bounds.bound_group): D is D_bound
+if '--nv-decision-d3' in sys.argv: PB.NV_DECISION_D3 = True; sys.argv.remove('--nv-decision-d3')   # Lemma mg:lem:frontsdecision in d=3 (practical_beta)
 if '--kmax' in sys.argv:                                                 # the truncation of the front sums (third_order_effective.KMAX_DEFAULT; default 60)
     i = sys.argv.index('--kmax'); T.KMAX_DEFAULT = int(sys.argv[i + 1]); del sys.argv[i:i + 2]
 if '--f-raise' in sys.argv:                                              # the relative raise of F, F_6 (third_order_effective.F_RAISE; default 1e-9)

@@ -1,0 +1,7 @@
+# python3 error_budget.py --groups 2 --dims 4 --kmax 60   (referee: d=4 at the default truncation)
+SU(2), d=4: D/beta^4 = 568.91;  largest relative tail tau = 1.09e-13 (A_2 (abar));  room with the tails included: deco_xF 9.85e-16, deco_xC 9.85e-16, deco_hJ 9.7e-16, bar_xF 6.33e-16, bar_xC 6.07e-16, strong_F 1e-09, strong_F6 1e-09, strong_old 1, strong_beyond 1, strong_delta 0.000154, jc1 9.7e-16, jc2 9.85e-16, jc3 9.7e-16, jc4 9.85e-16, jc5 9.47e-16, jc6 9.85e-16, jc_bar1 3.85e-16, jc_bar2 5.12e-16, jc_bar3 -5.77e-16, jc_bar4 -7.69e-16, jc_bar5 -8.84e-15, jc_bar6 -1.09e-14;  all > 0: False;  marked systems: min det 0.479400
+all cases: largest tau 1.0928435841720323e-13 ; smallest room -1.0929395433964705e-14
+
+real	0m24.874s
+user	0m23.957s
+sys	0m0.030s

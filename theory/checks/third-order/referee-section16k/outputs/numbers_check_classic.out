@@ -1,0 +1,40 @@
+# python3 numbers_check_classic.py
+Cor (i): c_- SU(2) d=3                                  quoted       1968  certified/true    1967.0837  (upper): OK  tight
+Cor (i): c_+ SU(2) d=3                                  quoted     0.0026  certified/true 0.0025082343  (upper): OK  tight
+Cor (i): c_- SU(2) d=4                                  quoted        570  certified/true    569.16961  (upper): OK  tight
+Cor (i): c_+ SU(2) d=4                                  quoted     0.0028  certified/true 0.0027671106  (upper): OK  tight
+Cor (ii): c'_- U(1) d=3                                 quoted    1.772e5  certified/true    177133.63  (upper): OK  tight
+Cor (ii): c'_+ U(1) d=3                                 quoted     0.0017  certified/true 0.0016790406  (upper): OK  tight
+Cor (ii): c'_- U(1) d=4                                 quoted       8043  certified/true    8042.1754  (upper): OK  tight
+Cor (ii): c'_+ U(1) d=4                                 quoted     0.0018  certified/true  0.001794773  (upper): OK  tight
+proof: delta'_* ~ 5e-9 (U(1), d=3)                      quoted       5e-9  certified/true 4.6490484e-9  (one digit): OK   (4.65e-9, to one digit)
+proof: D <= 1967.1 beta^4                               quoted     1967.1  certified/true    1967.0837  (upper): OK  tight
+proof: D <= 569.17 beta^4                               quoted     569.17  certified/true    569.16961  (upper): OK  tight
+proof: D <= 1.7714e5 beta^4                             quoted   1.7714e5  certified/true    177133.63  (upper): OK  tight
+proof: D <= 8042.2 beta^4                               quoted     8042.2  certified/true    8042.1754  (upper): OK  tight
+proof: tails <= 2e-25 of their sums                     quoted      2e-25  certified/true 1.7664079e-25  (upper): OK  tight
+proof: room >= 2.5e-16                                  quoted    2.5e-16  certified/true 2.5033148e-16  (lower): OK  
+proof: E_C(beta_0)/beta_0^4 SU(2) d=3                   quoted    0.00251  certified/true 0.0025082343  (approx): OK   (3 digits)
+proof: E_C(beta_0)/beta_0^4 SU(2) d=4                   quoted    0.00277  certified/true 0.0027671106  (approx): OK   (3 digits)
+proof: E_C(beta_0)/beta_0^4 U(1) d=3                    quoted    0.00168  certified/true 0.0016790406  (approx): OK   (3 digits)
+proof: E_C(beta_0)/beta_0^4 U(1) d=4                    quoted    0.00179  certified/true  0.001794773  (approx): OK   (3 digits)
+proof: I_1^2 - I_0 I_2 >= (b/2)^2 (1/2)(1 - 3e-8)       quoted       3e-8  certified/true     2.707e-8  (upper): OK  tight
+proof: 4.03e-4 >= beta_0(3)                             quoted    4.03e-4  certified/true 0.00040262143  (upper): OK  
+proof: (c'_- + c'_+) beta_0^2, d=3                      quoted     0.0288  certified/true  0.028724832  (upper): OK  tight
+proof: (c'_- + c'_+) beta_0^2, d=4                      quoted    1.91e-4  certified/true 0.0001901697  (upper): OK  tight
+proof: e^{-3 beta_0}(1-1e-7)/4 (the smaller, d=3)       quoted     0.2497  certified/true   0.24969819  (approx): OK   (true 0.249698: quoted rounded UP in a comparison it must win; margin x8.7, harmless)
+proof: residual/(beta^2/8) at beta_0, SU(2) d=3         quoted     0.0026  certified/true 0.0025521657  (upper): OK  tight
+proof: residual/(beta^2/8) at beta_0, SU(2) d=4         quoted     1.1e-4  certified/true 0.00010781719  (upper): OK  tight
+proof: residual/(beta^2/8) at beta_0, U(1) d=3          quoted       0.23  certified/true   0.22979866  (upper): OK  tight
+proof: residual/(beta^2/8) at beta_0, U(1) d=4          quoted     1.6e-3  certified/true 0.0015213573  (upper): OK  tight
+subsection: u = beta/4 (SU(2)) [u_1 = (1+iota)/(2N^2)]  quoted       0.25  certified/true         0.25  (approx): OK  
+subsection: u = beta/2 (U(1))                           quoted        0.5  certified/true          0.5  (approx): OK  
+subsection: u = beta/18 (SU(3))                         quoted 0.05555555555555555  certified/true  0.055555556  (approx): OK  
+abstract: -570 beta^4 (SU(2), d=4)                      quoted        570  certified/true    569.16961  (upper): OK  tight
+abstract: 0.0028 beta^4 (SU(2), d=4)                    quoted     0.0028  certified/true 0.0027671106  (upper): OK  tight
+
+33 of 33 correct (bounds on the safe side; 'tight' = the certified value rounded up at the quoted precision)
+
+real	0m0.061s
+user	0m0.035s
+sys	0m0.019s

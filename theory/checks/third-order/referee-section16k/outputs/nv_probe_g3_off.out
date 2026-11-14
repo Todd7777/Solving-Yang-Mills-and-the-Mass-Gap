@@ -1,0 +1,6 @@
+# python3 nv_decision_d3_probe.py 3 off
+SU(3), d=3, NV_DECISION = False: D(beta_*)/beta_*^4 = 0.59862, (1+k)^3 D/beta_*^4 = 0.599344;  varpi = b^2.5, (bbar, abar) = (0.0078125, 0.000976562);  parts of delta'/beta^4: two 0.1015, four 0, exits 0.03002, one_plaq 0.03987, multi 0.3994;  stronger-form rooms: F 1e-09, F6 1e-09, old 1, beyond 1, delta 0.000403
+
+real	0m30.656s
+user	0m29.817s
+sys	0m0.031s

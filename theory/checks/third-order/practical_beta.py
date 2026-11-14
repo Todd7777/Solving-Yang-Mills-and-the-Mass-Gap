@@ -58,7 +58,9 @@ def load_terms(d, path, closed=None, closed_from=None):
     T.CORNERS = {d: [tuple(c) for c in J['corners']]}
     if closed: T.CLOSED_EXACT = {d: closed}
     if closed_from: T.CLOSED_FROM = closed_from
-    if d == 3: T.ZSMALL = {4: {5: 26, 6: 302, 7: 288}, 3: {n: 0 for n in range(5, 40)}}; T.NV_DECISION = False   # d=3 as refereed (Remark 16.7(vii))
+    if d == 3: T.ZSMALL = {4: {5: 26, 6: 302, 7: 288}, 3: {n: 0 for n in range(5, 40)}}; T.NV_DECISION = NV_DECISION_D3
+    # d=3: beyond the exact counts (k <= 12) the fronts of Z^2 are bounded by (d-1) binom((4d-6)k, k-1) as refereed for Theorem mg:thm:thirdcap, or with
+    # --nv-decision-d3 by Lemma mg:lem:frontsdecision for Z^2 (N^v_k <= 0.783 * 4.081^k; the eleventh referee), as d=4 does for Z^3
     if d == 4:                     # exact Z_(n,4) in d=4 (junction_count.py, junctions.c), crude beyond; exact N^v_k beyond 10 where counted, and beyond that
         T.ZSMALL = {4: dict(Z4_D4), 3: {5: 0, 6: 0, 7: 0}}     # the decision bound of Lemma mg:lem:frontsdecision in place of (d-1) binom((4d-6)k, k-1)
         T.NOVR = {4: {**T.NOVR[4], **NV_D4_EXTRA}, 3: T.NOVR[3]}
@@ -88,6 +90,7 @@ ORDER = 5
 GROUP = 3
 TERM = {3: mpf(1)/432, 5: mpf(1)/6000}
 BOUNDS = False      # --bounds: the group data replaced by proven bounds (rigorous_bounds.bound_group; Theorem mg:thm:thirdcap), D by its bound D_bound
+NV_DECISION_D3 = False   # --nv-decision-d3: Lemma mg:lem:frontsdecision for the fronts of Z^2 beyond the exact counts (Corollaries mg:cor:sectorscap, mg:cor:classic in d=3)
 CERTIFIED = False   # --certified: only counts made by two independent programs; in d=3 the exits with 4, 5 plaquettes and k >= 17 edges (one program) become crude
 def group_data():
     """GROUP = N >= 2 for SU(N) (the fundamental representation; iota = 1 for N = 2) or 1 for U(1) (d_rho = 1, iota = 0)"""

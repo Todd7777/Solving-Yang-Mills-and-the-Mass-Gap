@@ -1,0 +1,10 @@
+referee-section16k/outputs/repro_capz_u1_d3_scaling.out: all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: True;  so D <= 177134 beta^4 for all beta <= beta_* (rounded up; no third-order term f
+referee-section16k/outputs/repro_capz_su2_d3_scaling.out: all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: True;  so D <= 1967.09 beta^4 for all beta <= beta_* (rounded up; no third-order term 
+referee-section16k/outputs/repro_cap_u1_d4_scaling.out: all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: True;  so D <= 8042.18 beta^4 for all beta <= beta_* (rounded up; no third-order term 
+referee-section16k/outputs/repro_cap_su2_d4_scaling.out: all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: True;  so D <= 569.17 beta^4 for all beta <= beta_* (rounded up; no third-order term f
+referee-section16k/outputs/repro_error_budget_u1_d3.out: all cases: largest tau 1.266006086624635e-42 ; smallest room 8.012183728604886e-16
+referee-section16k/outputs/repro_error_budget_su2_d3.out: all cases: largest tau 2.9767552771142863e-36 ; smallest room 5.814284692489895e-16
+referee-section16k/outputs/repro_error_budget_su2_d4.out: all cases: largest tau 1.7664079300087161e-25 ; smallest room 2.503314792266823e-16
+referee-section16k/outputs/repro_error_budget_u1_d4.out: all cases: largest tau 1.7626915144548515e-25 ; smallest room 2.510202317592685e-16
+referee-section16k/outputs/repro_sector_upper.out: U(1) d=4 sector -: E_C(beta_0)/beta^4 = 0.00179  (no third-order term);  E/beta^5 increasing: True
+referee-section16k/outputs/repro_rigorous_bounds.out: SU(5): U_+ - U_- = 2Q/Z^2, Q = 1/48 t^3 + ...; on (0, beta_0(3)/5]: Q >= t^3 (0.0208333 - 5.91e-11 - 6.71e-126) = t^3 0.0208333333 > 0: True;  so log(U_+/U_-) >

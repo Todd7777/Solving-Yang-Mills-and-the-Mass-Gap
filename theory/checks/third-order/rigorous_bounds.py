@@ -35,7 +35,7 @@ def bound_group(N, iota=0, sharp_u2=True):
         ups_low, ups_up = exp(-2*beta), exp(beta)
         assert ups_low > c2 and ups_low > ubar**4*(1 + gam), 'the denominators of Lemma mg:lem:dressed'
         Delta = nB**2/(ups_low - c2) + 2*exp(2*beta)*s6/(ups_low - ubar**4*(1 + gam))
-        return dict(name=f'SU({N}) bounds', N=N, iota=iota, bounds=True, u=ubar, u_low=ulow, u2=u2, s6=s6,
+        return dict(name=('U(1)' if N == 1 else f'SU({N})') + ' bounds', N=N, iota=iota, bounds=True, u=ubar, u_low=ulow, u2=u2, s6=s6,
                     Ubar_low=ups_low, Ubar_up=ups_up + Delta, Delta=Delta, Ups_low=ups_low)
     return g
 
@@ -172,33 +172,26 @@ def classic_series(K=8):
     lp, lm = neglog(Up), neglog(Um)
     return dict(su2=su2, u1_plus=lp, u1_minus=lm, u1_log_ratio=[a - b for a, b in zip(lp, lm)])       # log(U_-/U_+) = (-log U_+) - (-log U_-)
 
-def u1_split_lower(beta_max, K=30):
-    """U(1): U_- - U_+ = 2 (I_1^2 - I_0 I_2)/I_0^2. The series P := I_1^2 - I_0 I_2 = sum_k p_k (beta/2)^{2k+2} is computed exactly to k = K; the rest is at most
-    the part of degree > K of the products of the majorant series sum_k (beta/2)^{2k+nu}/(k!(k+nu)!) (non-negative), so P >= (beta/2)^2 (p_0 - sum_{0<k<=K} |p_k| x^k
-    - tail/(beta/2)^2) with x = (beta_max/2)^2. Then log(U_-/U_+) >= (U_- - U_+)/U_- >= 2 e^{-3beta} P (I_0^2 <= e^{2beta}, U_- <= e^beta)."""
+def u1_split_lower(K=60):
+    """U(1): U_- - U_+ = 2 (I_1^2 - I_0 I_2)/I_0^2. By Vandermonde's identity the coefficient of (beta/2)^{2k+mu+nu} in I_mu I_nu is
+    (2k+mu+nu)!/(k! (k+mu+nu)! (k+mu)! (k+nu)!), so I_1^2 - I_0 I_2 = sum_k (2k+2)!/(k! (k+1)! (k+2)!^2) (beta/2)^{2k+2}: every coefficient is positive, the first is
+    1/2, and I_1^2 - I_0 I_2 >= beta^2/8 for every beta > 0 (Corollary mg:cor:classic; a Theorem). This function checks the closed form against the coefficients of
+    the products of the exact Bessel series, for k <= K; then log(U_-/U_+) >= 2 e^{-3beta} (I_1^2 - I_0 I_2) >= e^{-3beta} beta^2/4 (I_0 <= e^beta, U_- <= e^beta)."""
     from math import factorial
     F = Fraction
-    def I(nu): return [F(1, factorial(k)*factorial(k + nu)) for k in range(K + 1)]          # coefficients of (beta/2)^{2k+nu}
+    def I(nu): return [F(1, factorial(k)*factorial(k + nu)) for k in range(K + 1)]
     def mul(A, B): return [sum(A[i]*B[k - i] for i in range(k + 1)) for k in range(K + 1)]
-    P = [a - b for a, b in zip(mul(I(1), I(1)), mul(I(0), I(2)))]                             # coefficients of (beta/2)^{2k+2}
-    assert P[0] == F(1, 2), P[0]
-    x = (mpf(beta_max)/2)**2*(1 + mpf(10)**-20)
-    def full(nu, kmax=K + 60): return [mpf(1)/(factorial(k)*factorial(k + nu)) for k in range(kmax)]
-    def tailprod(nu1, nu2):        # the part of degree > K (in x) of the product of the two non-negative series, at x
-        A, B = full(nu1), full(nu2)
-        return sum(A[i]*B[j]*x**(i + j) for i in range(len(A)) for j in range(len(B)) if i + j > K)
-    T = tailprod(1, 1) + tailprod(0, 2)
-    rest = sum(abs(mpf(p.numerator)/p.denominator)*x**k for k, p in enumerate(P) if k > 0)
-    margin = mpf(1)/2 - rest - T
-    return dict(lead=P[0], rest=rest, tail=T, margin=margin, ok=margin > 0)
+    P = [a - b for a, b in zip(mul(I(1), I(1)), mul(I(0), I(2)))]
+    closed = [F(factorial(2*k + 2), factorial(k)*factorial(k + 1)*factorial(k + 2)**2) for k in range(K + 1)]
+    return dict(K=K, equal=(P == closed), positive=all(c > 0 for c in closed), lead=closed[0])
 
 if __name__ == "__main__":
     from constants_upper import beta0
     mp.dps = 60
-    for N in (3, 5):
+    for N, iota, su2 in ((1, 0, False), (2, 1, False), (3, 0, True), (4, 0, True), (5, 0, True)):     # U(1), SU(2): u_2 <= e^beta - 1 - beta; SU(N >= 3): Lemma 16.11
         for d in (3, 4):
-            b0 = beta0(d); g = bound_group(N)(b0)
-            print(f"SU({N}), d={d}, beta_0 = {float(b0):.6g}: ubar/beta = {float(g['u']/b0):.8f}, u_low/beta = {float(g['u_low']/b0):.8f}, u2bar/beta^2 = {float(g['u2']/b0**2):.6g},"
+            b0 = beta0(d); g = bound_group(N, iota, sharp_u2=su2)(b0)
+            print(f"{g['name'][:-7]}, d={d}, beta_0 = {float(b0):.6g}: ubar/beta = {float(g['u']/b0):.8f}, u_low/beta = {float(g['u_low']/b0):.8f}, u2bar/beta^2 = {float(g['u2']/b0**2):.6g},"
                   f" Delta/beta^4 = {float(g['Delta']/b0**4):.4g}, Ubar in [{float(g['Ubar_low']):.8f}, {float(g['Ubar_up']):.8f}]")
     mp.dps = 120
     r = prove_upsilon_ge_1(5, mpf('4.03e-4'))         # the range of Lemma mg:lem:upsbounds(ii), which contains (0, beta_0(3)] (the ninth referee)
@@ -211,9 +204,9 @@ if __name__ == "__main__":
     S = classic_series()              # Corollary mg:cor:classic: SU(2) and U(1)
     for key, lab in (('su2', 'SU(2): -log Upsilon'), ('u1_plus', 'U(1): -log U_+'), ('u1_minus', 'U(1): -log U_-'), ('u1_log_ratio', 'U(1): log(U_-/U_+)')):
         print(f"{lab} = " + ' + '.join(f"({c}) beta^{k}" for k, c in enumerate(S[key]) if c != 0) + " + O(beta^9)")
-    r = u1_split_lower(mpf('4.03e-4'))
-    print(f"U(1): U_- - U_+ = 2(I_1^2 - I_0 I_2)/I_0^2, I_1^2 - I_0 I_2 = (beta/2)^2 ({r['lead']} + ...); on (0, 4.03e-4]: >= (beta/2)^2 ({float(r['lead']):.6g} - {float(r['rest']):.3g}"
-          f" - {float(r['tail']):.3g}) = (beta/2)^2 {float(r['margin']):.12g} > 0: {r['ok']};  so log(U_-/U_+) >= 2 e^(-3beta) (I_1^2 - I_0 I_2) >= e^(-3beta) beta^2 {float(r['margin']/2):.12g}")
+    r = u1_split_lower()
+    print(f"U(1): I_1^2 - I_0 I_2 = sum_k (2k+2)!/(k!(k+1)!(k+2)!^2) (beta/2)^(2k+2) (Vandermonde): equal to the product of the exact series for k <= {r['K']}: {r['equal']};"
+          f" all coefficients positive: {r['positive']}; the first is {r['lead']}; so log(U_-/U_+) >= e^(-3beta) beta^2/4 for every beta > 0")
     for N in (3, 4, 5):               # the splitting of the two plaquette glueballs (Corollary mg:cor:sectorscap(ii))
         r = split_lower(N, beta0(3)); k0 = r['k0']
         print(f"SU({N}): U_+ - U_- = 2Q/Z^2, Q = {r['lead']} t^{k0} + ...; on (0, beta_0(3)/{N}]: Q >= t^{k0} ({float(r['lead']):.6g} - {float(r['rest']):.3g}"

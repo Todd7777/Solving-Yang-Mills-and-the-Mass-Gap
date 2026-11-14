@@ -1,0 +1,8 @@
+# python3 exact_vs_bound.py 2 4
+SU(2), d=4, exact group data: D(beta_*)/beta_*^4 = 568.5415788, delta'/beta^4 = 568.5415663, Ups = 0.999999997044, Ubar = 0.999999997044
+SU(2), d=4, bound mode: D(beta_*)/beta_*^4 = 568.907134, delta'/beta^4 = 568.9071215, Delta/beta^4 = 1.515e-6
+  bound mode >= exact: True;  relative cost of the bounds: 0.000643
+
+real	0m55.979s
+user	0m53.734s
+sys	0m0.031s

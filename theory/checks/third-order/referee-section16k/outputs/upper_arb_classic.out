@@ -1,0 +1,28 @@
+# python3 upper_arb_classic.py
+SU(2), d=3, C=+: at beta = beta_0(d)(1+1e-30) (exact, above beta_0): E_C/beta^4 = [0.002508234326 +/- 4.50e-13] (mine, 2a: [0.002508199375 +/- 2.74e-13]; with sqrt2 in B as displayed in Cor. 16.20: [0.002508248807 +/- 1.58e-13]), B_C = [6.135e-17 +/- 7.81e-22], T'_Q/beta^4 = [0.0001357 +/- 1.41e-8], T'_A/beta^4 = [8.672e-5 +/- 3.05e-9];  < c_+ = 0.0026: True
+U(1), d=3, C=+: at beta = beta_0(d)(1+1e-30) (exact, above beta_0): E_C/beta^4 = [0.001679040618 +/- 4.79e-13] (mine, 2a: [0.001678964200 +/- 2.94e-13]; with sqrt2 in B as displayed in Cor. 16.20: [0.001679040618 +/- 4.79e-13]), B_C = [3.707e-17 +/- 5.10e-22], T'_Q/beta^4 = [0.0002782 +/- 4.15e-8], T'_A/beta^4 = [0.0001340 +/- 4.90e-8];  < c_+ = 0.0017: True
+U(1), d=3, C=-: at beta = beta_0(d)(1+1e-30) (exact, above beta_0): E_C/beta^4 = [0.001678887636 +/- 4.89e-13] (mine, 2a: [0.001678887636 +/- 4.89e-13]; with sqrt2 in B as displayed in Cor. 16.20: [0.001678887636 +/- 4.89e-13]), B_C = [3.707e-17 +/- 5.13e-22], T'_Q/beta^4 = [0.0002782 +/- 4.15e-8], T'_A/beta^4 = [0.0001340 +/- 4.90e-8];  < c_+ = 0.0017: True
+SU(2), d=4, C=+: at beta = beta_0(d)(1+1e-30) (exact, above beta_0): E_C/beta^4 = [0.002767110567 +/- 3.65e-13] (mine, 2a: [0.002767100445 +/- 2.89e-13]; with sqrt2 in B as displayed in Cor. 16.20: [0.002767114759 +/- 3.58e-13]), B_C = [1.473e-18 +/- 3.48e-22], T'_Q/beta^4 = [0.0001545 +/- 9.61e-9], T'_A/beta^4 = [6.580e-5 +/- 2.45e-9];  < c_+ = 0.0028: True
+U(1), d=4, C=+: at beta = beta_0(d)(1+1e-30) (exact, above beta_0): E_C/beta^4 = [0.001794773021 +/- 2.65e-13] (mine, 2a: [0.001794750857 +/- 3.81e-14]; with sqrt2 in B as displayed in Cor. 16.20: [0.001794773021 +/- 2.65e-13]), B_C = [8.894e-19 +/- 7.78e-24], T'_Q/beta^4 = [0.0003171 +/- 1.36e-10], T'_A/beta^4 = [0.0001019 +/- 2.28e-8];  < c_+ = 0.0018: True
+U(1), d=4, C=-: at beta = beta_0(d)(1+1e-30) (exact, above beta_0): E_C/beta^4 = [0.001794728672 +/- 4.13e-13] (mine, 2a: [0.001794728672 +/- 4.13e-13]; with sqrt2 in B as displayed in Cor. 16.20: [0.001794728672 +/- 4.13e-13]), B_C = [8.894e-19 +/- 7.77e-24], T'_Q/beta^4 = [0.0003171 +/- 1.36e-10], T'_A/beta^4 = [0.0001019 +/- 2.28e-8];  < c_+ = 0.0018: True
+all certified: True
+
+against sector_upper.E_sector at beta_0(d) (relative difference; the authors' printed values are E_C(beta_0)/beta_0^4):
+  SU(2), d=3, C=+: authors 0.00250823432645 beta^4, mine 0.00250823432645 beta^4, relative difference 3.19e-60
+  U(1), d=3, C=+: authors 0.00167904061848 beta^4, mine 0.00167904061848 beta^4, relative difference 1.67e-60
+  U(1), d=3, C=-: authors 0.00167888763551 beta^4, mine 0.00167888763551 beta^4, relative difference 3.31e-60
+  SU(2), d=4, C=+: authors 0.00276711056664 beta^4, mine 0.00276711056664 beta^4, relative difference 4.80e-60
+  U(1), d=4, C=+: authors 0.00179477302126 beta^4, mine 0.00179477302126 beta^4, relative difference 3.05e-60
+  U(1), d=4, C=-: authors 0.00179472867159 beta^4, mine 0.00179472867159 beta^4, relative difference 1.83e-60
+
+the power-series structure of E_C (coefficients of beta^0..beta^14 of the exact expansion; E_C = O(beta^5)):
+  SU(2), d=3, C=+: coefficients of beta^0..4 vanish: True;  all coefficients to beta^14 >= 0: True (T'_Q, T'_A, B_C: True);  coefficient of beta^5 = 0.414062
+  U(1), d=3, C=+: coefficients of beta^0..4 vanish: True;  all coefficients to beta^14 >= 0: True (T'_Q, T'_A, B_C: True);  coefficient of beta^5 = 2.125
+  U(1), d=3, C=-: coefficients of beta^0..4 vanish: True;  all coefficients to beta^14 >= 0: True (T'_Q, T'_A, B_C: True);  coefficient of beta^5 = 2.125
+  SU(2), d=4, C=+: coefficients of beta^0..4 vanish: True;  all coefficients to beta^14 >= 0: True (T'_Q, T'_A, B_C: True);  coefficient of beta^5 = 1.22656
+  U(1), d=4, C=+: coefficients of beta^0..4 vanish: True;  all coefficients to beta^14 >= 0: True (T'_Q, T'_A, B_C: True);  coefficient of beta^5 = 6.125
+  U(1), d=4, C=-: coefficients of beta^0..4 vanish: True;  all coefficients to beta^14 >= 0: True (T'_Q, T'_A, B_C: True);  coefficient of beta^5 = 6.125
+
+real	0m0.413s
+user	0m0.706s
+sys	0m0.024s

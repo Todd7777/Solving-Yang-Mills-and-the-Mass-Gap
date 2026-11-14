@@ -1,0 +1,34 @@
+# python3 arb_eval_classic.py 1 3 177200
+U(1) (N = 1, iota = 0), d=3, set d3_s9z.json, varpi = b^2, (bbar, abar) = (0.00390625, 0.0009765625), KMAX = 60, F_RAISE = 1.0e-7; beta_* = 0.00040262143352282 (checked >= beta_0(d) in Arb); 400-bit balls, sums to 300 edges / 110 plaquettes plus rigorous remainders:
+    varpi = bhat(beta_*)^p, p = 2                                holds
+    deco xi_F                                                    holds   (room 9.868e-16)
+    deco xi_C                                                    holds   (room 9.868e-16)
+    deco h_J (k=4, the maximum)                                  holds   (room 9.736e-16)
+    barred xi_F                                                  holds   (room 9.279e-16)
+    barred xi_C                                                  holds   (room 9.278e-16)
+    six inequalities (actual)                                    holds
+    six inequalities (barred)                                    holds
+    Sigma^(4)_4 < Ubar delta'                                    holds   (room 1.001e-9)
+    F-condition                                                  holds   (room 1.000e-7)
+    F_6-condition                                                holds   (room 1.000e-7)
+    third hypothesis (omega)                                     holds   (room 1.000)
+    a^4 Ubar (1+delta') <= varpi                                 holds   (room 1.000)
+    a^4 Ubar (1+delta') <= 1                                     holds   (room 1.000)
+    stronger: F-condition, e^{-2b*} - a                          holds   (room 9.535e-8)
+    stronger: F_6-condition, e^{-2b*} - a                        holds   (room 9.535e-8)
+    stronger: third hypothesis <= 1/(1+kappa)                    holds   (room 1.000)
+    stronger: a^4 Ubar (1+delta') <= varpi/(1+kappa)             holds   (room 1.000)
+    delta'_* <= kappa                                            holds   (room 1.000)
+    delta'_*                                                     4.6490484e-9
+    majorant/beta^4 (corner (3, 6.0))                            141255.01
+    exact pairs/beta^4                                           0.22423763
+    Sigma4^(4)/beta^4                                            176777.42
+    parts/beta^4: two, four, exits, one-plaquette, multi         32.1679, 0, 21.8265, 35468.2, 1.41255e+5
+    D parts/beta^4: 8(K+1)theta, e^{2b}Delta, log(1+delta')      0.0278235, 6.61565e-7, 1.76920e+5
+  authors' stronger-form rooms (mpmath): F 9.535e-8, F6 9.535e-8, old 1.0, beyond 1.0, delta 0.0004026
+  D(beta_*)/beta_*^4 = 176919.852420203 (authors: 176919.85242);  (1+kappa)^3 D/beta_*^4 <= 177133.6336 <= 177200: True
+  all certified: True
+
+real	0m7.678s
+user	0m7.654s
+sys	0m0.008s

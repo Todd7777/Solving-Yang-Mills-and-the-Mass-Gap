@@ -129,23 +129,28 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   that sat in Remarks became Lemmas 16.14–16.17; `run_cap.sh` reruns everything. The summary table of Part IV is now a longtable (its last part had been cut off in the PDF).
   **The two plaquette glueballs** (Corollary 16.20, 14 November; computer-assisted; tenth referee: minor revisions, no error affecting a result, applied, with every constant
   certified in ball arithmetic, `referee-section16j/`): the same bounds for each sector of charge conjugation, for $SU(3)$, $SU(4)$, $SU(5)$, $d=3,4$:
-  $-c'_-\beta^4\le m_C-4\log(1/u)+\log\Upsilon_C\le c'_+\beta^4$ for $C=\pm$, all $\beta<\beta_0(d)$, $(c'_-,c'_+)=(0.600,0.042)$, $(3.937,0.047)$ [$SU(3)$], $(0.134,0.131)$, $(1.083,0.148)$ [$SU(4)$],
-  $(0.073,0.319)$, $(0.520,0.361)$ [$SU(5)$]. So the odd glueball of $SU(3)$ has the third-order term $\beta^3/1296$, resolved on the whole range; the splitting $m_--m_+$ is
+  $-c'_-\beta^4\le m_C-4\log(1/u)+\log\Upsilon_C\le c'_+\beta^4$ for $C=\pm$, all $\beta<\beta_0(d)$, $(c'_-,c'_+)=(0.185,0.042)$, $(3.937,0.047)$ [$SU(3)$], $(0.094,0.131)$, $(1.083,0.148)$ [$SU(4)$],
+  $(0.067,0.319)$, $(0.520,0.361)$ [$SU(5)$] ($d=3,4$; the $d=3$ values with Lemma 16.10 for the fronts of $\mathbb Z^2$, the eleventh referee's suggestion, certified in Arb by them; before $0.600$, $0.134$, $0.073$). So the odd glueball of $SU(3)$ has the third-order term $\beta^3/1296$, resolved on the whole range; the splitting $m_--m_+$ is
   $2(\beta/2N)^{N-2}/(N-2)!$ to leading order ($\frac\beta3-\frac{\beta^3}{648}$, $\frac{\beta^2}{64}$, $\frac{\beta^3}{3000}$), determined on the whole range, with the even glueball the lighter one; and in
-  $d=3$ the empty kinds of Lemma 16.16(ii) lower $c_-$ of Theorem 16.18 to $0.600$ ($SU(3)$) and $0.073$ ($SU(5)$). Checks: `run_cap.sh 2 corollary`, `sector_upper.py`, `rigorous_bounds.py`
+  $d=3$ the empty kinds of Lemma 16.16(ii) and Lemma 16.10 for $\mathbb Z^2$ lower $c_-$ of Theorem 16.18 to $0.185$ ($SU(3)$) and $0.067$ ($SU(5)$). Checks: `run_cap.sh 2 corollary`, `sector_upper.py`, `rigorous_bounds.py`
   (`sector_series`, `split_lower`), `orders/d3_s9z.json`.
   Theorem 15.5(iii) now states the fixed-$\beta$ sector bound, and the proof of Theorem 10.2 notes that any eigenvector of $\mathsf V$ may be used. For $SU(N)$, $N\ge6$, $d\ge4$, the glueballs split
   at order $\beta^4$ through the hopping too ($h_+\ne h_-$), so "order $\beta^{N-2}$" is claimed only for $N\le5$.
-  **$SU(2)$ and $U(1)$** (Corollary 16.21, 14 November, not yet refereed; computer-assisted): their gaps have no third-order term ($\Upsilon$, $\Upsilon_\pm$ even in $\beta$), and
-  $m_{(C)}-4\log(1/u)+\log\Upsilon_{(C)}=O(\beta^4)$ on the whole range with $(c_-,c_+)=(1968,0.0026)$, $(570,0.0028)$ [$SU(2)$, $d=3,4$], $(1.772\cdot10^5,0.0017)$, $(8043,0.0018)$ [$U(1)$, both
-  sectors]; so the second-order terms ($\beta^2/8$ for $SU(2)$; $\frac38\beta^2$, $\frac18\beta^2$ and the splitting $\beta^2/4$ for $U(1)$, the odd glueball lighter) are determined there.
-  The earlier whole-range $SU(2)$ bounds ($-9.4\cdot10^{-5}\le m-4\log(1/u)\le4.8\cdot10^{-4}$ in $d=4$) did not see $\beta^2/8$. The constants are large because $u=\beta/4$, $\beta/2$
-  enters the junction sums as $a^E$. Options `--group 1/2`, `--f-raise`, `--kmax` (`run_cap.sh 2 classic`).
-  Next: a referee for Corollary 16.21; then $d\ge5$ (a crude probe gives $D\approx3\cdot10^{11}\beta^4$ at $\beta_0(5)$: the whole counting programme again), or the $C$-odd sector at fourth order (Conjecture 15.11).
+  **$SU(2)$ and $U(1)$** (Corollary 16.21, 14 November; computer-assisted; eleventh referee: minor revisions, no error affecting a result, applied, every constant certified in
+  ball arithmetic, `referee-section16k/`): their gaps have no first- or third-order term ($\Upsilon$, $\Upsilon_\pm$ even in $\beta$, Lemma 11.1(i)), and
+  $-c_-\beta^4\le m_{(C)}-4\log(1/u)+\log\Upsilon_{(C)}\le c_+\beta^4$ on the whole range with $(c_-,c_+)=(12.7,0.0026)$, $(570,0.0028)$ [$SU(2)$, $d=3,4$], $(181,0.0017)$, $(8043,0.0018)$ [$U(1)$, both
+  sectors]; so the second-order terms ($\beta^2/8$ for $SU(2)$; $\frac38\beta^2$, $\frac18\beta^2$ and the splitting $\beta^2/4$ for $U(1)$, the odd glueball lighter) are determined there
+  (residual at $\beta_0(d)$ at most $1.7\cdot10^{-5}$, $1.1\cdot10^{-4}$ ($SU(2)$) and $2.4\cdot10^{-4}$, $1.6\cdot10^{-3}$ ($U(1)$) times $\beta^2/8$). $\log(\Upsilon_-/\Upsilon_+)\ge e^{-3\beta}\beta^2/4$
+  for every $\beta>0$ by Vandermonde's identity (a Theorem, no computer). The earlier whole-range $SU(2)$ bounds ($-9.4\cdot10^{-5}\le m-4\log(1/u)\le4.8\cdot10^{-4}$ in $d=4$, Numerical) did
+  not see $\beta^2/8$. In $d=4$ the constants are large mostly through the one-plaquette junctions (order $ba^4$; $u=\beta/4$, $\beta/2$ against $\beta/18$); in $d=3$ they were large through the
+  crude count of the fronts of $\mathbb Z^2$ beyond 12 edges (first version $1968$, $1.772\cdot10^5$), which Lemma 16.10 replaces (the referee's Issue 1, `--nv-decision-d3`, fronts summed to 100 edges).
+  Options `--group 1/2`, `--f-raise`, `--kmax`, `--nv-decision-d3` (`run_cap.sh 2 corollary`, `run_cap.sh 2 classic`).
+  Next: $d\ge5$ (a crude probe gives $D\approx3\cdot10^{11}\beta^4$ at $\beta_0(5)$: the whole counting programme again), or the $C$-odd sector at fourth order (Conjecture 15.11). A smaller step:
+  $\varpi=b^3$ ($p=3$) would roughly halve the $d=3$ constants ($SU(3)$ $0.086$, $SU(5)$ $0.031$, mpmath only); it needs Lemma 16.15 for $p\in[2,3]$.
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-14.md` (Part 18: the seventh referee, on Lemma 16.10 and Remark 16.7(x); Part 19: the third-order term of $SU(5)$; Part 20: the computer-assisted proof; Part 21: the ninth referee; Part 22: the two plaquette glueballs; Part 23: the tenth referee; Part 24: $SU(2)$ and $U(1)$). Before it, `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$; Part 14: further orders in $d=3$, the whole range; Part 15: the upper bound; Part 16: the lower bound in $d=4$; Part 17: the whole range in $d=4$). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
+- The newest journal entry is `journal/2026-11-14.md` (Part 18: the seventh referee, on Lemma 16.10 and Remark 16.7(x); Part 19: the third-order term of $SU(5)$; Part 20: the computer-assisted proof; Part 21: the ninth referee; Part 22: the two plaquette glueballs; Part 23: the tenth referee; Part 24: $SU(2)$ and $U(1)$; Part 25: the eleventh referee, Lemma 16.10 in $d=3$). Before it, `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$; Part 14: further orders in $d=3$, the whole range; Part 15: the upper bound; Part 16: the lower bound in $d=4$; Part 17: the whole range in $d=4$). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
   Part 12: the third-order term at practical $\beta$; Part 10: the lower bound to fourth order); `journal/2026-11-11.md` has Parts 6–7 (the second- and
   third-order terms), `journal/2026-11-10.md` has Parts 1–5,
   `journal/2026-11-09b.md` is the first part of session 3 and `journal/2026-11-09.md` is session 2.
