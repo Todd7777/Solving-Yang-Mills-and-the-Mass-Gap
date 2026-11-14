@@ -63,7 +63,8 @@ after a referee report that found the first draft's proof for the odd sector inc
 (Section~\ref{mg:sec:practical}) added the same day, and revised after two referee reports; extended by further orders on 13 November, with a
 corrected threshold in $d=3$, and to the whole range, from both sides, in $d=3$ and in $d=4$; revised after five further referee reports, the last on 14 November; the third-order term of $SU(5)$
 (Lemma~\ref{mg:lem:u2sun}, Remark~\ref{mg:rem:su5}) added on 14 November, and revised after a referee report; the computer-assisted proof
-(Lemma~\ref{mg:lem:upsbounds}, Theorem~\ref{mg:thm:thirdcap}) added the same day, and revised after a referee report (Lemmas~\ref{mg:lem:boundmode}--\ref{mg:lem:upperE}); living document}
+(Lemma~\ref{mg:lem:upsbounds}, Theorem~\ref{mg:thm:thirdcap}) added the same day, and revised after a referee report (Lemmas~\ref{mg:lem:boundmode}--\ref{mg:lem:upperE}); the two plaquette glueballs (Corollary~\ref{mg:cor:sectorscap}) added the same day; living
+document}
 
 \begin{document}
 \maketitle
@@ -141,7 +142,10 @@ $-\beta^3/6000$; with its group data from exact Haar moments and a sharper bound
 for all $\beta<\beta_0(3)$ in $d=3$ and $-0.519\beta^4\le\dots\le0.252\beta^4$ for all $\beta<\beta_0(4)$ in $d=4$, so it too is determined from both sides on the whole range
 (numerical evaluations). With the group data replaced by proven bounds, so that no monotonicity is checked on a grid, and every truncation bounded, these statements become a
 computer-assisted theorem, with slightly weaker constants in $d=4$: for $SU(3)$ and $SU(5)$ in $d=3,4$, $-c_-\beta^4\le m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)\le c_+\beta^4$ for all $\beta<\beta_0(d)$,
-with explicit $c_\pm$ below the third-order term on the whole range. For $SU(2)$ the two
+with explicit $c_\pm$ below the third-order term on the whole range. The same bounds hold for each sector of charge conjugation: for $SU(3)$, $SU(4)$ and $SU(5)$ in $d=3,4$
+both plaquette glueballs are determined to third order on the whole range (the odd glueball of $SU(3)$ has the third-order term $\beta^3/1296$), and so is their splitting, which
+is $2(\beta/2N)^{N-2}/(N-2)!$ to leading order, with the even glueball the lighter one; in $d=3$, junction kinds that a planar argument shows to be empty lower $c_-$ to $0.600$ for $SU(3)$
+and $0.073$ for $SU(5)$. For $SU(2)$ the two
 bounds give $-9.4\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
 $-3.6\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$, in infinite volume (a numerical evaluation of the explicit constants).
 The asymptotics
@@ -4221,7 +4225,7 @@ those of lowest order, and Lemma~\ref{mg:lem:jsums5} counts them exactly. Remark
 of small fronts and junctions; Lemma~\ref{mg:lem:corners} and Remark~\ref{mg:rem:nextorder} push the exact counting further, with a bound for the larger fronts by
 decisions (Lemma~\ref{mg:lem:frontsdecision}) in $d=4$, until the whole range is covered in $d=3$ and in $d=4$. Lemma~\ref{mg:lem:uppertails} and Remark~\ref{mg:rem:upperexact} do the
 same for the upper bound, and Lemma~\ref{mg:lem:u2sun} and Remark~\ref{mg:rem:su5} extend both to $SU(5)$, the other $SU(N)$ with a third-order term. Theorem~\ref{mg:thm:thirdcap} turns these
-evaluations into a computer-assisted proof.
+evaluations into a computer-assisted proof, and Corollary~\ref{mg:cor:sectorscap} extends it to both sectors of charge conjugation, the two plaquette glueballs, and to $SU(4)$.
 
 \begin{lemma}[Seven plaquettes]\label{mg:lem:seven}
 Let $\mathcal Y$ be a non-empty finite set of plaquettes of $\Z^n$, $n\ge2$, such that every link of $E(\mathcal Y)$ lies in at least two plaquettes of $\mathcal Y$. Then
@@ -4984,7 +4988,8 @@ group by a proven bound of the form $\beta^k$ times a visibly increasing functio
 
 \begin{lemma}[Bounds on $\Upsilon$]\label{mg:lem:upsbounds}
 \begin{enumerate}[label=(\roman*)]
-\item For every compact $G$, every irreducible non-trivial $\rho$ and every $\beta>0$, $e^{-2\beta}\le\Upsilon(\beta)\le e^\beta$.
+\item For every compact $G$, every irreducible non-trivial $\rho$ and every $\beta>0$, $e^{-2\beta}\le\Upsilon(\beta)\le e^\beta$; if $\iota=0$, the same holds for $\Upsilon_+$ and
+$\Upsilon_-$.
 \item For $SU(5)$ with the fundamental representation, $\Upsilon\ge U_+\ge1$ for $0<\beta\le4.03\cdot10^{-4}$ (computer-assisted).
 \end{enumerate}
 \end{lemma}
@@ -4992,7 +4997,8 @@ group by a proven bound of the form $\beta^k$ times a visibly increasing functio
 \begin{proof}
 (i) $\Upsilon$ is the largest variance, under $\mu:=w_\beta\,dU/c_0$, of a real function $\psi\in\mathrm{span}(\chi_\rho,\overline{\chi_\rho})$ with $\int\psi^2\dU=1$; then $\int\psi\dU=0$. As
 $|\mathrm{Re}\,\chi_\rho|\le N$, $e^{-\beta}\le w_\beta\le e^\beta$, and $1\le c_0\le e^\beta$ (Jensen's inequality for the lower bound). So $\Var_\mu(\psi)\le\int\psi^2\,d\mu\le e^\beta$, and
-$\Var_\mu(\psi)=\min_c\int(\psi-c)^2\,d\mu\ge e^{-2\beta}\min_c\int(\psi-c)^2\dU=e^{-2\beta}$.
+$\Var_\mu(\psi)=\min_c\int(\psi-c)^2\,d\mu\ge e^{-2\beta}\min_c\int(\psi-c)^2\dU=e^{-2\beta}$. This holds for every such $\psi$, in particular for $\sqrt2\,\mathrm{Re}\,\chi_\rho$ and
+$\sqrt2\,\mathrm{Im}\,\chi_\rho$, whose variances are $\Upsilon_\pm$ when $\iota=0$ (Lemma~\ref{mg:lem:Upsilon}(i)).
 
 (ii) With $t=\beta/5$ let $Z=\int e^{t\,\mathrm{Re}\,\chi}\dU$, $Z_1=\int\mathrm{Re}\,\chi\,e^{t\,\mathrm{Re}\,\chi}\dU$, $Z_2=\int(\mathrm{Re}\,\chi)^2e^{t\,\mathrm{Re}\,\chi}\dU$ ($\chi=\chi_\rho$). Then
 $U_+-1=P/Z^2$ with $P:=2Z_2Z-2Z_1^2-Z^2$. The coefficients of $Z,Z_1,Z_2$ are non-negative rational combinations of the Haar moments $\int\chi^a\overline\chi^{\,b}\dU$, which
@@ -5222,6 +5228,85 @@ $0.033$ and $0.252$; in $d=3$ some counts are replaced by crude ones. So Remarks
 \texttt{rigorous\_bounds.out}).
 \end{remark}
 
+\subsection*{The two plaquette glueballs}
+
+The same evaluation bounds each sector of charge conjugation. In the proof of Theorem~\ref{mg:thm:sectors}(i) the dressed tube enters only through $\bar\Upsilon_C$
+(Lemma~\ref{mg:lem:dressedC}), and in bound mode only through $e^{-2\beta}\le\Upsilon_C\le\bar\Upsilon_C\le\Upsilon_C+\Delta$, which holds for both sectors. So the lower bound of
+Theorem~\ref{mg:thm:thirdcap} holds for both glueballs at once, and so does the upper bound, with $\Upsilon_C\ge e^{-2\beta}$ in place of $\Upsilon\ge1$. In $d=3$ the lower bound can
+moreover be sharpened by the junction kinds that Lemma~\ref{mg:lem:planar}(ii) shows to be empty. The two glueballs of $SU(N)$ split at order $\beta^{N-2}$, through the invariant in
+$\rho^{\otimes N}$ (Lemma~\ref{mg:lem:split} and the remark after it), so the splitting is first order for $SU(3)$, second order for $SU(4)$ and third order for $SU(5)$.
+
+\begin{corollary}[The two plaquette glueballs on the whole range]\label{mg:cor:sectorscap}
+(Computer-assisted.) Let $G=SU(N)$, $N\in\{3,4,5\}$, with the fundamental representation, $d\in\{3,4\}$ and $0<\beta<\beta_0(d)$. Then, in infinite volume, for $C=+$ and for $C=-$,
+\[
+-c'_-\beta^4\ \le\ m_C(\mu_\beta)-4\log\frac1{u(\beta)}+\log\Upsilon_C(\beta)\ \le\ c'_+\beta^4,
+\]
+where $(c'_-,c'_+)$ is
+\[
+\begin{array}{lcc}
+ & d=3 & d=4\\
+SU(3) & (0.600,\ 0.042) & (3.937,\ 0.047)\\
+SU(4) & (0.134,\ 0.131) & (1.083,\ 0.148)\\
+SU(5) & (0.073,\ 0.319) & (0.520,\ 0.361)
+\end{array}
+\]
+\begin{enumerate}[label=(\roman*)]
+\item \emph{The terms of each glueball.} For $SU(3)$, $-\log\Upsilon_\pm=\mp\frac\beta6+\frac{\beta^2}{72}+c_\pm\beta^3+O(\beta^4)$ with $c_+=\frac1{432}$ and $c_-=\frac1{1296}$; for $SU(4)$,
+$-\log\Upsilon_\pm=\mp\frac{\beta^2}{128}+O(\beta^4)$; for $SU(5)$, $-\log\Upsilon_\pm=\mp\frac{\beta^3}{6000}+O(\beta^5)$. On the whole range $\beta^3/1296\ge1.91\,\beta^4$ ($d=3$) and
+$\ge5.01\,\beta^4$ ($d=4$). So the third-order term of the mass of each glueball is determined from both sides for all $\beta<\beta_0(d)$, that of the odd glueball of $SU(3)$ included.
+\item \emph{The splitting.} $m_--m_+=\log(\Upsilon_+/\Upsilon_-)+r$ with $|r|\le(c'_-+c'_+)\beta^4$, and $\log(\Upsilon_+/\Upsilon_-)$ is
+\[
+\frac\beta3-\frac{\beta^3}{648}+O(\beta^4),\qquad\frac{\beta^2}{64}-\frac{\beta^4}{12288}+O(\beta^6),\qquad\frac{\beta^3}{3000}+O(\beta^5)
+\]
+for $N=3,4,5$, with leading term $2(\beta/2N)^{N-2}/(N-2)!$; for $SU(3)$ the terms of order $\beta^2$ cancel. The leading term, and for $SU(3)$ also the term $-\beta^3/648$, is determined
+on the whole range, and the even glueball is the lighter one:
+$m_--m_+\ge e^{-3\beta}(1-10^{-8})\,2(\beta/2N)^{N-2}/(N-2)!-(c'_-+c'_+)\beta^4>0$ for all $\beta<\beta_0(d)$.
+\item \emph{The gap.} In $d=3$, Theorem~\ref{mg:thm:thirdcap} holds with $c_-=0.600$ for $SU(3)$ and $c_-=0.073$ for $SU(5)$, in place of $2.558$ and $0.346$. For $SU(4)$,
+$-c'_-\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le c'_+\beta^4$ with $-\log\Upsilon=-\beta^2/128+O(\beta^4)$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+\emph{Lower bounds.} By the proof of Theorem~\ref{mg:thm:sectors}(i), the lower bound for $m_C$ is that of Theorem~\ref{mg:thm:lower5} with $\bar\Upsilon_C$ in place of $\bar\Upsilon$,
+the loss being $\log\bar\Upsilon_C$. By Lemma~\ref{mg:lem:upsbounds}(i), $e^{-2\beta}\le\Upsilon_C\le e^\beta$; and Lemma~\ref{mg:lem:dressedC} with the bounds of Lemma~\ref{mg:lem:boundmode} gives
+$\bar\Upsilon_C\le\Upsilon_C+\Delta$ with the same $\Delta$, as in the proof of that lemma. So Lemma~\ref{mg:lem:boundmode} holds for $m_C$ with $\Upsilon_C$ in place of $\Upsilon$ and the same $D$,
+Lemma~\ref{mg:lem:scaling} applies unchanged, and the evaluation of the proof of Theorem~\ref{mg:thm:thirdcap} applies to each sector with the same numbers. For $SU(4)$ it is run with $N=4$
+(Lemma~\ref{mg:lem:u2sun} holds for $N=4$, with $c_\Lambda=2$). In $d=4$ this gives the lower constants of the table: those of Theorem~\ref{mg:thm:thirdcap}, and $D\le1.0822\,\beta^4$ for
+$SU(4)$. In $d=3$, add to $S''_9$ the exponents $(n,2)$ with $4\le n\le40$ and $(n,3)$, $(n,\frac72)$ with $5\le n\le40$. They carry no pairs, by Lemma~\ref{mg:lem:planar}(ii), so
+Lemma~\ref{mg:lem:corners} applies with $W_{n,E}=0$ there. The corners become $(2,7)$, $(3,6)$,
+$(5,5)$, $(6,4)$ and $(41,2)$; the corners $(7,3)$ and $(8,2)$, which had set the majorant, are gone (\texttt{orders/assemble\_d3\_s9z.py}). At $\beta_0(3)$ the majorant drops from
+$2.354\,\beta^4$ to $0.399\,\beta^4$ for $SU(3)$, and from $0.280\,\beta^4$ to $0.007\,\beta^4$ for $SU(5)$. Lemma~\ref{mg:lem:scaling} from $\beta_*=\beta_0(3)(1+10^{-30})$ then gives
+$D\le0.59934\,\beta^4$, $0.13324\,\beta^4$ and $0.072888\,\beta^4$ for $N=3,4,5$, for all $\beta\le\beta_*$. Our evaluation at $\beta_*$, as in (a) of the proof of Theorem~\ref{mg:thm:thirdcap}, holds in
+the new cases ($d=3$ with this set, and $SU(4)$), with tails at most $3\cdot10^{-27}$ of their sums and room at least $2.8\cdot10^{-16}$, the conditions on $F$, $F_6$ with room $\ge10^{-9}$
+(\texttt{run\_cap.sh}: \texttt{scaling\_check.py --bounds --certified --d3 orders/d3\_s9z.json}, \texttt{error\_budget.py --d3 orders/d3\_s9z.json --groups 3,4,5}). As
+$m=\min(m_+,m_-)$ and $\Upsilon=\max(\Upsilon_+,\Upsilon_-)$, the lower bounds give those of (iii).
+
+\emph{Upper bounds.} By the proof of Theorem~\ref{mg:thm:sectors}(ii), every trial function in $\mathcal H_C\ominus\C\mathbf1$ bounds $m_C$. So Theorem~\ref{mg:thm:upper2} holds for $m_C$ with
+$\psi$ the unit eigenvector of $\mathsf V$ in the sector $C$ (Lemma~\ref{mg:lem:Upsilon}(i)), $\Upsilon_C$ in place of $\Upsilon$, and $a_1=\sqrt2Nu$ for $C=+$, $a_1=0$ for $C=-$
+($f_\beta$ is $\mathsf c$-invariant). In place of $\Upsilon\ge1$ use only $\Upsilon_C\ge e^{-2\beta}$. Put $a:=\sqrt2N\bar u$ for $C=+$, $a:=0$ for $C=-$, and $a':=(1+\mathcal T'_p)a+\mathcal T'_p$.
+Then
+\[
+\log\frac{V_2}{\Upsilon_C}\le\mathcal T'_p\bigl(1+e^{2\beta}(1+4a+3a^2)\bigr),\qquad -\log\frac{L_2}{\Upsilon_C^2}\le\frac{B_C}{1-B_C},
+\]
+where $B_C:=\mathcal T'_Q+\epsilon^6+2e^{2\beta}\sqrt2N\bar u\,\mathcal T'_p(1+a)+(1+a'^2)e^{20\beta}\frac{N^4}{\tau_0^2}\mathcal T'_Q$: the first by $V_2-\Upsilon_C\le\mathcal T'_p(\Upsilon_C+1+4a_1+3a_1^2)$,
+the second by $(1-x)^2\ge1-2x$ and $\Upsilon_C^2\ge e^{-4\beta}$. Their sum $E_C$ is $\beta^5$ times a power series with non-negative coefficients, as in the proof of Lemma~\ref{mg:lem:upperE}. With the counts of (d) of the proof of
+Theorem~\ref{mg:thm:thirdcap}, $E_C(\beta_0(d))/\beta_0(d)^4$ is $0.04153$, $0.04697$ ($SU(3)$; $d=3,4$), $0.13057$, $0.14783$ ($SU(4)$) and $0.31834$, $0.36051$ ($SU(5)$), the same for both sectors to these digits (\texttt{sector\_upper.py}).
+For $SU(4)$, $\Upsilon=\Upsilon_+$ (by (ii)), so $m\le m_+$ gives the upper bound in (iii).
+
+\emph{Series and splitting.} $\Upsilon_\pm$ are quotients of power series with exact rational coefficients (Remark~\ref{mg:rem:su5}(i)), from which \texttt{rigorous\_bounds.py}
+computes the coefficients in (i) and (ii) exactly. For $SU(4)$, $-1$ lies in the centre, so $\Upsilon_\pm$ are even in $\beta$. For the sign in (ii) write $\Upsilon_+-\Upsilon_-=2Q/Z^2$ with
+$Q:=Z_2Z-Z_1^2-Z_{\rm im}Z$, $Z_{\rm im}:=\int(\mathrm{Im}\,\chi)^2e^{t\,\mathrm{Re}\,\chi}\dU$, and $Z,Z_1,Z_2$, $t=\beta/N$ as in the proof of Lemma~\ref{mg:lem:upsbounds}(ii). The
+coefficients of $Q$ are exact to order $30$; the rest is bounded with absolute values and the majorants there ($N^{k+2}/k!$ for $Z_{\rm im}$, as $|\mathrm{Im}\,\chi|\le N$). This gives
+$Q\ge q_N t^{N-2}(1-10^{-8})$ for $0<t\le\beta_0(3)/N$, with $q_N=\frac12,\frac18,\frac1{48}$, that is $2Q/Z^2\ge e^{-2\beta}(1-10^{-8})\,2(\beta/2N)^{N-2}/(N-2)!$. As $Z\le e^\beta$ and
+$\Upsilon_+\le e^\beta$, $\log(\Upsilon_+/\Upsilon_-)\ge(\Upsilon_+-\Upsilon_-)/\Upsilon_+\ge2e^{-3\beta}Q$, which gives the bound in (ii). Its right side is positive on the whole range: for
+$SU(5)$, $e^{-3\beta}(1-10^{-8})/3000$ decreases with $\beta$ and $(c'_-+c'_+)\beta$ increases, and at $\beta_0(d)$ they are $3.329\cdot10^{-4}$ against $1.58\cdot10^{-4}$ ($d=3$) and
+$3.332\cdot10^{-4}$ against $1.36\cdot10^{-4}$ ($d=4$); for $SU(3)$ and $SU(4)$ the margin is far larger. Finally, for $SU(3)$, $c'_-+c'_+=0.642$ and $3.984$ against $1/(648\beta_0(d))=3.83$ and
+$10.04$, which is what ``determined'' means for the term $-\beta^3/648$.
+\end{proof}
+
+The odd glueball of $SU(3)$ is the heavier one by $\beta/3$, and its third-order term is a third of the even one's. For $SU(5)$ the two glueballs are degenerate to second order and split at
+third order by $\beta^3/3000$; the bounds see this splitting on the whole range, with a margin of a factor $2.1$ in $d=3$ and $2.4$ in $d=4$.
+
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
 
 \begin{proposition}[Two dimensions]\label{mg:prop:2d}
@@ -5357,10 +5442,11 @@ Fronts counted by decisions: $N^v_k\le((1+s)^{2D}-1-2Ds)(y/s)^k$, e.g.\ $N^v_k\l
 $d=4$, lower bound on the whole range: $S(8)$, order 9 with $n\ge4$, $(3,6)$, order 10 with $n\ge5$ (searches in C), Lemma~\ref{mg:lem:frontsdecision}, $Z_{n,4}$ to 12, exits with four plaquettes, closed polymers to 16: $-11.4\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ for all $\beta<\beta_0(4)$ ($-3.94\beta^4$ by Rem.~\ref{mg:rem:su5}(vi)); with the upper bound, $SU(3)$ third-order term from both sides on the whole range & Rem.~\ref{mg:rem:nextorder}(x) (proved, with the constants of Thm.~\ref{mg:thm:thirdcap}) & Numerical\\
 $SU(N)$, $N\ge3$: $u_2\le\max$ over $\mathrm{Sym}^2$, $\Lambda^2$, $\mathrm{ad}$ of $d_r^{-1}(\text{exact order-2 coefficient}+R/d_r)$ and $R/N^2$; $u_2\le\beta^2/2000+R/100$ for $SU(5)$ & Lem.~\ref{mg:lem:u2sun} & Theorem\\
 $SU(5)$: $-0.346\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.318\beta^4$ ($d=3$), $-0.519\beta^4\le\dots\le0.252\beta^4$ ($d=4$) for all $\beta<\beta_0(d)$: the third-order term $-\beta^3/6000$ from both sides on the whole range; $SU(3)$, $d=4$, with $(9,2)$ and the sets of 11 plaquettes: $-3.94\beta^4\le\dots\le0.033\beta^4$ & Rem.~\ref{mg:rem:su5} (proved, with the constants of Thm.~\ref{mg:thm:thirdcap}) & Numerical\\
-$e^{-2\beta}\le\Upsilon\le e^\beta$ for every $G,\rho$; $\Upsilon\ge1$ for $SU(5)$ on the range (ii) is computer-assisted & Lem.~\ref{mg:lem:upsbounds} & Theorem (computer-assisted)\\
+$e^{-2\beta}\le\Upsilon,\Upsilon_\pm\le e^\beta$ for every $G,\rho$; $\Upsilon\ge1$ for $SU(5)$ on the range (ii) is computer-assisted & Lem.~\ref{mg:lem:upsbounds} & Theorem (computer-assisted)\\
 Bound mode (the group data by proven bounds); the scaling from one point $\beta_*$ to all $\beta\le\beta_*$, every monotonicity by inspection; in $d=3$ the planar junctions ($Z_{n,4}=0$ for $n\ge3$;
 pairs with $E=2$ have $n=3$, with $E\in\{3,\frac72\}$ $n\le4$); the upper bound with exact counts, $E(\beta)/\beta^5$ increasing & Lem.~\ref{mg:lem:boundmode}--\ref{mg:lem:upperE} & Theorem\\
 $SU(3)$, $SU(5)$, $d=3,4$: $-c_-\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le c_+\beta^4$ for all $\beta<\beta_0(d)$, $(c_-,c_+)=(2.558,0.042)$, $(3.937,0.047)$, $(0.346,0.318)$, $(0.520,0.361)$: the third-order term from both sides on the whole range & Thm.~\ref{mg:thm:thirdcap} & Theorem (computer-assisted)\\
+$SU(3)$, $SU(4)$, $SU(5)$, $d=3,4$, both sectors $C=\pm$: $-c'_-\beta^4\le m_C(\mu_\beta)-4\log(1/u)+\log\Upsilon_C\le c'_+\beta^4$ for all $\beta<\beta_0(d)$; third-order terms of both glueballs ($\beta^3/432$, $\beta^3/1296$ for $SU(3)$; $\mp\beta^3/6000$ for $SU(5)$) and the splitting $m_--m_+$ ($\frac\beta3-\frac{\beta^3}{648}$, $\frac{\beta^2}{64}$, $\frac{\beta^3}{3000}$; the even glueball lighter) on the whole range; $c_-=0.600$, $0.073$ in $d=3$ for the gap & Cor.~\ref{mg:cor:sectorscap} & Theorem (computer-assisted)\\
 Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order in the $C$-odd sector ($U(1)$, $d\ge4$; Conjecture~\ref{mg:conj:codd}); the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\
 \end{longtable}
 \endgroup

@@ -1,0 +1,20 @@
+# python3 scaling_check.py --bounds --certified --group 4 --d4 orders/d4_s10x_92.json --closed 10:60,11:66,12:320,13:0,14:1316,15:2520,16:12552 --closed-from 17 0.00015376644804254827379172376907999414111262406766301 2
+beta_* = 0.000153766448: D/beta^4 = 1.08166, varpi = b^2.5, (bbar, abar) = (mpf('0.00390625'), mpf('0.0009765625'), 'corners')
+  t = 1 (beta = 0.0001538): all hypotheses hold; D/beta^4 = 1.08199 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 0.999 (beta = 0.0001536): all hypotheses hold; D/beta^4 = 1.08199 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 0.99 (beta = 0.0001522): all hypotheses hold; D/beta^4 = 1.08199 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 0.95 (beta = 0.0001461): all hypotheses hold; D/beta^4 = 1.08199 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 0.9 (beta = 0.0001384): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 0.7 (beta = 0.0001076): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 0.5 (beta = 7.688e-05): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 0.3 (beta = 4.613e-05): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 0.1 (beta = 1.538e-05): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 0.03 (beta = 4.613e-06): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 0.01 (beta = 1.538e-06): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 0.001 (beta = 1.538e-07): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 0.0001 (beta = 1.538e-08): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 1e-06 (beta = 1.538e-10): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 1e-08 (beta = 1.538e-12): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 1e-12 (beta = 1.538e-16): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+  t = 1e-20 (beta = 1.538e-24): all hypotheses hold; D/beta^4 = 1.08198 <= (1+k)^3 D_*/beta_*^4 = 1.08215: True
+all scaled points admissible with D/beta^4 <= (1+k)^3 D(beta_*)/beta_*^4: True;  so D <= 1.0822 beta^4 for all beta <= beta_* (SU(4) has no third-order term)

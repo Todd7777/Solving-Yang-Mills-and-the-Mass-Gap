@@ -127,11 +127,18 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   Arb ball arithmetic with rigorous remainders (`referee-section16i/arb_eval.py`, `upper_arb.py`). Ninth referee: minor revisions, applied; one error (the marked constants were all raised by one
   factor, leaving the two quadratic inequalities of Definition 8.9 short by $\sim10^{-16}$; fixed in `third_order_constants.marked`, now checked explicitly, no constant changes); the arguments
   that sat in Remarks became Lemmas 16.14–16.17; `run_cap.sh` reruns everything. The summary table of Part IV is now a longtable (its last part had been cut off in the PDF).
-  Next: the two plaquette glueballs (both sectors of charge conjugation) on the whole range; then $d\ge5$, or the $C$-odd sector at fourth order (Conjecture 15.11).
+  **The two plaquette glueballs** (Corollary 16.20, 14 November, not yet refereed; computer-assisted): the same bounds for each sector of charge conjugation, for $SU(3)$, $SU(4)$, $SU(5)$, $d=3,4$:
+  $-c'_-\beta^4\le m_C-4\log(1/u)+\log\Upsilon_C\le c'_+\beta^4$ for $C=\pm$, all $\beta<\beta_0(d)$, $(c'_-,c'_+)=(0.600,0.042)$, $(3.937,0.047)$ [$SU(3)$], $(0.134,0.131)$, $(1.083,0.148)$ [$SU(4)$],
+  $(0.073,0.319)$, $(0.520,0.361)$ [$SU(5)$]. So the odd glueball of $SU(3)$ has the third-order term $\beta^3/1296$, resolved on the whole range; the splitting $m_--m_+$ is
+  $2(\beta/2N)^{N-2}/(N-2)!$ to leading order ($\frac\beta3-\frac{\beta^3}{648}$, $\frac{\beta^2}{64}$, $\frac{\beta^3}{3000}$), determined on the whole range, with the even glueball the lighter one; and in
+  $d=3$ the empty kinds of Lemma 16.16(ii) lower $c_-$ of Theorem 16.18 to $0.600$ ($SU(3)$) and $0.073$ ($SU(5)$). Checks: `run_cap.sh 2 corollary`, `sector_upper.py`, `rigorous_bounds.py`
+  (`sector_series`, `split_lower`), `orders/d3_s9z.json`.
+  Next: a referee for Corollary 16.20 (with an Arb evaluation of its new cases); then $d\ge5$ (a crude probe gives $D\approx3\cdot10^{11}\beta^4$ at $\beta_0(5)$: the whole counting programme again), or the
+  $C$-odd sector at fourth order (Conjecture 15.11).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-14.md` (Part 18: the seventh referee, on Lemma 16.10 and Remark 16.7(x); Part 19: the third-order term of $SU(5)$; Part 20: the computer-assisted proof). Before it, `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$; Part 14: further orders in $d=3$, the whole range; Part 15: the upper bound; Part 16: the lower bound in $d=4$; Part 17: the whole range in $d=4$). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
+- The newest journal entry is `journal/2026-11-14.md` (Part 18: the seventh referee, on Lemma 16.10 and Remark 16.7(x); Part 19: the third-order term of $SU(5)$; Part 20: the computer-assisted proof; Part 21: the ninth referee; Part 22: the two plaquette glueballs). Before it, `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$; Part 14: further orders in $d=3$, the whole range; Part 15: the upper bound; Part 16: the lower bound in $d=4$; Part 17: the whole range in $d=4$). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
   Part 12: the third-order term at practical $\beta$; Part 10: the lower bound to fourth order); `journal/2026-11-11.md` has Parts 6–7 (the second- and
   third-order terms), `journal/2026-11-10.md` has Parts 1–5,
   `journal/2026-11-09b.md` is the first part of session 3 and `journal/2026-11-09.md` is session 2.
