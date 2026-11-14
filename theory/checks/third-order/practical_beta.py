@@ -11,7 +11,7 @@ beta^3/432 = beta^4/(432 beta) of SU(3), and the three largest parts of delta'/b
 Each beta takes a few minutes (the tree constants on the grid of (bbar, abar))."""
 import sys
 import third_order_effective as T
-from mpmath import mpf, log
+from mpmath import mpf, log, exp
 T.THETA7 = True
 T.NOVR = {4: {6: 132, 7: 108, 8: 2034, 9: 4344, 10: 43650}, 3: {6: 12, 7: 12, 8: 70, 9: 160, 10: 634, 11: 1728, 12: 6369}}   # fronts_decision.py
 # The next order (Lemma mg:lem:corners with S_6): counts of the pairs (J,p') by exhaustive search (next_order_count.py), as (count, n, E, |p'|, m):
@@ -73,12 +73,26 @@ def load_terms(d, path, closed=None, closed_from=None):
                                4: {8: 76, 9: 148, 10: 328, 11: 484, 12: 1143, 13: 2020, 14: 3114, 15: 3672, 16: 3651, 17: 2760, 18: 1780, 19: 780, 20: 315},
                                5: {8: 12, 10: 376, 11: 880, 12: 2271, 13: 4096, 14: 8562, 15: 15532, 16: 25227, 17: 33440, 18: 38064, 19: 35740,
                                    20: 28695, 21: 18600, 22: 10212, 23: 3972, 24: 1296}}}     # zexit_count_n.py
+    if d == 3 and CERTIFIED:       # the counts with n = 4, 5 and k >= 17 (one program) -> crude 2 binom(4P_v + T_v n, n) X(n,k) (Theorem mg:thm:thirdcap)
+        from junction_constants import counts
+        from mpmath import binomial
+        Pv, KS, Tv, Nc = counts(3, 'infinite')
+        for k in T.NOVR[3]: Nc[k] = mpf(T.NOVR[3][k])
+        for n in (4, 5):
+            for k in range(17, 4*n + 5):
+                X = 0 if k == 5 else min(binomial(4*n + 4, k), (4*n + 4)*Nc[k])
+                T.ZEXITN[3][n][k] = max(T.ZEXITN[3][n].get(k, 0), 2*binomial(4*Pv + Tv*n, n)*X)
 ORDER = 5
 # the group: SU(3) (default; second_order_constants.su3, as refereed) or SU(N) with --group N (sun_group.sun: exact Haar moments, and u_2 by sun_group.u2_bound
 # in Lemma mg:lem:dressed); TERM[N] is the size of the third-order term of the gap, |beta^3 coefficient of -log Upsilon| (Corollary mg:cor:third)
 GROUP = 3
 TERM = {3: mpf(1)/432, 5: mpf(1)/6000}
+BOUNDS = False      # --bounds: the group data replaced by proven bounds (rigorous_bounds.bound_group; Theorem mg:thm:thirdcap), D by its bound D_bound
+CERTIFIED = False   # --certified: only counts made by two independent programs; in d=3 the exits with 4, 5 plaquettes and k >= 17 edges (one program) become crude
 def group_data():
+    if BOUNDS:
+        from rigorous_bounds import bound_group
+        return bound_group(GROUP, 0, sharp_u2=True)
     if GROUP == 3: return dict(T.GROUPS)['SU(3)']
     from sun_group import sun
     return sun(GROUP, sharp_u2=True)
@@ -89,6 +103,7 @@ def deficit(d, beta):
         try: lo = T.lower3e(beta, d, g, varpi_pow=vp, chars=True)
         except AssertionError: continue
         if best is None or lo['delta'] < best['delta']: best = lo
+    if BOUNDS: return best['D_bound'], best, g
     return best['loss'] - log(g['Ups']), best, g
 def run(d, betas):
     """The criterion is the whole deficit of the lower bound, D = 8(K+1)theta + log(Ubar/Ups) + log(1+delta'), against beta^3/432: then
@@ -99,6 +114,7 @@ def run(d, betas):
         beta = mpf(be); D, best, g = deficit(d, beta)
         target = TERM[GROUP]*beta**3
         lth = best['loss'] - log(best['Ubar']) - log(1 + best['delta'])
+        if BOUNDS: g = dict(g, Ups=best['Ubar']/(1 + exp(2*beta)*g['Delta']/best['Ubar']))   # for the printout only: log(Ubar/Ups) -> the bound e^{2beta} Delta
         parts = sorted(((float(v/beta**4), k) for k, v in best['parts'].items()), reverse=True)[:3]
         print(f"d={d} beta={be}: D/beta^4 = {float(D/beta**4):.4g} = theta-loss {float(lth/beta**4):.3g} + log(Ubar/Ups) {float(log(best['Ubar']/g['Ups'])/beta**4):.2g}"
               f" + log(1+delta') {float(log(1+best['delta'])/beta**4):.4g};  beta^3/{int(round(float(1/TERM[GROUP])))} = {float(target/beta**4):.4g} beta^4 ({'resolved' if D < target else 'not resolved'});"
@@ -110,6 +126,8 @@ if __name__ == "__main__":
     # --next-theta7: S_6 with theta_7
     args = sys.argv[1:]
     if '--group' in args: i = args.index('--group'); GROUP = int(args[i + 1]); del args[i:i + 2]
+    if '--bounds' in args: BOUNDS = True; args.remove('--bounds')
+    if '--certified' in args: CERTIFIED = True; args.remove('--certified')
     if '--ix' in args: IX_SETTING = True; args.remove('--ix')
     if '--next' in args: ORDER = 6; T.CLOSED_FROM = 10; args.remove('--next')
     elif '--next-theta7' in args: ORDER = 6; args.remove('--next-theta7')

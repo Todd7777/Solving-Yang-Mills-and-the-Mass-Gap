@@ -61,7 +61,8 @@ fourth order and the fourth-order term (Section~\ref{mg:sec:fourthlower}) added,
 after a referee report that found the first draft's proof for the odd sector incomplete; closed polymers and the third-order term at practical $\beta$
 (Section~\ref{mg:sec:practical}) added the same day, and revised after two referee reports; extended by further orders on 13 November, with a
 corrected threshold in $d=3$, and to the whole range, from both sides, in $d=3$ and in $d=4$; revised after five further referee reports, the last on 14 November; the third-order term of $SU(5)$
-(Lemma~\ref{mg:lem:u2sun}, Remark~\ref{mg:rem:su5}) added on 14 November, and revised after a referee report; living document}
+(Lemma~\ref{mg:lem:u2sun}, Remark~\ref{mg:rem:su5}) added on 14 November, and revised after a referee report; the computer-assisted proof
+(Lemma~\ref{mg:lem:upsbounds}, Theorem~\ref{mg:thm:thirdcap}) added the same day; living document}
 
 \begin{document}
 \maketitle
@@ -137,7 +138,9 @@ third-order term $\beta^3/432$ is determined from both sides on the whole range;
 one more junction class and more admissible sets), so the term is determined from both sides on the whole range there as well (numerical evaluations). The only other $SU(N)$ with a third-order term is $SU(5)$, where it is
 $-\beta^3/6000$; with its group data from exact Haar moments and a sharper bound for its second character coefficient, $-0.346\beta^4\le m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)\le0.318\beta^4$
 for all $\beta<\beta_0(3)$ in $d=3$ and $-0.519\beta^4\le\dots\le0.252\beta^4$ for all $\beta<\beta_0(4)$ in $d=4$, so it too is determined from both sides on the whole range
-(numerical evaluations). For $SU(2)$ the two
+(numerical evaluations). With the group data replaced by proven bounds, so that no monotonicity is checked on a grid, and every truncation bounded, these statements become a
+computer-assisted theorem: for $SU(3)$ and $SU(5)$ in $d=3,4$, $-c_-\beta^4\le m(\mu_\beta)-4\log(1/u(\beta))+\log\Upsilon(\beta)\le c_+\beta^4$ for all $\beta<\beta_0(d)$,
+with explicit $c_\pm$ below the third-order term on the whole range. For $SU(2)$ the two
 bounds give $-9.4\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le4.8\cdot10^{-4}$ for all $\beta<\beta_0(4)$ in $d=4$, and
 $-3.6\cdot10^{-5}\le m(\mu_\beta)-4\log(1/u(\beta))\le2.4\cdot10^{-3}$ for all $\beta<\beta_0(3)$ in $d=3$, in infinite volume (a numerical evaluation of the explicit constants).
 The asymptotics
@@ -4216,7 +4219,8 @@ front-pairs then dominate. Lemma~\ref{mg:lem:threelow} determines
 those of lowest order, and Lemma~\ref{mg:lem:jsums5} counts them exactly. Remark~\ref{mg:rem:practical} evaluates the third-order bound with $\theta_7$, these counts and exact counts
 of small fronts and junctions; Lemma~\ref{mg:lem:corners} and Remark~\ref{mg:rem:nextorder} push the exact counting further, with a bound for the larger fronts by
 decisions (Lemma~\ref{mg:lem:frontsdecision}) in $d=4$, until the whole range is covered in $d=3$ and in $d=4$. Lemma~\ref{mg:lem:uppertails} and Remark~\ref{mg:rem:upperexact} do the
-same for the upper bound, and Lemma~\ref{mg:lem:u2sun} and Remark~\ref{mg:rem:su5} extend both to $SU(5)$, the other $SU(N)$ with a third-order term.
+same for the upper bound, and Lemma~\ref{mg:lem:u2sun} and Remark~\ref{mg:rem:su5} extend both to $SU(5)$, the other $SU(N)$ with a third-order term. Theorem~\ref{mg:thm:thirdcap} turns these
+evaluations into a computer-assisted proof.
 
 \begin{lemma}[Seven plaquettes]\label{mg:lem:seven}
 Let $\mathcal Y$ be a non-empty finite set of plaquettes of $\Z^n$, $n\ge2$, such that every link of $E(\mathcal Y)$ lies in at least two plaquettes of $\mathcal Y$. Then
@@ -4982,6 +4986,109 @@ $E(\beta_0(4))=0.033\,\beta^4$. So $-3.94\,\beta^4\le m(\mu_\beta)-4\log(1/u)+\l
 \texttt{su5\_d3\_scaling.out}, \texttt{su5\_d4\_scaling.out}, \texttt{d4\_x92\_scaling.out}, \texttt{su5\_upper.out}, \texttt{upper\_exact\_d4.out}.)
 \end{remark}
 
+The evaluations of Remarks~\ref{mg:rem:nextorder}, \ref{mg:rem:upperexact} and~\ref{mg:rem:su5} rest on three numerical ingredients: exhaustive enumerations, an evaluation at one
+point $\beta_*$, and monotonicity facts for the scaling of Remark~\ref{mg:rem:nextorder}(vii), which were checked on grids. The last can be avoided. Replace every quantity of the
+group by a proven bound of the form $\beta^k$ times a visibly increasing function. Then the monotonicity holds by inspection, and what remains is a computer-assisted proof.
+
+\begin{lemma}[Bounds on $\Upsilon$]\label{mg:lem:upsbounds}
+\begin{enumerate}[label=(\roman*)]
+\item For every compact $G$, every irreducible non-trivial $\rho$ and every $\beta>0$, $e^{-2\beta}\le\Upsilon(\beta)\le e^\beta$.
+\item For $SU(5)$ with the fundamental representation, $\Upsilon\ge U_+\ge1$ for $0<\beta\le4.03\cdot10^{-4}$ (computer-assisted).
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(i) $\Upsilon$ is the largest variance, under $\mu:=w_\beta\,dU/c_0$, of a real function $\psi\in\mathrm{span}(\chi_\rho,\overline{\chi_\rho})$ with $\int\psi^2\dU=1$; then $\int\psi\dU=0$. As
+$|\mathrm{Re}\,\chi_\rho|\le N$, $e^{-\beta}\le w_\beta\le e^\beta$, and $1\le c_0\le e^\beta$ (Jensen's inequality for the lower bound). So $\Var_\mu(\psi)\le\int\psi^2\,d\mu\le e^\beta$, and
+$\Var_\mu(\psi)=\min_c\int(\psi-c)^2\,d\mu\ge e^{-2\beta}\min_c\int(\psi-c)^2\dU=e^{-2\beta}$.
+
+(ii) With $t=\beta/5$ let $Z=\int e^{t\,\mathrm{Re}\,\chi}\dU$, $Z_1=\int\mathrm{Re}\,\chi\,e^{t\,\mathrm{Re}\,\chi}\dU$, $Z_2=\int(\mathrm{Re}\,\chi)^2e^{t\,\mathrm{Re}\,\chi}\dU$ ($\chi=\chi_\rho$). Then
+$U_+-1=P/Z^2$ with $P:=2Z_2Z-2Z_1^2-Z^2$. The coefficients of $Z,Z_1,Z_2$ are non-negative rational combinations of the Haar moments $\int\chi^a\overline\chi^{\,b}\dU$, which
+are known exactly (Remark~\ref{mg:rem:su5}(i)); those of order $k$ are at most $5^k/k!$, $5^{k+1}/k!$ and $5^{k+2}/k!$, as $\int\chi^a\overline\chi^{\,b}\dU\le5^{a+b}$. The coefficients of
+$P$ computed exactly to order $30$ vanish up to order $2$, and the third is $\frac1{48}$. Bound the rest of $P$ by these majorants, as a sum of non-negative terms that increase with
+$t$. This gives $P(t)\ge t^3\bigl(\frac1{48}-5.6\cdot10^{-11}\bigr)>0$ for $0<t\le\beta_0(3)/5$ (\texttt{rigorous\_bounds.py}). So $U_+\ge1$.
+\end{proof}
+
+\begin{theorem}[The third-order term on the whole range]\label{mg:thm:thirdcap}
+(Computer-assisted.) Let $G=SU(3)$ or $SU(5)$ with the fundamental representation, $d\in\{3,4\}$ and $0<\beta<\beta_0(d)$. Then, in infinite volume,
+\[
+-c_-\beta^4\ \le\ m(\mu_\beta)-4\log\frac1{u(\beta)}+\log\Upsilon(\beta)\ \le\ c_+\beta^4,
+\]
+where $(c_-,c_+)$ is
+\[
+\begin{array}{lcc}
+ & d=3 & d=4\\
+SU(3) & (2.558,\ 0.042) & (3.937,\ 0.047)\\
+SU(5) & (0.346,\ 0.318) & (0.520,\ 0.361)
+\end{array}
+\]
+On these ranges $\beta^3/432\ge5.74\,\beta^4$ ($d=3$) and $\ge15.05\,\beta^4$ ($d=4$), while $\beta^3/6000\ge0.413\,\beta^4$ ($d=3$) and $\ge1.083\,\beta^4$ ($d=4$). So the third-order term
+of the gap (Corollary~\ref{mg:cor:third}), $\beta^3/432$ for $SU(3)$ and $-\beta^3/6000$ for $SU(5)$, is determined from both sides for all $\beta<\beta_0(d)$.
+\end{theorem}
+
+\begin{proof}
+The lower bound is Theorem~\ref{mg:thm:lower5} with the junction sums of Section~\ref{mg:sec:practical} and the scaling of Remark~\ref{mg:rem:nextorder}(vii), with four changes.
+
+(a) \emph{Bound mode.} The group enters the hypotheses only through $u$, $u_2$, $\sigma_6$, $\Upsilon$ and $\bar\Upsilon$, and each hypothesis is monotone in each of them. Use the
+following bounds, each in its unfavourable direction:
+\begin{itemize}
+\item $u\le\bar u$ and $u\ge u_{\rm low}:=(1+\iota)\beta e^{-\beta}/(2N^2)$ (Lemma~\ref{mg:lem:char}(iii));
+\item $u_2$ by Lemma~\ref{mg:lem:u2sun}, and $\sigma_6\le(2-\iota)N^2\bar u^6+\bar u_2^5(e^\beta-1)$ (Lemma~\ref{mg:lem:capelement}(iv));
+\item $e^{-2\beta}\le\Upsilon\le e^\beta$ (Lemma~\ref{mg:lem:upsbounds}(i));
+\item from Lemma~\ref{mg:lem:dressed}, $\Upsilon\le\bar\Upsilon\le\Upsilon+\Delta$, with
+$\Delta:=\bar n_B^2/(e^{-2\beta}-\bar c_2)+2e^{2\beta}\bar\sigma_6/(e^{-2\beta}-\bar u^4(1+\gamma))$, where $\bar n_B,\bar c_2$ are $n_B,(u_2/u)^4e^\beta$ with $\bar u_2$ and $u_{\rm low}$.
+\end{itemize}
+So $\bar\Upsilon$ is replaced by $e^{-2\beta}$ where a lower bound suffices: the right sides of the conditions on $\delta'$, $F$ and $F_6$, and $C_\varpi$. It is replaced by $e^\beta+\Delta$ in the
+condition on $\omega$, in $\eta$, and in the conditions $a^4\bar\Upsilon(1+\delta')\le\varpi$ and $\le1$. In the deficit, $\log(\bar\Upsilon/\Upsilon)\le\Delta/\Upsilon\le e^{2\beta}\Delta$.
+
+(b) \emph{Monotonicity.} Each of these bounds is $\beta^k$ times a function that visibly increases with $\beta$: a power series with non-negative coefficients, a product of such series, or a
+quotient by a decreasing positive function ($u_{\rm low}$ enters only through $1/u_{\rm low}=e^\beta/\beta$ times a constant). So every monotonicity fact the scaling of
+Remark~\ref{mg:rem:nextorder}(vii) uses holds by inspection, as does $D(\beta)/\beta^4\le(1+\kappa)^3D(\beta_*)/\beta_*^4$ for $\beta\le\beta_*$. The lower bound $e^{-2\beta}$ on
+the right sides increases as $\beta$ decreases, so the factor $1+\kappa$ has only $\delta'_*$ to absorb. Take $\beta_*=\beta_0(d)(1+10^{-30})\ge\beta_0(d)$.
+
+(c) \emph{The evaluation at $\beta_*$.} It runs at $50$ digits. The infinite series are truncated (fronts at $60$ edges, clusters and polymers at $40$ plaquettes). Their tails are
+bounded by geometric series, using Lemma~\ref{mg:lem:frontsdecision} for fronts, $\binom{K_Sm}{m-1}\le e(eK_S)^{m-1}$ for clusters, and $\binom{c+Tn}n\le(e(T+c/n))^n$ for polymers;
+they are at most $1.4\cdot10^{-21}$ of the sums they belong to. With them included:
+\begin{itemize}
+\item the decoration constants and the barred tree constants, raised by $10^{-15}$ above their fixed points, still satisfy their inequalities, with room at least $6.7\cdot10^{-16}$;
+\item the marked constants solve monotone $2\times2$ systems with determinant $\ge0.57$, so they move by much less;
+\item every other hypothesis has room $\ge10^{-12}$.
+\end{itemize}
+(\texttt{error\_budget.py}.) With the counts below this gives $D(\beta_*)\le c_-\beta_*^4/(1+\kappa)^3$ and, by (b), $D(\beta)\le c_-\beta^4$ for all $\beta\le\beta_*$
+(\texttt{scaling\_check.py --bounds --certified}).
+
+(d) \emph{The counts.} They are exhaustive enumerations, and each was made by two independent programs, ours and a referee's:
+\begin{itemize}
+\item $N^v_k$;
+\item the junction classes of $S''_9$ ($d=3$) and of $S^\times_{10}\cup\{(9,2)\}$ ($d=4$);
+\item $Z_{n,4}$;
+\item the exits $Z_{n,k}$ in $d=4$ with $n\le4$;
+\item the closed polymers;
+\item $N_3,N_2,N'_2$.
+\end{itemize}
+In $d=3$ the exits with four and five plaquettes and exits of at least $17$ edges, counted by one program only, are replaced by the crude counts; this leaves $D$ unchanged to five digits.
+
+(e) \emph{The upper bound} is Lemma~\ref{mg:lem:uppertails} with $E(\beta)$ of Remark~\ref{mg:rem:upperexact}(ii). It uses $\bar u\ge u$ and $\Upsilon\ge1$: Remark~\ref{mg:rem:upperexact}(ii)
+for $SU(3)$, Lemma~\ref{mg:lem:upsbounds}(ii) for $SU(5)$. Then $E(\beta)$ is $\beta^5$ times a visibly increasing function, so $E(\beta)\le E(\beta_0)\beta^4/\beta_0^4$. The admissible sets
+are counted in $\Z^3$ to $12$ plaquettes and in $\Z^4$ to $10$ (two programs each), and in $\Z^4$ the bound $\binom{J'+Kn}n$ of the proof of Lemma~\ref{mg:lem:twopoint} is used for $n=11$.
+This gives $E(\beta_0(d))/\beta_0^4=0.0415$, $0.0469$, $0.3178$ and $0.3603$ in the four cases (\texttt{certify\_upper.py}).
+\end{proof}
+
+\begin{remark}[What is computer-assisted]\label{mg:rem:thirdcap}
+Two kinds of steps are done by computer.
+\begin{itemize}
+\item \emph{The enumerations of (d) and (e).} Each was made by two independent programs, which agree.
+\item \emph{One evaluation at $\beta_*$ in each case.} It runs at $50$ digits with every truncation bounded. mpmath rounds its arithmetic operations correctly and its $\exp$ and $\log$ to within
+a few units in the last place, far below the smallest room of $6.7\cdot10^{-16}$.
+\end{itemize}
+No step uses a grid of values of $\beta$, or a monotonicity checked numerically, and no step uses the exact group data: only $N$, $\iota$ and the proven bounds of (a). (The grid
+checks of the earlier remarks are consistent with the proof but not part of it.) The constants are those of Remarks~\ref{mg:rem:nextorder}(vii), (x), \ref{mg:rem:upperexact}
+and~\ref{mg:rem:su5} up to the last digit or so. The changes: the group data are bounds; $\bar\Upsilon$ is bounded below by $e^{-2\beta}$; in $d=4$ the upper constants are taken without the
+count of $11$ plaquettes, $0.047$ and $0.361$ instead of $0.033$ and $0.252$; in $d=3$ some counts are replaced by crude ones. So Remarks~\ref{mg:rem:nextorder}(vii), (x),
+\ref{mg:rem:upperexact} and~\ref{mg:rem:su5} are now proved, with these constants. The outputs are \texttt{orders/cap\_*\_scaling.out}, \texttt{orders/cap\_upper.out} and
+\texttt{orders/error\_budget.out}.
+\end{remark}
+
 \section{Two dimensions; discussion}\label{mg:sec:discussion}
 
 \begin{proposition}[Two dimensions]\label{mg:prop:2d}
@@ -5134,12 +5241,14 @@ Junction sums by corners: any finite set $S$ of exponents $(n,E)$ counted exactl
 The next order $S_6$ by exhaustive search; no closed sets of $8$, $9$ plaquettes in $\Z^3,\Z^4$, so $\theta_{10}$; $SU(3)$ third-order term resolved for $\beta\le1.2\cdot10^{-5}$ ($d=4$) and $\beta\le9\cdot10^{-5}$ ($d=3$); in $d=3$ one order more: $\beta\le1.8\cdot10^{-4}$, two: $\beta\le3.2\cdot10^{-4}$, three (in part), with a scaling of the parameters in $\beta$: the whole range $\beta<\beta_0(3)$ & Rem.~\ref{mg:rem:nextorder} & Numerical\\
 $d=3$: junctions with two four-edge front-pairs have at most two plaquettes, with three front-pairs of $4,4,4$ edges at most three, of $4,4,6$ or $4,4,7$ edges at most four (planar boundary argument) & Rem.~\ref{mg:rem:nextorder}(iv) & Theorem\\
 Tails of the upper bound with exact counts of the admissible sets (the sets of the proof of Lemma~\ref{mg:lem:twopoint}), the five-face caps by characters ($\sigma_5=\sum d_r^2u_r^5$), and $\theta_5$ & Lem.~\ref{mg:lem:uppertails} & Theorem\\
-$SU(3)$, $d=3$: $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.042\beta^4$ for all $\beta<\beta_0(3)$, the third-order term from both sides; $d=4$: from above on the whole range ($\le0.21\beta^4$; $\le0.033\beta^4$ by Rem.~\ref{mg:rem:su5}(vi)), from both sides with Rem.~\ref{mg:rem:nextorder}(x) & Rem.~\ref{mg:rem:upperexact} & Numerical\\
+$SU(3)$, $d=3$: $-2.56\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.042\beta^4$ for all $\beta<\beta_0(3)$, the third-order term from both sides; $d=4$: from above on the whole range ($\le0.21\beta^4$; $\le0.033\beta^4$ by Rem.~\ref{mg:rem:su5}(vi)), from both sides with Rem.~\ref{mg:rem:nextorder}(x) & Rem.~\ref{mg:rem:upperexact} (proved in Thm.~\ref{mg:thm:thirdcap}) & Numerical\\
 $d=4$, lower bound: order 7, the pairs of order 8 with $n\ge4$ and at $(3,5)$, exact $Z_{8,4},Z_{9,4}$, $N^v_{11}$, exits with three plaquettes and closed polymers of $10$, $11$ plaquettes: $SU(3)$ third-order term resolved for $\beta\le5\cdot10^{-5}$ (before $1.2\cdot10^{-5}$) & Rem.~\ref{mg:rem:nextorder}(ix) & Numerical\\
 Fronts counted by decisions: $N^v_k\le((1+s)^{2D}-1-2Ds)(y/s)^k$, e.g.\ $N^v_k\le0.734\cdot7.355^k$ in $\Z^3$ & Lem.~\ref{mg:lem:frontsdecision} & Theorem\\
-$d=4$, lower bound on the whole range: $S(8)$, order 9 with $n\ge4$, $(3,6)$, order 10 with $n\ge5$ (searches in C), Lemma~\ref{mg:lem:frontsdecision}, $Z_{n,4}$ to 12, exits with four plaquettes, closed polymers to 16: $-11.4\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ for all $\beta<\beta_0(4)$ ($-3.94\beta^4$ by Rem.~\ref{mg:rem:su5}(vi)); with the upper bound, $SU(3)$ third-order term from both sides on the whole range & Rem.~\ref{mg:rem:nextorder}(x) & Numerical\\
+$d=4$, lower bound on the whole range: $S(8)$, order 9 with $n\ge4$, $(3,6)$, order 10 with $n\ge5$ (searches in C), Lemma~\ref{mg:lem:frontsdecision}, $Z_{n,4}$ to 12, exits with four plaquettes, closed polymers to 16: $-11.4\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon$ for all $\beta<\beta_0(4)$ ($-3.94\beta^4$ by Rem.~\ref{mg:rem:su5}(vi)); with the upper bound, $SU(3)$ third-order term from both sides on the whole range & Rem.~\ref{mg:rem:nextorder}(x) (proved in Thm.~\ref{mg:thm:thirdcap}) & Numerical\\
 $SU(N)$, $N\ge3$: $u_2\le\max$ over $\mathrm{Sym}^2$, $\Lambda^2$, $\mathrm{ad}$ of $d_r^{-1}(\text{exact order-2 coefficient}+R/d_r)$ and $R/N^2$; $u_2\le\beta^2/2000+R/100$ for $SU(5)$ & Lem.~\ref{mg:lem:u2sun} & Theorem\\
-$SU(5)$: $-0.346\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.318\beta^4$ ($d=3$), $-0.519\beta^4\le\dots\le0.252\beta^4$ ($d=4$) for all $\beta<\beta_0(d)$: the third-order term $-\beta^3/6000$ from both sides on the whole range; $SU(3)$, $d=4$, with $(9,2)$ and the sets of 11 plaquettes: $-3.94\beta^4\le\dots\le0.033\beta^4$ & Rem.~\ref{mg:rem:su5} & Numerical\\
+$SU(5)$: $-0.346\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le0.318\beta^4$ ($d=3$), $-0.519\beta^4\le\dots\le0.252\beta^4$ ($d=4$) for all $\beta<\beta_0(d)$: the third-order term $-\beta^3/6000$ from both sides on the whole range; $SU(3)$, $d=4$, with $(9,2)$ and the sets of 11 plaquettes: $-3.94\beta^4\le\dots\le0.033\beta^4$ & Rem.~\ref{mg:rem:su5} (proved in Thm.~\ref{mg:thm:thirdcap}) & Numerical\\
+$e^{-2\beta}\le\Upsilon\le e^\beta$ for every $G,\rho$; $\Upsilon\ge1$ for $SU(5)$ on the range (ii) is computer-assisted & Lem.~\ref{mg:lem:upsbounds} & Theorem\\
+$SU(3)$, $SU(5)$, $d=3,4$: $-c_-\beta^4\le m(\mu_\beta)-4\log(1/u)+\log\Upsilon\le c_+\beta^4$ for all $\beta<\beta_0(d)$, $(c_-,c_+)=(2.558,0.042)$, $(3.937,0.047)$, $(0.346,0.318)$, $(0.520,0.361)$: the third-order term from both sides on the whole range (computer-assisted) & Thm.~\ref{mg:thm:thirdcap} & Theorem\\
 Analyticity of $m(\beta)+4\log u(\beta)$, as in the classical results; the lower bound at fourth order in the $C$-odd sector ($U(1)$, $d\ge4$; Conjecture~\ref{mg:conj:codd}); the term of order $u^6$ & Rem.~\ref{mg:rem:fourth}(iv),(v), Rem.~\ref{mg:rem:betafour} & open\\
 \bottomrule
 \end{tabular}

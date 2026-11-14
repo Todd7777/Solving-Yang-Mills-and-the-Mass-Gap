@@ -1,0 +1,94 @@
+# Part IV, Section 16 (Lemma mg:lem:upsbounds, Theorem mg:thm:thirdcap): the group data replaced by proven bounds, each beta^k times an increasing function,
+# for the computer-assisted version of the third-order term at practical beta.
+# Usage: python3 rigorous_bounds.py        (the bounds at beta_0(3), beta_0(4) for SU(3), SU(5), and the proof of Upsilon >= 1 for SU(5))
+"""In "bound mode" the evaluation of Theorem mg:thm:lower5 uses, in place of the exact u, Upsilon, Ubar of the group:
+    u      <= ubar   := ((1+iota) beta + beta^2 e^beta)/(2N^2)          (Lemma mg:lem:char(iii)), in every term where u enters increasingly,
+    u      >= u_low  := (1+iota) beta e^{-beta}/(2N^2)                   (Lemma mg:lem:char(iii)), where 1/u enters (n_B, c_2, b_2),
+    u_2    <= u2bar  := Lemma mg:lem:u2sun (SU(N), N >= 3) or e^beta - 1 - beta (Lemma mg:lem:capelement(iv)),
+    sigma6 <= (2-iota) N^2 ubar^6 + u2bar^5 (e^beta - 1)                   (Lemma mg:lem:capelement(iv) with u <= ubar),
+    e^{-2 beta} <= Upsilon <= e^{beta}                                     (Lemma mg:lem:upsbounds),
+and, from Lemma mg:lem:dressed with these, Upsilon <= Ubar <= Upsilon + Delta, Delta := n_B^2/(e^{-2beta} - c_2) + 2 e^{2beta} sigma6/(e^{-2beta} - ubar^4(1+gamma)).
+So Ubar_low := e^{-2 beta} replaces Ubar where it is a lower bound that suffices (the right sides of the conditions on delta', F, F_6; C_varpi), Ubar_up := e^beta +
+Delta where Ubar enters increasingly (omega's old condition, eta, 'beyond', 'growth'), and the deficit is bounded by D <= 8(K+1)theta + e^{2beta} Delta + log(1 + delta')
+(log(Ubar/Upsilon) <= Delta/Upsilon). Every one of these is beta^k times a function that visibly increases with beta (power series with non-negative coefficients,
+their products, and quotients by decreasing positive functions), which is what the scaling of Remark mg:rem:nextorder(vii) needs: no monotonicity is checked on grids."""
+import os, sys
+from fractions import Fraction
+here = os.path.dirname(os.path.abspath(__file__))
+for sub in ('second-order', 'upper-bound'): sys.path.insert(0, os.path.join(here, '..', sub))
+sys.path.insert(0, here)
+from mpmath import mp, mpf, exp, expm1, sqrt, log
+
+def bound_group(N, iota=0, sharp_u2=True):
+    """the group data in bound mode (see the module docstring); N >= 3 with sharp_u2 uses Lemma mg:lem:u2sun"""
+    from sun_group import u2_bound
+    def g(beta):
+        beta = mpf(beta)
+        ubar = ((1 + iota)*beta + beta**2*exp(beta))/(2*N**2)
+        ulow = (1 + iota)*beta*exp(-beta)/(2*N**2)
+        u2 = u2_bound(N, beta) if (sharp_u2 and N >= 3) else expm1(beta) - beta
+        eps = expm1(2*beta); gam = expm1(2*beta) + beta**2*exp(beta)
+        s6 = (2 - iota)*N**2*ubar**6 + u2**5*expm1(beta)
+        nB = (u2/ulow)**2*eps + sqrt(2 - iota)*(N/ulow)*sqrt(u2**5*expm1(beta))
+        c2 = (u2/ulow)**4*exp(beta)
+        ups_low, ups_up = exp(-2*beta), exp(beta)
+        assert ups_low > c2 and ups_low > ubar**4*(1 + gam), 'the denominators of Lemma mg:lem:dressed'
+        Delta = nB**2/(ups_low - c2) + 2*exp(2*beta)*s6/(ups_low - ubar**4*(1 + gam))
+        return dict(name=f'SU({N}) bounds', N=N, iota=iota, bounds=True, u=ubar, u_low=ulow, u2=u2, s6=s6,
+                    Ubar_low=ups_low, Ubar_up=ups_up + Delta, Delta=Delta, Ups_low=ups_low)
+    return g
+
+# --- Upsilon >= 1 for SU(N) (used by the upper bound, Remark mg:rem:upperexact(ii)): U_+ - 1 = P(t)/Z(t)^2 with P = 2 Z_2 Z - 2 Z_1^2 - Z^2, t = beta/N,
+# Z = G(0,0), Z_1 = (G(1,0)+G(0,1))/2, Z_2 = (G(2,0)+2G(1,1)+G(0,2))/4 in the notation of sun_group (all with non-negative coefficients). P is computed
+# exactly to degree K; the rest is bounded with z_k <= N^k/k! (for Z), N^(k+1)/k! (Z_1), N^(k+2)/k! (Z_2) (as m(a,b) <= N^(a+b) and sum_{a+b=k} 1/(2^k a! b!) = 1/k!).
+def upsilon_plus_minus_one(N, K=30):
+    """exact coefficients p_k (k <= K) of P(t) = U_+ Z^2 - Z^2, and the coefficient majorants needed for the tail"""
+    from sun_group import coeffs
+    C = coeffs(N, K)
+    Z = C[(0, 0)]; Z1 = [(x + y)/2 for x, y in zip(C[(1, 0)], C[(0, 1)])]; Z2 = [(x + 2*y + z)/4 for x, y, z in zip(C[(2, 0)], C[(1, 1)], C[(0, 2)])]
+    def mul(A, B): return [sum(A[i]*B[k - i] for i in range(k + 1)) for k in range(K + 1)]
+    ZZ, Z1Z1, Z2Z = mul(Z, Z), mul(Z1, Z1), mul(Z2, Z)
+    P = [2*a - 2*b - c for a, b, c in zip(Z2Z, Z1Z1, ZZ)]
+    return P, Z, Z1, Z2
+
+def prove_upsilon_ge_1(N, beta_max, K=30):
+    """a proof that U_+ >= 1 on (0, beta_max] for SU(N) (N >= 4, where the first coefficients of P vanish): P(t) = sum_k p_k t^k with p_k exact for
+    k <= K, and |sum_{k>K} p_k t^k| <= tail(t), a bound by majorants; with k0 the first k with p_k != 0 (it must be > 0), U_+ - 1 >= 0 on (0, t_max] follows from
+    p_k0 - sum_{k0<k<=K} |p_k| t_max^(k-k0) - tail(t_max)/t_max^k0 > 0 (every subtracted term increases with t)."""
+    P, Z, Z1, Z2 = upsilon_plus_minus_one(N, K)
+    k0 = next(k for k, p in enumerate(P) if p != 0)
+    assert P[k0] > 0, f'the first coefficient of U_+ - 1 is negative ({P[k0]})'
+    tm = mpf(beta_max)/N*(1 + mpf(10)**-20)       # t_max, rounded up
+    # tail of each series beyond K, with z_k <= c N^k/k!
+    from math import factorial
+    def tail(cN, tt):           # sum_{k>K} cN N^k tt^k/k!
+        return cN*sum((N*tt)**k/factorial(k) for k in range(K + 1, K + 60))*(1 + mpf(10)**-20)
+    def full(series, cN, tt):   # the series at tt, majorised: exact part + tail
+        return sum(mpf(c.numerator)/c.denominator*tt**k for k, c in enumerate(series)) + tail(cN, tt)
+    # the degree > K part of a product AB of series with non-negative coefficients, written without cancellation:
+    # [A_K B_K]_{deg>K} + A_K tail(B) + tail(A) B_K + tail(A) tail(B), with A_K, B_K the truncations (exact) and tail() the majorants above
+    def trunc(A, tt): return sum(mpf(c.numerator)/c.denominator*tt**k for k, c in enumerate(A))
+    def prod_tail(A, cA, B, cB, tt):
+        hi = sum(mpf(sum(A[i]*B[k - i] for i in range(k - K, K + 1)).numerator)/sum(A[i]*B[k - i] for i in range(k - K, K + 1)).denominator*tt**k
+                 for k in range(K + 1, 2*K + 1))
+        tA, tB = tail(cA, tt), tail(cB, tt)
+        return hi + trunc(A, tt)*tB + tA*trunc(B, tt) + tA*tB
+    T = 2*prod_tail(Z2, N**2, Z, 1, tm) + 2*prod_tail(Z1, N, Z1, N, tm) + prod_tail(Z, 1, Z, 1, tm)
+    lead = mpf(P[k0].numerator)/P[k0].denominator
+    rest = sum(abs(mpf(p.numerator)/p.denominator)*tm**(k - k0) for k, p in enumerate(P) if k > k0)
+    assert T >= 0
+    margin = lead - rest - T/tm**k0
+    return dict(k0=k0, lead=P[k0], t_max=tm, rest=rest, tail=T/tm**k0, margin=margin, ok=margin > 0)
+
+if __name__ == "__main__":
+    from constants_upper import beta0
+    mp.dps = 60
+    for N in (3, 5):
+        for d in (3, 4):
+            b0 = beta0(d); g = bound_group(N)(b0)
+            print(f"SU({N}), d={d}, beta_0 = {float(b0):.6g}: ubar/beta = {float(g['u']/b0):.8f}, u_low/beta = {float(g['u_low']/b0):.8f}, u2bar/beta^2 = {float(g['u2']/b0**2):.6g},"
+                  f" Delta/beta^4 = {float(g['Delta']/b0**4):.4g}, Ubar in [{float(g['Ubar_low']):.8f}, {float(g['Ubar_up']):.8f}]")
+    mp.dps = 120
+    r = prove_upsilon_ge_1(5, beta0(3))
+    print(f"SU(5): U_+ - 1 = P(t)/Z^2 with P = {r['lead']} t^{r['k0']} + ...; on (0, beta_0(3)/5]: {float(r['lead']):.6g} - {float(r['rest']):.3g} - {float(r['tail']):.3g}"
+          f" = {float(r['margin']):.6g} > 0: {r['ok']}  (so Upsilon >= U_+ >= 1 on (0, beta_0(3)], hence on (0, beta_0(4)])")

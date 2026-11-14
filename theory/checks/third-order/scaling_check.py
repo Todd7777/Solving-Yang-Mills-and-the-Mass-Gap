@@ -1,5 +1,5 @@
 # Section 16 of Part IV (Remark mg:rem:nextorder (vii)): the scaling of the admissible parameters below a computed point, d=3, S''_9.
-# Usage: python3 scaling_check.py [--group N] [--d4 TERMS.json [--closed n:c,... --closed-from N] [--ix]] [beta_* [JOBS]]   (default beta_* = beta_0(d); ~10 min, 3 jobs)
+# Usage: python3 scaling_check.py [--bounds] [--group N] [--d4 TERMS.json [--closed n:c,... --closed-from N] [--ix]] [beta_* [JOBS]]   (default beta_* = beta_0(d); ~10 min, 3 jobs)
 """At beta_* the parameters of Theorem mg:thm:lower5 are found as usual (practical_beta.deficit). For beta = t beta_*, 0 < t <= 1, and k := beta_* take
     varpi = t^p varpi_*  (varpi_* = b(beta_*)^p),   F = (1+k) t F_*,   F_6 = (1+k) t F_6*,   delta' = (1+k)^2 t^4 delta'_*,
 and keep xi_F, xi_C, h_J and (bbar, abar) of beta_* (these constants come out of lower3e raised by a relative 1e-15, so that their conditions hold
@@ -22,6 +22,8 @@ import third_order_effective as T
 if '--ix' in sys.argv: PB.IX_SETTING = True; sys.argv.remove('--ix')     # the d=4 setting of Remark mg:rem:nextorder (ix)
 if '--group' in sys.argv:                                                # SU(N) (practical_beta.group_data); default SU(3)
     i = sys.argv.index('--group'); PB.GROUP = int(sys.argv[i + 1]); del sys.argv[i:i + 2]
+if '--bounds' in sys.argv: PB.BOUNDS = True; sys.argv.remove('--bounds')     # bound mode (rigorous_bounds.bound_group): D is D_bound
+if '--certified' in sys.argv: PB.CERTIFIED = True; sys.argv.remove('--certified')   # only counts made by two programs (practical_beta.CERTIFIED)
 CLOSED4, CF4 = {10: 60, 11: 66}, 12
 if '--closed' in sys.argv:
     i = sys.argv.index('--closed'); CLOSED4 = {int(x.split(':')[0]): int(x.split(':')[1]) for x in sys.argv[i + 1].split(',')}; del sys.argv[i:i + 2]
@@ -45,7 +47,7 @@ def params(beta_s):
         try: lo = T.lower3e(beta_s, d, g, varpi_pow=vp, chars=True)
         except AssertionError: continue
         if best is None or lo['delta'] < best['delta']: best = lo; best['p'] = vp
-    best['D'] = best['loss'] - log(g['Ups'])
+    best['D'] = best['D_bound'] if PB.BOUNDS else best['loss'] - log(g['Ups'])
     return best
 
 def scaled(args):
@@ -56,7 +58,7 @@ def scaled(args):
         lo = T.lower3e(beta, d, g, chars=True, fixed=fixed, bbar_grid=[P['bars'][0]], abar_grid=[P['bars'][1]])
     except AssertionError as err:
         return t, None, str(err)[:300]
-    return t, (lo['loss'] - log(g['Ups']))/beta**4, None
+    return t, (lo['D_bound'] if PB.BOUNDS else lo['loss'] - log(g['Ups']))/beta**4, None
 
 if __name__ == "__main__":
     beta_s = mpf(sys.argv[1]) if len(sys.argv) > 1 else beta0(d)

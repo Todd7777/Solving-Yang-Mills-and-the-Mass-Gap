@@ -57,15 +57,18 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
     decoration constants, are checked (Remark mg:rem:nextorder (vii): the scaling below a computed point)"""
     K = 4*(2*d-3); eps = expm1(2*beta); x = e**2*K*eps; th5 = x**5/(1-x)
     if THETA7:                                    # Lemma mg:lem:theta7: theta_7 = 2(d-2) e^6 sigma_6 + x^8/(1-x); with CLOSED_FROM = 10 (no closed sets of 8 or 9
-        th5 = 2*(d-2)*e**6*dressed(beta, g)[1] + x**CLOSED_FROM/(1-x)   # plaquettes, by exhaustive search: Remark mg:rem:practical) theta_10
+        th5 = 2*(d-2)*e**6*(g['s6'] if g.get('bounds') else dressed(beta, g)[1]) + x**CLOSED_FROM/(1-x)   # plaquettes, by exhaustive search: Remark mg:rem:practical) theta_10
         if CLOSED_EXACT and d in CLOSED_EXACT:    # closed polymers of n plaquettes through a plaquette counted exactly (activity at most eps^n)
             th5 += fsum(c*(e*eps)**n for n, c in CLOSED_EXACT[d].items())
     lam = exp(2*(K+1)*th5)
     u = g['u']; a = lam*u; gam = expm1(2*beta) + beta**2*exp(beta); b = lam*gam
-    Ubar, s6 = dressed(beta, g)
+    if g.get('bounds'):          # bound mode (rigorous_bounds.bound_group): Ubar_lo <= Ubar <= Ubar_hi, u = ubar >= u, u_low <= u (Theorem mg:thm:thirdcap)
+        Ubar_lo, Ubar_hi, s6, ulow = g['Ubar_low'], g['Ubar_up'], g['s6'], g['u_low']
+    else:
+        Ubar, s6 = dressed(beta, g); Ubar_lo = Ubar_hi = Ubar; ulow = u
     varpi = b**varpi_pow if fixed is None else fixed['varpi']
-    C = 1 + max(1/varpi, (1+gam)/Ubar); omega = C*a**4*(1+gam)
-    b2 = lam**2*(2*s6 + s6**2)/u**4
+    C = 1 + max(1/varpi, (1+gam)/Ubar_lo); omega = C*a**4*(1+gam)
+    b2 = lam**2*(2*s6 + s6**2)/ulow**4
     Pv, KS, Tv, N = counts(d, volume)
     if NOVR and d in NOVR:
         for k, v in NOVR[d].items(): N[k] = mpf(v)
@@ -162,7 +165,7 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
                + fsum(2*binomial(4*Pv+Tv*n, n)*b**n*fsum(X(n, k)*f(k) for k in range(5, min(4*n+5, 199))) for n in range(1, NMAX)) \
                + 4*Pv*exp(4*xF)*(kC*Y[2] + 4*(gC*g2F + g2C*gF)*Y[1] + 16*kF*Y[0])
         # a downward exit (the U-turns: p' in the layer of p) costs eta = C a^4 (2 Ubar (1+delta') + Sigma_4)/(1-omega)  (step (c) of Thm 10.8)
-        eta = C*a**4*(2*Ubar*(1+dl) + full)/(1-omega) if uturn else mpf(1)
+        eta = C*a**4*(2*Ubar_hi*(1+dl) + full)/(1-omega) if uturn else mpf(1)
         parts = dict(two=(4*(Pv-1)-KS)*varpi*min(b**2, b2),
                      # chars (Theorem 14.2): the turns and jumps, widenings and narrowings by characters (Lemma 14.1), a in place of b
                      four=(10*(a**4 if chars else b**4) + 2*eta*b**4)*(d-3) + (fsum(ZSMALL[d][n]*b**n for n in ZSMALL[d])
@@ -183,21 +186,22 @@ def lower3e(beta, d, g, volume='infinite', KMAX=60, NMAX=40, varpi_pow=2, bbar_g
         return fsum(parts.values()), parts, Pv*(gC*Y[1]/kmin + gF*Y[0]), full, best[1], sig6
     F = mpf(1); F6 = mpf(1); dl = mpf(0)
     for _ in range(100 if fixed is None else 0):
-        S, parts, need, full, bb, sig6 = solve(F, F6, dl); dln = S/Ubar*(1+mpf(10)**-12)
-        Fn = need/(Ubar*(1+dln)-a)*(1+mpf(10)**-9)
-        F6n = sig6/(36*exp(6*xF)*(Ubar*(1+dln)-a))*(1+mpf(10)**-9) if sharp6 else F6
+        S, parts, need, full, bb, sig6 = solve(F, F6, dl); dln = S/Ubar_lo*(1+mpf(10)**-12)
+        Fn = need/(Ubar_lo*(1+dln)-a)*(1+mpf(10)**-9)
+        F6n = sig6/(36*exp(6*xF)*(Ubar_lo*(1+dln)-a))*(1+mpf(10)**-9) if sharp6 else F6
         done = abs(Fn-F) < mpf(10)**-12*F and abs(F6n-F6) < mpf(10)**-12*F6 and abs(dln-dl) < mpf(10)**-12*dln
         F, F6, dl = Fn, F6n, dln
         if done: break
     dl = dl*(1+mpf(10)**-9)                                      # final delta'; eta is evaluated at this delta'
     if fixed is not None: F, F6, dl = fixed['F'], fixed['F6'], fixed['dl']
     S, parts, need, full, bb, sig6 = solve(F, F6, dl)
-    hyp = dict(sigma=S < Ubar*dl, exits=need < F*(Ubar*(1+dl)-a), omega=omega < 1, F6=F6 > 0,
-               six=(sig6 < 36*F6*exp(6*xF)*(Ubar*(1+dl)-a)) if sharp6 else True,
-               old=omega + C*a**4*(2*Ubar*(1+dl) + full)/(1-omega) <= 1, beyond=a**4*Ubar*(1+dl) <= varpi, growth=a**4*Ubar*(1+dl) <= 1,
+    hyp = dict(sigma=S < Ubar_lo*dl, exits=need < F*(Ubar_lo*(1+dl)-a), omega=omega < 1, F6=F6 > 0,
+               six=(sig6 < 36*F6*exp(6*xF)*(Ubar_lo*(1+dl)-a)) if sharp6 else True,
+               old=omega + C*a**4*(2*Ubar_hi*(1+dl) + full)/(1-omega) <= 1, beyond=a**4*Ubar_hi*(1+dl) <= varpi, growth=a**4*Ubar_hi*(1+dl) <= 1,
                decorations=deco_ok)
     assert all(hyp.values()), hyp
-    return dict(delta=dl, parts=parts, b=b, a=a, F=F, F6=F6, sig6=sig6, Ubar=Ubar, bars=bb, loss=8*(K+1)*th5 + log(Ubar) + log(1+dl),
+    out_D = (8*(K+1)*th5 + exp(2*beta)*g['Delta'] + log(1+dl)) if g.get('bounds') else None   # bound mode: D <= 8(K+1)theta + e^{2beta} Delta + log(1+delta')
+    return dict(delta=dl, parts=parts, b=b, a=a, F=F, F6=F6, sig6=sig6, Ubar=Ubar_hi, bars=bb, loss=8*(K+1)*th5 + log(Ubar_hi) + log(1+dl), D_bound=out_D,
                 varpi=varpi, xF=xF, xC=xC, hJ=hJ, cT=cT)
 
 GROUPS = (('SU(2)', su2), ('SU(3)', su3), ('U(1)', u1))

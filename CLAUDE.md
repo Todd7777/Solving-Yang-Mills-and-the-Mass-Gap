@@ -118,11 +118,16 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   `run_admissible_pieces.sh`, about 1 hour on 4 cores; `orders/admissible_d4_n11.out`). **For $SU(5)$: $-0.346\beta^4\le m-4\log(1/u)+\log\Upsilon\le0.318\beta^4$ ($d=3$), $-0.519\beta^4\le\dots\le0.252\beta^4$ ($d=4$), whole range**
   (Numerical); the `--group 5` option of `practical_beta.py`, `scaling_check.py`, `monotone_check.py`, `upper_exact.py`. The corner $(9,2)$ and the sets of 11 plaquettes also give $SU(3)$, $d=4$: $-3.94\beta^4\le m-4\log(1/u)+\log\Upsilon\le0.033\beta^4$ (was $-11.4$, $0.21$).
   The $d=4$ upper half does not rest on the enumeration: the binomial bound of Lemma 5.5's proof as $N_{11}$ already gives $0.360\beta^4$ (the referee).
-  Next: $d\ge5$, or the $C$-odd sector at fourth order (Conjecture 15.11).
+  **Computer-assisted proof** (Lemma 16.13, Theorem 16.14, 14 November, not yet refereed): with the group data replaced by proven bounds ($\bar u$, $u_{\rm low}$, $u_2$ of Lemma 16.11,
+  $e^{-2\beta}\le\Upsilon\le e^\beta$, $\bar\Upsilon\le\Upsilon+\Delta$; `rigorous_bounds.py`, `--bounds`), every monotonicity fact of the scaling holds by inspection (no grid checks); the
+  truncation tails at $\beta_*=\beta_0(d)(1+10^{-30})$ are $\le1.4\cdot10^{-21}$ against room $\ge6.7\cdot10^{-16}$ (`error_budget.py`); only counts made by two programs (`--certified`);
+  $\Upsilon\ge1$ for $SU(5)$ by an exact series (Lemma 16.13(ii)). **Theorem 16.14: for $SU(3)$ and $SU(5)$, $d=3,4$, $-c_-\beta^4\le m-4\log(1/u)+\log\Upsilon\le c_+\beta^4$ for all
+  $\beta<\beta_0(d)$, $(c_-,c_+)=(2.558,0.042)$, $(3.937,0.047)$, $(0.346,0.318)$, $(0.520,0.361)$**: the third-order term from both sides on the whole range, proved (computer-assisted).
+  Next: a referee for Lemma 16.13 and Theorem 16.14; then $d\ge5$, or the $C$-odd sector at fourth order (Conjecture 15.11).
 - Glueball runs: raw `.npz` files and checkpoints in `results/` are gitignored and do not survive the container; only
   the analyses (`results/*.md`) are committed. `glueball.py` resumes from its checkpoint when rerun with the same
   arguments.
-- The newest journal entry is `journal/2026-11-14.md` (Part 18: the seventh referee, on Lemma 16.10 and Remark 16.7(x); Part 19: the third-order term of $SU(5)$). Before it, `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$; Part 14: further orders in $d=3$, the whole range; Part 15: the upper bound; Part 16: the lower bound in $d=4$; Part 17: the whole range in $d=4$). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
+- The newest journal entry is `journal/2026-11-14.md` (Part 18: the seventh referee, on Lemma 16.10 and Remark 16.7(x); Part 19: the third-order term of $SU(5)$; Part 20: the computer-assisted proof). Before it, `journal/2026-11-13.md` (Part 13: the next order of the third-order term at practical $\beta$; Part 14: further orders in $d=3$, the whole range; Part 15: the upper bound; Part 16: the lower bound in $d=4$; Part 17: the whole range in $d=4$). Before it, `journal/2026-11-12.md` (session 3, Part 8: the fourth-order term; Part 9: the third-order term with an effective constant; Part 11: the sectors of charge conjugation;
   Part 12: the third-order term at practical $\beta$; Part 10: the lower bound to fourth order); `journal/2026-11-11.md` has Parts 6–7 (the second- and
   third-order terms), `journal/2026-11-10.md` has Parts 1–5,
   `journal/2026-11-09b.md` is the first part of session 3 and `journal/2026-11-09.md` is session 2.
