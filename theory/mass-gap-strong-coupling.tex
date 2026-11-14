@@ -5457,9 +5457,9 @@ these classes, those satisfying the conditions of Lemma~\ref{mg:lem:junction}, w
 $E\ge6$ and stays in the tree sum. The classes $(4;4)$, $(4;6)$, $(4;7)$, $(6;6)$, $(4;4,7)$, $(4;4,8)$ and $(4;6,6)$ were found empty as well, the first three as
 Lemma~\ref{mg:lem:betafour}(iii) requires (\texttt{sharp\_counts.py}).
 
-(iii) By the C version (\texttt{closed\_sets.c}) of the search of Remark~\ref{mg:rem:nextorder} for closed sets; it reproduces the counts $10$, $11$, $24$, $0$, $70$ for $10$
-to $14$ plaquettes used there, which were made by two programs. The second count for $15$ and $16$ plaquettes is the Python search (\texttt{closed\_sets\_ext.py}), run by
-\texttt{sharp\_counts.py}; it takes about two hours.
+(iii) By the C version (\texttt{closed\_sets.c}) of the search of Remark~\ref{mg:rem:nextorder} for closed sets and by the seventh referee's partition search
+(\texttt{referee-section16g/\allowbreak closed\_partition.c}, a different algorithm), with equal results; both reproduce the counts $10$, $11$, $24$, $0$, $70$ for $10$ to $14$
+plaquettes used there.
 \end{proof}
 
 \begin{corollary}[Sharper constants]\label{mg:cor:sharp}

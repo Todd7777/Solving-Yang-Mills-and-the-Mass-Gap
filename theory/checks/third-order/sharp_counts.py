@@ -1,5 +1,5 @@
 # Part IV, Section 16 (Lemma mg:lem:smallcounts, Corollary mg:cor:sharp): the exact counts that sharpen the constants, each made by two programs.
-# Usage: python3 sharp_counts.py      (about 10 minutes; writes orders/sharp_counts.json)
+# Usage: python3 sharp_counts.py      (about 6 minutes; writes orders/sharp_counts.json)
 """(i) Rooted sets: S_n(root) is the number of sets P of n plaquettes of Z^D (D = d-1) with every plaquette joined to the vertices of the root front by a
 chain of plaquettes of P sharing vertices (the sets of the rooted counting in the proofs of Lemmas mg:lem:twofrontcount and mg:lem:jsums6). The root is a
 plaquette boundary (four edges) or a six-edge front (Z^2: the flat domino; Z^3: the flat and the bent domino and the skew hexagon, the largest count used).
@@ -11,7 +11,7 @@ and further fronts of the sizes K. The classes are those of the tree bound with 
 (4; 4,4), (4; 4,6), and, as checks of Lemma mg:lem:betafour(iii) and its extension, (4,4), (4,6), (4,7), (6,6), (4,4,7), (4,4,8), (4,6,6).
 Program 1: order_counts.count_junctions (Python); program 2: junctions.c (C).
 (iii) Closed polymers through a plaquette of Z^3 (d=3) with 10 <= n <= 16 plaquettes (Lemma mg:lem:theta7 counts them to 14):
-closed_sets.c (C) and closed_sets_ext.py (Python)."""
+closed_sets.c (C) and the seventh referee's partition search referee-section16g/closed_partition.c (C, a different algorithm)."""
 import os, sys, json, subprocess, tempfile, re
 here = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, here)
@@ -61,16 +61,19 @@ for D in (2, 3):
             terms.append([a, K[1], 4, 1])
         else: raise SystemExit(f'unexpected non-empty class {K}')
     oneplaq[str(d)] = {'E0': 5, 'terms': terms, 'empty': empty}
-# (iii) closed polymers through a plaquette of Z^3 (d=3), n <= CMAX: closed_sets.c (C) and closed_sets_ext.py (Python), the counts of Lemma mg:lem:theta7
+# (iii) closed polymers through a plaquette of Z^3 (d=3), n <= CMAX, the counts of Lemma mg:lem:theta7: closed_sets.c (C; the search of closed_sets_ext.py) and the
+# seventh referee's partition search referee-section16g/closed_partition.c (a different algorithm; closed_sets_ext.py itself needs about two hours to 16)
 CMAX = 16
 CS = build('closed_sets.c')
-a = run([CS, '3', str(CMAX)]).strip().splitlines()[-1]
-ca = {int(x.split(':')[0]): int(x.split(':')[1]) for x in a.split('by size:')[1].split()}
-out = subprocess.run([sys.executable, os.path.join(here, 'closed_sets_ext.py'), '3', str(CMAX)], check=True, capture_output=True, text=True).stdout
-m = re.findall(r'\{[^{}]*\}', out)
-cb = {int(k): int(v) for k, v in re.findall(r'(\d+): (\d+)', m[-1])} if m else {}
-same = {n: c for n, c in ca.items() if c} == {n: c for n, c in cb.items() if c}; ok = ok and same
-print(f"Z^3, closed polymers through a plaquette, n <= {CMAX}: {ca} (closed_sets.c) == {cb} (closed_sets_ext.py): {same}", flush=True)
+CP = os.path.join(tmp, 'closed_partition')
+subprocess.run(['cc', '-O2', '-o', CP, os.path.join(here, 'referee-section16g', 'closed_partition.c')], check=True)
+def by_size(line): return {int(x.split(':')[0]): int(x.split(':')[1]) for x in line.split('by size:')[1].split()}
+ca = by_size(run([CS, '3', str(CMAX)]).strip().splitlines()[-1])
+outp = run([CP, '3', str(CMAX)]).strip().splitlines()
+cb = by_size(next(l for l in outp if 'by size:' in l))
+assert any('duplicates 0' in l for l in outp), outp
+same = ca == cb; ok = ok and same
+print(f"Z^3, closed polymers through a plaquette, n <= {CMAX}: {ca} (closed_sets.c) == {cb} (closed_partition.c): {same}", flush=True)
 closed = {'3': {str(n): ca.get(n, 0) for n in range(10, CMAX + 1)}}
 if not ok: raise SystemExit('the two programs disagree')
 J = {'rooted': rooted, 'oneplaq': oneplaq, 'closed': closed,

@@ -31,4 +31,5 @@ d=4, one plaquette, further fronts (4, 4, 6): 0 (order_counts) == 0 (junctions.c
 d=4, one plaquette, further fronts (4, 4, 7): 0 (order_counts) == 0 (junctions.c): True
 d=4, one plaquette, further fronts (4, 4, 8): 0 (order_counts) == 0 (junctions.c): True
 d=4, one plaquette, further fronts (4, 6, 6): 0 (order_counts) == 0 (junctions.c): True
+Z^3, closed polymers through a plaquette, n <= 16: {6: 2, 10: 10, 11: 11, 12: 24, 14: 70, 15: 150, 16: 352} (closed_sets.c) == {6: 2, 10: 10, 11: 11, 12: 24, 14: 70, 15: 150, 16: 352} (closed_partition.c): True
 all counts made by two programs agree; written to orders/sharp_counts.json

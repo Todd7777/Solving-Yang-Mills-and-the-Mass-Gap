@@ -148,7 +148,7 @@ The PDFs in `theory/` are committed. Rebuild and commit them whenever their `.te
   **Sharper constants** (Lemma 16.22, Corollary 16.23, 14 November, not yet refereed; computer-assisted): exact counts of the small rooted sets of plaquettes
   ($S_n$ in place of $\binom{4P_v+T_vn}n$, $\binom{6P_v+T_vn}n$; Redelmeier and reverse search, `rooted_sets.c`, `rooted_rs.c`) and of the one-plaquette junctions with
   three or more front-pairs and $a$-exponent $\le5$ (only $(4;8),(4;9),(4;10)$: $4,8,20$ in $d=3$, $36,72,276$ in $d=4$; `order_counts.py`, `junctions.c`), of the closed
-  polymers of $\mathbb Z^3$ to 16 plaquettes ($d=3$; `closed_sets.c`, `closed_sets_ext.py`; all in `sharp_counts.py`), and
+  polymers of $\mathbb Z^3$ to 16 plaquettes ($d=3$; `closed_sets.c`, the seventh referee's `closed_partition.c`; all in `sharp_counts.py`), and
   Lemma 16.15 for $2\le p\le3$, lower every $c_-$ by a factor 2.1–37: $(0.0121,0.987)$ [$SU(3)$, $d=3,4$], $(0.00359,0.383)$ [$SU(4)$],
   $(0.00177,0.24)$ [$SU(5)$], $(1.57,53.3)$ [$SU(2)$], $(16.8,437)$ [$U(1)$], gap and both sectors. So the odd $SU(3)$ glueball's $\beta^3/1296$
   at $\beta_0(4)$ has residual $\le20\%$ (was $78\%$). `run_cap.sh 2 sharp`; options `--sharp`, `--pmax 3`.

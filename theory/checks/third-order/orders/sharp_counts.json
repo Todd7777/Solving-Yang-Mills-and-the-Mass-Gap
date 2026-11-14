@@ -167,7 +167,6 @@
    ]
   }
  },
- "note": "Lemma mg:lem:smallcounts. rooted: {d: {'4' or '6': {n: S_n}}} in Z^(d-1). oneplaq: {d: {E0, terms: [count, 2E, |p'|, m], empty: classes with no junction}}",
  "closed": {
   "3": {
    "10": 10,
@@ -178,5 +177,6 @@
    "15": 150,
    "16": 352
   }
- }
+ },
+ "note": "Lemma mg:lem:smallcounts. rooted: {d: {'4' or '6': {n: S_n}}} in Z^(d-1). oneplaq: {d: {E0, terms: [count, 2E, |p'|, m], empty: classes with no junction}}"
 }
